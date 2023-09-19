@@ -59,7 +59,7 @@
           e => {
             let (i, l) = e
             let n = i + firstnumber
-            let n_str = if (calc.mod(n, stepnumber) == 0) or (numberfirstline and i == 0) { numberstyle(str(n)) } else { none }
+            let n_str = if (calc.rem(n, stepnumber) == 0) or (numberfirstline and i == 0) { numberstyle(str(n)) } else { none }
             (n_str + h(.5em), raw(lang: content.lang, l))
           }
         )
