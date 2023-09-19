@@ -9,6 +9,9 @@
   #text(10pt, author)
   #line(start: (25%, 0%), end: (75%, 0%))
   #text(9pt, subtitle)
+
+  #pad(y: 40pt, align(center, [#image("figures/ReSet1.svg", width: 25%)]))
+
   ])
   pagebreak(weak: false)
   outline(title: "Table of Contents", indent: true, depth: 3)
@@ -91,6 +94,11 @@
     }
   )
   doc
+  set page(footer: none )
+  pagebreak(weak: false)
+  set align(center)
+  bibliography("works.yml")
+  set align(left)
 }
 
 #let section(name) = {
