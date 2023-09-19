@@ -7,14 +7,20 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
+    - uses: DeterminateSystems/nix-installer-action@main
+    - uses: DeterminateSystems/magic-nix-cache-action@main
     - name: install typst 
-      run: cargo install typst 
-    - name: build pdf 
-      run: typst compile ReSet.pdf
+    - run: nix run github:typst/typst -- compile ReSet.typ
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/upload-pages-artifact@v1
+      with: { path: 'ReSet.pdf' }
     - name: Deploy to Pages
       uses: actions/deploy-pages@v2
