@@ -1,14 +1,14 @@
 /* page setup */
-#let conf(author: "Fabio Lenherr", title, subtitle, doc) = {
+#let conf(author: "Fabio Lenherr", professor, title, doc) = {
   set document(title: title, author: author) 
   set align(center)
   set par(justify: true)
   align(center + horizon, [
-  #text(17pt, title)
-  #line(length: 100%)
-  #text(10pt, author)
-  #line(start: (25%, 0%), end: (75%, 0%))
-  #text(9pt, subtitle)
+  #pad(y: 5pt, text(25pt, title))
+  #line(start: (5%, 0%), end: (95%, 0%))
+  #pad(y: 5pt, text(14pt, author))
+  #line(start: (15%, 0%), end: (85%, 0%))
+  #pad(y: 5pt, text(14pt, professor))
 
   #pad(y: 40pt, align(center, [#image("figures/ReSet1.svg", width: 25%)]))
 
