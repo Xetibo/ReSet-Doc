@@ -15,12 +15,12 @@ jobs:
     - uses: DeterminateSystems/magic-nix-cache-action@main
     - name: install typst 
     - run: nix run github:typst/typst -- compile ReSet.typ
+    - uses: actions/upload-pages-artifact@v1
+      with: { path: 'ReSet.pdf' }
 
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/upload-pages-artifact@v1
-      with: { path: 'ReSet.pdf' }
-    - name: Deploy to Pages
-      uses: actions/deploy-pages@v2
+      - name: Deploy to Pages
+        uses: actions/deploy-pages@v2
