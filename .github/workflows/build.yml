@@ -1,0 +1,20 @@
+name: Build 
+
+on:
+  push:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: install typst 
+      run: apt install -y typst
+    - name: build pdf 
+      run: typst compile ReSet.pdf
+    - name: Deploy to Pages
+      uses: actions/deploy-pages@v2
