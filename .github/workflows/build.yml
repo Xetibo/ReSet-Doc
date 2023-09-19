@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: install typst 
-      run: apt install -y typst
+      run: sudo apt install -y typst
     - name: build pdf 
       run: typst compile ReSet.pdf
     - name: Deploy to Pages
