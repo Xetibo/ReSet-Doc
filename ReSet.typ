@@ -41,6 +41,7 @@ Another consideration for this language is the wide support for editors.\
 With the provided language server, it is possible to use Rust in pretty much any extendable editor.\
 Alongside it, even big editors like the JetBrain tools now offer a Rust editor(Rust Rover).
 
+#pagebreak()
 #text(12pt,[*UI Toolkit*])* | ReSet uses GTK4 as its UI toolkit.*\
 GTK(Gnome toolkit, or formerly Gimp Toolkit) is a well established UI toolkit under Linux that has seen decades of usage and improvements.\
 While the library itself is written in C, it does offer language bindings for a large set of languages, including Rust via #link("https://gtk-rs.org/")[gtk-rs].\
@@ -49,6 +50,15 @@ Specifically the toolkit "iced" was considered, however, it currently lacks docu
 
 The last consideration is QT, it is a cross-platform toolkit that uses its own form of JavaScript to draw windows.\
 In this case it was a lack of familiarity with QT and a lack of semi-official bindings for the toolkit that ended its consideration.
+
+#text(12pt, [*Typesetting Language*])* | ReSet-Doc is written with typst.*\
+Typst is a modern typesetting system with clean and modern syntax.\
+It offers faster compilation compared to latex and does not produce additional files needed for compilation.\
+In Addition, typst already has a modern ecosystem, allowing users to install typst in a single binary, and immediately start using it.\
+For example, Visual Studio Code has an extension that covers everything you need.\
+(Other editors such as Neovim also have an extension/plugin for typst)
+
+It is important to note, that typst is a turing complete system and not a markup language, which was specifically avoided, in order to not run into limitations.
 #subsection("Parallels to similar projects")
 
 // how did others do it?
