@@ -5,9 +5,9 @@
   set par(justify: true)
   align(center + horizon, [
   #pad(y: 5pt, text(25pt, title))
-  #line(start: (5%, 0%), end: (95%, 0%))
+  #align(left,line(start: (5%, 0%), end: (95%, 0%)))
   #pad(y: 5pt, text(14pt, author))
-  #line(start: (15%, 0%), end: (85%, 0%))
+  #align(left,line(start: (15%, 0%), end: (85%, 0%)))
   #pad(y: 5pt, text(14pt, professor))
 
   #pad(y: 40pt, align(center, [#image("figures/ReSet1.svg", width: 25%)]))
