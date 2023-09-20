@@ -1,3 +1,23 @@
+#let section(name) = {
+  align(center, [#heading(numbering: "1.1.1.", level: 1,name)])
+  line(length: 100%)
+}
+
+#let subsection(name) = {
+  align(center, [#heading(numbering: "1.1.1.", level: 2,name)])
+  line(length: 100%)
+}
+
+#let subsubsection(name) = {
+  align(center, [#heading(numbering: "1.1.1.", level: 3,name)])
+  line(length: 100%)
+}
+
+#let subsubsubsection(name) = {
+  align(center, [#heading(numbering: "1.1.1.", level: 4,name)])
+  line(length: 100%)
+}
+
 /* page setup */
 #let conf(author: "Fabio Lenherr", professor, title, doc) = {
   set document(title: title, author: author) 
@@ -98,26 +118,11 @@
   pagebreak(weak: false)
   set align(center)
   bibliography("works.yml")
+  pagebreak()
+  section("List of Figures")
+  outline(
+    title: none,
+    target: figure.where(kind: image),
+  )
   set align(left)
 }
-
-#let section(name) = {
-  align(center, [#heading(numbering: "1.1.1.", level: 1,name)])
-  line(length: 100%)
-}
-
-#let subsection(name) = {
-  align(center, [#heading(numbering: "1.1.1.", level: 2,name)])
-  line(length: 100%)
-}
-
-#let subsubsection(name) = {
-  align(center, [#heading(numbering: "1.1.1.", level: 3,name)])
-  line(length: 100%)
-}
-
-#let subsubsubsection(name) = {
-  align(center, [#heading(numbering: "1.1.1.", level: 4,name)])
-  line(length: 100%)
-}
-
