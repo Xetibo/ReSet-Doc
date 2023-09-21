@@ -89,7 +89,7 @@ This allows inline documentation, which will later be converted to an HTML file.
 The API for ReSet-Daemon will be covered under TBD.
 
 An example for rustdoc:
-```rs
+#sourcecode[```rs
 /// takes a number and multiplies it with itself x(positive) amount of times.
 /// ‘‘‘
 /// let num = fact(3,2);
@@ -108,7 +108,7 @@ fn pfact(number: i32, exponent: u32) -> i32 {
     }
     result
 }
-```
+```]
 #align(center, [#figure(image("figures/rustdoc.png", width: 100%),caption: [Rustdoc example entry for code above.],)<rustdoc>])
 
 #pagebreak()
