@@ -1,3 +1,4 @@
+#import "@preview/codelst:1.0.0": sourcecode
 #let section(name) = {
   align(center, [#heading(numbering: "1.1.1.", level: 1,name)])
   line(length: 100%)
@@ -55,64 +56,6 @@
   )
   counter(page).update(1)
   set align(left)
-  show raw.where(block: true): content => block(
-    width: 100%,
-    fill: luma(240),
-    stroke: 1pt + maroon,
-    radius: 3pt,
-    inset: 5pt,
-    clip: false,
-    {
-      let numbers = true
-      let stepnumber = 1
-      let numberfirstline = false
-      let numberstyle = auto
-      let firstnumber = 1
-      let highlight = none
-      let (columns, align, make_row) = {
-       if numbers {
-        // line numbering requested
-        if type(numberstyle) == "auto" {
-          numberstyle = text.with(style: "italic", 
-                                  slashed-zero: true, 
-                                  size: .6em)
-        }
-        ( ( auto, 1fr ),
-          ( right + horizon, left ),
-          e => {
-            let (i, l) = e
-            let n = i + firstnumber
-            let n_str = if (calc.rem(n, stepnumber) == 0) or (numberfirstline and i == 0) { numberstyle(str(n)) } else { none }
-            (n_str + h(.5em), raw(lang: content.lang, l))
-          }
-        )
-      } else {
-        ( ( 1fr, ),
-          ( left, ),
-          e => {
-            let (i, l) = e
-            raw( lang:content.lang, l)
-          }
-        )
-       }
-      }
-      table(
-          stroke:none,
-          columns: columns,
-          rows: (auto,),
-          gutter: 0pt,
-          inset: 2pt,
-          align: (col, _) => align.at(col),
-          ..content
-              .text
-              .split("\n")
-              .enumerate()
-              .map(make_row)
-              .flatten()
-              .map(c => if c.has("text") and c.text == "" { v(1em) } else { c })
-      )
-    }
-  )
   doc
   set page(footer: none )
   pagebreak(weak: false)
