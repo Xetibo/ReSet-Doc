@@ -83,6 +83,7 @@ _Due to the small team size, no scrum master or product owner is chosen, the wor
 #subsection("Scope")
 #subsection("Architecture")
 #subsection("UI Design")
+#align(center, [#figure(image("figures/uimock.png", width: 70%),caption: [First iteration of UI mock],)<uimock>])
 #section("Documentation")
 Next to this document, both ReSet and ReSet-Daemon will have their code documented using the rustdoc functionality.\
 This allows inline documentation, which will later be converted to an HTML file.\
