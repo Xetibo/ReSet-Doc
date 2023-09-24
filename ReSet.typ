@@ -1,4 +1,5 @@
-#import "template.typ": *
+#import "templates/template.typ": *
+#import "templates/riskmatrix.typ": *
 
 #let abstract = { [ whatver is discussed in @globi s ] }
 
@@ -6,9 +7,9 @@
   author: "Fabio Lenherr / Felix Tran",
   "Dr. Prof. Frieder Loch",
   "ReSet",
-  "figures/ReSet1.png",
+  "/figures/ReSet1.png",
   25%,
-  "figures/OST.svg",
+  "/figures/OST.svg",
   40%,
   "Department for Computer Science",
   "OST Eastern Switzerland University of Applied Sciences",
@@ -17,12 +18,48 @@
 )
 
 #section("Glossary")
-
+#pad(y: 10pt)[]
+#glossary_entry(
+  "Daemon",
+  [
+    Background process, most commonly used to handle functionality for a frontend.
+  ],
+  "Daemon",
+)
+#glossary_entry(
+  "Desktop Environment",
+  [
+    A collection of software, enabling a graphical user interface experience to do
+    general computing tasks.\
+    This includes most basic functionality like starting programs, shutting down the
+    PC or similar.
+  ],
+  "DE",
+)
+#glossary_entry(
+  "Language Server Protocol (LSP)",
+  [
+    Protocol designed to help program software by providing quick-fixes to errors,
+    linting, formatting and refactoring.
+  ],
+  "LSP",
+)
+#glossary_entry("Target Triple", [
+  String used to define compilation target platforms in rust.
+], "triple")
+#glossary_entry(
+  "dbus",
+  [
+    Low level API providing inter process communication (IPC) on UNIX operating
+    systems.
+  ],
+  "dbus",
+)
 #pagebreak()
 #section("Motivation")
 The Linux ecosystem is well known to be fractured, whether it's the seemingly
-endless amount of distributions, or the various different desktop environments,
-there will always be someone who will create something new.\
+endless amount of distributions, or the various different desktop
+environments[@DE] there will always be someone who will create something new.\
 With this reality comes a challenge to create software that is not dependent on
 one singular distribution or environment.\
 This project will focus on one specific problem, namely the lack of universality
@@ -59,13 +96,13 @@ Wile Rust is more complex to write than languages such as JavaScript, it comes
 with a significantly reduced memory cost and with the addition of a proper type
 system.\
 Compared to other system programming languages, Rust comes with a modern
-ecosystem, providing a formatter, a compiler, an LSP server, a code checking
-tool and a package manager in one package(rustup).\
+ecosystem, providing a formatter, a compiler, an LSP[@LSP] server, a code
+checking tool and a package manager in one package(rustup).\
 This allows for a more streamlined developer experience and standardizes
 features, which in return makes more complex tasks like cross-compilation a lot
 easier.\
-For example, Rust allows one to simply add a so-called "target triple", which is
-a specific platform.\
+For example, Rust allows one to simply add a so-called "target triple"[@triple],
+which is a specific platform.\
 Using this triple, it is possible to just build this with "```sh cargo build --target x86_64-linux-unknown-gnu```".\
 In other words, it offers modern features while keeping the speed of C or C++.\
 
@@ -124,26 +161,117 @@ _Due to the small team size, no scrum master or product owner is chosen, the wor
 of these positions is done in collaboration._\
 
 #subsection("Time")
-Because we do not follow the Waterfall methodology, time management further 
-than around 2 weeks is not very accurate. For now, we use placeholders in the 
-Architecture task, but once we get to it, we will expand the diagram accordingly.
-#align(center, [#figure(image("figures/ganntTimePlanning.png", width: 100%),caption: [Time management],)])
-#subsection("Risks")
-#requirement("socket or something", "socket no breaky", "low", "socket breaky", [
-  - use rust
-  - don't use js
-  - idk
+#pagebreak()
+#section("Risks")
+Risks are assessed according to the ISO standard with a risk matrix.
+
+#riskmatrix()
+
+#risk(
+  "Toolkit",
+  [
+    GTK might not be perfectly suitable for our use case, especially considering we
+    are using Rust bindings and not C directly.
+  ],
+  "Medium",
+  "Unlikely",
+  "Critical",
+  [
+    Iced can be used as a backup toolkit if GTK turns out to not be usable for the
+    project.
+  ],
+)
+#risk(
+  "Plugin System",
+  [
+    The plugin system might be too ambitious and could take too much time to
+    realize.
+  ],
+  "High",
+  "Likely",
+  "Marginal",
+  [
+    Instead of a plugin system, dbus[@dbus] or socket connections can be used to
+    realize a limited implementation of expected features.
+  ],
+)
+#risk(
+  "System Interaction",
+  [
+    System feature integration like audio, Bluetooth and more might not be as
+    seamless as planned.
+  ],
+  "Low",
+  "Rare",
+  "Marginal",
+  [
+    Potential use of alternative integrations.\
+    Example: The standard NetworkManager doesn't integrate well → use
+    Systemd-networkd instead.
+  ],
+)
+#pad(x: 0pt, y: 0pt, line(length: 100%))
+#pagebreak()
+
+#section("Requirements")
+#subsection("Functional Requirements")
+As per scrum, functional requirements are handled using the user story format
+which can be found on the ReSet and ReSet-Daemon repositories respectively.
+
+#subsection("Non-Functional Requirements")
+#requirement(
+  "User Interface",
+  "Usability",
+  "medium",
+  [
+    Reaction time should not be noticeable by user, and UI should not be blocked
+    during loading operations.
+  ],
+  [
+    - Show loading icons or similar during blocking operations.
+      - restrict actions during loading period.
+    - Use async functions in order to keep UI responsive. (GTK enforces this)
+  ],
+)
+#requirement(
+  "User Interface",
+  "Usability",
+  "medium",
+  [
+    Errors should be visible to the user, and the user should be able to solve
+    issues accordingly.\
+    Example: user has not installed any Bluetooth software, therefore ReSet should
+    inform the user of the situation.
+  ],
+  [
+    - Provide adequate error handling in user interface via popups or similar.
+      - Same functionality should be available in CLI and API.
+    - ReSet should not crash if a dependency is not installed.
+  ],
+)
+#requirement("Code Duplication", "Maintainability", "low", [
+  ReSet should not have the same logic implemented as ReSet-Daemon.\
+  In general, ReSet should not have any logic other than necessary.
+], [
+  - Provide adequate functions over inter process connection
+  - Well documented API
 ])
+#pad(x: 0pt, y: 0pt, line(length: 100%))
+#pagebreak()
+
 #subsection("Domain Model")
 #subsection("Architecture")
 #subsection("UI Design")
-On the left side, there's a scrollabe window containing a list of settings 
-categories. 
-Above that is a search bar that allows users to quickly locate specific settings. 
-In addition to the search bar, there is a breadcrumb menu similar to file paths 
-which can be especially useful when users need to traverse multiple screens or 
-submenus, ensuring they can easily backtrack.
-#align(center, [#figure(image("figures/uimock.png", width: 70%),caption: [First iteration of UI mock],)<uimock>])
+On the left side, there's a scrollable window containing a list of settings
+categories. Above that is a search bar that allows users to quickly locate
+specific settings. In addition to the search bar, there is a breadcrumb menu
+similar to file paths which can be especially useful when users need to traverse
+multiple screens or submenus, ensuring they can easily backtrack.
+#align(center, [#figure(
+    image("figures/uimock.png", width: 70%),
+    caption: [First iteration of UI mock],
+  )<uimock>])
+
 #subsubsection("UI Tests")
 #test("globi", "globi can connect to wifi", [
   - works
@@ -159,36 +287,36 @@ documented using the rustdoc functionality.\
 This allows inline documentation, which will later be converted to an HTML file.\
 The API for ReSet-Daemon will be covered under TBD.
 
-#align(
-  center,
-  [#figure(
-      [#sourcecode[```rs
-                                                                                /// takes a number and multiplies it with itself x(positive) amount of times.
-                                                                                /// ‘‘‘
-                                                                                /// let num = fact(3,2);
-                                                                                /// assert_eq!(9, numb);
-                                                                                /// ‘‘‘
-                                                                                fn pfact(number: i32, exponent: u32) -> i32 {
-                                                                                    if exponent == 0 {
-                                                                                        return 1;
-                                                                                    }
-                                                                                    if exponent == 1 {
-                                                                                        return number;
-                                                                                    }
-                                                                                    let mut result = number;
-                                                                                    for _ in 2..exponent {
-                                                                                        result = result * number;
-                                                                                    }
-                                                                                    result
-                                                                                }
-                                                                                ```]
-        #image("figures/rustdoc.png", width: 100%)],
-      caption: [Rustdoc example entry for code above.],
-    )<rustdoc>],
-)
+// typstfmt::off
+#figure(
+  [ #sourcecode(
+      ```rs
+      /// takes a number and multiplies it with itself x(positive) amount of times.
+      /// ‘‘‘
+      /// let num = fact(3,2);
+      /// assert_eq!(9, numb);
+      /// ‘‘‘
+      fn pfact(number: i32, exponent: u32) -> i32 {
+          if exponent == 0 {
+              return 1;
+          }
+          if exponent == 1 {
+              return number;
+          }
+          let mut result = number;
+          for _ in 2..exponent {
+              result = result * number;
+          }
+          result
+      }
+      ```,
+    )
+    #align(center, image("figures/rustdoc.png", width: 100%)) ],
+  caption: [Rustdoc example entry for code above.],
+)<rustdoc>
+// typstfmt::on
 
 #pagebreak()
-
 #section("Retrospective")
 #pagebreak()
 
@@ -197,3 +325,4 @@ The API for ReSet-Daemon will be covered under TBD.
 In this sprint, our goals were building a foundation to work on. This includes tasks such as creating repositories for our code base and documentation, setting up time tracking and doing initial research on our topic. Most of our time in this sprint has been used to write the documentation.
 #align(center, [#figure(image("figures/timeReport_01.png", width: 100%),caption: [Time distribution of Sprint 1],)])
 #pagebreak()
+
