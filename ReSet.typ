@@ -1,5 +1,7 @@
 #import "template.typ": *
 
+#let abstract = { [ whatver is discussed in @globi s ] }
+
 #show: doc => conf(
   author: "Fabio Lenherr / Felix Tran",
   "Dr. Prof. Frieder Loch",
@@ -10,12 +12,9 @@
   40%,
   "School of Computer Science",
   "OST Eastern Switzerland University of Applied Sciences",
+  abstract,
   doc,
 )
-
-#section("Abstract")
-whatver is discussed in @globi s
-#pagebreak()
 
 #section("Glossary")
 
@@ -154,25 +153,25 @@ The API for ReSet-Daemon will be covered under TBD.
   center,
   [#figure(
       [#sourcecode[```rs
-                                                  /// takes a number and multiplies it with itself x(positive) amount of times.
-                                                  /// ‘‘‘
-                                                  /// let num = fact(3,2);
-                                                  /// assert_eq!(9, numb);
-                                                  /// ‘‘‘
-                                                  fn pfact(number: i32, exponent: u32) -> i32 {
-                                                      if exponent == 0 {
-                                                          return 1;
-                                                      }
-                                                      if exponent == 1 {
-                                                          return number;
-                                                      }
-                                                      let mut result = number;
-                                                      for _ in 2..exponent {
-                                                          result = result * number;
-                                                      }
-                                                      result
-                                                  }
-                                                  ```]
+                                                                                /// takes a number and multiplies it with itself x(positive) amount of times.
+                                                                                /// ‘‘‘
+                                                                                /// let num = fact(3,2);
+                                                                                /// assert_eq!(9, numb);
+                                                                                /// ‘‘‘
+                                                                                fn pfact(number: i32, exponent: u32) -> i32 {
+                                                                                    if exponent == 0 {
+                                                                                        return 1;
+                                                                                    }
+                                                                                    if exponent == 1 {
+                                                                                        return number;
+                                                                                    }
+                                                                                    let mut result = number;
+                                                                                    for _ in 2..exponent {
+                                                                                        result = result * number;
+                                                                                    }
+                                                                                    result
+                                                                                }
+                                                                                ```]
         #image("figures/rustdoc.png", width: 100%)],
       caption: [Rustdoc example entry for code above.],
     )<rustdoc>],
