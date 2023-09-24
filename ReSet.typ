@@ -8,7 +8,7 @@
   25%,
   "figures/OST.svg",
   40%,
-  "School of Computer Science",
+  "Department for Computer Science",
   "OST Eastern Switzerland University of Applied Sciences",
   doc,
 )
@@ -125,6 +125,10 @@ _Due to the small team size, no scrum master or product owner is chosen, the wor
 of these positions is done in collaboration._\
 
 #subsection("Time")
+Because we do not follow the Waterfall methodology, time management further 
+than around 2 weeks is not very accurate. For now, we use placeholders in the 
+Architecture task, but once we get to it, we will expand the diagram accordingly.
+#align(center, [#figure(image("figures/ganntTimePlanning.png", width: 100%),caption: [Time management],)])
 #subsection("Risks")
 #requirement("socket or something", "socket no breaky", "low", "socket breaky", [
   - use rust
@@ -134,7 +138,13 @@ of these positions is done in collaboration._\
 #subsection("Domain Model")
 #subsection("Architecture")
 #subsection("UI Design")
-
+On the left side, there's a scrollabe window containing a list of settings 
+categories. 
+Above that is a search bar that allows users to quickly locate specific settings. 
+In addition to the search bar, there is a breadcrumb menu similar to file paths 
+which can be especially useful when users need to traverse multiple screens or 
+submenus, ensuring they can easily backtrack.
+#align(center, [#figure(image("figures/uimock.png", width: 70%),caption: [First iteration of UI mock],)<uimock>])
 #subsubsection("UI Tests")
 #test("globi", "globi can connect to wifi", [
   - works
@@ -184,4 +194,7 @@ The API for ReSet-Daemon will be covered under TBD.
 #pagebreak()
 
 #section("Time Report")
+#subsection("Sprint 1: Initial Project Planning")
+In this sprint, our goals were building a foundation to work on. This includes tasks such as creating repositories for our code base and documentation, setting up time tracking and doing initial research on our topic. Most of our time in this sprint has been used to write the documentation.
+#align(center, [#figure(image("figures/timeReport_01.png", width: 100%),caption: [Time distribution of Sprint 1],)])
 #pagebreak()
