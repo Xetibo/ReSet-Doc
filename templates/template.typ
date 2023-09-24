@@ -30,9 +30,14 @@
 
 #let glossary_entry(name, description, reference) = {
   [
-    #figure(grid(columns: (2fr, 8fr), gutter: 15pt, [
-      #text(size: 12pt, [*#name*])
-    ], description), kind: "glossary_entry", supplement: none, numbering: "(1)")
+    #figure(
+      grid(columns: (2fr, 8fr), gutter: 15pt, [
+        #text(size: 12pt, [*#name*])
+      ], description),
+      kind: "glossary_entry",
+      supplement: none,
+      numbering: "(1)",
+    )
     #label(reference)
   ]
 }
@@ -55,7 +60,6 @@
     cell(height: auto)[*Measures*],
     cell(height: auto)[#measures],
   ))
-  pad(x: 0pt, y: 0pt, line(length: 100%))
 }
 
 #let risk(subject, description, priority, probability, severity, measures) = {

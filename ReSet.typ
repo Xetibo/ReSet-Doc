@@ -304,7 +304,7 @@ The API for ReSet-Daemon will be covered under TBD.
     )
     #align(center, image("figures/rustdoc.png", width: 100%)) ],
   caption: [Rustdoc example entry for code above.],
-)<rustdoc> , )
+)<rustdoc>
 // typstfmt::on
 
 #pagebreak()
