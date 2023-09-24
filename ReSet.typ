@@ -11,7 +11,7 @@
   25%,
   "/figures/OST.svg",
   40%,
-  "School of Computer Science",
+  "Department for Computer Science",
   "OST Eastern Switzerland University of Applied Sciences",
   abstract,
   doc,
@@ -262,6 +262,15 @@ which can be found on the ReSet and ReSet-Daemon repositories respectively.
 #subsection("Domain Model")
 #subsection("Architecture")
 #subsection("UI Design")
+On the left side, there's a scrollable window containing a list of settings
+categories. Above that is a search bar that allows users to quickly locate
+specific settings. In addition to the search bar, there is a breadcrumb menu
+similar to file paths which can be especially useful when users need to traverse
+multiple screens or submenus, ensuring they can easily backtrack.
+#align(center, [#figure(
+    image("figures/uimock.png", width: 70%),
+    caption: [First iteration of UI mock],
+  )<uimock>])
 
 #subsubsection("UI Tests")
 #test("globi", "globi can connect to wifi", [
@@ -310,6 +319,9 @@ The API for ReSet-Daemon will be covered under TBD.
 #pagebreak()
 
 #section("Retrospective")
+#subsection("Sprint 1: Initial Project Planning")
+In this sprint, our goals were building a foundation to work on. This includes tasks such as creating repositories for our code base and documentation, setting up time tracking and doing initial research on our topic. Most of our time in this sprint has been used to write the documentation.
+#align(center, [#figure(image("figures/timeReport_01.png", width: 100%),caption: [Time distribution of Sprint 1],)])
 #pagebreak()
 
 #section("Time Report")
