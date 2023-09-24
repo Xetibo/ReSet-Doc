@@ -87,14 +87,12 @@
   set document(title: title, author: author)
   set align(center)
   set par(justify: true)
-  align(
-    center + horizon,
-    [
-      #pad(y: 5pt, text(25pt, title))
-      #align(left, line(start: (5%, 0%), end: (95%, 0%)))
-      #pad(y: 5pt, text(14pt, [Authors: #author]))
-      #align(left, line(start: (15%, 0%), end: (85%, 0%)))
-      #pad(y: 5pt, text(14pt, [Supervisor: #professor]))
+  align(center + horizon, [
+    #pad(y: 5pt, text(25pt, title))
+    #align(left, line(start: (5%, 0%), end: (95%, 0%)))
+    #pad(y: 5pt, text(14pt, [Authors: #author]))
+    #align(left, line(start: (15%, 0%), end: (85%, 0%)))
+    #pad(y: 5pt, text(14pt, [Project Advisor: #professor]))
 
       #pad(y: 40pt, align(center, [#image(title_image, width: title_image_size)]))
 
@@ -117,7 +115,7 @@
   pagebreak(weak: false)
   outline(title: "Table of Contents", indent: true, depth: 3)
   pagebreak(weak: false)
-  set page(paper: "a4", margin: (x: 1.5cm, top: 50pt), header: [
+  set page(paper: "a4", margin: (x: 2.54cm, y: 2.54cm), header: [
     #smallcaps(author)
     #h(1fr) #emph(title)
   ], header-ascent: 100% - 30pt, footer: [
