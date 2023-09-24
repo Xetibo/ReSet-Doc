@@ -1,4 +1,5 @@
-#import "template.typ": *
+#import "templates/template.typ": *
+#import "templates/riskmatrix.typ": *
 
 #let abstract = { [ whatver is discussed in @globi s ] }
 
@@ -6,11 +7,11 @@
   author: "Fabio Lenherr / Felix Tran",
   "Dr. Prof. Frieder Loch",
   "ReSet",
-  "figures/ReSet1.png",
+  "/figures/ReSet1.png",
   25%,
-  "figures/OST.svg",
+  "/figures/OST.svg",
   40%,
-  "Department for Computer Science",
+  "School of Computer Science",
   "OST Eastern Switzerland University of Applied Sciences",
   abstract,
   doc,
@@ -124,26 +125,60 @@ _Due to the small team size, no scrum master or product owner is chosen, the wor
 of these positions is done in collaboration._\
 
 #subsection("Time")
-Because we do not follow the Waterfall methodology, time management further 
-than around 2 weeks is not very accurate. For now, we use placeholders in the 
-Architecture task, but once we get to it, we will expand the diagram accordingly.
-#align(center, [#figure(image("figures/ganntTimePlanning.png", width: 100%),caption: [Time management],)])
-#subsection("Risks")
-#requirement("socket or something", "socket no breaky", "low", "socket breaky", [
-  - use rust
-  - don't use js
-  - idk
-])
+#pagebreak()
+#section("Risks")
+Risks are assessed according to the ISO standard with a risk matrix.
+
+#riskmatrix()
+
+#risk(
+  "Toolkit",
+  [
+    GTK might not be perfectly suitable for our use case, especially considering we
+    are using Rust bindings and not C directly.
+  ],
+  "Medium",
+  "Unlikely",
+  "Critical",
+  [
+    Iced can be used as a backup toolkit if GTK turns out to not be usable for the
+    project.
+  ],
+)
+#risk(
+  "Plugin System",
+  [
+    The plugin system might be too ambitious and could take too much time to
+    realize.
+  ],
+  "High",
+  "Likely",
+  "Marginal",
+  [
+    Instead of a plugin system, dbus or socket connections can be used to realize a
+    limited implementation of expected features.
+  ],
+)
+#risk(
+  "System Interaction",
+  [
+    System feature integration like audio, bluetooth and more might not be as seamless as planned.
+  ],
+  "Low",
+  "Rare",
+  "Marginal",
+  [
+    Potential use of alternative integrations.\
+    Example: The standard NetworkManager doesn't integrate well -> use Systemd-networkd instead.
+  ],
+)
+#pad(x: 0pt, y: 0pt, line(length: 100%))
+#pagebreak()
+
 #subsection("Domain Model")
 #subsection("Architecture")
 #subsection("UI Design")
-On the left side, there's a scrollabe window containing a list of settings 
-categories. 
-Above that is a search bar that allows users to quickly locate specific settings. 
-In addition to the search bar, there is a breadcrumb menu similar to file paths 
-which can be especially useful when users need to traverse multiple screens or 
-submenus, ensuring they can easily backtrack.
-#align(center, [#figure(image("figures/uimock.png", width: 70%),caption: [First iteration of UI mock],)<uimock>])
+
 #subsubsection("UI Tests")
 #test("globi", "globi can connect to wifi", [
   - works
@@ -159,33 +194,34 @@ documented using the rustdoc functionality.\
 This allows inline documentation, which will later be converted to an HTML file.\
 The API for ReSet-Daemon will be covered under TBD.
 
-#align(
-  center,
-  [#figure(
-      [#sourcecode[```rs
-                                                                                /// takes a number and multiplies it with itself x(positive) amount of times.
-                                                                                /// ‘‘‘
-                                                                                /// let num = fact(3,2);
-                                                                                /// assert_eq!(9, numb);
-                                                                                /// ‘‘‘
-                                                                                fn pfact(number: i32, exponent: u32) -> i32 {
-                                                                                    if exponent == 0 {
-                                                                                        return 1;
-                                                                                    }
-                                                                                    if exponent == 1 {
-                                                                                        return number;
-                                                                                    }
-                                                                                    let mut result = number;
-                                                                                    for _ in 2..exponent {
-                                                                                        result = result * number;
-                                                                                    }
-                                                                                    result
-                                                                                }
-                                                                                ```]
-        #image("figures/rustdoc.png", width: 100%)],
-      caption: [Rustdoc example entry for code above.],
-    )<rustdoc>],
-)
+// typstfmt::off
+#figure(
+  [ #sourcecode(
+      ```rs
+      /// takes a number and multiplies it with itself x(positive) amount of times.
+      /// ‘‘‘
+      /// let num = fact(3,2);
+      /// assert_eq!(9, numb);
+      /// ‘‘‘
+      fn pfact(number: i32, exponent: u32) -> i32 {
+          if exponent == 0 {
+              return 1;
+          }
+          if exponent == 1 {
+              return number;
+          }
+          let mut result = number;
+          for _ in 2..exponent {
+              result = result * number;
+          }
+          result
+      }
+      ```,
+    )
+    #align(center, image("figures/rustdoc.png", width: 100%)) ],
+  caption: [Rustdoc example entry for code above.],
+)<rustdoc> , )
+// typstfmt::on
 
 #pagebreak()
 
@@ -193,7 +229,4 @@ The API for ReSet-Daemon will be covered under TBD.
 #pagebreak()
 
 #section("Time Report")
-#subsection("Sprint 1: Initial Project Planning")
-In this sprint, our goals were building a foundation to work on. This includes tasks such as creating repositories for our code base and documentation, setting up time tracking and doing initial research on our topic. Most of our time in this sprint has been used to write the documentation.
-#align(center, [#figure(image("figures/timeReport_01.png", width: 100%),caption: [Time distribution of Sprint 1],)])
 #pagebreak()

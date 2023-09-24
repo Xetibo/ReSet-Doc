@@ -49,6 +49,26 @@
   pad(x: 0pt, y: 0pt, line(length: 100%))
 }
 
+#let risk(subject, description, priority, probability, severity, measures) = {
+  let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
+  pad(x: 0pt, y: 0pt, line(length: 100%))
+  pad(x: 0pt, y: -15pt, grid(
+    columns: (3.5fr, 10fr),
+    rows: (auto, auto),
+    gutter: 0pt,
+    cell(height: auto)[*Subject*],
+    cell(height: auto)[#subject],
+    cell(height: auto)[*Requirement*],
+    cell(height: auto)[#description],
+    cell(height: auto)[*Priority*],
+    cell(height: auto)[#priority],
+    cell(height: auto)[*Probability*&*Severity*],
+    cell(height: auto)[#probability & #severity],
+    cell(height: auto)[*Measures*],
+    cell(height: auto)[#measures],
+  ))
+}
+
 #let test(subject, description, positives, negatives, notes) = {
   let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
   pad(x: 0pt, y: 0pt, line(length: 100%))
@@ -87,15 +107,15 @@
   set document(title: title, author: author)
   set align(center)
   set par(justify: true)
-  align(center + horizon, [
-    #pad(y: 5pt, text(25pt, title))
-    #align(left, line(start: (5%, 0%), end: (95%, 0%)))
-    #pad(y: 5pt, text(14pt, [Authors: #author]))
-    #align(left, line(start: (15%, 0%), end: (85%, 0%)))
-    #pad(y: 5pt, text(14pt, [Project Advisor: #professor]))
-
+  align(
+    center + horizon,
+    [
+      #pad(y: 5pt, text(25pt, title))
+      #align(left, line(start: (5%, 0%), end: (95%, 0%)))
+      #pad(y: 5pt, text(14pt, [Authors: #author]))
+      #align(left, line(start: (15%, 0%), end: (85%, 0%)))
+      #pad(y: 5pt, text(14pt, [Project Advisor: #professor]))
       #pad(y: 40pt, align(center, [#image(title_image, width: title_image_size)]))
-
     ],
   )
   align(
@@ -127,7 +147,7 @@
   set page(footer: none)
   set align(center)
   show bibliography: set heading(numbering: "1.1.1", level: 2)
-  bibliography("works.yml")
+  bibliography("/works.yml")
   pagebreak()
   section(num: "1.1.1", use_line: false, "List of Figures")
   outline(title: none, target: figure)
