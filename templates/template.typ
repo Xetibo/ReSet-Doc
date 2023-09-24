@@ -32,8 +32,8 @@
   [
     #figure(
       grid(columns: (2fr, 8fr), gutter: 15pt, [
-        #text(size: 12pt, [*#name*])
-      ], description),
+        #align(left, text(size: 12pt, [*#name*]))
+      ], align(left, description)),
       kind: "glossary_entry",
       supplement: none,
       numbering: "(1)",
