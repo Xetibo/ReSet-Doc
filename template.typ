@@ -81,26 +81,39 @@
   establishment_image_size,
   department,
   establishment,
+  abstract,
   doc,
 ) = {
   set document(title: title, author: author)
   set align(center)
   set par(justify: true)
-  align(center + horizon, [
-    #pad(y: 5pt, text(25pt, title))
-    #align(left, line(start: (5%, 0%), end: (95%, 0%)))
-    #pad(y: 5pt, text(14pt, [Authors: #author]))
-    #align(left, line(start: (15%, 0%), end: (85%, 0%)))
-    #pad(y: 5pt, text(14pt, [Supervisor: #professor]))
+  align(
+    center + horizon,
+    [
+      #pad(y: 5pt, text(25pt, title))
+      #align(left, line(start: (5%, 0%), end: (95%, 0%)))
+      #pad(y: 5pt, text(14pt, [Authors: #author]))
+      #align(left, line(start: (15%, 0%), end: (85%, 0%)))
+      #pad(y: 5pt, text(14pt, [Supervisor: #professor]))
 
-    #pad(y: 40pt, align(center, [#image(title_image, width: title_image_size)]))
+      #pad(y: 40pt, align(center, [#image(title_image, width: title_image_size)]))
 
-  ])
-  align(center + bottom , [
-    #pad(y: 40pt, align(center, [#image(establishment_image, width: establishment_image_size)]))
-    #pad(y: 5pt, text(14pt, [#department]))
-    #pad(y: 5pt, text(14pt, [#establishment]))
-  ])
+    ],
+  )
+  align(
+    center + bottom,
+    [
+      #pad(
+        y: 40pt,
+        align(center, [#image(establishment_image, width: establishment_image_size)]),
+      )
+      #pad(y: 5pt, text(14pt, [#department]))
+      #pad(y: 5pt, text(14pt, [#establishment]))
+    ],
+  )
+  pagebreak(weak: false)
+  heading("Abstract", numbering: none, bookmarked: false, outlined: false)
+  abstract
   pagebreak(weak: false)
   outline(title: "Table of Contents", indent: true, depth: 3)
   pagebreak(weak: false)
