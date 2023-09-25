@@ -57,6 +57,30 @@
   ],
   "dbus",
 )
+#glossary_entry(
+  "Wayland",
+  [
+    The current display protocol used on Linux.\
+    It replaces the previous X11 protocol, which is no longer in development. (it is
+    still maintained for security reasons)
+  ],
+  "wayland",
+)
+#glossary_entry(
+  "Gnome",
+  [
+    A Linux desktop environment. 
+  ],
+  "gnome",
+)
+#glossary_entry(
+  "KDesktop Environment (KDE)",
+  [
+    A Linux desktop environment.\
+    The K has no particular meaning.
+  ],
+  "kde",
+)
 #pagebreak()
 #section("Motivation")
 The Linux ecosystem is well known to be fractured, whether it's the seemingly
@@ -90,6 +114,7 @@ In order to respect accessibility and the requirements of a Linux application,
 ReSet will also provide a command line version to interact with the
 Reset-Daemon.
 // universal app with daemon
+#pagebreak()
 #subsection("Technologies")
 #text(12pt, [*Programming Language*])* | ReSet is written in Rust.*\
 Rust was chosen for its speed, low memory usage, memory safe design and robust
@@ -114,9 +139,8 @@ extendable editor.\
 Alongside it, even big editors like the JetBrains tools now offer a Rust editor
 (Rust Rover).
 
-#pagebreak()
 #text(12pt, [*UI Toolkit*])* | ReSet uses GTK4 as its UI toolkit.*\
-GTK (Gnome toolkit, or formerly Gimp Toolkit) is a well established UI toolkit
+GTK (Gnome [@gnome] toolkit, or formerly Gimp Toolkit) is a well established UI toolkit
 under Linux that has seen decades of usage and improvements.\
 While the library itself is written in C, it does offer language bindings for a
 large set of languages, including Rust via #link("https://gtk-rs.org/")[gtk-rs].\
@@ -143,7 +167,74 @@ need.\
 
 It is important to note, that typst is a Turing complete system and not a markup
 language, which was specifically avoided, in order to not run into limitations.
+#pagebreak()
 #subsection("Parallels to similar projects")
+#subsubsection("Gnome Control Settings")
+The Gnome control center is as the name implies the central settings application
+for the Gnome desktop environment, it offers plenty of configuration, from
+networks, to Bluetooth, to online accounts, default application and a lot more.\
+The application is written in C with the #link("https://www.gtk.org/")[GTK] toolkit
+and follows the #link("https://developer.gnome.org/hig/")[Gnome Human Interface Guidelines].\
+#align(center, [#figure(
+    image("figures/gnome_control_center.png", width: 80%),
+    caption: [Screenshot of the Gnome control center],
+  )])<gnome_control_center>
+The code structure of the control center is very modular, with each tab having
+its own folder and files.\
+Although it is hard to immediately understand each use case of each file.\
+Certain functionality is hard-coded with libraries, like networks, which uses
+the NetworkManager library, while others are implemented via dbus, like
+monitors.\
+
+Settings are stored using #link("https://gitlab.gnome.org/GNOME/dconf")[dconf] which
+is a key/value system, that is optimized for reading.\
+The form of a dconf file is a _binary_ which makes it fast to read for dconf,
+but not readable for other systems.
+
+_Gnome control center is not supposed to be used outside the gnome environment,
+especially using the wayland [@wayland] protocol.\
+Hence not all functionality will be available on other environments._
+#pagebreak()
+
+#subsubsection("KDE System Settings")
+#link("https://invent.kde.org/plasma/systemsettings")[KDE [@kde] systemsettings] is
+written in C++/QML and is made with the #link("https://www.qt.io/")[QT toolkit].\
+It follows the KDE style of applications, featuring a very large variety of
+settings (on KDE), and offering other applications a way to integrate into this
+application via KConfig Module(KCM).\
+#align(center, [#figure(
+    image("figures/kde_systemsettings.png", width: 80%),
+    caption: [Screenshot of the KDE systemsettings],
+  )])<kde_systemsettings>
+The program is by default very slim and does not feature any standard settings
+on the repository.\
+However, Linux distributions usually ship the KDE standard modules, as KDE is
+the intended environment for this application.\
+For ReSet, KDE systemsettings is still a very good resource on implementing
+modularity with this type of application.\
+The only caveat would be the obvious difference in both programming language and
+toolkit. This is especially a problem since QT uses its own scripting language
+QML, which is based on JavaScript.
+
+Settings are stored by individual modules, which means that a lot of individual
+files will be written/read in order to provide all functionality.
+
+_In many cases for KDE systemsettings it is not the application itself that makes
+it harder to be used on other environments, but the toolkit and the KDE specific
+styling of said toolkit that might not integrate well._
+
+#pagebreak()
+#subsubsection("Standalone Settings")
+These applications focus on one specific functionality and don't offer anything
+else.\
+This means one would need to use multiple of these, in order to replicate what
+the other 2 discussed programs offer.
+
+*PavuControl* | Sound Application
+
+*Bluetooth Manager* | Bluetooth Application
+
+*nmtui* | Network Application
 
 // how did others do it?
 // how is this project going to differ?
@@ -271,9 +362,14 @@ which can be found on the ReSet and ReSet-Daemon repositories respectively.
 #pagebreak()
 
 #subsection("Domain Model")
-#align(center, [#image("files/domain_model.svg", width: 100%)])
+#align(center, [#figure(
+    image("files/domain_model.svg", width: 100%),
+    caption: [Domain Model of ReSet],
+  )<domain_model>])
 
 #subsection("Architecture")
+
+#pagebreak()
 #subsection("UI Design")
 On the left side, there's a scrollabe window containing a list of settings 
 categories. 
@@ -283,6 +379,8 @@ which can be especially useful when users need to traverse multiple screens or
 submenus, ensuring they can easily backtrack.
 #align(center, [#figure(image("figures/wifimock.png", width: 90%),caption: [UI mock of WiFi setting],)<uimock>])
 #align(center, [#figure(image("figures/monitormock.png", width: 90%),caption: [UI mock of monitor setting],)<uimock>])
+#pagebreak()
+
 #subsubsection("UI Tests")
 #test("globi", "globi can connect to wifi", [
   - works
