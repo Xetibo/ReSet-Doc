@@ -66,21 +66,13 @@
   ],
   "wayland",
 )
-#glossary_entry(
-  "Gnome",
-  [
-    A Linux desktop environment. 
-  ],
-  "gnome",
-)
-#glossary_entry(
-  "KDesktop Environment (KDE)",
-  [
-    A Linux desktop environment.\
-    The K has no particular meaning.
-  ],
-  "kde",
-)
+#glossary_entry("Gnome", [
+  A Linux desktop environment.
+], "gnome")
+#glossary_entry("KDesktop Environment (KDE)", [
+  A Linux desktop environment.\
+  The K has no particular meaning.
+], "kde")
 #pagebreak()
 #section("Motivation")
 The Linux ecosystem is well known to be fractured, whether it's the seemingly
@@ -140,8 +132,8 @@ Alongside it, even big editors like the JetBrains tools now offer a Rust editor
 (Rust Rover).
 
 #text(12pt, [*UI Toolkit*])* | ReSet uses GTK4 as its UI toolkit.*\
-GTK (Gnome [@gnome] toolkit, or formerly Gimp Toolkit) is a well established UI toolkit
-under Linux that has seen decades of usage and improvements.\
+GTK (Gnome [@gnome] toolkit, or formerly Gimp Toolkit) is a well established UI
+toolkit under Linux that has seen decades of usage and improvements.\
 While the library itself is written in C, it does offer language bindings for a
 large set of languages, including Rust via #link("https://gtk-rs.org/")[gtk-rs].\
 Compared to native Rust libraries, it offers a more robust set of defined
@@ -169,12 +161,12 @@ It is important to note, that typst is a Turing complete system and not a markup
 language, which was specifically avoided, in order to not run into limitations.
 #pagebreak()
 #subsection("Parallels to similar projects")
-#subsubsection("Gnome Control Settings")
-The Gnome control center is as the name implies the central settings application
+#subsubsection([#link("https://github.com/GNOME/gnome-control-center")[Gnome Control Settings]])
+The Gnome [@gnome] control center is as the name implies the central settings application
 for the Gnome desktop environment, it offers plenty of configuration, from
 networks, to Bluetooth, to online accounts, default application and a lot more.\
 The application is written in C with the #link("https://www.gtk.org/")[GTK] toolkit
-and follows the #link("https://developer.gnome.org/hig/")[Gnome Human Interface Guidelines].\
+(GTK4) and follows the #link("https://developer.gnome.org/hig/")[Gnome Human Interface Guidelines].\
 #align(center, [#figure(
     image("figures/gnome_control_center.png", width: 80%),
     caption: [Screenshot of the Gnome control center],
@@ -196,9 +188,10 @@ especially using the wayland [@wayland] protocol.\
 Hence not all functionality will be available on other environments._
 #pagebreak()
 
-#subsubsection("KDE System Settings")
-#link("https://invent.kde.org/plasma/systemsettings")[KDE [@kde] systemsettings] is
-written in C++/QML and is made with the #link("https://www.qt.io/")[QT toolkit].\
+#subsubsection(
+  [#link("https://invent.kde.org/plasma/systemsettings")[KDE System Settings]],
+)
+KDE [@kde] systemsettings is written in C++/QML and is made with the #link("https://www.qt.io/")[QT toolkit].\
 It follows the KDE style of applications, featuring a very large variety of
 settings (on KDE), and offering other applications a way to integrate into this
 application via KConfig Module(KCM).\
@@ -230,11 +223,48 @@ else.\
 This means one would need to use multiple of these, in order to replicate what
 the other 2 discussed programs offer.
 
-*PavuControl* | Sound Application
+#link("https://gitlab.freedesktop.org/pulseaudio/pavucontrol")[*Pavucontrol*] |
+Sound Application\
+Pavucontrol or Pulseaudio Volume Control is an application that handles both
+system wide input/output, per application output and input streams.\
+It is under the umbrella of the Free Desktop project and is directly involved in
+PulseAudio itself.\
+The application itself is written in C++ and GTK3.
+#align(center, [#figure(
+    image("figures/pavucontrol.png", width: 80%),
+    caption: [Screenshot of pavucontrol],
+  )])<pavucontrol>
 
-*Bluetooth Manager* | Bluetooth Application
+#link("https://github.com/blueman-project/blueman")[*Blueman*] | Bluetooth
+Application\
+Blueman allows connecting and managing of bluetooth connections, as well as some
+quality of life features like sending of files.\
+It works great in functionality, but the buttons are not very expressive in what
+they will achieve.\
+Blueman is written in Python and GTK3.
+#align(center, [#figure(
+    image("figures/bluetooth_manager.png", width: 80%),
+    caption: [Screenshot of blueman],
+  )])<blueman>
 
-*nmtui* | Network Application
+#link(
+  "https://gitlab.freedesktop.org/NetworkManager/NetworkManager",
+)[*Nmtui*] | Network Application\
+Nmtui is what the name suggests, it's a terminal user interface that allows
+users to use and edit network connections, including VPN connections.\
+Nmtui is located in the same project as network manager itself and is therefore
+also shipped as part of the network manager package.\
+Both network manager and nmtui are written in C.\
+There is a specific lack of standalone user interface applications for network
+manger.\
+Technically, there exists a #link(
+  "https://gitlab.gnome.org/GNOME/network-manager-applet",
+)[network manager applet], however this is to be included in status bars and
+does not work on its own.
+#align(
+  center,
+  [#figure(image("figures/nmtui.png", width: 80%), caption: [Screenshot of nmtui])],
+)<nmtui>
 
 // how did others do it?
 // how is this project going to differ?
@@ -371,14 +401,19 @@ which can be found on the ReSet and ReSet-Daemon repositories respectively.
 
 #pagebreak()
 #subsection("UI Design")
-On the left side, there's a scrollabe window containing a list of settings 
-categories. 
-Above that is a search bar that allows users to quickly locate specific settings. 
-In addition to the search bar, there is a breadcrumb menu similar to file paths 
-which can be especially useful when users need to traverse multiple screens or 
-submenus, ensuring they can easily backtrack.
-#align(center, [#figure(image("figures/wifimock.png", width: 90%),caption: [UI mock of WiFi setting],)<uimock>])
-#align(center, [#figure(image("figures/monitormock.png", width: 90%),caption: [UI mock of monitor setting],)<uimock>])
+On the left side, there's a scrollabe window containing a list of settings
+categories. Above that is a search bar that allows users to quickly locate
+specific settings. In addition to the search bar, there is a breadcrumb menu
+similar to file paths which can be especially useful when users need to traverse
+multiple screens or submenus, ensuring they can easily backtrack.
+#align(center, [#figure(
+    image("figures/wifimock.png", width: 90%),
+    caption: [UI mock of WiFi setting],
+  )<uimock>])
+#align(center, [#figure(
+    image("figures/monitormock.png", width: 90%),
+    caption: [UI mock of monitor setting],
+  )<uimock>])
 #pagebreak()
 
 #subsubsection("UI Tests")
