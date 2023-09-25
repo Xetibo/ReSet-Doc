@@ -10,15 +10,17 @@ rectangle NetworkManager
 rectangle bluez
 storage API
 storage PluginSystem
+storage ConfigurationFile
 
-ReSet --> API               : something
-ThirdPartyApplet --> API
+ReSet <--> API                     : IPC
+ThirdPartyApplet <--> API          : IPC
 API ..> ReSetDaemon
 ReSetDaemon <.. PluginSystem
 PluginSystem <.. MonitorPlugin
 PluginSystem <.. KeyboardPlugin
 PluginSystem <.. MousePlugin
-ReSetDaemon --> NetworkManager
-ReSetDaemon --> PipeWire 
-ReSetDaemon --> bluez 
+ReSetDaemon <--> NetworkManager    : IPC 
+ReSetDaemon <--> PipeWire          : IPC 
+ReSetDaemon <--> bluez             : IPC
+ReSetDaemon --> ConfigurationFile : load/save
 @enduml
