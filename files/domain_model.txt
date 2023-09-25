@@ -1,0 +1,24 @@
+@startuml
+rectangle ReSetDaemon
+rectangle MonitorPlugin 
+rectangle KeyboardPlugin 
+rectangle MousePlugin 
+rectangle ReSet
+rectangle ThirdPartyApplet
+rectangle PipeWire
+rectangle NetworkManager
+rectangle bluez
+storage API
+storage PluginSystem
+
+ReSet --> API               : something
+ThirdPartyApplet --> API
+API ..> ReSetDaemon
+ReSetDaemon <.. PluginSystem
+PluginSystem <.. MonitorPlugin
+PluginSystem <.. KeyboardPlugin
+PluginSystem <.. MousePlugin
+ReSetDaemon --> NetworkManager
+ReSetDaemon --> PipeWire 
+ReSetDaemon --> bluez 
+@enduml

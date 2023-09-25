@@ -20,6 +20,8 @@ jobs:
     - uses: DeterminateSystems/nix-installer-action@main
     - uses: DeterminateSystems/magic-nix-cache-action@main
     - run: mkdir output
+    - run: sudo apt install plantuml -y
+    - run: plantuml files/domain_model.txt -tsvg 
     - run: nix run github:typst/typst -- compile ReSet.typ output/ReSet.pdf
     - uses: actions/upload-pages-artifact@v1
       with: { path: 'output' }

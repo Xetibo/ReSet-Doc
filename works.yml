@@ -1,13 +1,5 @@
 globi:
-    type: Book
-    title: globi 
-    author: ina 
-    editor: [dash"]
-    location: somewhere
-    volume: 6
-    publisher: xetibo 
-    date: 2030 
-    parent:
-        type: Book
-        title: lost 
-        editor: none 
+  type: Icon
+  title: settings.svg
+  author: feathericons
+  location: https://github.com/feathericons/feather
