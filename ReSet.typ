@@ -1,7 +1,8 @@
 #import "templates/template.typ": *
 #import "templates/riskmatrix.typ": *
 
-#let abstract = { [ whatver is discussed in @globi s ] }
+#let abstract = { [ This is an abstract ] }
+#let acknowledgements = { [ This is acknowledgements ] }
 
 #show: doc => conf(
   author: "Fabio Lenherr / Felix Tran",
@@ -14,6 +15,7 @@
   "Department for Computer Science",
   "OST Eastern Switzerland University of Applied Sciences",
   abstract,
+  acknowledgements,
   doc,
 )
 
@@ -161,10 +163,14 @@ _Due to the small team size, no scrum master or product owner is chosen, the wor
 of these positions is done in collaboration._\
 
 #subsection("Time")
-Because we do not follow the Waterfall methodology, time management further 
-than around 2 weeks is not very accurate. For now, we use placeholders in the 
-Architecture task, but once we get to it, we will expand the diagram accordingly.
-#align(center, [#figure(image("figures/ganntTimePlanning.png", width: 100%),caption: [Time management],)])
+Because we do not follow the Waterfall methodology, time management further than
+around 2 weeks is not very accurate. For now, we use placeholders in the
+Architecture task, but once we get to it, we will expand the diagram
+accordingly.
+#align(center, [#figure(
+    image("figures/ganntTimePlanning.png", width: 100%),
+    caption: [Time management],
+  )])
 
 #pagebreak()
 #section("Risks")
@@ -265,6 +271,8 @@ which can be found on the ReSet and ReSet-Daemon repositories respectively.
 #pagebreak()
 
 #subsection("Domain Model")
+#align(center, [#image("files/domain_model.svg", width: 100%)])
+
 #subsection("Architecture")
 #subsection("UI Design")
 On the left side, there's a scrollable window containing a list of settings
@@ -330,4 +338,3 @@ The API for ReSet-Daemon will be covered under TBD.
 In this sprint, our goals were building a foundation to work on. This includes tasks such as creating repositories for our code base and documentation, setting up time tracking and doing initial research on our topic. Most of our time in this sprint has been used to write the documentation.
 #align(center, [#figure(image("figures/timeReport_01.png", width: 100%),caption: [Time distribution of Sprint 1],)])
 #pagebreak()
-

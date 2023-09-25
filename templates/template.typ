@@ -115,6 +115,7 @@
   department,
   establishment,
   abstract,
+  acknowledgements,
   doc,
 ) = {
   set document(title: title, author: author)
@@ -145,6 +146,9 @@
   pagebreak(weak: false)
   heading("Abstract", numbering: none, bookmarked: false, outlined: false)
   abstract
+  pagebreak()
+  heading("Acknowledgements", numbering: none, bookmarked: false, outlined: false)
+  acknowledgements
   pagebreak(weak: false)
   outline(title: "Table of Contents", indent: true, depth: 3)
   pagebreak(weak: false)
@@ -159,10 +163,11 @@
   doc
   set page(footer: none)
   set align(center)
-  show bibliography: set heading(numbering: "1.1.1", level: 2)
-  bibliography("/works.yml")
+  section(num: "1.1.1", use_line: false, "Appendix")
+  subsection(num: "1.1.1", use_line: false, "Bibliography")
+  bibliography("/works.yml", title: none)
   pagebreak()
-  section(num: "1.1.1", use_line: false, "List of Figures")
+  subsection(num: "1.1.1", use_line: false, "List of Figures")
   outline(title: none, target: figure)
   set align(left)
 }
