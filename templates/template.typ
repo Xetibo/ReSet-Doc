@@ -28,7 +28,21 @@
   }
 }
 
-#let requirement(subject, description, priority, risk, measures) = {
+#let glossary_entry(name, description, reference) = {
+  [
+    #figure(
+      grid(columns: (2fr, 8fr), gutter: 15pt, [
+        #align(left, text(size: 12pt, [*#name*]))
+      ], align(left, description)),
+      kind: "glossary_entry",
+      supplement: none,
+      numbering: "(1)",
+    )
+    #label(reference)
+  ]
+}
+
+#let requirement(subject, category, priority, description, measures) = {
   let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
   pad(x: 0pt, y: 0pt, line(length: 100%))
   pad(x: 0pt, y: -15pt, grid(
@@ -38,15 +52,34 @@
     cell(height: auto)[*Subject*],
     cell(height: auto)[#subject],
     cell(height: auto)[*Requirement*],
-    cell(height: auto)[#description],
+    cell(height: auto)[#category],
     cell(height: auto)[*Priority*],
     cell(height: auto)[#priority],
-    cell(height: auto)[*Risk*],
-    cell(height: auto)[#risk],
+    cell(height: auto)[*Description*],
+    cell(height: auto)[#description],
     cell(height: auto)[*Measures*],
     cell(height: auto)[#measures],
   ))
+}
+
+#let risk(subject, description, priority, probability, severity, measures) = {
+  let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
   pad(x: 0pt, y: 0pt, line(length: 100%))
+  pad(x: 0pt, y: -15pt, grid(
+    columns: (3.5fr, 10fr),
+    rows: (auto, auto),
+    gutter: 0pt,
+    cell(height: auto)[*Subject*],
+    cell(height: auto)[#subject],
+    cell(height: auto)[*Requirement*],
+    cell(height: auto)[#description],
+    cell(height: auto)[*Priority*],
+    cell(height: auto)[#priority],
+    cell(height: auto)[*Probability*&*Severity*],
+    cell(height: auto)[#probability & #severity],
+    cell(height: auto)[*Measures*],
+    cell(height: auto)[#measures],
+  ))
 }
 
 #let test(subject, description, positives, negatives, notes) = {
@@ -81,26 +114,37 @@
   establishment_image_size,
   department,
   establishment,
+  abstract,
   doc,
 ) = {
   set document(title: title, author: author)
   set align(center)
   set par(justify: true)
-  align(center + horizon, [
-    #pad(y: 5pt, text(25pt, title))
-    #align(left, line(start: (5%, 0%), end: (95%, 0%)))
-    #pad(y: 5pt, text(14pt, [Authors: #author]))
-    #align(left, line(start: (15%, 0%), end: (85%, 0%)))
-    #pad(y: 5pt, text(14pt, [Project Advisor: #professor]))
-
-    #pad(y: 40pt, align(center, [#image(title_image, width: title_image_size)]))
-
-  ])
-  align(center + bottom , [
-    #pad(y: 40pt, align(center, [#image(establishment_image, width: establishment_image_size)]))
-    #pad(y: 5pt, text(14pt, [#department]))
-    #pad(y: 5pt, text(14pt, [#establishment]))
-  ])
+  align(
+    center + horizon,
+    [
+      #pad(y: 5pt, text(25pt, title))
+      #align(left, line(start: (5%, 0%), end: (95%, 0%)))
+      #pad(y: 5pt, text(14pt, [Authors: #author]))
+      #align(left, line(start: (15%, 0%), end: (85%, 0%)))
+      #pad(y: 5pt, text(14pt, [Project Advisor: #professor]))
+      #pad(y: 40pt, align(center, [#image(title_image, width: title_image_size)]))
+    ],
+  )
+  align(
+    center + bottom,
+    [
+      #pad(
+        y: 40pt,
+        align(center, [#image(establishment_image, width: establishment_image_size)]),
+      )
+      #pad(y: 5pt, text(14pt, [#department]))
+      #pad(y: 5pt, text(14pt, [#establishment]))
+    ],
+  )
+  pagebreak(weak: false)
+  heading("Abstract", numbering: none, bookmarked: false, outlined: false)
+  abstract
   pagebreak(weak: false)
   outline(title: "Table of Contents", indent: true, depth: 3)
   pagebreak(weak: false)
@@ -116,7 +160,7 @@
   set page(footer: none)
   set align(center)
   show bibliography: set heading(numbering: "1.1.1", level: 2)
-  bibliography("works.yml")
+  bibliography("/works.yml")
   pagebreak()
   section(num: "1.1.1", use_line: false, "List of Figures")
   outline(title: none, target: figure)
