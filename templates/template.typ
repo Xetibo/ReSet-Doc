@@ -66,11 +66,10 @@
   doc
   set page(footer: none)
   set align(center)
-  section(num: "1.1.1", use_line: false, "Appendix")
   subsection("Glossary")
   reset_glossary(use_show_ref: true)
   subsection(num: "1.1.1", use_line: false, "Bibliography")
-  bibliography("/works.yml", title: none)
+  bibliography("../files/works.yml", title: none)
   pagebreak()
   subsection(num: "1.1.1", use_line: false, "List of Figures")
   outline(title: none, target: figure)

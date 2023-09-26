@@ -1,12 +1,12 @@
 #import "../../templates/utils.typ": *
 #show_glossary()
 
-#section("Requirements")
-#subsection("Functional Requirements")
+#subsection("Requirements")
+#subsubsection("Functional Requirements")
 As per scrum, functional requirements are handled using the user story format
 which can be found on the ReSet and ReSet-Daemon repositories respectively.
 
-#subsection("Non-Functional Requirements")
+#subsubsection("Non-Functional Requirements")
 #requirement(
   "User Interface",
   "Usability",

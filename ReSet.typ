@@ -22,13 +22,17 @@
 #file.step()
 
 #include "sections/introduction.typ"
-#pagebreak()
 #include "sections/projects.typ"
 #pagebreak()
 #include "sections/literature.typ"
 #pagebreak()
 #include "sections/technologies.typ"
 #pagebreak()
+#include "sections/results.typ"
+#pagebreak()
+#include "sections/conclusion.typ"
+#pagebreak()
+#section("Appendix")
 #include "sections/appendix/projectplan.typ"
 #pagebreak()
 #include "sections/appendix/requirements.typ"
