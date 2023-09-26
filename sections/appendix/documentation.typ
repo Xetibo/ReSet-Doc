@@ -1,7 +1,7 @@
 #import "../../templates/utils.typ": *
 #show_glossary()
 
-#section("Documentation")
+#subsection("Documentation")
 Next to this document, both ReSet and ReSet-Daemon will have their code
 documented using the rustdoc functionality.\
 This allows inline documentation, which will later be converted to an HTML file.\

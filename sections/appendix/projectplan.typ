@@ -1,7 +1,7 @@
 #import "../../templates/utils.typ": *
 #show_glossary()
 
-#section("Planning")
+#subsection("Planning")
 #subsection("Methods")
 *Project Management* | ReSet is managed using Scrum.\
 _Due to the small team size, no scrum master or product owner is chosen, the work

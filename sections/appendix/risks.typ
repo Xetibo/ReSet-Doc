@@ -1,7 +1,7 @@
 #import "../../templates/utils.typ": *
 #show_glossary()
 
-#section("Risks")
+#subsection("Risks")
 Risks are assessed according to the ISO standard with a risk matrix.
 
 #riskmatrix()

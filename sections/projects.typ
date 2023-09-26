@@ -1,6 +1,6 @@
 #import "../templates/utils.typ": *
 #show_glossary()
-#section("Parallels to similar projects")
+#section("Existing Projects")
 #subsection([#link(
     "https://github.com/GNOME/gnome-control-center",
   )[Gnome Control Settings]])
@@ -31,22 +31,21 @@ especially using the wayland [@wayland] protocol.\
 Hence not all functionality will be available on other environments._
 
 *Requirement fulfillment*:
-#grid(
-  columns: (auto, auto, auto, auto, auto),
-  rows: (auto, auto, auto, auto, auto),
-  gutter: 0pt,
-  cell("7", bold: true),
-  cell("3", bold: true),
-  cell("8", bold: true),
-  cell("5", bold: true),
-  cell("4", bold: true),
-  cell("Modularity", font_size: 12pt),
-  cell("Cross-Environment", font_size: 12pt),
-  cell("User Interface", font_size: 12pt),
-  cell("Functionality", font_size: 12pt),
-  cell("Maintainability", font_size: 12pt),
-)
-#pagebreak()
+//#grid(
+//  columns: (auto, auto, auto, auto, auto),
+//  rows: (auto, auto, auto, auto, auto),
+//  gutter: 0pt,
+//  cell("7", bold: true),
+//  cell("3", bold: true),
+//  cell("8", bold: true),
+//  cell("5", bold: true),
+//  cell("4", bold: true),
+//  cell("Modularity", font_size: 12pt),
+//  cell("Cross-Environment", font_size: 12pt),
+//  cell("User Interface", font_size: 12pt),
+//  cell("Functionality", font_size: 12pt),
+//  cell("Maintainability", font_size: 12pt),
+//)
 
 #subsection(
   [#link("https://invent.kde.org/plasma/systemsettings")[KDE System Settings]],
@@ -77,23 +76,22 @@ it harder to be used on other environments, but the toolkit and the KDE specific
 styling of said toolkit that might not integrate well._
 
 *Requirement fulfillment:*
-#grid(
-  columns: (auto, auto, auto, auto, auto),
-  rows: (auto, auto, auto, auto, auto),
-  gutter: 0pt,
-  cell("10", bold: true),
-  cell("6", bold: true),
-  cell("4", bold: true),
-  cell("9", bold: true),
-  cell("7", bold: true),
-  cell("Modularity", font_size: 12pt),
-  cell("Cross-Environment", font_size: 12pt),
-  cell("User Interface", font_size: 12pt),
-  cell("Functionality", font_size: 12pt),
-  cell("Maintainability", font_size: 12pt),
-)
+//#grid(
+//  columns: (auto, auto, auto, auto, auto),
+//  rows: (auto, auto, auto, auto, auto),
+//  gutter: 0pt,
+//  cell("10", bold: true),
+//  cell("6", bold: true),
+//  cell("4", bold: true),
+//  cell("9", bold: true),
+//  cell("7", bold: true),
+//  cell("Modularity", font_size: 12pt),
+//  cell("Cross-Environment", font_size: 12pt),
+//  cell("User Interface", font_size: 12pt),
+//  cell("Functionality", font_size: 12pt),
+//  cell("Maintainability", font_size: 12pt),
+//)
 
-#pagebreak()
 #subsection("Standalone Settings")
 These applications focus on one specific functionality and don't offer anything
 else.\
@@ -113,19 +111,19 @@ The application itself is written in C++ and GTK3.
   )])<pavucontrol>
 
 *Requirement fulfillment:*
-#grid(
-  columns: ( auto, auto, auto, auto),
-  rows: ( auto, auto, auto, auto),
-  gutter: 0pt,
-  cell("8", bold: true),
-  cell("10", bold: true),
-  cell("7", bold: true),
-  cell("6", bold: true),
-  cell("Modularity", font_size: 12pt),
-  cell("Cross-Environment", font_size: 12pt),
-  cell("User Interface", font_size: 12pt),
-  cell("Maintainability", font_size: 12pt),
-)
+//#grid(
+//  columns: ( auto, auto, auto, auto),
+//  rows: ( auto, auto, auto, auto),
+//  gutter: 0pt,
+//  cell("8", bold: true),
+//  cell("10", bold: true),
+//  cell("7", bold: true),
+//  cell("6", bold: true),
+//  cell("Modularity", font_size: 12pt),
+//  cell("Cross-Environment", font_size: 12pt),
+//  cell("User Interface", font_size: 12pt),
+//  cell("Maintainability", font_size: 12pt),
+//)
 
 #link("https://github.com/blueman-project/blueman")[*Blueman*] | Bluetooth
 Application\
@@ -140,19 +138,19 @@ Blueman is written in Python and GTK3.
   )])<blueman>
 
 *Requirement fulfillment:*
-#grid(
-  columns: ( auto, auto, auto, auto),
-  rows: ( auto, auto, auto, auto),
-  gutter: 0pt,
-  cell("5", bold: true),
-  cell("10", bold: true),
-  cell("3", bold: true),
-  cell("6", bold: true),
-  cell("Modularity", font_size: 12pt),
-  cell("Cross-Environment", font_size: 12pt),
-  cell("User Interface", font_size: 12pt),
-  cell("Maintainability", font_size: 12pt),
-)
+//#grid(
+//  columns: ( auto, auto, auto, auto),
+//  rows: ( auto, auto, auto, auto),
+//  gutter: 0pt,
+//  cell("5", bold: true),
+//  cell("10", bold: true),
+//  cell("3", bold: true),
+//  cell("6", bold: true),
+//  cell("Modularity", font_size: 12pt),
+//  cell("Cross-Environment", font_size: 12pt),
+//  cell("User Interface", font_size: 12pt),
+//  cell("Maintainability", font_size: 12pt),
+//)
 
 #link(
   "https://gitlab.freedesktop.org/NetworkManager/NetworkManager",
@@ -174,16 +172,16 @@ does not work on its own.
   )])<nmtui>
 
 *Requirement fulfillment:*
-#grid(
-  columns: ( auto, auto, auto, auto),
-  rows: ( auto, auto, auto, auto),
-  gutter: 0pt,
-  cell("5", bold: true),
-  cell("10", bold: true),
-  cell("2", bold: true),
-  cell("6", bold: true),
-  cell("Modularity", font_size: 12pt),
-  cell("Cross-Environment", font_size: 12pt),
-  cell("User Interface", font_size: 12pt),
-  cell("Maintainability", font_size: 12pt),
-)
+//#grid(
+//  columns: ( auto, auto, auto, auto),
+//  rows: ( auto, auto, auto, auto),
+//  gutter: 0pt,
+//  cell("5", bold: true),
+//  cell("10", bold: true),
+//  cell("2", bold: true),
+//  cell("6", bold: true),
+//  cell("Modularity", font_size: 12pt),
+//  cell("Cross-Environment", font_size: 12pt),
+//  cell("User Interface", font_size: 12pt),
+//  cell("Maintainability", font_size: 12pt),
+//)
