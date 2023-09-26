@@ -1,6 +1,17 @@
 #import "@preview/codelst:1.0.0": sourcecode
-#import "riskmatrix.typ": *
+#import "riskmatrix.typ": riskmatrix
 #import "glossary.typ": *
+
+#let cell(content, font_size: 14pt, bold: false) = {
+  if bold {
+    content = [*#content*]
+  }
+  rect(
+    width: 100%,
+    height: 35pt,
+    align(center + horizon, [#text(size: font_size, content)]),
+  )
+}
 
 #let file = counter("filecounter")
 #let show_glossary() = {
@@ -40,7 +51,6 @@
     line(length: 100%)
   }
 }
-
 
 #let requirement(subject, category, priority, description, measures) = {
   let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
