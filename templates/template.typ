@@ -1,107 +1,5 @@
-#import "@preview/codelst:1.0.0": sourcecode
-
-#let section(num: "1.1.1", use_line: false, name) = {
-  align(center, [#heading(numbering: num, level: 1, name)])
-  if use_line {
-    line(length: 100%)
-  }
-}
-
-#let subsection(num: "1.1.1", use_line: false, name) = {
-  align(center, [#heading(numbering: num, level: 2, name)])
-  if use_line {
-    line(length: 100%)
-  }
-}
-
-#let subsubsection(num: "1.1.1", use_line: false, name) = {
-  align(center, [#heading(numbering: num, level: 3, name)])
-  if use_line {
-    line(length: 100%)
-  }
-}
-
-#let subsubsubsection(num: "1.1.1", use_line: false, name) = {
-  align(center, [#heading(numbering: num, level: 4, name)])
-  if use_line {
-    line(length: 100%)
-  }
-}
-
-#let glossary_entry(name, description, reference) = {
-  [
-    #figure(
-      grid(columns: (2fr, 8fr), gutter: 15pt, [
-        #align(left, text(size: 12pt, [*#name*]))
-      ], align(left, description)),
-      kind: "glossary_entry",
-      supplement: none,
-      numbering: "(1)",
-    )
-    #label(reference)
-  ]
-}
-
-#let requirement(subject, category, priority, description, measures) = {
-  let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
-  pad(x: 0pt, y: 0pt, line(length: 100%))
-  pad(x: 0pt, y: -15pt, grid(
-    columns: (2fr, 10fr),
-    rows: (auto, auto),
-    gutter: 0pt,
-    cell(height: auto)[*Subject*],
-    cell(height: auto)[#subject],
-    cell(height: auto)[*Requirement*],
-    cell(height: auto)[#category],
-    cell(height: auto)[*Priority*],
-    cell(height: auto)[#priority],
-    cell(height: auto)[*Description*],
-    cell(height: auto)[#description],
-    cell(height: auto)[*Measures*],
-    cell(height: auto)[#measures],
-  ))
-}
-
-#let risk(subject, description, priority, probability, severity, measures) = {
-  let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
-  pad(x: 0pt, y: 0pt, line(length: 100%))
-  pad(x: 0pt, y: -15pt, grid(
-    columns: (3.5fr, 10fr),
-    rows: (auto, auto),
-    gutter: 0pt,
-    cell(height: auto)[*Subject*],
-    cell(height: auto)[#subject],
-    cell(height: auto)[*Requirement*],
-    cell(height: auto)[#description],
-    cell(height: auto)[*Priority*],
-    cell(height: auto)[#priority],
-    cell(height: auto)[*Probability*&*Severity*],
-    cell(height: auto)[#probability & #severity],
-    cell(height: auto)[*Measures*],
-    cell(height: auto)[#measures],
-  ))
-}
-
-#let test(subject, description, positives, negatives, notes) = {
-  let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
-  pad(x: 0pt, y: 0pt, line(length: 100%))
-  pad(x: 0pt, y: -15pt, grid(
-    columns: (2fr, 10fr),
-    rows: (auto, auto),
-    gutter: 0pt,
-    cell(height: auto)[*Subject*],
-    cell(height: auto)[#subject],
-    cell(height: auto)[*Description*],
-    cell(height: auto)[#description],
-    cell(height: auto)[*Positives*],
-    cell(height: auto)[#positives],
-    cell(height: auto)[*Negatives*],
-    cell(height: auto)[#negatives],
-    cell(height: auto)[*Notes*],
-    cell(height: auto)[#notes],
-  ))
-  pad(x: 0pt, y: 0pt, line(length: 100%))
-}
+#import "utils.typ": *
+#import "glossary.typ": *
 
 /* page setup */
 #let conf(
@@ -147,7 +45,12 @@
   heading("Abstract", numbering: none, bookmarked: false, outlined: false)
   abstract
   pagebreak()
-  heading("Acknowledgements", numbering: none, bookmarked: false, outlined: false)
+  heading(
+    "Acknowledgements",
+    numbering: none,
+    bookmarked: false,
+    outlined: false,
+  )
   acknowledgements
   pagebreak(weak: false)
   outline(title: "Table of Contents", indent: true, depth: 3)
@@ -164,6 +67,8 @@
   set page(footer: none)
   set align(center)
   section(num: "1.1.1", use_line: false, "Appendix")
+  subsection("Glossary")
+  reset_glossary(use_show_ref: true)
   subsection(num: "1.1.1", use_line: false, "Bibliography")
   bibliography("/works.yml", title: none)
   pagebreak()
