@@ -1,6 +1,7 @@
 #import "@preview/codelst:1.0.0": sourcecode
 #import "riskmatrix.typ": riskmatrix
 #import "glossary.typ": *
+#import "mock_labels.typ": *
 
 #let cell(
   content,
@@ -22,12 +23,13 @@
 }
 
 #let file = counter("filecounter")
-#let show_glossary() = {
+#let lsp_placate() = {
   file.step()
   locate(loc => {
     let val = file.final(loc)
     if val.at(0) == 1 {
       reset_glossary()
+      mock_labels
     }
   })
 }
@@ -37,37 +39,37 @@
   for (key, value) in tool {
     total += value * weights.at(key);
   }
-  calc.ceil(
-    total
-  )
+  calc.ceil(total)
+}
+
+#let custom_heading(num, use_line, level, name: "") = {
+  if num != "" and type(name) == type("string") {
+    align(
+      center,
+      [#heading(numbering: num, level: level, name)#label(str(name.replace(" ", "")))],
+    )
+  } else {
+    align(center, [#heading(numbering: num, level: level, name)])
+  }
+  if use_line {
+    line(length: 100%)
+  }
 }
 
 #let section(num: "1.1.1", use_line: false, name) = {
-  align(center, [#heading(numbering: num, level: 1, name)])
-  if use_line {
-    line(length: 100%)
-  }
+  custom_heading(num, use_line, name: name, 1)
 }
 
 #let subsection(num: "1.1.1", use_line: false, name) = {
-  align(center, [#heading(numbering: num, level: 2, name)])
-  if use_line {
-    line(length: 100%)
-  }
+  custom_heading(num, use_line, name: name, 2)
 }
 
 #let subsubsection(num: "1.1.1", use_line: false, name) = {
-  align(center, [#heading(numbering: num, level: 3, name)])
-  if use_line {
-    line(length: 100%)
-  }
+  custom_heading(num, use_line, name: name, 3)
 }
 
 #let subsubsubsection(num: "1.1.1", use_line: false, name) = {
-  align(center, [#heading(numbering: num, level: 4, name)])
-  if use_line {
-    line(length: 100%)
-  }
+  custom_heading(num, use_line, name: name, 4)
 }
 
 #let requirement(subject, category, priority, description, measures) = {
