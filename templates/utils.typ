@@ -2,14 +2,22 @@
 #import "riskmatrix.typ": riskmatrix
 #import "glossary.typ": *
 
-#let cell(content, font_size: 12pt, cell_align: center, bold: false, width: 100%, height: 50pt) = {
+#let cell(
+  content,
+  font_size: 12pt,
+  cell_align: center,
+  color: black,
+  bold: false,
+  width: 100%,
+  height: 100%,
+) = {
   if bold {
     content = [*#content*]
   }
   rect(
     width: width,
     height: height,
-    align(cell_align + horizon, [#text(size: font_size, content)]),
+    align(cell_align + horizon, [#text(fill: color, size: font_size, content)]),
   )
 }
 
@@ -22,6 +30,16 @@
       reset_glossary()
     }
   })
+}
+
+#let calculate_total(tool, weights) = {
+  let total = 0;
+  for (key, value) in tool {
+    total += value * weights.at(key);
+  }
+  calc.ceil(
+    total
+  )
 }
 
 #let section(num: "1.1.1", use_line: false, name) = {

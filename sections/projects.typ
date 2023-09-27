@@ -31,7 +31,7 @@ will be available on other environments._
 *Requirement fulfillment*:
 #grid(
   columns: (auto, auto, auto),
-  rows: (auto, auto, auto),
+  rows: (50pt, 50pt, 50pt),
   gutter: 0pt,
   cell("X", bold: true, width: 30pt),
   cell("Interoperability", bold: true, width: 90pt),
