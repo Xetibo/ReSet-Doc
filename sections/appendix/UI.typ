@@ -1,5 +1,5 @@
 #import "../../templates/utils.typ": *
-#show_glossary()
+#lsp_placate()
 
 #subsection("UI Design")
 On the left side, there's a scrollabe window containing a list of settings

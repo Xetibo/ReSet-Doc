@@ -1,5 +1,5 @@
 #import "../../templates/utils.typ": *
-#show_glossary()
+#lsp_placate()
 
 #subsection("Documentation")
 Next to this document, both ReSet and ReSet-Daemon will have their code

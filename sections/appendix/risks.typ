@@ -1,5 +1,5 @@
 #import "../../templates/utils.typ": *
-#show_glossary()
+#lsp_placate()
 
 #subsection("Risks")
 Risks are assessed according to the ISO standard with a risk matrix.

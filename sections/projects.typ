@@ -1,5 +1,6 @@
 #import "../templates/utils.typ": *
-#show_glossary()
+#lsp_placate()
+
 #section("Existing Projects")
 #subsection([#link(
     "https://github.com/GNOME/gnome-control-center",
@@ -144,10 +145,9 @@ made for this use case.
 #link("https://gitlab.freedesktop.org/pulseaudio/pavucontrol")[*Pavucontrol*] |
 Sound Application\
 Pavucontrol or Pulseaudio Volume Control is an application that handles both
-system wide input/output, per application output and input streams.
-It is under the umbrella of the Free Desktop project and is directly involved in
-PulseAudio itself.
-The application itself is written in C++ and GTK3.
+system wide input/output, per application output and input streams. It is under
+the umbrella of the Free Desktop project and is directly involved in PulseAudio
+itself. The application itself is written in C++ and GTK3.
 #align(center, [#figure(
     image("../figures/pavucontrol.png", width: 80%),
     caption: [Screenshot of pavucontrol],
@@ -184,10 +184,9 @@ The application itself is written in C++ and GTK3.
 #link("https://github.com/blueman-project/blueman")[*Blueman*] | Bluetooth
 Application\
 Blueman allows connecting and managing of Bluetooth connections, as well as some
-quality of life features like sending of files.
-It works great in functionality, but the buttons are not very expressive in what
-they will achieve.
-Blueman is written in Python and GTK3.
+quality of life features like sending of files. It works great in functionality,
+but the buttons are not very expressive in what they will achieve. Blueman is
+written in Python and GTK3.
 #align(center, [#figure(
     image("../figures/bluetooth_manager.png", width: 80%),
     caption: [Screenshot of blueman],

@@ -1,5 +1,5 @@
 #import "../templates/utils.typ": *
-#show_glossary()
+#lsp_placate()
 
 #section("Introduction")
 The Linux ecosystem is well known to be fractured, whether it's the seemingly

@@ -1,5 +1,5 @@
 #import "../../templates/utils.typ": *
-#show_glossary()
+#lsp_placate()
 
 #subsection("Requirements")
 #subsubsection("Functional Requirements")

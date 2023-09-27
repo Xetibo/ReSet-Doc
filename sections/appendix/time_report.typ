@@ -1,5 +1,5 @@
 #import "../../templates/utils.typ": *
-#show_glossary()
+#lsp_placate()
 
 #subsection("Time Report")
 #subsubsection("Sprint 1: Initial Project Planning")
