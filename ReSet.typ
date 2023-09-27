@@ -1,6 +1,6 @@
 #import "templates/template.typ": *
 
-#show link: underline
+#show link: set text(fill: blue)
 
 #let abstract = { [ This is an abstract ] }
 #let acknowledgements = { [ This is acknowledgements ] }
@@ -22,6 +22,7 @@
 #file.step()
 
 #include "sections/introduction.typ"
+#pagebreak()
 #include "sections/projects.typ"
 #pagebreak()
 #include "sections/literature.typ"

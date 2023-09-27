@@ -2,14 +2,14 @@
 #import "riskmatrix.typ": riskmatrix
 #import "glossary.typ": *
 
-#let cell(content, font_size: 14pt, bold: false) = {
+#let cell(content, font_size: 12pt, cell_align: center, bold: false, width: 100%, height: 50pt) = {
   if bold {
     content = [*#content*]
   }
   rect(
-    width: 100%,
-    height: 35pt,
-    align(center + horizon, [#text(size: font_size, content)]),
+    width: width,
+    height: height,
+    align(cell_align + horizon, [#text(size: font_size, content)]),
   )
 }
 
