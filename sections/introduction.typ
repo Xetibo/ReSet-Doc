@@ -37,30 +37,30 @@ here instead it would lead to unnecessary screen space being used for no reason.
 For ReSet, there are 3 different categories that will be used to weigh existing
 projects and potential solutions.
 
-- *Interoperability*\
+- #text(size: 11pt, [*Interoperability*])\
   This is the most important aspect, as it was the main driving factor for this
   work. Interoperability for ReSet is defined as the ease of use of a particular
   project on various different environments. Important to note, is that multiple
   factors are considered:
-  - amount of working features
-  - amount of non-working features\
+  - *amount of working features*
+  - *amount of non-working features*\
     This specifically refers to residue entries that would work on the expected
     environment, but not on the currently used environment.
-  - interoperability of toolkit\
+  - *interoperability of toolkit*\
     Depending on the toolkit, it might behave differently with specific modules
     missing from other environments, this would once again increase the amount of
     additional work needed, in order to get the expected interface.
-  - behavior on different environments\
+  - *behavior on different environments*\
     Depending on the environment, applications have different ways of displaying
     themselves with different attributes like a minimum size. These constraints
     might not work well with different types of window management. A so-called
     tiling window manager does not consider the minimum size of an application, as
     it will place it according to its layout rule. Application with large minimum
     sizes are therefore preferably avoided.
-- *ease of use*\
+- #text(size: 11pt, [*ease of use*])\
   While functionality is important, the intention is to provide an application
   that is used by preference, not necessity.
-- *maintainability*\
+- #text(size: 11pt, [*maintainability*])\
   Applications with a plethora of functionality will get quickly large. This poses
   a particularly hard challenge for developers to keep the project maintainable.
   Too many features without a well-thought-out architecture will lead to
