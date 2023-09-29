@@ -2,7 +2,7 @@
 #lsp_placate()
 
 #section("Existing Projects")
-#subsection("Gnome Control Settings")
+#subsection("Gnome Control Center")
 The #link("https://github.com/GNOME/gnome-control-center")[Gnome control center] [@gnome]
 is as the name implies the central settings application for the Gnome desktop
 environment, it offers plenty of configuration, from networks, to Bluetooth, to
