@@ -30,7 +30,7 @@
     if val.at(0) == 1 {
       reset_glossary()
       mock_labels
-      bibliography("../files/works.yml")
+      bibliography("../files/bib.yml")
     }
   })
 }

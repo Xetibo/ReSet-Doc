@@ -2,14 +2,12 @@
 #lsp_placate()
 
 #section("Existing Projects")
-#subsection([#link(
-    "https://github.com/GNOME/gnome-control-center",
-  )[Gnome Control Settings]])
-The Gnome [@gnome] control center is as the name implies the central settings
-application for the Gnome desktop environment, it offers plenty of
-configuration, from networks, to Bluetooth, to online accounts, default
-application and a lot more. The application is written in C with the #link("https://www.gtk.org/")[GTK] toolkit
-(GTK4) and follows the #link("https://developer.gnome.org/hig/")[Gnome Human Interface Guidelines].
+#subsection("Gnome Control Settings")
+The #link("https://github.com/GNOME/gnome-control-center")[Gnome control center] [@gnome]
+is as the name implies the central settings application for the Gnome desktop
+environment, it offers plenty of configuration, from networks, to Bluetooth, to
+online accounts, default application and a lot more. The application is written
+in C with the #link("https://www.gtk.org/")[GTK] toolkit (GTK4) and follows the #link("https://developer.gnome.org/hig/")[Gnome Human Interface Guidelines].
 #align(center, [#figure(
     image("../figures/gnome_control_center.png", width: 80%),
     caption: [Screenshot of the Gnome control center],
@@ -64,10 +62,9 @@ will be available on other environments._
   ),
 )
 
-#subsection(
-  [#link("https://invent.kde.org/plasma/systemsettings")[KDE System Settings]],
-)
-KDE [@kde] systemsettings is written in C++/QML and is made with the #link("https://www.qt.io/")[QT toolkit].
+#subsection("KDE System Settings")
+#link("https://invent.kde.org/plasma/systemsettings")[KDE systemsettings] [@kde]
+is written in C++/QML and is made with the #link("https://www.qt.io/")[QT toolkit].
 It follows the KDE style of applications, featuring a very large variety of
 settings (on KDE), and offering other applications a way to integrate into this
 application via KConfig Module(KCM).
