@@ -15,6 +15,7 @@
   40%,
   "Department for Computer Science",
   "OST Eastern Switzerland University of Applied Sciences",
+  "../files/bib.yml",
   abstract,
   acknowledgements,
   doc,
@@ -51,3 +52,4 @@
 #include "sections/appendix/retrospective.typ"
 #pagebreak()
 #include "sections/appendix/time_report.typ"
+
