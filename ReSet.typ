@@ -15,6 +15,7 @@
   40%,
   "Department for Computer Science",
   "OST Eastern Switzerland University of Applied Sciences",
+  "../files/bib.yml",
   abstract,
   acknowledgements,
   doc,

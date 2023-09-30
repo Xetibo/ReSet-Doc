@@ -70,27 +70,27 @@ The following categories are evaluated for UI toolkits:
 
 #pagebreak()
 #let python = (
-  familiarity: 6,
+  familiarity: 7,
   developer_experience: 7,
   ecosystem: 6,
-  runtime_speed: 4,
-  resource_usage: 4,
+  runtime_speed: 5,
+  resource_usage: 5,
   development_speed: 10,
 )
 #let typescript = (
   familiarity: 6,
-  developer_experience: 8,
+  developer_experience: 9,
   ecosystem: 5,
-  runtime_speed: 4,
-  resource_usage: 4,
+  runtime_speed: 5,
+  resource_usage: 5,
   development_speed: 9,
 )
 #let csharp = (
   familiarity: 6,
   developer_experience: 6,
   ecosystem: 5,
-  runtime_speed: 7,
-  resource_usage: 6,
+  runtime_speed: 8,
+  resource_usage: 8,
   development_speed: 8,
 )
 #let cpp = (
@@ -105,7 +105,7 @@ The following categories are evaluated for UI toolkits:
   familiarity: 6,
   developer_experience: 10,
   ecosystem: 9,
-  runtime_speed: 9,
+  runtime_speed: 10,
   resource_usage: 10,
   development_speed: 5,
 )
@@ -216,7 +216,7 @@ still offering all the benefits of a more modern language.
   documentation: 3,
   features: 4,
 )
-#let qt = (familiarity: 2, language_integration: 6, documentation: 6, features: 7)
+#let qt = (familiarity: 0, language_integration: 6, documentation: 6, features: 7)
 #grid(columns: (auto), rows: (30pt), cell([UI Toolkits], bold: true))
 #pad(y: -13pt, [])
 #grid(

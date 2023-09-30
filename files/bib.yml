@@ -1,0 +1,10 @@
+title_image:
+  type: Icon
+  title: settings.svg
+  author: feathericons
+  url: https://github.com/feathericons/feather/
+establishment_image:
+  type: Icon
+  title: OST.svg
+  author: OST
+  url: https://www.ost.ch/de/die-ost/organisation/medien

@@ -12,6 +12,7 @@
   establishment_image_size,
   department,
   establishment,
+  bibfile,
   abstract,
   acknowledgements,
   doc,
@@ -27,7 +28,13 @@
       #pad(y: 5pt, text(14pt, [Authors: #author]))
       #align(left, line(start: (15%, 0%), end: (85%, 0%)))
       #pad(y: 5pt, text(14pt, [Project Advisor: #professor]))
-      #pad(y: 40pt, align(center, [#image(title_image, width: title_image_size)]))
+      #pad(
+        y: 40pt,
+        align(
+          center,
+          [#text(fill: white, [@title_image]) #image(title_image, width: title_image_size)],
+        ),
+      )
     ],
   )
   align(
@@ -35,7 +42,10 @@
     [
       #pad(
         y: 40pt,
-        align(center, [#image(establishment_image, width: establishment_image_size)]),
+        align(
+          center,
+          [#text(fill: white, [@establishment_image])#image(establishment_image, width: establishment_image_size)],
+        ),
       )
       #pad(y: 5pt, text(14pt, [#department]))
       #pad(y: 5pt, text(14pt, [#establishment]))
@@ -69,7 +79,7 @@
   subsection("Glossary")
   reset_glossary(use_show_ref: true)
   subsection(num: "1.1.1", use_line: false, "Bibliography")
-  bibliography("../files/works.yml", title: none)
+  bibliography(bibfile, title: none)
   pagebreak()
   subsection(num: "1.1.1", use_line: false, "List of Figures")
   outline(title: none, target: figure)

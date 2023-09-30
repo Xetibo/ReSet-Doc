@@ -62,10 +62,9 @@ will be available on other environments._
   ),
 )
 
-#subsection(
-  [#link("https://invent.kde.org/plasma/systemsettings")[KDE System Settings]],
-)
-KDE [@kde] systemsettings is written in C++/QML and is made with the #link("https://www.qt.io/")[QT toolkit].
+#subsection("KDE System Settings")
+#link("https://invent.kde.org/plasma/systemsettings")[KDE systemsettings] [@kde]
+is written in C++/QML and is made with the #link("https://www.qt.io/")[QT toolkit].
 It follows the KDE style of applications, featuring a very large variety of
 settings (on KDE), and offering other applications a way to integrate into this
 application via KConfig Module(KCM).
