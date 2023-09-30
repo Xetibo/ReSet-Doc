@@ -8,3 +8,18 @@ establishment_image:
   title: OST.svg
   author: OST
   url: https://www.ost.ch/de/die-ost/organisation/medien
+pragprog:
+  type: book
+  title: The Pragmatic Programmer
+  author: ["David Thomas", "Andrew Hunt"]
+  edition: 20th Anniversary Edition
+gnome_human_guidelines:
+  type: webpage
+  title: Gnome Human Interface Guidelines
+  author: Gnome
+  url: https://developer.gnome.org/hig/
+krug:
+  type: book
+  title: Don't Make Me Think (Revisited)
+  subtitle: A Common Sense Approach to Web and Movile Usability
+  author: Steve Krug
