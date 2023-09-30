@@ -35,7 +35,7 @@ The following categories are evaluated for programming languages:
   many different types of services are used, hence the need for good integration
   with them.\
   Important: The ecosystem is highly dependent on the Linux desktop, which is not
-  always favorable for all tools, for example: .NET Maui, which is a very popular
+  always favorable for all tools, for example: .NET Maui, a very popular
   toolkit is not usable, as it does not run on the Linux desktop.
 - runtime speed | weight: 0.2\
   Runtime speed is likely only a concern for the daemon, and even in this case, it
@@ -46,7 +46,7 @@ The following categories are evaluated for programming languages:
   systems, therefore RAM usage should be a concern, especially for the daemon.
 - development speed | weight: 0.4\
   ReSet is limited in time scope, therefore tools with decent progress times
-  should be considered. Note, this includes time needed for debugging and
+  should be considered. Note, that this includes the time needed for debugging and
   potential problems, such as undefined behavior or dynamic type issues.
 
 The following categories are evaluated for UI toolkits:
@@ -60,7 +60,7 @@ The following categories are evaluated for UI toolkits:
   beyond the typical "Hello World" for UI programs. A good documented toolkit can
   reduce the development time by a lot.
 - Features | weight: 0.3\
-  ReSet does not need a many features, however, ReSet does require proper support
+  ReSet does not need many features, however, ReSet does require proper support
   for the platform in question.
 
 //  familiarity: 0.3,
@@ -75,10 +75,10 @@ The following categories are evaluated for UI toolkits:
   ecosystem: 6,
   runtime_speed: 5,
   resource_usage: 5,
-  development_speed: 10,
+  development_speed: 9,
 )
 #let typescript = (
-  familiarity: 6,
+  familiarity: 7,
   developer_experience: 9,
   ecosystem: 5,
   runtime_speed: 5,
@@ -86,24 +86,24 @@ The following categories are evaluated for UI toolkits:
   development_speed: 9,
 )
 #let csharp = (
-  familiarity: 6,
-  developer_experience: 6,
+  familiarity: 7,
+  developer_experience: 7,
   ecosystem: 5,
   runtime_speed: 8,
   resource_usage: 8,
   development_speed: 8,
 )
 #let cpp = (
-  familiarity: 6,
+  familiarity: 5,
   developer_experience: 3,
   ecosystem: 10,
   runtime_speed: 10,
   resource_usage: 10,
-  development_speed: 6,
+  development_speed: 5,
 )
 #let rust = (
-  familiarity: 6,
-  developer_experience: 10,
+  familiarity: 5,
+  developer_experience: 8,
   ecosystem: 9,
   runtime_speed: 10,
   resource_usage: 10,
@@ -209,14 +209,24 @@ still offering all the benefits of a more modern language.
 
 #pagebreak()
 
-#let gtk = (familiarity: 6, language_integration: 7, documentation: 6, features: 6)
+#let gtk = (
+  familiarity: 6, 
+  language_integration: 7, 
+  documentation: 6, 
+  features: 6
+)
 #let iced = (
-  familiarity: 4,
+  familiarity: 3,
   language_integration: 10,
   documentation: 3,
   features: 4,
 )
-#let qt = (familiarity: 0, language_integration: 6, documentation: 6, features: 7)
+#let qt = (
+  familiarity: 0, 
+  language_integration: 6, 
+  documentation: 6, 
+  features: 7
+)
 #grid(columns: (auto), rows: (30pt), cell([UI Toolkits], bold: true))
 #pad(y: -13pt, [])
 #grid(
@@ -268,7 +278,7 @@ implementations in order to fit with our requirements.
 The last consideration is QT, it is a cross-platform toolkit that uses its own
 form of JavaScript(QML) to draw windows. QT is a well known toolkit, however, it
 is completely unknown to us, making it a suboptimal choice.\
-For QT, there is also the consideration with integration mentioned in @ExistingProjects.
+For QT, there is also the consideration of integration mentioned in @ExistingProjects.
 
 #text(12pt, [*Typesetting Language*])* | ReSet-Doc is written with typst.*\
 Typst is a modern typesetting system with clean and modern syntax. It offers
