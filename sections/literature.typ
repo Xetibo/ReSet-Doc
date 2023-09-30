@@ -80,41 +80,43 @@ plugin system for ReSet:
   This refers to dynamic libraries that are loaded at runtime. These dynamic
   libraries are the most performant way to create a plugin system without outright
   moving towards changing the code and recompiling. However, it forces ReSet to
-  offer a "stable" ABI which could be done over the C programming language or the
-  abi_stable crate for the Rust programming language.\
+  offer a "stable" ABI which can be done directly over the C programming language,
+  or indirectly with the abi_stable crate for the Rust programming language.\
   The project "anyrun" @anyrun by Kirottu serves as a perfect example for a small
-  but powerful example of the abi_stable crate. Anyrun is a so called application
+  but powerful example of the abi_stable crate. Anyrun is a so-called application
   launcher, with each plugin being able to fill the launcher queries.
+//typstfmt::off
 #figure(
   sourcecode(```rs
-    use abi_stable::std_types::{RString, RVec, ROption};
-    use anyrun_plugin::*;
+use abi_stable::std_types::{RString, RVec, ROption};
+use anyrun_plugin::*;
 
-    #[init]
-    fn init(config_dir: RString) {
-    }
+#[init]
+fn init(config_dir: RString) {
+}
 
-    #[info]
-    fn info() -> PluginInfo {
-      PluginInfo {
-        // ...
-      }
-    }
+#[info]
+fn info() -> PluginInfo {
+  PluginInfo {
+    // ...
+  }
+}
 
-    #[get_matches]
-    fn get_matches(input: RString) -> RVec<Match> {
-      // ...
-    }
+#[get_matches]
+fn get_matches(input: RString) -> RVec<Match> {
+  // ...
+}
 
-    #[handler]
-    fn handler(selection: Match) -> HandleResult {
-      HandleResult::Close
-    }
-    ```),
+#[handler]
+fn handler(selection: Match) -> HandleResult {
+  HandleResult::Close
+}
+```),
   caption: [Example code for an anyrun plugin, available at: @anyrun],
 )
+//typstfmt::on
 With just 4 functions, an anyrun plugin can be created which will fill a dynamic
-library function to be loaded at runtime in the actual project.
+library functions to be loaded at runtime.
 
 #subsubsection("Configuration Storage")
 In "The Pragmatic Programmer" @pragprog by David Thomas and Andrew Hunt, the
