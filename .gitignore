@@ -1,3 +1,4 @@
 *.pdf
 files/domain_model.svg
 clean.sh
+plantuml.jar
