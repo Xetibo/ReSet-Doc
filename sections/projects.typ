@@ -3,11 +3,11 @@
 
 #section("Existing Projects")
 #subsection("Gnome Control Settings")
-The #link("https://github.com/GNOME/gnome-control-center")[Gnome control center] [@gnome] is as the name implies the central settings
-application for the Gnome desktop environment, it offers plenty of
-configuration, from networks to Bluetooth, to online accounts, default
-application and a lot more. The application is written in C with the #link("https://www.gtk.org/")[GTK] toolkit
-(GTK4) and follows the #link("https://developer.gnome.org/hig/")[Gnome Human Interface Guidelines].
+The #link("https://github.com/GNOME/gnome-control-center")[Gnome control center] [@gnome]
+is as the name implies the central settings application for the Gnome desktop
+environment, it offers plenty of configuration, from networks to Bluetooth, to
+online accounts, default application and a lot more. The application is written
+in C with the #link("https://www.gtk.org/")[GTK] toolkit (GTK4) and follows the #link("https://developer.gnome.org/hig/")[Gnome Human Interface Guidelines].
 #align(center, [#figure(
     image("../figures/gnome_control_center.png", width: 80%),
     caption: [Screenshot of the Gnome control center],
@@ -110,8 +110,8 @@ styling of said toolkit that might not integrate well._
   cell(
     [The most common criticism of KDE systemsettings is a convoluted design. This
       stems from the sheer amount of settings the application can provide, alongside
-      its heavy use of submenus that can become confusing when searching for
-      something specific.],
+      its heavy use of submenus that can become confusing when searching for something
+      specific.],
     cell_align: left,
     bold: false,
     font_size: 11pt,
@@ -122,8 +122,8 @@ styling of said toolkit that might not integrate well._
   cell(
     [The modular design of KDE systemsettings allows for great maintainability on the
       application itself. It is however noteworthy that the configuration files
-      created by KCM tend to fill folders with seemingly random files. This means
-      that changing settings outside KDE systemsettings can be a challenge.],
+      created by KCM tend to fill folders with seemingly random files. This means that
+      changing settings outside KDE systemsettings can be a challenge.],
     cell_align: left,
     bold: false,
     font_size: 11pt,
@@ -223,8 +223,8 @@ written in Python and GTK3.
 )[*Nmtui*] | Network Application\
 Nmtui is what the name suggests, it's a terminal user interface that allows
 users to use and edit network connections, including VPN connections.\
-Nmtui is located in the same project as the network manager itself and is therefore
-also shipped as part of the network manager package.\
+Nmtui is located in the same project as the network manager itself and is
+therefore also shipped as part of the network manager package.\
 Both network manager and nmtui are written in C.\
 There is a specific lack of standalone user interface applications for network
 managers.\
