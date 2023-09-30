@@ -3,7 +3,7 @@
 
 #subsection("Time Report")
 #subsubsection("Sprint 1: Initial Project Planning")
-In this sprint, our goals were building a foundation to work on. This includes
+In this sprint, our goal was to build a foundation to work on. This includes
 tasks such as creating repositories for our code base and documentation, setting
 up time tracking and doing initial research on our topic. Most of our time in
 this sprint has been used to write the documentation.

@@ -3,27 +3,27 @@
 
 #section("Introduction")
 The Linux ecosystem is well known to be fractured, whether it's the seemingly
-endless amount of distributions, or the various different desktop
-environments[@DE], there will always be someone who will create something new.
+endless amount of distributions, or the various desktop environments[@DE], 
+there will always be someone who will create something new.
 With this reality comes a challenge to create software that is not dependent on
 one singular distribution or environment.
 
 The same lack of universality can be seen when interacting with configuration
 tools. Whenever a user would like to connect to a network, change their volume,
-connect a Bluetooth device, they have to do this with their environment specific
+or connect a Bluetooth device, they have to do this with their environment specific
 tool. To a certain degree, this makes sense, users should only see settings,
-which they can actually use within their environment. Problems arise, when
+which they can actually use within their environment. Problems arise when
 certain environments don't provide their own application, or perhaps provide one
 without the needed functionality.
 
-In this case users would need to find a variety of different applications that
-solve the same problem, this however with a variety of different user interfaces
+In this case, users would need to find a variety of different applications that
+solve the same problem, however with a variety of different user interfaces
 and different levels of polish. Some might argue that this is the point of these
 minimal environments, as they sometimes intentionally don't offer this type of
 software by default, but there is also a distinct lack of this type of software.
 
 #subsection("Intention")
-ReSet will make the effort to change this situation by creating a settings
+ReSet will make an effort to change this situation by creating a settings
 application that works across these distributions and environments. This means
 that both major and specifically smaller environments should be able to use this
 application to fill the current gap.
@@ -34,13 +34,13 @@ would argue that this is not the case with a tool featuring user interfaces,
 here instead it would lead to unnecessary screen space being used for no reason.
 
 #subsection("Measurements of requirements")
-For ReSet, there are 3 different categories that will be used to weigh existing
+For ReSet, 3 different categories will be used to weigh existing
 projects and potential solutions.
 
 - #text(size: 11pt, [*Interoperability*])\
   This is the most important aspect, as it was the main driving factor for this
   work. Interoperability for ReSet is defined as the ease of use of a particular
-  project on various different environments. Important to note, is that multiple
+  project in different environments. Important to note, is that multiple
   factors are considered:
   - *amount of working features*
   - *amount of non-working features*\
@@ -49,13 +49,13 @@ projects and potential solutions.
   - *interoperability of toolkit*\
     Depending on the toolkit, it might behave differently with specific modules
     missing from other environments, this would once again increase the amount of
-    additional work needed, in order to get the expected interface.
+    additional work is needed, in order to get the expected interface.
   - *behavior on different environments*\
     Depending on the environment, applications have different ways of displaying
     themselves with different attributes like a minimum size. These constraints
     might not work well with different types of window management. A so-called
     tiling window manager does not consider the minimum size of an application, as
-    it will place it according to its layout rule. Application with large minimum
+    it will place it according to its layout rule. Applications with large minimum
     sizes are therefore preferably avoided.
 - #text(size: 11pt, [*ease of use*])\
   While functionality is important, the intention is to provide an application

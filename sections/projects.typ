@@ -5,7 +5,7 @@
 #subsection("Gnome Control Settings")
 The #link("https://github.com/GNOME/gnome-control-center")[Gnome control center] [@gnome] is as the name implies the central settings
 application for the Gnome desktop environment, it offers plenty of
-configuration, from networks, to Bluetooth, to online accounts, default
+configuration, from networks to Bluetooth, to online accounts, default
 application and a lot more. The application is written in C with the #link("https://www.gtk.org/")[GTK] toolkit
 (GTK4) and follows the #link("https://developer.gnome.org/hig/")[Gnome Human Interface Guidelines].
 #align(center, [#figure(
@@ -44,7 +44,7 @@ will be available on other environments._
   cell("\u{2713}", bold: true, width: 30pt),
   cell("Ease of Use", bold: true, width: 90pt),
   cell(
-    [The user interface of gnome control center follows best practices. It has
+    [The user interface of the gnome control center follows best practices. It has
       consistent design, naming makes sense and accessibility is taken into account.],
     cell_align: left,
     bold: false,
@@ -53,7 +53,7 @@ will be available on other environments._
   cell("X", bold: true, width: 30pt),
   cell("Maintainability", bold: true, width: 90pt),
   cell(
-    [All features of gnome control center are within one repository, split across
+    [All features of the gnome control center are within one repository, split across
       hundreds of files. This reliance on all these files in one repository creates a
       big maintainability concern.],
     cell_align: left,
@@ -110,7 +110,7 @@ styling of said toolkit that might not integrate well._
   cell(
     [The most common criticism of KDE systemsettings is a convoluted design. This
       stems from the sheer amount of settings the application can provide, alongside
-      its heavy use of submenues that can become confusing when searching for
+      its heavy use of submenus that can become confusing when searching for
       something specific.],
     cell_align: left,
     bold: false,
@@ -122,7 +122,7 @@ styling of said toolkit that might not integrate well._
   cell(
     [The modular design of KDE systemsettings allows for great maintainability on the
       application itself. It is however noteworthy that the configuration files
-      created by KCM tends to fill folders with seemingly random files. This means
+      created by KCM tend to fill folders with seemingly random files. This means
       that changing settings outside KDE systemsettings can be a challenge.],
     cell_align: left,
     bold: false,
@@ -142,7 +142,7 @@ made for this use case.
 #link("https://gitlab.freedesktop.org/pulseaudio/pavucontrol")[*Pavucontrol*] |
 Sound Application\
 Pavucontrol or Pulseaudio Volume Control is an application that handles both
-system wide input/output, per application output and input streams. It is under
+system-wide input/output, per application output and input streams. It is under
 the umbrella of the Free Desktop project and is directly involved in PulseAudio
 itself. The application itself is written in C++ and GTK3.
 #align(center, [#figure(
@@ -223,14 +223,14 @@ written in Python and GTK3.
 )[*Nmtui*] | Network Application\
 Nmtui is what the name suggests, it's a terminal user interface that allows
 users to use and edit network connections, including VPN connections.\
-Nmtui is located in the same project as network manager itself and is therefore
+Nmtui is located in the same project as the network manager itself and is therefore
 also shipped as part of the network manager package.\
 Both network manager and nmtui are written in C.\
 There is a specific lack of standalone user interface applications for network
-manger.\
+managers.\
 Technically, there exists a #link(
   "https://gitlab.gnome.org/GNOME/network-manager-applet",
-)[network manager applet], however this is to be included in status bars and
+)[network manager applet], however, this is to be included in status bars and
 does not work on its own.
 #align(center, [#figure(
     image("../figures/nmtui.png", width: 80%),
