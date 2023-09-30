@@ -23,3 +23,13 @@ krug:
   title: Don't Make Me Think (Revisited)
   subtitle: A Common Sense Approach to Web and Movile Usability
   author: Steve Krug
+nullderef:
+  type: webpage
+  title: "Plugins in Rust: The Technologies"
+  author: Mario Ortiz Manero
+  url: https://nullderef.com/blog/plugin-tech/ 
+anyrun:
+  type: repository
+  title: anyrun
+  author: Kirottu
+  url: https://github.com/Kirottu/anyrun
