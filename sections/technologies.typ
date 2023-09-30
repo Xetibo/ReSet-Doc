@@ -24,7 +24,9 @@ weight(0 to 1), in order to evaluate which tool will be chosen.
 The following categories are evaluated for programming languages:
 - familiarity | weight: 0.4\
   Indicates how familiar the developers are with a certain tool. More familiarity
-  means an easier development process without unexpected surprises.
+  means an easier development process without unexpected surprises. Note that
+  familiarity is the subjective relative experience compared to other languages
+  and does not indicate a particular level of skill.
 - developer experience | weight: 0.3\
   This encompasses the entire development cycle, meaning toolchain, LSPs,
   formatters, code coverage tools and more. With a modern developer experience,
@@ -35,8 +37,8 @@ The following categories are evaluated for programming languages:
   many different types of services are used, hence the need for good integration
   with them.\
   Important: The ecosystem is highly dependent on the Linux desktop, which is not
-  always favorable for all tools, for example: .NET Maui, a very popular
-  toolkit is not usable, as it does not run on the Linux desktop.
+  always favorable for all tools, for example: .NET Maui, a very popular toolkit
+  is not usable, as it does not run on the Linux desktop.
 - runtime speed | weight: 0.2\
   Runtime speed is likely only a concern for the daemon, and even in this case, it
   is unlikely to be too slow with any modern programming language.
@@ -70,7 +72,7 @@ The following categories are evaluated for UI toolkits:
 
 #pagebreak()
 #let python = (
-  familiarity: 7,
+  familiarity: 8,
   developer_experience: 7,
   ecosystem: 6,
   runtime_speed: 5,
@@ -78,7 +80,7 @@ The following categories are evaluated for UI toolkits:
   development_speed: 9,
 )
 #let typescript = (
-  familiarity: 7,
+  familiarity: 6,
   developer_experience: 9,
   ecosystem: 5,
   runtime_speed: 5,
@@ -94,7 +96,7 @@ The following categories are evaluated for UI toolkits:
   development_speed: 8,
 )
 #let cpp = (
-  familiarity: 5,
+  familiarity: 6,
   developer_experience: 3,
   ecosystem: 10,
   runtime_speed: 10,
@@ -102,8 +104,8 @@ The following categories are evaluated for UI toolkits:
   development_speed: 5,
 )
 #let rust = (
-  familiarity: 5,
-  developer_experience: 8,
+  familiarity: 6,
+  developer_experience: 10,
   ecosystem: 9,
   runtime_speed: 10,
   resource_usage: 10,
@@ -209,24 +211,14 @@ still offering all the benefits of a more modern language.
 
 #pagebreak()
 
-#let gtk = (
-  familiarity: 6, 
-  language_integration: 7, 
-  documentation: 6, 
-  features: 6
-)
+#let gtk = (familiarity: 6, language_integration: 7, documentation: 6, features: 6)
 #let iced = (
   familiarity: 3,
   language_integration: 10,
   documentation: 3,
   features: 4,
 )
-#let qt = (
-  familiarity: 0, 
-  language_integration: 6, 
-  documentation: 6, 
-  features: 7
-)
+#let qt = (familiarity: 0, language_integration: 6, documentation: 6, features: 7)
 #grid(columns: (auto), rows: (30pt), cell([UI Toolkits], bold: true))
 #pad(y: -13pt, [])
 #grid(
@@ -278,7 +270,8 @@ implementations in order to fit with our requirements.
 The last consideration is QT, it is a cross-platform toolkit that uses its own
 form of JavaScript(QML) to draw windows. QT is a well known toolkit, however, it
 is completely unknown to us, making it a suboptimal choice.\
-For QT, there is also the consideration of integration mentioned in @ExistingProjects.
+For QT, there is also the consideration of integration mentioned in
+@ExistingProjects.
 
 #text(12pt, [*Typesetting Language*])* | ReSet-Doc is written with typst.*\
 Typst is a modern typesetting system with clean and modern syntax. It offers
