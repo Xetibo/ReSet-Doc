@@ -185,7 +185,7 @@ quality of life features like sending of files. It works great in functionality,
 but the buttons are not very expressive in what they will achieve. Blueman is
 written in Python and GTK3.
 #align(center, [#figure(
-    image("../figures/bluetooth_manager.png", width: 80%),
+    image("../figures/bluetooth_manager_filled.png", width: 80%),
     caption: [Screenshot of blueman],
   )])<blueman>
 
