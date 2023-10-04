@@ -23,14 +23,14 @@ different user interfaces. Some might argue that this is the point of these
 minimal environments, as they sometimes intentionally don't offer this type of
 software by default, but there is also a distinct lack of this type of software.
 
-A typical example for a minimal environment is a window manager/compositor. In
+A typical example for a minimal environment is a window manager/compositor @compositor. In
 comparison to desktop environments, these do not offer any software other than
 window management: creating windows, removing windows, window positioning, etc.
 Any additional software needs to be installed separately, like status bars,
 editors, media viewers, or in this case settings.
 
 Some specific settings like monitor configuration were once universal with tools
-like xrandr, but with the introduction of the wayland display protocol, the
+like Xrandr, but with the introduction of the Wayland @wayland display protocol, the
 original idea of having a universal display server was abandoned, favoring
 individual implementations instead. This leads to a variety of different ways to
 configure monitors, very few of them being compatible with each other. In this
@@ -38,21 +38,24 @@ case only a plugin system to handle individual implementations could solve this
 problem.
 
 #subsection("Motivation")
-The UNIX philosophy considers one tool for each task to be the proper solution,
-ReSet would argue that this is not the case with a tool featuring user
-interfaces, here instead it would lead to unnecessary screen space being used
-for no reason.
+ReSet will make an effort to change this situation by creating a settings
+application that works across these distributions and environments. This means
+that both major and specifically smaller environments should be able to use this
+application to fill the current gap. This allows users to avoid installing one
+tool for each task, while also using one user interface with consistent design.
 
-Therefore, ReSet will make an effort to change this situation by creating a
-settings application that works across these distributions and environments.
-This means that both major and specifically smaller environments should be able
-to use this application to fill the current gap. This allows users to avoid
-installing one tool for each task, while also using one user interface with
-consistent design.
+ReSet should be able to handle audio input and output, network connectivity and
+Bluetooth connectivity as a base. For more advanced features, or specific
+features, such as monitor configurations for individual compositors, ReSet
+should have a plugin system, that allows for modular expansion of the
+application. This modularity also allows for interaction with tools such as
+status bars or the creation of applets. This expands the functionality beyond
+ReSet as a user interface, and instead allows it to be a middleman between
+compositor and shell component @shell-component.
 
 #pagebreak()
 
-#subsection("Measurements of requirements")
+#subsection("Project Requirements")
 For ReSet, 3 different categories will be used to weigh existing projects and
 potential solutions.
 
@@ -76,10 +79,10 @@ potential solutions.
     manager does not consider the minimum size of an application, as it will place
     it according to its layout rule. Applications with large minimum sizes are
     therefore preferably avoided.
-- #text(size: 11pt, [*ease of use*])\
+- #text(size: 11pt, [*Ease of use*])\
   While functionality is important, the intention is to provide an application
   that is used by preference, not necessity.
-- #text(size: 11pt, [*maintainability*])\
+- #text(size: 11pt, [*Maintainability*])\
   Applications with a plethora of functionality will get quickly large. This poses
   a particularly hard challenge for developers to keep the project maintainable.
   Too many features without a well-thought-out architecture will lead to
