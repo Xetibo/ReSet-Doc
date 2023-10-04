@@ -258,7 +258,7 @@ still offering all the benefits of a more modern language.
 )
 
 #text(12pt, [*UI Toolkit*])* | ReSet uses GTK4 as its UI toolkit.*\
-GTK (Gnome [@gnome] toolkit, formerly Gimp Toolkit) is a well established,
+GTK (Gnome [@Gnome] toolkit, formerly Gimp Toolkit) is a well established,
 LGPLv2.1+ licensed, cross-platform UI toolkit that has seen decades of usage and
 improvements. While the library itself is written in C, it does offer stable
 language bindings for a large set of languages, including Rust via #link("https://gtk-rs.org/")[gtk-rs].
