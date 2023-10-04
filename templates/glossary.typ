@@ -73,11 +73,30 @@
   )<X11>
   #glossary_entry(
     use_show: use_show_ref,
-    "compositor",
+    "Compositor",
     [
       A combination of display server(not a true server with wayland!) and window
       composition system.
     ],
   )<compositor>
+  #glossary_entry(
+    use_show: use_show_ref,
+    "Status Bar",
+    [
+      A shell component that usually offers information such as open programs, time,
+      battery and more.\
+      Can be compared to the top bar on MacOS or the task bar on Windows.
+    ],
+  )<status-bar>
+  #glossary_entry(
+    use_show: use_show_ref,
+    "Shell Component",
+    [
+      This refers to an application that integrates into the compositor, it differs to
+      windows in layering, meaning shell components can't be dragged around, and they
+      can either be drawn beneath all windows(desktop widgets) or on top of
+      windows(overlays).
+    ],
+  )<shell-component>
   #pagebreak()
 ]

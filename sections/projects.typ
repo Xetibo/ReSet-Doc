@@ -24,7 +24,7 @@ is a _binary_ which makes it fast to read for dconf, but not readable for other
 systems.
 
 _Gnome control center is not supposed to be used outside the gnome environment,
-especially using the wayland [@wayland] protocol. Hence not all functionality
+especially using the Wayland [@wayland] protocol. Hence not all functionality
 will be available on other environments._
 
 *Requirement fulfillment*:

@@ -22,16 +22,16 @@ and 10 for each category over each tool. Each category is also given a constant
 weight(0 to 1), in order to evaluate which tool will be chosen.
 
 The following categories are evaluated for programming languages:
-- familiarity | weight: 0.4\
+- *familiarity* | weight: 0.4\
   Indicates how familiar the developers are with a certain tool. More familiarity
   means an easier development process without unexpected surprises. Note that
   familiarity is the subjective relative experience compared to other languages
   and does not indicate a particular level of skill.
-- developer experience | weight: 0.3\
+- *developer* experience | weight: 0.3\
   This encompasses the entire development cycle, meaning toolchain, LSPs,
   formatters, code coverage tools and more. With a modern developer experience,
   you can guarantee functionality without prolonged setup phases.
-- ecosystem | weight: 0.7\
+- *ecosystem* | weight: 0.7\
   Ecosystem is defined as the amount and the quality of packages and libraries
   that are available to this tool. For ReSet, this can be a crucial category, as
   many different types of services are used, hence the need for good integration
@@ -39,29 +39,29 @@ The following categories are evaluated for programming languages:
   Important: The ecosystem is highly dependent on the Linux desktop, which is not
   always favorable for all tools, for example: .NET Maui, a very popular toolkit
   is not usable, as it does not run on the Linux desktop.
-- runtime speed | weight: 0.2\
+- *runtime speed* | weight: 0.2\
   Runtime speed is likely only a concern for the daemon, and even in this case, it
   is unlikely to be too slow with any modern programming language.
-- resource usage | weight: 0.5\
+- *resource usage* | weight: 0.5\
   Many computers have enough RAM by now, however, ReSet intends to work on any
   distribution, including lightweight distributions meant for older or lower end
   systems, therefore RAM usage should be a concern, especially for the daemon.
-- development speed | weight: 0.4\
+- *development speed* | weight: 0.4\
   ReSet is limited in time scope, therefore tools with decent development speed
   should be considered. Note, that this includes the time needed for debugging and
   potential problems, such as undefined behavior or dynamic type issues.
 
 The following categories are evaluated for UI toolkits:
-- familiarity | weight: 0.3\
+- *familiarity* | weight: 0.3\
 - Language Integration | weight: 0.5\
   This defines how well the chosen language will integrate with the UI toolkit, in
   other words, certain toolkits might get a zero score here, signifying
   incompatibility.
-- Documentation | weight: 0.7\
+- *Documentation* | weight: 0.7\
   Defines how well the toolkit is documented. This will be important when going
   beyond the typical "Hello World" for UI programs. A good documented toolkit can
   reduce the development time by magnitudes.
-- Features | weight: 0.3\
+- *Features* | weight: 0.3\
   ReSet does not need many features, however, ReSet does require first class
   support for the Linux desktop.
 
@@ -259,7 +259,7 @@ still offering all the benefits of a more modern language.
 
 #text(12pt, [*UI Toolkit*])* | ReSet uses GTK4 as its UI toolkit.*\
 GTK (Gnome [@gnome] toolkit, formerly Gimp Toolkit) is a well established,
-LGPLv2.1+ licensed UI toolkit under Linux that has seen decades of usage and
+LGPLv2.1+ licensed, cross-platform UI toolkit that has seen decades of usage and
 improvements. While the library itself is written in C, it does offer stable
 language bindings for a large set of languages, including Rust via #link("https://gtk-rs.org/")[gtk-rs].
 Compared to native Rust libraries, it offers a more robust set of defined
