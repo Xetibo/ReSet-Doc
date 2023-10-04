@@ -7,8 +7,8 @@ The Gnome Human Interface Guidelines @gnome_human_guidelines are likely the most
 applicable for ReSet, as they are the most prominent in the Linux sphere and are
 directly meant to be used with GTK4, a potential user interface toolkit for
 ReSet. While Reset does not intend to belong into the gnome circle, for which
-rather strict adherence to these guidelines are needed, ReSet will still use
-best practices that are employed by these guidelines.
+rather strict adherence to these guidelines is needed, ReSet will still use best
+practices that are employed by these guidelines.
 
 These best practices can also be seen in the renowned book by Steve Krug, "Don't
 Make Me Think". @krug In said work the author defined rules to follow when
@@ -55,7 +55,15 @@ Krug's rules:
 + "Get rid of half the words on each page, then get rid of half of what is left."
   - Steve Krug @krug\
   This defines unnecessary information on a page or application. Everything that
-  the user does not care about should be omitted.
+  the user does not care about should be omitted. One should note however that
+  this does not imply removal or omitting of _features_, instead only showing
+  users a certain feature when they need it. Gnome uses the same concept when
+  creating applications, keeping the overall application simple, but powerful when
+  needed.
+
+  The downside of this approach can be a too simple application, meaning the _powerful when needed_ part
+  does not always apply. Compared to KDE applications, gnome is often considered
+  to be simpler, but also less configurable, and in large part this is correct.
 
 #subsubsection("Plugin System")
 As read on NullDeref @nullderef, there are multiple ways to create a potential
@@ -66,16 +74,16 @@ plugin system for ReSet:
   is not something known to anyone involved in this project, which is why it is
   not covered further.
 - Scripting Languages\
-  Languages like Lua have had quite a big success integrating in multiple fields
-  such as game programming and even the Neovim editor. In both cases it expands
-  the potential functionality by giving developers a fully functional programming
-  language while still keeping the original system with a more performant system
-  programming language.
+  Languages like Lua have succeeded integrating in multiple fields such as game
+  programming and even the Neovim editor. In both cases it expands the potential
+  functionality by giving developers a fully functional programming language while
+  still keeping the original system with a more performant system programming
+  language.
 - IPC\
   With inter process communication, one will have a lot of overhead when talking
   about a plugin system, however, it is a lot easier to write. For this project,
-  IPC will be the fallback if the other systems are not suitable or turn out to be
-  too complex.
+  IPC can be considered as a potential solution, should the other alternatives not
+  be viable.
 - Dynamic Loading\
   This refers to dynamic libraries that are loaded at runtime. These dynamic
   libraries are the most performant way to create a plugin system without outright

@@ -117,7 +117,7 @@ styling of said toolkit that might not integrate well._
     font_size: 11pt,
     height: 60pt,
   ),
-  cell("(\u{2713})", bold: true, width: 30pt, height: 80pt),
+  cell("\u{2713}", bold: true, width: 30pt, height: 80pt),
   cell("Maintainability", bold: true, width: 90pt, height: 80pt),
   cell(
     [The modular design of KDE systemsettings allows for great maintainability on the
