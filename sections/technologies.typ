@@ -47,7 +47,7 @@ The following categories are evaluated for programming languages:
   distribution, including lightweight distributions meant for older or lower end
   systems, therefore RAM usage should be a concern, especially for the daemon.
 - development speed | weight: 0.4\
-  ReSet is limited in time scope, therefore tools with decent progress times
+  ReSet is limited in time scope, therefore tools with decent development speed
   should be considered. Note, that this includes the time needed for debugging and
   potential problems, such as undefined behavior or dynamic type issues.
 
@@ -60,15 +60,13 @@ The following categories are evaluated for UI toolkits:
 - Documentation | weight: 0.7\
   Defines how well the toolkit is documented. This will be important when going
   beyond the typical "Hello World" for UI programs. A good documented toolkit can
-  reduce the development time by a lot.
+  reduce the development time by magnitudes.
 - Features | weight: 0.3\
-  ReSet does not need many features, however, ReSet does require proper support
-  for the platform in question.
+  ReSet does not need many features, however, ReSet does require first class
+  support for the Linux desktop.
 
-//  familiarity: 0.3,
-//  language_integration: 0.5,
-//  documentation: 0.7,
-//  features: 0.7,
+Special Requirement: All tools used in this project *must be published under an
+open-source license*.
 
 #pagebreak()
 #let python = (
@@ -181,31 +179,33 @@ The following categories are evaluated for UI toolkits:
 
 #text(12pt, [*Programming Language*])* | ReSet is written in Rust.*\
 Rust was chosen for its speed, low memory usage, memory safe design and robust
-ecosystem.\
-While Rust is more complex to write than languages such as JavaScript, it comes
-with a significantly reduced memory cost and with the addition of a proper type
-system.\
+ecosystem. While Rust is more complex to write than languages such as
+JavaScript, it comes with a significantly reduced memory cost and with the
+addition of a proper type system.
+
 Compared to other system programming languages, Rust comes with a modern
 ecosystem, providing a formatter, a compiler, an LSP[@LSP] server, a code
-checking tool and a package manager in one package(rustup).\
-This allows for a more streamlined developer experience and standardizes
-features, which in return makes more complex tasks like cross-compilation a lot
-easier.\
-For example, Rust allows one to simply add a so-called "target triple"[@triple],
-which is a specific platform.\
-Using this triple, it is possible to just build this with "```sh cargo build --target x86_64-linux-unknown-gnu```".\
-In other words, it offers modern features while keeping the speed of C or C++.\
+checking tool and a package manager in one(rustup). This allows for a more
+streamlined developer experience and standardizes features, which in return
+makes more complex tasks like cross-compilation a lot easier. For example, Rust
+allows one to simply add a so-called "target triple"[@triple], which is a
+specific platform. Using this triple, it is possible to just build it with "```sh cargo build --target x86_64-linux-unknown-gnu```".
+Similarly, adding packages are also just one command "```cargo add gtk```",
+which is comparable to npm while still offering C/C++ runtime speed.
 
-Another consideration for this language is the wide support for editors.\
-With the provided language server, it is possible to use Rust in pretty much any
-extendable editor.\
-Alongside it, even big editors like the JetBrains tools now offer a Rust editor
-(Rust Rover).
+Another consideration for this language is the technology stack. For many other
+languages, only a specific set of tools allow for a full IDE workflow, including
+debugger, LSP and more. With Rust, this is not the case, as it either provides
+said tool, or uses a well established open source tool for each task. This
+avoids cases like the official and proprietary C\# debugger only working with
+Microsoft tools, or the C++ problem of having multiple compilers with different
+feature sets. Hence, both languages described will have a different experience
+on different platforms and editors/IDEs.
 
 UI Considerations for Rust are also a big factor, on Linux there are generally 2
 big user interface toolkits, GTK and QT. QT is generally used with C++, while
 GTK is often used with C or a special GTK developed language called "Vala".
-However, for GTK the Rust bindings are above average in quality, compared to
+However, for GTK the Rust bindings are above average in quality compared to
 other language bindings, meaning it provides a close to native experience, while
 still offering all the benefits of a more modern language.
 
@@ -258,10 +258,10 @@ still offering all the benefits of a more modern language.
 )
 
 #text(12pt, [*UI Toolkit*])* | ReSet uses GTK4 as its UI toolkit.*\
-GTK (Gnome [@gnome] toolkit, or formerly Gimp Toolkit) is a well established UI
-toolkit under Linux that has seen decades of usage and improvements. While the
-library itself is written in C, it does offer stable language bindings for a
-large set of languages, including Rust via #link("https://gtk-rs.org/")[gtk-rs].
+GTK (Gnome [@gnome] toolkit, formerly Gimp Toolkit) is a well established,
+LGPLv2.1+ licensed UI toolkit under Linux that has seen decades of usage and
+improvements. While the library itself is written in C, it does offer stable
+language bindings for a large set of languages, including Rust via #link("https://gtk-rs.org/")[gtk-rs].
 Compared to native Rust libraries, it offers a more robust set of defined
 widgets, themes and tools. Specifically the toolkit "iced" was considered,
 however, it currently lacks documentation and needs several library
