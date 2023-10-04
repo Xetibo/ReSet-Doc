@@ -3,27 +3,27 @@
 
 #section("Existing Projects")
 #subsection("Gnome Control Settings")
-The #link("https://github.com/GNOME/gnome-control-center")[Gnome control center] [@gnome]
+The #link("https://github.com/Gnome/Gnome-control-center")[Gnome control center] [@Gnome]
 is as the name implies the central settings application for the Gnome desktop
 environment, it offers plenty of configuration, from networks to Bluetooth, to
 online accounts, default application and a lot more. The application is written
-in C with the #link("https://www.gtk.org/")[GTK] toolkit (GTK4) and follows the #link("https://developer.gnome.org/hig/")[Gnome Human Interface Guidelines].
+in C with the #link("https://www.gtk.org/")[GTK] toolkit (GTK4) and follows the #link("https://developer.Gnome.org/hig/")[Gnome Human Interface Guidelines].
 #align(center, [#figure(
-    image("../figures/gnome_control_center.png", width: 80%),
+    image("../figures/Gnome_control_center.png", width: 80%),
     caption: [Screenshot of the Gnome control center],
-  )])<gnome_control_center>
+  )])<Gnome_control_center>
 The code structure of the control center is very modular, with each tab having
 its own folder and files. Although it is hard to immediately understand each use
 case of each file. Certain functionality is hard-coded with libraries, like
 networks, which uses the NetworkManager library, while others are implemented
 via dbus, like monitors.
 
-Settings are stored using #link("https://gitlab.gnome.org/GNOME/dconf")[dconf] which
+Settings are stored using #link("https://gitlab.Gnome.org/Gnome/dconf")[dconf] which
 is a key/value system, that is optimized for reading. The form of a dconf file
 is a _binary_ which makes it fast to read for dconf, but not readable for other
 systems.
 
-_Gnome control center is not supposed to be used outside the gnome environment,
+_Gnome control center is not supposed to be used outside the Gnome environment,
 especially using the Wayland [@wayland] protocol. Hence not all functionality
 will be available on other environments._
 
@@ -35,8 +35,8 @@ will be available on other environments._
   cell("X", bold: true, width: 30pt),
   cell("Interoperability", bold: true, width: 90pt),
   cell(
-    [Not all base features of gnome control center work on other environments, and
-      gnome exclusive features can't be hidden.],
+    [Not all base features of Gnome control center work on other environments, and
+      Gnome exclusive features can't be hidden.],
     cell_align: left,
     bold: false,
     font_size: 11pt,
@@ -44,7 +44,7 @@ will be available on other environments._
   cell("\u{2713}", bold: true, width: 30pt),
   cell("Ease of Use", bold: true, width: 90pt),
   cell(
-    [The user interface of the gnome control center follows best practices. It has
+    [The user interface of the Gnome control center follows best practices. It has
       consistent design, naming makes sense and accessibility is taken into account.],
     cell_align: left,
     bold: false,
@@ -53,7 +53,7 @@ will be available on other environments._
   cell("X", bold: true, width: 30pt),
   cell("Maintainability", bold: true, width: 90pt),
   cell(
-    [All features of the gnome control center are within one repository, split across
+    [All features of the Gnome control center are within one repository, split across
       hundreds of files. This reliance on all these files in one repository creates a
       big maintainability concern.],
     cell_align: left,
@@ -229,7 +229,7 @@ Both network manager and nmtui are written in C.\
 There is a specific lack of standalone user interface applications for network
 managers.\
 Technically, there exists a #link(
-  "https://gitlab.gnome.org/GNOME/network-manager-applet",
+  "https://gitlab.Gnome.org/Gnome/network-manager-applet",
 )[network manager applet], however, this is to be included in status bars and
 does not work on its own.
 #align(center, [#figure(

@@ -58,7 +58,7 @@
   )<wayland>
   #glossary_entry(use_show: use_show_ref, "Gnome", [
     A Linux desktop environment.
-  ])<gnome>
+  ])<Gnome>
   #glossary_entry(use_show: use_show_ref, "KDesktop Environment (KDE)", [
     A Linux desktop environment.\
     The K has no particular meaning.

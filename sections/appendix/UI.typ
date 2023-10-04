@@ -30,8 +30,8 @@ and VPN settings are also displayed next to it in a grid layout. But if the user
 setting, only the WiFi setting is visible because it is clear that the other settings are not 
 relevant. Oftentimes, there's a lot of wasted space, especially if the window is in full screen. 
 #align(center, [#figure(
-    image("../../figures/gnomeSettingsFullScreen.png", width: 90%),
-    caption: [Full-screen #link("https://github.com/GNOME/gnome-control-center")[Gnome control center] [@gnome] 
+    image("../../figures/GnomeSettingsFullScreen.png", width: 90%),
+    caption: [Full-screen #link("https://github.com/Gnome/Gnome-control-center")[Gnome control center] [@Gnome] 
     settings window on ultra-wide monitor],
   )<uimock>])
 
