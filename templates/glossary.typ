@@ -63,5 +63,21 @@
     A Linux desktop environment.\
     The K has no particular meaning.
   ])<kde>
+  #glossary_entry(
+    use_show: use_show_ref,
+    "X11",
+    [
+      A network transparent windowing system used by a variety of systems. It is
+      usually used with the reference implementation Xorg.
+    ],
+  )<X11>
+  #glossary_entry(
+    use_show: use_show_ref,
+    "compositor",
+    [
+      A combination of display server(not a true server with wayland!) and window
+      composition system.
+    ],
+  )<compositor>
   #pagebreak()
 ]

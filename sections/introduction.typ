@@ -29,6 +29,14 @@ window management: creating windows, removing windows, window positioning, etc.
 Any additional software needs to be installed separately, like status bars,
 editors, media viewers, or in this case settings.
 
+Some specific settings like monitor configuration were once universal with tools
+like xrandr, but with the introduction of the wayland display protocol, the
+original idea of having a universal display server was abandoned, favoring
+individual implementations instead. This leads to a variety of different ways to
+configure monitors, very few of them being compatible with each other. In this
+case only a plugin system to handle individual implementations could solve this
+problem.
+
 #subsection("Motivation")
 The UNIX philosophy considers one tool for each task to be the proper solution,
 ReSet would argue that this is not the case with a tool featuring user
@@ -41,6 +49,8 @@ This means that both major and specifically smaller environments should be able
 to use this application to fill the current gap. This allows users to avoid
 installing one tool for each task, while also using one user interface with
 consistent design.
+
+#pagebreak()
 
 #subsection("Measurements of requirements")
 For ReSet, 3 different categories will be used to weigh existing projects and

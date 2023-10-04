@@ -46,12 +46,29 @@ Krug's rules:
 
 + "It doesn’t matter how many times I have to click, as long as each click is a
   mindless, unambiguous choice." - Steve Krug @krug\
-  Each navigation should have an obvious destination, in other each time the user
-  changes their current position, it should be clear to the user where they are
-  right now, and where they can go from here.\
-  Both gnome human interface guidelines and Steve Kruger advise developers to use
-  as few required clicks to navigate to a certain page as possible, however,
-  Kruger also specifies that clarity is more important.
+  Each navigation should have a consistent path and a clearly defined destination,
+  it should be clear to the user where they are right now, and where they can go
+  from here.
+
+  Both the gnome human interface guidelines and Steve Kruger advise developers to
+  use as few required clicks to navigate to a certain page as possible. This
+  avoids tedious navigation where users could either get lost in navigation or
+  simply get annoyed at the endless path.
+  #figure(
+    align(center, [#image("../figures/kde-hamburger.png", width: 60%)]),
+    caption: [An extreme example of KDE hamburger menus],
+  )<kde-hamburger>
+  There is a long-standing debate over menu layers like in @kde-hamburger, the KDE
+  side justifies these menus with increased functionality, while the gnome side
+  explicitly discourages these menus citing reduced accessibility. In this case
+  the question becomes, where can I see my bookmarks? Well, it's in
+  more->go->bookmarks, this is on layer4 of a menu without search functionality
+  and with very ambiguous navigation.
+
+  In other words, it is clear that shorter navigation is usually the best way to
+  achieve "mindless navigation", however it is, as Krug mentioned, not the only
+  factor.
+
 + "Get rid of half the words on each page, then get rid of half of what is left."
   - Steve Krug @krug\
   This defines unnecessary information on a page or application. Everything that
@@ -64,6 +81,16 @@ Krug's rules:
   The downside of this approach can be a too simple application, meaning the _powerful when needed_ part
   does not always apply. Compared to KDE applications, gnome is often considered
   to be simpler, but also less configurable, and in large part this is correct.
+  #grid(columns: (1fr, 1.1fr), rows: (auto), gutter: 10pt, figure(
+    align(center, [#image("../figures/new-gnome.png", width: 60%)]),
+    caption: [Context menu in Nautilus(the gnome file manager)],
+  ), figure(
+    align(center, [#image("../figures/new-kde.png", width: 100%)]),
+    caption: [Context menu in Dolphin(the kde file manager)],
+  ))
+  Here the KDE application is clearly more powerful, offering a variety of files
+  to create, including links and shortcuts, while the gnome experience only offers
+  a new folder, anything else needs to be done with a terminal.
 
 #subsubsection("Plugin System")
 As read on NullDeref @nullderef, there are multiple ways to create a potential
@@ -101,6 +128,7 @@ use anyrun_plugin::*;
 
 #[init]
 fn init(config_dir: RString) {
+  // ...
 }
 
 #[info]

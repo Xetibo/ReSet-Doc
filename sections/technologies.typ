@@ -47,7 +47,7 @@ The following categories are evaluated for programming languages:
   distribution, including lightweight distributions meant for older or lower end
   systems, therefore RAM usage should be a concern, especially for the daemon.
 - development speed | weight: 0.4\
-  ReSet is limited in time scope, therefore tools with decent progress times
+  ReSet is limited in time scope, therefore tools with decent development speed
   should be considered. Note, that this includes the time needed for debugging and
   potential problems, such as undefined behavior or dynamic type issues.
 
@@ -60,15 +60,13 @@ The following categories are evaluated for UI toolkits:
 - Documentation | weight: 0.7\
   Defines how well the toolkit is documented. This will be important when going
   beyond the typical "Hello World" for UI programs. A good documented toolkit can
-  reduce the development time by a lot.
+  reduce the development time by magnitudes.
 - Features | weight: 0.3\
-  ReSet does not need many features, however, ReSet does require proper support
-  for the platform in question.
+  ReSet does not need many features, however, ReSet does require first class
+  support for the Linux desktop.
 
-//  familiarity: 0.3,
-//  language_integration: 0.5,
-//  documentation: 0.7,
-//  features: 0.7,
+Special Requirement: All tools used in this project *must be published under an
+open-source license*.
 
 #pagebreak()
 #let python = (
@@ -260,10 +258,10 @@ still offering all the benefits of a more modern language.
 )
 
 #text(12pt, [*UI Toolkit*])* | ReSet uses GTK4 as its UI toolkit.*\
-GTK (Gnome [@gnome] toolkit, or formerly Gimp Toolkit) is a well established UI
-toolkit under Linux that has seen decades of usage and improvements. While the
-library itself is written in C, it does offer stable language bindings for a
-large set of languages, including Rust via #link("https://gtk-rs.org/")[gtk-rs].
+GTK (Gnome [@gnome] toolkit, formerly Gimp Toolkit) is a well established,
+LGPLv2.1+ licensed UI toolkit under Linux that has seen decades of usage and
+improvements. While the library itself is written in C, it does offer stable
+language bindings for a large set of languages, including Rust via #link("https://gtk-rs.org/")[gtk-rs].
 Compared to native Rust libraries, it offers a more robust set of defined
 widgets, themes and tools. Specifically the toolkit "iced" was considered,
 however, it currently lacks documentation and needs several library
