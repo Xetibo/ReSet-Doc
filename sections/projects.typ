@@ -3,13 +3,13 @@
 
 #section("Existing Projects")
 #subsection("Gnome Control Settings")
-The #link("https://github.com/Gnome/Gnome-control-center")[Gnome control center] [@Gnome]
+The #link("https://github.com/gnome/gnome-control-center")[Gnome control center] [@Gnome]
 is as the name implies the central settings application for the Gnome desktop
 environment, it offers plenty of configuration, from networks to Bluetooth, to
 online accounts, default application and a lot more. The application is written
 in C with the #link("https://www.gtk.org/")[GTK] toolkit (GTK4) and follows the #link("https://developer.Gnome.org/hig/")[Gnome Human Interface Guidelines].
 #align(center, [#figure(
-    image("../figures/Gnome_control_center.png", width: 80%),
+    image("../figures/gnome_control_center.png", width: 80%),
     caption: [Screenshot of the Gnome control center],
   )])<Gnome_control_center>
 The code structure of the control center is very modular, with each tab having
@@ -18,7 +18,7 @@ case of each file. Certain functionality is hard-coded with libraries, like
 networks, which uses the NetworkManager library, while others are implemented
 via dbus, like monitors.
 
-Settings are stored using #link("https://gitlab.Gnome.org/Gnome/dconf")[dconf] which
+Settings are stored using #link("https://gitlab.gnome.org/gnome/dconf")[dconf] which
 is a key/value system, that is optimized for reading. The form of a dconf file
 is a _binary_ which makes it fast to read for dconf, but not readable for other
 systems.
@@ -229,7 +229,7 @@ Both network manager and nmtui are written in C.\
 There is a specific lack of standalone user interface applications for network
 managers.\
 Technically, there exists a #link(
-  "https://gitlab.Gnome.org/Gnome/network-manager-applet",
+  "https://gitlab.gnome.org/gnome/network-manager-applet",
 )[network manager applet], however, this is to be included in status bars and
 does not work on its own.
 #align(center, [#figure(

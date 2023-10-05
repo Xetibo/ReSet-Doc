@@ -3,7 +3,7 @@
 
 #subsection("Insights from literature")
 #subsubsection("User Interfaces")
-The Gnome Human Interface Guidelines @Gnome_human_guidelines are likely the most
+The Gnome Human Interface Guidelines @gnome_human_guidelines are likely the most
 applicable for ReSet, as they are the most prominent in the Linux sphere and are
 directly meant to be used with GTK4, a potential user interface toolkit for
 ReSet. While Reset does not intend to belong into the Gnome circle, for which
@@ -82,7 +82,7 @@ Krug's rules:
   does not always apply. Compared to KDE applications, Gnome is often considered
   to be simpler, but also less configurable, and in large part this is correct.
   #grid(columns: (1fr, 1.1fr), rows: (auto), gutter: 10pt, figure(
-    align(center, [#image("../figures/new-Gnome.png", width: 60%)]),
+    align(center, [#image("../figures/new-gnome.png", width: 60%)]),
     caption: [Context menu in Nautilus(the Gnome file manager)],
   ), figure(
     align(center, [#image("../figures/new-kde.png", width: 100%)]),
