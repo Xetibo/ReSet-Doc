@@ -23,7 +23,7 @@ list to a handful of entries that may contain the setting the user is looking fo
   caption: "JetBrains Rider setting search bar"
 )
 
-On the right side, we display the settings that can be configured. It is dynamically adding new 
+The right side displays the settings that can be configured. It is dynamically adding new 
 settings to the screen if there's enough space to facilitate it. For example, if the user clicks on 
 a category like Connectivity, it will show the WiFi settings and if there is enough space, Bluetooth 
 and VPN settings are also displayed next to it in a grid layout. But if the user clicks on the WiFi 
@@ -53,13 +53,60 @@ The following figures are the first UI mocks that follow all the ideas mentioned
     image("../../figures/monitormock.png", width: 90%),
     caption: [UI mock of monitor setting],
   )<uimock>])
+#align(center, [#figure(
+  image("../../figures/widemock.png", width: 90%),
+  caption: [UI mock behaviour on wide monitor screen],
+)<uimock>])
 #pagebreak()
 
 #subsubsection("UI Tests")
-#test("globi", "globi can connect to wifi", [
-  - works
-  - easy to see all connections
+#test("Search bar", "User can filter settings", [
+  - some positives
 ], [
-  - no advanced configuration
-  - can't be used with keyboard
+  - some negatives
+], "some notes")
+#test("Breadcrumb bar", "User can move settings by clicking on breadcrumb", [
+  - some positives
+], [
+  - some negatives
+], "some notes")
+#test("Dynamic window", "Settings pages is filled with more settings if there's enough space and is on a setting category", [
+  - some positives
+], [
+  - some negatives
+], "some notes")
+#test("Closing window", "User can close setting by clicking the X on the top right corner", [
+  - some positives
+], [
+  - some negatives
+], "some notes")
+#test("Error handling", "Errors are shown to the user", [
+  - some positives
+], [
+  - some negatives
+], "some notes")
+#test("Theme", "Multiple themes available with dark theme as default theme", [
+  - some positives
+], [
+  - some negatives
+], "some notes")
+#test("Readability", "Font should be readable in different monitor resolutions and sizes", [
+  - some positives
+], [
+  - some negatives
+], "some notes")
+#test("Navigation", "All buttons lead to its intended location", [
+  - some positives
+], [
+  - some negatives
+], "some notes")
+#test("Accessibility", "Screen reader compatible", [
+  - some positives
+], [
+  - some negatives
+], "some notes")
+#test("Localisation", "Full support for english and german", [
+  - some positives
+], [
+  - some negatives
 ], "some notes")
