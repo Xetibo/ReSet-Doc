@@ -13,11 +13,11 @@ pragprog:
   title: The Pragmatic Programmer
   author: ["David Thomas", "Andrew Hunt"]
   edition: 20th Anniversary Edition
-Gnome_human_guidelines:
+gnome_human_guidelines:
   type: webpage
   title: Gnome Human Interface Guidelines
   author: Gnome
-  url: https://developer.Gnome.org/hig/
+  url: https://developer.gnome.org/hig/
 krug:
   type: book
   title: Don't Make Me Think (Revisited)
