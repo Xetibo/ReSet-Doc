@@ -31,7 +31,7 @@ setting, only the WiFi setting is visible because it is clear that the other set
 relevant. Oftentimes, there's a lot of wasted space, especially if the window is in full screen. 
 #align(center, [#figure(
     image("../../figures/gnomeSettingsFullScreen.png", width: 90%),
-    caption: [Full-screen #link("https://github.com/GNOME/gnome-control-center")[Gnome control center] [@gnome] 
+    caption: [Full-screen #link("https://github.com/gnome/gnome-control-center")[Gnome control center] [@Gnome] 
     settings window on ultra-wide monitor],
   )<uimock>])
 

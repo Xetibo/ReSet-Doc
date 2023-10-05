@@ -75,7 +75,6 @@
   set align(left)
   doc
   set page(footer: none)
-  set align(center)
   subsection("Glossary")
   reset_glossary(use_show_ref: true)
   subsection(num: "1.1.1", use_line: false, "Bibliography")
@@ -83,5 +82,4 @@
   pagebreak()
   subsection(num: "1.1.1", use_line: false, "List of Figures")
   outline(title: none, target: figure)
-  set align(left)
 }
