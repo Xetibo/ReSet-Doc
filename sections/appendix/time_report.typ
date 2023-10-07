@@ -13,7 +13,8 @@ this sprint has been used to write the documentation.
   )])
 
 #subsubsection("Sprint 2: Continuation Initial Project Planning")
-In this sprint, we continued working on our documentation. We improved on the UI section and did some research on various topics.
+In this sprint, we continued working on our documentation. We improved on the UI
+section and did some research on various topics.
 #align(center, [#figure(
     image("../../figures/timeReports/timeReport_02.png", width: 100%),
     caption: [Time distribution of Sprint 2],
