@@ -22,6 +22,7 @@ jobs:
     - run: mkdir output
     - run: sudo apt install plantuml -y
     - run: plantuml files/domain_model.txt -tsvg 
+    - run: plantuml files/architecture.txt -tsvg 
     - run: nix run github:typst/typst -- compile ReSet.typ output/ReSet.pdf
     - uses: actions/upload-pages-artifact@v1
       with: { path: 'output' }

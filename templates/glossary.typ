@@ -98,5 +98,15 @@
       windows(overlays).
     ],
   )<shell-component>
+  #glossary_entry(
+    use_show: use_show_ref,
+    "DTO Data Transfer Object",
+    [
+      This represents data that can be sent over inter process communication pipelines
+      such as web requests, dbus, or sockets. Data in this state can only be
+      represented as text(usually json, toml, etc.), this means that the endpoint needs to recreate a
+      datastructure for a programming language.
+    ],
+  )<dto>
   #pagebreak()
 ]

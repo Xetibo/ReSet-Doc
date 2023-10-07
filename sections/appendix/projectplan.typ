@@ -8,8 +8,13 @@ _Due to the small team size, no scrum master or product owner is chosen, the wor
 of these positions is done in collaboration._\
 
 #subsection("Time")
-Because we do not follow the Waterfall methodology, time management further than
-around 2 weeks is not very accurate and may change over time. We plan to start working on the program in week 5. Our minimal working UI milestone is in week 7, so we can start doing some UI Reviews and make corrections early enough. By week 12 we should have finished our product and from there, it's just finishing the documentation.
+As an agile methodology is used, long term time management is only a broad
+guidance and does not necessarily overlap with reality. In other words, with a 2
+week sprint, only 2 weeks are considered well planned out. By week 4, work on
+the backend implementation should be started. The minimal working UI milestone
+is in week 7, so UI Reviews can be assessed and corrections can be applied
+early. By week 12 the minimal viable product should be in production state, in
+order to leave time for reflection and documentation.
 
 #align(center, [#figure(
     image("../../figures/ganntTimePlanning.png", width: 55%),
