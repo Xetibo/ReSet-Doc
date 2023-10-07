@@ -1,5 +1,5 @@
-@startuml
 !theme plain
+@startuml
 allowmixing
 object PersistentData
 object PluginData
@@ -22,9 +22,9 @@ NetworkData --|> DTO
 BluetoothData --|> DTO
 AudioData --|> DTO
 PersistentData "*"--"1" ReSetDaemon
-DTO "*"--"1" ThirdPartyApplication : Deserialize 
+DTO "*"--"\t\t1" ThirdPartyApplication : Deserialize 
 DTO "*"--"1" ReSetDaemon : Serialize
-DTO "*"--"1" ReSet : Deserialize 
+DTO "\t\t*"--"1" ReSet : Deserialize 
 PersistentData --> DTO : influences
 PersistentData --o PluginData
 PersistentData --o AudioData 
