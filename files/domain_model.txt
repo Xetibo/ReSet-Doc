@@ -22,9 +22,9 @@ NetworkData --|> DTO
 BluetoothData --|> DTO
 AudioData --|> DTO
 PersistentData "*"--"1" ReSetDaemon
-DTO "*"--"\t\t1" ThirdPartyApplication : Deserialize 
+DTO "*"--"1" ThirdPartyApplication : Deserialize 
 DTO "*"--"1" ReSetDaemon : Serialize
-DTO "\t\t*"--"1" ReSet : Deserialize 
+DTO "*"--"1" ReSet : Deserialize 
 PersistentData --> DTO : influences
 PersistentData --o PluginData
 PersistentData --o AudioData 
