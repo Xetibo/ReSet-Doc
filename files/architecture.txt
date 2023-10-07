@@ -1,5 +1,5 @@
-@startuml
 !theme plain
+@startuml
 rectangle ReSetDaemon
 rectangle MonitorPlugin 
 rectangle KeyboardPlugin 
