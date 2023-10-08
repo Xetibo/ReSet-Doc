@@ -1,5 +1,5 @@
-!theme plain
 @startuml
+!theme plain
 allowmixing
 object PersistentData
 object PluginData
