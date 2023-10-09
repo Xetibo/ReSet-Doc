@@ -18,3 +18,10 @@ In this sprint, we continued working on our documentation. We improved on the UI
     image("../../figures/timeReports/timeReport_02.png", width: 100%),
     caption: [Time distribution of Sprint 2],
   )])
+
+#subsubsection("Sprint 3: Prototyping and Research")
+We have mostly finished all tasks of our project documentation and are now focusing more on having a prototype.
+#align(center, [#figure(
+    image("../../figures/timeReports/timeReport_03.png", width: 100%),
+    caption: [Time distribution of Sprint 3],
+  )])
