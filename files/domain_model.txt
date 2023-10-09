@@ -1,26 +1,33 @@
 @startuml
+!theme plain
+allowmixing
+object PersistentData
+object PluginData
+PluginData : monitors
+object NetworkData
+NetworkData : SSIDs
+NetworkData : strenghts
+object BluetoothData
+BluetoothData : devices
+object AudioData
+AudioData : sinks
+AudioData : sources
+object "DataTransferObject" as DTO
 rectangle ReSetDaemon
-rectangle MonitorPlugin 
-rectangle KeyboardPlugin 
-rectangle MousePlugin 
 rectangle ReSet
-rectangle ThirdPartyApplet
-rectangle PipeWire
-rectangle NetworkManager
-rectangle bluez
-storage API
-storage PluginSystem
-storage ConfigurationFile
+rectangle ThirdPartyApplication
 
-ReSet <--> API                     : IPC
-ThirdPartyApplet <--> API          : IPC
-API ..> ReSetDaemon
-ReSetDaemon <.. PluginSystem
-PluginSystem <.. MonitorPlugin
-PluginSystem <.. KeyboardPlugin
-PluginSystem <.. MousePlugin
-ReSetDaemon <--> NetworkManager    : IPC 
-ReSetDaemon <--> PipeWire          : IPC 
-ReSetDaemon <--> bluez             : IPC
-ReSetDaemon --> ConfigurationFile : load/save
+PluginData --|> DTO
+NetworkData --|> DTO
+BluetoothData --|> DTO
+AudioData --|> DTO
+PersistentData "*"--"1" ReSetDaemon
+DTO "*"--"\t\t1" ThirdPartyApplication : Deserialize 
+DTO "*"--"1" ReSetDaemon : Serialize
+DTO "\t\t*"--"1" ReSet : Deserialize 
+PersistentData --> DTO : influences
+PersistentData --o PluginData
+PersistentData --o AudioData 
+PersistentData --o NetworkData
+PersistentData --o BluetoothData 
 @enduml

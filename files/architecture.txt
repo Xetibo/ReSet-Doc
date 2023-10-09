@@ -1,0 +1,41 @@
+@startuml
+!theme plain
+rectangle ReSetDaemon
+rectangle MonitorPlugin 
+rectangle KeyboardPlugin 
+rectangle MousePlugin 
+rectangle ReSet
+rectangle ThirdPartyApplet
+rectangle PipeWire
+rectangle NetworkManager
+rectangle bluez
+rectangle Gnome
+rectangle KDE
+rectangle Hyprland
+storage API
+storage PluginSystem
+storage ConfigurationFile
+
+ReSet <--> API                     : IPC
+ThirdPartyApplet <--> API          : IPC
+API --* ReSetDaemon
+ReSetDaemon *-- PluginSystem
+ReSet *-- PluginSystem
+PluginSystem o-- MonitorPlugin
+PluginSystem o-- KeyboardPlugin
+PluginSystem o-- MousePlugin
+ReSetDaemon <--> NetworkManager    : IPC 
+ReSetDaemon <--> PipeWire          : IPC 
+ReSetDaemon <--> bluez             : IPC
+ReSetDaemon --> ConfigurationFile : load/save
+MonitorPlugin <--> Gnome
+KeyboardPlugin <--> Gnome
+MousePlugin <--> Gnome
+MonitorPlugin <--> KDE
+KeyboardPlugin <--> KDE
+MousePlugin <--> KDE
+MonitorPlugin <--> Hyprland
+KeyboardPlugin <--> Hyprland
+MousePlugin <--> Hyprland
+
+@enduml
