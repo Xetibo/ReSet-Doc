@@ -1,4 +1,4 @@
-#import "../templates/utils.typ": *
+#import "../../templates/utils.typ": *
 #lsp_placate()
 
 #let language_weights = (
@@ -271,7 +271,7 @@ The last consideration is QT, it is a cross-platform toolkit that uses its own
 form of JavaScript(QML) to draw windows. QT is a well known toolkit, however, it
 is completely unknown to us, making it a suboptimal choice.\
 For QT, there is also the consideration of integration mentioned in
-@ExistingProjects.
+@PreviousWork.
 
 #text(12pt, [*Typesetting Language*])* | ReSet-Doc is written with typst.*\
 Typst is a modern typesetting system with clean and modern syntax. It offers

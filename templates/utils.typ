@@ -46,11 +46,11 @@
 #let custom_heading(num, use_line, level, name: "") = {
   if num != "" and type(name) == type("string") {
     align(
-      center,
+      left,
       [#heading(numbering: num, level: level, name)#label(str(name.replace(" ", "")))],
     )
   } else {
-    align(center, [#heading(numbering: num, level: level, name)])
+    align(left, [#heading(numbering: num, level: level, name)])
   }
   if use_line {
     line(length: 100%)
