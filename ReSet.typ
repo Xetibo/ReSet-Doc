@@ -28,9 +28,7 @@
 #pagebreak()
 #include "sections/literature.typ"
 #pagebreak()
-#include "sections/technologies.typ"
-#pagebreak()
-#include "sections/results.typ"
+#include "sections/implementation.typ"
 #pagebreak()
 #include "sections/conclusion.typ"
 #pagebreak()
@@ -41,11 +39,7 @@
 #pagebreak()
 #include "sections/appendix/risks.typ"
 #pagebreak()
-#include "sections/appendix/domain_model.typ"
-#pagebreak()
-#include "sections/appendix/architecture.typ"
-#pagebreak()
-#include "sections/appendix/UI.typ"
+#include "sections/appendix/ui_tests.typ"
 #pagebreak()
 #include "sections/appendix/documentation.typ"
 #pagebreak()

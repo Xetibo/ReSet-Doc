@@ -1,7 +1,56 @@
 #import "../templates/utils.typ": *
 #lsp_placate()
 
-#section("Existing Projects")
+#section("Previous Work")
+
+#subsection("Requirements")
+For ReSet, 3 different categories will be used to weigh existing projects and
+potential solutions.
+
+- #text(size: 11pt, [*Interoperability*])\
+  This is the most important aspect, as it was the main driving factor for this
+  work. Interoperability for ReSet is defined as the ease of use of a particular
+  project in different environments. Important to note, is that multiple factors
+  are considered:
+  - *amount of working features*
+  - *amount of non-working features*\
+    This specifically refers to residue entries that would work on the expected
+    environment, but not on other environments.
+  - *interoperability of toolkit*\
+    Depending on the toolkit, it might behave differently with specific modules
+    missing from other environments, this would once again increase the amount of
+    additional work is needed, in order to get the expected interface.
+  - *behavior on different environments*\
+    Depending on the environment, applications have different ways of displaying
+    themselves with different attributes like a minimum size. These constraints
+    might not work well with different types of window management. A tiling window
+    manager does not consider the minimum size of an application, as it will place
+    it according to its layout rule. Applications with large minimum sizes are
+    therefore preferably avoided.
+- #text(size: 11pt, [*Ease of use*])\
+  While functionality is important, the intention is to provide an application
+  that is used by preference, not necessity.
+- #text(size: 11pt, [*Maintainability*])\
+  Applications with a plethora of functionality will get large quickly. This poses
+  a particularly hard challenge for developers to keep the project maintainable.
+  Too many features without a well-thought-out architecture will lead to
+  potentially faulty code.
+
+// no universal app
+//#subsection("Solution")
+//ReSet will be a set of 2 applications featuring one user interface application
+//that will have common settings available for the user.\
+//The second part of ReSet will be a daemon, which will be used to interact with
+//necessary services, such as audio servers, configuration files and more.\
+//This configuration also allows us to deliver an API, with which other
+//applications can interact with the daemon, this means that ReSet can be used
+//with applets, status bars and more, which are common in the Linux ecosystem.\
+//In order to respect accessibility and the requirements of a Linux application,
+//ReSet will also provide a command line version to interact with the
+//Reset-Daemon.
+
+#pagebreak()
+
 #subsection("Gnome Control Settings")
 The #link("https://github.com/gnome/gnome-control-center")[Gnome control center] [@Gnome]
 is as the name implies the central settings application for the Gnome desktop
@@ -30,8 +79,11 @@ will be available on other environments._
 *Requirement fulfillment*:
 #grid(
   columns: (auto, auto, auto),
-  rows: (50pt, 50pt, 50pt),
+  rows: (auto, 50pt, 50pt, 50pt),
   gutter: 0pt,
+  cell("", bold: true, width: 30pt, height: 20pt),
+  cell("Category", bold: true, width: 90pt, height: 20pt),
+  cell("Justification", bold: true, height: 20pt),
   cell("X", bold: true, width: 30pt),
   cell("Interoperability", bold: true, width: 90pt),
   cell(
@@ -89,8 +141,11 @@ styling of said toolkit that might not integrate well._
 
 #grid(
   columns: (auto, auto, auto),
-  rows: (auto, auto, auto),
+  rows: (auto, auto, auto, auto),
   gutter: 0pt,
+  cell("", bold: true, width: 30pt, height: 20pt),
+  cell("Category", bold: true, width: 90pt, height: 20pt),
+  cell("Justification", bold: true, height: 20pt),
   cell("(\u{2713})", bold: true, width: 30pt, height: 90pt),
   cell("Interoperability", bold: true, width: 90pt, height: 90pt),
   cell(
@@ -152,8 +207,11 @@ itself. The application itself is written in C++ and GTK3.
 
 #grid(
   columns: (auto, auto, auto),
-  rows: (auto, auto),
+  rows: (auto, auto, auto),
   gutter: 0pt,
+  cell("", bold: true, width: 30pt, height: 20pt),
+  cell("Category", bold: true, width: 90pt, height: 20pt),
+  cell("Justification", bold: true, height: 20pt),
   cell("\u{2713}", bold: true, width: 30pt, height: 50pt),
   cell("Ease of Use", bold: true, width: 90pt, height: 50pt),
   cell(
@@ -191,8 +249,11 @@ written in Python and GTK3.
 
 #grid(
   columns: (auto, auto, auto),
-  rows: (auto, auto),
+  rows: (auto, auto, auto),
   gutter: 0pt,
+  cell("", bold: true, width: 30pt, height: 20pt),
+  cell("Category", bold: true, width: 90pt, height: 20pt),
+  cell("Justification", bold: true, height: 20pt),
   cell("X", bold: true, width: 30pt, height: 70pt),
   cell("Ease of Use", bold: true, width: 90pt, height: 70pt),
   cell(
@@ -221,7 +282,7 @@ written in Python and GTK3.
 #link(
   "https://gitlab.freedesktop.org/NetworkManager/NetworkManager",
 )[*Nmtui*] | Network Application\
-Nmtui is what the name suggests, it's a terminal user interface that allows
+Nmtui is what the name suggests, it is a terminal user interface that allows
 users to use and edit network connections, including VPN connections.\
 Nmtui is located in the same project as the network manager itself and is
 therefore also shipped as part of the network manager package.\
@@ -239,13 +300,16 @@ does not work on its own.
 
 #grid(
   columns: (auto, auto, auto),
-  rows: (auto, auto),
+  rows: (auto, auto, auto),
   gutter: 0pt,
+  cell("", bold: true, width: 30pt, height: 20pt),
+  cell("Category", bold: true, width: 90pt, height: 20pt),
+  cell("Justification", bold: true, height: 20pt),
   cell("X", bold: true, width: 30pt, height: 50pt),
   cell("Ease of Use", bold: true, width: 90pt, height: 50pt),
   cell(
-    [While terminal user interfaces can be great for the right user, this interface
-      is not the most modern, and it does not adapt to resizing.],
+    [Resizing the terminal breaks the appearance of the application.\
+      There is only a single theme.],
     cell_align: left,
     bold: false,
     font_size: 11pt,
@@ -255,7 +319,7 @@ does not work on its own.
   cell("Maintainability", bold: true, width: 90pt, height: 50pt),
   cell(
     [The scope of this application is small and depends fully on the parent project,
-      it can be considered maintainable.],
+      it can be considered to be maintainable.],
     cell_align: left,
     bold: false,
     font_size: 11pt,

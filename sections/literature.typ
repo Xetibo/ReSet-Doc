@@ -1,8 +1,7 @@
 #import "../templates/utils.typ": *
 #lsp_placate()
 
-#subsection("Insights from literature")
-#subsubsection("User Interfaces")
+#subsection("User Interfaces")
 The Gnome Human Interface Guidelines @gnome_human_guidelines are likely the most
 applicable for ReSet, as they are the most prominent in the Linux sphere and are
 directly meant to be used with GTK4, a potential user interface toolkit for
@@ -10,10 +9,10 @@ ReSet. While Reset does not intend to belong into the Gnome circle, for which
 rather strict adherence to these guidelines is needed, ReSet will still use best
 practices that are employed by these guidelines.
 
-These best practices can also be seen in the renowned book by Steve Krug, "Don't
-Make Me Think". @krug In said work the author defined rules to follow when
-creating user interfaces for the web, however, the vast majority of these rules
-can be applied in the same manner on desktop applications.
+These best practices can also be seen in the book "Don't make me think" by Steve
+Krug.@krug In said work the author defined rules to follow when creating user
+interfaces for the web, however, the vast majority of these rules can be applied
+in the same manner on desktop applications.
 
 Krug's rules:
 + "Don't Make Me Think" - Steve Krug @krug\
@@ -21,28 +20,27 @@ Krug's rules:
   should come as obvious where the user has to click or navigate to in order to
   finish their task. In the case of ReSet, this might be something like connecting
   to a Wi-Fi network or a Bluetooth device.\
-  For the example the application blueman introduced in @ExistingProjects is used.
+  For the example the application blueman introduced in @PreviousWork is used.
 
-  First, let's open the application, what do we see?
   #figure(
     align(center, [#image("../figures/bluetooth_manager.png", width: 80%)]),
-  )
-  We see an empty page, why? Does my Bluetooth not work? But it was working the
-  last time!\
-  Turns out, we first have to click the search button.
+    caption: [Screenshot of bluetooth manager],
+  )<bluetooth_manager>
+  When opening the application, one can see a blank page with a top bar, this may
+  cause users to think there are no Bluetooth devices available. However, the user
+  needs to manually search for devices as is defined by Bluetooth.
   #figure(align(
     center,
     [#image("../figures/bluetooth_manager_filled.png", width: 80%)],
-  ))
-  Alright, nice, now we can see our devices, but, how do we connect? The checkmark
-  seems the most likely.
-  #figure(align(
-    center,
-    [#image("../figures/bluetooth_manager_commented.png", width: 80%)],
-  ))
-  Well wrong, that was the mark as trusted button, the one we wanted was the key
-  button for pairing, or we can double-click to connect as well(the second part is
-  intuitive!).
+  ), caption: [Screenshot of bluetooth manager with scanned devices])<bluetooth_manager_filled>
+) After clicking the search button, the application proceeds to list Bluetooth
+devices as expected. The question now is how to connect to a specific device.
+Users who understand Bluetooth terminology will likely proceed with the key
+icon, which means pairing for this application. However, there is a chance that
+users will first try the checkmark icon in order to connect to the device.
+
+In this case the icons could be improved to represent a more technology neutral
+design.
 
 + "It doesn’t matter how many times I have to click, as long as each click is a
   mindless, unambiguous choice." - Steve Krug @krug\
@@ -61,8 +59,8 @@ Krug's rules:
   There is a long-standing debate over menu layers like in @kde-hamburger, the KDE
   side justifies these menus with increased functionality, while the Gnome side
   explicitly discourages these menus citing reduced accessibility. In this case
-  the question becomes, where can I see my bookmarks? Well, it's in
-  more->go->bookmarks, this is on layer4 of a menu without search functionality
+  the question is about where the bookmarks are stored. The default location is in
+  more->go->bookmarks, this is on layer 4 of a menu without search functionality
   and with very ambiguous navigation.
 
   In other words, it is clear that shorter navigation is usually the best way to
@@ -92,69 +90,7 @@ Krug's rules:
   to create, including links and shortcuts, while the Gnome experience only offers
   a new folder, anything else needs to be done with a terminal.
 
-#subsubsection("Plugin System")
-As read on NullDeref @nullderef, there are multiple ways to create a potential
-plugin system for ReSet:
-- WASM\
-  Web assembly is a very flexible way of creating plugins, as it is based on
-  something that will work on every device that has a WASM target. However, WASM
-  is not something known to anyone involved in this project, which is why it is
-  not covered further.
-- Scripting Languages\
-  Languages like Lua have succeeded integrating in multiple fields such as game
-  programming and even the Neovim editor. In both cases it expands the potential
-  functionality by giving developers a fully functional programming language while
-  still keeping the original system with a more performant system programming
-  language.
-- IPC\
-  With inter process communication, one will have a lot of overhead when talking
-  about a plugin system, however, it is a lot easier to write. For this project,
-  IPC can be considered as a potential solution, should the other alternatives not
-  be viable.
-- Dynamic Loading\
-  This refers to dynamic libraries that are loaded at runtime. These dynamic
-  libraries are the most performant way to create a plugin system without outright
-  moving towards changing the code and recompiling. However, it forces ReSet to
-  offer a "stable" ABI which can be done directly over the C programming language,
-  or indirectly with the abi_stable crate for the Rust programming language.\
-  The project "anyrun" @anyrun by Kirottu serves as a perfect example for a small
-  but powerful example of the abi_stable crate. Anyrun is a so-called application
-  launcher, with each plugin being able to fill the launcher queries.
-//typstfmt::off
-#figure(
-  sourcecode(```rs
-use abi_stable::std_types::{RString, RVec, ROption};
-use anyrun_plugin::*;
-
-#[init]
-fn init(config_dir: RString) {
-  // ...
-}
-
-#[info]
-fn info() -> PluginInfo {
-  PluginInfo {
-    // ...
-  }
-}
-
-#[get_matches]
-fn get_matches(input: RString) -> RVec<Match> {
-  // ...
-}
-
-#[handler]
-fn handler(selection: Match) -> HandleResult {
-  HandleResult::Close
-}
-```),
-  caption: [Example code for an anyrun plugin, available at: @anyrun],
-)
-//typstfmt::on
-With just 4 functions, an anyrun plugin can be created which will fill a dynamic
-library functions to be loaded at runtime.
-
-#subsubsection("Configuration Storage")
+#subsection("Configuration Storage")
 In "The Pragmatic Programmer" @pragprog by David Thomas and Andrew Hunt, the
 authors mentioned the importance of text file configuration that is
 human-readable and can be put under version control. For ReSet the importance
