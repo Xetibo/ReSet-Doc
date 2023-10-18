@@ -23,10 +23,10 @@ different user interfaces. Some might argue that this is the point of these
 minimal environments, as they sometimes intentionally don't offer this type of
 software by default, but there is also a distinct lack of this type of software.
 
-A typical example for a minimal environment is a window
-manager/compositor. [@compositor] In comparison to desktop environments, these do
-not offer any software other than window management: creating windows, removing
-windows, window positioning, etc. Any additional software needs to be installed
+A typical example for a minimal environment is a window manager/compositor.
+[@compositor] In comparison to desktop environments, these do not offer any
+software other than window management: creating windows, removing windows,
+window positioning, etc. Any additional software needs to be installed
 separately, like status bars, editors, media viewers, or in this case settings.
 
 Some specific settings like monitor configuration were once universal with tools
@@ -77,5 +77,4 @@ The challenges specified in combination with a smaller user base for minimal
 environments are likely the cause for a missing universal solution. The previous
 solutions are functional, just not optimal.
 
-#subsection("Methods")
 

@@ -66,9 +66,13 @@ fn handler(selection: Match) -> HandleResult {
 With just 4 functions, an anyrun plugin can be created which will fill a dynamic
 library functions to be loaded at runtime.
 
+#pagebreak()
 #include "implementation/technologies.typ"
+#pagebreak()
 #include "implementation/architecture.typ"
+#pagebreak()
 #include "implementation/domain_model.typ"
+#pagebreak()
 
 #subsection("UI Design")
 Our settings app can be divided into two parts. The left part contains a list of all setting 
