@@ -1,0 +1,26 @@
+@startuml
+entity ReSetDaemon
+entity MonitorPlugin 
+entity KeyboardPlugin 
+entity MousePlugin 
+entity ReSet
+entity ThirdPartyApplet
+entity PipeWire
+entity NetworkManager
+entity bluez
+protocol API
+protocol PluginSystem
+entity ConfigurationFile
+
+ReSet <--> API                     : IPC
+ThirdPartyApplet <--> API          : IPC
+API ..* ReSetDaemon
+ReSetDaemon *.. PluginSystem
+PluginSystem o.. MonitorPlugin
+PluginSystem o.. KeyboardPlugin
+PluginSystem o.. MousePlugin
+ReSetDaemon <--> NetworkManager    : IPC 
+ReSetDaemon <--> PipeWire          : IPC 
+ReSetDaemon <--> bluez             : IPC
+ReSetDaemon --> ConfigurationFile : load/save
+@enduml

@@ -23,6 +23,12 @@ krug:
   title: Don't Make Me Think (Revisited)
   subtitle: A Common Sense Approach to Web and Movile Usability
   author: Steve Krug
+shneiderman:
+  type: book
+  title: Designing the User Interface 
+  subtitle: Strategies for effective human-computer interaction 
+  editon: fifth edition
+  author: ["Ben Shneiderman", "Catherine Plaisant"]
 nullderef:
   type: webpage
   title: "Plugins in Rust: The Technologies"
