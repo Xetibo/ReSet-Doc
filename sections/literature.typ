@@ -28,7 +28,7 @@ Krug's rules:
   This rule depends heavily on what the possible user-base is, an IDE has
   different users to a general messaging application.
 
-  For the example the application blueman introduced in @PreviousWork is used.
+  For the example the application blueman introduced in @Analysisofexistingapplications is used.
   #figure(
     align(center, [#image("../figures/bluetooth_manager.png", width: 80%)]),
     caption: [Screenshot of bluetooth manager],

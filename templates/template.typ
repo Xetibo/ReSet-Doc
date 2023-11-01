@@ -20,6 +20,9 @@
   set document(title: title, author: author)
   set align(center)
   set par(justify: true)
+  show figure.where(
+    kind: table
+  ): set figure.caption(position: top)
   align(
     center + horizon,
     [

@@ -2,36 +2,32 @@
 #lsp_placate()
 
 #let language_weights = (
-  familiarity: 0.4,
-  developer_experience: 0.3,
-  ecosystem: 0.7,
-  runtime_speed: 0.2,
-  resource_usage: 0.5,
-  development_speed: 0.4,
+  familiarity: 2,
+  developer_experience: 1,
+  ecosystem: 3,
+  runtime_speed: 1,
+  resource_usage: 2,
+  development_speed: 2,
 )
-#let toolkit_weights = (
-  familiarity: 0.3,
-  language_integration: 0.5,
-  documentation: 0.7,
-  features: 0.3,
-)
+#let toolkit_weights = (familiarity: 1, language_integration: 2, documentation: 2, features: 1)
 
 #subsection("Technologies")
 Technologies are evaluated using a value table, which defines a score between 0
 and 10 for each category over each tool. Each category is also given a constant
-weight(0 to 1), in order to evaluate which tool will be chosen.
+weight, in order to evaluate which tool will be chosen.\
+The weigths are as follows: low -> 1, medium -> 2, high -> 3
 
 The following categories are evaluated for programming languages:
-- *familiarity* | weight: 0.4\
+- *familiarity* | weight: medium\
   Indicates how familiar the developers are with a certain tool. More familiarity
   means an easier development process without unexpected surprises. Note that
   familiarity is the subjective relative experience compared to other languages
   and does not indicate a particular level of skill.
-- *developer* experience | weight: 0.3\
+- *developer* experience | weight: low\
   This encompasses the entire development cycle, meaning toolchain, LSPs,
   formatters, code coverage tools and more. With a modern developer experience,
   you can guarantee functionality without prolonged setup phases.
-- *ecosystem* | weight: 0.7\
+- *ecosystem* | weight: high\
   Ecosystem is defined as the amount and the quality of packages and libraries
   that are available to this tool. For ReSet, this can be a crucial category, as
   many different types of services are used, hence the need for good integration
@@ -39,31 +35,17 @@ The following categories are evaluated for programming languages:
   Important: The ecosystem is highly dependent on the Linux desktop, which is not
   always favorable for all tools, for example: .NET Maui, a very popular toolkit
   is not usable, as it does not run on the Linux desktop.
-- *runtime speed* | weight: 0.2\
+- *runtime speed* | weight: low\
   Runtime speed is likely only a concern for the daemon, and even in this case, it
   is unlikely to be too slow with any modern programming language.
-- *resource usage* | weight: 0.5\
+- *resource usage* | weight: medium\
   Many computers have enough RAM by now, however, ReSet intends to work on any
   distribution, including lightweight distributions meant for older or lower end
   systems, therefore RAM usage should be a concern, especially for the daemon.
-- *development speed* | weight: 0.4\
+- *development speed* | weight: medium\
   ReSet is limited in time scope, therefore tools with decent development speed
   should be considered. Note, that this includes the time needed for debugging and
   potential problems, such as undefined behavior or dynamic type issues.
-
-The following categories are evaluated for UI toolkits:
-- *familiarity* | weight: 0.3\
-- Language Integration | weight: 0.5\
-  This defines how well the chosen language will integrate with the UI toolkit, in
-  other words, certain toolkits might get a zero score here, signifying
-  incompatibility.
-- *Documentation* | weight: 0.7\
-  Defines how well the toolkit is documented. This will be important when going
-  beyond the typical "Hello World" for UI programs. A good documented toolkit can
-  reduce the development time by magnitudes.
-- *Features* | weight: 0.3\
-  ReSet does not need many features, however, ReSet does require first class
-  support for the Linux desktop.
 
 Special Requirement: All tools used in this project *must be published under an
 open-source license*.
@@ -112,71 +94,75 @@ open-source license*.
 #grid(
   columns: (auto),
   rows: (30pt),
-  cell([Programming Languages], bold: true),
+  cell(
+    [#figure([], kind: table, caption: [Programming Languages])<programminglanguages>],
+    bold: true,
+  ),
 )
-#pad(y: -13pt, [])
-#grid(
-  columns: (2.3fr, 1fr, 1.2fr, 1fr, 1fr, 1fr, 0.8fr),
-  rows: (30pt, 30pt, 30pt, 30pt, 30pt, 30pt, 30pt),
-  gutter: 0pt,
-  cell("category", bold: true),
-  cell("Python", bold: true),
-  cell("TypeScript", bold: true),
-  cell("C#", bold: true),
-  cell("C++", bold: true),
-  cell("Rust", bold: true),
-  cell("weight", bold: true),
-  cell("familiarity", bold: true),
-  cell([#python.familiarity], bold: true),
-  cell([#typescript.familiarity], bold: true),
-  cell([#csharp.familiarity], bold: true),
-  cell([#cpp.familiarity], bold: true),
-  cell([#rust.familiarity], bold: true),
-  cell([#language_weights.familiarity], bold: true),
-  cell("developer experience", bold: true),
-  cell([#python.developer_experience], bold: true),
-  cell([#typescript.developer_experience], bold: true),
-  cell([#csharp.developer_experience], bold: true),
-  cell([#cpp.developer_experience], bold: true),
-  cell([#rust.developer_experience], bold: true),
-  cell([#language_weights.developer_experience], bold: true),
-  cell("ecosystem", bold: true),
-  cell([#python.ecosystem], bold: true),
-  cell([#typescript.ecosystem], bold: true),
-  cell([#csharp.ecosystem], bold: true),
-  cell([#cpp.ecosystem], bold: true),
-  cell([#rust.ecosystem], bold: true),
-  cell([#language_weights.ecosystem], bold: true),
-  cell("runtime speed", bold: true),
-  cell([#python.runtime_speed], bold: true),
-  cell([#typescript.runtime_speed], bold: true),
-  cell([#csharp.runtime_speed], bold: true),
-  cell([#cpp.runtime_speed], bold: true),
-  cell([#rust.runtime_speed], bold: true),
-  cell([#language_weights.runtime_speed], bold: true),
-  cell("resource usage", bold: true),
-  cell([#python.resource_usage], bold: true),
-  cell([#typescript.resource_usage], bold: true),
-  cell([#csharp.resource_usage], bold: true),
-  cell([#cpp.resource_usage], bold: true),
-  cell([#rust.resource_usage], bold: true),
-  cell([#language_weights.resource_usage], bold: true),
-  cell("development speed", bold: true),
-  cell([#python.development_speed], bold: true),
-  cell([#typescript.development_speed], bold: true),
-  cell([#csharp.development_speed], bold: true),
-  cell([#cpp.development_speed], bold: true),
-  cell([#rust.development_speed], bold: true),
-  cell([#language_weights.development_speed], bold: true),
-  cell("Total", bold: true),
-  cell([#calculate_total(python, language_weights)], bold: true),
-  cell([#calculate_total(typescript, language_weights)], bold: true),
-  cell([#calculate_total(csharp, language_weights)], bold: true),
-  cell([#calculate_total(cpp, language_weights)], bold: true),
-  cell([#calculate_total(rust, language_weights)], bold: true, color: green),
-  cell(" ", bold: true),
+#pad(y: -13.1pt, [])
+#rect(
+  grid(
+    columns: (2.5fr, 1fr, 1.4fr, 1fr, 1fr, 1fr, 0.8fr),
+    rows: (30pt, 30pt, 30pt, 30pt, 30pt, 30pt, 30pt),
+    gutter: 0pt,
+    cell("category", bold: true, use_under: true, cell_align: left),
+    cell("Python", bold: true, use_under: true),
+    cell("TypeScript", bold: true, use_under: true),
+    cell("C#", bold: true, use_under: true),
+    cell("C++", bold: true, use_under: true),
+    cell("Rust", bold: true, use_under: true),
+    cell("weight", bold: true, use_under: true),
+    cell("familiarity", bold: true, cell_align: left),
+    cell([#python.familiarity], bold: true),
+    cell([#typescript.familiarity], bold: true),
+    cell([#csharp.familiarity], bold: true),
+    cell([#cpp.familiarity], bold: true),
+    cell([#rust.familiarity], bold: true),
+    cell([#language_weights.familiarity], bold: true),
+    cell("developer experience", bold: true, fill: silver, cell_align: left),
+    cell([#python.developer_experience], bold: true, fill: silver),
+    cell([#typescript.developer_experience], bold: true, fill: silver),
+    cell([#csharp.developer_experience], bold: true, fill: silver),
+    cell([#cpp.developer_experience], bold: true, fill: silver),
+    cell([#rust.developer_experience], bold: true, fill: silver),
+    cell([#language_weights.developer_experience], bold: true, fill: silver),
+    cell("ecosystem", bold: true, cell_align: left),
+    cell([#python.ecosystem], bold: true),
+    cell([#typescript.ecosystem], bold: true),
+    cell([#csharp.ecosystem], bold: true),
+    cell([#cpp.ecosystem], bold: true),
+    cell([#rust.ecosystem], bold: true),
+    cell([#language_weights.ecosystem], bold: true),
+    cell("runtime speed", bold: true, fill: silver, cell_align: left),
+    cell([#python.runtime_speed], bold: true, fill: silver),
+    cell([#typescript.runtime_speed], bold: true, fill: silver),
+    cell([#csharp.runtime_speed], bold: true, fill: silver),
+    cell([#cpp.runtime_speed], bold: true, fill: silver),
+    cell([#rust.runtime_speed], bold: true, fill: silver),
+    cell([#language_weights.runtime_speed], bold: true, fill: silver),
+    cell("resource usage", bold: true, cell_align: left),
+    cell([#python.resource_usage], bold: true),
+    cell([#typescript.resource_usage], bold: true),
+    cell([#csharp.resource_usage], bold: true),
+    cell([#cpp.resource_usage], bold: true),
+    cell([#rust.resource_usage], bold: true),
+    cell([#language_weights.resource_usage], bold: true),
+    cell("development speed", bold: true, fill: silver, cell_align: left),
+    cell([#python.development_speed], bold: true, fill: silver),
+    cell([#typescript.development_speed], bold: true, fill: silver),
+    cell([#csharp.development_speed], bold: true, fill: silver),
+    cell([#cpp.development_speed], bold: true, fill: silver),
+    cell([#rust.development_speed], bold: true, fill: silver),
+    cell([#language_weights.development_speed], bold: true, fill: silver),
+    cell("Total", bold: true, cell_align: left),
+    cell([#calculate_total(python, language_weights)], bold: true),
+    cell([#calculate_total(typescript, language_weights)], bold: true),
+    cell([#calculate_total(csharp, language_weights)], bold: true),
+    cell([#calculate_total(cpp, language_weights)], bold: true),
+    cell([#calculate_total(rust, language_weights)], bold: true, color: green),
+    cell(" ", bold: true),
+  ),
 )
-
 #text(12pt, [*Programming Language*])* | ReSet is written in Rust.*\
 Rust was chosen for its speed, low memory usage, memory safe design and robust
 ecosystem. While Rust is more complex to write than languages such as
@@ -211,50 +197,73 @@ still offering all the benefits of a more modern language.
 
 #pagebreak()
 
-#let gtk = (familiarity: 6, language_integration: 7, documentation: 6, features: 6)
+The following categories are evaluated for UI toolkits:
+- *familiarity* | weight: low\
+- *Language Integration* | weight: medium\
+  This defines how well the chosen language will integrate with the UI toolkit, in
+  other words, certain toolkits might get a zero score here, signifying
+  incompatibility.
+- *Documentation* | weight: medium\
+  Defines how well the toolkit is documented. This will be important when going
+  beyond the typical "Hello World" for UI programs. A good documented toolkit can
+  reduce the development time by magnitudes.
+- *Features* | weight: low\
+  ReSet does not need many features, however, ReSet does require first class
+  support for the Linux desktop.
+
+#let gtk = (familiarity: 6, language_integration: 7, documentation: 6, features: 8)
 #let iced = (
   familiarity: 3,
   language_integration: 10,
   documentation: 3,
-  features: 4,
+  features: 6,
 )
-#let qt = (familiarity: 0, language_integration: 6, documentation: 6, features: 7)
-#grid(columns: (auto), rows: (30pt), cell([UI Toolkits], bold: true))
-#pad(y: -13pt, [])
+#let qt = (familiarity: 0, language_integration: 6, documentation: 6, features: 10)
 #grid(
-  columns: (2.3fr, 1fr, 1fr, 1fr, 0.8fr),
-  rows: (30pt, 30pt, 30pt, 30pt, 30pt),
-  gutter: 0pt,
-  cell("category", bold: true),
-  cell("GTK", bold: true),
-  cell("Iced", bold: true),
-  cell("QT", bold: true),
-  cell("weight", bold: true),
-  cell("familiarity", bold: true),
-  cell([#gtk.familiarity], bold: true),
-  cell([#iced.familiarity], bold: true),
-  cell([#qt.familiarity], bold: true),
-  cell([#toolkit_weights.familiarity], bold: true),
-  cell("Language Integration", bold: true),
-  cell([#gtk.language_integration], bold: true),
-  cell([#iced.language_integration], bold: true),
-  cell([#qt.language_integration], bold: true),
-  cell([#toolkit_weights.language_integration], bold: true),
-  cell("Documentation", bold: true),
-  cell([#gtk.documentation], bold: true),
-  cell([#iced.documentation], bold: true),
-  cell([#qt.documentation], bold: true),
-  cell([#toolkit_weights.documentation], bold: true),
-  cell("Features", bold: true),
-  cell([#gtk.features], bold: true),
-  cell([#iced.features], bold: true),
-  cell([#qt.features], bold: true),
-  cell([#toolkit_weights.features], bold: true),
-  cell("Total", bold: true),
-  cell([#calculate_total(gtk, toolkit_weights)], bold: true, color: green),
-  cell([#calculate_total(iced, toolkit_weights)], bold: true),
-  cell([#calculate_total(qt, toolkit_weights)], bold: true),
-  cell(" ", bold: true),
+  columns: (auto),
+  rows: (30pt),
+  cell(
+    [#figure([], kind: table, caption: [UI Toolkits])<uitoolkits>],
+    bold: true,
+  ),
+)
+#pad(y: -13pt, [])
+#rect(
+  grid(
+    columns: (1.6fr, 1fr, 1fr, 1fr, 0.8fr),
+    rows: (30pt, 30pt, 30pt, 30pt, 30pt),
+    gutter: 0pt,
+    cell("category", bold: true, use_under: true, cell_align: left),
+    cell("GTK", bold: true, use_under: true),
+    cell("Iced", bold: true, use_under: true),
+    cell("QT", bold: true, use_under: true),
+    cell("weight", bold: true, use_under: true),
+    cell("familiarity", bold: true, cell_align: left),
+    cell([#gtk.familiarity], bold: true),
+    cell([#iced.familiarity], bold: true),
+    cell([#qt.familiarity], bold: true),
+    cell([#toolkit_weights.familiarity], bold: true),
+    cell("Language Integration", bold: true, fill: silver, cell_align: left),
+    cell([#gtk.language_integration], bold: true, fill: silver),
+    cell([#iced.language_integration], bold: true, fill: silver),
+    cell([#qt.language_integration], bold: true, fill: silver),
+    cell([#toolkit_weights.language_integration], bold: true, fill: silver),
+    cell("Documentation", bold: true, cell_align: left),
+    cell([#gtk.documentation], bold: true),
+    cell([#iced.documentation], bold: true),
+    cell([#qt.documentation], bold: true),
+    cell([#toolkit_weights.documentation], bold: true),
+    cell("Features", bold: true, fill: silver, cell_align: left),
+    cell([#gtk.features], bold: true, fill: silver),
+    cell([#iced.features], bold: true, fill: silver),
+    cell([#qt.features], bold: true, fill: silver),
+    cell([#toolkit_weights.features], bold: true, fill: silver),
+    cell("Total", bold: true, cell_align: left),
+    cell([#calculate_total(gtk, toolkit_weights)], bold: true, color: green),
+    cell([#calculate_total(iced, toolkit_weights)], bold: true),
+    cell([#calculate_total(qt, toolkit_weights)], bold: true),
+    cell(" ", bold: true),
+  ),
 )
 
 #text(12pt, [*UI Toolkit*])* | ReSet uses GTK4 as its UI toolkit.*\
@@ -271,15 +280,4 @@ The last consideration is QT, it is a cross-platform toolkit that uses its own
 form of JavaScript(QML) to draw windows. QT is a well known toolkit, however, it
 is completely unknown to us, making it a suboptimal choice.\
 For QT, there is also the consideration of integration mentioned in
-@PreviousWork.
-
-#text(12pt, [*Typesetting Language*])* | ReSet-Doc is written with typst.*\
-Typst is a modern typesetting system with clean and modern syntax. It offers
-faster compilation compared to latex and does not produce additional files
-needed for compilation. In Addition, typst already has a modern ecosystem,
-allowing users to install typst in a single binary, and immediately start using
-it. For example, Visual Studio Code has an extension that covers everything you
-need. (Other editors such as Neovim also have an extension/plugin for typst)
-
-It is important to note, that typst is a Turing complete system and not a markup
-language, which was specifically avoided, in order to not run into limitations.
+@Analysisofexistingapplications.
