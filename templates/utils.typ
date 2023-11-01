@@ -9,17 +9,40 @@
   cell_align: center,
   color: black,
   bold: false,
+  use_rect: false,
+  use_under: false,
+  fill: luma(255),
   width: 100%,
   height: 100%,
 ) = {
   if bold {
     content = [*#content*]
   }
-  rect(
-    width: width,
-    height: height,
-    align(cell_align + horizon, [#text(fill: color, size: font_size, content)]),
+  if use_rect {
+    rect(
+      width: width,
+      height: height,
+      fill: fill,
+      stroke: 1pt,
+      align(cell_align + horizon, [#text(fill: color, size: font_size, content)]),
+    )
+  } else if use_under {
+    rect(
+      width: width,
+      height: height,
+      fill: fill,
+      stroke: (top: 0pt, right: 0pt, left: 0pt, bottom: 1pt),
+    align(cell_align + horizon, [#text(fill: color, size: font_size, content)])
   )
+  } else {
+    rect(
+      width: width,
+      height: height,
+      fill: fill,
+      stroke: none,
+    align(cell_align + horizon, [#text(fill: color, size: font_size, content)])
+  )
+  }
 }
 
 #let file = counter("filecounter")
@@ -43,8 +66,10 @@
   calc.ceil(total)
 }
 
-#let custom_heading(num, use_line, level, name: "") = {
-  if num != "" and type(name) == type("string") {
+#let custom_heading(num, use_line, level, name: "", custom_tag: "") = {
+  if custom_tag != "" {
+    align(left, [#heading(numbering: num, level: level, name)#label(custom_tag)])
+  } else if num != "" and type(name) == type("string") {
     align(
       left,
       [#heading(numbering: num, level: level, name)#label(str(name.replace(" ", "")))],
@@ -57,20 +82,20 @@
   }
 }
 
-#let section(num: "1.1.1", use_line: false, name) = {
-  custom_heading(num, use_line, name: name, 1)
+#let section(num: "1.1.1", use_line: false, custom_tag: "", name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 1)
 }
 
-#let subsection(num: "1.1.1", use_line: false, name) = {
-  custom_heading(num, use_line, name: name, 2)
+#let subsection(num: "1.1.1", use_line: false, custom_tag: "", name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 2)
 }
 
-#let subsubsection(num: "1.1.1", use_line: false, name) = {
-  custom_heading(num, use_line, name: name, 3)
+#let subsubsection(num: "1.1.1", use_line: false, custom_tag: "", name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 3)
 }
 
-#let subsubsubsection(num: "1.1.1", use_line: false, name) = {
-  custom_heading(num, use_line, name: name, 4)
+#let subsubsubsection(num: "1.1.1", use_line: false, custom_tag: "", name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 4)
 }
 
 #let requirement(subject, category, priority, description, measures) = {

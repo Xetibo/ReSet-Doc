@@ -10,18 +10,25 @@ rather strict adherence to these guidelines is needed, ReSet will still use best
 practices that are employed by these guidelines.
 
 These best practices can also be seen in the book "Don't make me think" by Steve
-Krug.@krug In said work the author defined rules to follow when creating user
-interfaces for the web, however, the vast majority of these rules can be applied
-in the same manner on desktop applications.
+Krug, @krug or in "Designing the User Interface" by Ben Shneiderman and
+Catherine Plaisant. In Both works the authors defined rules to follow when
+creating user interfaces. Steve Krug specifically focused on the web, however,
+the vast majority of these rules can be applied in the same manner on desktop
+applications.
 
 Krug's rules:
-+ "Don't Make Me Think" - Steve Krug @krug\
++ *"Don't Make Me Think" - Steve Krug* @krug\
   This defines that a user should not need to "think" when using the interface, it
   should come as obvious where the user has to click or navigate to in order to
   finish their task. In the case of ReSet, this might be something like connecting
   to a Wi-Fi network or a Bluetooth device.\
-  For the example the application blueman introduced in @PreviousWork is used.
+  *"Cater to universal usability" - "The eight golden rules"* @shneiderman\
+  User interfaces should be created for all possible users, meaning both experts
+  and novices should be able to use the application without issues.\
+  This rule depends heavily on what the possible user-base is, an IDE has
+  different users to a general messaging application.
 
+  For the example the application blueman introduced in @Analysisofexistingapplications is used.
   #figure(
     align(center, [#image("../figures/bluetooth_manager.png", width: 80%)]),
     caption: [Screenshot of bluetooth manager],
@@ -33,20 +40,27 @@ Krug's rules:
     center,
     [#image("../figures/bluetooth_manager_filled.png", width: 80%)],
   ), caption: [Screenshot of bluetooth manager with scanned devices])<bluetooth_manager_filled>
-) After clicking the search button, the application proceeds to list Bluetooth
-devices as expected. The question now is how to connect to a specific device.
-Users who understand Bluetooth terminology will likely proceed with the key
-icon, which means pairing for this application. However, there is a chance that
-users will first try the checkmark icon in order to connect to the device.
+  After clicking the search button, the application proceeds to list Bluetooth
+  devices as expected. The question now is how to connect to a specific device.
+  Users who understand Bluetooth terminology will likely proceed with the key
+  icon, which means pairing for this application. However, there is a chance that
+  users will first try the checkmark icon in order to connect to the device.
 
-In this case the icons could be improved to represent a more technology neutral
-design.
+  In this case the icons could be improved to represent a more technology neutral
+  design.
 
-+ "It doesn’t matter how many times I have to click, as long as each click is a
-  mindless, unambiguous choice." - Steve Krug @krug\
++ *"It doesn’t matter how many times I have to click, as long as each click is a
+  mindless, unambiguous choice." - Steve Krug* @krug\
   Each navigation should have a consistent path and a clearly defined destination,
   it should be clear to the user where they are right now, and where they can go
   from here.
+
+  In chapter 6.4.2 "Tree-structured menus" in "Designing the user interface"
+  @shneiderman, the authors note that no more than 3 to 4 layers should be used
+  for pop-over menus. Later this is re-affirmed with the menu selection guidelines
+  where "broad-narrow" is preferred over "narrow-deep", this defines that more top
+  level selections are preferable to many layers, as layers can confuse the user
+  and make navigation tedious.
 
   Both the Gnome human interface guidelines and Steve Kruger advise developers to
   use as few required clicks to navigate to a certain page as possible. This
@@ -67,14 +81,18 @@ design.
   achieve "mindless navigation", however it is, as Krug mentioned, not the only
   factor.
 
-+ "Get rid of half the words on each page, then get rid of half of what is left."
-  - Steve Krug @krug\
++ *"Get rid of half the words on each page, then get rid of half of what is left."
+  \- Steve Krug* @krug\
   This defines unnecessary information on a page or application. Everything that
   the user does not care about should be omitted. One should note however that
   this does not imply removal or omitting of _features_, instead only showing
   users a certain feature when they need it. Gnome uses the same concept when
   creating applications, keeping the overall application simple, but powerful when
-  needed.
+  needed.\
+  *"Reduce short-term memory load" - "The eight golden rules"* @shneiderman\
+  Humans have a limited capacity for information, this includes for what we see on
+  an application. The authors therefore propose to collapse complex user
+  interfaces like multi-page displays into one.
 
   The downside of this approach can be a too simple application, meaning the _powerful when needed_ part
   does not always apply. Compared to KDE applications, Gnome is often considered
@@ -89,6 +107,50 @@ design.
   Here the KDE application is clearly more powerful, offering a variety of files
   to create, including links and shortcuts, while the Gnome experience only offers
   a new folder, anything else needs to be done with a terminal.
+
+#pagebreak()
+
++ "Support internal locus of control" - "The eight golden rules" @shneiderman\
+  The rule refers to clear omition of unnecessary data for experts, and giving
+  them a short, clear, and usually customizeable path to their end-goal. In user
+  interfaces this is usually done with keyboard shortcuts.
+
+  #figure(
+    align(center, [#image("../figures/shortcuts.png", width: 80%)]),
+    caption: [Shortcuts menu in Nautilus],
+  )
+  #figure(
+    align(center, [#image("../figures/shortcuts-kde.png", width: 100%)]),
+    caption: [Shortcuts menu in Dolphin],
+  )
+
+  The Dolphin version is much more complex, this is due to the fact that you can
+  customize any shortcut in Dolphin using this interface. For Nautilus shortcuts
+  can only be configured using a settings file that has to be created by the user.
+
+#pagebreak()
+
++ *"Strive for consistency" - "The eight golden rules"* @shneiderman\
+  No matter how one creates a user interface, the very first thing one should
+  thrive for is to make it consistent. This includes practices like ensuring items
+  have the same appearance no matter where they are placed, or that buttons with
+  similar functionality have the same labeling. In "Designing the user interface"
+  @shneiderman, the authors empathized this in chapter 2.4.3 with a clear example:
+  #grid(
+    columns: (auto, auto),
+    rows: (auto, auto, auto, auto),
+    gutter: 0pt,
+    cell("Consistent", bold: true, height: 20pt),
+    cell("Inconsistent", bold: true, height: 20pt),
+    cell("delete/insert table", height: 20pt),
+    cell("delete/insert table", height: 20pt),
+    cell("delete/insert column", height: 20pt),
+    cell("remove/add column", height: 20pt),
+    cell("delete/insert row", height: 20pt),
+    cell("destroy/create row", height: 20pt),
+    cell("delete/insert border", height: 20pt),
+    cell("erase/draw border", height: 20pt),
+  )
 
 #subsection("Configuration Storage")
 In "The Pragmatic Programmer" @pragprog by David Thomas and Andrew Hunt, the

@@ -43,3 +43,15 @@ releasing a new version.
   caption: [Rustdoc example entry for code above.],
 )<rustdoc>
 // typstfmt::on
+
+
+//#text(12pt, [*Typesetting Language*])* | ReSet-Doc is written with typst.*\
+//Typst is a modern typesetting system with clean and modern syntax. It offers
+//faster compilation compared to latex and does not produce additional files
+//needed for compilation. In Addition, typst already has a modern ecosystem,
+//allowing users to install typst in a single binary, and immediately start using
+//it. For example, Visual Studio Code has an extension that covers everything you
+//need. (Other editors such as Neovim also have an extension/plugin for typst)
+//
+//It is important to note, that typst is a Turing complete system and not a markup
+//language, which was specifically avoided, in order to not run into limitations.

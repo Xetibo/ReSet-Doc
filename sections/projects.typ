@@ -1,9 +1,14 @@
 #import "../templates/utils.typ": *
 #lsp_placate()
 
-#section("Previous Work")
+#section("Analysis of existing applications")
 
-#subsection("Requirements")
+In this chapter, several different applications are analyzed according to the
+requirements specified in @PRequirements. Both full settings applications
+provided by environments and standalone applications for individual technologies
+are compared.
+
+#subsection(custom_tag: "PRequirements", "Requirements")
 For ReSet, 3 different categories will be used to weigh existing projects and
 potential solutions.
 
@@ -76,16 +81,32 @@ _Gnome control center is not supposed to be used outside the Gnome environment,
 especially using the Wayland [@wayland] protocol. Hence not all functionality
 will be available on other environments._
 
-*Requirement fulfillment*:
+#grid(columns: (auto), rows: (20pt), cell([#figure(
+    [],
+    kind: table,
+    caption: [Gnome Control Center Requirement Fulfillment],
+  )<gnomerequirements>], bold: true))
 #grid(
-  columns: (auto, auto, auto),
+  columns: (30pt, 3fr, 9fr),
   rows: (auto, 50pt, 50pt, 50pt),
   gutter: 0pt,
-  cell("", bold: true, width: 30pt, height: 20pt),
-  cell("Category", bold: true, width: 90pt, height: 20pt),
-  cell("Justification", bold: true, height: 20pt),
-  cell("X", bold: true, width: 30pt),
-  cell("Interoperability", bold: true, width: 90pt),
+  cell("", bold: true, height: 20pt, cell_align: left, use_under: true),
+  cell(
+    "Category",
+    bold: true,
+    height: 20pt,
+    cell_align: left,
+    use_under: true,
+  ),
+  cell(
+    "Justification",
+    bold: true,
+    height: 20pt,
+    cell_align: left,
+    use_under: true,
+  ),
+  cell("X", bold: true, cell_align: left),
+  cell("Interoperability", bold: true, cell_align: left),
   cell(
     [Not all base features of Gnome control center work on other environments, and
       Gnome exclusive features can't be hidden.],
@@ -93,8 +114,8 @@ will be available on other environments._
     bold: false,
     font_size: 11pt,
   ),
-  cell("\u{2713}", bold: true, width: 30pt),
-  cell("Ease of Use", bold: true, width: 90pt),
+  cell("\u{2713}", bold: true, cell_align: left),
+  cell("Ease of Use", bold: true, cell_align: left),
   cell(
     [The user interface of the Gnome control center follows best practices. It has
       consistent design, naming makes sense and accessibility is taken into account.],
@@ -102,8 +123,8 @@ will be available on other environments._
     bold: false,
     font_size: 11pt,
   ),
-  cell("X", bold: true, width: 30pt),
-  cell("Maintainability", bold: true, width: 90pt),
+  cell("X", bold: true, cell_align: left),
+  cell("Maintainability", bold: true, cell_align: left),
   cell(
     [All features of the Gnome control center are within one repository, split across
       hundreds of files. This reliance on all these files in one repository creates a
@@ -112,7 +133,7 @@ will be available on other environments._
     bold: false,
     font_size: 11pt,
   ),
-)
+),
 
 #subsection("KDE System Settings")
 #link("https://invent.kde.org/plasma/systemsettings")[KDE systemsettings] [@kde]
@@ -140,14 +161,22 @@ it harder to be used on other environments, but the toolkit and the KDE specific
 styling of said toolkit that might not integrate well._
 
 #grid(
-  columns: (auto, auto, auto),
-  rows: (auto, auto, auto, auto),
+  columns: (auto),
+  rows: (20pt),
+  cell(
+    [#figure([], kind: table, caption: [KDE Systemsettings Requirement Fulfillment])<kderequirements>],
+    bold: true,
+  ),
+)
+#grid(
+  columns: (30pt, 3fr, 9fr),
+  rows: (25pt, 110pt, 70pt, 75pt),
   gutter: 0pt,
-  cell("", bold: true, width: 30pt, height: 20pt),
-  cell("Category", bold: true, width: 90pt, height: 20pt),
-  cell("Justification", bold: true, height: 20pt),
-  cell("(\u{2713})", bold: true, width: 30pt, height: 90pt),
-  cell("Interoperability", bold: true, width: 90pt, height: 90pt),
+  cell("", bold: true, use_under: true),
+  cell("Category", bold: true, use_under: true, cell_align: left),
+  cell("Justification", bold: true, use_under: true, cell_align: left),
+  cell("(\u{2713})", bold: true, cell_align: left),
+  cell("Interoperability", bold: true, cell_align: left),
   cell(
     [KDE systemsettings is built with modularity in mind, meaning it works purely
       with modules that can be built for it. This means that one could create modules
@@ -158,10 +187,9 @@ styling of said toolkit that might not integrate well._
     cell_align: left,
     bold: false,
     font_size: 11pt,
-    height: 90pt,
   ),
-  cell("X", bold: true, width: 30pt, height: 60pt),
-  cell("Ease of Use", bold: true, width: 90pt, height: 60pt),
+  cell("X", bold: true, cell_align: left),
+  cell("Ease of Use", bold: true, cell_align: left),
   cell(
     [The most common criticism of KDE systemsettings is a convoluted design. This
       stems from the sheer amount of settings the application can provide, alongside
@@ -170,10 +198,9 @@ styling of said toolkit that might not integrate well._
     cell_align: left,
     bold: false,
     font_size: 11pt,
-    height: 60pt,
   ),
-  cell("\u{2713}", bold: true, width: 30pt, height: 80pt),
-  cell("Maintainability", bold: true, width: 90pt, height: 80pt),
+  cell("\u{2713}", bold: true, cell_align: left),
+  cell("Maintainability", bold: true, cell_align: left),
   cell(
     [The modular design of KDE systemsettings allows for great maintainability on the
       application itself. It is however noteworthy that the configuration files
@@ -182,9 +209,10 @@ styling of said toolkit that might not integrate well._
     cell_align: left,
     bold: false,
     font_size: 11pt,
-    height: 80pt,
   ),
 )
+
+#pagebreak()
 
 #subsection("Standalone Settings")
 These applications focus on one specific functionality and don't offer anything
@@ -205,25 +233,34 @@ itself. The application itself is written in C++ and GTK3.
     caption: [Screenshot of pavucontrol],
   )])<pavucontrol>
 
+\
+
 #grid(
-  columns: (auto, auto, auto),
-  rows: (auto, auto, auto),
+  columns: (auto),
+  rows: (20pt),
+  cell(
+    [#figure([], kind: table, caption: [Pavucontrol Requirement Fulfillment])<pavurequirements>],
+    bold: true,
+  ),
+)
+#grid(
+  columns: (30pt, 3fr, 9fr),
+  rows: (25pt, 55pt, 40pt),
   gutter: 0pt,
-  cell("", bold: true, width: 30pt, height: 20pt),
-  cell("Category", bold: true, width: 90pt, height: 20pt),
-  cell("Justification", bold: true, height: 20pt),
-  cell("\u{2713}", bold: true, width: 30pt, height: 50pt),
-  cell("Ease of Use", bold: true, width: 90pt, height: 50pt),
+  cell("", bold: true, cell_align: left, use_under: true),
+  cell("Category", bold: true, cell_align: left, use_under: true),
+  cell("Justification", bold: true, cell_align: left, use_under: true),
+  cell("\u{2713}", bold: true, cell_align: left),
+  cell("Ease of Use", bold: true, cell_align: left),
   cell(
     [While pavucontrol is generally made for more advanced users, it does follow
       general best practices and integrates well into all environments.],
     cell_align: left,
     bold: false,
     font_size: 11pt,
-    height: 50pt,
   ),
-  cell("\u{2713}", bold: true, width: 30pt, height: 50pt),
-  cell("Maintainability", bold: true, width: 90pt, height: 50pt),
+  cell("\u{2713}", bold: true, cell_align: left),
+  cell("Maintainability", bold: true, cell_align: left),
   cell(
     [Pavucontrol is made with a modular codebase, which allows for easier adding of
       features. Note: pavucontrol is feature complete, and will likely not get more
@@ -231,9 +268,9 @@ itself. The application itself is written in C++ and GTK3.
     cell_align: left,
     bold: false,
     font_size: 11pt,
-    height: 50pt,
   ),
 )
+
 #pagebreak()
 
 #link("https://github.com/blueman-project/blueman")[*Blueman*] | Bluetooth
@@ -247,33 +284,41 @@ written in Python and GTK3.
     caption: [Screenshot of blueman],
   )])<blueman>
 
+\
+
 #grid(
-  columns: (auto, auto, auto),
-  rows: (auto, auto, auto),
+  columns: (auto),
+  rows: (30pt),
+  cell(
+    [#figure([], kind: table, caption: [Bluetooth Manager Requirement Fulfillment])<bluetoothrequirements>],
+    bold: true,
+  ),
+)
+#grid(
+  columns: (30pt, 3fr, 9fr),
+  rows: (30pt, 65pt, 40pt),
   gutter: 0pt,
-  cell("", bold: true, width: 30pt, height: 20pt),
-  cell("Category", bold: true, width: 90pt, height: 20pt),
-  cell("Justification", bold: true, height: 20pt),
-  cell("X", bold: true, width: 30pt, height: 70pt),
-  cell("Ease of Use", bold: true, width: 90pt, height: 70pt),
+  cell("", bold: true, cell_align: left, use_under: true),
+  cell("Category", bold: true, cell_align: left, use_under: true),
+  cell("Justification", bold: true, cell_align: left, use_under: true),
+  cell("X", bold: true, cell_align: left),
+  cell("Ease of Use", bold: true, cell_align: left),
   cell(
     [The user interface for blueman can be rather confusing, for example: there is no
       obvious connect button, which might lead to a user trying to re-pair a device
       instead of connecting to it.(pairing is the \u{2713} button)\
-      Blueman also tends to look a bit old depending on the icon.],
+      Blueman also tends to use older icon design.],
     cell_align: left,
     bold: false,
     font_size: 11pt,
-    height: 70pt,
   ),
-  cell("\u{2713}", bold: true, width: 30pt, height: 50pt),
-  cell("Maintainability", bold: true, width: 90pt, height: 50pt),
+  cell("\u{2713}", bold: true, cell_align: left),
+  cell("Maintainability", bold: true, cell_align: left),
   cell(
     [Blueman follows best practices and can be considered as easily maintainable.],
     cell_align: left,
     bold: false,
     font_size: 11pt,
-    height: 50pt,
   ),
 )
 
@@ -299,30 +344,36 @@ does not work on its own.
   )])<nmtui>
 
 #grid(
-  columns: (auto, auto, auto),
-  rows: (auto, auto, auto),
+  columns: (auto),
+  rows: (30pt),
+  cell(
+    [#figure([], kind: table, caption: [Nmtui Requirement Fulfillment])<nmtuirequirements>],
+    bold: true,
+  ),
+)
+#grid(
+  columns: (30pt, 3fr, 9fr),
+  rows: (30pt, 40pt, 30pt),
   gutter: 0pt,
-  cell("", bold: true, width: 30pt, height: 20pt),
-  cell("Category", bold: true, width: 90pt, height: 20pt),
-  cell("Justification", bold: true, height: 20pt),
-  cell("X", bold: true, width: 30pt, height: 50pt),
-  cell("Ease of Use", bold: true, width: 90pt, height: 50pt),
+  cell("", bold: true, cell_align: left, use_under: true),
+  cell("Category", bold: true, cell_align: left, use_under: true),
+  cell("Justification", bold: true, cell_align: left, use_under: true),
+  cell("X", bold: true, cell_align: left),
+  cell("Ease of Use", bold: true, cell_align: left),
   cell(
     [Resizing the terminal breaks the appearance of the application.\
       There is only a single theme.],
     cell_align: left,
     bold: false,
     font_size: 11pt,
-    height: 50pt,
   ),
-  cell("\u{2713}", bold: true, width: 30pt, height: 50pt),
-  cell("Maintainability", bold: true, width: 90pt, height: 50pt),
+  cell("\u{2713}", bold: true, cell_align: left),
+  cell("Maintainability", bold: true, cell_align: left),
   cell(
     [The scope of this application is small and depends fully on the parent project,
       it can be considered to be maintainable.],
     cell_align: left,
     bold: false,
     font_size: 11pt,
-    height: 50pt,
   ),
 )

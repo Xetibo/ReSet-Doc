@@ -1,10 +1,10 @@
 title_image:
-  type: Icon
+  type: artwork
   title: settings.svg
   author: feathericons
   url: https://github.com/feathericons/feather/
 establishment_image:
-  type: Icon
+  type: artwork
   title: OST.svg
   author: OST
   url: https://www.ost.ch/de/die-ost/organisation/medien
@@ -14,7 +14,7 @@ pragprog:
   author: ["David Thomas", "Andrew Hunt"]
   edition: 20th Anniversary Edition
 gnome_human_guidelines:
-  type: webpage
+  type: web
   title: Gnome Human Interface Guidelines
   author: Gnome
   url: https://developer.gnome.org/hig/
@@ -23,8 +23,14 @@ krug:
   title: Don't Make Me Think (Revisited)
   subtitle: A Common Sense Approach to Web and Movile Usability
   author: Steve Krug
+shneiderman:
+  type: book
+  title: Designing the User Interface 
+  subtitle: Strategies for effective human-computer interaction 
+  editon: fifth edition
+  author: ["Ben Shneiderman", "Catherine Plaisant"]
 nullderef:
-  type: webpage
+  type: web
   title: "Plugins in Rust: The Technologies"
   author: Mario Ortiz Manero
   url: https://nullderef.com/blog/plugin-tech/ 

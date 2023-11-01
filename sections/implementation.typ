@@ -77,7 +77,7 @@ library functions to be loaded at runtime.
 #subsection("UI Design")
 Our settings app can be divided into two parts. The left part contains a list of all setting 
 categories and the right side displays the actual setting. While this is not a standard, it is a 
-very common layout structure as seen in @PreviousWork and even on other OS like 
+very common layout structure as seen in @Analysisofexistingapplications and even on other OS like 
 Windows and MacOS. The list of settings contains multiple categories like Connectivity and Sound, 
 and each of them contains more subcategories.
 

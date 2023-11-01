@@ -7,13 +7,13 @@
 
 #show: doc => conf(
   author: "Fabio Lenherr / Felix Tran",
-  "Dr. Prof. Frieder Loch",
+  "Prof. Dr. Frieder Loch",
   "ReSet",
   "/figures/ReSet1.png",
   25%,
   "/figures/OST.svg",
   40%,
-  "Department for Computer Science",
+  "School of Computer Science",
   "OST Eastern Switzerland University of Applied Sciences",
   "../files/bib.yml",
   abstract,
