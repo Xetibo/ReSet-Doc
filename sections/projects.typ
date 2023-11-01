@@ -160,6 +160,8 @@ _In many cases for KDE systemsettings it is not the application itself that make
 it harder to be used on other environments, but the toolkit and the KDE specific
 styling of said toolkit that might not integrate well._
 
+#pagebreak()
+
 #grid(
   columns: (auto),
   rows: (20pt),
