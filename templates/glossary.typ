@@ -1,7 +1,7 @@
 #let glossary_entry(use_show: true, name, description) = {
   if use_show {
     figure(
-      grid(columns: (2fr, 8fr), gutter: 15pt, [
+      grid(columns: (3.5fr, 8fr), gutter: 15pt, [
         #align(left, text(size: 12pt, [*#name*]))
       ], align(left, description)),
       kind: "glossary_entry",
@@ -32,7 +32,7 @@
   )<DE>
   #glossary_entry(
     use_show: use_show_ref,
-    "Language Server Protocol (LSP)",
+    "Language Server\n Protocol (LSP)",
     [
       Protocol designed to help program software by providing quick-fixes to errors,
       linting, formatting and refactoring.
@@ -100,7 +100,7 @@
   )<shell-component>
   #glossary_entry(
     use_show: use_show_ref,
-    "DTO Data Transfer Object",
+    "DTO Data Transfer\n Object",
     [
       This represents data that can be sent over inter process communication pipelines
       such as web requests, dbus, or sockets. Data in this state can only be

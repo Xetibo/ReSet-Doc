@@ -111,8 +111,8 @@ Krug's rules:
 #pagebreak()
 
 + "Support internal locus of control" - "The eight golden rules" @shneiderman\
-  The rule refers to clear omition of unnecessary data for experts, and giving
-  them a short, clear, and usually customizeable path to their end-goal. In user
+  The rule refers to clear omission of unnecessary data for experts, and giving
+  them a short, clear, and usually customizable path to their end-goal. In user
   interfaces this is usually done with keyboard shortcuts.
 
   #figure(

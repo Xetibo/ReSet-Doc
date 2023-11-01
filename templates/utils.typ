@@ -3,6 +3,11 @@
 #import "glossary.typ": *
 #import "mock_labels.typ": *
 
+#let glossary_entry(content) = {
+  [content]
+  super(cite(label(content)))
+}
+
 #let cell(
   content,
   font_size: 12pt,
@@ -23,6 +28,7 @@
       width: width,
       height: height,
       fill: fill,
+      outset: (x: 1pt, y: 0pt),
       stroke: 1pt,
       align(cell_align + horizon, [#text(fill: color, size: font_size, content)]),
     )
@@ -31,17 +37,19 @@
       width: width,
       height: height,
       fill: fill,
+      outset: (x: 1pt, y: 0pt),
       stroke: (top: 0pt, right: 0pt, left: 0pt, bottom: 1pt),
-    align(cell_align + horizon, [#text(fill: color, size: font_size, content)])
-  )
+      align(cell_align + horizon, [#text(fill: color, size: font_size, content)]),
+    )
   } else {
     rect(
       width: width,
       height: height,
       fill: fill,
+      outset: (x: 1pt, y: 0pt),
       stroke: none,
-    align(cell_align + horizon, [#text(fill: color, size: font_size, content)])
-  )
+      align(cell_align + horizon, [#text(fill: color, size: font_size, content)]),
+    )
   }
 }
 
@@ -52,7 +60,7 @@
     let val = file.final(loc)
     if val.at(0) == 1 {
       reset_glossary()
-      mock_labels
+      insert_mocks(loc)
       bibliography("../files/bib.yml")
     }
   })
@@ -67,12 +75,31 @@
 }
 
 #let custom_heading(num, use_line, level, name: "", custom_tag: "") = {
+  let concat_name = str(name.replace(" ",""))
   if custom_tag != "" {
-    align(left, [#heading(numbering: num, level: level, name)#label(custom_tag)])
+    locate(
+      loc => {
+        let elem = query(heading.where(body: [#custom_tag]), loc)
+        if elem == () {
+          align(left, [#heading(numbering: num, level: level, name)#label(custom_tag)])
+        } else {
+          align(left, [#heading(numbering: num, level: level, name)])
+        }
+      },
+    )
   } else if num != "" and type(name) == type("string") {
-    align(
-      left,
-      [#heading(numbering: num, level: level, name)#label(str(name.replace(" ", "")))],
+    locate(
+      loc => {
+        let elem = query(heading.where(body: [#name]).before(loc), loc)
+        if elem == () {
+          align(
+            left,
+            [#heading(numbering: num, level: level, name)#label(concat_name)],
+          )
+        } else {
+          align(left, [#heading(numbering: num, level: level, name)])
+        }
+      },
     )
   } else {
     align(left, [#heading(numbering: num, level: level, name)])
