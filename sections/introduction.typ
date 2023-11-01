@@ -35,7 +35,7 @@ protocol, the original idea of having a universal display server was abandoned,
 favoring individual implementations instead. This leads to a variety of
 different ways to configure monitors, very few of them being compatible with
 each other. In this case only a plugin system to handle individual
-implementations could solve this problem.[@wayland_documentation]
+implementations could solve this problem.@wayland_documentation
 
 #subsection("Objectives")
 ReSet will make an effort to change this situation by creating a settings
