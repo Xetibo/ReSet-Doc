@@ -3,10 +3,10 @@
 
 #section("Introduction")
 The Linux ecosystem is well known to be fractured, whether it is the seemingly
-endless amount of distributions, or the various desktop environments[@DE], there
-will always be someone who will create something new. With this reality comes a
-challenge to create software that is not dependent on one singular distribution
-or environment.
+endless amount of distributions, or the various desktop environments#super([@DE]),
+there will always be someone who will create something new. With this reality
+comes a challenge to create software that is not dependent on one singular
+distribution or environment.
 
 The same lack of universality can be seen when interacting with configuration
 tools. Whenever a user would like to connect to a network, change their volume,
@@ -23,14 +23,14 @@ different user interfaces. Some might argue that this is the point of these
 minimal environments, as they sometimes intentionally don't offer this type of
 software by default, but there is also a distinct lack of this type of software.
 
-A typical example for a minimal environment is a window manager/compositor.
-[@compositor] In comparison to desktop environments, these do not offer any
-software other than window management: creating windows, removing windows,
-window positioning, etc. Any additional software needs to be installed
-separately, like status bars, editors, media viewers, or in this case settings.
+A typical example for a minimal environment is a window manager/compositor#super([@compositor]).
+In comparison to desktop environments, these do not offer any software other
+than window management: creating windows, removing windows, window positioning,
+etc. Any additional software needs to be installed separately, like status bars,
+editors, media viewers, or in this case settings.
 
 Some specific settings like monitor configuration were once universal with tools
-like Xrandr, but with the introduction of the Wayland [@wayland] display
+like Xrandr, but with the introduction of the Wayland#super([@wayland]) display
 protocol, the original idea of having a universal display server was abandoned,
 favoring individual implementations instead. This leads to a variety of
 different ways to configure monitors, very few of them being compatible with
@@ -51,7 +51,7 @@ should have a plugin system, that allows for modular expansion of the
 application. This modularity also allows for interaction with tools such as
 status bars or the creation of applets. This expands the functionality beyond
 ReSet as a user interface, and instead allows it to be a middleman between
-compositor and shell components. [@shell-component]
+compositor and shell components#super([@shell-component]).
 
 #pagebreak()
 
@@ -77,4 +77,10 @@ The challenges specified in combination with a smaller user base for minimal
 environments are likely the cause for a missing universal solution. The previous
 solutions are functional, just not optimal.
 
-
+#subsection("Methodology")
+This project was created by first evaluating existing projects in
+@Analysisofexistingapplications and including techniques from literature in
+@UserInterfaces. Further, technologies and potential solutions to
+implementations were evaluated in @Implementation. With this information, the
+implementation is documented starting at @Architecture. At the end, the solution
+is discussed in @Conclusion, and potential further improvements mentioned in @FurtherPotential.

@@ -57,7 +57,7 @@ potential solutions.
 #pagebreak()
 
 #subsection("Gnome Control Settings")
-The #link("https://github.com/gnome/gnome-control-center")[Gnome control center] [@Gnome]
+The #link("https://github.com/gnome/gnome-control-center")[Gnome control center]#super([@Gnome])
 is as the name implies the central settings application for the Gnome desktop
 environment, it offers plenty of configuration, from networks to Bluetooth, to
 online accounts, default application and a lot more. The application is written
@@ -78,7 +78,7 @@ is a _binary_ which makes it fast to read for dconf, but not readable for other
 systems.
 
 _Gnome control center is not supposed to be used outside the Gnome environment,
-especially using the Wayland [@wayland] protocol. Hence not all functionality
+especially using the Wayland#super([@wayland]) protocol. Hence, not all functionality
 will be available on other environments._
 
 #grid(columns: (auto), rows: (20pt), cell([#figure(
@@ -133,10 +133,10 @@ will be available on other environments._
     bold: false,
     font_size: 11pt,
   ),
-),
+)
 
 #subsection("KDE System Settings")
-#link("https://invent.kde.org/plasma/systemsettings")[KDE systemsettings] [@kde]
+#link("https://invent.kde.org/plasma/systemsettings")[KDE systemsettings]#super([@kde])
 is written in C++/QML and is made with the #link("https://www.qt.io/")[QT toolkit].
 It follows the KDE style of applications, featuring a very large variety of
 settings (on KDE), and offering other applications a way to integrate into this
