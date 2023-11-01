@@ -4,7 +4,7 @@
 #subsection("Domain Model")
 
 #align(center, [#figure(
-    image("../../files/domain_model.svg", width: 100%),
+    img("domain_model.svg", width: 100%, extension: "files"),
     caption: [Domain Model of ReSet],
   )<domain_model>])
 
