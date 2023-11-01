@@ -4,7 +4,7 @@
 #subsection("Architecture")
 
 #align(center, [#figure(
-    image("../../files/architecture.svg", width: 100%),
+    img("architecture.svg", width: 100%, extension: "files"),
     caption: [Architecture of ReSet],
   )<domain_model>])
 

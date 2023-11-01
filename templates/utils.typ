@@ -53,15 +53,20 @@
   }
 }
 
+#let img(name, width: 100%, extension: "figures") = {
+  let name = "../" + extension + "/" + name
+  image(name, width: width)
+}
+
 #let file = counter("filecounter")
 #let lsp_placate() = {
   file.step()
   locate(loc => {
     let val = file.final(loc)
     if val.at(0) == 1 {
-      reset_glossary()
       insert_mocks(loc)
-      bibliography("../files/bib.yml")
+      reset_glossary()
+      bibliography("/files/bib.yml")
     }
   })
 }
@@ -75,7 +80,7 @@
 }
 
 #let custom_heading(num, use_line, level, name: "", custom_tag: "") = {
-  let concat_name = str(name.replace(" ",""))
+  let concat_name = str(name.replace(" ", ""))
   if custom_tag != "" {
     locate(
       loc => {
@@ -88,19 +93,17 @@
       },
     )
   } else if num != "" and type(name) == type("string") {
-    locate(
-      loc => {
-        let elem = query(heading.where(body: [#name]).before(loc), loc)
-        if elem == () {
-          align(
-            left,
-            [#heading(numbering: num, level: level, name)#label(concat_name)],
-          )
-        } else {
-          align(left, [#heading(numbering: num, level: level, name)])
-        }
-      },
-    )
+    locate(loc => {
+      let elem = query(heading.where(body: [#name]).before(loc), loc)
+      if elem == () {
+        align(
+          left,
+          [#heading(numbering: num, level: level, name)#label(concat_name)],
+        )
+      } else {
+        align(left, [#heading(numbering: num, level: level, name)])
+      }
+    })
   } else {
     align(left, [#heading(numbering: num, level: level, name)])
   }

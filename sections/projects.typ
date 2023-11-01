@@ -63,7 +63,7 @@ environment, it offers plenty of configuration, from networks to Bluetooth, to
 online accounts, default application and a lot more. The application is written
 in C with the #link("https://www.gtk.org/")[GTK] toolkit (GTK4) and follows the #link("https://developer.Gnome.org/hig/")[Gnome Human Interface Guidelines].
 #align(center, [#figure(
-    image("../figures/gnome_control_center.png", width: 80%),
+    img("gnome_control_center.png", width: 80%),
     caption: [Screenshot of the Gnome control center],
   )])<Gnome_control_center>
 The code structure of the control center is very modular, with each tab having
@@ -142,7 +142,7 @@ It follows the KDE style of applications, featuring a very large variety of
 settings (on KDE), and offering other applications a way to integrate into this
 application via KConfig Module(KCM).
 #align(center, [#figure(
-    image("../figures/kde_systemsettings.png", width: 80%),
+    img("kde_systemsettings.png", width: 80%),
     caption: [Screenshot of the KDE systemsettings],
   )])<kde_systemsettings>
 The program is by default very slim and does not feature any standard settings
@@ -231,7 +231,7 @@ system-wide input/output, per application output and input streams. It is under
 the umbrella of the Free Desktop project and is directly involved in PulseAudio
 itself. The application itself is written in C++ and GTK3.
 #align(center, [#figure(
-    image("../figures/pavucontrol.png", width: 80%),
+    img("pavucontrol.png", width: 80%),
     caption: [Screenshot of pavucontrol],
   )])<pavucontrol>
 
@@ -282,7 +282,7 @@ quality of life features like sending of files. It works great in functionality,
 but the buttons are not very expressive in what they will achieve. Blueman is
 written in Python and GTK3.
 #align(center, [#figure(
-    image("../figures/bluetooth_manager_filled.png", width: 80%),
+    img("bluetooth_manager_filled.png", width: 80%),
     caption: [Screenshot of blueman],
   )])<blueman>
 
@@ -341,7 +341,7 @@ Technically, there exists a #link(
 )[network manager applet], however, this is to be included in status bars and
 does not work on its own.
 #align(center, [#figure(
-    image("../figures/nmtui.png", width: 80%),
+    img("nmtui.png", width: 80%),
     caption: [Screenshot of nmtui],
   )])<nmtui>
 
