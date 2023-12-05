@@ -10,7 +10,7 @@ which can be found on the ReSet and ReSet-Daemon repositories respectively.
 #requirement(
   "User Interface",
   "Usability",
-  "medium",
+  "Medium",
   [
     Reaction time should not be noticeable by user, and UI should not be blocked
     during loading operations.
@@ -24,7 +24,7 @@ which can be found on the ReSet and ReSet-Daemon repositories respectively.
 #requirement(
   "User Interface",
   "Usability",
-  "medium",
+  "Medium",
   [
     Errors should be visible to the user, and the user should be able to solve
     issues accordingly.\
@@ -37,11 +37,16 @@ which can be found on the ReSet and ReSet-Daemon repositories respectively.
     - ReSet should not crash if a dependency is not installed.
   ],
 )
-#requirement("Code Duplication", "Maintainability", "low", [
+#requirement(
+  "Code Duplication", 
+  "Maintainability", 
+  "Low", 
+  [
   ReSet should not have the same logic implemented as ReSet-Daemon.\
   In general, ReSet should not have any logic other than necessary.
-], [
+  ], 
+  [
   - Provide adequate functions over inter process connection
   - Well documented API
-])
+  ])
 #pad(x: 0pt, y: 0pt, line(length: 100%))

@@ -17,15 +17,15 @@ potential solutions.
   work. Interoperability for ReSet is defined as the ease of use of a particular
   project in different environments. Important to note, is that multiple factors
   are considered:
-  - *amount of working features*
-  - *amount of non-working features*\
+  - *Amount of working features*
+  - *Amount of non-working features*\
     This specifically refers to residue entries that would work on the expected
     environment, but not on other environments.
-  - *interoperability of toolkit*\
+  - *Interoperability of toolkit*\
     Depending on the toolkit, it might behave differently with specific modules
     missing from other environments, this would once again increase the amount of
     additional work is needed, in order to get the expected interface.
-  - *behavior on different environments*\
+  - *Behavior on different environments*\
     Depending on the environment, applications have different ways of displaying
     themselves with different attributes like a minimum size. These constraints
     might not work well with different types of window management. A tiling window
@@ -222,7 +222,7 @@ else. This means one would need to use multiple of these, in order to replicate
 what the other 2 discussed programs offer.
 
 Interoperability will not be considered for these applications, as they were
-made for this use case.
+made for its intended use case.
 
 #link("https://gitlab.freedesktop.org/pulseaudio/pavucontrol")[*Pavucontrol*] |
 Sound Application\

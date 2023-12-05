@@ -28,7 +28,7 @@ Persistent data is deserialized by the daemon, this data will then be merged
 with the runtime data by the adjacent service. This would make functionality
 like automatically trying to reconnect to a default network possible.
 
-Data is transferred individually(1 DTO) per service, this is to both provide
+Data is transferred individually (one DTO) per service, this is to both provide
 individual access for third party applications and to allow lazy loading of data
 by the frontend.
 

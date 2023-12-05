@@ -18,31 +18,31 @@ weight, in order to evaluate which tool will be chosen.\
 The weigths are as follows: low -> 1, medium -> 2, high -> 3
 
 The following categories are evaluated for programming languages:
-- *familiarity* | weight: medium\
+- *Familiarity* | weight: medium\
   Indicates how familiar the developers are with a certain tool. More familiarity
   means an easier development process without unexpected surprises. Note that
   familiarity is the subjective relative experience compared to other languages
   and does not indicate a particular level of skill.
-- *developer* experience | weight: low\
+- *Developer* experience | weight: low\
   This encompasses the entire development cycle, meaning toolchain, LSPs,
   formatters, code coverage tools and more. With a modern developer experience,
   you can guarantee functionality without prolonged setup phases.
-- *ecosystem* | weight: high\
+- *Ecosystem* | weight: high\
   Ecosystem is defined as the amount and the quality of packages and libraries
   that are available to this tool. For ReSet, this can be a crucial category, as
   many different types of services are used, hence the need for good integration
   with them.\
   Important: The ecosystem is highly dependent on the Linux desktop, which is not
-  always favorable for all tools, for example: .NET Maui, a very popular toolkit
+  always favorable for all tools, for example: .NET MAUI, a very popular toolkit
   is not usable, as it does not run on the Linux desktop.
-- *runtime speed* | weight: low\
+- *Runtime speed* | weight: low\
   Runtime speed is likely only a concern for the daemon, and even in this case, it
   is unlikely to be too slow with any modern programming language.
-- *resource usage* | weight: medium\
+- *Resource usage* | weight: medium\
   Many computers have enough RAM by now, however, ReSet intends to work on any
   distribution, including lightweight distributions meant for older or lower end
   systems, therefore RAM usage should be a concern, especially for the daemon.
-- *development speed* | weight: medium\
+- *Development speed* | weight: medium\
   ReSet is limited in time scope, therefore tools with decent development speed
   should be considered. Note, that this includes the time needed for debugging and
   potential problems, such as undefined behavior or dynamic type issues.
@@ -104,49 +104,49 @@ open-source license*.
   columns: (2.5fr, 1fr, 1.4fr, 1fr, 1fr, 1fr, 0.8fr),
   rows: (30pt, 30pt, 30pt, 30pt, 30pt, 30pt, 30pt),
   gutter: 0pt,
-  cell("category", bold: true, use_under: true, cell_align: left),
+  cell("Category", bold: true, use_under: true, cell_align: left),
   cell("Python", bold: true, use_under: true),
   cell("TypeScript", bold: true, use_under: true),
   cell("C#", bold: true, use_under: true),
   cell("C++", bold: true, use_under: true),
   cell("Rust", bold: true, use_under: true),
-  cell("weight", bold: true, use_under: true),
-  cell("familiarity", bold: true, cell_align: left),
+  cell("Weight", bold: true, use_under: true),
+  cell("Familiarity", bold: true, cell_align: left),
   cell([#python.familiarity], bold: true),
   cell([#typescript.familiarity], bold: true),
   cell([#csharp.familiarity], bold: true),
   cell([#cpp.familiarity], bold: true),
   cell([#rust.familiarity], bold: true),
   cell([\*#language_weights.familiarity], bold: true),
-  cell("developer experience", bold: true, fill: silver, cell_align: left),
+  cell("Developer experience", bold: true, fill: silver, cell_align: left),
   cell([#python.developer_experience], bold: true, fill: silver),
   cell([#typescript.developer_experience], bold: true, fill: silver),
   cell([#csharp.developer_experience], bold: true, fill: silver),
   cell([#cpp.developer_experience], bold: true, fill: silver),
   cell([#rust.developer_experience], bold: true, fill: silver),
   cell([\*#language_weights.developer_experience], bold: true, fill: silver),
-  cell("ecosystem", bold: true, cell_align: left),
+  cell("Ecosystem", bold: true, cell_align: left),
   cell([#python.ecosystem], bold: true),
   cell([#typescript.ecosystem], bold: true),
   cell([#csharp.ecosystem], bold: true),
   cell([#cpp.ecosystem], bold: true),
   cell([#rust.ecosystem], bold: true),
   cell([\*#language_weights.ecosystem], bold: true),
-  cell("runtime speed", bold: true, fill: silver, cell_align: left),
+  cell("Runtime speed", bold: true, fill: silver, cell_align: left),
   cell([#python.runtime_speed], bold: true, fill: silver),
   cell([#typescript.runtime_speed], bold: true, fill: silver),
   cell([#csharp.runtime_speed], bold: true, fill: silver),
   cell([#cpp.runtime_speed], bold: true, fill: silver),
   cell([#rust.runtime_speed], bold: true, fill: silver),
   cell([\*#language_weights.runtime_speed], bold: true, fill: silver),
-  cell("resource usage", bold: true, cell_align: left),
+  cell("Resource usage", bold: true, cell_align: left),
   cell([#python.resource_usage], bold: true),
   cell([#typescript.resource_usage], bold: true),
   cell([#csharp.resource_usage], bold: true),
   cell([#cpp.resource_usage], bold: true),
   cell([#rust.resource_usage], bold: true),
   cell([\*#language_weights.resource_usage], bold: true),
-  cell("development speed", bold: true, fill: silver, cell_align: left),
+  cell("Development speed", bold: true, fill: silver, cell_align: left),
   cell([#python.development_speed], bold: true, fill: silver),
   cell([#typescript.development_speed], bold: true, fill: silver),
   cell([#csharp.development_speed], bold: true, fill: silver),
@@ -199,7 +199,7 @@ still offering all the benefits of a more modern language.@gtk_rs
 #pagebreak()
 
 The following categories are evaluated for UI toolkits:
-- *familiarity* | weight: low\
+- *Familiarity* | weight: low\
 - *Language Integration* | weight: medium\
   This defines how well the chosen language will integrate with the UI toolkit, in
   other words, certain toolkits might get a zero score here, signifying
@@ -234,12 +234,12 @@ The following categories are evaluated for UI toolkits:
   columns: (1.6fr, 1fr, 1fr, 1fr, 0.8fr),
   rows: (30pt, 30pt, 30pt, 30pt, 30pt),
   gutter: 0pt,
-  cell("category", bold: true, use_under: true, cell_align: left),
+  cell("Category", bold: true, use_under: true, cell_align: left),
   cell("GTK", bold: true, use_under: true),
   cell("Iced", bold: true, use_under: true),
   cell("QT", bold: true, use_under: true),
-  cell("weight", bold: true, use_under: true),
-  cell("familiarity", bold: true, cell_align: left),
+  cell("Weight", bold: true, use_under: true),
+  cell("Familiarity", bold: true, cell_align: left),
   cell([#gtk.familiarity], bold: true),
   cell([#iced.familiarity], bold: true),
   cell([#qt.familiarity], bold: true),

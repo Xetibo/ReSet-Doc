@@ -4,23 +4,23 @@
 #subsubsection("Plugin System")
 As read on NullDeref @nullderef, there are multiple ways to create a potential
 plugin system for ReSet:
-- WASM\
+- *WASM*\
   Web assembly is a very flexible way of creating plugins, as it is based on
   something that will work on every device that has a WASM target. However, WASM
   is not something known to anyone involved in this project, which is why it is
   not covered further.
-- Scripting Languages\
+- *Scripting Languages*\
   Languages like Lua have succeeded integrating in multiple fields such as game
   programming and even the Neovim editor. In both cases it expands the potential
   functionality by giving developers a fully functional programming language while
   still keeping the original system with a more performant system programming
   language.
-- IPC\
+- *IPC*\
   With inter process communication, one will have a lot of overhead when talking
   about a plugin system, however, it is a lot easier to write. For this project,
   IPC can be considered as a potential solution, should the other alternatives not
   be viable.
-- Dynamic Loading\
+- *Dynamic Loading*\
   This refers to dynamic libraries that are loaded at runtime. These dynamic
   libraries are the most performant way to create a plugin system without outright
   moving towards changing the code and recompiling. However, it forces ReSet to

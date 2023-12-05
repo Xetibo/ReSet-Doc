@@ -44,8 +44,8 @@ that both major and specifically smaller environments should be able to use this
 application to fill the current gap. This allows users to avoid installing one
 tool for each task, while also using one user interface with consistent design.
 
-ReSet should be able to handle audio input and output, network connectivity and
-Bluetooth connectivity as a base. For more advanced features, or specific
+ReSet should be able to handle basic audio input and output, network and
+Bluetooth connectivity for starters. For more advanced features, or specific
 features, such as monitor configurations for individual compositors, ReSet
 should have a plugin system, that allows for modular expansion of the
 application. This modularity also allows for interaction with tools such as
@@ -56,20 +56,20 @@ compositor and shell components#super([@shell-component]).
 #pagebreak()
 
 #subsection("Challenges")
-- *consistency*\
+- *Consistency*\
   As discussed in @Introduction, multiple applications will not necessarily create
   a consistent experience, however, even with a single application, creating a
   consistent application with multiple technologies and use-cases is not trivial.
-- *interoperability*\
+- *Interoperability*\
   The reason for environment specific applications is the ease of integration. If
   one has control over the environment, it is easier to implement advanced
   features, however, without this control, there is a significant overhead for
   each feature.
-- *features*\
+- *Features*\
   In order for ReSet to be a viable alternative to existing solutions, it would
   need to cover the majority of use-cases, this means supporting as many features
   as possible, or providing a plugin system for modular expansion.
-- *maintainability*\
+- *Maintainability*\
   With increasing scope, the overhead for developers will increase, causing
   potential slowdowns in development, or release cycles.
 

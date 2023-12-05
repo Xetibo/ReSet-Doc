@@ -11,18 +11,18 @@ practices that are employed by these guidelines.
 
 These best practices can also be seen in the book "Don't make me think" by Steve
 Krug, @krug or in "Designing the User Interface" by Ben Shneiderman and
-Catherine Plaisant. In Both works the authors defined rules to follow when
+Catherine Plaisant. In both works the authors defined rules to follow when
 creating user interfaces. Steve Krug specifically focused on the web, however,
 the vast majority of these rules can be applied in the same manner on desktop
 applications.
 
 Krug's rules:
-+ *"Don't Make Me Think" - Steve Krug* @krug\
+- *"Don't Make Me Think" - Steve Krug* @krug\
   This defines that a user should not need to "think" when using the interface, it
   should come as obvious where the user has to click or navigate to in order to
   finish their task. In the case of ReSet, this might be something like connecting
   to a Wi-Fi network or a Bluetooth device.\
-  *"Cater to universal usability" - "The eight golden rules"* @shneiderman\
+- *"Cater to universal usability" - "The eight golden rules"* @shneiderman\
   User interfaces should be created for all possible users, meaning both experts
   and novices should be able to use the application without issues.\
   This rule depends heavily on what the possible user-base is, an IDE has
@@ -49,7 +49,7 @@ Krug's rules:
   In this case the icons could be improved to represent a more technology neutral
   design.
 
-+ *"It doesn’t matter how many times I have to click, as long as each click is a
+- *"It doesn’t matter how many times I have to click, as long as each click is a
   mindless, unambiguous choice." - Steve Krug* @krug\
   Each navigation should have a consistent path and a clearly defined destination,
   it should be clear to the user where they are right now, and where they can go
@@ -80,8 +80,8 @@ Krug's rules:
   In other words, it is clear that shorter navigation is usually the best way to
   achieve "mindless navigation", however it is, as Krug mentioned, not the only
   factor.
-
-+ *"Get rid of half the words on each page, then get rid of half of what is left."
+#pagebreak()
+- *"Get rid of half the words on each page, then get rid of half of what is left."
   \- Steve Krug* @krug\
   This defines unnecessary information on a page or application. Everything that
   the user does not care about should be omitted. One should note however that
@@ -89,7 +89,7 @@ Krug's rules:
   users a certain feature when they need it. Gnome uses the same concept when
   creating applications, keeping the overall application simple, but powerful when
   needed.\
-  *"Reduce short-term memory load" - "The eight golden rules"* @shneiderman\
+- *"Reduce short-term memory load" - "The eight golden rules"* @shneiderman\
   Humans have a limited capacity for information, this includes for what we see on
   an application. The authors therefore propose to collapse complex user
   interfaces like multi-page displays into one.
@@ -108,9 +108,7 @@ Krug's rules:
   to create, including links and shortcuts, while the Gnome experience only offers
   a new folder, anything else needs to be done with a terminal.
 
-#pagebreak()
-
-+ "Support internal locus of control" - "The eight golden rules" @shneiderman\
+- *"Support internal locus of control" - "The eight golden rules"* @shneiderman\
   The rule refers to clear omission of unnecessary data for experts, and giving
   them a short, clear, and usually customizable path to their end-goal. In user
   interfaces this is usually done with keyboard shortcuts.
@@ -127,10 +125,9 @@ Krug's rules:
   The Dolphin version is much more complex, this is due to the fact that you can
   customize any shortcut in Dolphin using this interface. For Nautilus shortcuts
   can only be configured using a settings file that has to be created by the user.
-
+  
 #pagebreak()
-
-+ *"Strive for consistency" - "The eight golden rules"* @shneiderman\
+- *"Strive for consistency" - "The eight golden rules"* @shneiderman\
   No matter how one creates a user interface, the very first thing one should
   thrive for is to make it consistent. This includes practices like ensuring items
   have the same appearance no matter where they are placed, or that buttons with
