@@ -168,7 +168,7 @@
   ))
 }
 
-#let test(subject, description, positives, negatives, notes) = {
+#let test(subject, description) = {
   let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
   pad(x: 0pt, y: 0pt, line(length: 100%))
   pad(x: 0pt, y: -15pt, grid(
@@ -179,12 +179,6 @@
     cell(height: auto)[#subject],
     cell(height: auto)[*Description*],
     cell(height: auto)[#description],
-    cell(height: auto)[*Positives*],
-    cell(height: auto)[#positives],
-    cell(height: auto)[*Negatives*],
-    cell(height: auto)[#negatives],
-    cell(height: auto)[*Notes*],
-    cell(height: auto)[#notes],
   ))
   pad(x: 0pt, y: 0pt, line(length: 100%))
 }

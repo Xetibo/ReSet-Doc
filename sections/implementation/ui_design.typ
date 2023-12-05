@@ -2,12 +2,17 @@
 #lsp_placate()
 
 #subsection("UI Design")
-Our settings app can be divided into two parts. The left part contains a list of
-all setting categories and the right side displays the actual setting. While
-this is not a standard, it is a very common layout structure as seen in
-@Analysisofexistingapplications and even on other OS like Windows and macOS. The
-list of settings contains multiple categories like Connectivity and Sound, and
-each of them contains more subcategories.
+We used a basic PDF tool to create sketches of our UI. This helped us get an idea on how to design an optimal UX for our users. The following figures are the first UI mocks.
+#align(center, [#figure(
+    img("monitormock.png", width: 75%),
+    caption: [UI mock of monitor setting],
+  )<uimock4>])
+#align(center, [#figure(
+    img("widemock.png", width: 75%),
+    caption: [UI mock behavior on wide monitor screen],
+  )<uimock5>])
+
+Our settings app can be divided into two parts. The left part is a sidebar which contains a list of all settings and the right side displays the actual setting where the user can make changes. While this is not a standard, it is a very common layout structure as seen in @Analysisofexistingapplications and even on other OS like Windows and macOS. The list of settings contains multiple categories like Connectivity and Sound, and each of them contains more subcategories.
 
 Because a settings app contains a lot of configuration options and customization
 features, having a search bar is a necessity. To make it as smooth as possible,
@@ -26,10 +31,7 @@ The right side displays the settings that can be configured. It is dynamically
 adding new settings to the screen if there's enough space to facilitate it. For
 example, if the user clicks on a category like Connectivity, it will show the
 WiFi settings and if there is enough space, Bluetooth and VPN settings are also
-displayed next to it in a grid layout. But if the user clicks on the WiFi
-setting, only the WiFi setting is visible because it is clear that the other
-settings are not relevant. Oftentimes, there's a lot of wasted space, especially
-if the window is in full screen.
+displayed next to it in a flowbox layout which is very similar to the flowbox in CSS. But if the user clicks on the WiFi setting, only the WiFi setting is visible because it is clear that the other settings are not relevant. Oftentimes, there's a lot of wasted space, especially if the window is in full screen.
 #align(center, [#figure(
     img("gnomeSettingsFullScreen.png", width: 90%),
     caption: [Full-screen Gnome control center#super([@Gnome])
@@ -52,12 +54,3 @@ above.
   center,
   [#figure(img("wifimock.png", width: 90%), caption: [UI mock of WiFi setting])<uimock3>],
 )
-#align(center, [#figure(
-    img("monitormock.png", width: 90%),
-    caption: [UI mock of monitor setting],
-  )<uimock4>])
-#align(center, [#figure(
-    img("widemock.png", width: 90%),
-    caption: [UI mock behavior on wide monitor screen],
-  )<uimock5>])
-#pagebreak()
