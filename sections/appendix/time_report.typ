@@ -26,3 +26,24 @@ We have mostly finished all tasks of our project documentation and are now focus
     image("../../figures/timeReports/timeReport_03.png", width: 100%),
     caption: [Time distribution of Sprint 3],
   )])
+#pagebreak()
+#subsubsection("Sprint 4: Start of Implementation")
+We have now started working on implementing our prototype. This includes the communication between ReSet and Reset-Daemon. We also started working on the UI.
+#align(center, [#figure(
+    image("../../figures/timeReports/timeReport_04.png", width: 100%),
+    caption: [Time distribution of Sprint 4],
+  )])
+
+#subsubsection("Sprint 5: Continuation of Implementation")
+We continued working on the UI and started preparing for the Midpoint UI test. At the same time, the backend was being further developed.
+#align(center, [#figure(
+    image("../../figures/timeReports/timeReport_05.png", width: 100%),
+    caption: [Time distribution of Sprint 5],
+  )])
+
+#subsubsection("Sprint 6: Midpoint UI Testing")
+This sprint marks the midpoint of our SA, which is why we gave our UI to a few people to test. This feedback will be used to improve our UI. In the backend, we started working on the Audio settings.
+#align(center, [#figure(
+    image("../../figures/timeReports/timeReport_06.png", width: 100%),
+    caption: [Time distribution of Sprint 6],
+  )])
