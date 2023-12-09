@@ -21,7 +21,7 @@ section and did some research on various topics.
   )])
 
 #subsubsection("Sprint 3: Prototyping and Research")
-We have mostly finished all tasks of our project documentation and are now focusing more on having a prototype.
+We have mostly finished all tasks of our project documentation and are now focusing more on having a first prototype.
 #align(center, [#figure(
     image("../../figures/timeReports/timeReport_03.png", width: 100%),
     caption: [Time distribution of Sprint 3],
@@ -63,9 +63,14 @@ We discussed the feedback of our tests and made changes based on it. We also con
     caption: [Time distribution of Sprint 8],
   )])
 
-#subsubsection("Sprint 9: no name yet")
-no image yet
+#subsubsection("Sprint 9: UI Improvements")
+We continued working on the UI to make it more responsive, as we still had some feedback to implement. 
+#align(center, [#figure(
+    image("../../figures/timeReports/timeReport_09.png", width: 100%),
+    caption: [Time distribution of Sprint 9],
+  )])
 
+#pagebreak()
 #subsubsection("Sprint 10: WiFi and Refactoring")
 Now that we slowly near the end of this project, we started refactoring our code. We also started implementing the last big feature, which is to set individual settings for a WiFi network.
 #align(center, [#figure(
@@ -78,4 +83,11 @@ In this sprint, we fixed a lot of bugs in Bluetooth and Audio. The Bluetooth UI 
 #align(center, [#figure(
     image("../../figures/timeReports/timeReport_11.png", width: 100%),
     caption: [Time distribution of Sprint 11],
+  )])
+
+#subsubsection("Sprint 12: Bug fixing and documentation")
+We continued to squash all the bugs, as we are preparing ReSet for our product test. We also started working on the documentation.
+#align(center, [#figure(
+    image("../../figures/timeReports/timeReport_12.png", width: 100%),
+    caption: [Time distribution of Sprint 12],
   )])
