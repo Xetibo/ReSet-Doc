@@ -48,4 +48,34 @@ In this week we tried to get as much UI done as possible, in preparation of the 
     caption: [Time distribution of Sprint 6],
   )])
 
-//This sprint marks the midpoint of our SA, which is why we gave our UI to a few people to test. This feedback will be used to improve our UI. 
+#pagebreak()
+#subsubsection("Sprint 7: Midpoint UI Testing")
+Nearing closer to our first UI test, we spent a lot of time on the UI. ReSet was given out to a few people to test. The feedback was used to improve our UI.
+#align(center, [#figure(
+    image("../../figures/timeReports/timeReport_07.png", width: 100%),
+    caption: [Time distribution of Sprint 7],
+  )])
+  
+#subsubsection("Sprint 8: UI Improvements, Audio and Bluetooth")
+We discussed the feedback of our tests and made changes based on it. We also continued working on Bluetooth as well as Audio.
+#align(center, [#figure(
+    image("../../figures/timeReports/timeReport_08.png", width: 100%),
+    caption: [Time distribution of Sprint 8],
+  )])
+
+#subsubsection("Sprint 9: no name yet")
+no image yet
+
+#subsubsection("Sprint 10: WiFi and Refactoring")
+Now that we slowly near the end of this project, we started refactoring our code. We also started implementing the last big feature, which is to set individual settings for a WiFi network.
+#align(center, [#figure(
+    image("../../figures/timeReports/timeReport_10.png", width: 100%),
+    caption: [Time distribution of Sprint 10],
+  )])
+
+#subsubsection("Sprint 11: Bug fixing")
+In this sprint, we fixed a lot of bugs in Bluetooth and Audio. The Bluetooth UI was improved as well, as it lacked some consistency with other UI elements.
+#align(center, [#figure(
+    image("../../figures/timeReports/timeReport_11.png", width: 100%),
+    caption: [Time distribution of Sprint 11],
+  )])
