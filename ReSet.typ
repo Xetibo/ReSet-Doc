@@ -2,7 +2,17 @@
 
 #show link: set text(fill: blue)
 
-#let abstract = { [ This is an abstract ] }
+#let abstract = { [
+This abstract introduces ReSet, a user-friendly settings application for Linux written in Rust. ReSet aims to run on every distribution, providing a consistent experience for all suers.
+
+Key features include the configuration of WiFi networks, Bluetooth devices, Input devices and Output devices. These features are tied together in a reponsive user interface.
+
+Future development will focus on new features such as configuring peripherals, as well as a plugin system. This will allow users to extend ReSet with their own features.
+
+In summary, ReSet represents a significant advancement in Linux settings applications, offering a concise, cross-distribution solution that prioritizes user experience through Rust's efficiency and adaptability.
+// todo write more stuff here
+// why is this stuff centered? it looks weird af
+] }
 
 
 #let acknowledgements = { [ 
