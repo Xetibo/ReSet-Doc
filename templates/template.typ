@@ -55,6 +55,7 @@
     ],
   )
   pagebreak(weak: false)
+  set align(left)
   heading("Abstract", numbering: none, bookmarked: false, outlined: false)
   abstract
   pagebreak()
@@ -65,6 +66,7 @@
     outlined: false,
   )
   acknowledgements
+  set align(center)
   pagebreak(weak: false)
   outline(title: "Table of Contents", indent: true, depth: 3)
   pagebreak(weak: false)

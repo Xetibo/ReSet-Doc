@@ -83,4 +83,5 @@ This project was created by first evaluating existing projects in
 @UserInterfaces. Further, technologies and potential solutions to
 implementations were evaluated in @Implementation. With this information, the
 implementation is documented starting at @Architecture. At the end, the solution
-is discussed in @Conclusion, and potential further improvements mentioned in @FurtherPotential.
+is discussed in @Conclusion, and potential further improvements mentioned in
+@Improvements.

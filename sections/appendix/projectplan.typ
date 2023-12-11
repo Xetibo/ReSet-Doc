@@ -16,7 +16,8 @@ is in week 7, so UI Reviews can be assessed and corrections can be applied
 early. By week 12 the minimal viable product should be in production state, in
 order to leave time for reflection and documentation.
 
-#align(center, [#figure(
-    image("../../figures/ganntTimePlanning.png", width: 55%),
-    caption: [Time management],
-  )])
+#align(
+  center, [#figure(
+      image("../../figures/ganntTimePlanning.png", width: 55%), caption: [Time management],
+    )],
+)

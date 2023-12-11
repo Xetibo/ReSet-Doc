@@ -10,7 +10,9 @@
     "Implementation",
     "Architecture",
     "Conclusion",
-    "FurtherPotential",
+    "Improvements",
+    "DaemonImplementation",
+    "IPCAPI",
   )
   for label_string in mock_labels {
     let elem = query(heading.where(body: [#label_string]), loc)
