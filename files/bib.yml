@@ -144,8 +144,32 @@ flatpak:
   title: Flatpak sandbox permissions
   author: flatpak
   url: https://docs.flatpak.org/en/latest/sandbox-permissions.html
-gnome: 
+gresources: 
   type: web
-  title: Gnome DBus documentation 
+  title: Gnome Gresources documentation 
   author: Gnome
-  url: 
+  url: https://developer-old.gnome.org/gio/stable/GResource.html
+rust_macros:
+  type: web
+  title: The Rust Programming Language 
+  author: Steve Klabnik and Carol Nichols, with contributions from the Rust Community
+  license: Apache-2.0, MIT
+  url: https://doc.rust-lang.org/book/ch19-06-macros.html
+pimpl:
+  type: web
+  title: PImpl 
+  author: cppreference 
+  url: https://en.cppreference.com/w/cpp/language/pimpl
+pimpl_gotw:
+  type: web
+  title: The Fast PImpl idiom
+  author: Herb Sutter
+  url: http://www.gotw.ca/gotw/028.htm
+gtk_rs_introduction:
+  type: web
+  title: GUI development with Rust and GTK 4
+  author: Julian Hofer
+  license: CC BY 4.0 Deed
+  url: https://gtk-rs.org/gtk4-rs/stable/latest/book/
+
+
