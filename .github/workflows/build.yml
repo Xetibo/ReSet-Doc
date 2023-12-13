@@ -22,6 +22,8 @@ jobs:
     - run: mkdir output
     - run: nix run nixpkgs#plantuml -- files/domain_model.txt -tsvg 
     - run: nix run nixpkgs#plantuml -- files/architecture.txt -tsvg 
+    - run: nix run nixpkgs#plantuml -- files/wifi_architecture.txt -tsvg 
+    - run: nix run nixpkgs#plantuml -- files/dbus_sequence.txt -tsvg 
     - run: nix run github:typst/typst -- compile ReSet.typ output/ReSet.pdf
     - uses: actions/upload-pages-artifact@v1
       with: { path: 'output' }
