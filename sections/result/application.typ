@@ -54,7 +54,7 @@ impl ObjectSubclass for SettingBox {
 ```), caption: [ReSet settings box])<reset_settings_box>
 
 Alongside this, the flowbox which houses the containers was created to always
-use the optimal amount of screenspace available. This translates to a window
+use the optimal amount of screen space available. This translates to a window
 that doesn't feel empty, even on ultrawide monitors. At the same time, the
 flowbox provides the response design aspects that users have gotten used to on
 web applications. Meaning that ReSet can also be used on vertical monitors
@@ -62,22 +62,61 @@ without issue.
 
 #subsubsection("Listeners")
 Just like in @DaemonImplementation, the listeners are DBus clients that activate
-a callback function on recieval of an event. The events themselves always have
+a callback function on receival of an event. The events themselves always have
 the same structure with possible events being: added, removed, changed.
 
+// typstfmt::off
 #figure(sourcecode(```rs
-// Example listener setup
-TODO
+// Example listener setup(Audio)
+pub fn start_audio_listener(
+    listeners: Arc<Listeners>,
+    sink_box: Option<Arc<SinkBox>>,
+    source_box: Option<Arc<SourceBox>>,
+) {
+    // put listener into different thread in order to prevent blocking behavior
+    gio::spawn_blocking(move || {
+        let conn = Connection::new_session().unwrap();
+        if listeners.pulse_listener.load(Ordering::SeqCst) {
+            // don't start another thread if already running
+            return;
+        }
+
+        // connection that will be used for the listener events
+        let mut conn = start_dbus_audio_listener(conn);
+
+        if let Some(sink_box) = sink_box {
+            // add events to listen for speakers etc.
+            conn = start_output_box_listener(conn, sink_box);
+        }
+        if let Some(source_box) = source_box {
+            // add events to listen for microphones etc.
+            conn = start_input_box_listener(conn, source_box);
+        }
+
+        listeners.pulse_listener.store(true, Ordering::SeqCst);
+
+        loop {
+            // process event -> blocking within thread
+            let _ = conn.process(Duration::from_millis(1000));
+            // stop listener via atomic bool
+            // creates easy shutdown of listener
+            if !listeners.pulse_listener.load(Ordering::SeqCst) {
+                stop_dbus_audio_listener(conn);
+                break;
+            }
+        }
+    });
+}
 ```), caption: [Example setup for a DBus listener to the ReSet daemon])<example_listener>
 
 It is important to note that the added and changed events provide structs
-defined by the DBus API defined in @IPCAPI, while removed events provide a DBus
+defined by the DBus API defined in @DBus, while removed events provide a DBus
 path that denotes the removed structure. The reason for this disparity is the
 inability to fetch data from removed DBus objects, hence only the path is
 provided.
 
 #subsubsection("Guidelines")
 ReSet is written in idiomatic rust where possible(not always applicable due to C
-and GTK architecture), wich means that the project uses the standard linter rust
+and GTK architecture), which means that the project uses the standard linter rust
 provides, clippy, alongside the default rust tools like rust-analyzer and the
 default formatter rustfmt.

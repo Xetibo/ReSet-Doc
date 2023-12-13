@@ -14,13 +14,11 @@ discussed.
 #include "implementation/domain_model.typ"
 #pagebreak()
 #include "implementation/ui_design.typ"
-
-#subsection("Result")
-#include "result/api.typ"
 #pagebreak()
+#subsection("Result")
+#include "result/dbus.typ"
 #include "result/ui_implementation.typ"
 #pagebreak()
 #include "result/daemon.typ"
 #pagebreak()
 #include "result/application.typ"
-#pagebreak()

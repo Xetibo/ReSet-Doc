@@ -144,8 +144,3 @@ flatpak:
   title: Flatpak sandbox permissions
   author: flatpak
   url: https://docs.flatpak.org/en/latest/sandbox-permissions.html
-gnome: 
-  type: web
-  title: Gnome DBus documentation 
-  author: Gnome
-  url: 

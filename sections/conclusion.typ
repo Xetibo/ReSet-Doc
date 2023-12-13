@@ -32,27 +32,59 @@ trivial addition of an additional API and its own namespace.
 
 #figure(sourcecode(```rs
 // Example API addition
-TODO
+cross.insert(
+    DBUS_PATH,
+    &[
+        base,
+        wireless_manager,
+        bluetooth_manager,
+        bluetooth_agent,
+        audio_manager,
+    ],
+    data,
+);
 ```), caption: [Example API addition])<api_addition>
+
+Each of these entries provide their own DBus namespace which can be used to
+provide methods and signals to clients. Here ReSet could later a dynamic list of
+entries via loading of dynamic library functions instead of a hard-coded one.
 
 #subsubsubsection("Persistent Settings")
 Due to a lack of settings in general as of now, ReSet does not offer persistent
-settings storage, although the base code for this features is implemented.
+settings storage, although the base code for this feature is implemented.
 
 #subsubsubsection("Customizable Shortcuts")
-A common feature for many power users, especially on linux is the heavy use of
+A common feature for many power users, especially on Linux is the heavy use of
 keyboard shortcuts. ReSet intended to provide customizable shortcuts in order to
 cater to as many users as possible. This however was also not implemented due to
 time limitations and is hence a possible improvement.
 
+#subsubsubsection("Further Network Features")
+Currently, ReSet only offers basic Wi-Fi settings without any wired or VPN
+support. Alongside this, ReSet also only offers a single security option at this
+time, WPAPSK, which is effectively a simple password without any certificate
+support. Basic code to ease the support for all of this exists in ReSet, however
+it is not functional at this point.
+
+#subsubsubsection("Further Bluetooth Features")
+For Bluetooth it would still be possible to implement advanced features such as
+a pairing wizard for devices that require a pairing code, as well as making file
+transfers possible via ReSet.
+
 #subsubsection("Shortcomings")
 
 #subsubsubsection("Testing")
-Testing with ReSet outside of manual integration tests were extremely hard, this
-also means that only few tests were written and none of these can be run on a
-system without the functionality for the settings ReSet provides. In this case a
-proper mock system needs to be built that can be used to test both the daemon
-and the application without needing real hardware functionality.
+Testing with ReSet outside of manual integration tests is complicated, this also
+means that only few tests were written and none of these can be run on a system
+without the functionality for the settings ReSet provides. In this case a proper
+mock system needs to be built that can be used to test both the daemon and the
+application without needing real hardware functionality.
+
+A mock system is also not perfect, as it needs to replicate the hardware and
+driver behavior in order to provide meaningful tests. During this project all
+team members had to first study all these features and how they behave with
+their driver and hardware implementations. This means a mock system from the
+start would not have been possible.
 
 #subsubsubsection("Code Abstraction")
 With both events and manual functions often providing similar but not the same
@@ -60,8 +92,20 @@ functionality, some code is currently needlessly duplicated. This code should be
 abstracted further for better maintainability and readability.
 
 #figure(sourcecode(```rs
-// Example problematic code 
-TODO
+// Example problematic code
+pub fn populate_sources(input_box: Arc<SourceBox>) {
+    gio::spawn_blocking(move || {
+        let sources = get_sources();
+    // ... omitted code
+  });
+}
+// same code in SinkBox
+pub fn populate_sinks(output_box: Arc<SinkBox>) {
+    gio::spawn_blocking(move || {
+        let sinks = get_sinks();
+    // ... omitted code
+  });
+}
 ```), caption: [Example of problematic code to de-duplicate])<code_duplication>
 
 The challenge here is to ensure that ReSet does not compromise on performance
