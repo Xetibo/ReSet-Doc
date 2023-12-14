@@ -42,6 +42,12 @@ releasing a new version.
     #align(center, image("../../figures/rustdoc_test.png")) ],
   caption: [Rustdoc example entry for code above.],
 )<rustdoc>
+
+#subsubsection("Guidelines")
+ReSet is written in idiomatic rust where possible(not always applicable due to C
+and GTK architecture), which means that the project uses the standard linter rust
+provides, clippy, alongside the default rust tools like rust-analyzer and the
+default formatter rustfmt.
 // typstfmt::on
 
 
