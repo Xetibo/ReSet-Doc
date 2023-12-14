@@ -171,5 +171,13 @@ gtk_rs_introduction:
   author: Julian Hofer
   license: CC BY 4.0 Deed
   url: https://gtk-rs.org/gtk4-rs/stable/latest/book/
-
-
+cambalache:
+  type: web
+  title: Cambalache
+  author: Juan Pablo Ugarte
+  url: https://gitlab.gnome.org/jpu/cambalache
+glade:
+  type: web
+  title: Glade
+  author: Gnome
+  url: https://gitlab.gnome.org/GNOME/glade
