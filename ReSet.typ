@@ -83,6 +83,8 @@
 #pagebreak()
 #include "sections/appendix/documentation.typ"
 #pagebreak()
+#include "sections/appendix/CI.typ"
+#pagebreak()
 #include "sections/appendix/api.typ"
 #pagebreak()
 #include "sections/appendix/libraries.typ"

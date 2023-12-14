@@ -242,3 +242,8 @@ network_manager_applet:
   author: Gnome 
   url: https://gitlab.gnome.org/GNOME/network-manager-applet
   note: License GPL-2.0
+github_runners:
+  type: web
+  title: About Github-hosted runners
+  author: Github
+  url: https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners
