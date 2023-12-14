@@ -90,7 +90,7 @@ Krug's rules:
   creating applications, keeping the overall application simple, but powerful when
   needed.\
 - *"Reduce short-term memory load" - "The eight golden rules"* @shneiderman\
-  Humans have a limited capacity for information, this includes for what we see on
+  Humans have a limited capacity for information, this includes for what people see on
   an application. The authors therefore propose to collapse complex user
   interfaces like multi-page displays into one.
 

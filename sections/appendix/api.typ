@@ -34,7 +34,7 @@ fn Shutdown();
   ```, caption: [Base DBus API for the ReSet daemon],
 )<daemon_api>
 
-#subsubsection("Wifi API")
+#subsubsection("Wi-Fi API")
 #grid(
   columns: (auto), rows: (20pt), cell(
     [#figure([], kind: table, caption: [Wi-FI DBus Table])<wifi_type_table>], bold: true,
@@ -345,16 +345,16 @@ fn ListOutputStreams() -> Vec<OutputStream>;
 // Returns the PulseAudio cards for every device. (The card holds information about all possible
 // audio profiles and whether or not the device is disabled.)
 fn ListCards() -> Vec<Card>;
-//
-// Sets the default volume of the sink on all channels to the specified value.
-// Currently ReSet does not offer individual channel volumes. (This will be added later)
-// The index can be found within the Sink datastructure.
-fn SetSinkVolume(index: u32, channels: u16, volume: u32);
 ```, caption: [Audio DBus API for the ReSet daemon (part1)],
 )<daemon_api1>
 
 #figure(
   ```rs
+// Sets the default volume of the sink on all channels to the specified value.
+// Currently ReSet does not offer individual channel volumes. (This will be added later)
+// The index can be found within the Sink datastructure.
+fn SetSinkVolume(index: u32, channels: u16, volume: u32);
+//
 // Sets the mute state of the sink.
 // True -> muted, False -> unmuted
 // The index can be found within the Sink datastructure.
@@ -385,9 +385,10 @@ fn SetInputStreamVolume(index: u32, channels: u16, volume: u32);
 // The index can be found within the InputStream datastructure.
 fn SetInputStreamMute(index: u32, muted: bool);
 //
-// Sets the target source of an output-stream. (The target input-device for an application)
-// Both the output-stream and the source are indexes, they can be found within their respective
-// datastructure.
+// Sets the target source of an output-stream. 
+// (The target input-device for an application)
+// Both the output-stream and the source are indexes, 
+// they can be found within their respective datastructure.
 fn SetSourceOfOutputStream(output_stream: u32, source: u32);
 //
 // Sets the default volume of the output-stream on all channels to the specified value.
@@ -401,8 +402,8 @@ fn SetOutputStreamVolume(index: u32, channels: u16, volume: u32);
 fn SetOutputStreamMute(index: u32, muted: bool);
 //
 // Sets the profile for a device according to the name of the profile.
-// The available profile names can be found in the card of the device, which can be received with
-// the ListCards() function.
+// The available profile names can be found in the card of the device, 
+// which can be received with the ListCards() function.
 // The index of the device can be found in the Device datastructure.
 fn SetCardOfDevice(device_index: u32, profile_name: String);
 ```, caption: [Audio DBus API for the ReSet daemon (part2)],

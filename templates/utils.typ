@@ -53,9 +53,9 @@
   }
 }
 
-#let img(name, width: 100%, extension: "figures") = {
+#let img(name, width: auto, fit: "cover", extension: "figures") = {
   let name = "../" + extension + "/" + name
-  image(name, width: width)
+  image(name, width: width, fit: fit)
 }
 
 #let file = counter("filecounter")

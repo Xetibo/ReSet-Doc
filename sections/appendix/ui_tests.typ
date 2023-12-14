@@ -1,39 +1,58 @@
 #import "../../templates/utils.typ": *
 #lsp_placate()
 
-#subsubsection("UI Tests")
-#test("Search bar", "User can filter settings by typing in the search bar.")
-#test(
-  "Dynamic window", "Multiple settings can be opened at the same time and each setting box will reflow based on how much space is available.",
+#subsubsection("ReSet Test")
+#test("Search bar and Sidebar", 
+  "User can filter settings by typing in the search bar. Clicking on a settings will open the corresponding settings box and reset the sidebar.",
 )
 #test(
-  "Intuitive UI", "The UI is structured in a logical way, so that the user can easily find the setting they are looking for. Settings that belong together are grouped together.",
+  "Dynamic window", 
+  "Multiple settings can be opened at the same time and each setting box will reflow based on how much space is available.",
 )
 #test(
-  "Closing window", "User can close setting by clicking the X on the top right corner",
-)
-#test("Error handling", "Errors are shown to the user")
-#test(
-  "Theme", "The theme of ReSet is changed correctly when changing the system theme and looks consistent",
+  "Wi-Fi", 
+  "Users can connect and disconnect from a Wi-Fi network. They should also be able to change the password for an existing Wi-Fi network and remove it.",
 )
 #test(
-  "Readability", "Font and font size should change based on system settings and should be readable for everyone",
+  "Bluetooth", 
+  "Users can connect and disconnect Bluetooth devices.",
 )
 #test(
-  "Navigation", "All buttons are clearly labeled and lead to its intended location",
+  "Volume of Audio devices", 
+  "Users can change the volume of their input and output devices.",
 )
-#test("Accessibility", "Screen reader compatible")
-#test("Localisation", "Full support for English and German")
+#test(
+  "Change default Audio device", 
+  "Users can change the default input and output device.",
+)
+#test(
+  "Audio of individual applications", 
+  "Users can change the input and output of individual applications. They should also be able to mute an audio source.",
+)
+#test(
+  "Disable Audio devices", 
+  "Users can disable input and output devices.",
+)
+#test(
+  "Performance", 
+  "Users should not experience and lags or stuttering.",
+)
+#test(
+  "Intuitive UI", 
+  "The UI is structured in a logical way, so that the user can easily find the setting they are looking for. Settings that belong together are grouped together.",
+)
+#test(
+  "Layout", 
+  "The layout should be visually appealing and feel organized to the users.",
+)
 
 #pagebreak()
 
 #subsubsection("Midpoint UI Tests")
-Now that we have reached the midpoint of our project, we have given our UI mock
-to a select few people for testing and reviewing purposes. The idea is the get
-feedback early so that we can still change our UI without much effort and time.
-Because it's only a UI mock test, we couldn't go into much depth or go by the UI
-Tests defined above, because it simply was not possible to test it as it hasn't
-been implemented yet.
+Reaching the project's midpoint, the UI mock of ReSet was given out to a select 
+few people for testing and reviewing purposes. The idea is the get feedback early 
+so that there is still enough time to change the UI without much effort. Because it's 
+only a UI mock test, it wasn't possible to ask for feedback for all tests defined in @ReSetTest because it hasn't been implemented yet.
 
 - *Navigation feedback*
 The feedback is very positive, especially with mention to the ability to show
@@ -59,9 +78,7 @@ appreciated the design while providing valuable advice on how to improve it.
 
 - *Conclusion*
 Feedback around navigation and readability were positive, mostly attributed to
-the currently simple app. It's important to note that readability is already
+the currently simple UI. It's important to note that readability is already
 configured by the user or by using system defaults. Regarding the layout and
-design, we will start by templating a few elements, which fixes the issue with
-inconsistent theming. Features such als collapsing subcategories have to be
-discussed further, to determine if we want to implement it and if fits in our
-timeframe.
+design, there will be improvements made by templating a few elements, which fixes the issue with inconsistent design. Features such als collapsing subcategories have to be
+discussed further, to determine if it's necessary and if fits in the timeframe.
