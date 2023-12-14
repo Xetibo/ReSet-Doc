@@ -28,65 +28,43 @@ The second issue is the focus, a tiling window manager is very keyboard focused,
 entirely via keyboard shortcuts. A popup requires the user to change the focus to the newly created popup, and therefore
 takes away the focus of the last window, a behavior that is not welcome in every situation.
 
-#figure(
-  img("reset_about.png", fit: "contain", width: 35%), caption: [Screenshot of the ReSet About window],
-)<reset_about>
-
-#pagebreak()
-
 For ReSet, the solution was to provide a size agnostic application that refrains from using popups wherever possible.
 
 In order to ensure the application is usable with any size, each functionality of ReSet is put into a dynamically allocated box.
 This allows not only the size agnostic design, but also provides a responsive design by changing from horizontal to vertical orientations.
 Implemented into ReSet are therefore three different stages, vertical orientation without sidebar, vertical orientation with sidebar and horizontal orientation with sidebar.
-The stages are shown from minimum size to maximum size respectively, in @reset_minimal, @reset_vertical and @reset_horizontal, each stage is shown visually.
+The stages are shown from minimum size to maximum size respectively, in TODO, TODO and TODO, each stage is shown visually.
 
-#figure(
-  img("reset_minimal.png", fit: "contain", width: 50%), caption: [Screenshot of ReSet in vertical view without sidebar],
-)<reset_minimal>
-#figure(
-  img("vertical_reset.png", fit: "contain", width: 90%), caption: [Screenshot of ReSet in vertical view],
-)<reset_vertical>
-#figure(
-  img("horizontal_reset.png", fit: "contain", width: 100%), caption: [Screenshot of ReSet in horizontal view],
-)<reset_horizontal>
+// TODO show responsive implementation
 
 To prevent using popups or relying on hamburger menus, ReSet opted to provide advanced configuration of each functionality
 using the AdwNavigationPage provided by libadwaita@libadwaita. This module allows for a seamless transition from a parent to a child window.
-In @reset_audio and @reset_profiles, the AdwNavigationPage can be seen in use.
+
+// TODO show AdwNavigationPage
 
 #subsection("Audio User Interface")
 For audio, ReSet intents to provide as much relevant information to the user as possible.
 The intention is to provide not only the central audio settings, but also provide adjustment
 for all currently open programs utilizing audio.
 
-
+// TODO audio front
 #figure(
-  img("reset_audio.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Audio section],
+  img("reset_audio.png", fit: "contain", width: 80pt), caption: [Screenshot of the ReSet Audio],
 )<reset_audio>
 
-Results from the @MidpointUITests show positive reception of the audio interface.
 
 Additional configuration, such as audio profiles and per device adjustment
 are available in the device and profile settings respectively.
 
-#figure(
-  img("reset_audio_profiles.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Audio profiles section],
-)<reset_profiles>
+// TODO audio device and profile
 
-#figure(
-  img("reset_audio_devices.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Audio devices section],
-)<reset_audio_devices>
-
-#pagebreak()
+Results from the @MidpointUITests show positive reception of the audio interface.
 
 #subsection("Wi-Fi User Interface")
 The Wi-Fi settings provide a short general adjustment at the top, using a global switch to enable or disable Wi-Fi in general,
 while the other entries are changing Wi-Fi adapters or adjusting stored Wi-Fi connections respectively.
 
-#figure(
-  img("reset_wifi.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Wi-Fi section],
-)<reset_wifi>
+// TODO show top of wifi
 
 The access points themselves are shown in a continuous list, using the same module as implemented in the audio section.
 
@@ -94,44 +72,38 @@ The access points themselves are shown in a continuous list, using the same modu
 Bluetooth has the same setup as Wi-Fi, with the only difference being
 the differentiation between connected and available devices.
 
-#figure(
-  img("reset_bluetooth.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Bluetooth section],
-)<reset_bluetooth>
-
-#pagebreak()
+// TODO show bluetooth
 
 #subsection("Sidebar and Menu")
 The sidebar offers simple navigation by click and has a prominent search bar which can also be accessed with a shortcut.
 Future entries can be created using the sidebar entry developed for ReSet, with the functionality being handled by a callback function.
 
-#figure(
-  sourcecode(
-    ```rs
-    // callback for sidebar  Wi-Fi click
-    pub const HANDLE_WIFI_CLICK: fn(Arc<Listeners>, FlowBox, Rc<RefCell<Position>>) =
-        |listeners: Arc<Listeners>, reset_main: FlowBox, position: Rc<RefCell<Position>>| {
-        // omitted more setup
-            let wifi_box = WifiBox::new(listeners.clone());
-            start_event_listener(listeners, wifi_box.clone());
-            show_stored_connections(wifi_box.clone());
-            scan_for_wifi(wifi_box.clone());
-        // omitted more setup
-        };
+#figure(sourcecode(
+```rs
+// callback for sidebar  Wi-Fi click
+pub const HANDLE_WIFI_CLICK: fn(Arc<Listeners>, FlowBox, Rc<RefCell<Position>>) =
+    |listeners: Arc<Listeners>, reset_main: FlowBox, position: Rc<RefCell<Position>>| {
+    // omitted more setup
+        let wifi_box = WifiBox::new(listeners.clone());
+        start_event_listener(listeners, wifi_box.clone());
+        show_stored_connections(wifi_box.clone());
+        scan_for_wifi(wifi_box.clone());
+    // omitted more setup
+    };
 
-    // template
-    pub struct SidebarEntry {
-        #[template_child]
-        pub reset_sidebar_label: TemplateChild<Label>,
-        #[template_child]
-        pub reset_sidebar_image: TemplateChild<Image>,
-        pub category: Cell<Categories>,
-        pub is_subcategory: Cell<bool>,
-        pub on_click_event: RefCell<SidebarAction>,
-        pub name: RefCell<String>,
-    }
-    ```,
-  ), caption: [ReSet sidebar entry],
-)<d>
+// template
+pub struct SidebarEntry {
+    #[template_child]
+    pub reset_sidebar_label: TemplateChild<Label>,
+    #[template_child]
+    pub reset_sidebar_image: TemplateChild<Image>,
+    pub category: Cell<Categories>,
+    pub is_subcategory: Cell<bool>,
+    pub on_click_event: RefCell<SidebarAction>,
+    pub name: RefCell<String>,
+}
+```
+), caption: [ReSet sidebar entry])<d>
 
 The Menu on the top right is a standard GTK menu, providing a consistent experience with other GTK applications.
 
