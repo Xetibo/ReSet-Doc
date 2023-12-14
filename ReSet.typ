@@ -37,7 +37,7 @@
   [
     We would like to express our sincerest gratitude to Prof. Dr. Frieder Loch for
     advising us throughout our project. His guidance and support have been
-    invaluable to us. We are also grateful to our fellow students who took the time
+    invaluable to us. We are also grateful to our testers who took the time
     to test our product and share valuable feedback. Their input has been
     instrumental in helping us make improvements to our product. We would also like
     to acknowledge the OST for providing us with the opportunity to work on this
