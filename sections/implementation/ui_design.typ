@@ -128,8 +128,11 @@ in which the UI can be built with drag and drop. This makes it easy to instantly
 the UI looks. Glade does provide the same functionality, but it doesn't support GTK4 and 
 is no longer maintained. While GTK is has impressive scoress in the Collaboration and 
 Updates categories, it is harder to use because there is no UI builder.
+#align(center, [#figure(
+    img("cambalache.png", width: 90%),
+    caption: [Screenshot of cambalache],
+  )<uimock1>])
 
-// todo add image of cambalache
 
 #text(12pt, [*Libadwaita*])\
 In addition to GTK, ReSet will also use a library called libadwaita @libadwaita. Libadwaita 
