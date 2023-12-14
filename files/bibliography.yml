@@ -65,7 +65,7 @@ cpp_compilers:
   title: C++ compiler support
   url: https://en.cppreference.com/w/cpp/compiler_support#C.2B.2B20_library_features
 rust_compiler:
-  type: web
+  type: repository
   title: Rust Repository
   url: https://github.com/rust-lang/rust
 csharp_debugger_notes:
@@ -86,59 +86,59 @@ daemon_api:
   author: Xetibo
   url: https://docs.rs/reset_daemon/0.5.8/reset_daemon/api/API/index.html
 dbus_rs:
-  type: web
+  type: repository
   title: dbus-rs 
   author: diwic
   url: https://github.com/diwic/dbus-rs
-  license: Apache-2.0, MIT
+  note: License Apache-2.0, MIT
 libadwaita:
-  type: web
+  type: repository
   title: libadwaita-rs
   author: Gnome
   url: https://gitlab.gnome.org/World/Rust/libadwaita-rs 
-  license: MIT
+  note: License MIT
 gtk4:
-  type: web
+  type: repository
   title: gtk4-rs
   author: gtk-rs
   url: https://github.com/gtk-rs/gtk4-rs
-  license: MIT
+  note: License MIT
 glib:
-  type: web
+  type: repository
   title: gtk-rs-core
   author: gtk-rs
   url: https://github.com/gtk-rs/gtk-rs-core
-  license: MIT
+  note: License MIT
 tokio:
-  type: web
+  type: repository
   title: tokio
   author: tokio-rs 
   url: https://github.com/tokio-rs/tokio
-  license: MIT
+  note: License MIT
 fork:
-  type: web
+  type: repository
   title: fork
   author: immortal 
   url: https://github.com/immortal/fork
-  license: BSD-3-Clause
+  note: License BSD-3-Clause
 ipnetwork:
-  type: web
+  type: repository
   title: ipnetwork
   author: achanda 
   url: https://github.com/achanda/ipnetwork
-  license: Apache-2.0
+  note: License Apache-2.0
 libpulse_binding:
-  type: web
+  type: repository
   title: pulse-binding-rust
   author: jnqnfe 
   url: https://github.com/jnqnfe/pulse-binding-rust
-  license: Apache-2.0, MIT
+  note: License Apache-2.0, MIT
 directories_next:
-  type: web
+  type: repository
   title: dirs
   author: xdg-rs 
   url: https://github.com/xdg-rs/dirs/tree/master/directories
-  license: Apache-2.0, MIT
+  note: License Apache-2.0, MIT
 flatpak: 
   type: web
   title: Flatpak sandbox permissions
@@ -153,8 +153,8 @@ rust_macros:
   type: web
   title: The Rust Programming Language 
   author: Steve Klabnik and Carol Nichols, with contributions from the Rust Community
-  license: Apache-2.0, MIT
   url: https://doc.rust-lang.org/book/ch19-06-macros.html
+  note: License Apache-2.0, MIT
 pimpl:
   type: web
   title: PImpl 
@@ -169,7 +169,6 @@ gtk_rs_introduction:
   type: web
   title: GUI development with Rust and GTK 4
   author: Julian Hofer
-  license: CC BY 4.0 Deed
   url: https://gtk-rs.org/gtk4-rs/stable/latest/book/
 cambalache:
   type: web
@@ -181,3 +180,65 @@ glade:
   title: Glade
   author: Gnome
   url: https://gitlab.gnome.org/GNOME/glade
+  note: License CC BY 4.0 Deed
+window_manager_study:
+  type: web
+  title: The anatomy of the modern window manager
+  author: Max van Duerzen
+  url: http://www.cs.ru.nl/bachelors-theses/2019/Max_van_Deurzen___4581903___The_anatomy_of_the_modern_window_manager_-_a_case_study_for_X_in_an_Agile_manner.pdf
+gnome_control_center:
+  type: repository
+  title: gnome-control-center
+  author: Gnome
+  url: https://gitlab.gnome.org/GNOME/gnome-control-center
+gtk: 
+  type: web
+  title: GTK
+  author: GTK
+  url: https://www.gtk.org/
+dconf: 
+  type: repository
+  title: Dconf
+  author: Gnome
+  url: https://gitlab.gnome.org/GNOME/dconf
+kde_systemsettings_repo:
+  type: repository
+  title: SystemSettings
+  author: KDE
+  url: https://invent.kde.org/plasma/systemsettings
+qt: 
+  type: web
+  title: QT
+  author: QT
+  url: https://www.qt.io/
+qml: 
+  type: web
+  title: QML
+  author: QT
+  url: https://doc.qt.io/qt-6/qtqml-index.html
+kcm: 
+  type: web
+  title: KCM Introduction
+  author: KDE
+  url: https://develop.kde.org/docs/features/configuration/kcm/#introduction
+pavucontrol_repo: 
+  type: repository
+  title: pavucontrol
+  author: pulseaudio
+  url: https://gitlab.freedesktop.org/pulseaudio/pavucontrol
+blueman_repo:
+  type: repository
+  title: Blueman
+  author: blueman-project
+  url: https://github.com/blueman-project/blueman
+networkmanager_repo:
+  type: repository
+  title: NetworkManager
+  author: NetworkManager(freedesktop.org)
+  url: https://gitlab.freedesktop.org/NetworkManager/NetworkManager
+network_manager_applet:
+  type: repository
+  title: network-manager-applet
+  author: Gnome 
+  url: https://gitlab.gnome.org/GNOME/network-manager-applet
+  note: License GPL-2.0

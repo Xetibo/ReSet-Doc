@@ -171,7 +171,7 @@ This is especially useful on bigger monitor sizes, because there's generally lot
 space in settings applications mentioned in @Analysisofexistingapplications, especially if 
 the window is displayed in full screen.
 #align(center, [#figure(
-    img("gnomeSettingsFullScreen.png", width: 90%),
+    img("gnomeSettingsFullScreen.png", width: 100%),
     caption: [Full-screen Gnome control center#super([@Gnome])
       settings window on ultra-wide monitor],
   )<uimock1>])

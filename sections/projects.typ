@@ -8,6 +8,11 @@ requirements specified in @PRequirements. Both full settings applications
 provided by environments and standalone applications for individual technologies
 are compared.
 
+Important to note, for this section, each application will be evaluated with
+their default dark theme. For GTK applications, the libadwaita dark theme will
+be used. For QT applications, the breeze dark theme will be used, configured via
+the QT_QPA_PLATFORMTHEME=gnome environment flag.
+
 #subsection(custom_tag: "PRequirements", "Requirements")
 For ReSet, 3 different categories will be used to weigh existing projects and
 potential solutions.
@@ -57,11 +62,12 @@ potential solutions.
 #pagebreak()
 
 #subsection("Gnome Control Settings")
-The #link("https://github.com/gnome/gnome-control-center")[Gnome control center]#super([@Gnome])
+The Gnome control center@gnome_control_center#super([@Gnome])
 is as the name implies the central settings application for the Gnome desktop
 environment, it offers plenty of configuration, from networks to Bluetooth, to
 online accounts, default application and a lot more. The application is written
-in C with the #link("https://www.gtk.org/")[GTK] toolkit (GTK4) and follows the #link("https://developer.Gnome.org/hig/")[Gnome Human Interface Guidelines].
+in C with the GTK@gtk toolkit (GTK4) and follows the Gnome Human Interface
+Guidelines@gnome_human_guidelines.
 #align(
   center, [#figure(
       img("gnome_control_center.png", width: 80%), caption: [Screenshot of the Gnome control center],
@@ -73,10 +79,9 @@ case of each file. Certain functionality is hard-coded with libraries, like
 networks, which uses the NetworkManager library, while others are implemented
 via dbus, like monitors.
 
-Settings are stored using #link("https://gitlab.gnome.org/gnome/dconf")[dconf] which
-is a key/value system, that is optimized for reading. The form of a dconf file
-is a _binary_ which makes it fast to read for dconf, but not readable for other
-systems.
+Settings are stored using dconf@dconf which is a key/value system, that is
+optimized for reading. The form of a dconf file is a _binary_ which makes it
+fast to read for dconf, but not readable for other systems.
 
 _Gnome control center is not supposed to be used outside the Gnome environment,
 especially using the Wayland#super([@wayland]) protocol. Hence, not all
@@ -108,11 +113,11 @@ functionality will be available on other environments._
 )
 
 #subsection("KDE System Settings")
-#link("https://invent.kde.org/plasma/systemsettings")[KDE systemsettings]#super([@kde])
-is written in C++/QML and is made with the #link("https://www.qt.io/")[QT toolkit].
-It follows the KDE style of applications, featuring a very large variety of
-settings (on KDE), and offering other applications a way to integrate into this
-application via KConfig Module(KCM).
+KDE systemsettings@kde_systemsettings_repo#super([@kde])
+is written in C++/QML and is made with the QT toolkit@qt. It follows the KDE
+style of applications, featuring a very large variety of settings (on KDE), and
+offering other applications a way to integrate into this application via KConfig
+Module(KCM)@kcm.
 #align(
   center, [#figure(
       img("kde_systemsettings.png", width: 80%), caption: [Screenshot of the KDE systemsettings],
@@ -124,7 +129,7 @@ modules, as KDE is the intended environment for this application. For ReSet, KDE
 systemsettings is still a very good resource on implementing modularity with
 this type of application. The only caveat would be the obvious difference in
 both programming language and toolkit. This is especially a problem since QT
-uses its own scripting language QML, which is based on JavaScript.
+uses its own scripting language QML@qml, which is based on JavaScript.
 
 Settings are stored by individual modules, which means that a lot of individual
 files will be written/read in order to provide all functionality.
@@ -171,12 +176,11 @@ what the other 2 discussed programs offer.
 Interoperability will not be considered for these applications, as they were
 made for its intended use case.
 
-#link("https://gitlab.freedesktop.org/pulseaudio/pavucontrol")[*Pavucontrol*] |
-Sound Application\
-Pavucontrol or Pulseaudio Volume Control is an application that handles both
-system-wide input/output, per application output and input streams. It is under
-the umbrella of the Free Desktop project and is directly involved in PulseAudio
-itself. The application itself is written in C++ and GTK3.
+*Pavucontrol* | Sound Application\
+Pavucontrol@pavucontrol_repo or Pulseaudio Volume Control is an application that
+handles both system-wide input/output, per application output and input streams.
+It is under the umbrella of the Free Desktop project and is directly involved in
+PulseAudio itself. The application itself is written in C++ and GTK3.
 #align(
   center, [#figure(
       img("pavucontrol.png", width: 80%), caption: [Screenshot of pavucontrol],
@@ -203,12 +207,11 @@ itself. The application itself is written in C++ and GTK3.
 
 #pagebreak()
 
-#link("https://github.com/blueman-project/blueman")[*Blueman*] | Bluetooth
-Application\
-Blueman allows connecting and managing of Bluetooth connections, as well as some
-quality of life features like sending of files. It works great in functionality,
-but the buttons are not very expressive in what they will achieve. Blueman is
-written in Python and GTK3.
+*Blueman* | Bluetooth Application\
+Blueman@blueman_repo allows connecting and managing of Bluetooth connections, as
+well as some quality of life features like sending of files. It works great in
+functionality, but the buttons are not very expressive in what they will
+achieve. Blueman is written in Python and GTK3.
 #align(
   center, [#figure(
       img("bluetooth_manager_filled.png", width: 80%), caption: [Screenshot of blueman],
@@ -235,19 +238,17 @@ written in Python and GTK3.
 
 #pagebreak()
 
-#link(
-  "https://gitlab.freedesktop.org/NetworkManager/NetworkManager",
-)[*Nmtui*] | Network Application\
-Nmtui is what the name suggests, it is a terminal user interface that allows
-users to use and edit network connections, including VPN connections.\
+*Nmtui* | Network Application\
+Nmtui@networkmanager_repo is what the name suggests, it is a terminal user
+interface that allows users to use and edit network connections, including VPN
+connections.\
 Nmtui is located in the same project as the network manager itself and is
 therefore also shipped as part of the network manager package.\
 Both network manager and nmtui are written in C.\
 There is a specific lack of standalone user interface applications for network
 managers.\
-Technically, there exists a #link(
-  "https://gitlab.gnome.org/gnome/network-manager-applet",
-)[network manager applet], however, this is to be included in status bars and
+Technically, the "network-manager-applet"@network_manager_applet by Gnome
+exists, however, this is to be included in a system tray within status bars and
 does not work on its own.
 #align(
   center, [#figure(img("nmtui.png", width: 80%), caption: [Screenshot of nmtui])],
