@@ -28,12 +28,10 @@
 #pagebreak()
 
 #subsubsection("Midpoint UI Tests")
-Now that we have reached the midpoint of our project, we have given our UI mock
-to a select few people for testing and reviewing purposes. The idea is the get
-feedback early so that we can still change our UI without much effort and time.
-Because it's only a UI mock test, we couldn't go into much depth or go by the UI
-Tests defined above, because it simply was not possible to test it as it hasn't
-been implemented yet.
+Reaching the project's midpoint, the UI mock of ReSet was given out to a select 
+few people for testing and reviewing purposes. The idea is the get feedback early 
+so that there is still enough time to change the UI without much effort. Because it's 
+only a UI mock test, it wasn't possible to ask for feedback for all tests defined in  @UITests because it hasn't been implemented yet.
 
 - *Navigation feedback*
 The feedback is very positive, especially with mention to the ability to show
@@ -59,9 +57,7 @@ appreciated the design while providing valuable advice on how to improve it.
 
 - *Conclusion*
 Feedback around navigation and readability were positive, mostly attributed to
-the currently simple app. It's important to note that readability is already
+the currently simple UI. It's important to note that readability is already
 configured by the user or by using system defaults. Regarding the layout and
-design, we will start by templating a few elements, which fixes the issue with
-inconsistent theming. Features such als collapsing subcategories have to be
-discussed further, to determine if we want to implement it and if fits in our
-timeframe.
+design, there will be improvements made by templating a few elements, which fixes the issue with inconsistent design. Features such als collapsing subcategories have to be
+discussed further, to determine if it's necessary and if fits in the timeframe.

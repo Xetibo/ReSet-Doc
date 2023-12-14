@@ -274,7 +274,7 @@ offer stable language bindings for a large set of languages, including Rust via 
 Compared to native Rust libraries, it offers a more robust set of defined
 widgets, themes and tools. Specifically the toolkit "iced" was considered,
 however, it currently lacks documentation and needs several library
-implementations in order to fit with our requirements.
+implementations in order to fit with the defined requirements.
 
 The last consideration is QT, it is a cross-platform toolkit that uses its own
 form of JavaScript(QML) to draw windows. QT is a well known toolkit, however, it

@@ -7,8 +7,7 @@ Risks are assessed according to the ISO standard with a risk matrix.
 #riskmatrix()
 #risk(
   "Toolkit", [
-    GTK might not be perfectly suitable for our use case, especially considering we
-    are using Rust bindings and not C directly.
+    GTK might not be perfectly suitable for the required use case, especially considering the usage of Rust bindings and not C directly.
   ], "Medium", "Unlikely", "Critical", [
     Iced can be used as a backup toolkit if GTK turns out to not be usable for the
     project.
