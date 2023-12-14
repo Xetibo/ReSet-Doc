@@ -16,7 +16,7 @@ timeframe for each meeting is 30 minutes.
 - first feedback for documentation
 - OST logo license discussed
 
-*Meeting 3*
+*Meeting 3*\
 During this week, the meeting with the professor was skipped, instead the team
 held a short meeting internally, discussing the state of the project.
 
@@ -53,6 +53,8 @@ held a short meeting internally, discussing the state of the project.
 
 *Meeting 9* (Fabio absent)
 - state of the application discussed
+
+#pagebreak()
 
 *Meeting 10* 
 - BA continuation discussed
