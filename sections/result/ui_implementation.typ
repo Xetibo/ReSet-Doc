@@ -56,16 +56,16 @@ are available in the device and profile settings respectively.
 
 Results from the @MidpointUITests show positive reception of the audio interface.
 
-#subsection("WiFi User Interface")
-The WiFi settings provide a short general adjustment at the top, using a global switch to enable or disable WiFi in general,
-while the other entries are changing WiFi adapters or adjusting stored WiFi connections respectively.
+#subsection("Wi-Fi User Interface")
+The Wi-Fi settings provide a short general adjustment at the top, using a global switch to enable or disable Wi-Fi in general,
+while the other entries are changing Wi-Fi adapters or adjusting stored Wi-Fi connections respectively.
 
 // TODO show top of wifi
 
 The access points themselves are shown in a continuous list, using the same module as implemented in the audio section.
 
 #subsection("Bluetooth User Interface")
-Bluetooth has the same setup as WiFi, with the only difference being
+Bluetooth has the same setup as Wi-Fi, with the only difference being
 the differentiation between connected and available devices.
 
 // TODO show bluetooth
@@ -76,7 +76,7 @@ Future entries can be created using the sidebar entry developed for ReSet, with 
 
 #figure(sourcecode(
 ```rs
-// callback for sidebar  WiFi click
+// callback for sidebar  Wi-Fi click
 pub const HANDLE_WIFI_CLICK: fn(Arc<Listeners>, FlowBox, Rc<RefCell<Position>>) =
     |listeners: Arc<Listeners>, reset_main: FlowBox, position: Rc<RefCell<Position>>| {
     // omitted more setup

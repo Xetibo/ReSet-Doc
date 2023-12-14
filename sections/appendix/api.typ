@@ -34,7 +34,7 @@ fn Shutdown();
   ```, caption: [Base DBus API for the ReSet daemon],
 )<daemon_api>
 
-#subsubsection("Wifi API")
+#subsubsection("Wi-Fi API")
 #grid(
   columns: (auto), rows: (20pt), cell(
     [#figure([], kind: table, caption: [Wi-FI DBus Table])<wifi_type_table>], bold: true,
