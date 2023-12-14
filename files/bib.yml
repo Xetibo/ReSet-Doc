@@ -80,3 +80,96 @@ gtk_rs:
   type: web
   title: gtk-rs
   url: https://gtk-rs.org/
+daemon_api:
+  type: web
+  title: ReSet-Dameon API 
+  author: Xetibo
+  url: https://docs.rs/reset_daemon/0.5.8/reset_daemon/api/API/index.html
+dbus_rs:
+  type: web
+  title: dbus-rs 
+  author: diwic
+  url: https://github.com/diwic/dbus-rs
+  license: Apache-2.0, MIT
+libadwaita:
+  type: web
+  title: libadwaita-rs
+  author: Gnome
+  url: https://gitlab.gnome.org/World/Rust/libadwaita-rs 
+  license: MIT
+gtk4:
+  type: web
+  title: gtk4-rs
+  author: gtk-rs
+  url: https://github.com/gtk-rs/gtk4-rs
+  license: MIT
+glib:
+  type: web
+  title: gtk-rs-core
+  author: gtk-rs
+  url: https://github.com/gtk-rs/gtk-rs-core
+  license: MIT
+tokio:
+  type: web
+  title: tokio
+  author: tokio-rs 
+  url: https://github.com/tokio-rs/tokio
+  license: MIT
+fork:
+  type: web
+  title: fork
+  author: immortal 
+  url: https://github.com/immortal/fork
+  license: BSD-3-Clause
+ipnetwork:
+  type: web
+  title: ipnetwork
+  author: achanda 
+  url: https://github.com/achanda/ipnetwork
+  license: Apache-2.0
+libpulse_binding:
+  type: web
+  title: pulse-binding-rust
+  author: jnqnfe 
+  url: https://github.com/jnqnfe/pulse-binding-rust
+  license: Apache-2.0, MIT
+directories_next:
+  type: web
+  title: dirs
+  author: xdg-rs 
+  url: https://github.com/xdg-rs/dirs/tree/master/directories
+  license: Apache-2.0, MIT
+flatpak: 
+  type: web
+  title: Flatpak sandbox permissions
+  author: flatpak
+  url: https://docs.flatpak.org/en/latest/sandbox-permissions.html
+gresources: 
+  type: web
+  title: Gnome Gresources documentation 
+  author: Gnome
+  url: https://developer-old.gnome.org/gio/stable/GResource.html
+rust_macros:
+  type: web
+  title: The Rust Programming Language 
+  author: Steve Klabnik and Carol Nichols, with contributions from the Rust Community
+  license: Apache-2.0, MIT
+  url: https://doc.rust-lang.org/book/ch19-06-macros.html
+pimpl:
+  type: web
+  title: PImpl 
+  author: cppreference 
+  url: https://en.cppreference.com/w/cpp/language/pimpl
+pimpl_gotw:
+  type: web
+  title: The Fast PImpl idiom
+  author: Herb Sutter
+  url: http://www.gotw.ca/gotw/028.htm
+gtk_rs_introduction:
+  type: web
+  title: GUI development with Rust and GTK 4
+  author: Julian Hofer
+  license: CC BY 4.0 Deed
+  url: https://gtk-rs.org/gtk4-rs/stable/latest/book/
+
+

@@ -28,18 +28,19 @@ Krug's rules:
   This rule depends heavily on what the possible user-base is, an IDE has
   different users to a general messaging application.
 
-  For the example the application blueman introduced in @Analysisofexistingapplications is used.
+  For the example the application blueman introduced in
+  @Analysisofexistingapplications is used.
   #figure(
-    align(center, [#image("../figures/bluetooth_manager.png", width: 80%)]),
-    caption: [Screenshot of bluetooth manager],
+    align(center, [#image("../figures/bluetooth_manager.png", width: 80%)]), caption: [Screenshot of bluetooth manager],
   )<bluetooth_manager>
   When opening the application, one can see a blank page with a top bar, this may
   cause users to think there are no Bluetooth devices available. However, the user
   needs to manually search for devices as is defined by Bluetooth.
-  #figure(align(
-    center,
-    [#image("../figures/bluetooth_manager_filled.png", width: 80%)],
-  ), caption: [Screenshot of bluetooth manager with scanned devices])<bluetooth_manager_filled>
+  #figure(
+    align(
+      center, [#image("../figures/bluetooth_manager_filled.png", width: 80%)],
+    ), caption: [Screenshot of bluetooth manager with scanned devices],
+  )<bluetooth_manager_filled>
   After clicking the search button, the application proceeds to list Bluetooth
   devices as expected. The question now is how to connect to a specific device.
   Users who understand Bluetooth terminology will likely proceed with the key
@@ -67,8 +68,7 @@ Krug's rules:
   avoids tedious navigation where users could either get lost in navigation or
   simply get annoyed at the endless path.
   #figure(
-    align(center, [#image("../figures/kde-hamburger.png", width: 60%)]),
-    caption: [An extreme example of KDE hamburger menus],
+    align(center, [#image("../figures/kde-hamburger.png", width: 60%)]), caption: [An extreme example of KDE hamburger menus],
   )<kde-hamburger>
   There is a long-standing debate over menu layers like in @kde-hamburger, the KDE
   side justifies these menus with increased functionality, while the Gnome side
@@ -97,13 +97,13 @@ Krug's rules:
   The downside of this approach can be a too simple application, meaning the _powerful when needed_ part
   does not always apply. Compared to KDE applications, Gnome is often considered
   to be simpler, but also less configurable, and in large part this is correct.
-  #grid(columns: (1fr, 1.1fr), rows: (auto), gutter: 10pt, figure(
-    align(center, [#image("../figures/new-gnome.png", width: 60%)]),
-    caption: [Context menu in Nautilus(the Gnome file manager)],
-  ), figure(
-    align(center, [#image("../figures/new-kde.png", width: 100%)]),
-    caption: [Context menu in Dolphin(the kde file manager)],
-  ))
+  #grid(
+    columns: (1fr, 1.1fr), rows: (auto), gutter: 10pt, figure(
+      align(center, [#image("../figures/new-gnome.png", width: 60%)]), caption: [Context menu in Nautilus(the Gnome file manager)],
+    ), figure(
+      align(center, [#image("../figures/new-kde.png", width: 100%)]), caption: [Context menu in Dolphin(the kde file manager)],
+    ),
+  )
   Here the KDE application is clearly more powerful, offering a variety of files
   to create, including links and shortcuts, while the Gnome experience only offers
   a new folder, anything else needs to be done with a terminal.
@@ -114,18 +114,16 @@ Krug's rules:
   interfaces this is usually done with keyboard shortcuts.
 
   #figure(
-    align(center, [#image("../figures/shortcuts.png", width: 80%)]),
-    caption: [Shortcuts menu in Nautilus],
+    align(center, [#image("../figures/shortcuts.png", width: 80%)]), caption: [Shortcuts menu in Nautilus],
   )
   #figure(
-    align(center, [#image("../figures/shortcuts-kde.png", width: 100%)]),
-    caption: [Shortcuts menu in Dolphin],
+    align(center, [#image("../figures/shortcuts-kde.png", width: 100%)]), caption: [Shortcuts menu in Dolphin],
   )
 
   The Dolphin version is much more complex, this is due to the fact that you can
   customize any shortcut in Dolphin using this interface. For Nautilus shortcuts
   can only be configured using a settings file that has to be created by the user.
-  
+
 #pagebreak()
 - *"Strive for consistency" - "The eight golden rules"* @shneiderman\
   No matter how one creates a user interface, the very first thing one should
@@ -134,19 +132,7 @@ Krug's rules:
   similar functionality have the same labeling. In "Designing the user interface"
   @shneiderman, the authors empathized this in chapter 2.4.3 with a clear example:
   #grid(
-    columns: (auto, auto),
-    rows: (auto, auto, auto, auto),
-    gutter: 0pt,
-    cell("Consistent", bold: true, height: 20pt),
-    cell("Inconsistent", bold: true, height: 20pt),
-    cell("delete/insert table", height: 20pt),
-    cell("delete/insert table", height: 20pt),
-    cell("delete/insert column", height: 20pt),
-    cell("remove/add column", height: 20pt),
-    cell("delete/insert row", height: 20pt),
-    cell("destroy/create row", height: 20pt),
-    cell("delete/insert border", height: 20pt),
-    cell("erase/draw border", height: 20pt),
+    columns: (auto, auto), rows: (auto, auto, auto, auto), gutter: 0pt, cell("Consistent", bold: true, height: 20pt), cell("Inconsistent", bold: true, height: 20pt), cell("delete/insert table", height: 20pt), cell("delete/insert table", height: 20pt), cell("delete/insert column", height: 20pt), cell("remove/add column", height: 20pt), cell("delete/insert row", height: 20pt), cell("destroy/create row", height: 20pt), cell("delete/insert border", height: 20pt), cell("erase/draw border", height: 20pt),
   )
 
 #subsection("Configuration Storage")

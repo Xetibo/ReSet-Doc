@@ -55,6 +55,7 @@
     ],
   )
   pagebreak(weak: false)
+  set align(left)
   heading("Abstract", numbering: none, bookmarked: false, outlined: false)
   abstract
   pagebreak()
@@ -65,8 +66,9 @@
     outlined: false,
   )
   acknowledgements
+  set align(center)
   pagebreak(weak: false)
-  outline(title: "Table of Contents", indent: true, depth: 3)
+  outline(title: "Table of Contents", indent: true, depth: 2)
   pagebreak(weak: false)
   set page(paper: "a4", margin: (x: 2.54cm, y: 2.54cm), header: [
     #smallcaps(author)

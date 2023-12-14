@@ -1,0 +1,14 @@
+@startuml
+client -> daemon: ListStoredConnections
+daemon --> NetworkManager: ListConnections
+NetworkManager --> daemon: all connections
+daemon --> daemon: Process connections
+daemon -> client: stored connections
+
+client -> daemon: StartBluetoothListener
+daemon --> bluez: StartBluetoothSearch
+daemon --> daemon: start listener
+daemon --> client: Ok
+ObjectManager --> daemon: Events
+daemon --> client: Events
+@enduml

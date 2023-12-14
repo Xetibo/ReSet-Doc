@@ -35,7 +35,7 @@ protocol, the original idea of having a universal display server was abandoned,
 favoring individual implementations instead. This leads to a variety of
 different ways to configure monitors, very few of them being compatible with
 each other. In this case only a plugin system to handle individual
-implementations could solve this problem.[@wayland_documentation]
+implementations could solve this problem.@wayland_documentation
 
 #subsection("Objectives")
 ReSet will make an effort to change this situation by creating a settings
@@ -83,4 +83,5 @@ This project was created by first evaluating existing projects in
 @UserInterfaces. Further, technologies and potential solutions to
 implementations were evaluated in @Implementation. With this information, the
 implementation is documented starting at @Architecture. At the end, the solution
-is discussed in @Conclusion, and potential further improvements mentioned in @FurtherPotential.
+is discussed in @Conclusion, and potential further improvements mentioned in
+@Improvements.

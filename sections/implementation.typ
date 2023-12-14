@@ -1,8 +1,10 @@
 #import "../templates/utils.typ": *
 
 #section("Implementation")
-#subsection("Research")
+In this section, the research process and the result of this project are
+discussed.
 
+#subsection("Research")
 #include "implementation/plugins.typ"
 #pagebreak()
 #include "implementation/technologies.typ"
@@ -12,3 +14,11 @@
 #include "implementation/domain_model.typ"
 #pagebreak()
 #include "implementation/ui_design.typ"
+#pagebreak()
+#subsection("Result")
+#include "result/dbus.typ"
+#include "result/ui_implementation.typ"
+#pagebreak()
+#include "result/daemon.typ"
+#pagebreak()
+#include "result/application.typ"
