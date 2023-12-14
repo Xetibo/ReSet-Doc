@@ -97,10 +97,10 @@ feedback to implement.
 )
 
 #pagebreak()
-#subsubsection("Sprint 10: WiFi and Refactoring")
+#subsubsection("Sprint 10: Wi-Fi and Refactoring")
 Now that we slowly near the end of this project, we started refactoring our
 code. We also started implementing the last big feature, which is to set
-individual settings for a WiFi network.
+individual settings for a Wi-Fi network.
 #align(
   center, [#figure(
       image("../../figures/timeReports/timeReport_10.png", width: 100%), 

@@ -115,8 +115,3 @@ path that denotes the removed structure. The reason for this disparity is the
 inability to fetch data from removed DBus objects, hence only the path is
 provided.
 
-#subsubsection("Guidelines")
-ReSet is written in idiomatic rust where possible(not always applicable due to C
-and GTK architecture), which means that the project uses the standard linter rust
-provides, clippy, alongside the default rust tools like rust-analyzer and the
-default formatter rustfmt.

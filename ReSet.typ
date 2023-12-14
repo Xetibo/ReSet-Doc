@@ -6,7 +6,8 @@
   [
     In this paper, ReSet, a user-friendly settings application for Linux is
     developed with the rust programming language. ReSet aims to run on every
-    distribution and environment#footnote[Refers to what is usually called a Desktop Environment, window manager, or compositor.], providing a consistent experience for all users.
+    distribution and environment#footnote[Refers to what is usually called a Desktop Environment, window manager, or
+      compositor.], providing a consistent experience for all users.
 
     Key features include the configuration of Wi-Fi networks, Bluetooth devices, and
     audio devices. These features are tied together in a responsive user interface.
@@ -36,7 +37,7 @@
   [
     We would like to express our sincerest gratitude to Prof. Dr. Frieder Loch for
     advising us throughout our project. His guidance and support have been
-    invaluable to us. We are also grateful to our fellow students who took the time
+    invaluable to us. We are also grateful to our testers who took the time
     to test our product and share valuable feedback. Their input has been
     instrumental in helping us make improvements to our product. We would also like
     to acknowledge the OST for providing us with the opportunity to work on this
@@ -45,7 +46,19 @@
 }
 
 #show: doc => conf(
-  author: "Fabio Lenherr / Felix Tran", "Prof. Dr. Frieder Loch", "ReSet", "/figures/ReSet1.png", 25%, "/figures/OST.svg", 40%, "School of Computer Science", "OST Eastern Switzerland University of Applied Sciences", "../files/bib.yml", abstract, acknowledgements, doc,
+  author: "Fabio Lenherr / Felix Tran",
+  "Prof. Dr. Frieder Loch",
+  "ReSet",
+  "/figures/ReSet1.png",
+  25%,
+  "/figures/OST.svg",
+  40%,
+  "School of Computer Science",
+  "OST Eastern Switzerland University of Applied Sciences",
+  "../files/bibliography.yml",
+  abstract,
+  acknowledgements,
+  doc,
 )
 #file.step()
 
@@ -70,10 +83,14 @@
 #pagebreak()
 #include "sections/appendix/documentation.typ"
 #pagebreak()
+#include "sections/appendix/CI.typ"
+#pagebreak()
 #include "sections/appendix/api.typ"
 #pagebreak()
 #include "sections/appendix/libraries.typ"
 #pagebreak()
 #include "sections/appendix/retrospective.typ"
+#pagebreak()
+#include "sections/appendix/meeting.typ"
 #pagebreak()
 #include "sections/appendix/time_report.typ"

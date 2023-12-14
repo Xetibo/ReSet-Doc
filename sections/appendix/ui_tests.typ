@@ -10,8 +10,8 @@
   "Multiple settings can be opened at the same time and each setting box will reflow based on how much space is available.",
 )
 #test(
-  "WiFi", 
-  "Users can connect and disconnect from a WiFi network. They should also be able to change the password for an existing WiFi network and remove it.",
+  "Wi-Fi", 
+  "Users can connect and disconnect from a Wi-Fi network. They should also be able to change the password for an existing Wi-Fi network and remove it.",
 )
 #test(
   "Bluetooth", 
