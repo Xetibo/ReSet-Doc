@@ -23,23 +23,23 @@ The weigths are as follows: low -> 1, medium -> 2, high -> 3
 
 The following categories are evaluated for programming languages:
 - *Functionality* | weight: high\
-Describes how many features the tool has to help development. More functionalities means that it 
-is easier and faster to implement certain features. But to much will increase complexity which 
-is a detriment to the ease of use.
+  Describes how many features the tool has to help development. More functionalities means that it 
+  is easier and faster to implement certain features. But to much will increase complexity which 
+  is a detriment to the ease of use.
 - *Ease of use* | weight: high\
-Indicates how intuitive the tools is. A better ease of use means the learning curve is lower. This 
-also means a lowered complexity which makes it easiert to understand what each feature does. It 
-also includes how easy it is to find information about a tool in the internet. A lack thereof 
-means a lot of research on the tools itself just to implement basic features.
+  Indicates how intuitive the tools is. A better ease of use means the learning curve is lower. This 
+  also means a lowered complexity which makes it easiert to understand what each feature does. It 
+  also includes how easy it is to find information about a tool in the internet. A lack thereof 
+  means a lot of research on the tools itself just to implement basic features.
 - *Collaboration* | weight: medium\
-Describes how good the tool can be used in a team. This includes version control, how the tool can 
-be used by multiple people at the same time and how easy merge conflicts can be solved.
+  Describes how good the tool can be used in a team. This includes version control, how the tool can 
+  be used by multiple people at the same time and how easy merge conflicts can be solved.
 - *Debugging* | weight: low\
-Tools that help developers find problems and bugs in the UI. This includes error messages and 
-warnings and its quality.
+  Tools that help developers find problems and bugs in the UI. This includes error messages and 
+  warnings and its quality.
 - *Updates* | weight: medium\
-ReSet uses the latest version of GTK, which means that the tools should also be updated regularly to 
-support the latest features. 
+  ReSet uses the latest version of GTK, which means that the tools should also be updated regularly to 
+  support the latest features. 
 
 #let language_weights = (
   functionality: 3,
@@ -125,9 +125,9 @@ support the latest features.
 
 ReSet will use Cambalache to build the UI. The reason for this it provides a application 
 in which the UI can be built with drag and drop. This makes it easy to instantly see how 
-the UI looks. Glade does provide the same functionality, but it doesn't support GTK4 and 
-is no longer maintained. While GTK is has impressive scoress in the Collaboration and 
-Updates categories, it is harder to use because there is no UI builder.
+the UI looks. Glade does provide the "same" functionality because Cambalache is heavily inspired, 
+but it doesn't support GTK4 and is no longer maintained. While GTK is has impressive scores 
+in the Collaboration and Updates categories, it is harder to use because there is no UI builder.
 #align(center, [#figure(
     img("cambalache.png", width: 90%),
     caption: [Screenshot of cambalache],
