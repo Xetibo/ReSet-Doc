@@ -10,7 +10,7 @@
 
 #subsubsection("Description")
 Base functionality is provided using well known Linux system services such as
-Pipewire for audio, NetworkManager for network and bluez for Bluetooth. These
+PulseAudio for audio, NetworkManager for network and bluez for Bluetooth. These
 services will be either integrated direct IPC or libraries, depending on the
 service. Additional systems will be integrated with a plugin-system which allows
 for integration of specific environments.

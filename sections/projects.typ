@@ -201,7 +201,7 @@ Interoperability will not be considered for these applications, as they were
 made for its intended use case.
 
 *Pavucontrol* | Sound Application\
-Pavucontrol@pavucontrol_repo or Pulseaudio Volume Control is an application that
+Pavucontrol@pavucontrol_repo or PulseAudio Volume Control is an application that
 handles both system-wide input/output, per application output and input streams.
 It is under the umbrella of the Free Desktop project and is directly involved in
 PulseAudio itself. The application itself is written in C++ and GTK3.

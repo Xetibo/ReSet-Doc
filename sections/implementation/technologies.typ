@@ -269,15 +269,15 @@ The following categories are evaluated for UI toolkits:
 #text(12pt, [*UI Toolkit*])* | ReSet uses GTK4 as its UI toolkit.*\
 GTK (GNOME) toolkit, formerly Gimp Toolkit) is a well
 established, LGPLv2.1+ licensed, cross-platform UI toolkit that has seen decades
-of usage and improvements. While the library itself is written in C, it does
-offer stable language bindings for a large set of languages, including Rust via #link("https://gtk-rs.org/")[gtk-rs].
+of usage and improvements.@gtk While the library itself is written in C, it does
+offer stable language bindings for a large set of languages, including Rust via gtk-rs.@gtk_rs
 Compared to native Rust libraries, it offers a more robust set of defined
 widgets, themes and tools. Specifically the toolkit "iced" was considered,
 however, it currently lacks documentation and needs several library
-implementations in order to fit with our requirements.
+implementations in order to fit with our requirements.@iced
 
 The last consideration is QT, it is a cross-platform toolkit that uses its own
-form of JavaScript(QML) to draw windows. QT is a well known toolkit, however, it
+form of JavaScript(QML) to draw windows.@qt @qml QT is a well known toolkit, however, it
 is completely unknown to us, making it a suboptimal choice.\
 For QT, there is also the consideration of integration mentioned in
 @Analysisofexistingapplications.

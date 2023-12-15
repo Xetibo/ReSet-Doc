@@ -6,7 +6,7 @@ rectangle KeyboardPlugin
 rectangle MousePlugin 
 rectangle ReSet
 rectangle ThirdPartyApplet
-rectangle PipeWire
+rectangle PulseAudio
 rectangle NetworkManager
 rectangle bluez
 rectangle GNOME
@@ -25,7 +25,7 @@ PluginSystem o-- MonitorPlugin
 PluginSystem o-- KeyboardPlugin
 PluginSystem o-- MousePlugin
 ReSetDaemon <--> NetworkManager    : IPC 
-ReSetDaemon <--> PipeWire          : IPC 
+ReSetDaemon <--> PulseAudio          : IPC 
 ReSetDaemon <--> bluez             : IPC
 ReSetDaemon --> ConfigurationFile : load/save
 MonitorPlugin <--> GNOME

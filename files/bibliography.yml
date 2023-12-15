@@ -247,3 +247,8 @@ github_runners:
   title: About Github-hosted runners
   author: Github
   url: https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners
+iced:
+  type: web
+  title: iced
+  author: iced
+  url: https://iced.rs/
