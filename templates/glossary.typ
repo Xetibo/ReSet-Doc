@@ -38,7 +38,7 @@
       linting, formatting and refactoring.
     ],
   )<LSP>
-  #glossary_entry(use_show: use_show_ref, "Target Triple", [
+  #glossary_entry(use_show: use_show_ref, "#super([@daemon])Target Triple", [
     String used to define compilation target platforms in rust.
   ])<triple>
   #glossary_entry(
@@ -53,10 +53,10 @@
     [
       The current display protocol used on Linux.\
       It replaces the previous X11 protocol, which is no longer in development. (it is
-      still maintained for security reasons)
+      still maintained for security/compatibility reasons)
     ],
   )<wayland>
-  #glossary_entry(use_show: use_show_ref, "Gnome", [
+  #glossary_entry(use_show: use_show_ref, "GNOME", [
     A Linux desktop environment.
   ])<Gnome>
   #glossary_entry(use_show: use_show_ref, "KDesktop Environment (KDE)", [

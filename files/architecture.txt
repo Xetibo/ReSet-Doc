@@ -9,7 +9,7 @@ rectangle ThirdPartyApplet
 rectangle PipeWire
 rectangle NetworkManager
 rectangle bluez
-rectangle Gnome
+rectangle GNOME
 rectangle KDE
 rectangle Hyprland
 storage API
@@ -28,9 +28,9 @@ ReSetDaemon <--> NetworkManager    : IPC
 ReSetDaemon <--> PipeWire          : IPC 
 ReSetDaemon <--> bluez             : IPC
 ReSetDaemon --> ConfigurationFile : load/save
-MonitorPlugin <--> Gnome
-KeyboardPlugin <--> Gnome
-MousePlugin <--> Gnome
+MonitorPlugin <--> GNOME
+KeyboardPlugin <--> GNOME
+MousePlugin <--> GNOME
 MonitorPlugin <--> KDE
 KeyboardPlugin <--> KDE
 MousePlugin <--> KDE

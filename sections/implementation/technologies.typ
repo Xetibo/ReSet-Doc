@@ -169,11 +169,11 @@ JavaScript, it comes with a significantly reduced memory cost and with the
 addition of a static type system.@rust_javascript@rust_javascript2@rust_types
 
 Compared to other system programming languages, Rust comes with a modern
-ecosystem out of the box, providing a formatter, a compiler, an LSP#super([@LSP]) server,
+ecosystem out of the box, providing a formatter, a compiler, an LSP server,
 a code checking tool and a package manager in one(rustup).@rust_tools This
 allows for a more streamlined developer experience and standardizes features,
 which in return makes more complex tasks like cross-compilation a lot easier.
-For Exmaple, rust allows adding a so-called "target triple"#super([@triple]),
+For Exmaple, rust allows adding a so-called "target triple",
 which is a specific platform. Using this triple, it is possible to build the
 project with "```sh cargo build --target x86_64-linux-unknown-gnu #or other platform```".
 Similarly, adding packages are also just one command "```sh cargo add gtk```",
@@ -267,7 +267,7 @@ The following categories are evaluated for UI toolkits:
 )
 
 #text(12pt, [*UI Toolkit*])* | ReSet uses GTK4 as its UI toolkit.*\
-GTK (Gnome#super([@Gnome]) toolkit, formerly Gimp Toolkit) is a well
+GTK (GNOME) toolkit, formerly Gimp Toolkit) is a well
 established, LGPLv2.1+ licensed, cross-platform UI toolkit that has seen decades
 of usage and improvements. While the library itself is written in C, it does
 offer stable language bindings for a large set of languages, including Rust via #link("https://gtk-rs.org/")[gtk-rs].
