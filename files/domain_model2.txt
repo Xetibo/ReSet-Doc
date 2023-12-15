@@ -5,7 +5,7 @@ entity KeyboardPlugin
 entity MousePlugin 
 entity ReSet
 entity ThirdPartyApplet
-entity PipeWire
+entity PulseAudio
 entity NetworkManager
 entity bluez
 protocol API
@@ -20,7 +20,7 @@ PluginSystem o.. MonitorPlugin
 PluginSystem o.. KeyboardPlugin
 PluginSystem o.. MousePlugin
 ReSetDaemon <--> NetworkManager    : IPC 
-ReSetDaemon <--> PipeWire          : IPC 
+ReSetDaemon <--> PulseAudio          : IPC 
 ReSetDaemon <--> bluez             : IPC
 ReSetDaemon --> ConfigurationFile : load/save
 @enduml

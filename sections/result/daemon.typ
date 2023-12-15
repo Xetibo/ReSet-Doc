@@ -80,20 +80,20 @@ decide themselves whether they would like to use this asynchronous
 functionality.
 
 #subsubsection("Audio")
-As planned in @Architecture, the pulseaudio library was used to implement the
+As planned in @Architecture, the PulseAudio library was used to implement the
 audio portion of the ReSet daemon. In concrete terms, the library libpulse-binding
-@libpulse_binding, which wraps the C pulseaudio functions to rust was used.
+@libpulse_binding, which wraps the C PulseAudio functions to rust was used.
 
-Similarly to the mainloop, a listener loop is created for pulseaudio which will
-continue to receive events from both the pulseaudio server and the DBus daemon.
-Pulseaudio events are handled directly with the library listener, which allows
+Similarly to the mainloop, a listener loop is created for PulseAudio which will
+continue to receive events from both the PulseAudio server and the DBus daemon.
+PulseAudio events are handled directly with the library listener, which allows
 for a listener flag for customized event filters, while the daemon events are
 handled via the rust native multi-producer single-consumer message passing
 channel.
 
 #figure(sourcecode(
 ```rs
-// filter for pulseaudio events
+// filter for PulseAudio events
 let mut mask = InterestMaskSet::empty();
 mask.insert(InterestMaskSet::SINK);
 mask.insert(InterestMaskSet::SOURCE);
@@ -115,8 +115,8 @@ pub fn listen_to_messages(&mut self) {
 
 #figure(sourcecode(
 ```rs
-// example pulseaudio event
-// these events come directly from pulseaudio
+// example PulseAudio event
+// these events come directly from PulseAudio
 pulse::context::subscribe::Facility::Sink => {
     if operation == Operation::Removed {
         handle_sink_removed(&connection_ref, index);
@@ -141,10 +141,10 @@ let response = data.audio_receiver.recv();
 
 ```), caption: [Audio event handling])<audio_events>
 
-Actions from the pulseaudio listener are handled either with a reverse message
+Actions from the PulseAudio listener are handled either with a reverse message
 passing channel for direct requests from the daemon, or as a DBus event, for
 which the thread-safe connection reference of the daemon is used. This allows
-sending of messages right within the pulseaudio listener.
+sending of messages right within the PulseAudio listener.
 
 #figure(sourcecode(```rs
 // Example of DBus event
@@ -199,8 +199,8 @@ DBus API.
   caption: [bluez ObjectManager Usage]
 )<bluez_objectmanager>
 
-A big difference to the pulseaudio listener is that the vast majority of the
-functions can be used without the listener, for pulseaudio, *every* function has
+A big difference to the PulseAudio listener is that the vast majority of the
+functions can be used without the listener, for PulseAudio, *every* function has
 to use the listener via the message passing channel. For clients of ReSet, this
 means that a simpler usage without events is possible as well.
 

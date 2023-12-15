@@ -125,7 +125,7 @@ in @Analysisofexistingapplications, especially if the window is displayed in
 full screen.
 #align(
   center, [#figure(
-      img("gnomeSettingsFullScreen.png", width: 100%), caption: [Full-screen Gnome control center#super([@Gnome])
+      img("gnomeSettingsFullScreen.png", width: 100%), caption: [Full-screen Gnome control center
         settings window on ultra-wide monitor],
     )<uimock1>],
 )

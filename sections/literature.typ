@@ -2,10 +2,10 @@
 #lsp_placate()
 
 #subsection("User Interfaces")
-The Gnome Human Interface Guidelines @gnome_human_guidelines are likely the most
+The GNOME Human Interface Guidelines @gnome_human_guidelines are likely the most
 applicable for ReSet, as they are the most prominent in the Linux sphere and are
 directly meant to be used with GTK4, a potential user interface toolkit for
-ReSet. While Reset does not intend to belong into the Gnome circle, for which
+ReSet. While Reset does not intend to belong into the GNOME circle, for which
 rather strict adherence to these guidelines is needed, ReSet will still use best
 practices that are employed by these guidelines.
 
@@ -63,7 +63,7 @@ Krug's rules:
   level selections are preferable to many layers, as layers can confuse the user
   and make navigation tedious.
 
-  Both the Gnome human interface guidelines and Steve Kruger advise developers to
+  Both the GNOME human interface guidelines and Steve Kruger advise developers to
   use as few required clicks to navigate to a certain page as possible. This
   avoids tedious navigation where users could either get lost in navigation or
   simply get annoyed at the endless path.
@@ -71,7 +71,7 @@ Krug's rules:
     align(center, [#image("../figures/kde-hamburger.png", width: 60%)]), caption: [An extreme example of KDE hamburger menus],
   )<kde-hamburger>
   There is a long-standing debate over menu layers like in @kde-hamburger, the KDE
-  side justifies these menus with increased functionality, while the Gnome side
+  side justifies these menus with increased functionality, while the GNOME side
   explicitly discourages these menus citing reduced accessibility. In this case
   the question is about where the bookmarks are stored. The default location is in
   more->go->bookmarks, this is on layer 4 of a menu without search functionality
@@ -86,7 +86,7 @@ Krug's rules:
   This defines unnecessary information on a page or application. Everything that
   the user does not care about should be omitted. One should note however that
   this does not imply removal or omitting of _features_, instead only showing
-  users a certain feature when they need it. Gnome uses the same concept when
+  users a certain feature when they need it. GNOME uses the same concept when
   creating applications, keeping the overall application simple, but powerful when
   needed.\
 - *"Reduce short-term memory load" - "The eight golden rules"* @shneiderman\
@@ -95,17 +95,17 @@ Krug's rules:
   interfaces like multi-page displays into one.
 
   The downside of this approach can be a too simple application, meaning the _powerful when needed_ part
-  does not always apply. Compared to KDE applications, Gnome is often considered
+  does not always apply. Compared to KDE applications, GNOME is often considered
   to be simpler, but also less configurable, and in large part this is correct.
   #grid(
     columns: (1fr, 1.1fr), rows: (auto), gutter: 10pt, figure(
-      align(center, [#image("../figures/new-gnome.png", width: 60%)]), caption: [Context menu in Nautilus(the Gnome file manager)],
+      align(center, [#image("../figures/new-gnome.png", width: 60%)]), caption: [Context menu in Nautilus(the GNOME file manager)],
     ), figure(
       align(center, [#image("../figures/new-kde.png", width: 100%)]), caption: [Context menu in Dolphin(the kde file manager)],
     ),
   )
   Here the KDE application is clearly more powerful, offering a variety of files
-  to create, including links and shortcuts, while the Gnome experience only offers
+  to create, including links and shortcuts, while the GNOME experience only offers
   a new folder, anything else needs to be done with a terminal.
 
 - *"Support internal locus of control" - "The eight golden rules"* @shneiderman\
@@ -142,7 +142,7 @@ human-readable and can be put under version control. For ReSet the importance
 comes from the fact that configuration of various categories need persistent
 storage, and ReSet also needs to handle this.\
 
-The already mentioned Gnome control center handles this via a database, contrary
+The already mentioned GNOME control center handles this via a database, contrary
 to the chapter in the aforementioned book. This is done for increased speed in
 loading and storing configuration data. However, it does come with the downside
 of needing a program to interact with the stored data, as you can't otherwise

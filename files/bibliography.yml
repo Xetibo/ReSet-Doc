@@ -15,8 +15,8 @@ pragprog:
   edition: 20th Anniversary Edition
 gnome_human_guidelines:
   type: web
-  title: Gnome Human Interface Guidelines
-  author: Gnome
+  title: GNOME Human Interface Guidelines
+  author: GNOME
   url: https://developer.gnome.org/hig/
 krug:
   type: book
@@ -94,7 +94,7 @@ dbus_rs:
 libadwaita:
   type: repository
   title: libadwaita-rs
-  author: Gnome
+  author: GNOME
   url: https://gitlab.gnome.org/World/Rust/libadwaita-rs 
   note: License MIT
 gtk4:
@@ -146,8 +146,8 @@ flatpak:
   url: https://docs.flatpak.org/en/latest/sandbox-permissions.html
 gresources: 
   type: web
-  title: Gnome Gresources documentation 
-  author: Gnome
+  title: GNOME Gresources documentation 
+  author: GNOME
   url: https://developer-old.gnome.org/gio/stable/GResource.html
 rust_macros:
   type: web
@@ -178,7 +178,7 @@ cambalache:
 glade:
   type: web
   title: Glade
-  author: Gnome
+  author: GNOME
   url: https://gitlab.gnome.org/GNOME/glade
   note: License CC BY 4.0 Deed
 window_manager_study:
@@ -189,7 +189,7 @@ window_manager_study:
 gnome_control_center:
   type: repository
   title: gnome-control-center
-  author: Gnome
+  author: GNOME
   url: https://gitlab.gnome.org/GNOME/gnome-control-center
 gtk: 
   type: web
@@ -199,7 +199,7 @@ gtk:
 dconf: 
   type: repository
   title: Dconf
-  author: Gnome
+  author: GNOME
   url: https://gitlab.gnome.org/GNOME/dconf
 kde_systemsettings_repo:
   type: repository
@@ -239,7 +239,7 @@ networkmanager_repo:
 network_manager_applet:
   type: repository
   title: network-manager-applet
-  author: Gnome 
+  author: GNOME 
   url: https://gitlab.gnome.org/GNOME/network-manager-applet
   note: License GPL-2.0
 github_runners:
@@ -247,3 +247,8 @@ github_runners:
   title: About Github-hosted runners
   author: Github
   url: https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners
+iced:
+  type: web
+  title: iced
+  author: iced
+  url: https://iced.rs/

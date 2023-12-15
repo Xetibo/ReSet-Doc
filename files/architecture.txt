@@ -6,10 +6,10 @@ rectangle KeyboardPlugin
 rectangle MousePlugin 
 rectangle ReSet
 rectangle ThirdPartyApplet
-rectangle PipeWire
+rectangle PulseAudio
 rectangle NetworkManager
 rectangle bluez
-rectangle Gnome
+rectangle GNOME
 rectangle KDE
 rectangle Hyprland
 storage API
@@ -25,12 +25,12 @@ PluginSystem o-- MonitorPlugin
 PluginSystem o-- KeyboardPlugin
 PluginSystem o-- MousePlugin
 ReSetDaemon <--> NetworkManager    : IPC 
-ReSetDaemon <--> PipeWire          : IPC 
+ReSetDaemon <--> PulseAudio          : IPC 
 ReSetDaemon <--> bluez             : IPC
 ReSetDaemon --> ConfigurationFile : load/save
-MonitorPlugin <--> Gnome
-KeyboardPlugin <--> Gnome
-MousePlugin <--> Gnome
+MonitorPlugin <--> GNOME
+KeyboardPlugin <--> GNOME
+MousePlugin <--> GNOME
 MonitorPlugin <--> KDE
 KeyboardPlugin <--> KDE
 MousePlugin <--> KDE
