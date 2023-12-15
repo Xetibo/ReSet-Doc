@@ -38,7 +38,10 @@ jobs:
         run: cargo build --verbose
       - name: Run clippy
         run: cargo clippy --fix
-```), caption: [ReSet build workflow])<reset_build_workflow>
+```),
+kind: "code", 
+supplement: "Listing",
+caption: [ReSet build workflow])<reset_build_workflow>
 
 For the ReSet frontend, there are currently no tests as of now. GTK has a few
 tools to test the user interface, but it is not the most extensive
@@ -81,7 +84,10 @@ async fn daemon_check() {
         run_daemon().await;
     } 
 }
-```), caption: [Daemon check within main.rs])<daemon_check>
+```),
+kind: "code", 
+supplement: "Listing",
+caption: [Daemon check within main.rs])<daemon_check>
 
 In @build_ubuntu the ubuntu runner configuration is shown, which builds the binary, the flatpak and the debian package.
 
@@ -113,7 +119,10 @@ steps:
         target/release/reset
         flatpak/reset.flatpak
         reset.deb
-```), caption: [ReSet build workflow on Ubuntu])<build_ubuntu>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [ReSet build workflow on Ubuntu])<build_ubuntu>
 
 In @build_arch the arch runner configuration is shown, which builds the arch package.
 
@@ -134,7 +143,10 @@ steps:
     with:
       files: |
         reset-${{github.ref_name}}-0-x86_64.pkg.tar.zst
-```), caption: [ReSet build workflow on Arch])<build_arch>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [ReSet build workflow on Arch])<build_arch>
 
 #figure(sourcecode(```sh
 pkgname=reset
@@ -155,4 +167,7 @@ package() {
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -Dm644 "src/resources/icons/ReSet.svg" "$pkgdir/usr/share/pixmaps/ReSet.svg"
 }
-```), caption: [PKGBUILD to build the arch package])<arch_package>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [PKGBUILD to build the arch package])<arch_package>

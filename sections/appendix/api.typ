@@ -31,7 +31,10 @@ fn UnregisterClient(client_name: String) -> bool;
 //
 // Shuts down the daemon.
 fn Shutdown();
-  ```, caption: [Base DBus API for the ReSet daemon],
+  ```, 
+  kind: "code", 
+  supplement: "Listing",
+  caption: [Base DBus API for the ReSet daemon],
 )<daemon_api>
 
 #subsubsection("Wi-Fi API")
@@ -121,7 +124,10 @@ fn GetConnectionSettings(path: Path<'static>) -> HashMap<String, PropMap>;
 // and deserialization from and to this hashmap.
 // Returns true on success and false on error.
 fn SetConnectionSettings(path: Path<'static>, settings: HashMap<String, PropMap>) -> bool;
-  ```, caption: [Wifi API for the ReSet daemon (part1)],
+  ```, 
+  kind: "code", 
+  supplement: "Listing",
+  caption: [Wifi API for the ReSet daemon (part1)],
 )<daemon_api1>
 
 #figure(
@@ -140,7 +146,10 @@ fn StartNetworkListener() -> bool;
 // Stops the wireless network listener.
 // Returns true on success and false on error.
 fn StopNetworkListener() -> bool;
-  ```, caption: [Wifi API for the ReSet daemon (part2)],
+  ```, 
+  kind: "code", 
+  supplement: "Listing",
+  caption: [Wifi API for the ReSet daemon (part2)],
 )<daemon_api2>
 
 #subsubsection("Bluetooth API")
@@ -232,7 +241,10 @@ fn RemoveDevicePairing(path: Path<'static>) -> bool;
 // itself.
 fn GetConnectedBluetoothDevices() -> Vec<BluetoothDevice>;
 
-  ```, caption: [Bluetooth DBus API for the ReSet daemon],
+  ```, 
+  kind: "code", 
+  supplement: "Listing",
+  caption: [Bluetooth DBus API for the ReSet daemon],
 )<daemon_api>
 
 #pagebreak()
@@ -345,7 +357,10 @@ fn ListOutputStreams() -> Vec<OutputStream>;
 // Returns the PulseAudio cards for every device. (The card holds information about all possible
 // audio profiles and whether or not the device is disabled.)
 fn ListCards() -> Vec<Card>;
-```, caption: [Audio DBus API for the ReSet daemon (part1)],
+```, 
+kind: "code", 
+supplement: "Listing",
+caption: [Audio DBus API for the ReSet daemon (part1)],
 )<daemon_api1>
 
 #figure(
@@ -406,6 +421,9 @@ fn SetOutputStreamMute(index: u32, muted: bool);
 // which can be received with the ListCards() function.
 // The index of the device can be found in the Device datastructure.
 fn SetCardOfDevice(device_index: u32, profile_name: String);
-```, caption: [Audio DBus API for the ReSet daemon (part2)],
+```, 
+kind: "code", 
+supplement: "Listing",
+caption: [Audio DBus API for the ReSet daemon (part2)],
 )<daemon_api2>
 

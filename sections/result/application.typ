@@ -25,7 +25,10 @@ fn main() {
     // this will run until user closes the application
     app.run();
 }
-```), caption: [Example GTK application])<example_gtk>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Example GTK application])<example_gtk>
 
 #subsubsection("Modular Design")
 In order to provide easier implementation for plugins, ReSet was developed with
@@ -51,7 +54,10 @@ impl ObjectSubclass for SettingBox {
         obj.init_template();
     }
 }
-```), caption: [ReSet settings box])<reset_settings_box>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [ReSet settings box])<reset_settings_box>
 
 Alongside this, the flowbox which houses the containers was created to always
 use the optimal amount of screen space available. This translates to a window
@@ -107,7 +113,10 @@ pub fn start_audio_listener(
         }
     });
 }
-```), caption: [Example setup for a DBus listener to the ReSet daemon])<example_listener>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Example setup for a DBus listener to the ReSet daemon])<example_listener>
 
 It is important to note that the added and changed events provide structs
 defined by the DBus API defined in @DBus, while removed events provide a DBus

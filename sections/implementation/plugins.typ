@@ -56,7 +56,9 @@ fn get_matches(input: RString) -> RVec<Match> {
 fn handler(selection: Match) -> HandleResult {
   HandleResult::Close
 }
-```),
+```), 
+  kind: "code", 
+  supplement: "Listing",
   caption: [Example code for an anyrun plugin, available at: @anyrun],
 )
 //typstfmt::on

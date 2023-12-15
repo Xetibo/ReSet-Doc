@@ -47,7 +47,10 @@ conn.start_receive(
         true
     }),
 );
-```), caption: [Code snippet from the daemon DBus mainloop])<mainloop>
+```),
+ kind: "code", 
+ supplement: "Listing",
+ caption: [Code snippet from the daemon DBus mainloop])<mainloop>
 
 #figure(sourcecode(```rs
 // the data struct used by the mainloop
@@ -66,7 +69,10 @@ pub struct DaemonData {
     pub connection: Arc<SyncConnection>, // connection reference used for event creation
     pub handle: JoinHandle<()>, // used for shutdown
 }
-```), caption: [DaemonData struct used as the sole datastorage by the daemon])<daemondata>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [DaemonData struct used as the sole datastorage by the daemon])<daemondata>
 // typstfmt::on
 
 With these basic data structures, the daemon would be able to use basic
@@ -111,7 +117,10 @@ pub fn listen_to_messages(&mut self) {
         }
     }
 }
-```), caption: [Audio mainloop and event subscription])<audio_code>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Audio mainloop and event subscription])<audio_code>
 
 #figure(sourcecode(
 ```rs
@@ -139,7 +148,10 @@ let _ = data.audio_sender.send(AudioRequest::GetDefaultSource);
 // wait for the response from the audio listener
 let response = data.audio_receiver.recv();
 
-```), caption: [Audio event handling])<audio_events>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Audio event handling])<audio_events>
 
 Actions from the PulseAudio listener are handled either with a reverse message
 passing channel for direct requests from the daemon, or as a DBus event, for
@@ -155,7 +167,10 @@ let msg = Message::signal(
 )
 .append1(index);
 let _ = conn.send(msg);
-```), caption: [Bluetooth events])<bluetooth_events>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Bluetooth events])<bluetooth_events>
 
 #subsubsection("Bluetooth")
 For Bluetooth, no further library was necessary, as bluez, the default Bluetooth
@@ -177,7 +192,10 @@ let mut bluetooth_device_changed = PropertiesPropertiesChanged::match_rule(
 )
 .static_clone();
 // omitted: handling of each event
-```), caption: [Bluetooth listener code snippet])<bluetooth_listener>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Bluetooth listener code snippet])<bluetooth_listener>
 
 The biggest challenge with the bluez interface is the clean access of all needed
 functionality. For example, fetching all currently available Bluetooth devices
@@ -238,7 +256,10 @@ pub struct BluetoothDevice {
     pub icon: String,
     pub address: String,
 }
-```), caption: [Bluetooth data structures])<bluetooth_structures>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Bluetooth data structures])<bluetooth_structures>
 
 #pagebreak()
 
@@ -289,7 +310,10 @@ pub struct AccessPoint {
     pub dbus_path: Path<'static>,
     pub stored: bool,
 }
-```), caption: [Wi-Fi data structures])<wifi_structures>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Wi-Fi data structures])<wifi_structures>
 
 Special for the WifiDevice struct is the event,
 originally it was planned to not include this within ReSet,
@@ -323,5 +347,8 @@ if let Some(active_access_point) = active_access_point {
         // omitted: access point removed, notify client
     }
 }
-```), caption: [WifiDeviceChanged event])<wifidevicechanged_event>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [WifiDeviceChanged event])<wifidevicechanged_event>
 

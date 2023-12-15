@@ -42,7 +42,10 @@ cross.insert(
     ],
     data,
 );
-```), caption: [Example API addition])<api_addition>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Example API addition])<api_addition>
 
 Each of these entries provide their own DBus namespace which can be used to
 provide methods and signals to clients. Here ReSet could later a dynamic list of
@@ -105,7 +108,10 @@ pub fn populate_sinks(output_box: Arc<SinkBox>) {
     // ... omitted code
   });
 }
-```), caption: [Example of problematic code to de-duplicate])<code_duplication>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Example of problematic code to de-duplicate])<code_duplication>
 
 The challenge here is to ensure that ReSet does not compromise on performance
 with too many thread-safe references, and while still providing a clean

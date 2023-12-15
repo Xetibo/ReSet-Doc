@@ -84,7 +84,10 @@ thread::spawn(|| {
           ("ReSet",));               // The provided parameters
     res
 });
-```),caption: [Example DBus usage in a client of the ReSet-Daemon])<dbus_usage>
+```),
+kind: "code", 
+supplement: "Listing",
+caption: [Example DBus usage in a client of the ReSet-Daemon])<dbus_usage>
 
 #align(center, [#figure(
     img("dbus_sequence.svg", width: 100%, extension: "files"),
