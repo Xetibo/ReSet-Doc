@@ -27,13 +27,12 @@ level.
 
 #subsubsection("Felix Tran")
 
-...
-In this project, we planned too little time for each feature, which resulted in
-a lot of features being cut. Fortunately, the features were very modular which 
-allowed us to easily scale down. 
+Overall, I am very satisfied with the application we created over the last few 
+months. While we did plan too much and had to scale down later, it still packs 
+many features and more importantly, it was a nice lesson for project planning.
 
 I learned a lot in this project because it involved many tasks that I encountered 
 for the first time. This was my first time coming in contact with Rust and GTK. 
 Because the language is very different from the languages I have used before and 
 the fact that GTK made it a lot more complex, it took some time to get started. 
-
+But generally, it's a nice language I would consider using on different projects.
