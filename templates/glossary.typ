@@ -15,6 +15,20 @@
   #pad(y: 10pt)[]
   #glossary_entry(
     use_show: use_show_ref,
+    "Compositor",
+    [
+      A combination of display server(not a true server with wayland!) and window
+      composition system.
+    ],
+  )<compositor>
+  #glossary_entry(
+    use_show: use_show_ref,
+    "dbus",
+    [ Low level API providing inter process communication (IPC) on UNIX operating
+      systems. ],
+  )<dbus>
+  #glossary_entry(
+    use_show: use_show_ref,
     "Daemon",
     [
       Background process, most commonly used to handle functionality for a frontend.
@@ -32,62 +46,29 @@
   )<DE>
   #glossary_entry(
     use_show: use_show_ref,
-    "Language Server\n Protocol (LSP)",
+    "DTO Data Transfer \nObject",
+    [
+      This represents data that can be sent over inter process communication pipelines
+      such as web requests, DBus, or sockets. Data in this state can only be
+      represented as text(usually json, toml, etc.), this means that the endpoint needs to recreate a
+      datastructure for a programming language.
+    ],
+  )<dto>
+  #glossary_entry(use_show: use_show_ref, "GNOME", [
+    A Linux desktop environment.
+  ])<Gnome>
+  #glossary_entry(
+    use_show: use_show_ref,
+    "Language Server \nProtocol (LSP)",
     [
       Protocol designed to help program software by providing quick-fixes to errors,
       linting, formatting and refactoring.
     ],
   )<LSP>
-  #glossary_entry(use_show: use_show_ref, "#super([@daemon])Target Triple", [
-    String used to define compilation target platforms in rust.
-  ])<triple>
-  #glossary_entry(
-    use_show: use_show_ref,
-    "dbus",
-    [ Low level API providing inter process communication (IPC) on UNIX operating
-      systems. ],
-  )<dbus>
-  #glossary_entry(
-    use_show: use_show_ref,
-    "Wayland",
-    [
-      The current display protocol used on Linux.\
-      It replaces the previous X11 protocol, which is no longer in development. (it is
-      still maintained for security/compatibility reasons)
-    ],
-  )<wayland>
-  #glossary_entry(use_show: use_show_ref, "GNOME", [
-    A Linux desktop environment.
-  ])<Gnome>
   #glossary_entry(use_show: use_show_ref, "KDesktop Environment (KDE)", [
     A Linux desktop environment.\
     The K has no particular meaning.
   ])<kde>
-  #glossary_entry(
-    use_show: use_show_ref,
-    "X11",
-    [
-      A network transparent windowing system used by a variety of systems. It is
-      usually used with the reference implementation Xorg.
-    ],
-  )<X11>
-  #glossary_entry(
-    use_show: use_show_ref,
-    "Compositor",
-    [
-      A combination of display server(not a true server with wayland!) and window
-      composition system.
-    ],
-  )<compositor>
-  #glossary_entry(
-    use_show: use_show_ref,
-    "Status Bar",
-    [
-      A shell component that usually offers information such as open programs, time,
-      battery and more.\
-      Can be compared to the top bar on MacOS or the task bar on Windows.
-    ],
-  )<status-bar>
   #glossary_entry(
     use_show: use_show_ref,
     "Shell Component",
@@ -100,13 +81,32 @@
   )<shell-component>
   #glossary_entry(
     use_show: use_show_ref,
-    "DTO Data Transfer\n Object",
+    "Status Bar",
     [
-      This represents data that can be sent over inter process communication pipelines
-      such as web requests, DBus, or sockets. Data in this state can only be
-      represented as text(usually json, toml, etc.), this means that the endpoint needs to recreate a
-      datastructure for a programming language.
+      A shell component that usually offers information such as open programs, time,
+      battery and more.\
+      Can be compared to the top bar on MacOS or the task bar on Windows.
     ],
-  )<dto>
+  )<status-bar>
+  #glossary_entry(
+    use_show: use_show_ref,
+    "Wayland",
+    [
+      The current display protocol used on Linux.\
+      It replaces the previous X11 protocol, which is no longer in development. (it is
+      still maintained for security/compatibility reasons)
+    ],
+  )<wayland>
+  #glossary_entry(
+    use_show: use_show_ref,
+    "X11",
+    [
+      A network transparent windowing system used by a variety of systems. It is
+      usually used with the reference implementation Xorg.
+    ],
+  )<X11>
+  #glossary_entry(use_show: use_show_ref, "#super([@daemon])Target Triple", [
+    String used to define compilation target platforms in rust.
+  ])<triple>
   #pagebreak()
 ]
