@@ -33,6 +33,16 @@
   ]
 }
 
+#let laymenSummary = {
+  [
+    Using cutting-edge technology on Linux often causes compatibility issues with settings applications due to its 
+    diverse nature. Because no settings applications allow users to set WiFi, Bluetooth, Audio and other settings at 
+    once, users find themselves installing separate applications for each setting. 
+    In this project, we aim to develop an independent settings application that fixes the aforementioned 
+    compatibility issues. We will present the application in a user-friendly and modern way.
+  ]
+}
+
 #let acknowledgements = {
   [
     We would like to express our sincerest gratitude to Prof. Dr. Frieder Loch for
