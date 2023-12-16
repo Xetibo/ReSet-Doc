@@ -2,7 +2,7 @@
 #lsp_placate()
 
 #subsection("Libraries")
-This section covers all direct third party libraries used within ReSet.
+This section covers all direct third-party libraries used within ReSet.
 
 - dbus, dbus-crossroads, dbus-toktio@dbus_rs: Apache-2.0, MIT
 - libadwaita@libadwaita: MIT

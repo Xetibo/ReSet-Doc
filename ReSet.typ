@@ -6,40 +6,29 @@
   [
     In this paper, ReSet, a user-friendly settings application for Linux is
     developed with the rust programming language. ReSet aims to run on every
-    distribution and environment#footnote[Refers to what is usually called a Desktop Environment, window manager, or
-      compositor.], providing a consistent experience for all users.
+    distribution and environment#footnote[Refers to what is usually called a Desktop Environment, window manager, or compositor.], providing a consistent experience for all users.
 
     Key features include the configuration of Wi-Fi networks, Bluetooth devices, and
     audio devices. These features are tied together in a responsive user interface.
 
     Future development will focus on new features such as configuring peripherals,
-    as well as a plugin system. This will allow users to extend ReSet with their own
+    as well as a plugin system. This will allow users to extend ReSet with their 
     features.
 
-    Existing solutions either focus only on one functionality, or are tightly
+    Existing solutions either focus only on one functionality or are tightly
     coupled into an already existing environment, which brings incompatible features
     to other environments with it. Users of smaller, niche environments are
-    therefore forced to either use multiple solutions at once, or accept a partially
+    therefore forced to either use multiple solutions at once or accept a partially
     incompatible solution. ReSet focuses on more than one functionality while not
     bundling with any environment, making it an independent application and solving
     the underlying issue.
 
     In order to provide a consistent, functional and appealing design, multiple
-    existing solutions were compared and analzyed in order develop ReSet.
+    existing solutions were compared and analyzed in order to develop ReSet.
 
     In summary, ReSet represents a significant advancement in Linux settings
     applications, offering a concise, cross-environment solution that prioritizes
     user experience through Rust's efficiency and adaptability.
-  ]
-}
-
-#let laymenSummary = {
-  [
-    Using cutting-edge technology on Linux often causes compatibility issues with settings applications due to its 
-    diverse nature. Because no settings applications allow users to set WiFi, Bluetooth, Audio and other settings at 
-    once, users find themselves installing separate applications for each setting. 
-    In this project, we aim to develop an independent settings application that fixes the aforementioned 
-    compatibility issues. We will present the application in a user-friendly and modern way.
   ]
 }
 

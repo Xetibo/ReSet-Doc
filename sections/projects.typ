@@ -9,7 +9,7 @@ provided by environments and standalone applications for individual technologies
 are compared.
 
 Important to note, for this section, each application will be evaluated with
-their default dark theme. For GTK applications, the libadwaita dark theme will
+its default dark theme. For GTK applications, the libadwaita dark theme will
 be used. For QT applications, the breeze dark theme will be used, configured via
 the QT_QPA_PLATFORMTHEME=gnome environment flag.
 
@@ -25,12 +25,12 @@ potential solutions.
   - *Amount of working features*
   - *Amount of non-working features*\
     This specifically refers to residue entries that would work on the expected
-    environment, but not on other environments.
+    environment, but not in other environments.
   - *Interoperability of toolkit*\
     Depending on the toolkit, it might behave differently with specific modules
     missing from other environments, this would once again increase the amount of
     additional work is needed, in order to get the expected interface.
-  - *Behavior on different environments*\
+  - *Behavior in different environments*\
     Depending on the environment, applications have different ways of displaying
     themselves with different attributes like a minimum size. These constraints
     might not work well with different types of window management. A tiling window
@@ -65,7 +65,7 @@ potential solutions.
 The GNOME control center@gnome_control_center
 is as the name implies the central settings application for the GNOME desktop
 environment, it offers plenty of configuration, from networks to Bluetooth, to
-online accounts, default application and a lot more. The application is written
+online accounts, default applications and a lot more. The application is written
 in C with the GTK@gtk toolkit (GTK4) and follows the GNOME Human Interface
 Guidelines@gnome_human_guidelines.
 #align(
@@ -74,9 +74,9 @@ Guidelines@gnome_human_guidelines.
     )],
 )<Gnome_control_center>
 The code structure of the control center is very modular, with each tab having
-its own folder and files. Although it is hard to immediately understand each use
+its folder and files. Although it is hard to immediately understand each use
 case of each file. Certain functionality is hard-coded with libraries, like
-networks, which uses the NetworkManager library, while others are implemented
+networks, which use the NetworkManager library, while others are implemented
 via dbus, like monitors.
 
 Settings are stored using dconf@dconf which is a key/value system, that is
@@ -105,7 +105,7 @@ functionality will be available on other environments._
   cell("", bold: true, height: 20pt, cell_align: left, use_under: true),
   cell("Interoperability", bold: true, cell_align: left),
   cell(
-    [Not all base features of GNOME control center work on other environments, and
+    [Not all base features of the GNOME control center work on other environments, and
       GNOME exclusive features can't be hidden.], cell_align: left, bold: false, font_size: 11pt,
   ),
   cell("X", bold: true, cell_align: center),
@@ -138,16 +138,16 @@ Module(KCM)@kcm.
 The program is by default very slim and does not feature any standard settings
 on the repository. However, Linux distributions usually ship the KDE standard
 modules, as KDE is the intended environment for this application. For ReSet, KDE
-systemsettings is still a very good resource on implementing modularity with
+systemsettings are still a very good resource for implementing modularity with
 this type of application. The only caveat would be the obvious difference in
 both programming language and toolkit. This is especially a problem since QT
-uses its own scripting language QML@qml, which is based on JavaScript.
+uses its scripting language QML@qml, which is based on JavaScript.
 
 Settings are stored by individual modules, which means that a lot of individual
 files will be written/read in order to provide all functionality.
 
 _In many cases for KDE systemsettings it is not the application itself that makes
-it harder to be used on other environments, but the toolkit and the KDE specific
+it harder to be used on other environments, but the toolkit and the KDE-specific
 styling of said toolkit that might not integrate well._
 
 #pagebreak()
@@ -166,7 +166,7 @@ styling of said toolkit that might not integrate well._
   cell(
     [KDE systemsettings is built with modularity in mind, meaning it works purely
       with modules that can be built for it. This means that one could create modules
-      for systemsettings to enable functionality on other environments. However, QT is
+      for systemsettings to enable functionality in other environments. However, QT is
       not as well integrated into other environments as GTK, requiring users to
       potentially change themes for a consistent design. Additionally, the needed
       modules do not exist as of now.], cell_align: left, bold: false, font_size: 11pt,
@@ -242,8 +242,8 @@ PulseAudio itself. The application itself is written in C++ and GTK3.
 
 *Blueman* | Bluetooth Application\
 Blueman@blueman_repo allows connecting and managing of Bluetooth connections, as
-well as some quality of life features like sending of files. It works great in
-functionality, but the buttons are not very expressive in what they will
+well as some quality-of-life features like sending of files. It works great in
+functionality, but the buttons are not very expressive of what they will
 achieve. Blueman is written in Python and GTK3.
 #align(
   center, [#figure(
@@ -265,15 +265,15 @@ achieve. Blueman is written in Python and GTK3.
   cell("", bold: true, cell_align: left, use_under: true),
   cell("Ease of Use", bold: true, cell_align: left), 
   cell(
-    [The user interface for blueman can be rather confusing, for example: there is no
+    [The user interface for Blueman can be rather confusing, for example: there is no
       obvious connect button, which might lead to a user trying to re-pair a device
-      instead of connecting to it.(pairing is the \u{2713} button)\
+      instead of connecting to it. (pairing is the \u{2713} button)\
       Blueman also tends to use older icon design.], cell_align: left, bold: false, font_size: 11pt,
   ),
   cell("X", bold: true, cell_align: center),
   cell("Maintainability", bold: true, cell_align: left), 
   cell(
-    [Blueman follows best practices and can be considered as easily maintainable.], cell_align: left, bold: false, font_size: 11pt,
+    [Blueman follows best practices and can be considered easily maintainable.], cell_align: left, bold: false, font_size: 11pt,
   ),
   cell("\u{2713}", bold: true, cell_align: center),
 )

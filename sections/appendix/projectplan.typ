@@ -8,7 +8,7 @@ _Due to the small team size, no scrum master or product owner is chosen, the wor
 of these positions is done in collaboration._\
 
 #subsection("Time")
-As an agile methodology is used, long term time management is only a broad
+As an agile methodology is used, long-term time management is only broad
 guidance and does not necessarily overlap with reality. In other words, with a 2
 week sprint, only 2 weeks are considered well planned out. By week 4, work on
 the backend implementation should be started. The minimal working UI milestone

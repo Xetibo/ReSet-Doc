@@ -2,13 +2,13 @@
 #lsp_placate()
 
 #subsection("Continous Integration")
-In this section the continuous integration workflows for ReSet are discussed.
+In this section, the continuous integration workflows for ReSet are discussed.
 
 For ReSet, two different workflows are necessary, the first is a build after
-pull request and build on main branch push, which was realized using the github
+pull request and build on main branch push, which was realized using the GitHub
 workflows. Important to note is that for the ReSet application itself, the
-self-hosted github runner was used. This is due to the regular github runner
-only offering older versions of Ubuntu, which make the use of newer GTK and
+self-hosted GitHub runner was used. This is due to the regular GitHub runner
+only offering older versions of Ubuntu, which makes the use of newer GTK and
 libadwaita libraries impossible. Using the self-hosted runner, it was possible
 to provide a build system with an up-to-date version of Ubuntu.@github_runners
 
@@ -46,14 +46,14 @@ caption: [ReSet build workflow])<reset_build_workflow>
 For the ReSet frontend, there are currently no tests as of now. GTK has a few
 tools to test the user interface, but it is not the most extensive
 documentation, and considering the already limited time for this project, this
-was not pursued. Usually the logic of the frontend would be tested instead, but
+was not pursued. Usually, the logic of the frontend would be tested instead, but
 here all functions call DBus functions which means all functionality is
 implemented in the backend.
 
 On the backend there are initial tests, but those can't be run on the build
 system either as they rely on hardware features(Wi-Fi, Bluetooth, audio), which
 can't be provided appropriately within a test environment. In @Testing, a
-plan for a mock system is explained for a continuation work.
+plan for a mock system is explained for the continuation of work.
 
 The second workflow for ReSet is more complicated, as it requires different
 Linux version in order to provide easy packaging of ReSet. For ReSet, five
@@ -89,7 +89,7 @@ kind: "code",
 supplement: "Listing",
 caption: [Daemon check within main.rs])<daemon_check>
 
-In @build_ubuntu the ubuntu runner configuration is shown, which builds the binary, the flatpak and the debian package.
+In @build_ubuntu the ubuntu runner configuration is shown, which builds the binary, the flatpak and the Debian package.
 
 #figure(sourcecode(```yaml
 # omitted setup
