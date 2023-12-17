@@ -28,7 +28,7 @@ Krug's rules:
   This rule depends heavily on what the possible user base is, an IDE has
   different users to a general messaging application.
 
-  For the example, the application Blueman introduced in
+  For example, the application Blueman introduced in
   @Analysisofexistingapplications is used.
   #figure(
     align(center, [#image("../figures/bluetooth_manager.png", width: 80%)]), caption: [Screenshot of Bluetooth manager],
@@ -45,7 +45,7 @@ Krug's rules:
   devices as expected. The question now is how to connect to a specific device.
   Users who understand Bluetooth terminology will likely proceed with the key
   icon, which means pairing for this application. However, there is a chance that
-  users will first try the checkmark icon in order to connect to the device.
+  users will first try the checkmark icon to connect to the device.
 
   In this case, the icons could be improved to represent a more technology-neutral
   design.

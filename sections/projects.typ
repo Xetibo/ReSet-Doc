@@ -267,7 +267,7 @@ achieve. Blueman is written in Python and GTK3.
   cell(
     [The user interface for Blueman can be rather confusing, for example: there is no
       obvious connect button, which might lead to a user trying to re-pair a device
-      instead of connecting to it. (pairing is the \u{2713} button)\
+      instead of connecting to it. (pairing is the \u{2713} button).
       Blueman also tends to use older icon design.], cell_align: left, bold: false, font_size: 11pt,
   ),
   cell("X", bold: true, cell_align: center),
