@@ -133,8 +133,7 @@ full screen.
 On top of that, the settings are structured in a hierarchical order, which
 allows us to have a breadcrumb menu similar to file paths. This can help users
 backtrack to previous sections without having to restart their search from the
-beginning. With this hierarchical order, it is also possible to use the Back
-button on the mouse for navigation.
+beginning. This hierarchical order allows users to navigate using the Back button. 
 #align(
   center, [#figure(
       img("windowsBreadcrumb.png", width: 75%), caption: [Windows 11 breadcrumb menu],

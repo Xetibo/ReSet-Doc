@@ -79,6 +79,10 @@ appreciated the design while providing valuable advice on how to improve it.
 - *Conclusion*
 Feedback around navigation and readability was positive, mostly attributed to
 the currently simple UI. It's important to note that readability is already
-configured by the user or by using system defaults. Regarding the layout and
-design, there will be improvements made by templating a few elements, which fixes the issue of inconsistent design. Features such as collapsing subcategories have to be
-discussed further, to determine if it's necessary and if fit in the timeframe.
+configured by the user or by using system defaults. ReSet doesn't overwrite 
+these configurations to keep a consistent look throughout the user's system. 
+Concerning the layout and design, there will be improvements made by templating 
+common UI building blocks, which will fix the issue of inconsistent design and 
+make it easier to keep it consistent. Features such as collapsing subcategories 
+have to be discussed further, to determine if it's necessary and if fit in the 
+timeframe.
