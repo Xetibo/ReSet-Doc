@@ -6,10 +6,10 @@ The GNOME Human Interface Guidelines @gnome_human_guidelines are likely the most
 applicable for ReSet, as they are the most prominent in the Linux sphere and are
 directly meant to be used with GTK4, a potential user interface toolkit for
 ReSet. While Reset does not intend to belong to the GNOME circle, for which
-rather strict adherence to these guidelines is needed, ReSet will still use best
+rather strict adherence to these guidelines is needed, ReSet will still use the best
 practices that are employed by these guidelines.
 
-These best practices can also be seen in the book "Don't make me think" by Steve
+These best practices can also be seen in the book "Don't Make Me Think" by Steve
 Krug, @krug or in "Designing the User Interface" by Ben Shneiderman and
 Catherine Plaisant. In both works the authors defined rules to follow when
 creating user interfaces. Steve Krug specifically focused on the web, however,
@@ -104,7 +104,7 @@ Krug's rules:
       align(center, [#image("../figures/new-kde.png", width: 100%)]), caption: [Context menu in Dolphin(the KDE file manager)],
     ),
   )
-  Here the KDE application is clearly more powerful, offering a variety of files
+  Here the KDE application is more powerful, offering a variety of files
   to create, including links and shortcuts, while the GNOME experience only offers
   a new folder and anything else needs to be done with a terminal.
 
@@ -120,7 +120,7 @@ Krug's rules:
     align(center, [#image("../figures/shortcuts-kde.png", width: 100%)]), caption: [Shortcuts menu in Dolphin],
   )
 
-  The Dolphin version is much more complex, this is due to the fact that you can
+  The Dolphin version is much more complex, this is because you can
   customize any shortcut in Dolphin using this interface. For Nautilus shortcuts
   can only be configured using a settings file that has to be created by the user.
 

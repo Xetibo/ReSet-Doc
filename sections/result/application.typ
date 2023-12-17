@@ -2,11 +2,11 @@
 #lsp_placate()
 
 #subsection("Frontend Implementation")
-This section covers the implementation of the ReSet user-interface application
+This section covers the implementation of the ReSet user interface application
 which interacts with the ReSet daemon.
 
 #subsubsection("GTK Mainloop")
-The GTK mainloop handles its loop via callbacks, this means users of GTK can
+The GTK main handles its loop via callbacks, this means users of GTK can
 define a function for different scenarios like startup or UI building.
 
 #figure(sourcecode(```rs
@@ -14,7 +14,7 @@ fn main() {
     let app = Application::builder().application_id(APP_ID).build();
 
     app.connect_startup(move |_| {
-        // adwaita is a library with predefined GTK modules
+        // libadwaita is a library with predefined GTK modules
         // similar to material UI for various web frameworks
         adw::init().unwrap();
         load_css();
@@ -32,7 +32,7 @@ caption: [Example GTK application])<example_gtk>
 
 #subsubsection("Modular Design")
 In order to provide easier implementation for plugins, ReSet was developed with
-a modular user-interface, this can be seen with the consistent design language
+a modular user interface, this can be seen with the consistent design language
 across the current features. This means that the same container was used for
 audio, Bluetooth and wireless networks, and can be used by plugins in the future
 to keep the consistent design.
@@ -63,7 +63,7 @@ Alongside this, the flowbox which houses the containers was created to always
 use the optimal amount of screen space available. This translates to a window
 that doesn't feel empty, even on ultrawide monitors. At the same time, the
 flowbox provides the response design aspects that users have gotten used to on
-web applications. Meaning that ReSet can also be used on vertical monitors
+web applications. This means that ReSet can also be used on vertical monitors
 without issue.
 
 #subsubsection("Listeners")
@@ -105,7 +105,7 @@ pub fn start_audio_listener(
             // process event -> blocking within thread
             let _ = conn.process(Duration::from_millis(1000));
             // stop listener via atomic bool
-            // creates easy shutdown of listener
+            // creates easy shutdown of the listener
             if !listeners.pulse_listener.load(Ordering::SeqCst) {
                 stop_dbus_audio_listener(conn);
                 break;

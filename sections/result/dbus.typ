@@ -62,7 +62,7 @@ information about DBus types and how they correspond to the regular rust types.
 
 #subsubsection("Daemon and Application")
 As explained in @Introduction, ReSet will include a daemon and a client application to this daemon.
-It is therefore necessary to use inter process communication to provide functionality on the application.
+It is therefore necessary to use inter-process communication to provide functionality on the application.
 In this section, example usages and the IPC architecture are elaborated.
 
 #figure(sourcecode(```rs
@@ -75,7 +75,7 @@ thread::spawn(|| {
         "/org/Xetibo/ReSet/Daemon", // The DBus object path where the daemon exists
         Duration::from_millis(100),
     );
-    // The returntype of this DBus method
+    // The return type of this DBus method
     // The error is necessary as a call to DBus can also fail
     let res: Result<(), Error> = 
         proxy.method_call(
