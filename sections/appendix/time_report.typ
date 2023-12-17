@@ -98,7 +98,7 @@ feedback to implement.
 
 #pagebreak()
 #subsubsection("Sprint 10: Wi-Fi and Refactoring")
-Now that we slowly near the end of this project, we started refactoring our
+Now that we are slowly near the end of this project, we started refactoring our
 code. We also started implementing the last big feature, which is to set
 individual settings for a Wi-Fi network.
 #align(

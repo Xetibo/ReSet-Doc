@@ -65,9 +65,9 @@ for all currently open programs utilizing audio.
   img("reset_audio.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Audio section],
 )<reset_audio>
 
-Results from the @MidpointUITests show positive reception of the audio interface.
+Results from the @MidpointUITests show a positive reception of the audio interface.
 
-Additional configuration, such as audio profiles and per device adjustment
+Additional configuration, such as audio profiles and per-device adjustment
 are available in the device and profile settings respectively.
 
 #figure(
@@ -144,7 +144,7 @@ The Menu on the top right is a standard GTK menu, providing a consistent experie
 
 #subsection("Template Binding")
 The user interface is built using the GTK compatible XML markup language. This
-allows for a separated user interface definition which reduces code size and
+allows for a separate user interface definition which reduces code size and
 keeps functionality away from design. Alongside this, XML also allows for use of
 graphical tools in order to create the user interface itself, providing
 immediate feedback about the style and feel of the design.
@@ -179,8 +179,8 @@ caption: [Example build.rs for XML bindings in GTK])<build_rs>
 
 For ReSet, the vast majority of the user interface is handled via XML
 definitions, with only a fraction being inlined in the code. These inline
-definitions are usually temporary containers, or need a more dynamic
-functionality which is not directly available with XML.
+definitions are usually temporary containers or need a more dynamic
+functionality that is not directly available with XML.
 
 The binding for XML to rust happens within regular rust files, with various GTK
 macros being used. This means that one can use seemingly regular rust code,
@@ -189,8 +189,8 @@ macros. Rust macros are metaprogramming, which means the rust toolchain will
 change the code before compiling it into a binary. For rust this features
 expands to allowing full rust code withing metaprogramming, making entire
 programs possible at compile time.@rust_macros ReSet currently only uses this
-feature via gtk-rs or via default macros provided by the standard library,
-however it could become a vital tool for the creation of a plugin system which
+feature via gtk-rs or default macros provided by the standard library,
+however, it could become a vital tool for the creation of a plugin system which
 is mentioned in @Conclusion.
 
 #figure(
@@ -216,7 +216,7 @@ fn impl_hello_macro(ast: &syn::DeriveInput) -> TokenStream {
   caption: [An example macro from the book: "The Rust Programming Language"@rust_macros],
 )<macro_example>
 
-The binding itself is created via the PImpl(Pointer to Implemenation) idiom,
+The binding itself is created via the PImpl(Pointer to Implementation) idiom,
 which allows for a generic implementation of an object without immediate
 recompilation unless the object itself is changed. As defined by cppreference@pimpl@pimpl_gotw, this
 idiom is usually applied in C++, but can also be used with rust, and is also
@@ -249,7 +249,7 @@ impl ListEntry {
 
 In figure @pointer_xml, there are two structs with the name ListEntry,
 the first is the pointer which holds generic GTK functionality,
-in this case it will offer everything that the inherited classes provided,
+in this case, it will offer everything that the inherited classes provided,
 as well as the implemented interfaces.
 The second ListEntry is the implementation which will refer to the XML template.
 

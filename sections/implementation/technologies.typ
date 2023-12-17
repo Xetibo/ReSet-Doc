@@ -163,7 +163,7 @@ open-source license*.
 )
 
 #text(12pt, [*Programming Language*])* | ReSet is written in Rust.*\
-Rust was chosen for its speed, low memory usage, memory safe design and robust
+Rust was chosen for its speed, low memory usage, memory-safe design and robust
 ecosystem. While Rust is more complex to write than languages such as
 JavaScript, it comes with a significantly reduced memory cost and with the
 addition of a static type system.@rust_javascript@rust_javascript2@rust_types
@@ -189,7 +189,7 @@ Microsoft tools@csharp_debugger_notes@csharp_debugger_issue, or the C++ problem 
 feature sets. Hence, both languages described will have a different experience
 on different platforms and editors/IDEs.@cpp_compilers@rust_compiler
 
-UI Considerations for Rust is also a big factor, on Linux there are generally 2
+UI Considerations for Rust are also a big factor, on Linux there are generally 2
 big user interface toolkits, GTK and QT. QT is generally used with C++, while
 GTK is often used with C or a special GTK-developed language called "Vala".
 However, for GTK the Rust bindings are above average in quality compared to
@@ -206,7 +206,7 @@ The following categories are evaluated for UI toolkits:
   incompatibility.
 - *Documentation* | weight: medium\
   Defines how well the toolkit is documented. This will be important when going
-  beyond the typical "Hello World" for UI programs. A well documented toolkit can
+  beyond the typical "Hello World" for UI programs. A well-documented toolkit can
   reduce the development time by magnitudes.
 - *Features* | weight: low\
   ReSet does not need many features, however, ReSet does require first-class

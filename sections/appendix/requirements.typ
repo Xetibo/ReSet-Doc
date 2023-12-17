@@ -33,7 +33,7 @@ which can be found in the ReSet and ReSet-Daemon repositories respectively.
   ReSet should not have the same logic implemented as ReSet-Daemon.\
   In general, ReSet should not have any logic other than necessary.
 ], [
-  - Provide adequate functions over inter-process connection
+  - Provide adequate functions over the inter-process connection
   - Well-documented API
 ])
 #pad(x: 0pt, y: 0pt, line(length: 100%))
