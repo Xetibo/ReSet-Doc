@@ -88,6 +88,8 @@
 #pagebreak()
 #include "sections/appendix/libraries.typ"
 #pagebreak()
+#include "sections/appendix/screenshots.typ"
+#pagebreak()
 #include "sections/appendix/retrospective.typ"
 #pagebreak()
 #include "sections/appendix/meeting.typ"

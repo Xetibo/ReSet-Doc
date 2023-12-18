@@ -3,20 +3,6 @@
 
 #section("Conclusion")
 
-#subsection("UI Design Result")
-The final UI design has generally followed the intended vision. The UI is clean
-and simple, and the user can easily navigate through the UI. It is also
-responsive, which means that it will adjust itself depending on window sizes.
-
-But some things didn't make it into the final design. The first
-one is the breadcrumb menu. It was decided that the breadcrumb menu is not
-necessary because the UI isn't as nested as thought initially. The depth of
-it is only one level deep at max, which means that a breadcrumb bar would be
-redundant. If the UI ever gets deeply nested, the breadcrumb bar will be 
-reconsidered. The next feature that didn't completely get finished is shortcuts, 
-which are currently very basic ones like Ctrl+F. While there are some built-in 
-shortcuts provided by GTK, the plan is to add some more in the future. 
-
 #subsection("Improvements")
 This section covers both the features of ReSet not implemented yet as well as
 potential improvements to this project.
