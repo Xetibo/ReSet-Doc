@@ -19,36 +19,30 @@ For ReSet, the importance of tiling is the behavior of applications in this envi
 Concepts such as minimum window size, maximum window size, or popups are often a hindrance to tiling.
 A window will always be placed according to the rules of the layout, and this could mean having as little as
 a few pixels left to be placed, or the entire screen, hence size constraints are incompatible.
-For popups, the most breaking change is the focus change, and the placement of the popup.
+For popups, the most breaking change is the focus change and the placement of the popup.
 A tiling window manager has to consider a popup as a different type of window that should not be considered for tiling,
 and should instead use a traditional stacking approach that allows for overlapping windows.
 Some tiling window managers simply place the popups at the center of the currently focused monitor,
 which might be unexpected when trying to open a popup manually, while expected for a password prompt.
-The second issue is the focus, a tiling window manager is very keyboard focused, and can for the most part be used
-entirely via keyboard shortcuts. A popup requires the user to change the focus to the newly created popup, and therefore
+The second issue is the focus, a tiling window manager is very keyboard-focused, and can for the most part be used
+entirely via keyboard shortcuts. A popup requires the user to change the focus to the newly created popup and therefore
 takes away the focus of the last window, a behavior that is not welcome in every situation.
 
-#figure(
-  img("reset_about.png", fit: "contain", width: 35%), caption: [Screenshot of the ReSet About window],
-)<reset_about>
 
-#pagebreak()
-
-For ReSet, the solution was to provide a size agnostic application that refrains from using popups wherever possible.
-
+For ReSet, the solution was to provide a size-agnostic application that refrains from using popups wherever possible.
 In order to ensure the application is usable with any size, each functionality of ReSet is put into a dynamically allocated box.
-This allows not only the size agnostic design, but also provides a responsive design by changing from horizontal to vertical orientations.
-Implemented into ReSet are therefore three different stages, vertical orientation without sidebar, vertical orientation with sidebar and horizontal orientation with sidebar.
+This allows not only the size agnostic design but also provides a responsive design by changing from horizontal to vertical orientations.
+Implemented into ReSet are therefore three different stages, vertical orientation without a sidebar, vertical orientation with a sidebar and horizontal orientation with a sidebar.
 The stages are shown from minimum size to maximum size respectively, in @reset_minimal, @reset_vertical and @reset_horizontal, each stage is shown visually.
 
 #figure(
-  img("reset_minimal.png", fit: "contain", width: 50%), caption: [Screenshot of ReSet in vertical view without sidebar],  
+  img("reset_minimal.png", fit: "contain", width: 45%), caption: [Screenshot of ReSet in vertical view without sidebar],  
 )<reset_minimal>
 #figure(
-  img("vertical_reset.png", fit: "contain", width: 90%), caption: [Screenshot of ReSet in vertical view],
+  img("vertical_reset.png", fit: "contain", width: 85%), caption: [Screenshot of ReSet in vertical view],
 )<reset_vertical>
 #figure(
-  img("horizontal_reset.png", fit: "contain", width: 100%), caption: [Screenshot of ReSet in horizontal view],
+  img("horizontal_reset.png", fit: "contain", width: 95%), caption: [Screenshot of ReSet in horizontal view],
 )<reset_horizontal>
 
 To prevent using popups or relying on hamburger menus, ReSet opted to provide advanced configuration of each functionality
@@ -56,8 +50,8 @@ using the AdwNavigationPage provided by libadwaita@libadwaita. This module allow
 In @reset_audio and @reset_profiles, the AdwNavigationPage can be seen in use.
 
 #subsection("Audio User Interface")
-For audio, ReSet intents to provide as much relevant information to the user as possible.
-The intention is to provide not only the central audio settings, but also provide adjustment
+For audio, ReSet intends to provide as much relevant information to the user as possible.
+The intention is to provide not only the central audio settings but also provide adjustments
 for all currently open programs utilizing audio.
 
 
