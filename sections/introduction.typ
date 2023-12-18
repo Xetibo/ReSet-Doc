@@ -10,10 +10,10 @@ distribution or environment.
 
 The same lack of universality can be seen when interacting with configuration
 tools. Whenever a user would like to connect to a network, change their volume,
-or connect a Bluetooth device, they have to do this with their environment
-specific tool. To a certain degree, this makes sense, users should only see
-settings, which they can actually use within their environment. Problems arise
-when certain environments don't provide their own application, or perhaps
+or connect a Bluetooth device, they have to do this with their environment-specific 
+tool. To a certain degree, this makes sense, users should only see
+settings, which they can use within their environment. Problems arise
+when certain environments don't provide their application, or perhaps
 provide one without the needed functionality.
 
 In this case, users would need to find a variety of different applications which
@@ -23,7 +23,7 @@ different user interfaces. Some might argue that this is the point of these
 minimal environments, as they sometimes intentionally don't offer this type of
 software by default, but there is also a distinct lack of this type of software.
 
-A typical example for a minimal environment is a window manager/compositor.
+A typical example of a minimal environment is a window manager/compositor.
 In comparison to desktop environments, these do not offer any software other
 than window management: creating windows, removing windows, window positioning,
 etc. Any additional software needs to be installed separately, like status bars,
@@ -34,7 +34,7 @@ like Xrandr, but with the introduction of the Wayland display
 protocol, the original idea of having a universal display server was abandoned,
 favoring individual implementations instead. This leads to a variety of
 different ways to configure monitors, very few of them being compatible with
-each other. In this case only a plugin system to handle individual
+each other. In this case, only a plugin system to handle individual
 implementations could solve this problem.@wayland_documentation
 
 #subsection("Objectives")
@@ -59,15 +59,15 @@ compositor and shell components.
 - *Consistency*\
   As discussed in @Objectives, multiple applications will not necessarily create
   a consistent experience, however, even with a single application, creating a
-  consistent application with multiple technologies and use-cases is not trivial.
+  consistent application with multiple technologies and use cases is not trivial.
 - *Interoperability*\
-  The reason for environment specific applications is the ease of integration. If
+  The reason for environment-specific applications is the ease of integration. If
   one has control over the environment, it is easier to implement advanced
   features, however, without this control, there is a significant overhead for
   each feature.
 - *Features*\
   In order for ReSet to be a viable alternative to existing solutions, it would
-  need to cover the majority of use-cases, this means supporting as many features
+  need to cover the majority of use cases, this means supporting as many features
   as possible, or providing a plugin system for modular expansion.
 - *Maintainability*\
   With increasing scope, the overhead for developers will increase, causing
@@ -82,6 +82,6 @@ This project was created by first evaluating existing projects in
 @Analysisofexistingapplications and including techniques from literature in
 @UserInterfaces. Further, technologies and potential solutions to
 implementations were evaluated in @Implementation. With this information, the
-implementation is documented starting at @Architecture. At the end, the solution
-is discussed in @Conclusion, and potential further improvements mentioned in
+implementation is documented starting at @Architecture. In the end, the solution
+is discussed in @Conclusion, and potential further improvements are mentioned in
 @Improvements.

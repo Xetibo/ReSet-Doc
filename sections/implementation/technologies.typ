@@ -15,12 +15,12 @@
 Technologies are evaluated using a value table, which defines a score between 0
 and 10 for each category over each tool. Each category is also given a constant
 weight, in order to evaluate which tool will be chosen.\
-The weigths are as follows: low -> 1, medium -> 2, high -> 3
+The weights are as follows: low -> 1, medium -> 2, high -> 3
 
 The following categories are evaluated for programming languages:
 - *Familiarity* | weight: medium\
   Indicates how familiar the developers are with a certain tool. More familiarity
-  means an easier development process without unexpected surprises. Note that
+  means an easier development process without surprises. Note that
   familiarity is the subjective relative experience compared to other languages
   and does not indicate a particular level of skill.
 - *Developer* experience | weight: low\
@@ -40,7 +40,7 @@ The following categories are evaluated for programming languages:
   is unlikely to be too slow with any modern programming language.
 - *Resource usage* | weight: medium\
   Many computers have enough RAM by now, however, ReSet intends to work on any
-  distribution, including lightweight distributions meant for older or lower end
+  distribution, including lightweight distributions meant for older or lower-end
   systems, therefore RAM usage should be a concern, especially for the daemon.
 - *Development speed* | weight: medium\
   ReSet is limited in time scope, therefore tools with decent development speed
@@ -163,37 +163,37 @@ open-source license*.
 )
 
 #text(12pt, [*Programming Language*])* | ReSet is written in Rust.*\
-Rust was chosen for its speed, low memory usage, memory safe design and robust
+Rust was chosen for its speed, low memory usage, memory-safe design and robust
 ecosystem. While Rust is more complex to write than languages such as
 JavaScript, it comes with a significantly reduced memory cost and with the
 addition of a static type system.@rust_javascript@rust_javascript2@rust_types
 
 Compared to other system programming languages, Rust comes with a modern
 ecosystem out of the box, providing a formatter, a compiler, an LSP server,
-a code checking tool and a package manager in one(rustup).@rust_tools This
+a code-checking tool and a package manager in one(rustup).@rust_tools This
 allows for a more streamlined developer experience and standardizes features,
 which in return makes more complex tasks like cross-compilation a lot easier.
-For Exmaple, rust allows adding a so-called "target triple",
+For example, rust allows adding a so-called "target triple",
 which is a specific platform. Using this triple, it is possible to build the
 project with "```sh cargo build --target x86_64-linux-unknown-gnu #or other platform```".
-Similarly, adding packages are also just one command "```sh cargo add gtk```",
+Similarly, adding packages is also just one command "```sh cargo add gtk```",
 which is comparable to npm while still offering C/C++ runtime speed.
 
 Another consideration for this language is the technology stack. For many other
-languages, only a specific set of tools allow for a full IDE workflow, including
+languages, only a specific set of tools allows for a full IDE workflow, including
 debugger, LSP and more. With Rust, this is not the case, as it either provides
-said tool, or uses a well established open source tool for each task. This
+said tool or uses a well-established open-source tool for each task. This
 avoids cases like the official and proprietary C\#
-debugger only working with
+debugger only works with
 Microsoft tools@csharp_debugger_notes@csharp_debugger_issue, or the C++ problem of having multiple compilers with different
 feature sets. Hence, both languages described will have a different experience
 on different platforms and editors/IDEs.@cpp_compilers@rust_compiler
 
 UI Considerations for Rust are also a big factor, on Linux there are generally 2
 big user interface toolkits, GTK and QT. QT is generally used with C++, while
-GTK is often used with C or a special GTK developed language called "Vala".
+GTK is often used with C or a special GTK-developed language called "Vala".
 However, for GTK the Rust bindings are above average in quality compared to
-other language bindings, meaning it provides a close to native experience, while
+other language bindings, meaning it provides a close-to-native experience, while
 still offering all the benefits of a more modern language.@gtk_rs
 
 #pagebreak()
@@ -206,10 +206,10 @@ The following categories are evaluated for UI toolkits:
   incompatibility.
 - *Documentation* | weight: medium\
   Defines how well the toolkit is documented. This will be important when going
-  beyond the typical "Hello World" for UI programs. A good documented toolkit can
+  beyond the typical "Hello World" for UI programs. A well-documented toolkit can
   reduce the development time by magnitudes.
 - *Features* | weight: low\
-  ReSet does not need many features, however, ReSet does require first class
+  ReSet does not need many features, however, ReSet does require first-class
   support for the Linux desktop.
 
 #let gtk = (familiarity: 6, language_integration: 7, documentation: 6, features: 8)
@@ -267,8 +267,7 @@ The following categories are evaluated for UI toolkits:
 )
 
 #text(12pt, [*UI Toolkit*])* | ReSet uses GTK4 as its UI toolkit.*\
-GTK (GNOME) toolkit, formerly Gimp Toolkit) is a well
-established, LGPLv2.1+ licensed, cross-platform UI toolkit that has seen decades
+GTK (GNOME) toolkit, formerly Gimp Toolkit) is a well-established, LGPLv2.1+ licensed, cross-platform UI toolkit that has seen decades
 of usage and improvements.@gtk While the library itself is written in C, it does
 offer stable language bindings for a large set of languages, including Rust via gtk-rs.@gtk_rs
 Compared to native Rust libraries, it offers a more robust set of defined
@@ -277,7 +276,7 @@ however, it currently lacks documentation and needs several library
 implementations in order to fit with our requirements.@iced
 
 The last consideration is QT, it is a cross-platform toolkit that uses its own
-form of JavaScript(QML) to draw windows.@qt @qml QT is a well known toolkit, however, it
+form of JavaScript(QML) to draw windows.@qt @qml QT is a well-known toolkit, however, it
 is completely unknown to us, making it a suboptimal choice.\
 For QT, there is also the consideration of integration mentioned in
 @Analysisofexistingapplications.

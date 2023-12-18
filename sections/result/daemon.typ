@@ -47,10 +47,13 @@ conn.start_receive(
         true
     }),
 );
-```), caption: [Code snippet from the daemon DBus mainloop])<mainloop>
+```),
+ kind: "code", 
+ supplement: "Listing",
+ caption: [Code snippet from the daemon DBus mainloop])<mainloop>
 
 #figure(sourcecode(```rs
-// the data struct used by the mainloop
+// the data struct used by the main loop
 pub struct DaemonData {
     pub n_devices: Vec<Arc<RwLock<Device>>>, // all wifi devices
     pub current_n_device: Arc<RwLock<Device>>, // current wifi device
@@ -66,7 +69,10 @@ pub struct DaemonData {
     pub connection: Arc<SyncConnection>, // connection reference used for event creation
     pub handle: JoinHandle<()>, // used for shutdown
 }
-```), caption: [DaemonData struct used as the sole datastorage by the daemon])<daemondata>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [DaemonData struct used as the sole data storage by the daemon])<daemondata>
 // typstfmt::on
 
 With these basic data structures, the daemon would be able to use basic
@@ -75,7 +81,7 @@ asynchronous functionality such as events, which might be created by an entirely
 different software.
 
 For this reason, each base functionality of ReSet is done via listeners, which
-can be activated and deactivated via the DBus API. Client of this API can hence
+can be activated and deactivated via the DBus API. Clients of this API can hence
 decide themselves whether they would like to use this asynchronous
 functionality.
 
@@ -84,9 +90,9 @@ As planned in @Architecture, the PulseAudio library was used to implement the
 audio portion of the ReSet daemon. In concrete terms, the library libpulse-binding
 @libpulse_binding, which wraps the C PulseAudio functions to rust was used.
 
-Similarly to the mainloop, a listener loop is created for PulseAudio which will
+Similarly to the main, a listener loop is created for PulseAudio which will
 continue to receive events from both the PulseAudio server and the DBus daemon.
-PulseAudio events are handled directly with the library listener, which allows
+PulseAudio events are handled directly by the library listener, which allows
 for a listener flag for customized event filters, while the daemon events are
 handled via the rust native multi-producer single-consumer message passing
 channel.
@@ -104,14 +110,17 @@ context.borrow_mut().subscribe(mask, |_| {});
 // listener loop
 pub fn listen_to_messages(&mut self) {
     loop {
-        // handle events from the mainloop of the daemon
+        // handle events from the main loop of the daemon
         let message = self.receiver.recv();
         if let Ok(message) = message {
             self.handle_message(message);
         }
     }
 }
-```), caption: [Audio mainloop and event subscription])<audio_code>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Audio mainloop and event subscription])<audio_code>
 
 #figure(sourcecode(
 ```rs
@@ -139,12 +148,15 @@ let _ = data.audio_sender.send(AudioRequest::GetDefaultSource);
 // wait for the response from the audio listener
 let response = data.audio_receiver.recv();
 
-```), caption: [Audio event handling])<audio_events>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Audio event handling])<audio_events>
 
 Actions from the PulseAudio listener are handled either with a reverse message
-passing channel for direct requests from the daemon, or as a DBus event, for
+passing channel for direct requests from the daemon or as a DBus event, for
 which the thread-safe connection reference of the daemon is used. This allows
-sending of messages right within the PulseAudio listener.
+the sending of messages right within the PulseAudio listener.
 
 #figure(sourcecode(```rs
 // Example of DBus event
@@ -155,14 +167,17 @@ let msg = Message::signal(
 )
 .append1(index);
 let _ = conn.send(msg);
-```), caption: [Bluetooth events])<bluetooth_events>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Bluetooth events])<bluetooth_events>
 
 #subsubsection("Bluetooth")
 For Bluetooth, no further library was necessary, as bluez, the default Bluetooth
 module for Linux is accessed via DBus.
 
 The Bluetooth part is created as a DBus client to bluez that will call DBus
-methods, and potentially listen for events on various different DBus objects(if
+methods, and potentially listen for events on various DBus objects(if
 desired by clients of ReSet).
 
 #figure(sourcecode(```rs
@@ -177,12 +192,15 @@ let mut bluetooth_device_changed = PropertiesPropertiesChanged::match_rule(
 )
 .static_clone();
 // omitted: handling of each event
-```), caption: [Bluetooth listener code snippet])<bluetooth_listener>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Bluetooth listener code snippet])<bluetooth_listener>
 
-The biggest challenge with the bluez interface is the clean access of all needed
+The biggest challenge with the bluez interface is the clean access to all needed
 functionality. For example, fetching all currently available Bluetooth devices
 have to be done via the ObjectManager object provided by the freedesktop DBus
-API, while the actual information about these devices are provided by the bluez
+API, while the actual information about these devices is provided by the bluez
 DBus API.
 
 #figure(
@@ -201,8 +219,8 @@ DBus API.
 
 A big difference to the PulseAudio listener is that the vast majority of the
 functions can be used without the listener, for PulseAudio, *every* function has
-to use the listener via the message passing channel. For clients of ReSet, this
-means that a simpler usage without events is possible as well.
+to use the listener via the message-passing channel. For clients of ReSet, this
+means that simpler usage without events is possible as well.
 
 Within the listener for events, the responses can also be sent to DBus directly
 with another thread-safe reference to the daemon context.
@@ -238,15 +256,18 @@ pub struct BluetoothDevice {
     pub icon: String,
     pub address: String,
 }
-```), caption: [Bluetooth data structures])<bluetooth_structures>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Bluetooth data structures])<bluetooth_structures>
 
 #pagebreak()
 
 #subsubsection("Wireless Network")
 The current last piece of functionality is also accessible via DBus.
 
-The challenge with NetworkManager is its vast amount of features it offers,
-besides regular networks it also offers VPN configuration and usage, as well as
+The challenge with NetworkManager is the vast amount of features it offers,
+besides regular networks, it also offers VPN configuration and usage, as well as
 other connections, including older protocols. For now, ReSet only offers
 wireless network configuration, however in the future this may be expanded upon,
 the library repository for ReSet already features entries for both VPN and wired
@@ -268,7 +289,7 @@ themselves, and all currently active connections.
 
 All interactions as well as fetching properties of each DBus object have to be done manually via methods,
 therefore, ReSet abstracts this underlying architecture and only provides two data structures to clients.
-As an example the mentioned connection and active connection are both stored within these structures,
+As an example, the mentioned connection and active connection are both stored within these structures,
 which removes the need for an additional call by the client.
 
 #figure(sourcecode(```rs
@@ -289,7 +310,10 @@ pub struct AccessPoint {
     pub dbus_path: Path<'static>,
     pub stored: bool,
 }
-```), caption: [Wi-Fi data structures])<wifi_structures>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [Wi-Fi data structures])<wifi_structures>
 
 Special for the WifiDevice struct is the event,
 originally it was planned to not include this within ReSet,
@@ -323,5 +347,8 @@ if let Some(active_access_point) = active_access_point {
         // omitted: access point removed, notify client
     }
 }
-```), caption: [WifiDeviceChanged event])<wifidevicechanged_event>
+```), 
+kind: "code", 
+supplement: "Listing",
+caption: [WifiDeviceChanged event])<wifidevicechanged_event>
 

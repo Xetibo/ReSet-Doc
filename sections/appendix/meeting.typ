@@ -6,14 +6,14 @@ This section covers the content of all meetings during this project. The
 timeframe for each meeting is 30 minutes.
 
 *Meeting 1*
-- licensing of third party sources discussed
-  - where to attribute usage and licenses
-- timeframe for start of development discussed
-- the initial project plan was presented to the professor
+- Licensing of third-party sources discussed
+  - Where to attribute usage and licenses
+- Timeframe for start of development discussed
+- The initial project plan was presented to the professor
 
 *Meeting 2*
-- first state of documentation discussed
-- first feedback for documentation
+- The first state of documentation discussed
+- First feedback for documentation
 - OST logo license discussed
 
 *Meeting 3*\
@@ -21,59 +21,58 @@ During this week, the meeting with the professor was skipped, instead the team
 held a short meeting internally, discussing the state of the project.
 
 *Meeting 4*
-- state of documentation discussed
-- start of development on application
+- State of documentation discussed
+- Start of development on application
   - backend: Fabio
   - frontend design: Felix
 
 *Meeting 5*
-- feedback for documentation discussed
-- balsamic as possibility for wireframes was discussed
-
+- Feedback for documentation discussed
+- Balsamic as a possibility for wireframes was discussed
 
 *Meeting 6*
-- mock UI presented to professor
-- UI will continue to be created with cambalache
-  - balsamic is paid and nonfree software
-  - cambalache is open source and gtk specific
+- Mock UI presented to the professor
+- UI will continue to be created with Cambalache
+  - Balsamic is paid and nonfree software
+  - Cambalache is open source and GTK specific
 
 *Meeting 7*
-- packaging formats presented to professor
-  - flatpak
-  - arch package
-  - debian package
-  - crates.io
-  - binary
-- feedback for documentation discussed
-- state of the application discussed
+- Packaging formats presented to the professor
+  - Flatpak
+  - Arch package
+  - Debian package
+  - Crates.io
+  - Binary
+- Feedback for documentation discussed
+- State of the application discussed
 
 *Meeting 8*
-- feedback for documentation discussed
-- state of the application discussed
+- Feedback for documentation discussed
+- State of the application discussed
 
 *Meeting 9* (Fabio absent)
-- state of the application discussed
+- State of the application discussed
 
 #pagebreak()
 
 *Meeting 10* 
 - BA continuation discussed
-- reduction of scope discussed
-  - no plugin system
-  - no vpn usage/configuration
-  - no ethernet configuration
-  - no configuration of the application itself
+- Reduction of scope discussed
+  - No plugin system
+  - No VPN usage/configuration
+  - No ethernet configuration
+  - No configuration of the application itself
 
 *Meeting 11*
-- the status of wifi and bluetooth were discussed
-  - bug fixed, issues with implementation
-- the status of documentation was discussed
+- The status of WiFi and Bluetooth were discussed
+  - Bug fixed, issues with implementation
+- The status of documentation was discussed
 
 *Meeting 12*
 - BA continuation finalized
-- status of application shown
-- testing finalized for the last two weeks
-- documentation will be provided 1 week before submission for review
+- Status of application shown
+- Testing finalized for the last two weeks
+- Documentation will be provided one week before submission for review
 
 *Meeting 13*
 

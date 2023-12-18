@@ -15,10 +15,9 @@ use(persistence).\
 plugin developer.\
 *ReSet* | The graphic user interface for ReSet.\
 *ReSet-Daemon* | The backend process for ReSet that handles functionality.\
-*Data Transfer Object* | Serialized data that will be sent to ReSet or third
-party applications.
+*Data Transfer Object* | Serialized data that will be sent to ReSet or third-party applications.
 
-Plugins will handle their own datastructure, the daemon will only send the data
+Plugins will handle their data structure, the daemon will only send the data
 to the frontend, which then in return calls another function from the plugin, in
 order to display the data to the user. Additionally, should a plugin want to
 store data to persistence, it will have to provide the data to store in a
@@ -28,7 +27,7 @@ Persistent data is deserialized by the daemon, this data will then be merged
 with the runtime data by the adjacent service. This would make functionality
 like automatically trying to reconnect to a default network possible.
 
-Data is transferred individually (one DTO) per service, this is to both provide
-individual access for third party applications and to allow lazy loading of data
+Data is transferred individually (one DTO) per service, this is to provide
+individual access for third-party applications and to allow lazy loading of data
 by the frontend.
 

@@ -30,18 +30,18 @@ The following categories are evaluated for programming languages:
   means that it is easier and faster to implement certain features. But too much
   will increase complexity which is a detriment to the ease of use.
 - *Ease of use* | weight: high\
-  Indicates how intuitive the tools is. A better ease of use means the learning
+  Indicates how intuitive the tools are. A better ease of use means the learning
   curve is lower. This also means a lowered complexity which makes it easier to
   understand what each feature does. It also includes how easy it is to find
   information about a tool on the internet. A lack thereof means a lot of research
   on the tools itself just to implement basic features.
 - *Collaboration* | weight: medium\
-  Describes how good the tool can be used in a team. This includes version
+  Describes how well the tool can be used in a team. This includes version
   control, how the tool can be used by multiple people at the same time and how
   easy merge conflicts can be solved.
 - *Debugging* | weight: low\
   Tools that help developers find problems and bugs in the UI. This includes error
-  messages and warnings and its quality.
+  messages and warnings and their quality.
 - *Updates* | weight: medium\
   ReSet uses the latest version of GTK, which means that the tools should also be
   updated regularly to support the latest features.
@@ -74,10 +74,10 @@ The following categories are evaluated for programming languages:
   ), cell(" ", fill: silver, bold: true),
 )
 
-ReSet will use Cambalache to build the UI. The reason for this it provides a application 
+ReSet will use Cambalache to build the UI. The reason for this it provides an application 
 in which the UI can be built with drag and drop. This makes it easy to instantly see how 
 the UI looks. Glade does provide the "same" functionality because Cambalache is heavily inspired, 
-but it doesn't support GTK4 and is no longer maintained.While code created user
+but it doesn't support GTK4 and is no longer maintained. While code created user
 interface has impressive scores in the Collaboration and Updates categories, it
 is harder to use because there is no UI builder.
 #align(center, [#figure(
@@ -87,12 +87,12 @@ is harder to use because there is no UI builder.
 
 #text(12pt, [*Libadwaita*])\
 In addition to GTK, ReSet will also use a library called libadwaita @libadwaita.
-Libadwaita is a library which extends the features of GTK. It is developed by
+Libadwaita is a library that extends the features of GTK. It is developed by
 the GNOME project and thus follows the GNOME Human Interface Guidelines as well.
 It provides a lot of beautiful UI widgets that make the UI feel modern.
 
 #text(12pt, [*UI structure*])\
-The settings app can be divided into two parts. The left part is a sidebar which
+The settings app can be divided into two parts. The left part is a sidebar that
 contains a list of all settings and the right side displays the actual setting
 where the user can make changes. While this is not a standard, it is a very
 common layout structure as seen in @Analysisofexistingapplications and even on
@@ -120,7 +120,7 @@ Wi-Fi settings and if there is enough space, Bluetooth and VPN settings are also
 displayed next to it in a flowbox layout. But if the user clicks on the Wi-Fi
 setting, only the Wi-Fi setting is visible because it is clear that the other
 settings are irrelevant. This is especially useful on bigger monitor sizes,
-because there's generally a lot of unused space in settings applications mentioned
+because there's generally a lot of unused space in the settings applications mentioned
 in @Analysisofexistingapplications, especially if the window is displayed in
 full screen.
 #align(
@@ -133,8 +133,7 @@ full screen.
 On top of that, the settings are structured in a hierarchical order, which
 allows us to have a breadcrumb menu similar to file paths. This can help users
 backtrack to previous sections without having to restart their search from the
-beginning. With this hierarchical order, it is also possible to use the Back
-button on the mouse for navigation.
+beginning. This hierarchical order allows users to navigate using the Back button. 
 #align(
   center, [#figure(
       img("windowsBreadcrumb.png", width: 75%), caption: [Windows 11 breadcrumb menu],

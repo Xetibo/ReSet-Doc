@@ -40,6 +40,8 @@ releasing a new version.
     )
     #align(center, image("../../figures/rustdoc.png"))
     #align(center, image("../../figures/rustdoc_test.png")) ],
+  kind: "code", 
+  supplement: "Listing",
   caption: [Rustdoc example entry for code above.],
 )<rustdoc>
 

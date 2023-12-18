@@ -3,7 +3,7 @@
 
 #subsubsection("ReSet Test")
 #test("Search bar and Sidebar", 
-  "User can filter settings by typing in the search bar. Clicking on a settings will open the corresponding settings box and reset the sidebar.",
+  "User can filter settings by typing in the search bar. Clicking on a setting will open the corresponding settings box and reset the sidebar.",
 )
 #test(
   "Dynamic window", 
@@ -35,11 +35,11 @@
 )
 #test(
   "Performance", 
-  "Users should not experience and lags or stuttering.",
+  "Users should not experience any lags or stuttering.",
 )
 #test(
   "Intuitive UI", 
-  "The UI is structured in a logical way, so that the user can easily find the setting they are looking for. Settings that belong together are grouped together.",
+  "The UI is structured logically so that the user can easily find the setting they are looking for. Settings that belong together are grouped.",
 )
 #test(
   "Layout", 
@@ -55,8 +55,8 @@ so that there is still enough time to change the UI without much effort. Because
 only a UI mock test, it wasn't possible to ask for feedback for all tests defined in @ReSetTest because it hasn't been implemented yet.
 
 - *Navigation feedback*
-The feedback is very positive, especially with mention to the ability to show
-all settings or just a specific part. The structure is clean and made it easy to
+The feedback is very positive, especially with the mention of the ability to show
+all settings or just a specific part. The structure is clean and makes it easy to
 understand which subcategory belongs to which category.
 
 - *Readability feedback*
@@ -67,8 +67,8 @@ settings, meaning it's consistent throughout the system, which includes ReSet.
 - *Layout and Design feedback*
 Users were generally positive about the layout and design of the app, but there
 were also some ideas for improvement. One user noted that the window was padded,
-which was noticeable when using white theme. In addition, when opening a
-category (e.g connectivity), users noted that each subcategory lacked clear
+which was noticeable when using a white theme. In addition, when opening a
+category (e.g. connectivity), users noted that each subcategory lacked clear
 separation and labeling. As far as the layout is concerned, inconsistencies were
 found in the sizes and margins, which can be attributed to the manual design of
 each element. Users also requested features such as the ability to collapse
@@ -77,8 +77,12 @@ for improvement, the overall sentiment towards the app was positive, as users
 appreciated the design while providing valuable advice on how to improve it.
 
 - *Conclusion*
-Feedback around navigation and readability were positive, mostly attributed to
+Feedback around navigation and readability was positive, mostly attributed to
 the currently simple UI. It's important to note that readability is already
-configured by the user or by using system defaults. Regarding the layout and
-design, there will be improvements made by templating a few elements, which fixes the issue with inconsistent design. Features such als collapsing subcategories have to be
-discussed further, to determine if it's necessary and if fits in the timeframe.
+configured by the user or by using system defaults. ReSet doesn't overwrite 
+these configurations to keep a consistent look throughout the user's system. 
+Concerning the layout and design, there will be improvements made by templating 
+common UI building blocks, which will fix the issue of inconsistent design and 
+make it easier to keep it consistent. Features such as collapsing subcategories 
+have to be discussed further, to determine if it's necessary and if fit in the 
+timeframe.

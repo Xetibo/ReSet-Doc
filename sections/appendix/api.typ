@@ -31,7 +31,10 @@ fn UnregisterClient(client_name: String) -> bool;
 //
 // Shuts down the daemon.
 fn Shutdown();
-  ```, caption: [Base DBus API for the ReSet daemon],
+  ```, 
+  kind: "code", 
+  supplement: "Listing",
+  caption: [Base DBus API for the ReSet daemon],
 )<daemon_api>
 
 #subsubsection("Wi-Fi API")
@@ -101,7 +104,7 @@ fn ConnectToKnownAccessPoint(access_point: AccessPoint) -> bool;
 // Returns true on success and false on error.
 fn ConnectToNewKnownAccessPoint(access_point: AccessPoint, password: String) -> bool;
 //
-// Disconnects from the currently conneted access point.
+// Disconnects from the currently connected access point.
 // Calling this without a connected access point will return false.
 // Returns true on success and false on error.
 fn DisconnectFromCurrentAccessPoint() -> bool;
@@ -121,7 +124,10 @@ fn GetConnectionSettings(path: Path<'static>) -> HashMap<String, PropMap>;
 // and deserialization from and to this hashmap.
 // Returns true on success and false on error.
 fn SetConnectionSettings(path: Path<'static>, settings: HashMap<String, PropMap>) -> bool;
-  ```, caption: [Wifi API for the ReSet daemon (part1)],
+  ```, 
+  kind: "code", 
+  supplement: "Listing",
+  caption: [Wifi API for the ReSet daemon (part1)],
 )<daemon_api1>
 
 #figure(
@@ -140,7 +146,10 @@ fn StartNetworkListener() -> bool;
 // Stops the wireless network listener.
 // Returns true on success and false on error.
 fn StopNetworkListener() -> bool;
-  ```, caption: [Wifi API for the ReSet daemon (part2)],
+  ```, 
+  kind: "code", 
+  supplement: "Listing",
+  caption: [Wifi API for the ReSet daemon (part2)],
 )<daemon_api2>
 
 #subsubsection("Bluetooth API")
@@ -180,7 +189,7 @@ DBus signature: osbbb\
 #figure(
   ```rs
 // Starts searching for Bluetooth devices.
-// Note this is without a listener, you would have to manually request bluetooth devices.
+// Note this is without a listener, you would have to manually request Bluetooth devices.
 fn StartBluetoothSearch();
 //
 // Stops searching for Bluetooth devices.
@@ -190,7 +199,7 @@ fn StopBluetoothSearch();
 // Repeatedly starting the network listener while already active will do nothing.
 fn StartBluetoothListener();
 //
-// Stops the listener for BLuetooth events.
+// Stops the listener for Bluetooth events.
 fn StopBluetoothListener();
 //
 // Returns the currently available Bluetooth adapters.
@@ -199,7 +208,7 @@ fn GetBluetoothAdapters() -> Vec<BluetoothAdapter>;
 // Returns the current default Bluetooth adapter.
 fn GetCurrentBluetoothAdapter() -> BluetoothAdapter;
 //
-// Sets the default bluetooth adapter.
+// Sets the default Bluetooth adapter.
 // The path can be found inside the BluetoothAdapter struct.
 fn SetBluetoothAdapter(path: Path<'static>) -> bool;
 //
@@ -228,11 +237,14 @@ fn DisconnectFromBluetoothDevice(path: Path<'static>) -> bool;
 fn RemoveDevicePairing(path: Path<'static>) -> bool;
 //
 // Returns all connected Bluetooth devices.
-// The first part of the HashMap is the DBus path of the object, the second the object
+// The first part of the HashMap is the DBus path of the object, the second is the object
 // itself.
 fn GetConnectedBluetoothDevices() -> Vec<BluetoothDevice>;
 
-  ```, caption: [Bluetooth DBus API for the ReSet daemon],
+  ```, 
+  kind: "code", 
+  supplement: "Listing",
+  caption: [Bluetooth DBus API for the ReSet daemon],
 )<daemon_api>
 
 #pagebreak()
@@ -297,7 +309,7 @@ DBus signature: a(ussuqaubb)\
 #figure(
   ```rs
 // Starts the event listener and the worker for audio.
-// Repeatedly starting the network listener twice will not do aynthing.
+// Repeatedly starting the network listener twice will not do anything.
 fn StartAudioListener();
 //
 // Stop the audio event listener.
@@ -308,7 +320,7 @@ fn StopAudioListener();
 fn GetDefaultSink() -> Sink;
 //
 // Returns the default sink name(speaker, headphones, etc.) from pulseaudio.
-// This is mainly useful for checking if an event given sink is the default one, as this
+// This is mainly useful for checking if an event-given sink is the default one, as this
 // information is not within the sink struct for performance reasons.
 fn GetDefaultSinkName() -> String;
 //
@@ -316,7 +328,7 @@ fn GetDefaultSinkName() -> String;
 fn GetDefaultSource() -> Source;
 //
 // Returns the default source name(microphone) from pulseaudio.
-// This is mainly useful for checking if an event given source is the default one, as this
+// This is mainly useful for checking if an event-given source is the default one, as this
 // information is not within the source struct for performance reasons.
 fn GetDefaultSourceName() -> String;
 //
@@ -345,67 +357,73 @@ fn ListOutputStreams() -> Vec<OutputStream>;
 // Returns the PulseAudio cards for every device. (The card holds information about all possible
 // audio profiles and whether or not the device is disabled.)
 fn ListCards() -> Vec<Card>;
-```, caption: [Audio DBus API for the ReSet daemon (part1)],
+```, 
+kind: "code", 
+supplement: "Listing",
+caption: [Audio DBus API for the ReSet daemon (part1)],
 )<daemon_api1>
 
 #figure(
   ```rs
 // Sets the default volume of the sink on all channels to the specified value.
 // Currently ReSet does not offer individual channel volumes. (This will be added later)
-// The index can be found within the Sink datastructure.
+// The index can be found within the Sink data structure.
 fn SetSinkVolume(index: u32, channels: u16, volume: u32);
 //
 // Sets the mute state of the sink.
 // True -> muted, False -> unmuted
-// The index can be found within the Sink datastructure.
+// The index can be found within the Sink data structure.
 fn SetSinkMute(index: u32, muted: bool);
 //
 // Sets the default volume of the source on all channels to the specified value.
 // Currently ReSet does not offer individual channel volumes. (This will be added later)
-// The index can be found within the Source datastructure.
+// The index can be found within the Source data structure.
 fn SetSourceVolume(index: u32, channels: u16, volume: u32);
 //
 // Sets the mute state of the source.
 // True -> muted, False -> unmuted
-// The index can be found within the Source datastructure.
+// The index can be found within the Source data structure.
 fn SetSourceMute(index: u32, muted: bool);
 //
 // Sets the default volume of the input_stream on all channels to the specified value.
 // Currently ReSet does not offer individual channel volumes. (This will be added later)
-// The index can be found within the InputStream datastructure.
+// The index can be found within the InputStream data structure.
 fn SetSinkOfInputStream(input_stream: u32, sink: u32);
 //
-// Sets the default volume of the input-stream on all channels to the specified value.
+// Sets the default volume of the input stream on all channels to the specified value.
 // Currently ReSet does not offer individual channel volumes. (This will be added later)
-// The index can be found within the InputStream datastructure.
+// The index can be found within the InputStream data structure.
 fn SetInputStreamVolume(index: u32, channels: u16, volume: u32);
 //
-// Sets the mute state of the input-stream.
+// Sets the mute state of the input stream.
 // True -> muted, False -> unmuted
-// The index can be found within the InputStream datastructure.
+// The index can be found within the InputStream data structure.
 fn SetInputStreamMute(index: u32, muted: bool);
 //
-// Sets the target source of an output-stream. 
-// (The target input-device for an application)
-// Both the output-stream and the source are indexes, 
-// they can be found within their respective datastructure.
+// Sets the target source of an output stream. 
+// (The target input device for an application)
+// Both the output stream and the source are indexes, 
+// they can be found within their respective data structure.
 fn SetSourceOfOutputStream(output_stream: u32, source: u32);
 //
-// Sets the default volume of the output-stream on all channels to the specified value.
+// Sets the default volume of the output stream on all channels to the specified value.
 // Currently ReSet does not offer individual channel volumes. (This will be added later)
-// The index can be found within the OutputStream datastructure.
+// The index can be found within the OutputStream data structure.
 fn SetOutputStreamVolume(index: u32, channels: u16, volume: u32);
 //
-// Sets the mute state of the output-stream.
+// Sets the mute state of the output stream.
 // True -> muted, False -> unmuted
-// The index can be found within the OutputStream datastructure.
+// The index can be found within the OutputStream data structure.
 fn SetOutputStreamMute(index: u32, muted: bool);
 //
 // Sets the profile for a device according to the name of the profile.
-// The available profile names can be found in the card of the device, 
+// The available profile names can be found on the card of the device, 
 // which can be received with the ListCards() function.
-// The index of the device can be found in the Device datastructure.
+// The index of the device can be found in the Device data structure.
 fn SetCardOfDevice(device_index: u32, profile_name: String);
-```, caption: [Audio DBus API for the ReSet daemon (part2)],
+```, 
+kind: "code", 
+supplement: "Listing",
+caption: [Audio DBus API for the ReSet daemon (part2)],
 )<daemon_api2>
 

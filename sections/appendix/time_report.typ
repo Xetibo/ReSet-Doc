@@ -55,7 +55,7 @@ developed.
 )
 
 #subsubsection("Sprint 6: Preparation for Midpoint UI Testing")
-In this week we tried to get as much UI done as possible, in preparation of the
+This week we tried to get as much UI done as possible, in preparation of the
 Midpoint UI Test next week. In the daemon, we started working on the Audio
 settings.
 #align(
@@ -77,7 +77,7 @@ given out to a few people to test. The feedback was used to improve our UI.
 )
 
 #subsubsection("Sprint 8: UI Improvements, Audio and Bluetooth")
-We discussed the feedback of our tests and made changes based on it. We also
+We discussed the feedback on our tests and made changes based on it. We also
 continued working on Bluetooth as well as Audio.
 #align(
   center, [#figure(
@@ -98,7 +98,7 @@ feedback to implement.
 
 #pagebreak()
 #subsubsection("Sprint 10: Wi-Fi and Refactoring")
-Now that we slowly near the end of this project, we started refactoring our
+Now that we are slowly near the end of this project, we started refactoring our
 code. We also started implementing the last big feature, which is to set
 individual settings for a Wi-Fi network.
 #align(
@@ -119,7 +119,7 @@ was improved as well, as it lacked some consistency with other UI elements.
 )
 
 #subsubsection("Sprint 12: Bug fixing and documentation")
-We continued to squash all the bugs, as we are preparing ReSet for our product
+We continued to squash all the bugs, as we were preparing ReSet for our product
 test. We also started working on the documentation.
 #align(
   center, [#figure(
@@ -130,7 +130,7 @@ test. We also started working on the documentation.
 
 #pagebreak()
 #subsubsection("Sprint 13: Feedback test and documentation")
-This week we prepared the feedback test which additionally tests feedbacks compared 
+This week we prepared the feedback test which additionally tests feedback compared 
 to the midpoint test. We have mostly finished working on ReSet and moved to writing 
 the documentation.
 #align(

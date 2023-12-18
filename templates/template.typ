@@ -67,5 +67,9 @@
   bibliography(bibfile, title: none)
   pagebreak()
   subsection(num: "1.1.1", use_line: false, "List of Figures")
-  outline(title: none, target: figure)
+  outline(title: none, target: figure.where(kind: image))
+  subsection(num: "1.1.1", use_line: false, "List of Tables")
+  outline(title: none, target: figure.where(kind: table))
+  subsection(num: "1.1.1", use_line: false, "List of Listings")
+  outline(title: none, target: figure.where(kind: "code"))
 }
