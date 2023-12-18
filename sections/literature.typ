@@ -1,7 +1,7 @@
 #import "../templates/utils.typ": *
 #lsp_placate()
 
-#subsection("User Interfaces")
+#subsection("User Interface Guidelines")
 The GNOME Human Interface Guidelines @gnome_human_guidelines are likely the most
 applicable for ReSet, as they are the most prominent in the Linux sphere and are
 directly meant to be used with GTK4, a potential user interface toolkit for
@@ -111,11 +111,8 @@ Krug's rules:
 - *"Support internal locus of control" - "The eight golden rules"* @shneiderman\
   The rule refers to clear omission of unnecessary data for experts, and giving
   them a short, clear, and usually customizable path to their end goal. In user
-  interfaces this is usually done with keyboard shortcuts.
+  interfaces this is usually done with keyboard shortcuts as seen in @nautilus_shortcuts.
 
-  #figure(
-    align(center, [#image("../figures/shortcuts.png", width: 80%)]), caption: [Shortcuts menu in Nautilus],
-  )
   #figure(
     align(center, [#image("../figures/shortcuts-kde.png", width: 100%)]), caption: [Shortcuts menu in Dolphin],
   )
@@ -136,7 +133,7 @@ Krug's rules:
     columns: (auto, auto), rows: (auto, auto, auto, auto), gutter: 0pt, cell("Consistent", bold: true, height: 20pt), cell("Inconsistent", bold: true, height: 20pt), cell("delete/insert table", height: 20pt), cell("delete/insert table", height: 20pt), cell("delete/insert column", height: 20pt), cell("remove/add column", height: 20pt), cell("delete/insert row", height: 20pt), cell("destroy/create row", height: 20pt), cell("delete/insert border", height: 20pt), cell("erase/draw border", height: 20pt),
   )
 
-#subsection("Configuration Storage")
+#subsection("Persistent Settings")
 In "The Pragmatic Programmer" @pragprog by David Thomas and Andrew Hunt, the
 authors mentioned the importance of text file configuration that is
 human-readable and can be put under version control. For ReSet the importance
