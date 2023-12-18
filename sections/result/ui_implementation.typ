@@ -8,14 +8,12 @@ The final UI design has generally followed the intended vision. The UI is clean
 and simple, and the user can easily navigate through the UI. It is also
 responsive, which means that it will adjust itself depending on window sizes.
 
-Some planned features didn't make it into the final design. The first
-one is the breadcrumb menu. It was decided that the breadcrumb menu is not
-necessary because the UI isn't as nested as initially planned. The depth of
-it is only one level deep at maximum, which means that a breadcrumb bar would be
+There was one feature that was cut after some discussion which was the 
+breadcrumb menu. It was decided that the breadcrumb menu is not necessary 
+because the UI isn't as nested as initially planned. The depth of it is 
+only one level deep at maximum, which means that a breadcrumb bar would be
 redundant. If the UI ever gets deeply nested, the breadcrumb bar could be 
-reconsidered. Another feature that wasn't finished are shortcuts. Currently, 
-there are only very basic ones like Ctrl+F. While some shortcuts are built-in 
-by GTK, the plan is to add some more in the future. 
+reconsidered.
 
 As mentioned in @Introduction ReSet is created with the intent to provide
 a dynamic user interface that fits into all environments. Specifically 
