@@ -1,19 +1,9 @@
 #import "../templates/utils.typ": *
 #lsp_placate()
 
-#section("Analysis of existing applications")
-
-In this chapter, several different applications are analyzed according to the
-requirements specified in @PRequirements. Both full settings applications
-provided by environments and standalone applications for individual technologies
-are compared.
-
-Important to note, for this section, each application will be evaluated with
-its default dark theme. For GTK applications, the libadwaita dark theme will
-be used. For QT applications, the breeze dark theme will be used, configured via
-the QT_QPA_PLATFORMTHEME=gnome environment flag. This configuration is done to
-keep a consistent look for all applications, without potentially compromising
-their look with non-native themes.
+#section("Research")
+In order to develop ReSet, several existing applications, potential
+implementations for features and literature were analyzed.
 
 #subsection(custom_tag: "PRequirements", "Project Requirements")
 For ReSet, three different categories will be used to weigh existing projects
@@ -53,8 +43,22 @@ and potential solutions.
   Too many features without a well-thought-out architecture will lead to
   potentially faulty code.
 
+#subsection("Analysis of existing applications")
+In this section, several different applications are analyzed according to the
+requirements specified in @PRequirements. Both full settings applications
+provided by environments and standalone applications for individual technologies
+are compared.
+
+Important to note, for this section, each application will be evaluated with its
+default dark theme. For GTK applications, the libadwaita dark theme will be
+used. For QT applications, the breeze dark theme will be used, configured via
+the QT_QPA_PLATFORMTHEME=gnome environment flag. This configuration is done to
+keep a consistent look for all applications, without potentially compromising
+their look with non-native themes.
+
+
 // no universal app
-//#subsection("Solution")
+//#subsubsection("Solution")
 //ReSet will be a set of 2 applications featuring one user interface application
 //that will have common settings available for the user.\
 //The second part of ReSet will be a daemon, which will be used to interact with
@@ -68,12 +72,12 @@ and potential solutions.
 
 #pagebreak()
 
-#subsection("GNOME Control Settings")
-The GNOME control center@gnome_control_center
-is as the name implies the central settings application for the GNOME desktop
-environment, it offers plenty of configuration, from networks to Bluetooth, to
-online accounts, default applications and a lot more. The application is written
-in C with the GTK@gtk toolkit (GTK4) and follows the GNOME Human Interface
+#subsubsection("GNOME Control Settings")
+The GNOME control center@gnome_control_center is as the name implies the central
+settings application for the GNOME desktop environment, it offers plenty of
+configuration, from networks to Bluetooth, to online accounts, default
+applications and a lot more. The application is written in C with the GTK@gtk
+toolkit (GTK4) and follows the GNOME Human Interface
 Guidelines@gnome_human_guidelines.
 #align(
   center, [#figure(
@@ -83,16 +87,16 @@ Guidelines@gnome_human_guidelines.
 The code structure of the control center is very modular, with each tab having
 its folder and files. Although it is hard to immediately understand each use
 case of each file. Certain functionality is hard-coded with libraries, like
-networks, which use the NetworkManager library, while others are implemented
-via dbus, like monitors.
+networks, which use the NetworkManager library, while others are implemented via
+dbus, like monitors.
 
 Settings are stored using dconf@dconf which is a key/value system, that is
 optimized for reading. The form of a dconf file is a _binary_ which makes it
 fast to read for dconf, but not readable for other systems.
 
 GNOME control center is not supposed to be used outside the GNOME environment,
-especially using the Wayland protocol. Hence, not all
-functionality will be available on other environments.
+especially using the Wayland protocol. Hence, not all functionality will be
+available on other environments.
 
 #grid(
   columns: (auto), rows: (20pt), cell(
@@ -102,38 +106,28 @@ functionality will be available on other environments.
   ),
 )
 #grid(
-  columns: (3fr, 9fr, 30pt), rows: (auto, 50pt, 50pt, 50pt), gutter: 0pt, 
-  cell(
+  columns: (3fr, 9fr, 30pt), rows: (auto, 50pt, 50pt, 50pt), gutter: 0pt, cell(
     "Category", bold: true, height: 20pt, cell_align: left, use_under: true,
-  ),
-  cell(
+  ), cell(
     "Justification", bold: true, height: 20pt, cell_align: left, use_under: true,
-  ),
-  cell("", bold: true, height: 20pt, cell_align: left, use_under: true),
-  cell("Interoperability", bold: true, cell_align: left),
-  cell(
-    [Not all base features of the GNOME control center work on other environments, and
-      GNOME exclusive features can't be hidden.], cell_align: left, bold: false, font_size: 11pt,
-  ),
-  cell("X", bold: true, cell_align: center),
-  cell("Ease of Use", bold: true, cell_align: left),
-  cell(
+  ), cell("", bold: true, height: 20pt, cell_align: left, use_under: true), cell("Interoperability", bold: true, cell_align: left), cell(
+    [Not all base features of the GNOME control center work on other environments,
+      and GNOME exclusive features can't be hidden.], cell_align: left, bold: false, font_size: 11pt,
+  ), cell("X", bold: true, cell_align: center), cell("Ease of Use", bold: true, cell_align: left), cell(
     [The user interface of the GNOME control center follows best practices. It has
       consistent design, naming makes sense and accessibility is taken into account.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: left), cell("Maintainability", bold: true, cell_align: left), cell(
     [All features of the Gnome control center are within one repository, which
       results in one project maintaining every feature. This can potentially cause
       complications with increasing size.], cell_align: left, bold: false, font_size: 11pt,
-  ),
-  cell("(\u{2713})", bold: true, cell_align: center)
+  ), cell("(\u{2713})", bold: true, cell_align: center),
 )
 
-#subsection("KDE System Settings")
-KDE systemsettings@kde_systemsettings_repo
-is written in C++/QML and is made with the QT toolkit@qt. It follows the KDE
-style of applications, featuring a very large variety of settings (on KDE), and
-offering other applications a way to integrate into this application via KConfig
-Module(KCM)@kcm.
+#subsubsection("KDE System Settings")
+KDE systemsettings@kde_systemsettings_repo is written in C++/QML and is made
+with the QT toolkit@qt. It follows the KDE style of applications, featuring a
+very large variety of settings (on KDE), and offering other applications a way
+to integrate into this application via KConfig Module(KCM)@kcm.
 #align(
   center, [#figure(
       img("kde_systemsettings.png", width: 80%), caption: [Screenshot of the KDE systemsettings],
@@ -162,41 +156,29 @@ styling of said toolkit that might not integrate well.
   ),
 )
 #grid(
-  columns: (3fr, 9fr, 30pt), rows: (25pt, 110pt, 70pt, 75pt), gutter: 0pt, 
-  cell("Category", bold: true, use_under: true, cell_align: left),
-  cell("Justification", bold: true, use_under: true, cell_align: left), 
-  cell("", bold: true, use_under: true), 
-  cell("Interoperability", bold: true, cell_align: left),
-  cell(
+  columns: (3fr, 9fr, 30pt), rows: (25pt, 110pt, 70pt, 75pt), gutter: 0pt, cell("Category", bold: true, use_under: true, cell_align: left), cell("Justification", bold: true, use_under: true, cell_align: left), cell("", bold: true, use_under: true), cell("Interoperability", bold: true, cell_align: left), cell(
     [KDE systemsettings is built with modularity in mind, meaning it works purely
       with modules that can be built for it. This means that one could create modules
       for systemsettings to enable functionality in other environments. However, QT is
       not as well integrated into other environments as GTK, requiring users to
       potentially change themes for a consistent design. Additionally, the needed
       modules do not exist as of now.], cell_align: left, bold: false, font_size: 11pt,
-  ), 
-  cell("(\u{2713})", bold: true, cell_align: center),
-  cell("Ease of Use", bold: true, cell_align: left),
-  cell(
+  ), cell("(\u{2713})", bold: true, cell_align: center), cell("Ease of Use", bold: true, cell_align: left), cell(
     [The most common criticism of KDE systemsettings is a convoluted design. This
       stems from the sheer amount of settings the application can provide, alongside
       its heavy use of submenus that can become confusing when searching for something
       specific.], cell_align: left, bold: false, font_size: 11pt,
-  ),
-  cell("X", bold: true, cell_align: center), 
-  cell("Maintainability", bold: true, cell_align: left), 
-  cell(
+  ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [The modular design of KDE systemsettings allows for great maintainability on the
       application itself. It is however noteworthy that the configuration files
       created by KCM tend to fill folders with seemingly random files. This means that
       changing settings outside KDE systemsettings can be a challenge.], cell_align: left, bold: false, font_size: 11pt,
-  ),
-  cell("\u{2713}", bold: true, cell_align: center),
+  ), cell("\u{2713}", bold: true, cell_align: center),
 )
 
 #pagebreak()
 
-#subsection("Standalone Settings")
+#subsubsection("Standalone Settings")
 These applications focus on one specific functionality and don't offer anything
 else. This means one would need to use multiple of these, in order to replicate
 what the other 2 discussed programs offer.
@@ -223,23 +205,14 @@ PulseAudio itself. The application itself is written in C++ and GTK3.
   ),
 )
 #grid(
-  columns: (3fr, 9fr, 30pt), rows: (25pt, 55pt, 40pt), gutter: 0pt,
-  cell("Category", bold: true, cell_align: left, use_under: true),
-  cell("Justification", bold: true, cell_align: left, use_under: true),
-  cell("", bold: true, cell_align: left, use_under: true), 
-  cell("Ease of Use", bold: true, cell_align: left),
-  cell(
+  columns: (3fr, 9fr, 30pt), rows: (25pt, 55pt, 40pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [While pavucontrol is generally made for more advanced users, it does follow
       general best practices and integrates well into all environments.], cell_align: left, bold: false, font_size: 11pt,
-  ), 
-  cell("\u{2713}", bold: true, cell_align: center),
-  cell("Maintainability", bold: true, cell_align: left), 
-  cell(
+  ), cell("\u{2713}", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [Pavucontrol is made with a modular codebase, which allows for easier adding of
       features. Note: pavucontrol is feature complete, and will likely not get more
       features in the future.], cell_align: left, bold: false, font_size: 11pt,
-  ),
-  cell("\u{2713}", bold: true, cell_align: center), 
+  ), cell("\u{2713}", bold: true, cell_align: center),
 )
 
 #pagebreak()
@@ -263,23 +236,14 @@ achieve. Blueman is written in Python and GTK3.
   ),
 )
 #grid(
-  columns: (3fr, 9fr, 30pt), rows: (30pt, 65pt, 40pt), gutter: 0pt, 
-  cell("Category", bold: true, cell_align: left, use_under: true),
-  cell("Justification", bold: true, cell_align: left, use_under: true),
-  cell("", bold: true, cell_align: left, use_under: true),
-  cell("Ease of Use", bold: true, cell_align: left), 
-  cell(
+  columns: (3fr, 9fr, 30pt), rows: (30pt, 65pt, 40pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [The user interface for Blueman can be rather confusing, for example: there is no
       obvious connect button, which might lead to a user trying to re-pair a device
-      instead of connecting to it. (pairing is the \u{2713} button).
-      Blueman also tends to use older icon design.], cell_align: left, bold: false, font_size: 11pt,
-  ),
-  cell("X", bold: true, cell_align: center),
-  cell("Maintainability", bold: true, cell_align: left), 
-  cell(
+      instead of connecting to it. (pairing is the \u{2713} button). Blueman also
+      tends to use older icon design.], cell_align: left, bold: false, font_size: 11pt,
+  ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [Blueman follows best practices and can be considered easily maintainable.], cell_align: left, bold: false, font_size: 11pt,
-  ),
-  cell("\u{2713}", bold: true, cell_align: center),
+  ), cell("\u{2713}", bold: true, cell_align: center),
 )
 
 #pagebreak()
@@ -306,20 +270,11 @@ does not work on its own.
   ),
 )
 #grid(
-  columns: (3fr, 9fr, 30pt), rows: (30pt, 40pt, 30pt), gutter: 0pt, 
-  cell("Category", bold: true, cell_align: left, use_under: true),
-  cell("Justification", bold: true, cell_align: left, use_under: true),
-  cell("", bold: true, cell_align: left, use_under: true),
-  cell("Ease of Use", bold: true, cell_align: left), 
-  cell(
+  columns: (3fr, 9fr, 30pt), rows: (30pt, 40pt, 30pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [Resizing the terminal breaks the appearance of the application.\
       There is only a single theme.], cell_align: left, bold: false, font_size: 11pt,
-  ),
-  cell("X", bold: true, cell_align: center),
-  cell("Maintainability", bold: true, cell_align: left),
-  cell(
+  ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [The scope of this application is small and depends fully on the parent project,
       it can be considered to be maintainable.], cell_align: left, bold: false, font_size: 11pt,
-  ),
-  cell("\u{2713}", bold: true, cell_align: center),
+  ), cell("\u{2713}", bold: true, cell_align: center),
 )

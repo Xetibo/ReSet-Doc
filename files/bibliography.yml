@@ -252,3 +252,38 @@ iced:
   title: iced
   author: iced
   url: https://iced.rs/
+hyprland:
+  type: web
+  title: Hyprland
+  author: Hyprland
+  url: https://hyprland.org/
+sway:
+  type: web
+  title: Sway
+  author: Sway
+  url: https://swaywm.org/
+river:
+  type: web
+  title: river
+  author: river
+  url: https://github.com/riverwm/river
+dwm:
+  type: web
+  title: dwm
+  author: suckless
+  url: https://dwm.suckless.org/
+xmonad:
+  type: web
+  title: xmonad
+  author: xmonad
+  url: https://xmonad.org/
+i3:
+  type: web
+  title: i3
+  author: Michael Stapelberg
+  url: https://i3wm.org/
+herbstluftwm:
+  type: web
+  title: herbstluftwm
+  author: herbstluftwm
+  url: https://herbstluftwm.org/
