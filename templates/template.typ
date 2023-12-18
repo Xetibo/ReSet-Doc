@@ -3,7 +3,7 @@
 
 /* page setup */
 #let conf(
-  author: "Fabio Lenherr", professor, title, title_image, title_image_size, establishment_image, establishment_image_size, department, establishment, bibfile, abstract, acknowledgements, doc,
+  author: "Fabio Lenherr", professor, title, title_image, title_image_size, establishment_image, establishment_image_size, department, establishment, bibfile, abstract, acknowledgements, appendix ,doc,
 ) = {
   set document(title: title, author: author)
   set align(center)
@@ -61,15 +61,17 @@
   set align(left)
   doc
   set page(footer: none)
-  subsection("Glossary")
+  section("Glossary")
   reset_glossary(use_show_ref: true)
-  subsection(num: "1.1.1", use_line: false, "Bibliography")
+  section(num: "1.1.1", use_line: false, "Bibliography")
   bibliography(bibfile, title: none)
   pagebreak()
-  subsection(num: "1.1.1", use_line: false, "List of Figures")
+  section(num: "1.1.1", use_line: false, "List of Figures")
   outline(title: none, target: figure.where(kind: image))
-  subsection(num: "1.1.1", use_line: false, "List of Tables")
+  section(num: "1.1.1", use_line: false, "List of Tables")
   outline(title: none, target: figure.where(kind: table))
-  subsection(num: "1.1.1", use_line: false, "List of Listings")
+  section(num: "1.1.1", use_line: false, "List of Listings")
   outline(title: none, target: figure.where(kind: "code"))
+  set align(left)
+  appendix
 }
