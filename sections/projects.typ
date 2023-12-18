@@ -25,7 +25,7 @@ and potential solutions.
   project in different environments. Important to note, is that multiple factors
   are considered:
   - *Amount of working features*
-    The amount of features of the application that works on every environment.
+    The amount of features of the application that work on every environment.
   - *Amount of non-working features*\
     This specifically refers to residue entries that would work on the expected
     environment, but not in other environments.
@@ -42,7 +42,11 @@ and potential solutions.
     therefore preferably avoided.
 - #text(size: 11pt, [*Ease of use*])\
   While functionality is important, the intention is to provide an application
-  that is used by preference, not necessity.
+  that is used by preference. This means that the application should be easy to 
+  use because it should feel like something they already know. To achieve this, 
+  ReSet will follow the GNOME Human Interface Guidelines as well as best practices 
+  by Steve Krug described in @UserInterfaceGuidelines. 
+  
 - #text(size: 11pt, [*Maintainability*])\
   Applications with a plethora of functionality will get large quickly. This poses
   a particularly hard challenge for developers to keep the project maintainable.

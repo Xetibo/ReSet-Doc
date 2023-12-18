@@ -111,11 +111,8 @@ Krug's rules:
 - *"Support internal locus of control" - "The eight golden rules"* @shneiderman\
   The rule refers to clear omission of unnecessary data for experts, and giving
   them a short, clear, and usually customizable path to their end goal. In user
-  interfaces this is usually done with keyboard shortcuts.
+  interfaces this is usually done with keyboard shortcuts as seen in @nautilus_shortcuts.
 
-  #figure(
-    align(center, [#image("../figures/shortcuts.png", width: 80%)]), caption: [Shortcuts menu in Nautilus],
-  )
   #figure(
     align(center, [#image("../figures/shortcuts-kde.png", width: 100%)]), caption: [Shortcuts menu in Dolphin],
   )
