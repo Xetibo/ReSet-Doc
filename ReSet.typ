@@ -67,7 +67,11 @@
 #pagebreak()
 #include "sections/literature.typ"
 #pagebreak()
+#include "sections/plugins.typ"
+#pagebreak()
 #include "sections/implementation.typ"
+#pagebreak()
+#include "sections/results.typ"
 #pagebreak()
 #include "sections/conclusion.typ"
 #pagebreak()

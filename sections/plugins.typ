@@ -1,7 +1,7 @@
-#import "../../templates/utils.typ": *
+#import "../templates/utils.typ": *
 #lsp_placate()
 
-#subsubsection("Plugin System")
+#subsection("Plugin System")
 As read on NullDeref @nullderef, there are multiple ways to create a potential
 plugin system for ReSet:
 - *WASM*\
