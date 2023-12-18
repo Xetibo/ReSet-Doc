@@ -74,45 +74,36 @@ the same structure with possible events being: added, removed, changed.
 // typstfmt::off
 #figure(sourcecode(```rs
 // Example listener setup(Audio)
-pub fn start_audio_listener(
-    listeners: Arc<Listeners>,
-    sink_box: Option<Arc<SinkBox>>,
-    source_box: Option<Arc<SourceBox>>,
-) {
-    // put listener into different thread in order to prevent blocking behavior
-    gio::spawn_blocking(move || {
-        let conn = Connection::new_session().unwrap();
-        if listeners.pulse_listener.load(Ordering::SeqCst) {
-            // don't start another thread if already running
-            return;
-        }
+// put listener into different thread in order to prevent blocking behavior
+gio::spawn_blocking(move || {
+    let conn = Connection::new_session().unwrap();
+    if listeners.pulse_listener.load(Ordering::SeqCst) {
+        // don't start another thread if already running
+        return;
+    }
 
-        // connection that will be used for the listener events
-        let mut conn = start_dbus_audio_listener(conn);
+    if let Some(sink_box) = sink_box {
+        // add events to listen for speakers etc.
+        conn = start_output_box_listener(conn, sink_box);
+    }
+    if let Some(source_box) = source_box {
+        // add events to listen for microphones etc.
+        conn = start_input_box_listener(conn, source_box);
+    }
 
-        if let Some(sink_box) = sink_box {
-            // add events to listen for speakers etc.
-            conn = start_output_box_listener(conn, sink_box);
-        }
-        if let Some(source_box) = source_box {
-            // add events to listen for microphones etc.
-            conn = start_input_box_listener(conn, source_box);
-        }
+    listeners.pulse_listener.store(true, Ordering::SeqCst);
 
-        listeners.pulse_listener.store(true, Ordering::SeqCst);
-
-        loop {
-            // process event -> blocking within thread
-            let _ = conn.process(Duration::from_millis(1000));
-            // stop listener via atomic bool
-            // creates easy shutdown of the listener
-            if !listeners.pulse_listener.load(Ordering::SeqCst) {
-                stop_dbus_audio_listener(conn);
-                break;
-            }
+    loop {
+        // process event -> blocking within thread
+        let _ = conn.process(Duration::from_millis(1000));
+        // stop listener via atomic bool
+        // creates easy shutdown of the listener
+        if !listeners.pulse_listener.load(Ordering::SeqCst) {
+            break;
         }
-    });
-}
+    }
+});
+
 ```), 
 kind: "code", 
 supplement: "Listing",

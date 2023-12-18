@@ -273,31 +273,9 @@ impl ObjectSubclass for ListEntry {
     // the pointer type
     type Type = list_entry::ListEntry;
     type ParentType = gtk::ListBoxRow;
-
-    fn class_init(klass: &mut Self::Class) {
-        // bind the template to this struct
-        klass.bind_template();
-    }
-
-    fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
-        obj.init_template();
-    }
 }
 
-impl ObjectImpl for ListEntry {
-    fn constructed(&self) {
-        self.parent_constructed();
-    }
-}
-
-// default implementations for interfaces
-impl ListBoxRowImpl for ListEntry {}
-
-impl WidgetImpl for ListEntry {}
-
-impl WindowImpl for ListEntry {}
-
-impl ApplicationWindowImpl for ListEntry {}
+// omitted more required setup
 ```,
   ), 
   kind: "code", 
