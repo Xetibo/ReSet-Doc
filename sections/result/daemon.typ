@@ -12,32 +12,11 @@ is provided as a context and can be accessed only within the mainloop.
 
 // typstfmt::off
 #figure(sourcecode(```rs
-// run the mainloop
-
-// omitted base setup
-
-conn.request_name(BASE, false, true, false)
-    .await
-    .unwrap();
-let mut cross = Crossroads::new();
-
-// omitted async context creation
-// omitted interface creation
-
-// register added interfaces
-cross.insert(
-    DBUS_PATH,
-    &[
-        base,
-        wireless_manager,
-        bluetooth_manager,
-        bluetooth_agent,
-        audio_manager,
-    ],
-    // single struct used to hold all data associated with the daemon
-    // see next figure for an overview
-    data,
-);
+// omitted setup
+// pushes all features to be advertized
+features.push(setup_base(&mut cross, feature_strings));
+// insert data and features into context
+cross.insert(DBUS_PATH, &features, data);
 
 // process events until shutdown
 conn.start_receive(
@@ -63,7 +42,9 @@ pub struct DaemonData {
     pub audio_receiver: Rc<Receiver<AudioResponse>>,
     pub audio_listener_active: Arc<AtomicBool>,
     pub network_listener_active: Arc<AtomicBool>,
+    pub network_stop_requested: Arc<AtomicBool>,
     pub bluetooth_listener_active: Arc<AtomicBool>,
+    pub bluetooth_stop_requested: Arc<AtomicBool>,
     pub bluetooth_scan_active: Arc<AtomicBool>,
     pub clients: HashMap<String, usize>,
     pub connection: Arc<SyncConnection>, // connection reference used for event creation
@@ -298,7 +279,7 @@ which removes the need for an additional call by the client.
 pub struct WifiDevice {
     pub path: Path<'static>,
     pub name: String,
-    pub active_access_point: Path<'static>,
+    pub active_access_point: Vec<u8>, 
 }
 
 // Access Point
@@ -327,7 +308,7 @@ let active_access_point: Option<&Path<'static>> =
 if let Some(active_access_point) = active_access_point {
     let active_access_point = active_access_point.clone();
     // check if a new connection is an access point or if it has been removed
-    if active_access_point != Path::from("/") {
+    if !active_access_point.is_empty() {
         let parsed_access_point = get_access_point_properties(active_access_point);
         let mut device = device_ref.write().unwrap();
         device.access_point = Some(parsed_access_point.clone());
@@ -340,7 +321,7 @@ if let Some(active_access_point) = active_access_point {
         .append1(WifiDevice {
             path: device.dbus_path.clone(),
             name: device.name.clone(),
-            active_access_point: parsed_access_point.dbus_path,
+            active_access_point: parsed_access_point.ssid,
         });
         let _ = active_access_point_changed_ref.send(msg);
     } else {
