@@ -57,7 +57,7 @@ compositor and shell components.
 
 #subsection("Challenges")
 - *Consistency*\
-  As discussed in @Introduction, multiple applications will not necessarily create
+  As discussed in @Objectives, multiple applications will not necessarily create
   a consistent experience, however, even with a single application, creating a
   consistent application with multiple technologies and use cases is not trivial.
 - *Interoperability*\
