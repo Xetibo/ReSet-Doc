@@ -4,9 +4,6 @@
 In this section, the research process and the result of this project are
 discussed.
 
-#subsection("Research")
-#include "implementation/plugins.typ"
-#pagebreak()
 #include "implementation/technologies.typ"
 #pagebreak()
 #include "implementation/architecture.typ"
@@ -15,11 +12,3 @@ discussed.
 #pagebreak()
 #include "implementation/ui_design.typ"
 #pagebreak()
-#section("Results")
-In this section, the results of ReSet are discussed.
-#include "result/dbus.typ"
-#include "result/ui_implementation.typ"
-#pagebreak()
-#include "result/daemon.typ"
-#pagebreak()
-#include "result/application.typ"
