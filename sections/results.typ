@@ -2,7 +2,6 @@
 
 #section("Results")
 In this section, the results of ReSet are discussed.
-#pagebreak()
 #include "result/dbus.typ"
 #include "result/daemon.typ"
 #pagebreak()
