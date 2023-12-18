@@ -54,8 +54,8 @@ DBus signature: ayyoob\
     ], bold: true,  cell_align: left),
   cell("WifiDevice", bold: true,  cell_align: left, fill: silver),
   cell([
-DBus signature: oso\
-`Path<'static>,String, Path<'static>`
+DBus signature: osay\
+`Path<'static>,String, Vec<u8>`
     ], bold: true,  cell_align: left, fill: silver),
 )
 #grid(
@@ -308,14 +308,6 @@ DBus signature: a(ussuqaubb)\
 )
 #figure(
   ```rs
-// Starts the event listener and the worker for audio.
-// Repeatedly starting the network listener twice will not do anything.
-fn StartAudioListener();
-//
-// Stop the audio event listener.
-// Returns true on success and false on error.
-fn StopAudioListener();
-//
 // Returns the default sink(speaker, headphones, etc.) from pulseaudio.
 fn GetDefaultSink() -> Sink;
 //

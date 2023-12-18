@@ -13,6 +13,7 @@ is provided as a context and can be accessed only within the mainloop.
 // typstfmt::off
 #figure(sourcecode(```rs
 // omitted setup
+
 // pushes all features to be advertized
 features.push(setup_base(&mut cross, feature_strings));
 // insert data and features into context

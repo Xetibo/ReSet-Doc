@@ -31,17 +31,18 @@ trivial addition of an additional API and its own namespace.
 
 #figure(sourcecode(```rs
 // Example API addition
-cross.insert(
-    DBUS_PATH,
-    &[
-        base,
-        wireless_manager,
-        bluetooth_manager,
-        bluetooth_agent,
-        audio_manager,
-    ],
-    data,
-);
+unsafe {
+    // using the libloading crate
+    let lib = libloading::Library::new("/path/to/liblibrary.so").unwrap();
+    let interface: libloading::Symbol<unsafe extern fn() -> u32> =
+        lib.get(b"interface").unwrap();
+    let name: libloading::Symbol<&'static str> = lib.get(b"name").unwrap();
+    feature_strings.push(name);
+    features.push(interface);
+}
+
+features.push(setup_base(&mut cross, feature_strings));
+cross.insert(DBUS_PATH, &features, data);
 ```), 
 kind: "code", 
 supplement: "Listing",
