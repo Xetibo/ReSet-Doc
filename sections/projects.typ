@@ -11,11 +11,13 @@ are compared.
 Important to note, for this section, each application will be evaluated with
 its default dark theme. For GTK applications, the libadwaita dark theme will
 be used. For QT applications, the breeze dark theme will be used, configured via
-the QT_QPA_PLATFORMTHEME=gnome environment flag.
+the QT_QPA_PLATFORMTHEME=gnome environment flag. This configuration is done to
+keep a consistent look for all applications, without potentially compromising
+their look with non-native themes.
 
-#subsection(custom_tag: "PRequirements", "Requirements")
-For ReSet, 3 different categories will be used to weigh existing projects and
-potential solutions.
+#subsection(custom_tag: "PRequirements", "Project Requirements")
+For ReSet, three different categories will be used to weigh existing projects
+and potential solutions.
 
 - #text(size: 11pt, [*Interoperability*])\
   This is the most important aspect, as it was the main driving factor for this
@@ -23,6 +25,7 @@ potential solutions.
   project in different environments. Important to note, is that multiple factors
   are considered:
   - *Amount of working features*
+    The amount of features of the application that works on every environment.
   - *Amount of non-working features*\
     This specifically refers to residue entries that would work on the expected
     environment, but not in other environments.
@@ -83,9 +86,9 @@ Settings are stored using dconf@dconf which is a key/value system, that is
 optimized for reading. The form of a dconf file is a _binary_ which makes it
 fast to read for dconf, but not readable for other systems.
 
-_GNOME control center is not supposed to be used outside the GNOME environment,
+GNOME control center is not supposed to be used outside the GNOME environment,
 especially using the Wayland protocol. Hence, not all
-functionality will be available on other environments._
+functionality will be available on other environments.
 
 #grid(
   columns: (auto), rows: (20pt), cell(
@@ -113,15 +116,12 @@ functionality will be available on other environments._
   cell(
     [The user interface of the GNOME control center follows best practices. It has
       consistent design, naming makes sense and accessibility is taken into account.], cell_align: left, bold: false, font_size: 11pt,
-  ), 
-  cell("\u{2713}", bold: true, cell_align: center),
-  cell("Maintainability", bold: true, cell_align: left),
-  cell(
-    [All features of the GNOME control center are within one repository, split across
-      hundreds of files. This reliance on all these files in one repository creates a
-      big maintainability concern.], cell_align: left, bold: false, font_size: 11pt,
+  ), cell("\u{2713}", bold: true, cell_align: left), cell("Maintainability", bold: true, cell_align: left), cell(
+    [All features of the Gnome control center are within one repository, which
+      results in one project maintaining every feature. This can potentially cause
+      complications with increasing size.], cell_align: left, bold: false, font_size: 11pt,
   ),
-  cell("X", bold: true, cell_align: center)
+  cell("(\u{2713})", bold: true, cell_align: center)
 )
 
 #subsection("KDE System Settings")
@@ -146,9 +146,9 @@ uses its scripting language QML@qml, which is based on JavaScript.
 Settings are stored by individual modules, which means that a lot of individual
 files will be written/read in order to provide all functionality.
 
-_In many cases for KDE systemsettings it is not the application itself that makes
-it harder to be used on other environments, but the toolkit and the KDE-specific
-styling of said toolkit that might not integrate well._
+In many cases for KDE systemsettings it is not the application itself that makes
+it harder to be used on other environments, but the toolkit and the KDE specific
+styling of said toolkit that might not integrate well.
 
 #pagebreak()
 

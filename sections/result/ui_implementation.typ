@@ -1,7 +1,7 @@
 #import "../../templates/utils.typ": *
 #lsp_placate()
 
-#section("User Interface")
+#subsection("User Interface")
 In this section the results of the user interface of ReSet are discussed.
 
 As mentioned in @Introduction ReSet is created with the intent to provide
@@ -49,7 +49,7 @@ To prevent using popups or relying on hamburger menus, ReSet opted to provide ad
 using the AdwNavigationPage provided by libadwaita@libadwaita. This module allows for a seamless transition from a parent to a child window.
 In @reset_audio and @reset_profiles, the AdwNavigationPage can be seen in use.
 
-#subsection("Audio User Interface")
+#subsubsection("Audio User Interface")
 For audio, ReSet intends to provide as much relevant information to the user as possible.
 The intention is to provide not only the central audio settings but also provide adjustments
 for all currently open programs utilizing audio.
@@ -74,7 +74,7 @@ are available in the device and profile settings respectively.
 
 #pagebreak()
 
-#subsection("Wi-Fi User Interface")
+#subsubsection("Wi-Fi User Interface")
 The Wi-Fi settings provide a short general adjustment at the top, using a global switch to enable or disable Wi-Fi in general,
 while the other entries are changing Wi-Fi adapters or adjusting stored Wi-Fi connections respectively.
 
@@ -84,7 +84,7 @@ while the other entries are changing Wi-Fi adapters or adjusting stored Wi-Fi co
 
 The access points themselves are shown in a continuous list, using the same module as implemented in the audio section.
 
-#subsection("Bluetooth User Interface")
+#subsubsection("Bluetooth User Interface")
 Bluetooth has the same setup as Wi-Fi, with the only difference being
 the differentiation between connected and available devices.
 
@@ -94,7 +94,7 @@ the differentiation between connected and available devices.
 
 #pagebreak()
 
-#subsection("Sidebar and Menu")
+#subsubsection("Sidebar and Menu")
 The sidebar offers simple navigation by click and has a prominent search bar which can also be accessed with a shortcut.
 Future entries can be created using the sidebar entry developed for ReSet, with the functionality being handled by a callback function.
 
@@ -136,7 +136,7 @@ The Menu on the top right is a standard GTK menu, providing a consistent experie
   img("menu.png", fit: "contain", width: 100pt), caption: [Screenshot of the ReSet popover menu],
 )<reset_menu>
 
-#subsection("Template Binding")
+#subsubsection("Template Binding")
 The user interface is built using the GTK compatible XML markup language. This
 allows for a separate user interface definition which reduces code size and
 keeps functionality away from design. Alongside this, XML also allows for use of

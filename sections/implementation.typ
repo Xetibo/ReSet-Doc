@@ -15,7 +15,8 @@ discussed.
 #pagebreak()
 #include "implementation/ui_design.typ"
 #pagebreak()
-#subsection("Result")
+#section("Results")
+In this section, the results of ReSet are discussed.
 #include "result/dbus.typ"
 #include "result/ui_implementation.typ"
 #pagebreak()
