@@ -2,12 +2,26 @@
 #lsp_placate()
 
 #subsection("User Interface")
-In this section the results of the user interface of ReSet are discussed.
+In this section, the results of the user interface of ReSet are discussed.
+
+The final UI design has generally followed the intended vision. The UI is clean
+and simple, and the user can easily navigate through the UI. It is also
+responsive, which means that it will adjust itself depending on window sizes.
+
+Some planned features didn't make it into the final design. The first
+one is the breadcrumb menu. It was decided that the breadcrumb menu is not
+necessary because the UI isn't as nested as initially planned. The depth of
+it is only one level deep at maximum, which means that a breadcrumb bar would be
+redundant. If the UI ever gets deeply nested, the breadcrumb bar could be 
+reconsidered. Another feature that wasn't finished are shortcuts. Currently, 
+there are only very basic ones like Ctrl+F. While some shortcuts are built-in 
+by GTK, the plan is to add some more in the future. 
 
 As mentioned in @Introduction ReSet is created with the intent to provide
-a dynamic user interface that fits into all environments.
-Specifically standalone environments that currently lack an integrated settings application were the target.
-As such it was a priority to ensure maximum compatibility with these environments.
+a dynamic user interface that fits into all environments. Specifically 
+standalone environments that currently lack an integrated settings 
+application were the target. As such it was a priority to ensure maximum 
+compatibility with these environments.
 
 Many of such environments are based on window tiling,
 a concept that ensures the entire screen is used by splitting the screen space
@@ -16,24 +30,30 @@ The paper "The anatomy of the modern window manager" explains
 the concept of tiling in a more detailed manner.@window_manager_study
 
 For ReSet, the importance of tiling is the behavior of applications in this environment.
-Concepts such as minimum window size, maximum window size, or popups are often a hindrance to tiling.
-A window will always be placed according to the rules of the layout, and this could mean having as little as
-a few pixels left to be placed, or the entire screen, hence size constraints are incompatible.
-For popups, the most breaking change is the focus change and the placement of the popup.
-A tiling window manager has to consider a popup as a different type of window that should not be considered for tiling,
-and should instead use a traditional stacking approach that allows for overlapping windows.
-Some tiling window managers simply place the popups at the center of the currently focused monitor,
-which might be unexpected when trying to open a popup manually, while expected for a password prompt.
-The second issue is the focus, a tiling window manager is very keyboard-focused, and can for the most part be used
-entirely via keyboard shortcuts. A popup requires the user to change the focus to the newly created popup and therefore
-takes away the focus of the last window, a behavior that is not welcome in every situation.
+Concepts such as minimum window size, maximum window size, or popups are often a hindrance 
+to tiling. A window will always be placed according to the rules of the layout, and this 
+could mean having as little as a few pixels left to be placed, or the entire screen, hence 
+size constraints are incompatible. For popups, the most breaking change is the focus change 
+and the placement of the popup. A tiling window manager has to consider a popup as a 
+different type of window that should not be considered for tiling, and should instead use 
+a traditional stacking approach that allows for overlapping windows. Some tiling window 
+managers simply place the popups at the center of the currently focused monitor, which might 
+be unexpected when trying to open a popup manually, while expected for a password prompt. 
+The second issue is the focus, a tiling window manager is very keyboard-focused, and can 
+for the most part be used entirely via keyboard shortcuts. A popup requires the user to 
+change the focus to the newly created popup and therefore takes away the focus of the 
+last window, a behavior that is not welcome in every situation.
 
 
-For ReSet, the solution was to provide a size-agnostic application that refrains from using popups wherever possible.
-In order to ensure the application is usable with any size, each functionality of ReSet is put into a dynamically allocated box.
-This allows not only the size agnostic design but also provides a responsive design by changing from horizontal to vertical orientations.
-Implemented into ReSet are therefore three different stages, vertical orientation without a sidebar, vertical orientation with a sidebar and horizontal orientation with a sidebar.
-The stages are shown from minimum size to maximum size respectively, in @reset_minimal, @reset_vertical and @reset_horizontal, each stage is shown visually.
+For ReSet, the solution was to provide a size-agnostic application that refrains from 
+using popups wherever possible. In order to ensure the application is usable with 
+any size, each functionality of ReSet is put into a dynamically allocated box. This allows 
+not only the size agnostic design but also provides a responsive design by changing 
+from horizontal to vertical orientations. Implemented into ReSet are therefore three 
+different stages, vertical orientation without a sidebar, vertical orientation with a 
+sidebar and horizontal orientation with a sidebar. The stages are shown from minimum 
+size to maximum size respectively, in @reset_minimal, @reset_vertical and 
+@reset_horizontal, each stage is shown visually.
 
 #figure(
   img("reset_minimal.png", fit: "contain", width: 45%), caption: [Screenshot of ReSet in vertical view without sidebar],  
@@ -72,7 +92,7 @@ are available in the device and profile settings respectively.
   img("reset_audio_devices.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Audio devices section],
 )<reset_audio_devices>
 
-#pagebreak()
+
 
 #subsubsection("Wi-Fi User Interface")
 The Wi-Fi settings provide a short general adjustment at the top, using a global switch to enable or disable Wi-Fi in general,
@@ -83,6 +103,8 @@ while the other entries are changing Wi-Fi adapters or adjusting stored Wi-Fi co
 )<reset_wifi>
 
 The access points themselves are shown in a continuous list, using the same module as implemented in the audio section.
+
+#pagebreak()
 
 #subsubsection("Bluetooth User Interface")
 Bluetooth has the same setup as Wi-Fi, with the only difference being
