@@ -134,14 +134,8 @@ Future entries can be created using the sidebar entry developed for ReSet, with 
 
     // template
     pub struct SidebarEntry {
-        #[template_child]
-        pub reset_sidebar_label: TemplateChild<Label>,
-        #[template_child]
-        pub reset_sidebar_image: TemplateChild<Image>,
-        pub category: Cell<Categories>,
-        pub is_subcategory: Cell<bool>,
+        // omitted other fields
         pub on_click_event: RefCell<SidebarAction>,
-        pub name: RefCell<String>,
     }
     ```,
   ), 
@@ -175,16 +169,7 @@ fn main() {
         "src/resources/resources.gresource.xml",
         "src.templates.gresource",
     );
-    glib_build_tools::compile_resources(
-        &["src/resources/icons"],
-        "src/resources/icons/resources.gresource.xml",
-        "src.icons.gresource",
-    );
-    glib_build_tools::compile_resources(
-        &["src/resources/style"],
-        "src/resources/style/resources.gresource.xml",
-        "src.style.gresource",
-    );
+    // more resources omitted
 }
 ```), 
 kind: "code", 

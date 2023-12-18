@@ -84,4 +84,4 @@ This project was created by first evaluating existing projects in
 implementations were evaluated in @Implementation. With this information, the
 implementation is documented starting at @Architecture. In the end, the solution
 is discussed in @Conclusion, and potential further improvements are mentioned in
-@Improvements.
+@Outlook.

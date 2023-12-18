@@ -3,7 +3,9 @@
 
 #section("Conclusion")
 
-#subsection("Improvements")
+
+
+#subsection("Outlook")
 This section covers both the features of ReSet not implemented yet as well as
 potential improvements to this project.
 

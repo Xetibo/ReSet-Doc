@@ -252,6 +252,11 @@ iced:
   title: iced
   author: iced
   url: https://iced.rs/
+crossbeam:
+  type: web
+  title: crossbeam
+  author: crossbeam-rs
+  url: https://github.com/crossbeam-rs/crossbeam
 hyprland:
   type: web
   title: Hyprland
@@ -287,3 +292,18 @@ herbstluftwm:
   title: herbstluftwm
   author: herbstluftwm
   url: https://herbstluftwm.org/
+mutter: 
+  type: repository
+  title: mutter
+  author: GNOME
+  url: https://gitlab.gnome.org/GNOME/mutter
+kwin: 
+  type: repository
+  title: kwin
+  author: KDE
+  url: https://invent.kde.org/plasma/kwin
+reset_lib:
+  type: repository
+  title: ReSet-Lib
+  author: Xetibo
+  url: https://github.com/Xetibo/ReSet-Lib

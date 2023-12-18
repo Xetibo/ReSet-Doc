@@ -45,6 +45,7 @@
 }
 
 #let appendix = [
+  #pagebreak()
   #section("Appendix")
   #include "sections/appendix/projectplan.typ"
   #pagebreak()
@@ -59,6 +60,8 @@
   #include "sections/appendix/CI.typ"
   #pagebreak()
   #include "sections/appendix/api.typ"
+  #pagebreak()
+  #include "sections/appendix/datastructures.typ"
   #pagebreak()
   #include "sections/appendix/libraries.typ"
   #pagebreak()

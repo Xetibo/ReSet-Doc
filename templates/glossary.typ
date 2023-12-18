@@ -13,8 +13,8 @@
   #glossary_entry(
     use_show: use_show_ref, "Compositor", [
       A combination of display server(not a true server with wayland) and window
-      composition system. Often used to describe standalone wayland environments like
-      Hyprland@hyprland, Sway@sway and river@river.
+      composition system. Often used to describe standalone wayland environments like Mutter@mutter, KWin@kwin,
+      Hyprland@hyprland, Sway@sway and River@river.
     ],
   )<compositor>
   #glossary_entry(
@@ -91,7 +91,7 @@
     use_show: use_show_ref, "Window Manager", [
       Provides window management without compositing them. With the X11 protocol,
       implementing an entire display server is not needed, therefore one can choose to
-      simply provide, window spawning and window management. Examples include dwm@dwm,
+      simply provide, window spawning and window management. Examples include Mutter@mutter, KWin@kwin, dwm@dwm,
       Xmonad@xmonad, i3@i3 and herbstluftwm@herbstluftwm.
     ],
   )<window_manager>
