@@ -90,14 +90,10 @@ gio::spawn_blocking(move || {
         // add events to listen for microphones etc.
         conn = start_input_box_listener(conn, source_box);
     }
-
     listeners.pulse_listener.store(true, Ordering::SeqCst);
-
     loop {
         // process event -> blocking within thread
         let _ = conn.process(Duration::from_millis(1000));
-        // stop listener via atomic bool
-        // creates easy shutdown of the listener
         if !listeners.pulse_listener.load(Ordering::SeqCst) {
             break;
         }

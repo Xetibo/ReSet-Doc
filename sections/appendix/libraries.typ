@@ -13,4 +13,5 @@ This section covers all direct third-party libraries used within ReSet.
 - ipnetwork@ipnetwork: Apache-2.0 
 - libpulse_binding@libpulse_binding
 - directories-next@directories_next: Apache-2.0, MIT
+- crossbeam@crossbeam: Apache-2.0, MIT
 
