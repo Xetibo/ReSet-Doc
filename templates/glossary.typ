@@ -23,7 +23,7 @@
     ],
   )<daemon>
   #glossary_entry(
-    use_show: use_show_ref, "dbus", [ Low level API providing inter process communication (IPC) on UNIX operating
+    use_show: use_show_ref, "dbus", [Low-level API providing inter-process communication (IPC) on UNIX operating
       systems. ],
   )<dbus>
   #glossary_entry(
@@ -35,11 +35,11 @@
     ],
   )<DE>
   #glossary_entry(
-    use_show: use_show_ref, "DTO Data Transfer\n Object", [
-      This represents data that can be sent over inter process communication pipelines
+    use_show: use_show_ref, "DTO Data Transfer \nObject", [
+      This represents data that can be sent over inter-process communication pipelines
       such as web requests, dbus, or sockets. Data in this state can only be
       represented as text(usually json, toml, etc.), this means that the endpoint
-      needs to recreate a datastructure for a programming language.
+      needs to recreate a data structure for a programming language.
     ],
   )<dto>
   #glossary_entry(use_show: use_show_ref, "Gnome", [
@@ -50,8 +50,8 @@
     The K has no particular meaning.
   ])<kde>
   #glossary_entry(
-    use_show: use_show_ref, "Language Server\n Protocol (LSP)", [
-      Protocol designed to help program software by providing quick-fixes to errors,
+    use_show: use_show_ref, "Language Server \nProtocol (LSP)", [
+      Protocol designed to help program software by providing quick fixes to errors,
       linting, formatting and refactoring.
     ],
   )<LSP>
@@ -59,7 +59,7 @@
     use_show: use_show_ref, "Minimal Environment", [
       A window manager or compositor without the usually bundled applications expected
       from a full desktop environment. While feature amount vary, usually only window
-      management and low level configuration are provided out of the box.
+      management and low-level configuration are provided out of the box.
     ],
   )<minimal_environment>
   #glossary_entry(
@@ -74,7 +74,7 @@
     use_show: use_show_ref, "Status Bar", [
       A shell component that usually offers information such as open programs, time,
       battery and more.\
-      Can be compared to the top bar on MacOS or the task bar on Windows.
+      Can be compared to the top bar on MacOS or the taskbar on Windows.
     ],
   )<status-bar>
   #glossary_entry(use_show: use_show_ref, "Target Triple", [

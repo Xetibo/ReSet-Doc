@@ -3,19 +3,19 @@
 
 #section("Conclusion")
 
-
-
 #subsection("Outlook")
 This section covers both the features of ReSet not implemented yet as well as
 potential improvements to this project.
 
 #subsubsection("Not Implemented Features")
+These features were not implemented due to time constraints, however, 
+they are still in the backlog and will be implemented in the future.
 
 #subsubsubsection("Plugin System")
 Due to time constraints, this project will not cover a plugin system. However,
 with the implementation currently provided, it should be possible to implement
 this without major issues. For example, the current DBus daemon allows for a
-trivial addition of an additional API and its own namespace.
+trivial addition of an additional API and its namespace.
 
 #figure(sourcecode(```rs
 // Example API addition
@@ -62,7 +62,9 @@ For Bluetooth, it would still be possible to implement advanced features such as
 a pairing wizard for devices that require a pairing code, as well as making file
 transfers possible via ReSet.
 
+#pagebreak()
 #subsubsection("Shortcomings")
+
 
 #subsubsubsection("Testing")
 Testing with ReSet outside of manual integration tests is complicated, this also
