@@ -16,7 +16,7 @@ to fulfill.
 
 The use of Rust, GTK and the general Linux environment was a very welcome
 experience, even though it certainly was challenging as well. After this
-project, I feel more confident in my abilities in rust, and low-level languages,
+project, I feel more confident in my abilities in Rust, and low-level languages,
 given the by now routine usage of the language. I can personally vouch for a
 project like this for everyone who wants to try something new or wants to try
 out a new language, it might just be a change from whatever you learned before.

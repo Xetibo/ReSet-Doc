@@ -5,7 +5,7 @@
 #let abstract = {
   [
     In this paper, ReSet, a user-friendly settings application for Linux is
-    developed with the rust programming language. ReSet aims to run on every
+    developed with the Rust programming language. ReSet aims to run on every
     distribution and environment, providing a consistent experience for all users.
 
     Key features include the configuration of Wi-Fi networks, Bluetooth devices, and
@@ -28,7 +28,7 @@
 
     In summary, ReSet represents a significant advancement in Linux settings
     applications, offering a concise, cross-environment solution that prioritizes
-    user experience through Rust's efficiency and adaptability.
+    user experience through Rusts efficiency and adaptability.
   ]
 }
 

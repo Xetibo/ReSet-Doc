@@ -9,7 +9,7 @@ The API for ReSet can be found in @DBusAPI or on docs.rs@daemon_api for an updat
 
 #subsubsection("DBus Types")
 In order to properly understand the DBus API, the following table will provide
-information about DBus types and how they correspond to the regular rust types.
+information about DBus types and how they correspond to the regular Rust types.
 
 //typstfmt::off
 #grid(

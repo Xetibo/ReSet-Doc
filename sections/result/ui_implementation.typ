@@ -181,13 +181,13 @@ definitions, with only a fraction being inlined in the code. These inline
 definitions are usually temporary containers or need a more dynamic
 functionality that is not directly available with XML.
 
-The binding for XML to rust happens within regular rust files, with various GTK
-macros being used. This means that one can use seemingly regular rust code,
-which the gtk-rs library later restructures to GTK compatible code via rust
-macros. Rust macros are metaprogramming, which means the rust toolchain will
-change the code before compiling it into a binary. For rust this features
-expands to allowing full rust code withing metaprogramming, making entire
-programs possible at compile time.@rust_macros ReSet currently only uses this
+The binding for XML to Rust happens within regular Rust files, with various GTK
+macros being used. This means that one can use seemingly regular Rust code,
+which the gtk-rs library later restructures to GTK compatible code via Rust
+macros. Rust macros are metaprogramming, which means the Rust toolchain will
+change the code before compiling it into a binary. For Rust this features
+expands to allowing full Rust code withing metaprogramming, making entire
+programs possible at compile time.@Rust_macros ReSet currently only uses this
 feature via gtk-rs or default macros provided by the standard library,
 however, it could become a vital tool for the creation of a plugin system which
 is mentioned in @Conclusion.
@@ -212,13 +212,13 @@ fn impl_hello_macro(ast: &syn::DeriveInput) -> TokenStream {
   ), 
   kind: "code", 
   supplement: "Listing",
-  caption: [An example macro from the book: "The Rust Programming Language"@rust_macros],
+  caption: [An example macro from the book: "The Rust Programming Language"@Rust_macros],
 )<macro_example>
 
 The binding itself is created via the PImpl(Pointer to Implementation) idiom,
 which allows for a generic implementation of an object without immediate
 recompilation unless the object itself is changed. As defined by cppreference@pimpl@pimpl_gotw, this
-idiom is usually applied in C++, but can also be used with rust, and is also
+idiom is usually applied in C++, but can also be used with Rust, and is also
 recommended to be used by an officially endorsed gtk-rs
 introduction.@gtk_rs_introduction
 

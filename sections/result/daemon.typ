@@ -72,7 +72,7 @@ functionality.
 #subsubsection("Audio")
 As planned in @Architecture, the PulseAudio library was used to implement the
 audio portion of the ReSet daemon. In concrete terms, the library libpulse-binding
-@libpulse_binding, which wraps the C PulseAudio functions to rust was used.
+@libpulse_binding, which wraps the C PulseAudio functions to Rust was used.
 
 Similarly to the mainloop, a listener loop is created for PulseAudio which will
 continue to receive events from both the PulseAudio server and the DBus daemon.

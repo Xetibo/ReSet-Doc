@@ -29,7 +29,7 @@ jobs:
     runs-on: [self-hosted, ubuntu]
     steps:
       - uses: actions/checkout@v3
-      - name: nightly-rust
+      - name: nightly-Rust
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
@@ -96,12 +96,12 @@ In @build_ubuntu the ubuntu runner configuration is shown, which builds the bina
 runs-on: [self-hosted, ubuntu]
 steps:
   - uses: actions/checkout@v3
-  - name: nightly-rust
+  - name: nightly-Rust
     uses: actions-rs/toolchain@v1
     with:
       profile: minimal
       toolchain: nightly
-  - name: Build rust package
+  - name: Build Rust package
     run: cargo build --release --verbose
   - name: Build Flatpak
     run: |
@@ -131,12 +131,12 @@ In @build_arch the arch runner configuration is shown, which builds the arch pac
 runs-on: [self-hosted, arch]
 steps:
   - uses: actions/checkout@v3
-  - name: nightly-rust
+  - name: nightly-Rust
     uses: actions-rs/toolchain@v1
     with:
       profile: minimal
       toolchain: nightly
-  - name: Build rust package
+  - name: Build Rust package
     run: makepkg PKGBUILD
   - name: Release
     uses: softprops/action-gh-release@v1
@@ -155,7 +155,7 @@ pkgrel=0
 arch=('x86_64')
 pkgdir="/usr/bin/${pkgname}"
 pkgdesc="A wip universal Linux settings application."
-depends=('rust' 'gtk4' 'dbus')
+depends=('Rust' 'gtk4' 'dbus')
 
 build() {
 	cargo build --release

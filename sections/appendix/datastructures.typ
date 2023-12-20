@@ -73,7 +73,7 @@ pub struct BluetoothDevice {
     pub alias: String,
     pub name: String,
     pub adapter: Path<'static>,
-    pub trusted: bool,
+    pub tRusted: bool,
     pub bonded: bool,
     pub paired: bool,
     pub blocked: bool,

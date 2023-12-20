@@ -7,6 +7,10 @@
 _Due to the small team size, no scrum master or product owner is chosen, the work
 of these positions is done in collaboration._\
 
+#subsubsection("Requirements")
+Non-functional requirements are explained in @Non-FunctionalRequirements and
+functional requirements are handled using user-stories.
+
 #subsubsection("User Stories")
 User stories are handled via #link("https://github.com/Xetibo/ReSet/issues")[GitHub issues].
 This allows for simple handling of labels and function points, which can also be
@@ -27,12 +31,12 @@ early. By week 12 the minimal viable product should be in production state, in
 order to leave time for reflection and documentation.
 #pagebreak()
 
-
-#page(flipped: true)[
-    #align(
+#page(
+  flipped: true,
+)[
+  #align(
     center, [#figure(
-        image("../../figures/ganntTimePlanning.png", width: 110%), 
-        caption: [Time management],
+        image("../../figures/ganntTimePlanning.png", width: 110%), caption: [Time management],
       )],
   )
 ]

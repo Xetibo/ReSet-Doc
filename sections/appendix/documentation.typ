@@ -3,7 +3,7 @@
 
 #subsection("Documentation")
 Next to this document, both ReSet and ReSet-Daemon will have their code
-documented using the rustdoc functionality. This allows inline documentation,
+documented using the Rustdoc functionality. This allows inline documentation,
 which will later be converted to an HTML file.\
 
 The documentation for both the API to interact with ReSet-Daemon and the API for
@@ -43,13 +43,13 @@ releasing a new version.
   kind: "code", 
   supplement: "Listing",
   caption: [Rustdoc example entry for code above.],
-)<rustdoc>
+)<Rustdoc>
 
 #subsubsection("Guidelines")
-ReSet is written in idiomatic rust where possible(not always applicable due to C
-and GTK architecture), which means that the project uses the standard linter rust
-provides, clippy, alongside the default rust tools like rust-analyzer and the
-default formatter rustfmt.
+ReSet is written in idiomatic Rust where possible(not always applicable due to C
+and GTK architecture), which means that the project uses the standard linter Rust
+provides, clippy, alongside the default Rust tools like Rust-analyzer and the
+default formatter Rustfmt.
 // typstfmt::on
 
 
