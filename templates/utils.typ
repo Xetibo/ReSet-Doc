@@ -168,17 +168,19 @@
   ))
 }
 
-#let test(subject, description) = {
+#let test(subject, description, feedback) = {
   let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
   pad(x: 0pt, y: 0pt, line(length: 100%))
   pad(x: 0pt, y: -15pt, grid(
     columns: (2fr, 10fr),
-    rows: (auto, auto),
+    rows: (auto, auto, auto),
     gutter: 0pt,
     cell(height: auto)[*Subject*],
     cell(height: auto)[#subject],
     cell(height: auto)[*Description*],
     cell(height: auto)[#description],
+    cell(height: auto)[*Feedback*],
+    cell(height: auto)[#feedback],
   ))
   pad(x: 0pt, y: 0pt, line(length: 100%))
 }

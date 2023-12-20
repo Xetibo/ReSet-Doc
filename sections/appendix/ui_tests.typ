@@ -4,46 +4,57 @@
 #subsubsection("ReSet Test")
 #test("Search bar and Sidebar", 
   "User can filter settings by typing in the search bar. Clicking on a setting will open the corresponding settings box and reset the sidebar.",
+  [sdf ]
 )
 #test(
   "Dynamic window", 
   "Multiple settings can be opened at the same time and each setting box will reflow based on how much space is available.",
+  []
 )
 #test(
   "Wi-Fi", 
   "Users can connect and disconnect from a Wi-Fi network. They should also be able to change the password for an existing Wi-Fi network and remove it.",
+  []
 )
 #test(
   "Bluetooth", 
   "Users can connect and disconnect Bluetooth devices.",
+  []
 )
 #test(
   "Volume of Audio devices", 
   "Users can change the volume of their input and output devices.",
+  []
 )
 #test(
   "Change default Audio device", 
   "Users can change the default input and output device.",
+  []
 )
 #test(
   "Audio of individual applications", 
   "Users can change the input and output of individual applications. They should also be able to mute an audio source.",
+  []
 )
 #test(
   "Disable Audio devices", 
   "Users can disable input and output devices.",
+  []
 )
 #test(
   "Performance", 
   "Users should not experience any lags or stuttering.",
+  []
 )
 #test(
   "Intuitive UI", 
   "The UI is structured logically so that the user can easily find the setting they are looking for. Settings that belong together are grouped.",
+  []
 )
 #test(
   "Layout", 
   "The layout should be visually appealing and feel organized to the users.",
+  []
 )
 
 #pagebreak()
