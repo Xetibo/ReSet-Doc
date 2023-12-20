@@ -46,20 +46,20 @@ wayland_documentation:
 Rust_tools:
   type: web
   title: Rust tools
-  url: https://www.Rust-lang.org/tools
+  url: https://www.rust-lang.org/tools
 Rust_javascript:
   type: web
   title: "Rust VS Javascript benchmarks"
-  url: https://programming-language-benchmarks.vercel.app/Rust-vs-javascript
+  url: https://programming-language-benchmarks.vercel.app/rust-vs-javascript
 Rust_javascript2:
   type: web
   author: "Maynak Choubey"
   title: "Node.js vs Rust: Performance comparison for Hello World case"
-  url: https://medium.com/deno-the-complete-reference/node-js-vs-Rust-performance-comparison-for-hello-world-case-2b548fb77c8c
+  url: https://medium.com/deno-the-complete-reference/node-js-vs-rust-performance-comparison-for-hello-world-case-2b548fb77c8c
 Rust_types:
   type: web
   title: Rust types
-  url: https://doc.Rust-lang.org/book/ch03-02-data-types.html
+  url: https://doc.rust-lang.org/book/ch03-02-data-types.html
 cpp_compilers:
   type: web
   title: C++ compiler support
@@ -67,7 +67,7 @@ cpp_compilers:
 Rust_compiler:
   type: repository
   title: Rust Repository
-  url: https://github.com/Rust-lang/Rust
+  url: https://github.com/rust-lang/rust
 csharp_debugger_notes:
   type: web
   title: Microsoft .NET Core Debugger licensing and Microsoft Visual Studio Code
@@ -131,7 +131,7 @@ libpulse_binding:
   type: repository
   title: pulse-binding-Rust
   author: jnqnfe 
-  url: https://github.com/jnqnfe/pulse-binding-Rust
+  url: https://github.com/jnqnfe/pulse-binding-rust
   note: License Apache-2.0, MIT
 directories_next:
   type: repository
@@ -153,7 +153,7 @@ Rust_macros:
   type: web
   title: The Rust Programming Language 
   author: Steve Klabnik and Carol Nichols, with contributions from the Rust Community
-  url: https://doc.Rust-lang.org/book/ch19-06-macros.html
+  url: https://doc.rust-lang.org/book/ch19-06-macros.html
   note: License Apache-2.0, MIT
 pimpl:
   type: web
