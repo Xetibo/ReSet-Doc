@@ -60,13 +60,26 @@ information about DBus types and how they correspond to the regular Rust types.
   cell("DBus Array", bold: true,  cell_align: left, fill: silver),
 )
 
+#pagebreak()
+
 #subsubsection("Daemon and Application")
-As explained in @Introduction, ReSet will include a daemon and a client application to this daemon.
+As explained in @Introduction, ReSet will include a daemon and appropriate client application.
 It is therefore necessary to use inter-process communication to provide functionality on the application.
 In this section, example usages and the IPC architecture are elaborated.
 
+DBus first registers a service providing application with a name.
+This name will then either be available for the user session in the operating system,
+or for the entire system, depending on the session the application requests.
+
+On this namespace, the application can register objects that will be responsible for providing functionality to potential clients.
+Each object does this by using interfaces which the application can define,
+this means that you can implement both generic interfaces for each object to implement,
+or create a specific interface for a specific object.
+
+In @dbus_usage, an example client is shown which calls a function on the org.Xetibo.ReSet namespace.
+
 #figure(sourcecode(```rs
-// spawn a new thread to not block the GUI thread 
+// spawn a new thread to not block the GUI thread
 thread::spawn(|| {
     // create a temporary connection for DBus
     let conn = Connection::new_session().unwrap();
@@ -77,7 +90,7 @@ thread::spawn(|| {
     );
     // The return type of this DBus method
     // The error is necessary as a call to DBus can also fail
-    let res: Result<(), Error> = 
+    let res: Result<(), Error> =
         proxy.method_call(
           "org.Xetibo.ReSet.Daemon", // The DBus interface
           "UnregisterClient",        // The DBus method
@@ -85,18 +98,23 @@ thread::spawn(|| {
     res
 });
 ```),
-kind: "code", 
+kind: "code",
 supplement: "Listing",
 caption: [Example DBus usage in a client of the ReSet-Daemon])<dbus_usage>
+
+
+
+
+#pagebreak()
+
+In order to further understand the role of the ReSet-Daemon,
+@dbus_sequence elaborates how both client and daemon interact with other DBus applications.
 
 #align(center, [#figure(
     img("dbus_sequence.svg", width: 100%, extension: "files"),
     caption: [DBus sequence diagram of ReSet],
   )<dbus_sequence>])
 
-#pagebreak()
-
 As can be seen in figure @dbus_sequence, the client would need to implement a lot of base functionality in order to communicate with multiple DBus sources.
 It would also mean that any non-DBus source, such as PulseAudio for ReSet, would have to be accessed separately by the client.
 Limiting communication to only use DBus hence simplifies the implementation for the client.
-

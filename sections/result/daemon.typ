@@ -5,22 +5,30 @@
 This section documents the code for the backend part of ReSet.
 
 #subsubsection("Datastructure References")
-All relevant data structure for this section can be found in the appendix
+All relevant data structures for this section can be found in the appendix
 @Datastructures.
 
 #subsubsection("Main Loop")
 The main loop exposes the DBus interface to other applications, and responds to
 method calls on this API. In order to provide functionality, the main loop
-requires a different set of data from the different functionalities. This state
+requires a different set of data from different functionalities. This data
 is provided as a context and can be accessed only within the main loop.
 
 // typstfmt::off
 #figure(sourcecode(```rs
-// omitted setup
-// pushes all features to be advertized
-features.push(setup_base(&mut cross, feature_strings));
 // insert data and features into context
-cross.insert(DBUS_PATH, &features, data);
+let token = cross.register("org.Xetibo.ReSet.Daemon", |c| {
+   c.method(
+       "UnregisterClient",
+       ("client_name",),
+       ("result",),
+       move |_, data: &mut DaemonData, (client_name,): (String,)| {
+           data.clients.remove(&client_name);
+           Ok((true,))
+       },
+   );
+});
+cross.insert(DBUS_PATH, &features, token);
 
 // process events until shutdown
 conn.start_receive(
@@ -35,40 +43,15 @@ conn.start_receive(
  supplement: "Listing",
  caption: [Code snippet from the daemon DBus main loop])<mainloop>
 
-#figure(sourcecode(```rs
-// the data struct used by the main loop
-pub struct DaemonData {
-    pub n_devices: Vec<Arc<RwLock<Device>>>, // all wifi devices
-    pub current_n_device: Arc<RwLock<Device>>, // current wifi device
-    pub b_interface: BluetoothInterface,
-    pub bluetooth_agent: BluetoothAgent,
-    pub audio_sender: Rc<Sender<AudioRequest>>,
-    pub audio_receiver: Rc<Receiver<AudioResponse>>,
-    pub audio_listener_active: Arc<AtomicBool>,
-    pub network_listener_active: Arc<AtomicBool>,
-    pub network_stop_requested: Arc<AtomicBool>,
-    pub bluetooth_listener_active: Arc<AtomicBool>,
-    pub bluetooth_stop_requested: Arc<AtomicBool>,
-    pub bluetooth_scan_active: Arc<AtomicBool>,
-    pub clients: HashMap<String, usize>,
-    pub connection: Arc<SyncConnection>, // connection reference used for event creation
-    pub handle: JoinHandle<()>, // used for shutdown
-}
-```),
-kind: "code",
-supplement: "Listing",
-caption: [DaemonData struct used as the sole data storage by the daemon])<daemondata>
-// typstfmt::on
+In @mainloop, the daemon registers a function the org.Xetibo.ReSet.Daemon interface which will provide the function "UnregisterClient".
+Whenever this function is called the main loop will execute the registered closure that provides the functionality.
 
-With these basic data structures, the daemon would be able to use basic
-*synchronous* functions, however, for ReSet, it is necessary to provide
-asynchronous functionality such as events, which might be created by an entirely
-different software.
+This setup alone would suffice for regular request/response functions,
+however ReSet is also required to implement events as certain technologies like Bluetooth require them.
+They are also required to provide instant feedback for a user interface application, upon a state change.
+For this reason, ReSet also offers a listener for each functionality which will be explained in detail in their respective subsections.
 
-For this reason, events for each base functionality of ReSet are implemented via listeners, which
-can be activated and deactivated via the DBus API(exception: PulseAudio, this event listener is always active). Clients of this API can hence
-decide themselves whether they would like to use this asynchronous
-functionality.
+#pagebreak()
 
 #subsubsection("Audio")
 As planned in @Architecture, the PulseAudio library was used to implement the

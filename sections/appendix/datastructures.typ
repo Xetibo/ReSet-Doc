@@ -5,6 +5,34 @@
 This section covers all relevant data structures used within ReSet and its
 daemon.
 
+#subsection("Daemon Data")
+This is the main data structure that serves as a state within the main loop.
+
+#figure(sourcecode(```rs
+// the data struct used by the main loop
+pub struct DaemonData {
+    pub n_devices: Vec<Arc<RwLock<Device>>>, // all wifi devices
+    pub current_n_device: Arc<RwLock<Device>>, // current wifi device
+    pub b_interface: BluetoothInterface,
+    pub bluetooth_agent: BluetoothAgent,
+    pub audio_sender: Rc<Sender<AudioRequest>>,
+    pub audio_receiver: Rc<Receiver<AudioResponse>>,
+    pub audio_listener_active: Arc<AtomicBool>,
+    pub network_listener_active: Arc<AtomicBool>,
+    pub network_stop_requested: Arc<AtomicBool>,
+    pub bluetooth_listener_active: Arc<AtomicBool>,
+    pub bluetooth_stop_requested: Arc<AtomicBool>,
+    pub bluetooth_scan_active: Arc<AtomicBool>,
+    pub clients: HashMap<String, usize>,
+    pub connection: Arc<SyncConnection>, // connection reference used for event creation
+    pub handle: JoinHandle<()>, // used for shutdown
+}
+```),
+kind: "code",
+supplement: "Listing",
+caption: [DaemonData struct used as the sole data storage by the daemon])<daemondata>
+// typstfmt::on
+
 #subsubsection("Audio/PulseAudio")
 For PulseAudio, ReSet offers a struct for sinks, sources, sink inputs, source outputs and cards.
 These translate to audio outpout device, audio input device, audio output stream, audio intut stream and audio codec profiles respectively.

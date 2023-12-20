@@ -112,6 +112,9 @@ the differentiation between connected and available devices.
   img("reset_bluetooth.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Bluetooth section],
 )<reset_bluetooth>
 
+As mentioned in @UserInterfaceGuidelines ReSet intends to be as consistent as possible, which is why the same style principles were applied to all pages within ReSet.
+This ensures that users who can use parts of ReSet will also be able to use other parts without additional knowledge about the application.
+
 #pagebreak()
 
 #subsubsection("Sidebar and Menu")
