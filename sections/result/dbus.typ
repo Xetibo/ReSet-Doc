@@ -98,5 +98,5 @@ caption: [Example DBus usage in a client of the ReSet-Daemon])<dbus_usage>
 
 As can be seen in figure @dbus_sequence, the client would need to implement a lot of base functionality in order to communicate with multiple DBus sources.
 It would also mean that any non-DBus source, such as PulseAudio for ReSet, would have to be accessed separately by the client.
-Limiting communication over DBus hence simplifies the implementation for the client.
+Limiting communication to only use DBus hence simplifies the implementation for the client.
 
