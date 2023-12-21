@@ -7,19 +7,15 @@
 _Due to the small team size, no scrum master or product owner is chosen, the work
 of these positions is done in collaboration._\
 
-#subsubsection("Requirements")
-Non-functional requirements are explained in @Non-FunctionalRequirements and
-functional requirements are handled using user stories.
-
 #subsubsection("User Stories")
-User stories are handled via #link("https://github.com/Xetibo/ReSet/issues")[GitHub issues].
+User stories are handled via GitHub issues @github_issues.
 This allows for simple handling of labels and function points, which can also be
 changed later on if needed.
 
 #subsubsection("Sprint Backlog/Product Backlog")
-Both the sprint backlog and the product backlog are handled using the #link("https://github.com/orgs/Xetibo/projects/1")[GitHub project board].
+Both the sprint backlog and the product backlog are handled using the GitHub project board @github_project_board.
 This allows for a clean and automatic handling of created user stories via
-GitHub issues.
+GitHub issues @github_issues.
 
 #subsubsection("Tools")
 Rust is an editor-agnostic language, hence both team members can use their tools without conflicts.

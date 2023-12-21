@@ -13,7 +13,7 @@ which can be found in the ReSet and ReSet-Daemon repositories respectively.
     a loading icon or similar.
   ], [
     - Show loading icons or similar during blocking operations.
-      - restrict actions during the loading period.
+      - Restrict actions during the loading period.
     - Use async functions in order to keep UI responsive.
   ],
 )

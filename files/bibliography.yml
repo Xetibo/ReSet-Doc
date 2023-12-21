@@ -352,3 +352,11 @@ dbus:
   title: dbus
   author: freedesktop
   url: https://www.freedesktop.org/wiki/Software/dbus/
+github_project_board:
+  type: web
+  title: ReSet Project Board
+  url: https://github.com/orgs/Xetibo/projects/1
+github_issues:
+  type: web
+  title: ReSet Issues 
+  url: https://github.com/Xetibo/ReSet/issues
