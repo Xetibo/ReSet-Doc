@@ -50,9 +50,9 @@ was not pursued. Usually, the logic of the frontend would be tested instead, but
 here all functions call DBus functions which means all functionality is
 implemented in the backend.
 
-On the backend there are initial tests, but those can't be run on the build
+On the backend there are initial tests, but those cannot be run on the build
 system either as they rely on hardware features(Wi-Fi, Bluetooth, audio), which
-can't be provided appropriately within a test environment. In @Testing, a
+cannot be provided appropriately within a test environment. In @Testing, a
 plan for a mock system is explained for the continuation of work.
 
 The second workflow for ReSet is more complicated, as it requires different
@@ -60,7 +60,7 @@ Linux version in order to provide easy packaging of ReSet. For ReSet, five
 different variations of packaging will be provided: Flatpak, Debian Package, Arch
 Package, regular binary and the crates.io cargo package. Nearly all of these
 will offer the same experience, with the only exception being the flatpak
-package, which can't be used to run the daemon in a standalone fashion. In order
+package, which cannot be used to run the daemon in a standalone fashion. In order
 to still provide ReSet, the daemon is built into the ReSet frontend, and will be
 run for the duration of the application lifetime, should the daemon not already
 be running.

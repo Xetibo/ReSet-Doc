@@ -9,17 +9,17 @@ audio configuration within one application without bundling with environment-spe
 All functionality is offered using inter-process communication as planned and
 other applications can use the daemon service to utilize the API.
 
-In terms of the user interface, user testing has shown positive feedback,
+In terms of the user interface, user testing @ReSetUserTest has shown positive feedback,
 allowing ReSet to continue with the current design language.
 
 
 #subsection("Outlook")
-This section covers both the features of ReSet not implemented yet as well as
+This section covers both the features of ReSet which not implemented yet, as well as
 potential improvements to this project.
 
 #subsubsection("Not Implemented Features")
-These features were not implemented due to time constraints, however, 
-they are still in the backlog and will be implemented in the future.
+These features were not implemented due to time constraints, 
+future work can potentially resolve these missing features.
 
 #subsubsubsection("Plugin System")
 Due to time constraints, this project will not cover a plugin system. However,

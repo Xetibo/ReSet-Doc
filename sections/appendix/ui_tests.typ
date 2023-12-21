@@ -7,8 +7,8 @@
 Reaching the project's midpoint, the UI mock of ReSet was given out to a select
 few people for testing and reviewing purposes. The idea is the get feedback
 early so that there is still enough time to change the UI without much effort.
-Because it's only a UI mock test, it wasn't possible to ask for feedback for all
-tests defined in @ReSetUserTest because it hasn't been implemented yet.
+Because it is only a UI mock test, it wasn it possible to ask for feedback for all
+tests defined in @ReSetUserTest because it has not been implemented yet.
 
 - *Navigation feedback*
 The feedback is very positive, especially with the mention of the ability to
@@ -16,9 +16,9 @@ show all settings or just a specific part. The structure is clean and makes it
 easy to understand which subcategory belongs to which category.
 
 - *Readability feedback*
-There wasn't much feedback regarding readability, because it's not something
+There wasn it much feedback regarding readability, because it is not something
 that can or should be influenced directly. Font size and contrast are set in the
-settings, meaning it's consistent throughout the system, which includes ReSet.
+settings, meaning it is consistent throughout the system, which includes ReSet.
 
 - *Layout and Design feedback*
 Users were generally positive about the layout and design of the app, but there
@@ -34,13 +34,13 @@ appreciated the design while providing valuable advice on how to improve it.
 
 - *Conclusion*
 Feedback around navigation and readability was positive, mostly attributed to
-the currently simple UI. It's important to note that readability is already
-configured by the user or by using system defaults. ReSet doesn't overwrite
+the currently simple UI. It is important to note that readability is already
+configured by the user or by using system defaults. ReSet does not overwrite
 these configurations to keep a consistent look throughout the user's system.
 Concerning the layout and design, there will be improvements made by templating
 common UI building blocks, which will fix the issue of inconsistent design and
 make it easier to keep it consistent. Features such as collapsing subcategories
-have to be discussed further, to determine if it's necessary and if fit in the
+have to be discussed further, to determine if it is necessary and if fit in the
 timeframe.
 
 #pagebreak()
