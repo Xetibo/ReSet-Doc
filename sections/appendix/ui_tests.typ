@@ -2,6 +2,8 @@
 #lsp_placate()
 
 #subsubsection("ReSet Tests")
+This section covers both the Mock user interface tests and the proper user tests.\
+The data sources for the tests are provided as CSV files bundled with this paper.
 
 #subsubsection("Midpoint UI Tests") // todo rename midpoint to mock ui test
 Reaching the project's midpoint, the UI mock of ReSet was given out to a select
