@@ -73,12 +73,12 @@ timeframe.
       to nmcli.
     - Opening Wi-Fi with a computer without Wi-Fi crashes ReSet. (fixed)
   ], [
-    - Apply button being clickable with no changes was confusing
+    - Apply button being clickable with no changes made was confusing
     - Not enough error messages
     - Not enough feedback when connecting/connected to Wi-Fi network
     - Perhaps use gear icon instead of pen icon for Wi-Fi settings
     - Clicking on Wi-Fi should close the details page
-    - Add different color to connected network
+    - Use different colors for a connected network
   ],
 )
 #pagebreak()
@@ -91,10 +91,10 @@ timeframe.
   ], [
     - Move connected devices above available devices (fixed)
     - Bluetooth search needs an indicator (fixed)
-    - Progress during connection would be helpful
+    - Show progress during connection would be helpful
     - Paired devices should be shown differently from available ones
     - It is not clear what the refresh button does
-    - Add option to hide devices that only offer a MAC address
+    - Add an option to hide devices that only offer a MAC address
     - Tooltips are missing
   ],
 )
