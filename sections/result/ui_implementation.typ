@@ -43,7 +43,7 @@ change the focus to the newly created popup and therefore takes away the focus o
 last window, a behavior that is not welcome in every situation.
 
 
-For ReSet, the solution was to provide a size-agnostic application that refrains from 
+For ReSet, the solution was to provide a nearly size-agnostic application that refrains from 
 using popups wherever possible. In order to ensure the application is usable with 
 any size, each functionality of ReSet is put into a dynamically allocated box. This allows 
 not only the size agnostic design but also provides a responsive design by changing 
@@ -64,7 +64,8 @@ size to maximum size respectively, in @reset_minimal, @reset_vertical and
 )<reset_horizontal>
 
 To prevent using popups or relying on hamburger menus, ReSet opted to provide advanced configuration of each functionality
-using the AdwNavigationPage provided by libadwaita@libadwaita. This module allows for a seamless transition from a parent to a child window.
+using the AdwNavigationPage provided by libadwaita@libadwaita.
+This module allows for a seamless transition from a parent to a child window by clicking the button with the target page name.
 In @reset_audio and @reset_profiles, the AdwNavigationPage can be seen in use.
 
 #subsubsection("Audio User Interface")
@@ -72,12 +73,11 @@ For audio, ReSet intends to provide as much relevant information to the user as 
 The intention is to provide not only the central audio settings but also provide adjustments
 for all currently open programs utilizing audio.
 
+In @reset_audio, the user interface can be seen with both the default output device and active programs utilizing audio output.
 
 #figure(
   img("reset_audio.png", fit: "contain", width: 90%), caption: [ReSet Audio section],
 )<reset_audio>
-
-Results from the @MidpointUITests show a positive reception of the audio interface.
 
 Additional configuration, such as audio profiles and per-device adjustment
 are available in the device and profile settings respectively.
@@ -90,7 +90,9 @@ are available in the device and profile settings respectively.
   img("reset_audio_devices.png", fit: "contain", width: 90%), caption: [the ReSet Audio devices section],
 )<reset_audio_devices>
 
+Results from the @MidpointUITests show a positive reception of the audio interface.
 
+#pagebreak()
 
 #subsubsection("Wi-Fi User Interface")
 The Wi-Fi settings provide a short general adjustment at the top, using a global switch to enable or disable Wi-Fi in general,
@@ -101,6 +103,14 @@ while the other entries are changing Wi-Fi adapters or adjusting stored Wi-Fi co
 )<reset_wifi>
 
 The access points themselves are shown in a continuous list, using the same module as implemented in the audio section.
+
+For adjustments to connections, ReSet offers general configuration, basic IPV4 and IPV6 configuration(not complete) and basic security settings.
+The settings page is created with individual tabs for each setting, providing a seamless transition for each functionality.
+In @reset_wifi_security, the security configuration is visualized.
+
+#figure(
+  img("reset_wifi_security.png", fit: "contain", width: 90%), caption: [ReSet Wi-Fi security section],
+)<reset_wifi_security>
 
 #pagebreak()
 
@@ -161,7 +171,7 @@ graphical tools in order to create the user interface itself, providing
 immediate feedback about the style and feel of the design.
 
 The binding of these definitions is handled via a GTK specific build.rs file,
-which defines Gresources that will be integrated into the project. Gresources
+which defines GResources that will be integrated into the project. GResources
 represent a variety of tools and objects which can be used within the project,
 such as user interface templates, icons, images and more.@gresources
 
@@ -177,7 +187,7 @@ fn main() {
 ```), 
 kind: "code", 
 supplement: "Listing",
-caption: [Example build.rs for XML bindings in GTK])<build_rs>
+caption: [Example GResources])<build_rs>
 
 For ReSet, the vast majority of the user interface is handled via XML
 definitions, with only a fraction being inlined in the code. These inline
@@ -193,7 +203,7 @@ expands to allowing full Rust code withing metaprogramming, making entire
 programs possible at compile time.@Rust_macros ReSet currently only uses this
 feature via gtk-rs or default macros provided by the standard library,
 however, it could become a vital tool for the creation of a plugin system which
-is mentioned in @Conclusion.
+is mentioned in @PluginSystem.
 
 #figure(
 sourcecode(
@@ -253,7 +263,7 @@ In figure @pointer_xml, there are two structs with the name ListEntry,
 the first is the pointer which holds generic GTK functionality,
 in this case, it will offer everything that the inherited classes provided,
 as well as the implemented interfaces.
-The second ListEntry is the implementation which will refer to the XML template.
+The second ListEntry is the implementation which will refer to the XML template visualized in @implementation_xml.
 
 #figure(
 sourcecode(

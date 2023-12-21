@@ -6,8 +6,9 @@ This section covers the implementation of the ReSet user interface application
 which interacts with the ReSet daemon.
 
 #subsubsection("GTK Mainloop")
-The GTK main handles its loop via callbacks, this means users of GTK can
+GTK handles its main loop via callbacks, this means users of GTK can
 define a function for different scenarios like startup or UI building.
+For ReSet, both a startup and a shutdown function was passed to GTK.
 
 #figure(sourcecode(```rs
 fn main() {
@@ -37,34 +38,35 @@ across the current features. This means that the same container was used for
 audio, Bluetooth and wireless networks, and can be used by plugins in the future
 to keep the consistent design.
 
+In @reset_settings_box, the currently used box is shown in code.
+The box is technically empty, and just serves as a container for each functionality,
+similar to a custom div component used in web-development.
+
 #figure(sourcecode(```rs
 // The container used for every functionality
+#[template(resource = "/org/Xetibo/ReSet/resetSettingBox.ui")]
+pub struct SettingBox {}
+
 #[glib::object_subclass]
 impl ObjectSubclass for SettingBox {
     const ABSTRACT: bool = false;
     const NAME: &'static str = "resetSettingBox";
     type Type = setting_box::SettingBox;
     type ParentType = gtk::Box;
-
-    fn class_init(klass: &mut Self::Class) {
-        klass.bind_template();
-    }
-
-    fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
-        obj.init_template();
-    }
 }
 ```), 
 kind: "code", 
 supplement: "Listing",
 caption: [ReSet settings box])<reset_settings_box>
 
-Alongside this, the flowbox which houses the containers was created to always
-use the optimal amount of screen space available. This translates to a window
+Alongside this, ReSet uses a GTK native Flowbox which houses the containers.
+Using the Flowbox,
+ReSet can ensure usage of optimal available screen space by dynamically resizing its children.
+This translates to a window
 that doesn't feel empty, even on ultrawide monitors. At the same time, the
 flowbox provides the response design aspects that users have gotten used to on
 web applications. This means that ReSet can also be used on vertical monitors
-without issue.
+without issues.
 
 #subsubsection("Listeners")
 Just like in @DaemonImplementation, the listeners are DBus clients that activate
@@ -106,7 +108,7 @@ supplement: "Listing",
 caption: [Example setup for a DBus listener to the ReSet daemon])<example_listener>
 
 It is important to note that the added and changed events provide structs
-defined by the DBus API defined in @DBus, while removed events provide a DBus
+from the DBus API defined in @DBusAPI, while removed events provide a DBus
 path that denotes the removed structure. The reason for this disparity is the
 inability to fetch data from removed DBus objects, hence only the path is
 provided.
