@@ -2,7 +2,7 @@
 #lsp_placate()
 
 #subsection("Frontend Implementation")
-This section covers the implementation of the ReSet user interface application
+This section covers the implementation of the ReSet user interface application logic
 which interacts with the ReSet daemon.
 
 #subsubsection("GTK Mainloop")
@@ -59,17 +59,11 @@ kind: "code",
 supplement: "Listing",
 caption: [ReSet settings box])<reset_settings_box>
 
-Alongside this, ReSet uses a GTK native Flowbox which houses the containers.
-Using the Flowbox, ReSet can ensure the usage of optimal available screen 
-space by dynamically resizing its children. This translates to a window
-that doesn't feel empty, even on ultrawide monitors. At the same time, the
-flowbox provides the response design aspects that users have gotten used to on
-web applications. This means that ReSet can also be used on vertical monitors
-without issues.
+#pagebreak()
 
 #subsubsection("Listeners")
-Just like in @DaemonImplementation, the listeners are DBus clients that activate
-a callback function on receival of an event. The events themselves always have
+The listeners are DBus clients that activate
+a callback function on receiving an event. The events themselves always have
 the same structure with possible events being: added, removed, changed.
 
 // typstfmt::off
@@ -111,4 +105,6 @@ from the DBus API defined in @DBusAPI, while removed events provide a DBus
 path that denotes the removed structure. The reason for this disparity is the
 inability to fetch data from removed DBus objects, hence only the path is
 provided.
+
+Regular DBus function calls are handled as described in @dbus_usage.
 
