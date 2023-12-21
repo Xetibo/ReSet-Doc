@@ -76,7 +76,7 @@ applications.
   )<kde-hamburger>
   There is a big difference between KDE and GNOME in the context of menus, KDE
   uses a lot of nested submenus as can be seen in @kde-hamburger, while the GNOME side explicitly discourages these
-  menus citing reduced accessibility.@gnome_guidelines_menu In this case, the
+  menus citing reduced accessibility @gnome_guidelines_menu. In this case, the
   question is about where the bookmarks are stored. The default location is in
   more->go->bookmarks, this is on layer 4 of a menu without search functionality
   and with very ambiguous navigation.
@@ -119,7 +119,7 @@ applications.
   new folder and anything else needs to be done with a terminal. For Nautilus, one
   can also create templates within the Linux template folder which will then be
   available in the pop-over menu as well, but this is not an obvious
-  feature.@nautilus_new_document_popup @nautilus_new_document_issue
+  feature @nautilus_new_document_popup @nautilus_new_document_issue.
 
   ReSet aims to provide a middle ground between these two approaches.
 
@@ -136,8 +136,8 @@ applications.
   The Dolphin version is much more complex, this is because you can customize any
   shortcut in Dolphin using this interface. For Nautilus shortcuts can only be
   configured using scripts that extend the functionality of
-  Nautilus@nautilus_shortcut_discussion , as according to a GTK developer, this is
-  no longer possible on a toolkit level. @gtk_shortcut_discussion
+  Nautilus @nautilus_shortcut_discussion, as according to a GTK developer, this is
+  no longer possible on a toolkit level @gtk_shortcut_discussion.
 
   #figure(
     align(center, [#image("../figures/shortcuts.png", width: 80%)]), caption: [Shortcuts menu in Nautilus],

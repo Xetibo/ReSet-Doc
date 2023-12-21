@@ -115,7 +115,7 @@ available on other environments.
       and GNOME exclusive features cannot be hidden.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Ease of Use", bold: true, cell_align: left), cell(
     [The user interface of the GNOME control center follows their own best
-      practices.@gnome_human_guidelines It has consistent design, naming makes sense
+      practices @gnome_human_guidelines. It has consistent design, naming makes sense
       and accessibility is taken into account.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: left), cell("Maintainability", bold: true, cell_align: left), cell(
     [All features of the Gnome control center are within one repository, which
@@ -128,7 +128,7 @@ available on other environments.
 KDE systemsettings@kde_systemsettings_repo is written in C++/QML and is made
 with the QT toolkit@qt. It follows the KDE style of applications, featuring a
 very large variety of settings (on KDE), and offering other applications a way
-to integrate into this application via KConfig Module(KCM)@kcm.
+to integrate into this application via KConfig Module (KCM)@kcm.
 #align(
   center, [#figure(
       img("kde_systemsettings.png", width: 80%), caption: [Appearance setting of KDE systemsettings],

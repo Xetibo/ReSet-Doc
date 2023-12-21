@@ -38,7 +38,7 @@
     use_show: use_show_ref, "DTO Data Transfer \nObject", [
       This represents data that can be sent over inter-process communication pipelines
       such as web requests, DBus, or sockets. Data in this state can only be
-      represented as text(usually json, toml, etc.), this means that the endpoint
+      represented as text (usually JSON, TOML, etc.), this means that the endpoint
       needs to recreate a data structure for a programming language.
     ],
   )<dto>

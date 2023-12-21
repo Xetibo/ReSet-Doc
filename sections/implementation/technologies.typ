@@ -34,7 +34,7 @@ The following categories are evaluated for programming languages:
   with them.\
   Important: The ecosystem is highly dependent on the Linux desktop, which is not
   always favorable for all tools, for example: .NET MAUI, a very popular user interface toolkit
-  is not usable, as it does not run on the Linux desktop.@maui_discussion
+  is not usable, as it does not run on the Linux desktop @maui_discussion.
 - *Runtime speed* | weight: low\
   Runtime speed is likely only a concern for the daemon, and even in this case, it
   is unlikely to be too slow with any modern programming language.
@@ -166,11 +166,11 @@ open-source license*, as ReSet will be published under the GPL-3.0 license.
 Rust was chosen for its speed, low memory usage, memory-safe design and robust
 ecosystem. While Rust is more complex to write than languages such as
 JavaScript, it comes with a significantly reduced memory cost and with the
-addition of a static type system.@Rust_javascript@Rust_javascript2@Rust_types
+addition of a static type system @Rust_javascript@Rust_javascript2@Rust_types.
 
 Compared to other system programming languages, Rust comes with a modern
 ecosystem out of the box, providing a formatter, a compiler, an LSP server,
-a code-checking tool and a package manager in one(Rustup).@Rust_tools This
+a code-checking tool and a package manager in one (Rustup) @Rust_tools. This
 allows for a more streamlined developer experience and standardizes features,
 which in return makes more complex tasks like cross-compilation a lot easier.
 For example, Rust allows adding a so-called "target triple",
@@ -187,14 +187,14 @@ avoids cases like the official and proprietary C\#
 debugger, which only works with
 official Microsoft tools@csharp_debugger_notes@csharp_debugger_issue, or the C++ problem of having multiple compilers with different
 feature sets. Hence, both languages described will have a different experience
-on different platforms and editors/IDEs.@cpp_compilers@Rust_compiler
+on different platforms and editors/IDEs @cpp_compilers@Rust_compiler.
 
 UI Considerations for Rust are also a big factor, on Linux there are generally 2
 big user interface toolkits, GTK and QT. QT is generally used with C++, while
-GTK is often used with C or a special GTK-developed language called "Vala".@vala
+GTK is often used with C or a special GTK-developed language called "Vala" @vala.
 However, for GTK the Rust bindings are above average in quality compared to
 other language bindings, meaning it provides a close-to-native experience, while
-still offering all the benefits of a more modern language.@gtk_rs
+still offering all the benefits of a more modern language @gtk_rs.
 
 #pagebreak()
 
@@ -271,15 +271,15 @@ The following categories are evaluated for UI toolkits:
 
 #text(12pt, [*UI Toolkit*])* | ReSet uses GTK4 as its UI toolkit.*\
 GTK (GNOME) toolkit, formerly Gimp Toolkit) is a well-established, LGPLv2.1+ licensed, cross-platform UI toolkit that has seen decades
-of usage and improvements.@gtk While the library itself is written in C, it does
-offer stable language bindings for a large set of languages, including Rust via gtk-rs.@gtk_rs
+of usage and improvements @gtk. While the library itself is written in C, it does
+offer stable language bindings for a large set of languages, including Rust via gtk-rs @gtk_rs.
 Compared to native Rust libraries, it offers a more robust set of defined
 widgets, themes and tools. Specifically the toolkit "iced" was considered,
 however, it currently lacks documentation and needs several library
-implementations in order to fit with ReSet's requirements.@iced
+implementations in order to fit with ReSet's requirements @iced.
 
 The last consideration is QT, it is a cross-platform toolkit that uses its own
-form of JavaScript (QML) to draw windows.@qt @qml QT is a well-known toolkit, however, it
+form of JavaScript (QML) to draw windows @qt @qml. QT is a well-known toolkit, however, it
 is completely unknown to the project team members, making it a suboptimal choice.\
 For QT, there is also the consideration of integration mentioned in
 @Analysisofexistingapplications.

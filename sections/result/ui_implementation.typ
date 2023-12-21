@@ -24,7 +24,7 @@ compatibility with these environments.
 Many of such environments are based on window tiling, a concept that ensures 
 the entire screen is used by splitting the screen space with various layout rules.
 The paper "The anatomy of the modern window manager" explains the concept of 
-tiling in a more detailed manner.@window_manager_study
+tiling in a more detailed manner @window_manager_study.
 
 For ReSet, the importance of tiling is the behavior of applications in this environment.
 Concepts such as minimum window size, maximum window size, or popups are often a hindrance 
@@ -172,7 +172,7 @@ immediate feedback about the style and feel of the design.
 The binding of these definitions is handled via a GTK specific build.rs file,
 which defines GResources that will be integrated into the project. GResources
 represent a variety of tools and objects which can be used within the project,
-such as user interface templates, icons, images and more.@gresources
+such as user interface templates, icons, images and more @gresources.
 
 #figure(sourcecode(```rs
 fn main() {
@@ -199,7 +199,7 @@ which the gtk-rs library later restructures to GTK compatible code via Rust
 macros. Rust macros are metaprogramming, which means the Rust toolchain will
 change the code before compiling it into a binary. For Rust this features
 expands to allowing full Rust code withing metaprogramming, making entire
-programs possible at compile time.@Rust_macros ReSet currently only uses this
+programs possible at compile time @Rust_macros. ReSet currently only uses this
 feature via gtk-rs or default macros provided by the standard library,
 however, it could become a vital tool for the creation of a plugin system which
 is mentioned in @PluginSystem.
@@ -232,7 +232,7 @@ which allows for a generic implementation of an object without immediate
 recompilation unless the object itself is changed. As defined by cppreference@pimpl@pimpl_gotw, this
 idiom is usually applied in C++, but can also be used with Rust, and is also
 recommended to be used by an officially endorsed gtk-rs
-introduction.@gtk_rs_introduction
+introduction @gtk_rs_introduction.
 
 #figure(
 sourcecode(

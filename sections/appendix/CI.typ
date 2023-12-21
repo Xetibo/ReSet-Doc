@@ -10,7 +10,7 @@ workflows. Important to note is that for the ReSet application itself, the
 self-hosted GitHub runner was used. This is due to the regular GitHub runner
 only offering older versions of Ubuntu, which makes the use of newer GTK and
 libadwaita libraries impossible. Using the self-hosted runner, it was possible
-to provide a build system with an up-to-date version of Ubuntu.@github_runners
+to provide a build system with an up-to-date version of Ubuntu @github_runners.
 
 #figure(sourcecode(```yml
 name: Rust
