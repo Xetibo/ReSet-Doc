@@ -132,8 +132,7 @@ timeframe.
 ])
 #test(
   "Intuitive UI", "The UI is structured logically so that the user can easily find the setting they are looking for. Settings that belong together are grouped.", [
-    Some users were unfamiliar with Linux or GTK and were sometimes confused with GTK standard elements.\
-    Otherwise, the users reported that ReSet is intuitive and the current user interface makes sense.
+    Some users were unfamiliar with Linux or GTK and were sometimes confused with GTK standard elements. Otherwise, the users reported that ReSet is intuitive and the current user interface makes sense.
 
   ], [
     - Submenu navigation is unintuitive (return button is across the screen)\
