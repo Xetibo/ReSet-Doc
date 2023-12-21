@@ -43,28 +43,28 @@ wayland_documentation:
   type: web
   title: wayland documentation
   url: https://wayland.freedesktop.org/architecture.html
-rust_tools:
+Rust_tools:
   type: web
-  title: rust tools
+  title: Rust tools
   url: https://www.rust-lang.org/tools
-rust_javascript:
+Rust_javascript:
   type: web
   title: "Rust VS Javascript benchmarks"
   url: https://programming-language-benchmarks.vercel.app/rust-vs-javascript
-rust_javascript2:
+Rust_javascript2:
   type: web
   author: "Maynak Choubey"
   title: "Node.js vs Rust: Performance comparison for Hello World case"
   url: https://medium.com/deno-the-complete-reference/node-js-vs-rust-performance-comparison-for-hello-world-case-2b548fb77c8c
-rust_types:
+Rust_types:
   type: web
-  title: rust types
+  title: Rust types
   url: https://doc.rust-lang.org/book/ch03-02-data-types.html
 cpp_compilers:
   type: web
   title: C++ compiler support
   url: https://en.cppreference.com/w/cpp/compiler_support#C.2B.2B20_library_features
-rust_compiler:
+Rust_compiler:
   type: repository
   title: Rust Repository
   url: https://github.com/rust-lang/rust
@@ -129,7 +129,7 @@ ipnetwork:
   note: License Apache-2.0
 libpulse_binding:
   type: repository
-  title: pulse-binding-rust
+  title: pulse-binding-Rust
   author: jnqnfe 
   url: https://github.com/jnqnfe/pulse-binding-rust
   note: License Apache-2.0, MIT
@@ -149,7 +149,7 @@ gresources:
   title: GNOME Gresources documentation 
   author: GNOME
   url: https://developer-old.gnome.org/gio/stable/GResource.html
-rust_macros:
+Rust_macros:
   type: web
   title: The Rust Programming Language 
   author: Steve Klabnik and Carol Nichols, with contributions from the Rust Community
@@ -307,3 +307,38 @@ reset_lib:
   title: ReSet-Lib
   author: Xetibo
   url: https://github.com/Xetibo/ReSet-Lib
+maui_discussion:
+  type: web
+  title: First class Linux support developed by Microsoft
+  url: https://github.com/dotnet/maui/discussions/339
+nautilus_new_document_popup:
+  type: web
+  title: Revamp "New Document" submenu
+  url: https://gitlab.gnome.org/GNOME/nautilus/-/issues/2205
+nautilus_new_document_issue:
+  type: web
+  title: Reserve the "New Document" submenu even when there's no templates available
+  url: https://gitlab.gnome.org/GNOME/nautilus/-/issues/407
+gtk_shortcut_discussion:
+  type: web
+  title: Defining custom accels
+  url: https://www.reddit.com/r/GTK/comments/16lsdyg/defining_custom_accels/
+nautilus_shortcut_discussion:
+  type: web
+  title: Is possible add shortcut with accels use backspace key for win.up?
+  url: https://gitlab.gnome.org/GNOME/nautilus/-/issues/2545
+gnome_guidelines_menu:
+  type: web
+  title: GNOME Human Interface Guidelines Menus
+  author: GNOME
+  url: https://developer.gnome.org/hig/patterns/controls/menus.html
+neovim_lua: 
+  type: web
+  title: Noevim Lua Documenation
+  author: Neovim
+  url: https://neovim.io/doc/user/lua.html
+vala:
+  type: web
+  title: Vala
+  author: Vala
+  url: https://vala.dev/

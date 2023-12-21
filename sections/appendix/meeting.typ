@@ -5,6 +5,8 @@
 This section covers the content of all meetings during this project. The
 timeframe for each meeting is 30 minutes.
 
+Unless specifically mentioned, every project member and the professor always attended the meetings.
+
 *Meeting 1*
 - Licensing of third-party sources discussed
   - Where to attribute usage and licenses
@@ -23,8 +25,8 @@ held a short meeting internally, discussing the state of the project.
 *Meeting 4*
 - State of documentation discussed
 - Start of development on application
-  - backend: Fabio
-  - frontend design: Felix
+  - Backend: Fabio
+  - Frontend design: Felix
 
 *Meeting 5*
 - Feedback for documentation discussed
@@ -75,4 +77,12 @@ held a short meeting internally, discussing the state of the project.
 - Documentation will be provided one week before submission for review
 
 *Meeting 13*
+- Professor completed the user test
+- Current documentation state was shown to professor
+- Professor will provide documentation feedback until next week
 
+*Meeting 14*
+- Feedback of documentation was discussed
+- State of documentation was shown to professor
+- Administrative documents were discussed
+- End date of project defined as Thursday evening with Friday as an emergency day

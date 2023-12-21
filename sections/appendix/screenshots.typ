@@ -8,6 +8,8 @@
   caption: [Screenshot of the ReSet About window],
 )<reset_about>
 
-  #figure(
-    align(center, [#image("../../figures/shortcuts.png", width: 80%)]), caption: [Shortcuts menu in Nautilus],
-  )<nautilus_shortcuts>
+#figure(
+  img("reset_shortcuts.png", fit: "contain", width: 60%), 
+  caption: [Screenshot of the ReSet shortcuts window],
+)<reset_shortcuts>
+

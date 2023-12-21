@@ -11,7 +11,7 @@ plugin system for ReSet:
   not covered further.
 - *Scripting Languages*\
   Languages like Lua have succeeded integrating in multiple fields such as game
-  programming and even the Neovim editor. In both cases, it expands the potential
+  programming and even the Neovim editor.@neovim_lua In both cases, it expands the potential
   functionality by giving developers a fully functional programming language while
   still keeping the original system with a more performant system programming
   language.

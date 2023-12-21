@@ -23,18 +23,18 @@ The following categories are evaluated for programming languages:
   means an easier development process without surprises. Note that
   familiarity is the subjective relative experience compared to other languages
   and does not indicate a particular level of skill.
-- *Developer* experience | weight: low\
+- *Developer Experience* | weight: low\
   This encompasses the entire development cycle, meaning toolchain, LSPs,
   formatters, code coverage tools and more. With a modern developer experience,
   you can guarantee functionality without prolonged setup phases.
 - *Ecosystem* | weight: high\
   Ecosystem is defined as the amount and the quality of packages and libraries
-  that are available to this tool. For ReSet, this can be a crucial category, as
+  that are available for this language. For ReSet, this can be a crucial category, as
   many different types of services are used, hence the need for good integration
   with them.\
   Important: The ecosystem is highly dependent on the Linux desktop, which is not
-  always favorable for all tools, for example: .NET MAUI, a very popular toolkit
-  is not usable, as it does not run on the Linux desktop.
+  always favorable for all tools, for example: .NET MAUI, a very popular user interface toolkit
+  is not usable, as it does not run on the Linux desktop.@maui_discussion
 - *Runtime speed* | weight: low\
   Runtime speed is likely only a concern for the daemon, and even in this case, it
   is unlikely to be too slow with any modern programming language.
@@ -44,11 +44,11 @@ The following categories are evaluated for programming languages:
   systems, therefore RAM usage should be a concern, especially for the daemon.
 - *Development speed* | weight: medium\
   ReSet is limited in time scope, therefore tools with decent development speed
-  should be considered. Note, that this includes the time needed for debugging and
+  should be considered. Note that this includes the time needed for debugging and
   potential problems, such as undefined behavior or dynamic type issues.
 
 Special Requirement: All tools used in this project *must be published under an
-open-source license*.
+open-source license*, as ReSet will be published under the GPL-3.0 license.
 
 #pagebreak()
 #let python = (
@@ -83,7 +83,7 @@ open-source license*.
   resource_usage: 10,
   development_speed: 5,
 )
-#let rust = (
+#let Rust = (
   familiarity: 6,
   developer_experience: 10,
   ecosystem: 9,
@@ -116,49 +116,49 @@ open-source license*.
   cell([#typescript.familiarity], bold: true),
   cell([#csharp.familiarity], bold: true),
   cell([#cpp.familiarity], bold: true),
-  cell([#rust.familiarity], bold: true),
+  cell([#Rust.familiarity], bold: true),
   cell([\*#language_weights.familiarity], bold: true),
   cell("Developer experience", bold: true, fill: silver, cell_align: left),
   cell([#python.developer_experience], bold: true, fill: silver),
   cell([#typescript.developer_experience], bold: true, fill: silver),
   cell([#csharp.developer_experience], bold: true, fill: silver),
   cell([#cpp.developer_experience], bold: true, fill: silver),
-  cell([#rust.developer_experience], bold: true, fill: silver),
+  cell([#Rust.developer_experience], bold: true, fill: silver),
   cell([\*#language_weights.developer_experience], bold: true, fill: silver),
   cell("Ecosystem", bold: true, cell_align: left),
   cell([#python.ecosystem], bold: true),
   cell([#typescript.ecosystem], bold: true),
   cell([#csharp.ecosystem], bold: true),
   cell([#cpp.ecosystem], bold: true),
-  cell([#rust.ecosystem], bold: true),
+  cell([#Rust.ecosystem], bold: true),
   cell([\*#language_weights.ecosystem], bold: true),
   cell("Runtime speed", bold: true, fill: silver, cell_align: left),
   cell([#python.runtime_speed], bold: true, fill: silver),
   cell([#typescript.runtime_speed], bold: true, fill: silver),
   cell([#csharp.runtime_speed], bold: true, fill: silver),
   cell([#cpp.runtime_speed], bold: true, fill: silver),
-  cell([#rust.runtime_speed], bold: true, fill: silver),
+  cell([#Rust.runtime_speed], bold: true, fill: silver),
   cell([\*#language_weights.runtime_speed], bold: true, fill: silver),
   cell("Resource usage", bold: true, cell_align: left),
   cell([#python.resource_usage], bold: true),
   cell([#typescript.resource_usage], bold: true),
   cell([#csharp.resource_usage], bold: true),
   cell([#cpp.resource_usage], bold: true),
-  cell([#rust.resource_usage], bold: true),
+  cell([#Rust.resource_usage], bold: true),
   cell([\*#language_weights.resource_usage], bold: true),
   cell("Development speed", bold: true, fill: silver, cell_align: left),
   cell([#python.development_speed], bold: true, fill: silver),
   cell([#typescript.development_speed], bold: true, fill: silver),
   cell([#csharp.development_speed], bold: true, fill: silver),
   cell([#cpp.development_speed], bold: true, fill: silver),
-  cell([#rust.development_speed], bold: true, fill: silver),
+  cell([#Rust.development_speed], bold: true, fill: silver),
   cell([\*#language_weights.development_speed], bold: true, fill: silver),
   cell("Total", bold: true, cell_align: left),
   cell([#calculate_total(python, language_weights)], bold: true),
   cell([#calculate_total(typescript, language_weights)], bold: true),
   cell([#calculate_total(csharp, language_weights)], bold: true),
   cell([#calculate_total(cpp, language_weights)], bold: true),
-  cell([#calculate_total(rust, language_weights)], bold: true, color: green),
+  cell([#calculate_total(Rust, language_weights)], bold: true, color: green),
   cell(" ", bold: true),
 )
 
@@ -166,14 +166,14 @@ open-source license*.
 Rust was chosen for its speed, low memory usage, memory-safe design and robust
 ecosystem. While Rust is more complex to write than languages such as
 JavaScript, it comes with a significantly reduced memory cost and with the
-addition of a static type system.@rust_javascript@rust_javascript2@rust_types
+addition of a static type system.@Rust_javascript@Rust_javascript2@Rust_types
 
 Compared to other system programming languages, Rust comes with a modern
 ecosystem out of the box, providing a formatter, a compiler, an LSP server,
-a code-checking tool and a package manager in one(rustup).@rust_tools This
+a code-checking tool and a package manager in one(Rustup).@Rust_tools This
 allows for a more streamlined developer experience and standardizes features,
 which in return makes more complex tasks like cross-compilation a lot easier.
-For example, rust allows adding a so-called "target triple",
+For example, Rust allows adding a so-called "target triple",
 which is a specific platform. Using this triple, it is possible to build the
 project with "```sh cargo build --target x86_64-linux-unknown-gnu #or other platform```".
 Similarly, adding packages is also just one command "```sh cargo add gtk```",
@@ -184,14 +184,14 @@ languages, only a specific set of tools allows for a full IDE workflow, includin
 debugger, LSP and more. With Rust, this is not the case, as it either provides
 said tool or uses a well-established open-source tool for each task. This
 avoids cases like the official and proprietary C\#
-debugger only works with
-Microsoft tools@csharp_debugger_notes@csharp_debugger_issue, or the C++ problem of having multiple compilers with different
+debugger, which only works with
+official Microsoft tools@csharp_debugger_notes@csharp_debugger_issue, or the C++ problem of having multiple compilers with different
 feature sets. Hence, both languages described will have a different experience
-on different platforms and editors/IDEs.@cpp_compilers@rust_compiler
+on different platforms and editors/IDEs.@cpp_compilers@Rust_compiler
 
 UI Considerations for Rust are also a big factor, on Linux there are generally 2
 big user interface toolkits, GTK and QT. QT is generally used with C++, while
-GTK is often used with C or a special GTK-developed language called "Vala".
+GTK is often used with C or a special GTK-developed language called "Vala".@vala
 However, for GTK the Rust bindings are above average in quality compared to
 other language bindings, meaning it provides a close-to-native experience, while
 still offering all the benefits of a more modern language.@gtk_rs
@@ -200,6 +200,9 @@ still offering all the benefits of a more modern language.@gtk_rs
 
 The following categories are evaluated for UI toolkits:
 - *Familiarity* | weight: low\
+  Indicates how familiar the developers are with a certain tool. More familiarity means an easier
+  development process without surprises. Note that familiarity is the subjective relative experience
+  compared to other toolkits and does not indicate a particular level of skill.
 - *Language Integration* | weight: medium\
   This defines how well the chosen language will integrate with the UI toolkit, in
   other words, certain toolkits might get a zero score here, signifying
@@ -212,17 +215,17 @@ The following categories are evaluated for UI toolkits:
   ReSet does not need many features, however, ReSet does require first-class
   support for the Linux desktop.
 
-#let gtk = (familiarity: 6, language_integration: 7, documentation: 6, features: 8)
+#let gtk = (familiarity: 6, language_integration: 7, documentation: 8, features: 8)
 #let iced = (
-  familiarity: 3,
+  familiarity: 4,
   language_integration: 10,
-  documentation: 3,
+  documentation: 4,
   features: 6,
 )
 #let qt = (
   familiarity: 0,
   language_integration: 6,
-  documentation: 6,
+  documentation: 8,
   features: 10,
 )
 #grid(columns: (auto), rows: (30pt), cell(
@@ -273,10 +276,10 @@ offer stable language bindings for a large set of languages, including Rust via 
 Compared to native Rust libraries, it offers a more robust set of defined
 widgets, themes and tools. Specifically the toolkit "iced" was considered,
 however, it currently lacks documentation and needs several library
-implementations in order to fit with our requirements.@iced
+implementations in order to fit with ReSets' requirements.@iced
 
 The last consideration is QT, it is a cross-platform toolkit that uses its own
 form of JavaScript(QML) to draw windows.@qt @qml QT is a well-known toolkit, however, it
-is completely unknown to us, making it a suboptimal choice.\
+is completely unknown to the project team members, making it a suboptimal choice.\
 For QT, there is also the consideration of integration mentioned in
 @Analysisofexistingapplications.

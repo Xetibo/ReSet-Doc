@@ -78,7 +78,7 @@
     ],
   )<status-bar>
   #glossary_entry(use_show: use_show_ref, "Target Triple", [
-    String used to define compilation target platforms in rust.
+    String used to define compilation target platforms in Rust.
   ])<triple>
   #glossary_entry(
     use_show: use_show_ref, "Wayland", [
