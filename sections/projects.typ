@@ -257,12 +257,12 @@ Nmtui @networkmanager_repo is what the name suggests, it is a terminal user
 interface that allows users to use and edit network connections, including VPN
 connections. Nmtui is located in the same project as the network manager itself
 and is therefore also shipped as part of the network manager package. Both
-network manager and nmtui are written in C. There is a specific lack of
+network manager and Nmtui are written in C. There is a specific lack of
 standalone user interface applications for network managers. Technically, the "network-manager-applet"@network_manager_applet
 by GNOME exists, however, this is to be included in a system tray within status
 bars and does not work on its own.
 #align(
-  center, [#figure(img("nmtui.png", width: 80%), caption: [Wi-Fi connections in nmtui])],
+  center, [#figure(img("nmtui.png", width: 80%), caption: [Wi-Fi connections in Nmtui])],
 )<nmtui>
 
 Alongside Nmtui, users can also choose to use Nmcli, which would be the same
