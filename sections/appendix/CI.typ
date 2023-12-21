@@ -89,7 +89,7 @@ kind: "code",
 supplement: "Listing",
 caption: [Daemon check within main.rs])<daemon_check>
 
-In @build_ubuntu the ubuntu runner configuration is shown, which builds the binary, the flatpak and the Debian package.
+In @build_ubuntu the Ubuntu runner configuration is shown, which builds the binary, the flatpak and the Debian package.
 
 #figure(sourcecode(```yaml
 # omitted setup
@@ -124,7 +124,7 @@ kind: "code",
 supplement: "Listing",
 caption: [ReSet build workflow on Ubuntu])<build_ubuntu>
 
-In @build_arch the arch runner configuration is shown, which builds the arch package.
+In @build_arch the Arch runner configuration is shown, which builds the Arch package.
 
 #figure(sourcecode(```yaml
 # omitted setup
@@ -170,4 +170,4 @@ package() {
 ```), 
 kind: "code", 
 supplement: "Listing",
-caption: [PKGBUILD to build the arch package])<arch_package>
+caption: [PKGBUILD to build the Arch package])<arch_package>
