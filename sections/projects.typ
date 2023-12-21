@@ -5,10 +5,9 @@
 In order to develop ReSet, several existing applications, potential
 implementations for features and literature were analyzed.
 
-#subsection(custom_tag: "PRequirements", "Project Requirements")
+#subsection(custom_tag: "PRequirements", "Requirements for existing solutions")
 For ReSet, three different categories will be used to weigh existing projects
 and potential solutions.\
-Simultaneously, these are also requirements for ReSet itself.
 
 - #text(size: 11pt, [*Interoperability*])\
   This is the most important aspect, as it was the main driving factor for this
