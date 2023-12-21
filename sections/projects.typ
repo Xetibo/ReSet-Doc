@@ -8,7 +8,7 @@ implementations for features and literature were analyzed.
 #subsection(custom_tag: "PRequirements", "Project Requirements")
 For ReSet, three different categories will be used to weigh existing projects
 and potential solutions.\
-Simoultaneously, these are also requirements for ReSet itself.
+Simultaneously, these are also requirements for ReSet itself.
 
 - #text(size: 11pt, [*Interoperability*])\
   This is the most important aspect, as it was the main driving factor for this
@@ -50,12 +50,12 @@ requirements specified in @PRequirements. Both full settings applications
 provided by environments and standalone applications for individual technologies
 are compared.
 
-Important to note, that for this section, each application will be evaluated with its
-default dark theme. For GTK applications, the libadwaita dark theme will be
-used. For QT applications, the breeze dark theme will be used, configured via
-the QT_QPA_PLATFORMTHEME=gnome environment flag. This configuration is done to
-keep a consistent look for all applications, without potentially compromising
-their look with non-native themes.
+Important to note, that for this section, each application will be evaluated
+with its default dark theme. For GTK applications, the libadwaita dark theme
+will be used. For QT applications, the breeze dark theme will be used,
+configured via the QT_QPA_PLATFORMTHEME=gnome environment flag. This
+configuration is done to keep a consistent look for all applications, without
+potentially compromising their look with non-native themes.
 
 // no universal app
 //#subsubsection("Solution")
@@ -88,7 +88,7 @@ The code structure of the control center is very modular, with each tab having
 its folder and files. Although it is hard to immediately understand each use
 case of each file. Certain functionality is hard-coded with libraries, like
 networks, which use the NetworkManager library, while others are implemented via
-Dus, like monitors.
+DBus, like monitors.
 
 Settings are stored using dconf@dconf which is a key/value system, that is
 optimized for reading. The form of a dconf file is a _binary_ which makes it
@@ -114,9 +114,9 @@ available on other environments.
     [Not all base features of the GNOME control center work on other environments,
       and GNOME exclusive features cannot be hidden.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Ease of Use", bold: true, cell_align: left), cell(
-    [The user interface of the GNOME control center follows their own best
-      practices @gnome_human_guidelines. It has consistent design, naming makes sense
-      and accessibility is taken into account.], cell_align: left, bold: false, font_size: 11pt,
+    [The user interface of the GNOME control center follows their own best practices
+      @gnome_human_guidelines. It has consistent design, naming makes sense and
+      accessibility is taken into account.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: left), cell("Maintainability", bold: true, cell_align: left), cell(
     [All features of the Gnome control center are within one repository, which
       results in one project maintaining every feature. This can potentially cause
@@ -143,15 +143,15 @@ this type of application.
 Settings are stored by individual modules, which means that a lot of individual
 files will be written/read in order to provide all functionality.
 
-In many cases, for KDE systemsettings it is not the application itself that makes
-it harder to be used on other environments, but the toolkit and the KDE specific
-styling of said toolkit that might not integrate well.
+In many cases, for KDE systemsettings it is not the application itself that
+makes it harder to be used on other environments, but the toolkit and the KDE
+specific styling of said toolkit that might not integrate well.
 
 #pagebreak()
 
 #grid(
   columns: (auto), rows: (20pt), cell(
-    [#figure([], kind: table, caption: [KDE Systemsettings Requirement Fulfillment])<kderequirements>], bold: true,
+    [#figure([], kind: table, caption: [KDE systemsettings Requirement Fulfillment])<kderequirements>], bold: true,
   ),
 )
 #grid(
@@ -164,8 +164,8 @@ styling of said toolkit that might not integrate well.
       modules do not exist as of now.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("(\u{2713})", bold: true, cell_align: center), cell("Ease of Use", bold: true, cell_align: left), cell(
     [The most common criticism of KDE systemsettings is a convoluted design. This
-      stems from the sheer amount of settings the application can provide, alongside
-      its heavy use of submenus that can become confusing when searching for something
+      stems from the amount of settings the application can provide, alongside its
+      heavy use of submenus that can become confusing when searching for something
       specific.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [The modular design of KDE systemsettings allows for great maintainability on the
@@ -187,7 +187,7 @@ made for a universal use case.
 
 *Pavucontrol* | Sound Application\
 Pavucontrol@pavucontrol_repo or PulseAudio Volume Control is an application that
-handles both system-wide input/output, per application output and input streams.
+handles both system-wide input/output and per application output/input streams.
 It is under the umbrella of the Free Desktop project and is directly involved in
 PulseAudio itself. The application itself is written in C++ and GTK3.
 #align(
@@ -196,7 +196,10 @@ PulseAudio itself. The application itself is written in C++ and GTK3.
     )],
 )<pavucontrol>
 
-\
+Pavucontrol opts for a simple but functional user interface with different
+functionality being grouped into their own tab. Noteworthy is the clear
+differentiation between playback and output devices, which separates
+applications using an output device from the output device itself.
 
 #grid(
   columns: (auto), rows: (20pt), cell(
@@ -229,7 +232,9 @@ achieve. Blueman is written in Python and GTK3.
     )],
 )<blueman>
 
-\
+On top of this application itself, Blueman also offers a tray-applet for status
+bars, which is started alongside Blueman. This means that one could use
+Bluetooth without this user interface by interacting with the applet instead.
 
 #grid(
   columns: (auto), rows: (30pt), cell(
@@ -242,9 +247,8 @@ achieve. Blueman is written in Python and GTK3.
       obvious connect button, which might lead to a user trying to mark a device as
       trusted instead of connecting to it. (trusted is the \u{2713} button). Blueman
       also tends to use older icon designs.], cell_align: left, bold: false, font_size: 11pt,
-  ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
-    [Blueman is created in a modular fashion and can be considered easily maintainable.], cell_align: left, bold: false, font_size: 11pt,
-  ), cell("\u{2713}", bold: true, cell_align: center),
+  ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell([Blueman is created in a modular fashion and can be considered easily
+    maintainable.], cell_align: left, bold: false, font_size: 11pt), cell("\u{2713}", bold: true, cell_align: center),
 )
 
 #pagebreak()
@@ -252,16 +256,19 @@ achieve. Blueman is written in Python and GTK3.
 *Nmtui* | Network Application\
 Nmtui@networkmanager_repo is what the name suggests, it is a terminal user
 interface that allows users to use and edit network connections, including VPN
-connections. Nmtui is located in the same project as the network manager itself 
-and is therefore also shipped as part of the network manager package. Both 
-network manager and nmtui are written in C. There is a specific lack of 
-standalone user interface applications for network managers. Technically, 
-the "network-manager-applet"@network_manager_applet by GNOME exists, however, 
-this is to be included in a system tray within status bars and does not work on 
-its own.
+connections. Nmtui is located in the same project as the network manager itself
+and is therefore also shipped as part of the network manager package. Both
+network manager and nmtui are written in C. There is a specific lack of
+standalone user interface applications for network managers. Technically, the "network-manager-applet"@network_manager_applet
+by GNOME exists, however, this is to be included in a system tray within status
+bars and does not work on its own.
 #align(
   center, [#figure(img("nmtui.png", width: 80%), caption: [Wi-Fi connections in nmtui])],
 )<nmtui>
+
+Alongside Nmtui, users can also choose to use Nmcli, which would be the same
+application but without a user interface. Nmcli can also be found within the
+NetworkManager repository.
 
 #grid(
   columns: (auto), rows: (30pt), cell(

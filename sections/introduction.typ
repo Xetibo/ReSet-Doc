@@ -3,18 +3,18 @@
 
 #section("Introduction")
 The Linux ecosystem is well known to be fractured, whether it is the seemingly
-endless amount of distributions, or the various desktop environments,
-there will always be someone who will create something new. With this reality
-comes a challenge to create software that is not dependent on one singular
-distribution or environment.
+endless amount of distributions, or the various desktop environments, there will
+always be someone who will create something new. With this reality comes a
+challenge to create software that is not dependent on one singular distribution
+or environment.
 
 The same lack of universality can be seen when interacting with configuration
 tools. Whenever a user would like to connect to a network, change their volume,
-or connect a Bluetooth device, they have to do this with their environment-specific 
-tool. To a certain degree, this makes sense, users should only see
-settings, which they can use within their environment. Problems arise
-when certain environments do not provide their application, or perhaps
-provide one without the needed functionality.
+or connect a Bluetooth device, they have to do this with their
+environment-specific tool. To a certain degree, this makes sense, users should
+only see settings, which they can use within their environment. Problems arise
+when certain environments do not provide their application, or perhaps provide
+one without the needed functionality.
 
 In this case, users would need to find a variety of different applications which
 combined offer the same functionality. However, due to the split nature of
@@ -23,19 +23,19 @@ different user interfaces. Some might argue that this is the point of these
 minimal environments, as they sometimes intentionally do not offer this type of
 software by default, but there is also a distinct lack of this type of software.
 
-A typical example of a minimal environment is a window manager/compositor.
-In comparison to desktop environments, these do not offer any software other
-than window management: creating windows, removing windows, window positioning,
-etc. Any additional software needs to be installed separately, like status bars,
+A typical example of a minimal environment is a window manager/compositor. In
+comparison to desktop environments, these do not offer any software other than
+window management: creating windows, removing windows, window positioning, etc.
+Any additional software needs to be installed separately, like status bars,
 editors, media viewers, or in this case settings.
 
 Some specific settings like monitor configuration were once universal with tools
-like Xrandr, but with the introduction of the Wayland display
-protocol, the original idea of having a universal display server was abandoned,
-favoring individual implementations instead. This leads to a variety of
-different ways to configure monitors, very few of them being compatible with
-each other. In this case, only a plugin system to handle individual
-implementations could solve this problem @wayland_documentation.
+like Xrandr, but with the introduction of the Wayland display protocol, the
+original idea of having a universal display server was abandoned, favoring
+individual implementations instead. This leads to a variety of different ways to
+configure monitors, very few of them being compatible with each other. In this
+case, only a plugin system to handle individual implementations could solve this
+problem @wayland_documentation.
 
 #subsection("Objectives")
 ReSet will make an effort to change this situation by creating a settings
@@ -57,8 +57,8 @@ compositor and shell components.
 
 #subsection("Challenges")
 - *Consistency*\
-  As discussed in @Objectives, multiple applications will not necessarily create
-  a consistent experience, however, even with a single application, creating a
+  As discussed in @Objectives, multiple applications will not necessarily create a
+  consistent experience, however, even with a single application, creating a
   consistent application with multiple technologies and use cases is not trivial.
 - *Interoperability*\
   The reason for environment-specific applications is the ease of integration. If
@@ -81,7 +81,7 @@ solutions are functional, just not optimal.
 This project was created by first evaluating existing projects in
 @Analysisofexistingapplications and including techniques from literature in
 @UserInterfaceGuidelines. Further, technologies and potential solutions to
-implementations were evaluated in @ImplementationEvaluation. With this information, the
-implementation is documented starting at @Architecture. In the end, the solution
-is discussed in @Conclusion, and potential further improvements are mentioned in
-@Outlook.
+implementations were evaluated in @ImplementationEvaluation. With this
+information, the resulting application is documented in @Results. In the end,
+the solution is discussed in @Conclusion, and potential further improvements are
+mentioned in @Outlook.
