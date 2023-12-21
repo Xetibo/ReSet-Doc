@@ -28,7 +28,7 @@
 
     In summary, ReSet represents a significant advancement in Linux settings
     applications, offering a concise, cross-environment solution that prioritizes
-    user experience through Rusts efficiency and adaptability.
+    user experience through Rusts' efficiency and adaptability.
   ]
 }
 
