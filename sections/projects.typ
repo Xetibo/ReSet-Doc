@@ -35,8 +35,8 @@ Simoultaneously, these are also requirements for ReSet itself.
   While functionality is important, the intention is to provide an application
   that is used by preference. This means that the application should be intuitive
   and usable without prior knowledge about the application. To achieve this, ReSet
-  will use best practices from the GNOME Human Interface Guidelines as well as user
-  interface literature described in @UserInterfaceGuidelines.
+  will use best practices from the GNOME Human Interface Guidelines as well as
+  user interface literature described in @UserInterfaceGuidelines.
 
 - #text(size: 11pt, [*Maintainability*])\
   Applications with a plethora of functionality will get large quickly. This poses
@@ -114,8 +114,9 @@ available on other environments.
     [Not all base features of the GNOME control center work on other environments,
       and GNOME exclusive features cannot be hidden.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Ease of Use", bold: true, cell_align: left), cell(
-    [The user interface of the GNOME control center follows best practices. It has
-      consistent design, naming makes sense and accessibility is taken into account.], cell_align: left, bold: false, font_size: 11pt,
+    [The user interface of the GNOME control center follows their own best
+      practices.@gnome_human_guidelines It has consistent design, naming makes sense
+      and accessibility is taken into account.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: left), cell("Maintainability", bold: true, cell_align: left), cell(
     [All features of the Gnome control center are within one repository, which
       results in one project maintaining every feature. This can potentially cause
@@ -137,7 +138,7 @@ The program is by default very slim and does not feature any standard settings
 on the repository. However, Linux distributions usually ship the KDE standard
 modules, as KDE is the intended environment for this application. For ReSet, KDE
 systemsettings is still a very good resource for implementing modularity with
-this type of application. 
+this type of application.
 
 Settings are stored by individual modules, which means that a lot of individual
 files will be written/read in order to provide all functionality.
@@ -204,13 +205,14 @@ PulseAudio itself. The application itself is written in C++ and GTK3.
 )
 #grid(
   columns: (3fr, 9fr, 30pt), rows: (25pt, 55pt, 55pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
-    [While pavucontrol is generally made for more advanced users, it does follow
-      general best practices and integrates well into all environments.], cell_align: left, bold: false, font_size: 11pt,
+    [While pavucontrol is generally made for more advanced users, it does offer a
+      consistent design with appropriate icons/naming and integrates well into all
+      environments.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [Pavucontrol is made with a modular codebase, which allows for easier adding of
-      features.\ 
-      Note: pavucontrol is feature complete, and will likely not get more
-      features in the future.], cell_align: left, bold: false, font_size: 11pt,
+      features.\
+      Note: pavucontrol is feature complete, and will likely not get more features in
+      the future.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: center),
 )
 
@@ -237,11 +239,11 @@ achieve. Blueman is written in Python and GTK3.
 #grid(
   columns: (3fr, 9fr, 30pt), rows: (30pt, 65pt, 40pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [The user interface for Blueman can be rather confusing, for example: there is no
-      obvious connect button, which might lead to a user trying to mark a device
-      as tRusted instead of connecting to it. (tRusted is the \u{2713} button). Blueman also
-      tends to use older icon designs.], cell_align: left, bold: false, font_size: 11pt,
+      obvious connect button, which might lead to a user trying to mark a device as
+      tRusted instead of connecting to it. (tRusted is the \u{2713} button). Blueman
+      also tends to use older icon designs.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
-    [Blueman follows best practices and can be considered easily maintainable.], cell_align: left, bold: false, font_size: 11pt,
+    [Blueman is created in a modular fashion and can be considered easily maintainable.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: center),
 )
 
@@ -272,7 +274,8 @@ does not work on its own.
   columns: (3fr, 9fr, 30pt), rows: (30pt, 80pt, 30pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [Resizing the terminal breaks the appearance of the application.\
       There is only a single theme.\
-    Users umfamiliar to terminal user interfaces might be unable to use this application.\
+      Users umfamiliar to terminal user interfaces might be unable to use this
+      application.\
       Mouse support is missing.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [The scope of this application is small and depends fully on the parent project,

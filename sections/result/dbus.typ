@@ -118,3 +118,5 @@ In order to further understand the role of the ReSet-Daemon,
 As can be seen in figure @dbus_sequence, the client would need to implement a lot of base functionality in order to communicate with multiple DBus sources.
 It would also mean that any non-DBus source, such as PulseAudio for ReSet, would have to be accessed separately by the client.
 Limiting communication to only use DBus hence simplifies the implementation for the client.
+
+The ObjectManager is a DBus object provided by freedesktop and is implementable for every DBus object, it provides managing(fetching/events) of all objects on a namespace.
