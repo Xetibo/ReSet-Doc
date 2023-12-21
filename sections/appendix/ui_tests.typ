@@ -79,6 +79,7 @@ timeframe.
     - Add different color to connected network
   ],
 )
+#pagebreak()
 #test(
   "Bluetooth", "Users can connect and disconnect Bluetooth devices.", [
     Most users were able to connect and disconnect without issues.
@@ -116,6 +117,7 @@ timeframe.
 
   ],
 )
+#pagebreak()
 #test(
   "Disable Audio devices", "Users can disable input and output devices.", [
     - Disabling audio devices can cause ReSet to freeze. (fixed)

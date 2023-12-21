@@ -79,6 +79,7 @@ timeframe.
     - Add different color to connected network
   ],
 )
+#pagebreak()
 #test(
   "Bluetooth", "Users can connect and disconnect Bluetooth devices.", [
     Most users were able to connect and disconnect without issues.
@@ -116,6 +117,7 @@ timeframe.
 
   ],
 )
+#pagebreak()
 #test(
   "Disable Audio devices", "Users can disable input and output devices.", [
     - Disabling audio devices can cause ReSet to freeze. (fixed)
@@ -148,5 +150,5 @@ timeframe.
 )
 
 #subsubsubsection("General Feedback")
-Users were overall happy with ReSet, with many issues being small improvements which were mostly overlooked due to time as mentioned in @Improvements.
+Users were overall happy with ReSet, with many issues being small improvements which were mostly overlooked due to time as mentioned in @Shortcomings.
 During testing, some major issues were able to be discovered and fixed, like ReSet crashing without Wi-Fi being present on the computer.
