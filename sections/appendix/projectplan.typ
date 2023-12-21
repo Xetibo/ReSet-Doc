@@ -21,6 +21,11 @@ Both the sprint backlog and the product backlog are handled using the #link("htt
 This allows for a clean and automatic handling of created user stories via
 GitHub issues.
 
+#subsubsection("Tools")
+Rust is an editor agnostic language, hence both team members can use their own tools without conflicts.
+For documentation typst is used, which also does not require a special editor, it just requires a compiler which works on all platforms.
+The user interface is made with Cambalache.
+
 #subsection("Time")
 As an agile methodology is used, long-term time management is only broad
 guidance and does not necessarily overlap with reality. In other words, with a 2
@@ -40,3 +45,4 @@ order to leave time for reflection and documentation.
       )],
   )
 ]
+
