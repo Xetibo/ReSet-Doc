@@ -81,14 +81,14 @@ toolkit (GTK4) and follows the GNOME Human Interface
 Guidelines@gnome_human_guidelines.
 #align(
   center, [#figure(
-      img("gnome_control_center.png", width: 80%), caption: [Screenshot of the GNOME control center],
+      img("gnome_control_center.png", width: 80%), caption: [Appearance setting of GNOME control center],
     )],
 )<Gnome_control_center>
 The code structure of the control center is very modular, with each tab having
 its folder and files. Although it is hard to immediately understand each use
 case of each file. Certain functionality is hard-coded with libraries, like
 networks, which use the NetworkManager library, while others are implemented via
-dbus, like monitors.
+Dus, like monitors.
 
 Settings are stored using dconf@dconf which is a key/value system, that is
 optimized for reading. The form of a dconf file is a _binary_ which makes it
@@ -131,7 +131,7 @@ very large variety of settings (on KDE), and offering other applications a way
 to integrate into this application via KConfig Module(KCM)@kcm.
 #align(
   center, [#figure(
-      img("kde_systemsettings.png", width: 80%), caption: [Screenshot of the KDE systemsettings],
+      img("kde_systemsettings.png", width: 80%), caption: [Appearance setting of KDE systemsettings],
     )],
 )<kde_systemsettings>
 The program is by default very slim and does not feature any standard settings
@@ -192,7 +192,7 @@ It is under the umbrella of the Free Desktop project and is directly involved in
 PulseAudio itself. The application itself is written in C++ and GTK3.
 #align(
   center, [#figure(
-      img("pavucontrol.png", width: 80%), caption: [Screenshot of pavucontrol],
+      img("pavucontrol.png", width: 80%), caption: [Output devices of pavucontrol],
     )],
 )<pavucontrol>
 
@@ -225,7 +225,7 @@ functionality, but the buttons are not very expressive of what they will
 achieve. Blueman is written in Python and GTK3.
 #align(
   center, [#figure(
-      img("bluetooth_manager_filled.png", width: 80%), caption: [Screenshot of blueman],
+      img("bluetooth_manager_filled.png", width: 80%), caption: [Main window of blueman],
     )],
 )<blueman>
 
@@ -252,17 +252,15 @@ achieve. Blueman is written in Python and GTK3.
 *Nmtui* | Network Application\
 Nmtui@networkmanager_repo is what the name suggests, it is a terminal user
 interface that allows users to use and edit network connections, including VPN
-connections.\
-Nmtui is located in the same project as the network manager itself and is
-therefore also shipped as part of the network manager package.\
-Both network manager and nmtui are written in C.\
-There is a specific lack of standalone user interface applications for network
-managers.\
-Technically, the "network-manager-applet"@network_manager_applet by GNOME
-exists, however, this is to be included in a system tray within status bars and
-does not work on its own.
+connections.Nmtui is located in the same project as the network manager itself 
+and is therefore also shipped as part of the network manager package. Both 
+network manager and nmtui are written in C. There is a specific lack of 
+standalone user interface applications for network managers. Technically, 
+the "network-manager-applet"@network_manager_applet by GNOME exists, however, 
+this is to be included in a system tray within status bars and does not work on 
+its own.
 #align(
-  center, [#figure(img("nmtui.png", width: 80%), caption: [Screenshot of nmtui])],
+  center, [#figure(img("nmtui.png", width: 80%), caption: [Wi-Fi connections in nmtui])],
 )<nmtui>
 
 #grid(
@@ -274,7 +272,7 @@ does not work on its own.
   columns: (3fr, 9fr, 30pt), rows: (30pt, 80pt, 30pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [Resizing the terminal breaks the appearance of the application.\
       There is only a single theme.\
-      Users umfamiliar to terminal user interfaces might be unable to use this
+      Users unfamiliar to terminal user interfaces might be unable to use this
       application.\
       Mouse support is missing.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(

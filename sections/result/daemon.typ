@@ -142,7 +142,7 @@ Overall this will result in blocked events being queued up and executed when pos
 #figure(sourcecode(
 ```rs
 // example daemon event
-// this example is taken from the audio dbus method GetDefaultSource:
+// this example is taken from the audio DBus method GetDefaultSource:
 
 // send the request to get the default source
 let _ = data.audio_sender.send(AudioRequest::GetDefaultSource);
@@ -211,13 +211,13 @@ with another thread-safe reference to the daemon context.
 #pagebreak()
 
 #subsubsection("Wireless Network")
-The current last piece of functionality is also accessible via DBus.
+The last piece of functionality, Wi-Fi, is also accessible via DBus.
 
 The challenge with NetworkManager is the amount of features it offers,
 besides regular networks, it also offers VPN configuration and usage, as well as
 other connections, including older protocols. For now, ReSet only offers
 wireless network configuration, however in the future this may be expanded upon,
-the library repository for ReSet(ReSet-Lib)@reset_lib already features entries for both VPN and wired
+the library repository for ReSet (ReSet-Lib)@reset_lib already features entries for both VPN and wired
 connections.
 
 The rest of the wireless part is implemented like Bluetooth with an optional

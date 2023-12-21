@@ -18,7 +18,7 @@ Risks are assessed according to the ISO standard with a risk matrix.
     The plugin system might be too ambitious and could take too much time to
     realize.
   ], "High", "Likely", "Marginal", [
-    Instead of a plugin system, dbus[@dbus] or socket connections can be used to
+    Instead of a plugin system, DBus[@dbus] or socket connections can be used to
     realize a limited implementation of expected features.
   ],
 )

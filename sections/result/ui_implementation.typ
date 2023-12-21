@@ -10,7 +10,7 @@ responsive, which means that it will adjust itself depending on window sizes.
 
 There was one feature that was cut after some discussion which was the 
 breadcrumb menu. It was decided that the breadcrumb menu is not necessary 
-because the UI isn't as nested as initially planned. The depth of it is 
+because the UI is not as nested as initially planned. The depth of it is 
 only one level deep at maximum, which means that a breadcrumb bar would be
 redundant. If the UI ever gets deeply nested, the breadcrumb bar could be 
 reconsidered.
@@ -54,13 +54,13 @@ size to maximum size respectively, in @reset_minimal, @reset_vertical and
 @reset_horizontal, each stage is shown visually.
 
 #figure(
-  img("reset_minimal.png", fit: "contain", width: 45%), caption: [Screenshot of ReSet in vertical view without sidebar],  
+  img("reset_minimal.png", fit: "contain", width: 45%), caption: [ReSet in vertical view without sidebar],  
 )<reset_minimal>
 #figure(
-  img("vertical_reset.png", fit: "contain", width: 85%), caption: [Screenshot of ReSet in vertical view],
+  img("vertical_reset.png", fit: "contain", width: 85%), caption: [ReSet in vertical view],
 )<reset_vertical>
 #figure(
-  img("horizontal_reset.png", fit: "contain", width: 95%), caption: [Screenshot of ReSet in horizontal view],
+  img("horizontal_reset.png", fit: "contain", width: 95%), caption: [ReSet in horizontal view],
 )<reset_horizontal>
 
 To prevent using popups or relying on hamburger menus, ReSet opted to provide advanced configuration of each functionality
@@ -74,7 +74,7 @@ for all currently open programs utilizing audio.
 
 
 #figure(
-  img("reset_audio.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Audio section],
+  img("reset_audio.png", fit: "contain", width: 90%), caption: [ReSet Audio section],
 )<reset_audio>
 
 Results from the @MidpointUITests show a positive reception of the audio interface.
@@ -83,11 +83,11 @@ Additional configuration, such as audio profiles and per-device adjustment
 are available in the device and profile settings respectively.
 
 #figure(
-  img("reset_audio_profiles.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Audio profiles section],
+  img("reset_audio_profiles.png", fit: "contain", width: 90%), caption: [ReSet Audio profiles section],
 )<reset_profiles>
 
 #figure(
-  img("reset_audio_devices.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Audio devices section],
+  img("reset_audio_devices.png", fit: "contain", width: 90%), caption: [the ReSet Audio devices section],
 )<reset_audio_devices>
 
 
@@ -97,7 +97,7 @@ The Wi-Fi settings provide a short general adjustment at the top, using a global
 while the other entries are changing Wi-Fi adapters or adjusting stored Wi-Fi connections respectively.
 
 #figure(
-  img("reset_wifi.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Wi-Fi section],
+  img("reset_wifi.png", fit: "contain", width: 90%), caption: [ReSet Wi-Fi section],
 )<reset_wifi>
 
 The access points themselves are shown in a continuous list, using the same module as implemented in the audio section.
@@ -109,7 +109,7 @@ Bluetooth has the same setup as Wi-Fi, with the only difference being
 the differentiation between connected and available devices.
 
 #figure(
-  img("reset_bluetooth.png", fit: "contain", width: 90%), caption: [Screenshot of the ReSet Bluetooth section],
+  img("reset_bluetooth.png", fit: "contain", width: 90%), caption: [ReSet Bluetooth section],
 )<reset_bluetooth>
 
 As mentioned in @UserInterfaceGuidelines ReSet intends to be as consistent as possible, which is why the same style principles were applied to all pages within ReSet.
@@ -150,7 +150,7 @@ Future entries can be created using the sidebar entry developed for ReSet, with 
 The Menu on the top right is a standard GTK menu, providing a consistent experience with other GTK applications.
 
 #figure(
-  img("menu.png", fit: "contain", width: 100pt), caption: [Screenshot of the ReSet popover menu],
+  img("menu.png", fit: "contain", width: 100pt), caption: [the ReSet popover menu],
 )<reset_menu>
 
 #subsubsection("Template Binding")
@@ -218,7 +218,7 @@ fn impl_hello_macro(ast: &syn::DeriveInput) -> TokenStream {
   caption: [An example macro from the book: "The Rust Programming Language"@Rust_macros],
 )<macro_example>
 
-The binding itself is created via the PImpl(Pointer to Implementation) idiom,
+The binding itself is created via the PImpl (Pointer to Implementation) idiom,
 which allows for a generic implementation of an object without immediate
 recompilation unless the object itself is changed. As defined by cppreference@pimpl@pimpl_gotw, this
 idiom is usually applied in C++, but can also be used with Rust, and is also

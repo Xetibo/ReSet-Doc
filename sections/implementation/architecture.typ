@@ -11,7 +11,6 @@
 
 #subsubsection("Description")
 *Hyprland, GNOME, KDE* | Various desktop environments or window managers/compositors.\
-use(persistence).\
 *PulseAudio* | The de-facto default Linux sound server.\ 
 *bluez* | The standard Linux Bluetooth stack.\ 
 *NetworkManager* | A very popular Linux network stack.\ 

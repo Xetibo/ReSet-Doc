@@ -279,7 +279,7 @@ however, it currently lacks documentation and needs several library
 implementations in order to fit with ReSets' requirements.@iced
 
 The last consideration is QT, it is a cross-platform toolkit that uses its own
-form of JavaScript(QML) to draw windows.@qt @qml QT is a well-known toolkit, however, it
+form of JavaScript (QML) to draw windows.@qt @qml QT is a well-known toolkit, however, it
 is completely unknown to the project team members, making it a suboptimal choice.\
 For QT, there is also the consideration of integration mentioned in
 @Analysisofexistingapplications.

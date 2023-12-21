@@ -11,7 +11,7 @@
 
 #subsubsection("Description")
 *Persistent Data* | A subset of the service data that will be saved for later
-use(persistence).\
+use (persistence).\
 *Plugin Data* | Data created for a specific plugin, needs to be provided by the
 plugin developer.\
 *ReSet* | The graphic user interface for ReSet.\
