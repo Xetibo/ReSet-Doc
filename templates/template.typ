@@ -40,7 +40,7 @@
   abstract
   pagebreak()
   heading(
-    "Acknowledgements", numbering: none, bookmarked: false, outlined: false,
+    "Acknowledgments", numbering: none, bookmarked: false, outlined: false,
   )
   acknowledgements
   set align(center)

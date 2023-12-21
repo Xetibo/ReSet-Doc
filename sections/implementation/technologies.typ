@@ -185,7 +185,7 @@ debugger, LSP and more. With Rust, this is not the case, as it either provides
 said tool or uses a well-established open-source tool for each task. This
 avoids cases like the official and proprietary C\#
 debugger, which only works with
-official Microsoft tools @csharp_debugger_notes @csharp_debugger_issue, or the C++ problem of having multiple compilers with different
+official Microsoft tools @csharp_debugger_notes @csharp_debugger_issue or the C++ problem of having multiple compilers with different
 feature sets. Hence, both languages described will have different experiences
 on different platforms and editors/IDEs @cpp_compilers@Rust_compiler.
 

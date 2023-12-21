@@ -39,7 +39,7 @@ service. Additional systems will be integrated with a plugin-system which allows
 for integration of specific environments.
 
 Interaction with the daemon can either be done with the user interface
-application provided by ReSet, or with IPC interaction from another source, this
+application provided by ReSet or with IPC interaction from another source, this
 is explicitly done to allow third-party applications to also use ReSet.
 
 The plugins are made via dynamic libraries, which are loaded by both the daemon

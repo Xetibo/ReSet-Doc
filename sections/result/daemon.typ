@@ -189,7 +189,7 @@ DBus API.
 #figure(
   columns(2, [
     #align(center, [
-      All DBus objects on bluez can either be accessed via events, or via a manual method call:
+      All DBus objects on bluez can either be accessed via events or via a manual method call:
       #image("../../figures/bluez_objectmanager.png", width: 100%)])
     #colbreak()
     #align(center, [

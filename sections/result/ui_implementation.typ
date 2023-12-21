@@ -27,9 +27,9 @@ The paper "The anatomy of the modern window manager" explains the concept of
 tiling in a more detailed manner @window_manager_study.
 
 For ReSet, the importance of tiling is the behavior of applications in this environment.
-Concepts such as minimum window size, maximum window size, or popups are often a hindrance 
+Concepts such as minimum window size, maximum window size or popups are often a hindrance 
 to tiling. A window will always be placed according to the rules of the layout, and this 
-could mean having as little as a few pixels left to be placed, or the entire screen, hence 
+could mean having as little as a few pixels left to be placed or the entire screen, hence 
 size constraints are incompatible. For popups, the most breaking change is the focus change 
 and the placement of the popup. A tiling window manager has to consider a popup as a 
 different type of window that should not be considered for tiling, and should instead use 

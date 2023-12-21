@@ -3,7 +3,7 @@
 
 #section("Introduction")
 The Linux ecosystem is well known to be fractured, whether it is the seemingly
-endless amount of distributions, or the various desktop environments, there will
+endless amount of distributions or the various desktop environments, there will
 always be someone who will create something new. With this reality comes a
 challenge to create software that is not dependent on one singular distribution
 or environment.
@@ -13,7 +13,7 @@ tools. Whenever a user would like to connect to a network, change their volume,
 or connect a Bluetooth device, they have to do this with their
 environment-specific tool. To a certain degree, this makes sense, users should
 only see settings, which they can use within their environment. Problems arise
-when certain environments do not provide their application, or perhaps provide
+when certain environments do not provide their application or perhaps provide
 one without the needed functionality.
 
 In this case, users would need to find a variety of different applications which
@@ -27,7 +27,7 @@ A typical example of a minimal environment is a window manager/compositor. In
 comparison to desktop environments, these do not offer any software other than
 window management: creating windows, removing windows, window positioning, etc.
 Any additional software needs to be installed separately, like status bars,
-editors, media viewers, or in this case settings.
+editors, media viewers or in this case settings.
 
 Some specific settings like monitor configuration were once universal with tools
 like Xrandr, but with the introduction of the Wayland display protocol, the
@@ -45,7 +45,7 @@ application to fill the current gap. This allows users to avoid installing one
 tool for each task, while also using one user interface with consistent design.
 
 ReSet should be able to handle basic audio input and output, network and
-Bluetooth connectivity for starters. For more advanced features, or specific
+Bluetooth connectivity for starters. For more advanced features or specific
 features, such as monitor configurations for individual compositors, ReSet
 should have a plugin system, that allows for modular expansion of the
 application. This modularity also allows for interaction with tools such as
@@ -68,10 +68,10 @@ compositor and shell components.
 - *Features*\
   In order for ReSet to be a viable alternative to existing solutions, it would
   need to cover the majority of use cases, this means supporting as many features
-  as possible, or providing a plugin system for modular expansion.
+  as possible or providing a plugin system for modular expansion.
 - *Maintainability*\
   With increasing scope, the overhead for developers will increase, causing
-  potential slowdowns in development, or release cycles.
+  potential slowdowns in development or release cycles.
 
 The challenges specified in combination with a smaller user base for minimal
 environments are likely the cause for a missing universal solution. The previous

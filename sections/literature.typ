@@ -147,7 +147,7 @@ applications.
 - *"Strive for consistency" - "The eight golden rules"* @shneiderman\
   No matter how one creates a user interface, the very first thing one should
   thrive for is to make it consistent. This includes practices like ensuring items
-  have the same appearance no matter where they are placed, or that buttons with
+  have the same appearance no matter where they are placed or that buttons with
   similar functionality and have the same labeling. In "Designing the user
   interface" @shneiderman, the authors empathized this in chapter 2.4.3 with a
   clear example:
@@ -174,7 +174,7 @@ access it.
 KDE systemsettings in contrast work with text files as Thomas and Hunt advocate,
 but their files are all over the place, meaning it is often hard to understand
 where a certain setting might be if you would like to change something, perhaps
-due to a bug in the graphical user interface, or because you just like to make
+due to a bug in the graphical user interface or because you just like to make
 these changes manually.
 
 For ReSet, using small and structured text files over databases ensures version
