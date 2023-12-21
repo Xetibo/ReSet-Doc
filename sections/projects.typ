@@ -7,14 +7,15 @@ implementations for features and literature were analyzed.
 
 #subsection(custom_tag: "PRequirements", "Project Requirements")
 For ReSet, three different categories will be used to weigh existing projects
-and potential solutions.
+and potential solutions.\
+Simoultaneously, these are also requirements for ReSet itself.
 
 - #text(size: 11pt, [*Interoperability*])\
   This is the most important aspect, as it was the main driving factor for this
   work. Interoperability for ReSet is defined as the ease of use of a particular
   project in different environments. Important to note, is that multiple factors
   are considered:
-  - *Amount of working features*
+  - *Amount of working features*\
     The amount of features of the application that work on every environment.
   - *Amount of non-working features*\
     This specifically refers to residue entries that would work on the expected
@@ -22,21 +23,21 @@ and potential solutions.
   - *Interoperability of toolkit*\
     Depending on the toolkit, it might behave differently with specific modules
     missing from other environments, this would once again increase the amount of
-    additional work is needed, in order to get the expected interface.
+    additional work needed, in order to get the expected interface.
   - *Behavior in different environments*\
     Depending on the environment, applications have different ways of displaying
     themselves with different attributes like a minimum size. These constraints
     might not work well with different types of window management. A tiling window
     manager does not consider the minimum size of an application, as it will place
-    it according to its layout rule. Applications with large minimum sizes are
-    therefore preferably avoided.
+    the window according to its layout rule. Applications with large minimum sizes
+    are therefore preferably avoided.
 - #text(size: 11pt, [*Ease of use*])\
   While functionality is important, the intention is to provide an application
-  that is used by preference. This means that the application should be easy to 
-  use because it should feel like something they already know. To achieve this, 
-  ReSet will follow the GNOME Human Interface Guidelines as well as best practices 
-  by Steve Krug described in @UserInterfaceGuidelines. 
-  
+  that is used by preference. This means that the application should be intuitive
+  and usable without prior knowledge about the application. To achieve this, ReSet
+  will use best practices from the GNOME Human Interface Guidelines as well as user
+  interface literature described in @UserInterfaceGuidelines.
+
 - #text(size: 11pt, [*Maintainability*])\
   Applications with a plethora of functionality will get large quickly. This poses
   a particularly hard challenge for developers to keep the project maintainable.
@@ -55,7 +56,6 @@ used. For QT applications, the breeze dark theme will be used, configured via
 the QT_QPA_PLATFORMTHEME=gnome environment flag. This configuration is done to
 keep a consistent look for all applications, without potentially compromising
 their look with non-native themes.
-
 
 // no universal app
 //#subsubsection("Solution")
@@ -112,7 +112,7 @@ available on other environments.
     "Justification", bold: true, height: 20pt, cell_align: left, use_under: true,
   ), cell("", bold: true, height: 20pt, cell_align: left, use_under: true), cell("Interoperability", bold: true, cell_align: left), cell(
     [Not all base features of the GNOME control center work on other environments,
-      and GNOME exclusive features can't be hidden.], cell_align: left, bold: false, font_size: 11pt,
+      and GNOME exclusive features cannot be hidden.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Ease of Use", bold: true, cell_align: left), cell(
     [The user interface of the GNOME control center follows best practices. It has
       consistent design, naming makes sense and accessibility is taken into account.], cell_align: left, bold: false, font_size: 11pt,
@@ -136,10 +136,8 @@ to integrate into this application via KConfig Module(KCM)@kcm.
 The program is by default very slim and does not feature any standard settings
 on the repository. However, Linux distributions usually ship the KDE standard
 modules, as KDE is the intended environment for this application. For ReSet, KDE
-systemsettings are still a very good resource for implementing modularity with
-this type of application. The only caveat would be the obvious difference in
-both programming language and toolkit. This is especially a problem since QT
-uses its scripting language QML@qml, which is based on JavaScript.
+systemsettings is still a very good resource for implementing modularity with
+this type of application. 
 
 Settings are stored by individual modules, which means that a lot of individual
 files will be written/read in order to provide all functionality.
@@ -179,12 +177,12 @@ styling of said toolkit that might not integrate well.
 #pagebreak()
 
 #subsubsection("Standalone Settings")
-These applications focus on one specific functionality and don't offer anything
+These applications focus on one specific functionality and do not offer anything
 else. This means one would need to use multiple of these, in order to replicate
 what the other 2 discussed programs offer.
 
 Interoperability will not be considered for these applications, as they were
-made for its intended use case.
+made for a universal use case.
 
 *Pavucontrol* | Sound Application\
 Pavucontrol@pavucontrol_repo or PulseAudio Volume Control is an application that
@@ -205,12 +203,13 @@ PulseAudio itself. The application itself is written in C++ and GTK3.
   ),
 )
 #grid(
-  columns: (3fr, 9fr, 30pt), rows: (25pt, 55pt, 40pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
+  columns: (3fr, 9fr, 30pt), rows: (25pt, 55pt, 55pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [While pavucontrol is generally made for more advanced users, it does follow
       general best practices and integrates well into all environments.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [Pavucontrol is made with a modular codebase, which allows for easier adding of
-      features. Note: pavucontrol is feature complete, and will likely not get more
+      features.\ 
+      Note: pavucontrol is feature complete, and will likely not get more
       features in the future.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: center),
 )
@@ -219,7 +218,7 @@ PulseAudio itself. The application itself is written in C++ and GTK3.
 
 *Blueman* | Bluetooth Application\
 Blueman@blueman_repo allows connecting and managing of Bluetooth connections, as
-well as some quality-of-life features like sending of files. It works great in
+well as some quality-of-life features like file transfer. It works great in
 functionality, but the buttons are not very expressive of what they will
 achieve. Blueman is written in Python and GTK3.
 #align(
@@ -238,9 +237,9 @@ achieve. Blueman is written in Python and GTK3.
 #grid(
   columns: (3fr, 9fr, 30pt), rows: (30pt, 65pt, 40pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [The user interface for Blueman can be rather confusing, for example: there is no
-      obvious connect button, which might lead to a user trying to re-pair a device
-      instead of connecting to it. (pairing is the \u{2713} button). Blueman also
-      tends to use older icon design.], cell_align: left, bold: false, font_size: 11pt,
+      obvious connect button, which might lead to a user trying to mark a device
+      as tRusted instead of connecting to it. (tRusted is the \u{2713} button). Blueman also
+      tends to use older icon designs.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [Blueman follows best practices and can be considered easily maintainable.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: center),
@@ -270,9 +269,11 @@ does not work on its own.
   ),
 )
 #grid(
-  columns: (3fr, 9fr, 30pt), rows: (30pt, 40pt, 30pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
+  columns: (3fr, 9fr, 30pt), rows: (30pt, 80pt, 30pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [Resizing the terminal breaks the appearance of the application.\
-      There is only a single theme.], cell_align: left, bold: false, font_size: 11pt,
+      There is only a single theme.\
+    Users umfamiliar to terminal user interfaces might be unable to use this application.\
+      Mouse support is missing.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [The scope of this application is small and depends fully on the parent project,
       it can be considered to be maintainable.], cell_align: left, bold: false, font_size: 11pt,

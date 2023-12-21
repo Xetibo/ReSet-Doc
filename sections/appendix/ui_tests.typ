@@ -4,7 +4,7 @@
 #subsubsection("ReSet Test")
 #test("Search bar and Sidebar", 
   "User can filter settings by typing in the search bar. Clicking on a setting will open the corresponding settings box and reset the sidebar.",
-  [sdf ]
+  []
 )
 #test(
   "Dynamic window", 

@@ -2,29 +2,15 @@
 #lsp_placate()
 
 #subsection("UI Design")
-The initial UI mocks have been made in a generic PDF tool. The goal of these
-mocks is to get a general idea of how the UI should look like and to figure out
-a good user experience.
-#align(
-  center, [#figure(
-      img("monitormock.png", width: 75%), caption: [UI mock of monitor setting],
-    )<uimock4>],
-)
-#align(
-  center, [#figure(
-      img("widemock.png", width: 75%), caption: [UI mock behavior on wide monitor screen],
-    )<uimock5>],
-)
-
-#pagebreak()
-There are multiple ways to build GTK UI. The first one is to use the GTK library
+#subsubsection("UI Build Toolkit")
+There are multiple ways to build GTK user interfaces. The first one is to use the GTK library
 itself to build the UI directly in the code. The next two tools are UI builders
 like Glade @glade and Cambalache @cambalache. These tools will also be evaluated
-using a value table using a score range between 0 and 10 for each category. Each
+using a value table with a score range between 0 and 10 for each category. Each
 category is also given a weight to express impact.\
 The weights are as follows: low -> 1, medium -> 2, high -> 3
 
-The following categories are evaluated for programming languages:
+The following categories are evaluated: 
 - *Functionality* | weight: high\
   Describes how many features the tool has to help development. More functionality
   means that it is easier and faster to implement certain features. But too much
@@ -74,9 +60,9 @@ The following categories are evaluated for programming languages:
   ), cell(" ", fill: silver, bold: true),
 )
 
-ReSet will use Cambalache to build the UI. The reason for this it provides an application 
+ReSet will use Cambalache to build the UI, as it provides an application 
 in which the UI can be built with drag and drop. This makes it easy to instantly see how 
-the UI looks. Glade does provide the "same" functionality because Cambalache is heavily inspired, 
+the UI looks. Glade does provide the same functionality because Cambalache is heavily inspired, 
 but it doesn't support GTK4 and is no longer maintained. While code created user
 interface has impressive scores in the Collaboration and Updates categories, it
 is harder to use because there is no UI builder.
@@ -91,36 +77,52 @@ Libadwaita is a library that extends the features of GTK. It is developed by
 the GNOME project and thus follows the GNOME Human Interface Guidelines as well.
 It provides a lot of beautiful UI widgets that make the UI feel modern.
 
+#subsubsection("UI Mock")
+The initial UI mocks have been made in a generic PDF tool. The goal of these
+mocks is to get a general idea of how the UI should look like and to figure out
+a good user experience.
+#align(
+  center, [#figure(
+      img("monitormock.png", width: 75%), caption: [UI mock of monitor setting],
+    )<uimock4>],
+)
+#align(
+  center, [#figure(
+      img("widemock.png", width: 75%), caption: [UI mock behavior on wide monitor screen],
+    )<uimock5>],
+)
+
+
 #text(12pt, [*UI structure*])\
 The settings app can be divided into two parts. The left part is a sidebar that
 contains a list of all settings and the right side displays the actual setting
 where the user can make changes. While this is not a standard, it is a very
-common layout structure as seen in @Analysisofexistingapplications and even on
+common layout structure as seen in @Analysisofexistingapplications and can also be found on
 other OS like Windows and macOS. The list of settings contains multiple
-categories like Connectivity and Sound, and each of them contains more
+categories like Connectivity, Sound and more, with each of them containing more
 subcategories.
 
 Because a settings app contains a lot of configuration options and customization
 features, having a search bar is a necessity. To make it as smooth as possible,
 the list of setting categories is updated for every character typed to only show
 relevant options. This has already been implemented in JetBrains Rider for
-example. In the figure below, searching for specific settings reduces the list
+example. In the @jetbrains, searching for specific settings reduces the list
 to a handful of matching entries that may contain the setting the user is
 looking for.
 #figure(
   grid(
     columns: 2, gutter: 0mm, img("riderSettingFull.png", width: 75%), img("riderSettingFiltered.png", width: 75%),
   ), caption: "JetBrains Rider setting search bar",
-)
+)<jetbrains>
 
 The right side displays the settings that can be configured. It is dynamically
-adding new settings to the screen if there's enough space to facilitate it. For
+adding new settings to the screen if there is enough space to facilitate it. For
 example, if the user clicks on a category like Connectivity, it will show the
 Wi-Fi settings and if there is enough space, Bluetooth and VPN settings are also
 displayed next to it in a flowbox layout. But if the user clicks on the Wi-Fi
 setting, only the Wi-Fi setting is visible because it is clear that the other
 settings are irrelevant. This is especially useful on bigger monitor sizes,
-because there's generally a lot of unused space in the settings applications mentioned
+because there is generally a lot of unused space in the settings applications mentioned
 in @Analysisofexistingapplications, especially if the window is displayed in
 full screen.
 #align(
@@ -131,17 +133,15 @@ full screen.
 )
 
 On top of that, the settings are structured in a hierarchical order, which
-allows us to have a breadcrumb menu similar to file paths. This can help users
-backtrack to previous sections without having to restart their search from the
-beginning. This hierarchical order allows users to navigate using the Back button. 
+allows ReSet to have a breadcrumb menu similar to file paths.
+This hierarchical order allows users to navigate using the Back button. 
 #align(
   center, [#figure(
       img("windowsBreadcrumb.png", width: 75%), caption: [Windows 11 breadcrumb menu],
     )<uimock2>],
 )
 
-The following figures are the first UI mocks that follow all the ideas mentioned
-above using Cambalache.
+The following figures are the first UI mocks that follow all the mentioned ideas using Cambalache.
 #align(
   center, [#figure(img("wifimock.png", width: 90%), caption: [UI mock of Wi-Fi setting])<uimock3>],
 )

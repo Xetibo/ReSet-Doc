@@ -81,7 +81,7 @@ solutions are functional, just not optimal.
 This project was created by first evaluating existing projects in
 @Analysisofexistingapplications and including techniques from literature in
 @UserInterfaceGuidelines. Further, technologies and potential solutions to
-implementations were evaluated in @Implementation. With this information, the
+implementations were evaluated in @ImplementationEvaluation. With this information, the
 implementation is documented starting at @Architecture. In the end, the solution
 is discussed in @Conclusion, and potential further improvements are mentioned in
 @Outlook.

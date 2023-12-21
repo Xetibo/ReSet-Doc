@@ -115,4 +115,4 @@ abstracted further for better maintainability and readability.
 The challenge here is to ensure that ReSet does not compromise on performance
 with too many thread-safe references, and while still providing a clean
 abstraction. This is especially hard with GTK subclassing, which does not always
-work perfectly with rust features.
+work perfectly with Rust features.
