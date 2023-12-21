@@ -347,3 +347,8 @@ neovim_lua:
   title: Noevim Lua Documenation
   author: Neovim
   url: https://neovim.io/doc/user/lua.html
+dbus: 
+  type: web
+  title: dbus
+  author: freedesktop
+  url: https://www.freedesktop.org/wiki/Software/dbus/

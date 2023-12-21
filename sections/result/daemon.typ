@@ -2,7 +2,7 @@
 #lsp_placate()
 
 #subsection("Daemon Implementation")
-This section documents the code for the backend part of ReSet.
+This section documents the code for the DBus service part of ReSet.
 
 #subsubsection("Data structure References")
 All relevant data structures for this section can be found in the appendix
@@ -16,6 +16,7 @@ is provided as a context and can be accessed only within the main loop.
 
 // typstfmt::off
 #figure(sourcecode(```rs
+// omitted creation of data -> type is DaemonData
 // insert data and features into context
 let token = cross.register("org.Xetibo.ReSet.Daemon", |c| {
    c.method(
@@ -28,7 +29,7 @@ let token = cross.register("org.Xetibo.ReSet.Daemon", |c| {
        },
    );
 });
-cross.insert(DBUS_PATH, &features, token);
+cross.insert(DBUS_PATH, &token, data);
 
 // process events until shutdown
 conn.start_receive(
@@ -48,13 +49,13 @@ Whenever this function is called the main loop will execute the registered closu
 
 This setup alone would suffice for regular request/response functions,
 however, ReSet is also required to implement events as certain technologies like Bluetooth require them.
-They are also required to provide instant feedback for a user interface application, upon a state change.
+They are also required to provide instant feedback for a user interface application upon a state change.
 For this reason, ReSet also offers a listener for each functionality which will be explained in detail in their respective subsections.
 
 #pagebreak()
 
 #subsubsection("Audio")
-As planned in @Architecture, the PulseAudio library was used to implement the
+As planned in @Architecture, PulseAudio was used to implement the
 audio portion of the ReSet daemon. In concrete terms, the library libpulse-binding
 @libpulse_binding, which wraps the C PulseAudio functions to Rust was used.
 
@@ -154,6 +155,10 @@ kind: "code",
 supplement: "Listing",
 caption: [Audio event handling])<audio_dbus_events>
 
+Important to note for audio is that the listener has to be active for the entire lifecycle of the DBus daemon.
+This is because the listener is used to provide basic features such as listing of all audio devices,
+hence no functionality would be provided without listener.
+
 #pagebreak()
 
 #subsubsection("Bluetooth")
@@ -200,27 +205,22 @@ DBus API.
   caption: [bluez ObjectManager Usage]
 )<bluez_objectmanager>
 
-A big difference to the PulseAudio listener is that the majority of the
-functions can be used without the listener, for PulseAudio, *every* function has
-to use the listener via the message-passing channel. For clients of ReSet, this
-means that simpler usage without events is possible as well.
-
 Within the listener for events, the responses can also be sent to DBus directly
-with another thread-safe reference to the daemon context.
+with another thread-safe reference to the daemon context as already shown in @dbus_event.
 
 #pagebreak()
 
 #subsubsection("Wireless Network")
 The last piece of functionality, Wi-Fi, is also accessible via DBus.
 
-The challenge with NetworkManager is the amount of features it offers,
-besides regular networks, it also offers VPN configuration and usage, as well as
+The challenge with NetworkManager is the amount of features it offers.
+Besides regular networks, it also offers VPN configuration and usage, as well as
 other connections, including older protocols. For now, ReSet only offers
-wireless network configuration, however in the future this may be expanded upon,
-the library repository for ReSet (ReSet-Lib @reset_lib) already features entries for both VPN and wired
+wireless network configuration, however in the future, this may be expanded upon.
+The library repository for ReSet (ReSet-Lib @reset_lib) already features entries for both VPN and wired
 connections.
 
-The rest of the wireless part is implemented like Bluetooth with an optional
+The base DBus client usage of Wi-Fi is implemented like Bluetooth with an optional
 listener exposed for clients.
 
 #subsubsubsection("Network Manager")
@@ -271,4 +271,10 @@ if let Some(parsed_access_point) = access_point {
 kind: "code",
 supplement: "Listing",
 caption: [WifiDeviceChanged event])<wifidevicechanged_event>
+
+A big difference to the PulseAudio and Bluetooth listener is that the majority of the
+functions can be used without the listener, for PulseAudio, *every* function has
+to use the listener via the message-passing channel,
+while for Bluetooth the technology requires a manual request for scans.
+For clients of ReSet, this means that simpler usage without events is possible as well.
 

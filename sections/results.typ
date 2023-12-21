@@ -6,6 +6,6 @@ In this section, the results of ReSet are discussed.
 #pagebreak()
 #include "result/daemon.typ"
 #pagebreak()
-#include "result/ui_implementation.typ"
-#pagebreak()
 #include "result/application.typ"
+#pagebreak()
+#include "result/ui_implementation.typ"

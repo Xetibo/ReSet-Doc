@@ -25,7 +25,7 @@
   #glossary_entry(
     use_show: use_show_ref, "DBus", [Low-level API providing inter-process communication (IPC) on UNIX operating
       systems. ],
-  )<dbus>
+  )<dbus_glossary>
   #glossary_entry(
     use_show: use_show_ref, "Desktop Environment", [
       A collection of software, enabling a graphical user interface experience to do
