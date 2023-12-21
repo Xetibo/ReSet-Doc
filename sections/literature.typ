@@ -168,7 +168,7 @@ persistent storage, and ReSet also needs to handle this.\
 The already mentioned GNOME control center handles this via a database, contrary
 to the chapter in the aforementioned book. This is done for increased speed in
 loading and storing configuration data. However, it does come with the downside
-of needing a program to interact with the stored data, as you can't otherwise
+of needing a program to interact with the stored data, as you cannot otherwise
 access it.
 
 KDE systemsettings in contrast work with text files as Thomas and Hunt advocate,

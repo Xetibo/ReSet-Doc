@@ -8,7 +8,7 @@ Reaching the project's midpoint, the UI mock of ReSet was given out to a select
 few people for testing and reviewing purposes. The idea is the get feedback
 early so that there is still enough time to change the UI without much effort.
 Because it is only a UI mock test, it was not possible to ask for feedback for all
-tests defined in @ReSetUserTest because it hasn't been implemented yet.
+tests defined in @ReSetUserTest because it has not been implemented yet.
 
 - *Navigation feedback*
 The feedback is very positive, especially with the mention of the ability to
@@ -35,7 +35,7 @@ appreciated the design while providing valuable advice on how to improve it.
 - *Conclusion*
 Feedback around navigation and readability was positive, mostly attributed to
 the currently simple UI. It is important to note that readability is already
-configured by the user or by using system defaults. ReSet doesn't overwrite
+configured by the user or by using system defaults. ReSet does not overwrite
 these configurations to keep a consistent look throughout the user's system.
 Concerning the layout and design, there will be improvements made by templating
 common UI building blocks, which will fix the issue of inconsistent design and

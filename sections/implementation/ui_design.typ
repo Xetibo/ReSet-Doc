@@ -63,7 +63,7 @@ The following categories are evaluated:
 ReSet will use Cambalache to build the UI, as it provides an application 
 in which the UI can be built with drag and drop. This makes it easy to instantly see how 
 the UI looks. Glade does provide the same functionality because Cambalache is heavily inspired, 
-but it doesn't support GTK4 and is no longer maintained. While code created user
+but it does not support GTK4 and is no longer maintained. While code created user
 interface has impressive scores in the Collaboration and Updates categories, it
 is harder to use because there is no UI builder.
 #align(center, [#figure(

@@ -65,7 +65,7 @@
   #glossary_entry(
     use_show: use_show_ref, "Shell Component", [
       This refers to an application that integrates into the compositor, it differs to
-      windows in layering, meaning shell components can't be dragged around, and they
+      windows in layering, meaning shell components cannot be dragged around, and they
       can either be drawn beneath all windows (desktop widgets) or on top of
       windows (overlays).
     ],

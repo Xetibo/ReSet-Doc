@@ -61,7 +61,7 @@ caption: [ReSet settings box])<reset_settings_box>
 
 Alongside this, the flowbox which houses the containers was created to always
 use the optimal amount of screen space available. This translates to a window
-that doesn't feel empty, even on ultrawide monitors. At the same time, the
+that does not feel empty, even on ultrawide monitors. At the same time, the
 flowbox provides the response design aspects that users have gotten used to on
 web applications. This means that ReSet can also be used on vertical monitors
 without issue.

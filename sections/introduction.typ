@@ -13,14 +13,14 @@ tools. Whenever a user would like to connect to a network, change their volume,
 or connect a Bluetooth device, they have to do this with their environment-specific 
 tool. To a certain degree, this makes sense, users should only see
 settings, which they can use within their environment. Problems arise
-when certain environments don't provide their application, or perhaps
+when certain environments do not provide their application, or perhaps
 provide one without the needed functionality.
 
 In this case, users would need to find a variety of different applications which
 combined offer the same functionality. However, due to the split nature of
 multiple applications, users end up with different levels of polish and
 different user interfaces. Some might argue that this is the point of these
-minimal environments, as they sometimes intentionally don't offer this type of
+minimal environments, as they sometimes intentionally do not offer this type of
 software by default, but there is also a distinct lack of this type of software.
 
 A typical example of a minimal environment is a window manager/compositor.

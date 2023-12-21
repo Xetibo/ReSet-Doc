@@ -28,7 +28,7 @@ Risks are assessed according to the ISO standard with a risk matrix.
     seamless as planned.
   ], "Low", "Rare", "Marginal", [
     Potential use of alternative integrations.\
-    Example: The standard NetworkManager doesn't integrate well → use
+    Example: The standard NetworkManager does not integrate well → use
     Systemd-networkd instead.
   ],
 )
