@@ -10,7 +10,7 @@ rather strict adherence to these guidelines is needed, ReSet will still use the
 best practices that are employed by these guidelines.
 
 These best practices can also be seen in the book "Don't Make Me Think" by Steve
-Krug@krug, or in "Designing the User Interface" by Ben Shneiderman and Catherine
+Krug @krug, or in "Designing the User Interface" by Ben Shneiderman and Catherine
 Plaisant @shneiderman. In both works the authors defined rules to follow when
 creating user interfaces. Steve Krug specifically focused on the web, however,
 the vast majority of these rules can be applied in the same manner on desktop

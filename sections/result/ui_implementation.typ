@@ -62,7 +62,7 @@ size to maximum size respectively, in @reset_minimal, @reset_vertical and
 )<reset_horizontal>
 
 To prevent using popups or relying on hamburger menus, ReSet opted to provide advanced configuration of each functionality
-using the AdwNavigationPage provided by libadwaita@libadwaita.
+using the AdwNavigationPage provided by libadwaita @libadwaita.
 This module allows for a seamless transition from a parent to a child window by clicking the button with the target page name.
 In @reset_audio and @reset_profiles, the AdwNavigationPage can be seen in use.
 

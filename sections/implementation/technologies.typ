@@ -76,7 +76,7 @@ open-source license*, as ReSet will be published under the GPL-3.0 license.
 Rust was chosen for its speed, low memory usage, memory-safe design and robust
 ecosystem. While Rust is more complex to write than languages such as
 JavaScript, it comes with a significantly reduced memory cost and with the
-addition of a static type system @Rust_javascript@Rust_javascript2@Rust_types.
+addition of a static type system @Rust_javascript @Rust_javascript2@Rust_types.
 
 Compared to other system programming languages, Rust comes with a modern
 ecosystem out of the box, providing a formatter, a compiler, an LSP server, a

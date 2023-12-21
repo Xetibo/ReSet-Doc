@@ -72,12 +72,12 @@ potentially compromising their look with non-native themes.
 #pagebreak()
 
 #subsubsection("GNOME Control Settings")
-The GNOME control center@gnome_control_center is as the name implies the central
+The GNOME control center @gnome_control_center is as the name implies the central
 settings application for the GNOME desktop environment, it offers plenty of
 configuration, from networks to Bluetooth, to online accounts, default
-applications and a lot more. The application is written in C with the GTK@gtk
+applications and a lot more. The application is written in C with the GTK @gtk
 toolkit (GTK4) and follows the GNOME Human Interface
-Guidelines@gnome_human_guidelines.
+Guidelines @gnome_human_guidelines.
 #align(
   center, [#figure(
       img("gnome_control_center.png", width: 80%), caption: [Appearance setting of GNOME control center],
@@ -89,7 +89,7 @@ case of each file. Certain functionality is hard-coded with libraries, like
 networks, which use the NetworkManager library, while others are implemented via
 DBus, like monitors.
 
-Settings are stored using dconf@dconf which is a key/value system, that is
+Settings are stored using dconf @dconf which is a key/value system, that is
 optimized for reading. The form of a dconf file is a _binary_ which makes it
 fast to read for dconf, but not readable for other systems.
 
@@ -185,7 +185,7 @@ Interoperability will not be considered for these applications, as they were
 made for a universal use case.
 
 *Pavucontrol* | Sound Application\
-Pavucontrol@pavucontrol_repo or PulseAudio Volume Control is an application that
+Pavucontrol @pavucontrol_repo or PulseAudio Volume Control is an application that
 handles both system-wide input/output and per-application output/input streams.
 It is under the umbrella of the Free Desktop project and is directly involved in
 PulseAudio itself. The application itself is written in C++ and GTK3.
@@ -221,7 +221,7 @@ applications using an output device from the output device itself.
 #pagebreak()
 
 *Blueman* | Bluetooth Application\
-Blueman@blueman_repo allows connecting and managing of Bluetooth connections, as
+Blueman @blueman_repo allows connecting and managing of Bluetooth connections, as
 well as some quality-of-life features like file transfer. It works great in
 functionality, but the buttons are not very expressive of what they will
 achieve. Blueman is written in Python and GTK3.
@@ -253,7 +253,7 @@ Bluetooth without this user interface by interacting with the applet instead.
 #pagebreak()
 
 *Nmtui* | Network Application\
-Nmtui@networkmanager_repo is what the name suggests, it is a terminal user
+Nmtui @networkmanager_repo is what the name suggests, it is a terminal user
 interface that allows users to use and edit network connections, including VPN
 connections. Nmtui is located in the same project as the network manager itself
 and is therefore also shipped as part of the network manager package. Both

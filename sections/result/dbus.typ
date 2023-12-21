@@ -5,7 +5,7 @@
 As explained in @Architecture, inter-process communication is handled via DBus,
 in this section, the DBus usage is elaborated.
 
-The API for ReSet can be found in @DBusAPI or on docs.rs@daemon_api for an updated version.
+The API for ReSet can be found in @DBusAPI or on docs.rs @daemon_api for an updated version.
 
 #subsubsection("DBus Types")
 In order to properly understand the DBus API, the following table will provide
