@@ -178,5 +178,5 @@ due to a bug in the graphical user interface, or because you just like to make
 these changes manually.
 
 For ReSet, using small and structured text files over databases ensures version
-control compatibility, environment agnostic usage as well as application
+control compatibility, environment-agnostic usage as well as application
 agnostic usage and configuration.
