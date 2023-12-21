@@ -77,7 +77,6 @@ a pairing wizard for devices that require a pairing code, per device
 configuration, as well as making file transfers possible via ReSet.
 
 #pagebreak()
-#subsubsection("Shortcomings")
 
 #subsubsection("User Feedback")
 While technically not implemented due to time constraints, ReSet considers this
@@ -86,6 +85,8 @@ the user valuable feedback for every action, with some errors being dropped.
 
 Another aspect is the lack of tooltips and the suboptimal keyboard usage within
 ReSet.
+
+#subsubsection("Shortcomings")
 
 #subsubsubsection("Testing")
 Testing with ReSet outside of manual integration tests is complicated, this also
@@ -128,3 +129,11 @@ The challenge here is to ensure that ReSet does not compromise on performance
 with too many thread-safe references, and while still providing a clean
 abstraction. This is especially hard with GTK subclassing, which does not always
 work perfectly with Rust features.
+
+#subsubsubsection("UI Code Duplication")
+This is a debatable shortcoming. The UI files generated from Cambalache contain several 
+duplications, which makes it more difficult to maintain, as changes have to be made in 
+multiple places. However, the advantage of this is that the amount of boilerplate code 
+in ReSet can be reduced. There could be an argument made that most of these difficulties 
+arise from margin inconsistencies, which could be fixed by extracting those to a CSS class 
+instead of hardcoding.

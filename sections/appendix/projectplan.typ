@@ -9,7 +9,7 @@ of these positions is done in collaboration._\
 
 #subsubsection("Requirements")
 Non-functional requirements are explained in @Non-FunctionalRequirements and
-functional requirements are handled using user-stories.
+functional requirements are handled using user stories.
 
 #subsubsection("User Stories")
 User stories are handled via #link("https://github.com/Xetibo/ReSet/issues")[GitHub issues].
@@ -22,8 +22,8 @@ This allows for a clean and automatic handling of created user stories via
 GitHub issues.
 
 #subsubsection("Tools")
-Rust is an editor agnostic language, hence both team members can use their own tools without conflicts.
-For documentation typst is used, which also does not require a special editor, it just requires a compiler which works on all platforms.
+Rust is an editor-agnostic language, hence both team members can use their own tools without conflicts.
+For documentation typst is used, which also does not require a special editor, it just requires a compiler that works on all platforms.
 The user interface is made with Cambalache.
 
 #subsection("Time")

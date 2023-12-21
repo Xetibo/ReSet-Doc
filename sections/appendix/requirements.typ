@@ -9,12 +9,12 @@ which can be found in the ReSet and ReSet-Daemon repositories respectively.
 #subsubsection("Non-Functional Requirements")
 #requirement(
   "User Interface", "Usability", "Medium", [
-    Reaction time should not be noticeable by the user, and UI should not be blocked
-    during loading operations.
+    Loading operations should not block the UI and the user should be informed with 
+    a loading icon or similar.
   ], [
     - Show loading icons or similar during blocking operations.
       - restrict actions during the loading period.
-    - Use async functions in order to keep UI responsive. (GTK enforces this)
+    - Use async functions in order to keep UI responsive.
   ],
 )
 #requirement(
