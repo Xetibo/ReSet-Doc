@@ -136,7 +136,7 @@ applications.
   The Dolphin version is much more complex, this is because you can customize any
   shortcut in Dolphin using this interface. For Nautilus shortcuts can only be
   configured using scripts that extend the functionality of
-  Nautilus @nautilus_shortcut_discussion, as according to a GTK developer, this is
+  Nautilus @nautilus_shortcut_discussion, according to a GTK developer, this is
   no longer possible on a toolkit level @gtk_shortcut_discussion.
 
   #figure(

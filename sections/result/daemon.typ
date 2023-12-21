@@ -4,7 +4,7 @@
 #subsection("Daemon Implementation")
 This section documents the code for the backend part of ReSet.
 
-#subsubsection("Datastructure References")
+#subsubsection("Data structure References")
 All relevant data structures for this section can be found in the appendix
 @Datastructures.
 
@@ -63,7 +63,7 @@ continue to receive events from both the PulseAudio server and the DBus daemon.
 PulseAudio events are handled directly by the library listener, which allows
 for a listener flag for customized event filters, while the daemon events are
 handled via multi-producer multi-consumer message passing
-channels provided by the crossbeam library@crossbeam.
+channels provided by the crossbeam library @crossbeam.
 
 #figure(sourcecode(
 ```rs
@@ -217,7 +217,7 @@ The challenge with NetworkManager is the amount of features it offers,
 besides regular networks, it also offers VPN configuration and usage, as well as
 other connections, including older protocols. For now, ReSet only offers
 wireless network configuration, however in the future this may be expanded upon,
-the library repository for ReSet (ReSet-Lib)@reset_lib already features entries for both VPN and wired
+the library repository for ReSet (ReSet-Lib @reset_lib) already features entries for both VPN and wired
 connections.
 
 The rest of the wireless part is implemented like Bluetooth with an optional

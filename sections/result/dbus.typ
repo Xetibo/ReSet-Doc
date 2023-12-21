@@ -67,7 +67,7 @@ As explained in @Introduction, ReSet will include a daemon and appropriate clien
 It is therefore necessary to use inter-process communication to provide functionality on the application.
 In this section, example usages and the IPC architecture are elaborated.
 
-DBus first registers a service providing application with a name.
+DBus first registers a service-providing application with a name.
 This name will then either be available for the user session in the operating system
 or the entire system, depending on the session the application requests.
 

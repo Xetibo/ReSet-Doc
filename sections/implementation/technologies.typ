@@ -185,11 +185,11 @@ debugger, LSP and more. With Rust, this is not the case, as it either provides
 said tool or uses a well-established open-source tool for each task. This
 avoids cases like the official and proprietary C\#
 debugger, which only works with
-official Microsoft tools@csharp_debugger_notes@csharp_debugger_issue, or the C++ problem of having multiple compilers with different
-feature sets. Hence, both languages described will have a different experience
+official Microsoft tools @csharp_debugger_notes @csharp_debugger_issue, or the C++ problem of having multiple compilers with different
+feature sets. Hence, both languages described will have different experiences
 on different platforms and editors/IDEs @cpp_compilers@Rust_compiler.
 
-UI Considerations for Rust are also a big factor, on Linux there are generally 2
+UI Considerations for Rust also play a big factor, on Linux there are generally 2
 big user interface toolkits, GTK and QT. QT is generally used with C++, while
 GTK is often used with C or a special GTK-developed language called "Vala" @vala.
 However, for GTK the Rust bindings are above average in quality compared to

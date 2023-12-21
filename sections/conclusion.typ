@@ -14,7 +14,7 @@ In terms of the user interface, user testing @ReSetUserTest has shown positive
 feedback, allowing ReSet to continue with the current design language.
 
 #subsection("Outlook")
-This section covers both the features of ReSet which not implemented yet, as
+This section covers both the features of ReSet which are not implemented yet, as
 well as potential improvements to this project.
 
 #subsubsection("Not Implemented Features")

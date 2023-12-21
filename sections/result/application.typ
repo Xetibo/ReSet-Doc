@@ -8,7 +8,7 @@ which interacts with the ReSet daemon.
 #subsubsection("GTK Mainloop")
 GTK handles its main loop via callbacks, this means users of GTK can
 define a function for different scenarios like startup or UI building.
-For ReSet, both a startup and a shutdown function was passed to GTK.
+For ReSet, both a startup and a shutdown function were passed to GTK.
 
 #figure(sourcecode(```rs
 fn main() {

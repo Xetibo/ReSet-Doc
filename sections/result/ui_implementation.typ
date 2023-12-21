@@ -229,7 +229,7 @@ fn impl_hello_macro(ast: &syn::DeriveInput) -> TokenStream {
 
 The binding itself is created via the PImpl (Pointer to Implementation) idiom,
 which allows for a generic implementation of an object without immediate
-recompilation unless the object itself is changed. As defined by cppreference@pimpl@pimpl_gotw, this
+recompilation unless the object itself is changed. As defined by cppreference @pimpl @pimpl_gotw, this
 idiom is usually applied in C++, but can also be used with Rust, and is also
 recommended to be used by an officially endorsed gtk-rs
 introduction @gtk_rs_introduction.
