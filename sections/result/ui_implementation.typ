@@ -44,7 +44,7 @@ last window, a behavior that is not welcome in every situation.
 For ReSet, the solution was to provide a nearly size-agnostic application that refrains from
 using popups wherever possible. In order to ensure the application is usable with
 any size, each functionality of ReSet is put into a dynamically allocated box. This allows
-not only the size agnostic design but also provides the mentioned responsive design by changing
+not only the size-agnostic design but also provides the mentioned responsive design by changing
 from horizontal to vertical orientations. Implemented into ReSet are therefore three
 different stages, vertical orientation without a sidebar, vertical orientation with a
 sidebar and horizontal orientation with a sidebar. The stages are shown from minimum
@@ -154,13 +154,13 @@ The Menu on the top right is a standard GTK menu, providing a consistent experie
 )<reset_menu>
 
 #subsubsection("Template Binding")
-The user interface is built using the GTK compatible XML markup language. This
+The user interface is built using the GTK-compatible XML markup language. This
 allows for a separate user interface definition which reduces code size and
 keeps functionality away from design. Alongside this, XML also allows for use of
 graphical tools in order to create the user interface itself, providing
 immediate feedback about the style and feel of the design.
 
-The binding of these definitions is handled via a GTK specific build.rs file,
+The binding of these definitions is handled via a GTK-specific build.rs file,
 which defines GResources that will be integrated into the project. GResources
 represent a variety of tools and objects which can be used within the project,
 such as user interface templates, icons, images and more @gresources.
@@ -185,9 +185,9 @@ functionality that is not directly available with XML.
 
 The binding for XML to Rust happens within regular Rust files, with various GTK
 macros being used. This means that one can use seemingly regular Rust code,
-which the gtk-rs library later restructures to GTK compatible code via Rust
+which the gtk-rs library later restructures to GTK-compatible code via Rust
 macros. Rust macros are metaprogramming, which means the Rust toolchain will
-change the code before compiling it into a binary. For Rust this feature
+change the code before compiling it into a binary. For Rust, this feature
 expands to allowing full Rust code within metaprogramming, making entire
 programs possible at compile time @Rust_macros. ReSet currently only uses this
 feature via gtk-rs or default macros provided by the standard library,
