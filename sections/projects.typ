@@ -125,8 +125,8 @@ available on other environments.
 )
 
 #subsubsection("KDE System Settings")
-KDE systemsettings@kde_systemsettings_repo is written in C++/QML and is made
-with the QT toolkit@qt. It follows the KDE style of applications, featuring a
+KDE systemsettings @kde_systemsettings_repo is written in C++/QML and is made
+with the QT toolkit @qt. It follows the KDE style of applications, featuring a
 very large variety of settings (on KDE), and offering other applications a way
 to integrate into this application via KConfig Module (KCM)@kcm.
 #align(
@@ -164,7 +164,7 @@ specific styling of said toolkit that might not integrate well.
       modules do not exist as of now.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("(\u{2713})", bold: true, cell_align: center), cell("Ease of Use", bold: true, cell_align: left), cell(
     [The most common criticism of KDE systemsettings is a convoluted design. This
-      stems from the amount of settings the application can provide, alongside its
+      stems from the number of settings the application can provide, alongside its
       heavy use of submenus that can become confusing when searching for something
       specific.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
@@ -187,7 +187,7 @@ made for a universal use case.
 
 *Pavucontrol* | Sound Application\
 Pavucontrol@pavucontrol_repo or PulseAudio Volume Control is an application that
-handles both system-wide input/output and per application output/input streams.
+handles both system-wide input/output and per-application output/input streams.
 It is under the umbrella of the Free Desktop project and is directly involved in
 PulseAudio itself. The application itself is written in C++ and GTK3.
 #align(
@@ -279,7 +279,7 @@ NetworkManager repository.
   columns: (3fr, 9fr, 30pt), rows: (30pt, 80pt, 30pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [Resizing the terminal breaks the appearance of the application.\
       There is only a single theme.\
-      Users unfamiliar to terminal user interfaces might be unable to use this
+      Users unfamiliar with terminal user interfaces might be unable to use this
       application.\
       Mouse support is missing.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
