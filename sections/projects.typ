@@ -240,7 +240,7 @@ achieve. Blueman is written in Python and GTK3.
   columns: (3fr, 9fr, 30pt), rows: (30pt, 65pt, 40pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [The user interface for Blueman can be rather confusing, for example: there is no
       obvious connect button, which might lead to a user trying to mark a device as
-      tRusted instead of connecting to it. (tRusted is the \u{2713} button). Blueman
+      trusted instead of connecting to it. (trusted is the \u{2713} button). Blueman
       also tends to use older icon designs.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [Blueman is created in a modular fashion and can be considered easily maintainable.], cell_align: left, bold: false, font_size: 11pt,
