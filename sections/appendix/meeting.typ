@@ -40,11 +40,7 @@ held a short meeting internally, discussing the state of the project.
 
 *Meeting 7*
 - Packaging formats presented to the professor
-  - Flatpak
-  - Arch package
-  - Debian package
-  - Crates.io
-  - Binary
+  - Flatpak,Arch package,Debian package,Crates.io,Binary
 - Feedback for documentation discussed
 - State of the application discussed
 
