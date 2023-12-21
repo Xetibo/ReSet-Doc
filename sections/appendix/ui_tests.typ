@@ -5,24 +5,24 @@
 This section covers both the Mock user interface tests and the proper user tests.\
 The data sources for the tests are provided as CSV files bundled with this paper.
 
-#subsubsection("Midpoint UI Tests") // todo rename midpoint to mock ui test
+#subsubsection("Mock UI Test") 
 Reaching the project's midpoint, the UI mock of ReSet was given out to a select
 few people for testing and reviewing purposes. The idea is the get feedback
 early so that there is still enough time to change the UI without much effort.
 Because it is only a UI mock test, it was not possible to ask for feedback for all
 tests defined in @ReSetUserTest because it has not been implemented yet.
 
-- *Navigation feedback*
+*Navigation feedback* \
 The feedback is very positive, especially with the mention of the ability to
 show all settings or just a specific part. The structure is clean and makes it
 easy to understand which subcategory belongs to which category.
 
-- *Readability feedback*
+*Readability feedback* \
 There was not much feedback regarding readability, because it is not something
 that can or should be influenced directly. Font size and contrast are set in the
 settings, meaning it is consistent throughout the system, which includes ReSet.
 
-- *Layout and Design feedback*
+*Layout and Design feedback* \
 Users were generally positive about the layout and design of the app, but there
 were also some ideas for improvement. One user noted that the window was padded,
 which was noticeable when using a white theme. In addition, when opening a
@@ -34,7 +34,7 @@ subcategories and the inclusion of bold font for categories. Despite these areas
 for improvement, the overall sentiment towards the app was positive, as users
 appreciated the design while providing valuable advice on how to improve it.
 
-- *Conclusion*
+*Conclusion* \
 Feedback around navigation and readability was positive, mostly attributed to
 the currently simple UI. It is important to note that readability is already
 configured by the user or by using system defaults. ReSet does not overwrite

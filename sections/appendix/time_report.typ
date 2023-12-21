@@ -54,9 +54,9 @@ developed.
     )],
 )
 
-#subsubsection("Sprint 6: Preparation for Midpoint UI Testing")
+#subsubsection("Sprint 6: Preparation for Mock UI Testing")
 This week we tried to get as much UI done as possible, in preparation for the
-Midpoint UI Test next week. In the daemon, we started working on the Audio
+Mock UI Test next week. In the daemon, we started working on the Audio
 settings.
 #align(
   center, [#figure(
@@ -66,7 +66,7 @@ settings.
 )
 
 #pagebreak()
-#subsubsection("Sprint 7: Midpoint UI Testing")
+#subsubsection("Sprint 7: Mock UI Testing")
 Nearing closer to our first UI test, we spent a lot of time on the UI. ReSet was
 given out to a few people to test. The feedback was used to improve our UI.
 #align(
@@ -131,7 +131,7 @@ test. We also started working on the documentation.
 #pagebreak()
 #subsubsection("Sprint 13: Feedback test and documentation")
 This week we prepared the feedback test which additionally tests feedback compared 
-to the midpoint test. We have mostly finished working on ReSet and moved to writing 
+to the mock test. We have mostly finished working on ReSet and moved to writing 
 the documentation.
 #align(
   center, [#figure(
