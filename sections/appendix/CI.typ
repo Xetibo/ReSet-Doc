@@ -53,7 +53,7 @@ implemented in the backend.
 On the backend there are initial tests, but those cannot be run on the build
 system either as they rely on hardware features(Wi-Fi, Bluetooth, audio), which
 cannot be provided appropriately within a test environment. In @Testing, a
-plan for a mock system is explained for the continuation of work.
+plan for a mock system is explained for future works.
 
 The second workflow for ReSet is more complicated, as it requires different
 Linux version in order to provide easy packaging of ReSet. For ReSet, five

@@ -42,7 +42,7 @@ releasing a new version.
     #align(center, image("../../figures/rustdoc_test.png")) ],
   kind: "code", 
   supplement: "Listing",
-  caption: [Rustdoc example entry for code above.],
+  caption: [Rustdoc example entry for the code above.],
 )<Rustdoc>
 
 #subsubsection("Guidelines")
