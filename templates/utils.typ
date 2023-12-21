@@ -132,7 +132,7 @@
   let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
   pad(x: 0pt, y: 0pt, line(length: 100%))
   pad(x: 0pt, y: -15pt, grid(
-    columns: (2fr, 10fr),
+    columns: (2.5fr, 10fr),
     rows: (auto, auto),
     gutter: 0pt,
     cell(height: auto)[*Subject*],
@@ -152,12 +152,12 @@
   let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
   pad(x: 0pt, y: 0pt, line(length: 100%))
   pad(x: 0pt, y: -15pt, grid(
-    columns: (3.5fr, 10fr),
+    columns: (3.7fr, 10fr),
     rows: (auto, auto),
     gutter: 0pt,
     cell(height: auto)[*Subject*],
     cell(height: auto)[#subject],
-    cell(height: auto)[*Requirement*],
+    cell(height: auto)[*Risk*],
     cell(height: auto)[#description],
     cell(height: auto)[*Priority*],
     cell(height: auto)[#priority],

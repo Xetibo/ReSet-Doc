@@ -14,38 +14,39 @@ In terms of the user interface, user testing @ReSetUserTest has shown positive
 feedback, allowing ReSet to continue with the current design language.
 
 #subsection("Not Implemented Features")
-This section covers features which were not implemented due to time constraints, future work can
-potentially resolve these missing features.
+This section covers features which were not implemented due to time constraints,
+future work can potentially resolve these missing features.
 
 #subsubsection(custom_tag: "CPluginSystem", "Plugin System")
-This project will not cover a plugin system. However,
-with the implementation currently provided, it should be possible to implement
-this without major issues. For example, the current DBus daemon allows for a
-trivial addition of an additional API and its namespace.
+This project will not cover a plugin system. However, with the implementation
+currently provided, it should be possible to implement this without major
+issues. For example, the current DBus daemon allows for a trivial addition of an
+additional API and its namespace.
 
 #figure(
   sourcecode(
-```rs
-// Example API addition
-unsafe {
-    // using the libloading crate
-    let lib = libloading::Library::new("/path/to/liblibrary.so").unwrap();
-    let interface: libloading::Symbol<unsafe extern fn() -> u32> =
-        lib.get(b"interface").unwrap();
-    let name: libloading::Symbol<&'static str> = lib.get(b"name").unwrap();
-    feature_strings.push(name);
-    features.push(interface);
-}
+    ```rs
+    // Example API addition
+    unsafe {
+        // using the libloading crate
+        let lib = libloading::Library::new("/path/to/liblibrary.so").unwrap();
+        let interface: libloading::Symbol<unsafe extern fn() -> u32> =
+            lib.get(b"interface").unwrap();
+        let name: libloading::Symbol<&'static str> = lib.get(b"name").unwrap();
+        feature_strings.push(name);
+        features.push(interface);
+    }
 
-features.push(setup_base(&mut cross, feature_strings));
-cross.insert(DBUS_PATH, &features, data);
-```,
+    features.push(setup_base(&mut cross, feature_strings));
+    cross.insert(DBUS_PATH, &features, data);
+    ```,
   ), kind: "code", supplement: "Listing", caption: [Example API addition],
 )<api_addition>
 
 Each of these entries provides its own DBus namespace which can be used to
-provide methods and signals to clients. Here ReSet could later add a dynamic list of
-entries via loading of dynamic library functions instead of a hard-coded one.
+provide methods and signals to clients. Here ReSet could later add a dynamic
+list of entries via loading of dynamic library functions instead of a hard-coded
+one.
 
 #subsubsection("Persistent Settings")
 Due to a lack of settings in general as of now, ReSet does not offer persistent
@@ -72,8 +73,14 @@ For Bluetooth, it would still be possible to implement advanced features such as
 a pairing wizard for devices that require a pairing code, per device
 configuration, as well as making file transfers possible via ReSet.
 
+#subsubsection("Configurable Home Page")
+The default starting page for ReSet was supposed to be configurable. For now the
+Audio output page is set as default. The usage of anonymous functions should
+ease the integration of this feature.
+
 #subsection("Shortcomings")
-This section covers parts of ReSet that require work to improve existing features.
+This section covers parts of ReSet that require work to improve existing
+features.
 
 #subsubsection("User Feedback")
 While technically not implemented due to time constraints, ReSet considers this
@@ -103,21 +110,21 @@ abstracted further for better maintainability and readability.
 
 #figure(
   sourcecode(```rs
-// Example problematic code
-pub fn populate_sources(input_box: Arc<SourceBox>) {
-    gio::spawn_blocking(move || {
-        let sources = get_sources();
-    // ... omitted code
-  });
-}
-// same code in SinkBox
-pub fn populate_sinks(output_box: Arc<SinkBox>) {
-    gio::spawn_blocking(move || {
-        let sinks = get_sinks();
-    // ... omitted code
-  });
-}
-```), kind: "code", supplement: "Listing", caption: [Example of problematic code to de-duplicate],
+  // Example problematic code
+  pub fn populate_sources(input_box: Arc<SourceBox>) {
+      gio::spawn_blocking(move || {
+          let sources = get_sources();
+      // ... omitted code
+    });
+  }
+  // same code in SinkBox
+  pub fn populate_sinks(output_box: Arc<SinkBox>) {
+      gio::spawn_blocking(move || {
+          let sinks = get_sinks();
+      // ... omitted code
+    });
+  }
+  ```), kind: "code", supplement: "Listing", caption: [Example of problematic code to de-duplicate],
 )<code_duplication>
 
 The challenge here is to ensure that ReSet does not compromise on performance
@@ -126,9 +133,9 @@ abstraction. This is especially hard with GTK subclassing, which does not always
 work perfectly with Rust features.
 
 #subsubsection("UI Code Duplication")
-This is a debatable shortcoming. The UI files generated from Cambalache contain several 
-duplications, which makes it more difficult to maintain, as changes have to be made in 
-multiple places. However, the advantage of this is that the amount of boilerplate code 
-in ReSet can be reduced. There could be an argument made that most of these difficulties 
-arise from margin inconsistencies, which could be fixed by extracting those to a CSS class 
-instead of hardcoding.
+This is a debatable shortcoming. The UI files generated from Cambalache contain
+several duplications, which makes it more difficult to maintain, as changes have
+to be made in multiple places. However, the advantage of this is that the amount
+of boilerplate code in ReSet can be reduced. There could be an argument made
+that most of these difficulties arise from margin inconsistencies, which could
+be fixed by extracting those to a CSS class instead of hardcoding.

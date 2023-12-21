@@ -63,7 +63,7 @@ timeframe.
   ], [
     - Search bar hide is not very smooth, maybe add animation
     - Selected category is not highlighted (fixed)
-    - Default category is arbitrary (Noted in @NotImplementedFeatures)
+    - Default category is arbitrary (Noted in @ConfigurableHomePage)
   ],
 )
 #test(
