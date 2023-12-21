@@ -63,18 +63,15 @@ information about DBus types and how they correspond to the regular Rust types.
 #pagebreak()
 
 #subsubsection("Daemon and Application")
-As explained in @Introduction, ReSet will include a daemon and appropriate client application.
-It is therefore necessary to use inter-process communication to provide functionality on the application.
-In this section, example usages and the IPC architecture are elaborated.
-
 DBus first registers a service-providing application with a name.
 This name will then either be available for the user session in the operating system
 or the entire system, depending on the session the application requests.
+ReSet will only request a session namespace, but it will communicate to sytem namespaces such as the org.freedesktop.DBus namespace.
 
 On this namespace, the application can register objects that will be responsible for providing functionality to potential clients.
 Each object does this by using interfaces that the application can define,
 this means that you can implement both generic interfaces for each object to implement,
-or create a specific interface for a specific object.
+or create a specific interface for a specific object @dbus.
 
 In @dbus_usage, an example client is shown which calls a function on the org.Xetibo.ReSet namespace.
 
@@ -85,7 +82,7 @@ thread::spawn(|| {
     let conn = Connection::new_session().unwrap();
     let proxy = conn.with_proxy(
         "org.Xetibo.ReSet.Daemon",  // The DBus name to target
-        "/org/Xetibo/ReSet/Daemon", // The DBus object path where the daemon exists
+        "/org/Xetibo/ReSet/Daemon", // The DBus object path for the daemon
         Duration::from_millis(100),
     );
     // The return type of this DBus method
@@ -117,6 +114,7 @@ In order to further understand the role of the ReSet-Daemon,
 
 As can be seen in figure @dbus_sequence, the client would need to implement a lot of base functionality in order to communicate with multiple DBus sources.
 It would also mean that any non-DBus source, such as PulseAudio for ReSet, would have to be accessed separately by the client.
-Limiting communication to only use DBus hence simplifies the implementation for the client.
+Limiting communication to only use one DBus namespace hence simplifies the implementation for the client.
 
-The ObjectManager is a DBus object provided by freedesktop and is implementable for every DBus object, it provides managing (fetching/events) of all objects on a namespace.
+The ObjectManager is a DBus object provided by freedesktop and is implementable for every DBus object,
+it provides managing (fetching/events) of all objects on a namespace.
