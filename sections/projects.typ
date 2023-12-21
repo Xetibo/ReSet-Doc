@@ -252,7 +252,7 @@ achieve. Blueman is written in Python and GTK3.
 *Nmtui* | Network Application\
 Nmtui@networkmanager_repo is what the name suggests, it is a terminal user
 interface that allows users to use and edit network connections, including VPN
-connections.Nmtui is located in the same project as the network manager itself 
+connections. Nmtui is located in the same project as the network manager itself 
 and is therefore also shipped as part of the network manager package. Both 
 network manager and nmtui are written in C. There is a specific lack of 
 standalone user interface applications for network managers. Technically, 
