@@ -4,12 +4,12 @@
 #section("Conclusion")
 To summarize, ReSet achieved the vision of a universal Settings
 application. It offers basic usage of Bluetooth and Wi-Fi, as well as extensive
-audio configuration within one application without bundling with environment specific software.
+audio configuration within one application without bundling with environment-specific software.
 
-All functionality is offered using inter process communication as planned and
+All functionality is offered using inter-process communication as planned and
 other applications can use the daemon service to utilize the API.
 
-In terms of user interface, user testing has shown positive feedback,
+In terms of the user interface, user testing has shown positive feedback,
 allowing ReSet to continue with the current design language.
 
 
@@ -81,8 +81,8 @@ transfers possible via ReSet.
 
 #subsubsubsection("Testing")
 Testing with ReSet outside of manual integration tests is complicated, this also
-means that only a few tests were written and none of these can be run on a
-system without the functionality for the settings ReSet provides. In this case a
+means that only a few tests were written and none of these can be run on a system 
+without the functionality for the settings ReSet provides. In this case, a
 proper mock system needs to be built that can be used to test both the daemon
 and the application without needing real hardware functionality.
 

@@ -9,7 +9,7 @@ All relevant data structures for this section can be found in the appendix
 @Datastructures.
 
 #subsubsection("Main Loop")
-The main loop exposes the DBus interface to other applications, and responds to
+The main loop exposes the DBus interface to other applications and responds to
 method calls on this API. In order to provide functionality, the main loop
 requires a different set of data from different functionalities. This data
 is provided as a context and can be accessed only within the main loop.
@@ -43,11 +43,11 @@ conn.start_receive(
  supplement: "Listing",
  caption: [Code snippet from the daemon DBus main loop])<mainloop>
 
-In @mainloop, the daemon registers a function the org.Xetibo.ReSet.Daemon interface which will provide the function "UnregisterClient".
+In @mainloop, the daemon registers a function in the org.Xetibo.ReSet.Daemon interface which will provide the function "UnregisterClient".
 Whenever this function is called the main loop will execute the registered closure that provides the functionality.
 
 This setup alone would suffice for regular request/response functions,
-however ReSet is also required to implement events as certain technologies like Bluetooth require them.
+however, ReSet is also required to implement events as certain technologies like Bluetooth require them.
 They are also required to provide instant feedback for a user interface application, upon a state change.
 For this reason, ReSet also offers a listener for each functionality which will be explained in detail in their respective subsections.
 

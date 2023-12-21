@@ -68,11 +68,11 @@ It is therefore necessary to use inter-process communication to provide function
 In this section, example usages and the IPC architecture are elaborated.
 
 DBus first registers a service providing application with a name.
-This name will then either be available for the user session in the operating system,
-or for the entire system, depending on the session the application requests.
+This name will then either be available for the user session in the operating system
+or the entire system, depending on the session the application requests.
 
 On this namespace, the application can register objects that will be responsible for providing functionality to potential clients.
-Each object does this by using interfaces which the application can define,
+Each object does this by using interfaces that the application can define,
 this means that you can implement both generic interfaces for each object to implement,
 or create a specific interface for a specific object.
 
@@ -108,7 +108,7 @@ caption: [Example DBus usage in a client of the ReSet-Daemon])<dbus_usage>
 #pagebreak()
 
 In order to further understand the role of the ReSet-Daemon,
-@dbus_sequence elaborates how both client and daemon interact with other DBus applications.
+@dbus_sequence elaborates on how both the client and daemon interact with other DBus applications.
 
 #align(center, [#figure(
     img("dbus_sequence.svg", width: 100%, extension: "files"),

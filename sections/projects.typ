@@ -50,7 +50,7 @@ requirements specified in @PRequirements. Both full settings applications
 provided by environments and standalone applications for individual technologies
 are compared.
 
-Important to note, for this section, each application will be evaluated with its
+Important to note, that for this section, each application will be evaluated with its
 default dark theme. For GTK applications, the libadwaita dark theme will be
 used. For QT applications, the breeze dark theme will be used, configured via
 the QT_QPA_PLATFORMTHEME=gnome environment flag. This configuration is done to
@@ -142,7 +142,7 @@ this type of application.
 Settings are stored by individual modules, which means that a lot of individual
 files will be written/read in order to provide all functionality.
 
-In many cases for KDE systemsettings it is not the application itself that makes
+In many cases, for KDE systemsettings it is not the application itself that makes
 it harder to be used on other environments, but the toolkit and the KDE specific
 styling of said toolkit that might not integrate well.
 
@@ -272,7 +272,7 @@ does not work on its own.
   columns: (3fr, 9fr, 30pt), rows: (30pt, 80pt, 30pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [Resizing the terminal breaks the appearance of the application.\
       There is only a single theme.\
-    Users umfamiliar to terminal user interfaces might be unable to use this application.\
+    Users unfamiliar with terminal user interfaces might be unable to use this application.\
       Mouse support is missing.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [The scope of this application is small and depends fully on the parent project,

@@ -78,11 +78,11 @@ held a short meeting internally, discussing the state of the project.
 
 *Meeting 13*
 - Professor completed the user test
-- Current documentation state was shown to professor
-- Professor will provide documentation feedback until next week
+- Current documentation state was shown to the professor
+- The professor will provide documentation feedback until next week
 
 *Meeting 14*
-- Feedback of documentation was discussed
-- State of documentation was shown to professor
+- Feedback on documentation was discussed
+- State of documentation was shown to the professor
 - Administrative documents were discussed
-- End date of project defined as Thursday evening with Friday as an emergency day
+- The end date of the project is defined as Thursday evening with Friday as an emergency day
