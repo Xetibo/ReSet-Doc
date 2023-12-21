@@ -148,5 +148,5 @@ timeframe.
 )
 
 #subsubsubsection("General Feedback")
-Users were overall happy with ReSet, with many issues being small improvements which were mostly overlooked due to time as mentioned in @Shortcomings.
+Users were overall happy with ReSet, with many issues being small improvements which were mostly overlooked due to time as mentioned in @Improvements.
 During testing, some major issues were able to be discovered and fixed, like ReSet crashing without Wi-Fi being present on the computer.
