@@ -231,7 +231,7 @@ achieve. Blueman is written in Python and GTK3.
     )],
 )<blueman>
 
-On top of this application itself, Blueman also offers a tray-applet for status
+On top of the user interface application, Blueman also offers a tray-applet for status
 bars, which is started alongside Blueman. This means that one could use
 Bluetooth without this user interface by interacting with the applet instead.
 
