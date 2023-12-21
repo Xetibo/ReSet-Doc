@@ -30,7 +30,7 @@ applications.
   For example, the application Blueman introduced in
   @Analysisofexistingapplications is used.
   #figure(
-    align(center, [#image("../figures/bluetooth_manager.png", width: 80%)]), caption: [Screenshot of Bluetooth manager],
+    align(center, [#image("../figures/bluetooth_manager.png", width: 80%)]), caption: [Bluetooth manager],
   )<bluetooth_manager>
   When opening the application, one can see a blank page with a top bar, this may
   cause users to think there are no Bluetooth devices available. However, the user
@@ -38,7 +38,7 @@ applications.
   #figure(
     align(
       center, [#image("../figures/bluetooth_manager_filled.png", width: 80%)],
-    ), caption: [Screenshot of Bluetooth manager with scanned devices],
+    ), caption: [Bluetooth manager with scanned devices],
   )<bluetooth_manager_filled>
   After clicking the search button, the application proceeds to list Bluetooth
   devices as expected. The question now is how to pair and connect to a specific
@@ -85,7 +85,7 @@ applications.
   achieve "mindless navigation", however, it is, as Krug mentioned, not the only
   factor.
 
-  ReSet will enforce this rule by avoiding dropdown menus entirely wherever possible, and instead
+  ReSet will enforce this rule by avoiding context menus entirely wherever possible, and instead
   relying on dynamic pages to provide further functionality.
 #pagebreak()
 - *"Get rid of half the words on each page, then get rid of half of what is left."
@@ -109,9 +109,9 @@ applications.
   to be simpler, but also less configurable.
   #grid(
     columns: (1fr, 1.1fr), rows: (auto), gutter: 10pt, figure(
-      align(center, [#image("../figures/new-gnome.png", width: 60%)]), caption: [Context menu in Nautilus(the GNOME file manager)],
+      align(center, [#image("../figures/new-gnome.png", width: 60%)]), caption: [Context menu in Nautilus (GNOME file manager)],
     ), figure(
-      align(center, [#image("../figures/new-kde.png", width: 100%)]), caption: [Context menu in Dolphin(the KDE file manager)],
+      align(center, [#image("../figures/new-kde.png", width: 100%)]), caption: [Context menu in Dolphin (KDE file manager)],
     ),
   )
   Here the KDE application is more powerful, offering a variety of files to

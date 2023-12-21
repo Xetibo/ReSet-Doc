@@ -68,7 +68,7 @@ interface has impressive scores in the Collaboration and Updates categories, it
 is harder to use because there is no UI builder.
 #align(center, [#figure(
     img("cambalache.png", width: 90%),
-    caption: [Screenshot of Cambalache],
+    caption: [Early UI of ReSet in Cambalache],
   )<uimock1>])
 
 #text(12pt, [*Libadwaita*])\
@@ -98,7 +98,7 @@ The settings app can be divided into two parts. The left part is a sidebar that
 contains a list of all settings and the right side displays the actual setting
 where the user can make changes. While this is not a standard, it is a very
 common layout structure as seen in @Analysisofexistingapplications and can also be found on
-other OS like Windows and macOS. The list of settings contains multiple
+other operating systems like Windows and macOS. The list of settings contains multiple
 categories like Connectivity, Sound and more, with each of them containing more
 subcategories.
 
@@ -111,7 +111,7 @@ to a handful of matching entries that may contain the setting the user is
 looking for.
 #figure(
   grid(
-    columns: 2, gutter: 0mm, img("riderSettingFull.png", width: 75%), img("riderSettingFiltered.png", width: 75%),
+    columns: 2, gutter: 0mm, img("riderSettingFull.png", width: 60%), img("riderSettingFiltered.png", width: 60%),
   ), caption: "JetBrains Rider setting search bar",
 )<jetbrains>
 

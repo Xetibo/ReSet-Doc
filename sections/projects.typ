@@ -35,8 +35,8 @@ Simoultaneously, these are also requirements for ReSet itself.
   While functionality is important, the intention is to provide an application
   that is used by preference. This means that the application should be intuitive
   and usable without prior knowledge about the application. To achieve this, ReSet
-  will use best practices from the GNOME Human Interface Guidelines as well as user
-  interface literature described in @UserInterfaceGuidelines.
+  will use best practices from the GNOME Human Interface Guidelines as well as
+  user interface literature described in @UserInterfaceGuidelines.
 
 - #text(size: 11pt, [*Maintainability*])\
   Applications with a plethora of functionality will get large quickly. This poses
@@ -81,14 +81,14 @@ toolkit (GTK4) and follows the GNOME Human Interface
 Guidelines@gnome_human_guidelines.
 #align(
   center, [#figure(
-      img("gnome_control_center.png", width: 80%), caption: [Screenshot of the GNOME control center],
+      img("gnome_control_center.png", width: 80%), caption: [Appearance setting of GNOME control center],
     )],
 )<Gnome_control_center>
 The code structure of the control center is very modular, with each tab having
 its folder and files. Although it is hard to immediately understand each use
 case of each file. Certain functionality is hard-coded with libraries, like
 networks, which use the NetworkManager library, while others are implemented via
-dbus, like monitors.
+Dus, like monitors.
 
 Settings are stored using dconf@dconf which is a key/value system, that is
 optimized for reading. The form of a dconf file is a _binary_ which makes it
@@ -114,8 +114,9 @@ available on other environments.
     [Not all base features of the GNOME control center work on other environments,
       and GNOME exclusive features cannot be hidden.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Ease of Use", bold: true, cell_align: left), cell(
-    [The user interface of the GNOME control center follows best practices. It has
-      consistent design, naming makes sense and accessibility is taken into account.], cell_align: left, bold: false, font_size: 11pt,
+    [The user interface of the GNOME control center follows their own best
+      practices.@gnome_human_guidelines It has consistent design, naming makes sense
+      and accessibility is taken into account.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: left), cell("Maintainability", bold: true, cell_align: left), cell(
     [All features of the Gnome control center are within one repository, which
       results in one project maintaining every feature. This can potentially cause
@@ -130,14 +131,14 @@ very large variety of settings (on KDE), and offering other applications a way
 to integrate into this application via KConfig Module(KCM)@kcm.
 #align(
   center, [#figure(
-      img("kde_systemsettings.png", width: 80%), caption: [Screenshot of the KDE systemsettings],
+      img("kde_systemsettings.png", width: 80%), caption: [Appearance setting of KDE systemsettings],
     )],
 )<kde_systemsettings>
 The program is by default very slim and does not feature any standard settings
 on the repository. However, Linux distributions usually ship the KDE standard
 modules, as KDE is the intended environment for this application. For ReSet, KDE
 systemsettings is still a very good resource for implementing modularity with
-this type of application. 
+this type of application.
 
 Settings are stored by individual modules, which means that a lot of individual
 files will be written/read in order to provide all functionality.
@@ -191,7 +192,7 @@ It is under the umbrella of the Free Desktop project and is directly involved in
 PulseAudio itself. The application itself is written in C++ and GTK3.
 #align(
   center, [#figure(
-      img("pavucontrol.png", width: 80%), caption: [Screenshot of pavucontrol],
+      img("pavucontrol.png", width: 80%), caption: [Output devices of pavucontrol],
     )],
 )<pavucontrol>
 
@@ -204,13 +205,14 @@ PulseAudio itself. The application itself is written in C++ and GTK3.
 )
 #grid(
   columns: (3fr, 9fr, 30pt), rows: (25pt, 55pt, 55pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
-    [While pavucontrol is generally made for more advanced users, it does follow
-      general best practices and integrates well into all environments.], cell_align: left, bold: false, font_size: 11pt,
+    [While pavucontrol is generally made for more advanced users, it does offer a
+      consistent design with appropriate icons/naming and integrates well into all
+      environments.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [Pavucontrol is made with a modular codebase, which allows for easier adding of
-      features.\ 
-      Note: pavucontrol is feature complete, and will likely not get more
-      features in the future.], cell_align: left, bold: false, font_size: 11pt,
+      features.\
+      Note: pavucontrol is feature complete, and will likely not get more features in
+      the future.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: center),
 )
 
@@ -223,7 +225,7 @@ functionality, but the buttons are not very expressive of what they will
 achieve. Blueman is written in Python and GTK3.
 #align(
   center, [#figure(
-      img("bluetooth_manager_filled.png", width: 80%), caption: [Screenshot of blueman],
+      img("bluetooth_manager_filled.png", width: 80%), caption: [Main window of blueman],
     )],
 )<blueman>
 
@@ -237,11 +239,11 @@ achieve. Blueman is written in Python and GTK3.
 #grid(
   columns: (3fr, 9fr, 30pt), rows: (30pt, 65pt, 40pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [The user interface for Blueman can be rather confusing, for example: there is no
-      obvious connect button, which might lead to a user trying to mark a device
-      as tRusted instead of connecting to it. (tRusted is the \u{2713} button). Blueman also
-      tends to use older icon designs.], cell_align: left, bold: false, font_size: 11pt,
+      obvious connect button, which might lead to a user trying to mark a device as
+      tRusted instead of connecting to it. (tRusted is the \u{2713} button). Blueman
+      also tends to use older icon designs.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
-    [Blueman follows best practices and can be considered easily maintainable.], cell_align: left, bold: false, font_size: 11pt,
+    [Blueman is created in a modular fashion and can be considered easily maintainable.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("\u{2713}", bold: true, cell_align: center),
 )
 
@@ -250,17 +252,15 @@ achieve. Blueman is written in Python and GTK3.
 *Nmtui* | Network Application\
 Nmtui@networkmanager_repo is what the name suggests, it is a terminal user
 interface that allows users to use and edit network connections, including VPN
-connections.\
-Nmtui is located in the same project as the network manager itself and is
-therefore also shipped as part of the network manager package.\
-Both network manager and nmtui are written in C.\
-There is a specific lack of standalone user interface applications for network
-managers.\
-Technically, the "network-manager-applet"@network_manager_applet by GNOME
-exists, however, this is to be included in a system tray within status bars and
-does not work on its own.
+connections.Nmtui is located in the same project as the network manager itself 
+and is therefore also shipped as part of the network manager package. Both 
+network manager and nmtui are written in C. There is a specific lack of 
+standalone user interface applications for network managers. Technically, 
+the "network-manager-applet"@network_manager_applet by GNOME exists, however, 
+this is to be included in a system tray within status bars and does not work on 
+its own.
 #align(
-  center, [#figure(img("nmtui.png", width: 80%), caption: [Screenshot of nmtui])],
+  center, [#figure(img("nmtui.png", width: 80%), caption: [Wi-Fi connections in nmtui])],
 )<nmtui>
 
 #grid(
@@ -272,7 +272,8 @@ does not work on its own.
   columns: (3fr, 9fr, 30pt), rows: (30pt, 80pt, 30pt), gutter: 0pt, cell("Category", bold: true, cell_align: left, use_under: true), cell("Justification", bold: true, cell_align: left, use_under: true), cell("", bold: true, cell_align: left, use_under: true), cell("Ease of Use", bold: true, cell_align: left), cell(
     [Resizing the terminal breaks the appearance of the application.\
       There is only a single theme.\
-    Users unfamiliar with terminal user interfaces might be unable to use this application.\
+      Users unfamiliar to terminal user interfaces might be unable to use this
+      application.\
       Mouse support is missing.], cell_align: left, bold: false, font_size: 11pt,
   ), cell("X", bold: true, cell_align: center), cell("Maintainability", bold: true, cell_align: left), cell(
     [The scope of this application is small and depends fully on the parent project,

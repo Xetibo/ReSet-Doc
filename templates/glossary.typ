@@ -23,7 +23,7 @@
     ],
   )<daemon>
   #glossary_entry(
-    use_show: use_show_ref, "dbus", [Low-level API providing inter-process communication (IPC) on UNIX operating
+    use_show: use_show_ref, "DBus", [Low-level API providing inter-process communication (IPC) on UNIX operating
       systems. ],
   )<dbus>
   #glossary_entry(
@@ -37,7 +37,7 @@
   #glossary_entry(
     use_show: use_show_ref, "DTO Data Transfer \nObject", [
       This represents data that can be sent over inter-process communication pipelines
-      such as web requests, dbus, or sockets. Data in this state can only be
+      such as web requests, DBus, or sockets. Data in this state can only be
       represented as text(usually json, toml, etc.), this means that the endpoint
       needs to recreate a data structure for a programming language.
     ],
@@ -66,8 +66,8 @@
     use_show: use_show_ref, "Shell Component", [
       This refers to an application that integrates into the compositor, it differs to
       windows in layering, meaning shell components can't be dragged around, and they
-      can either be drawn beneath all windows(desktop widgets) or on top of
-      windows(overlays).
+      can either be drawn beneath all windows (desktop widgets) or on top of
+      windows (overlays).
     ],
   )<shell-component>
   #glossary_entry(
