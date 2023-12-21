@@ -1,7 +1,7 @@
 #import "../../templates/utils.typ": *
 #lsp_placate()
 
-#subsection("Datastructures")
+#subsection("Data structures")
 This section covers all relevant data structures used within ReSet and its
 daemon.
 
