@@ -50,7 +50,7 @@ timeframe.
 #subsubsection("ReSet User Test")
 #test(
   "Search bar and Sidebar", "User can filter settings by typing in the search bar. Clicking on a setting will open the corresponding settings box and reset the sidebar.", [
-    Searching worked for all testers.
+    Searching worked for all users.
   ], [
     - Search field is easy to overlook and should be bigger
     - Highlight search text
@@ -59,7 +59,7 @@ timeframe.
 )
 #test(
   "Dynamic window", "Multiple settings can be opened at the same time and each setting box will reflow based on how much space is available.", [
-    Resizing worked for all testers and overall feedback to resizing was positive.
+    Resizing worked for all users and overall feedback to resizing was positive.
   ], [
     - Search bar hide is not very smooth, maybe add animation
     - Selected category is not highlighted (fixed)
