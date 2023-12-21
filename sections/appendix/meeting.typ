@@ -52,20 +52,21 @@ held a short meeting internally, discussing the state of the project.
 - Feedback for documentation discussed
 - State of the application discussed
 
-*Meeting 9* (Fabio absent)
+*Meeting 9*
 - State of the application discussed
-
-#pagebreak()
-
-*Meeting 10* 
-- BA continuation discussed
 - Reduction of scope discussed
   - No plugin system
   - No VPN usage/configuration
   - No ethernet configuration
   - No configuration of the application itself
 
+#pagebreak()
+
+*Meeting 10* (Fabio absent)
+- State of the application discussed
+
 *Meeting 11*
+- BA continuation discussed
 - The status of WiFi and Bluetooth were discussed
   - Bug fixed, issues with implementation
 - The status of documentation was discussed
