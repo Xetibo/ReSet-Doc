@@ -9,7 +9,7 @@ The data sources for the tests are provided as CSV files bundled with this paper
 Reaching the project's midpoint, the UI mock of ReSet was given out to a select
 few people for testing and reviewing purposes. The idea is the get feedback
 early so that there is still enough time to change the UI without much effort.
-Because it is only a UI mock test, it wasn it possible to ask for feedback for all
+Because it is only a UI mock test, it was not possible to ask for feedback for all
 tests defined in @ReSetUserTest because it has not been implemented yet.
 
 - *Navigation feedback*
@@ -18,7 +18,7 @@ show all settings or just a specific part. The structure is clean and makes it
 easy to understand which subcategory belongs to which category.
 
 - *Readability feedback*
-There wasn it much feedback regarding readability, because it is not something
+There was not much feedback regarding readability, because it is not something
 that can or should be influenced directly. Font size and contrast are set in the
 settings, meaning it is consistent throughout the system, which includes ReSet.
 
@@ -42,7 +42,7 @@ these configurations to keep a consistent look throughout the user's system.
 Concerning the layout and design, there will be improvements made by templating
 common UI building blocks, which will fix the issue of inconsistent design and
 make it easier to keep it consistent. Features such as collapsing subcategories
-have to be discussed further, to determine if it is necessary and if fit in the
+have to be discussed further, to determine if it is necessary and if it fits in the
 timeframe.
 
 #pagebreak()
@@ -86,13 +86,13 @@ timeframe.
   "Bluetooth", "Users can connect and disconnect Bluetooth devices.", [
     Most users were able to connect and disconnect without issues.
     - Conflict with KDE Bluetooth settings
-    - One user mentioned that connecting or disconnecting worked, however ReSet needs
+    - One user mentioned that connecting or disconnecting worked, however, ReSet needs
       to be restarted in order to do both with one session. (fixed)
   ], [
     - Move connected devices above available devices (fixed)
     - Bluetooth search needs an indicator (fixed)
     - Progress during connection would be helpful
-    - Paired devices should be shown differently to available ones
+    - Paired devices should be shown differently from available ones
     - It is not clear what the refresh button does
     - Add option to hide devices that only offer a MAC address
     - Tooltips are missing
@@ -152,5 +152,5 @@ timeframe.
 )
 
 #subsubsubsection("General Feedback")
-Users were overall happy with ReSet, with many issues being small improvements which were mostly overlooked due to time as mentioned in @Shortcomings.
+Users were overall happy with ReSet, with many issues being small improvements that were mostly overlooked due to time as mentioned in @Shortcomings.
 During testing, some major issues were able to be discovered and fixed, like ReSet crashing without Wi-Fi being present on the computer.

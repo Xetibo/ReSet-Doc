@@ -35,9 +35,9 @@ caption: [DaemonData struct used as the sole data storage by the daemon])<daemon
 
 #subsubsection("Audio/PulseAudio")
 For PulseAudio, ReSet offers a struct for sinks, sources, sink inputs, source outputs and cards.
-These translate to audio outpout device, audio input device, audio output stream, audio intut stream and audio codec profiles respectively.
+These translate to audio output device, audio input device, audio output stream, audio input stream and audio codec profiles respectively.
 
-The datastructures for sink/source and inputstream/outputstream have the same properties.
+The data structures for sink/source and inputstream/outputstream have the same properties.
 
 #figure(
   sourcecode(```rs

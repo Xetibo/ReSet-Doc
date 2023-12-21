@@ -22,7 +22,7 @@ This allows for a clean and automatic handling of created user stories via
 GitHub issues.
 
 #subsubsection("Tools")
-Rust is an editor-agnostic language, hence both team members can use their own tools without conflicts.
+Rust is an editor-agnostic language, hence both team members can use their tools without conflicts.
 For documentation typst is used, which also does not require a special editor, it just requires a compiler that works on all platforms.
 The user interface is made with Cambalache.
 

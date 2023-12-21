@@ -35,4 +35,4 @@ I learned a lot in this project because it involved many tasks that I encountere
 for the first time. This was my first time coming in contact with Rust and GTK. 
 Because the language is very different from the languages I have used before and 
 the fact that GTK made it a lot more complex, it took some time to get started. 
-But generally, it's a nice language I would consider using on different projects.
+But generally, it is a nice language I would consider using on different projects.

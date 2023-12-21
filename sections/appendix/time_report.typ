@@ -55,7 +55,7 @@ developed.
 )
 
 #subsubsection("Sprint 6: Preparation for Midpoint UI Testing")
-This week we tried to get as much UI done as possible, in preparation of the
+This week we tried to get as much UI done as possible, in preparation for the
 Midpoint UI Test next week. In the daemon, we started working on the Audio
 settings.
 #align(
