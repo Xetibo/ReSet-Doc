@@ -226,11 +226,21 @@ pavucontrol_repo:
   title: pavucontrol
   author: pulseaudio
   url: https://gitlab.freedesktop.org/pulseaudio/pavucontrol
+pulseaudio: 
+  type: repository
+  title: PulseAudio
+  author: pulseaudio
+  url: https://gitlab.freedesktop.org/pulseaudio/pulseaudio
 blueman_repo:
   type: repository
   title: Blueman
   author: blueman-project
   url: https://github.com/blueman-project/blueman
+bluez: 
+  type: repository
+  title: bluez
+  author: bluez
+  url: https://git.kernel.org/pub/scm/bluetooth/bluez.git
 networkmanager_repo:
   type: repository
   title: NetworkManager
@@ -337,8 +347,3 @@ neovim_lua:
   title: Noevim Lua Documenation
   author: Neovim
   url: https://neovim.io/doc/user/lua.html
-vala:
-  type: web
-  title: Vala
-  author: Vala
-  url: https://vala.dev/

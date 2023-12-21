@@ -24,9 +24,9 @@ ReSet *-- PluginSystem
 PluginSystem o-- MonitorPlugin
 PluginSystem o-- KeyboardPlugin
 PluginSystem o-- MousePlugin
-ReSetDaemon <--> NetworkManager    : IPC 
-ReSetDaemon <--> PulseAudio          : IPC 
-ReSetDaemon <--> bluez             : IPC
+ReSetDaemon <--> NetworkManager    : IPC/Library
+ReSetDaemon <--> PulseAudio          : IPC/Library 
+ReSetDaemon <--> bluez             : IPC/Library
 ReSetDaemon --> ConfigurationFile : load/save
 MonitorPlugin <--> GNOME
 KeyboardPlugin <--> GNOME

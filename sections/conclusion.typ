@@ -21,7 +21,7 @@ well as potential improvements to this project.
 These features were not implemented due to time constraints, future work can
 potentially resolve these missing features.
 
-#subsubsubsection("Plugin System")
+#subsubsubsection(custom_tag: "CPluginSystem", "Plugin System")
 Due to time constraints, this project will not cover a plugin system. However,
 with the implementation currently provided, it should be possible to implement
 this without major issues. For example, the current DBus daemon allows for a

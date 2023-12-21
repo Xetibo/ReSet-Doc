@@ -202,7 +202,7 @@ expands to allowing full Rust code withing metaprogramming, making entire
 programs possible at compile time @Rust_macros. ReSet currently only uses this
 feature via gtk-rs or default macros provided by the standard library,
 however, it could become a vital tool for the creation of a plugin system which
-is mentioned in @PluginSystem.
+is mentioned in @CPluginSystem.
 
 #figure(
 sourcecode(

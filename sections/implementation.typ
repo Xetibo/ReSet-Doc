@@ -7,6 +7,7 @@ evaluating technologies for ReSet and an initial design for the user interface.
 #include "implementation/technologies.typ"
 #pagebreak()
 #include "implementation/architecture.typ"
+#pagebreak()
 #include "implementation/domain_model.typ"
 #pagebreak()
 #include "implementation/ui_design.typ"

@@ -25,7 +25,8 @@ plugin system for ReSet:
   libraries are the most performant way to create a plugin system without outright
   moving towards changing the code and recompiling. However, it forces ReSet to
   offer a "stable" ABI which can be done directly over the C programming language,
-  or indirectly with the abi_stable crate for the Rust programming language.\
+  or indirectly with the abi_stable crate for the Rust programming language.
+
   The project "anyrun" @anyrun by Kirottu serves as a perfect example of a small
   but powerful example of the abi_stable crate. Anyrun is a so-called application
   launcher, with each plugin being able to fill the launcher queries.
@@ -34,7 +35,6 @@ plugin system for ReSet:
   sourcecode(```rs
 use abi_stable::std_types::{RString, RVec, ROption};
 use anyrun_plugin::*;
-
 #[init]
 fn init(config_dir: RString) {
   // ...

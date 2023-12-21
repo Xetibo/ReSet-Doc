@@ -19,10 +19,10 @@ plugin developer.\
 *Data Transfer Object* | Serialized data that will be sent to ReSet or
 third-party applications.
 
-Each functionality defines their DTO that will be sent to the user interface
+Each functionality defines their own DTOs that will be sent to the user interface
 application, which will then be able to utilize the data.
 
-Plugins will handle their data structure, the daemon will only send the data
+Plugins will also handle their own data structures, the daemon will only send the data
 to the user interface application, which then in return calls another function
 from the plugin, in order to display the data to the user. Additionally, should
 a plugin want to store data to persistence, it will have to provide the data to

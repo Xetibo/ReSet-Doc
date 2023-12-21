@@ -10,8 +10,8 @@ rather strict adherence to these guidelines is needed, ReSet will still use the
 best practices that are employed by these guidelines.
 
 These best practices can also be seen in the book "Don't Make Me Think" by Steve
-Krug, @krug or in "Designing the User Interface" by Ben Shneiderman and
-Catherine Plaisant. In both works the authors defined rules to follow when
+Krug@krug, or in "Designing the User Interface" by Ben Shneiderman and Catherine
+Plaisant @shneiderman. In both works the authors defined rules to follow when
 creating user interfaces. Steve Krug specifically focused on the web, however,
 the vast majority of these rules can be applied in the same manner on desktop
 applications.
@@ -30,7 +30,7 @@ applications.
   For example, the application Blueman introduced in
   @Analysisofexistingapplications is used.
   #figure(
-    align(center, [#image("../figures/bluetooth_manager.png", width: 80%)]), caption: [Bluetooth manager],
+    align(center, [#image("../figures/bluetooth_manager.png", width: 80%)]), caption: [Blueman],
   )<bluetooth_manager>
   When opening the application, one can see a blank page with a top bar, this may
   cause users to think there are no Bluetooth devices available. However, the user
@@ -38,7 +38,7 @@ applications.
   #figure(
     align(
       center, [#image("../figures/bluetooth_manager_filled.png", width: 80%)],
-    ), caption: [Bluetooth manager with scanned devices],
+    ), caption: [Blueman with scanned devices],
   )<bluetooth_manager_filled>
   After clicking the search button, the application proceeds to list Bluetooth
   devices as expected. The question now is how to pair and connect to a specific
@@ -75,18 +75,18 @@ applications.
     align(center, [#image("../figures/kde-hamburger.png", width: 60%)]), caption: [An extreme example of KDE hamburger menus],
   )<kde-hamburger>
   There is a big difference between KDE and GNOME in the context of menus, KDE
-  uses a lot of nested submenus as can be seen in @kde-hamburger, while the GNOME side explicitly discourages these
-  menus citing reduced accessibility @gnome_guidelines_menu. In this case, the
-  question is about where the bookmarks are stored. The default location is in
-  more->go->bookmarks, this is on layer 4 of a menu without search functionality
-  and with very ambiguous navigation.
+  uses a lot of nested submenus as can be seen in @kde-hamburger, while the GNOME
+  side explicitly discourages these menus citing reduced accessibility
+  @gnome_guidelines_menu. In this case, the question is about where the bookmarks
+  are stored. The default location is in more->go->bookmarks, this is on layer 4
+  of a menu without search functionality and with very ambiguous navigation.
 
   In other words, it is clear that shorter navigation is usually the best way to
   achieve "mindless navigation", however, it is, as Krug mentioned, not the only
   factor.
 
-  ReSet will enforce this rule by avoiding context menus entirely wherever possible, and instead
-  relying on dynamic pages to provide further functionality.
+  ReSet will enforce this rule by avoiding context menus entirely wherever
+  possible, and instead relying on dynamic pages to provide further functionality.
 #pagebreak()
 - *"Get rid of half the words on each page, then get rid of half of what is left."
   \- Steve Krug* @krug\
@@ -104,9 +104,10 @@ applications.
   an application. The authors therefore propose to collapse complex user
   interfaces like multi-page displays into one.
 
-  The downside of this approach can be a too simple application, meaning the _powerful when needed_ part
-  does not always apply. Compared to KDE applications, GNOME is often considered
-  to be simpler, but also less configurable.
+  The downside of this approach can be a too simple application, meaning the users
+  might be forced to use more than one tool for the task. For example, compared to
+  KDE applications, GNOME is often considered to be simpler, but also less
+  configurable.
   #grid(
     columns: (1fr, 1.1fr), rows: (auto), gutter: 10pt, figure(
       align(center, [#image("../figures/new-gnome.png", width: 60%)]), caption: [Context menu in Nautilus (GNOME file manager)],
@@ -118,8 +119,8 @@ applications.
   create, including links and shortcuts, while the GNOME experience only offers a
   new folder and anything else needs to be done with a terminal. For Nautilus, one
   can also create templates within the Linux template folder which will then be
-  available in the pop-over menu as well, but this is not an obvious
-  feature @nautilus_new_document_popup @nautilus_new_document_issue.
+  available in the pop-over menu as well, but this is not an obvious feature
+  @nautilus_new_document_popup @nautilus_new_document_issue.
 
   ReSet aims to provide a middle ground between these two approaches.
 
@@ -127,17 +128,17 @@ applications.
   The rule refers to clear omission of unnecessary data for experts, and giving
   them a short, clear, and usually customizable path to their end goal. In user
   interfaces this is usually done with keyboard shortcuts as seen in
-  @nautilus_shortcuts.
+  @dolphin_shortcuts.
 
   #figure(
     align(center, [#image("../figures/shortcuts-kde.png", width: 100%)]), caption: [Shortcuts menu in Dolphin],
-  )
+  )<dolphin_shortcuts>
 
   The Dolphin version is much more complex, this is because you can customize any
   shortcut in Dolphin using this interface. For Nautilus shortcuts can only be
-  configured using scripts that extend the functionality of
-  Nautilus @nautilus_shortcut_discussion, according to a GTK developer, this is
-  no longer possible on a toolkit level @gtk_shortcut_discussion.
+  configured using scripts that extend the functionality of Nautilus
+  @nautilus_shortcut_discussion, according to a GTK developer, this is no longer
+  possible on a toolkit level @gtk_shortcut_discussion.
 
   #figure(
     align(center, [#image("../figures/shortcuts.png", width: 80%)]), caption: [Shortcuts menu in Nautilus],
@@ -163,7 +164,7 @@ In "The Pragmatic Programmer" @pragprog by David Thomas and Andrew Hunt, the
 authors mentioned the importance of text file configuration that is
 human-readable and can be put under version control. For ReSet the importance
 comes from the fact that the configuration of various categories needs
-persistent storage, and ReSet also needs to handle this.\
+persistent storage, and ReSet also needs to handle this.
 
 The already mentioned GNOME control center handles this via a database, contrary
 to the chapter in the aforementioned book. This is done for increased speed in
@@ -172,11 +173,11 @@ of needing a program to interact with the stored data, as you cannot otherwise
 access it.
 
 KDE systemsettings in contrast work with text files as Thomas and Hunt advocate,
-but their files are all over the place, meaning it is often hard to understand
+but their files are sometimes unorganized, meaning it is often hard to understand
 where a certain setting might be if you would like to change something, perhaps
 due to a bug in the graphical user interface or because you just like to make
 these changes manually.
 
 For ReSet, using small and structured text files over databases ensures version
-control compatibility, environment-agnostic usage as well as application
+control compatibility, environment-agnostic usage, as well as application
 agnostic usage and configuration.
