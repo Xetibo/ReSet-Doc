@@ -276,7 +276,7 @@ offer stable language bindings for a large set of languages, including Rust via 
 Compared to native Rust libraries, it offers a more robust set of defined
 widgets, themes and tools. Specifically the toolkit "iced" was considered,
 however, it currently lacks documentation and needs several library
-implementations in order to fit with ReSets' requirements.@iced
+implementations in order to fit with ReSet's requirements.@iced
 
 The last consideration is QT, it is a cross-platform toolkit that uses its own
 form of JavaScript (QML) to draw windows.@qt @qml QT is a well-known toolkit, however, it
