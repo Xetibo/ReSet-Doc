@@ -45,7 +45,7 @@ applications.
   device. Users who understand Bluetooth terminology will likely proceed with the
   key icon, which means pairing for this application. However, there is a chance
   that users will first try the checkmark icon to connect to the device, which
-  would instead mark the device as tRusted.
+  would instead mark the device as trusted.
 
   In this case, the icons could be improved to represent a more technology-neutral
   design.
