@@ -38,9 +38,9 @@ across the current features. This means that the same container was used for
 audio, Bluetooth and wireless networks, and can be used by plugins in the future
 to keep the consistent design.
 
-In @reset_settings_box, the currently used box is shown in code.
-The box is technically empty, and just serves as a container for each functionality,
-similar to a custom div component used in web-development.
+In @reset_settings_box, the currently used box is shown in the code.
+The box is technically empty and just serves as a container for each functionality,
+similar to a custom div component used in web development.
 
 #figure(sourcecode(```rs
 // The container used for every functionality
@@ -60,9 +60,8 @@ supplement: "Listing",
 caption: [ReSet settings box])<reset_settings_box>
 
 Alongside this, ReSet uses a GTK native Flowbox which houses the containers.
-Using the Flowbox,
-ReSet can ensure usage of optimal available screen space by dynamically resizing its children.
-This translates to a window
+Using the Flowbox, ReSet can ensure the usage of optimal available screen 
+space by dynamically resizing its children. This translates to a window
 that doesn't feel empty, even on ultrawide monitors. At the same time, the
 flowbox provides the response design aspects that users have gotten used to on
 web applications. This means that ReSet can also be used on vertical monitors

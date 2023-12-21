@@ -139,3 +139,21 @@ the documentation.
       caption: [Time distribution of Sprint 13],
     )],
 )
+
+#subsubsection("Sprint 14: Final changes to documentation")
+We finished the ReSet feedback test and compiled the answers in our documentation. Besides 
+that, we fixed and polished the documentation for the final submission.
+#align(
+  center, [#figure(
+      image("../../figures/timeReports/timeReport_14.png", width: 100%), 
+      caption: [Time distribution of Sprint 14],
+    )],
+)
+
+#subsubsection("Time Report Statistics")
+#align(
+  center, [#figure(
+      image("../../figures/timeReports/timeReport_theFinalSeasonTheLastPartTheFinalChapter.png", width: 100%), 
+      caption: [Total time spent on the project],
+    )],
+)
