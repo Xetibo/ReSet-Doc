@@ -30,6 +30,7 @@ hence when a webpage encounters issues, the browser itself is still usable.
 #subsubsubsection("Language Requirements")
 
 #subsubsection("Code Patching")
+Code patching is not a proper way of handling plugins
 
 #subsubsection("IPC")
 
