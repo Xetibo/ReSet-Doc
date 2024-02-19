@@ -30,9 +30,24 @@ hence when a webpage encounters issues, the browser itself is still usable.
 #subsubsubsection("Language Requirements")
 
 #subsubsection("Code Patching")
-Code patching is not a proper way of handling plugins
+Code patching is technically not a plugin system. With code patching, users need
+to change the code of the application themselves in order to achieve the
+expected functionality. This type of extensibility is found in a specific set of
+open-source applications called "suckless".
+
+While not necessarily part of a plugin system, it is still important to note
+that this system requires a soft API/ABI stability. If the developers of the
+main applications often make radical changes, then these patches need to be
+rewritten for each change, which would make this system completely unfeasible.
 
 #subsubsection("IPC")
+Inter Process Communication can be seen as a soft version of a plugin system.
+While it doesn't allow users to expand the functionality of the program itself,
+it does allow users to wrap the program by using the provided IPC and expanding
+it with new functions.
+
+ReSet itself is made with this idea in mind, expanding on existing functionality
+for Wi-Fi, audio and more.
 
 #subsubsection("Dynamic Libraries")
 Dynamic libraries can be used in order to load specific functions during
@@ -67,7 +82,7 @@ in the application. As an example, for loading various settings in ReSet, this
 would mean looping through dynamic libraries and loading their respective user
 interfaces to show in ReSet. This approach is plausible and proven to work by a
 variety of existing plugin systems, however it also has a major shortcoming. The
-monent the plugin crashes, the application has to either handle this unknown
+moment the plugin crashes, the application has to either handle this unknown
 error, or worse, if the error is not recoverable, the entire application
 crashes. This can lead to potential instability with plugins of different
 versions using different ABIs or simply due to bugs in a plugin.
