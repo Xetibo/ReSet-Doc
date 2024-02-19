@@ -114,4 +114,9 @@ malicious developers from hiding their code.
 
 #subsection("Hooks")
 
+// macros
+// dylib explanation -> how load works etc
+// potential security mitigations
+// testing possibilities
+// architecture -> pattern usage?
 
