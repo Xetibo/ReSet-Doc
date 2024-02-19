@@ -9,46 +9,22 @@
 }
 
 #let cell(
-  content,
-  font_size: 12pt,
-  cell_align: center,
-  color: black,
-  bold: false,
-  use_rect: false,
-  use_under: false,
-  fill: luma(255),
-  width: 100%,
-  height: 100%,
+  content, font_size: 12pt, cell_align: center, color: black, bold: false, use_rect: false, use_under: false, fill: luma(255), width: 100%, height: 100%,
 ) = {
   if bold {
     content = [*#content*]
   }
   if use_rect {
     rect(
-      width: width,
-      height: height,
-      fill: fill,
-      outset: (x: 1pt, y: 0pt),
-      stroke: 1pt,
-      align(cell_align + horizon, [#text(fill: color, size: font_size, content)]),
+      width: width, height: height, fill: fill, outset: (x: 1pt, y: 0pt), stroke: 1pt, align(cell_align + horizon, [#text(fill: color, size: font_size, content)]),
     )
   } else if use_under {
     rect(
-      width: width,
-      height: height,
-      fill: fill,
-      outset: (x: 1pt, y: 0pt),
-      stroke: (top: 0pt, right: 0pt, left: 0pt, bottom: 1pt),
-      align(cell_align + horizon, [#text(fill: color, size: font_size, content)]),
+      width: width, height: height, fill: fill, outset: (x: 1pt, y: 0pt), stroke: (top: 0pt, right: 0pt, left: 0pt, bottom: 1pt), align(cell_align + horizon, [#text(fill: color, size: font_size, content)]),
     )
   } else {
     rect(
-      width: width,
-      height: height,
-      fill: fill,
-      outset: (x: 1pt, y: 0pt),
-      stroke: none,
-      align(cell_align + horizon, [#text(fill: color, size: font_size, content)]),
+      width: width, height: height, fill: fill, outset: (x: 1pt, y: 0pt), stroke: none, align(cell_align + horizon, [#text(fill: color, size: font_size, content)]),
     )
   }
 }
@@ -93,17 +69,18 @@
       },
     )
   } else if num != "" and type(name) == type("string") {
-    locate(loc => {
-      let elem = query(heading.where(body: [#name]).before(loc), loc)
-      if elem == () {
-        align(
-          left,
-          [#heading(numbering: num, level: level, name)#label(concat_name)],
-        )
-      } else {
-        align(left, [#heading(numbering: num, level: level, name)])
-      }
-    })
+    locate(
+      loc => {
+        let elem = query(heading.where(body: [#name]).before(loc), loc)
+        if elem == () {
+          align(
+            left, [#heading(numbering: num, level: level, name)#label(concat_name)],
+          )
+        } else {
+          align(left, [#heading(numbering: num, level: level, name)])
+        }
+      },
+    )
   } else {
     align(left, [#heading(numbering: num, level: level, name)])
   }
@@ -131,58 +108,30 @@
 #let requirement(subject, category, priority, description, measures) = {
   let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
   pad(x: 0pt, y: 0pt, line(length: 100%))
-  pad(x: 0pt, y: -15pt, grid(
-    columns: (2.5fr, 10fr),
-    rows: (auto, auto),
-    gutter: 0pt,
-    cell(height: auto)[*Subject*],
-    cell(height: auto)[#subject],
-    cell(height: auto)[*Requirement*],
-    cell(height: auto)[#category],
-    cell(height: auto)[*Priority*],
-    cell(height: auto)[#priority],
-    cell(height: auto)[*Description*],
-    cell(height: auto)[#description],
-    cell(height: auto)[*Measures*],
-    cell(height: auto)[#measures],
-  ))
+  pad(
+    x: 0pt, y: -15pt, grid(
+      columns: (2.5fr, 10fr), rows: (auto, auto), gutter: 0pt, cell(height: auto)[*Subject*], cell(height: auto)[#subject], cell(height: auto)[*Requirement*], cell(height: auto)[#category], cell(height: auto)[*Priority*], cell(height: auto)[#priority], cell(height: auto)[*Description*], cell(height: auto)[#description], cell(height: auto)[*Measures*], cell(height: auto)[#measures],
+    ),
+  )
 }
 
 #let risk(subject, description, priority, probability, severity, measures) = {
   let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
   pad(x: 0pt, y: 0pt, line(length: 100%))
-  pad(x: 0pt, y: -15pt, grid(
-    columns: (3.7fr, 10fr),
-    rows: (auto, auto),
-    gutter: 0pt,
-    cell(height: auto)[*Subject*],
-    cell(height: auto)[#subject],
-    cell(height: auto)[*Risk*],
-    cell(height: auto)[#description],
-    cell(height: auto)[*Priority*],
-    cell(height: auto)[#priority],
-    cell(height: auto)[*Probability*&*Severity*],
-    cell(height: auto)[#probability & #severity],
-    cell(height: auto)[*Measures*],
-    cell(height: auto)[#measures],
-  ))
+  pad(
+    x: 0pt, y: -15pt, grid(
+      columns: (3.7fr, 10fr), rows: (auto, auto), gutter: 0pt, cell(height: auto)[*Subject*], cell(height: auto)[#subject], cell(height: auto)[*Risk*], cell(height: auto)[#description], cell(height: auto)[*Priority*], cell(height: auto)[#priority], cell(height: auto)[*Probability*&*Severity*], cell(height: auto)[#probability & #severity], cell(height: auto)[*Measures*], cell(height: auto)[#measures],
+    ),
+  )
 }
 
 #let test(subject, description, feedback, suggestions) = {
   let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
   pad(x: 0pt, y: 0pt, line(length: 100%))
-  pad(x: 0pt, y: -15pt, grid(
-    columns: (2fr, 10fr),
-    rows: (auto, auto, auto),
-    gutter: 0pt,
-    cell(height: auto)[*Subject*],
-    cell(height: auto)[#subject],
-    cell(height: auto)[*Description*],
-    cell(height: auto)[#description],
-    cell(height: auto)[*Feedback*],
-    cell(height: auto)[#feedback],
-    cell(height: auto)[*Suggestions*],
-    cell(height: auto)[#suggestions],
-  ))
+  pad(
+    x: 0pt, y: -15pt, grid(
+      columns: (2fr, 10fr), rows: (auto, auto, auto), gutter: 0pt, cell(height: auto)[*Subject*], cell(height: auto)[#subject], cell(height: auto)[*Description*], cell(height: auto)[#description], cell(height: auto)[*Feedback*], cell(height: auto)[#feedback], cell(height: auto)[*Suggestions*], cell(height: auto)[#suggestions],
+    ),
+  )
   pad(x: 0pt, y: 0pt, line(length: 100%))
 }
