@@ -64,10 +64,12 @@ In order for this interaction to work, the plugin must implement all functions
 that the application requires, meaning the code has to be contained within the
 framework of the developer of the application.
 
+// TODO: Explain loader -> ELF loader
+
 #subsubsubsection("Example")
 For Rust, the crate "libloading" handles the mapping of C functions to Rust in a
-simple fashion. This allows a straight forward usage of dynamic libraries. Figure/* TODO */ visualizes
-a simple dynamic library with a single function.
+simple fashion. This allows a straight forward usage of dynamic libraries.
+Figure/* TODO */ visualizes a simple dynamic library with a single function.
 
 ```rs
 // code in the calling binary
@@ -91,6 +93,9 @@ pub extern "C" fn test_function(data: i32) -> i32 {
 In figure/* TODO */, the dynamic library has the annotation "no_mangle". This
 flag tells the compiler to not change the identity of the specified designator.
 Without this, functions and variables will not be found with the original names.
+Mangling is further explained in section/* TODO */.
+
+// TODO: Explain mangling 
 
 Additionally, in both the dynamic library and the calling binary, the flag "extern
 C" is used. This is required as Rust does not guarantee ABI stability, meaning
@@ -131,6 +136,33 @@ their own thread or process to provide independent error handling. This allows
 an application to recover even when a plugin exits abnormally while using
 resources.
 
+In/* TODO */ the use of simple Rust threads guarantees the continuation of the
+invoking thread, meaning the underlying application can still continue to run
+even though the spawned thread encountered a fatal error.
+
+```rs
+fn main() {
+    thread::spawn(|| {
+        library_function();
+        // encapsulated functionality
+    });
+    // program should still get this input even if the thread crashes
+    let mut buffer = String::new();
+    io::stdin().read_line(&mut buffer);
+}
+```
+// TODO insert screenshot of panic
+
+While the runtime guarantee is a benefit of this system, it also requires thread
+safe synchronization of resources. This would incur a performance penalty on the
+entire system as even the native application services would now need to use
+synchronization when accessing data.
+
+On top of this, when a plugin encounters a fatal error, this should not only be
+communicated to the user, but potential interactions with the now lost plugin
+need to be removed. This might happen when plugins communicate with each other,
+or when multiple plugin systems are in place.
+
 #subsubsubsection("Architecture")
 
 #subsubsection("Function overriding")
@@ -165,7 +197,7 @@ fn main() {
     // The reason for unsafe is the mutability with different threads.
     // With static variables it is possible to access the same Plugin System
     // at the same time.
-    // For a real system with different threads, 
+    // For a real system with different threads,
     // it would be required to put mutable access behind a locking mechanism.
     unsafe {
         G_PLUGIN_SYSTEM.call(5);
@@ -205,6 +237,24 @@ typed language such as Rust. Important to note however, is that even with the
 any pattern, Rust would still break the ABI compatibility, as memory access
 depends on the size of a type.
 
+#subsection("Custom Scripting Language")
+Creating a custom language just for a plugin system serves two potential use
+cases. The first would be security concerns which are explained in @Security.
+The idea is that with custom scripting languages, it is possible to limit the
+functionality of the language, making it infeasible or harder for malicious
+developers to abuse the plugin system. The second use case is the simplification
+of functionality for potential plugin developers. For ReSet, this could mean
+creating of ReSet specific user interface elements with a single function call.
+However, this could also be potentially implemented with a library for an
+existing language.
+
+#subsubsection("Turing Complete")
+The security aspect is likely the biggest factor for choosing to create a custom
+scripting language. Here the use of non-turing complete language are the most
+effective. It enforces limited functionality, which can severely limit the
+attack vectors compared to a turing complete language. The downside of this
+approach is that only plugins with a supported use-case can be created.
+
 #subsection("Security")
 Security in plugin systems is not an easy task. Developers want to rely on the
 plugin system in order to focus on their core systems, however, this puts the
@@ -213,15 +263,23 @@ malicious intentions.
 
 Similar concerns can be seen with browser extensions which are also just
 plugins, just for the browser itself. Some organizations require reviews from
-developers before publishing an extension to a web based plugin "store", while
-the Mozilla developed Firefox requires plugins to be open-source, which hinders
-malicious developers from hiding their code.
+developers before publishing an extension to a web based plugin "store", making
+it harder for malicious code to be published as an extension.
 
 #subsection("Hooks")
+Hooks for the plugin system refer to section in the code where the plugin
+applies its functionality. When looking back at the ABI plugin example in/* TODO */,
+this would be the call of the function inside the plugin system struct.
+For the example in /* TODO */ it would instead be the overridden function.
 
-// macros
-// dylib explanation -> how load works etc
-// potential security mitigations
-// testing possibilities
-// architecture -> pattern usage?
+// TODO: why is this important?
+// TODO: Security concerns? Potential uninitialized resources etc.
+// TODO: Providing a consistent environment for plugins in order for them to not crash 
+#subsection("Testing")
+// TODO: Integration tests 
+// TODO: How to connect with the rest of the system
+
+#subsection("Macros")
+// TODO: Why are these important? 
+// TODO: How to they interact with plugins
 
