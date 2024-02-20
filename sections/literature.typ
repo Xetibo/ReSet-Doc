@@ -66,7 +66,7 @@ framework of the developer of the application.
 
 #subsubsubsection("Example")
 For Rust, the crate "libloading" handles the mapping of C functions to Rust in a
-simple fashion. This allows a straight forward usage of dynamic libaries. Figure/* TODO */ visualizes
+simple fashion. This allows a straight forward usage of dynamic libraries. Figure/* TODO */ visualizes
 a simple dynamic library with a single function.
 
 ```rs
@@ -82,7 +82,7 @@ fn main() {
     }
 }
 
-// code in the dyanmic library
+// code in the dynamic library
 #[no_mangle]
 pub extern "C" fn test_function(data: i32) -> i32 {
     data * data
@@ -163,9 +163,10 @@ static mut G_PLUGIN_SYSTEM: Lazy<PluginSystem> = Lazy::new(|| PluginSystem {
 
 fn main() {
     // The reason for unsafe is the mutability with different threads.
-    // With static variables it is possible to access the same Plugin System at the same time.
-    // For a real system with different threads, it would be required to put mutable access behind
-    // a locking mechanism.
+    // With static variables it is possible to access the same Plugin System
+    // at the same time.
+    // For a real system with different threads, 
+    // it would be required to put mutable access behind a locking mechanism.
     unsafe {
         G_PLUGIN_SYSTEM.call(5);
         // this override can be done with a dynamic library or IPC
