@@ -99,6 +99,76 @@ resources.
 
 #subsubsubsection("Architecture")
 
+#subsubsection("Function overriding")
+Function overriding is a variant of dynamic plugins which will override existing
+functionality instead of just expanding it. This type of functionality provides
+more control to the plugin developers, but also requires more maintenance from
+the plugin system developers and is more prone to breaking changes, as plugins
+interact more closely with the original system.
+
+An existing plugin system with this variant is the Gnome-Shell. This application
+is used on top of the Gnome Compositor to provide users with various user
+interfaces such as a status bar, notifications, and more. As Gnome-Shell is
+written in JavaScript, the overriding of functions is comparatively straight
+forward, meaning there are no type issues with extensions. Compared to using the
+ABI for compiled languages, this variant also means that just changing the
+integer variant does not break compatibility with existing extensions.
+
+Using JavaScript for this use case also creates a bind, namely, it is no longer
+possible to split extensions, as JavaScript is a single-threaded system. This
+means that each extension that can possibly crash, would also take down the
+Gnome-Shell as collateral.
+
+To visualize the concept, here is an example of function overriding as parameter
+in Rust:
+```rs
+use once_cell::sync::Lazy;
+static mut G_PLUGIN_SYSTEM: Lazy<PluginSystem> = Lazy::new(|| PluginSystem {
+    function: Box::new(regular_function),
+});
+
+fn main() {
+    // The reason for unsafe is the mutability with different threads.
+    // With static variables it is possible to access the same Plugin System at the same time.
+    // For a real system with different threads, it would be required to put mutable access behind
+    // a locking mechanism.
+    unsafe {
+        G_PLUGIN_SYSTEM.call(5);
+        // this override can be done with a dynamic library or IPC
+        G_PLUGIN_SYSTEM.override_function(second_function);
+        G_PLUGIN_SYSTEM.call(5);
+    }
+}
+
+fn regular_function(data: i32) {
+    println!("This is the first function: {}", data);
+}
+
+fn second_function(data: i32) {
+    println!("This is the second function: {}", data);
+}
+
+struct PluginSystem {
+    function: Box<fn(i32)>,
+}
+
+impl PluginSystem {
+    fn override_function(&mut self, new_function: fn(i32)) {
+        self.function = Box::new(new_function);
+    }
+
+    fn call(&self, data: i32) {
+        (self.function)(data);
+    }
+}
+```
+The output of this program is the regular_function and the second_function after
+this, both functions get the dummy data 5 passed to it. In a real world example,
+this data could potentially be of the "any" type provided by the any pattern,
+which would allow plugins to use custom defined types, even with a statically
+typed language such as Rust. Important to note however, is that even with the
+any pattern, Rust would still break the ABI compatibility, as memory access
+depends on the size of a type.
 
 #subsection("Security")
 Security in plugin systems is not an easy task. Developers want to rely on the
