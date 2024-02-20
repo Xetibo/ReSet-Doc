@@ -64,6 +64,40 @@ In order for this interaction to work, the plugin must implement all functions
 that the application requires, meaning the code has to be contained within the
 framework of the developer of the application.
 
+#subsubsubsection("Example")
+For Rust, the crate "libloading" handles the mapping of C functions to Rust in a
+simple fashion. This allows a straight forward usage of dynamic libaries. Figure/* TODO */ visualizes
+a simple dynamic library with a single function.
+
+```rs
+// code in the calling binary
+fn main() {
+    unsafe {
+        let lib = libloading::Library::new("./testlib/target/debug/libtestlib.so")
+            .expect("Could not open library.");
+        let func: libloading::Symbol<unsafe extern "C" fn(i32) -> i32> =
+            lib.get(b"test_function").expect("Could not load function.");
+        assert_eq!(func(2), 4);
+        println!("success");
+    }
+}
+
+// code in the dyanmic library
+#[no_mangle]
+pub extern "C" fn test_function(data: i32) -> i32 {
+    data * data
+}
+```
+In figure/* TODO */, the dynamic library has the annotation "no_mangle". This
+flag tells the compiler to not change the identity of the specified designator.
+Without this, functions and variables will not be found with the original names.
+
+Additionally, in both the dynamic library and the calling binary, the flag "extern
+C" is used. This is required as Rust does not guarantee ABI stability, meaning
+that without this flag, a dynamic library with compiler version A might not
+necessarily be compatible with the binary compiled with compiler version B.
+Hence, Rust and other languages use the C ABI to ensure ABI stability.
+
 #subsubsubsection("ABI")
 Plugin systems based on dynamic libraries require that the plugins themselves
 are built against the current system. In other words, for each specific version
