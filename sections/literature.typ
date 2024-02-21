@@ -81,7 +81,7 @@ open-source applications called "suckless".
 While not necessarily part of a plugin system, it is still important to note
 that this system requires a soft API/ABI stability. If the developers of the
 main applications often make radical changes, then these patches need to be
-rewritten for each change, which would make this system completely unfeasible.
+rewritten for each change, which would make this system completely infeasible.
 
 #subsubsection("IPC")
 Inter Process Communication can be seen as a soft version of a plugin system.
