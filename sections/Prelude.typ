@@ -41,11 +41,11 @@ compilation with the annotation #[no_mangle] is visualized.
 // the result of mangling the function is this:
 // assembly code
 // .section  .text._ZN4main4main17h51f2041274cfd0bdE,"ax",@progbits
-```asm
-;; mangled add function
+```yasm
+; mangled add function
 .section  .text._ZN4main4main17h51f2041274cfd0bdE,"ax",@progbits
 
-;; function without mangle
+; function without mangle
 .section  .text.add,"ax",@progbits
 ```
 
@@ -70,9 +70,22 @@ an interpreter, this disallows the compilation to binary form and requires it to
 stay as code. If the source code of this application should still be hidden from
 the public, then developers will have to change the code to be intentionally as
 unreadable as possible. This obfuscation is often done with existing tools such
-as/* TODO /*.
+as. // TODO
 
 #subsection("Dynamic Libraries")
+Dynamic libraries are an interpretation of a binary which can be loaded into
+memory and accessed at runtime by another binary. This means that developers can
+provide libraries which can be loaded into a program at runtime.
+
+Dynamic libraries provide multiple benefits such as a smaller binary size,
+re-usable libraries and independent updates.
+
+The first two are intertwined, due to the fact that developers don't necessarily
+ship needed libraries, the binary of an application is reduced in size, however
+this does still require the library itself. In other words, if a library is only
+used by a single application, it might slightly increase the storage usage,
+however, due to the fact that applications can use the same library at the same
+time, it will reduce the size of a binary overall.
 
 #subsubsection("Structure")
 
