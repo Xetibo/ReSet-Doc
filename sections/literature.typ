@@ -9,6 +9,39 @@ providing users with the functionality they explicitly want to use. The notable
 downside to this is the development and performance overhead the system itself
 has on the application.
 
+For ReSet, the use case for a plugin system is the wide variety of features that
+either a system supports, or the user wants. As an example, it makes no sense to
+provide VR Headset configuration for a system that does not support such
+devices. At the same, it is also counterproductive to offer settings for users
+that will never be used, for example touchpad settings on a desktop, here the
+system could either detect available devices and load plugins respectively, or
+simply give users the ability to gradually control their used plugins.
+
+#subsection("High Level Architecture")
+In @base_plugin_architecture the intended architecture of the plugin system is
+visualized.
+#align(
+  center, [#figure(
+      img("architecture.svg", width: 100%, extension: "files"), caption: [Architecture of ReSet],
+    )<base_plugin_architecture>],
+)
+
+The intention is that each plugin will offer three parts for ReSet. The first
+part is the functionality itself, as an example, a monitor configuration plugin
+would need the ability to apply various resolutions to monitors. This
+functionality would then be offered by the plugin via a function or similar.
+
+The next part of the plugin is the DBus interface, this interface can be
+directly injected into the existing DBus server provided by the ReSet daemon,
+providing users with locality transparency, meaning users will not see the
+difference between a plugin interface, and the core interfaces provided by ReSet
+out of the box.
+
+The third part of a plugin is a user interface widget, which can be integrated
+into the ReSet user interface application. Notably, this is optional, as users
+can choose to not use the user interface, and instead interact with ReSet via
+DBus.
+
 #subsection("Plugin System Variants")
 In this section different variants of plugin systems are discussed and compared.
 
@@ -31,6 +64,13 @@ hence when a webpage encounters issues, the browser itself is still usable.
 #subsubsubsection("Language Requirements")
 
 #subsubsubsection("Architecture")
+in @interpreted_languages_plugin the architecture of a plugin system with
+interpreted languages is visualized.
+#align(
+  center, [#figure(
+      img("interpreted_languages.svg", width: 100%, extension: "files"), caption: [Architecture of a potential interpreted plugin system.],
+    )<interpreted_languages_plugin>],
+)
 
 #subsubsection("Code Patching")
 Code patching is technically not a plugin system. With code patching, users need
@@ -45,7 +85,7 @@ rewritten for each change, which would make this system completely unfeasible.
 
 #subsubsection("IPC")
 Inter Process Communication can be seen as a soft version of a plugin system.
-While it doesn't allow users to expand the functionality of the program itself,
+While it does not allow users to expand the functionality of the program itself,
 it does allow users to wrap the program by using the provided IPC and expanding
 it with new functions.
 
@@ -95,7 +135,7 @@ flag tells the compiler to not change the identity of the specified designator.
 Without this, functions and variables will not be found with the original names.
 Mangling is further explained in section/* TODO */.
 
-// TODO: Explain mangling 
+// TODO: Explain mangling
 
 Additionally, in both the dynamic library and the calling binary, the flag "extern
 C" is used. This is required as Rust does not guarantee ABI stability, meaning
@@ -164,6 +204,13 @@ need to be removed. This might happen when plugins communicate with each other,
 or when multiple plugin systems are in place.
 
 #subsubsubsection("Architecture")
+In @dynamic_libraries_plugin_system, the architecture of a plugin system with
+dynamic libraries is visualized.
+#align(
+  center, [#figure(
+      img("dynamic_libraries.svg", width: 100%, extension: "files"), caption: [Architecture of a dynamic library plugin system.],
+    )<dynamic_libraries_plugin_system>],
+)
 
 #subsubsection("Function overriding")
 Function overriding is a variant of dynamic plugins which will override existing
@@ -237,6 +284,56 @@ typed language such as Rust. Important to note however, is that even with the
 any pattern, Rust would still break the ABI compatibility, as memory access
 depends on the size of a type.
 
+#subsubsubsection("Example Any pattern")
+In/* TODO */ an example any pattern implementation is visualized.
+```rs
+fn main() {
+    let penguin = Example {
+        name: "penguin".to_string(),
+        age: 29,
+    };
+    let any_penguin = penguin.to_any();
+    let restored_penguin = Example::from_any(any_penguin);
+    assert_eq!(penguin, restored_penguin);
+    println!("Success");
+}
+
+trait AnyImpl {
+    fn to_any(&self) -> Any;
+    fn from_any(any: Any) -> Self;
+}
+
+struct Any {
+    // holds the data of all fields
+    data: Vec<u8>,
+    // determinant splits data vector back to fields
+    determinants: Vec<usize>,
+}
+
+#[derive(PartialEq, Eq, Debug)]
+struct Example {
+    name: String,
+    age: u32,
+}
+
+impl AnyImpl for Example {
+    // This is just an example, could also be done with a Hashmap or similar
+    fn to_any(&self) -> Any {
+        let data = self.name.as_bytes();
+        let determinants = vec![data.len()];
+        let data = [data, &self.age.to_ne_bytes()].concat();
+        Any { data, determinants }
+    }
+
+    fn from_any(any: Any) -> Self {
+        let (name, age) = any.data.split_at(*any.determinants.last().unwrap());
+        let name = String::from_utf8(name.to_vec()).unwrap();
+        let age = u32::from_ne_bytes(age.try_into().unwrap());
+        Self { name, age }
+    }
+}
+```
+
 #subsection("Custom Scripting Language")
 Creating a custom language just for a plugin system serves two potential use
 cases. The first would be security concerns which are explained in @Security.
@@ -250,7 +347,7 @@ existing language.
 
 #subsubsection("Turing Complete")
 The security aspect is likely the biggest factor for choosing to create a custom
-scripting language. Here the use of non-turing complete language are the most
+scripting language. Here the use of non-turing complete language is the most
 effective. It enforces limited functionality, which can severely limit the
 attack vectors compared to a turing complete language. The downside of this
 approach is that only plugins with a supported use-case can be created.
@@ -269,17 +366,41 @@ it harder for malicious code to be published as an extension.
 #subsection("Hooks")
 Hooks for the plugin system refer to section in the code where the plugin
 applies its functionality. When looking back at the ABI plugin example in/* TODO */,
-this would be the call of the function inside the plugin system struct.
-For the example in /* TODO */ it would instead be the overridden function.
+this would be the call of the function inside the plugin system struct. For the
+example in/* TODO */ it would instead be the overridden function.
 
 // TODO: why is this important?
 // TODO: Security concerns? Potential uninitialized resources etc.
-// TODO: Providing a consistent environment for plugins in order for them to not crash 
+// TODO: Providing a consistent environment for plugins in order for them to not crash
 #subsection("Testing")
-// TODO: Integration tests 
+ReSet does not yet have a testing system implemented, only regular Rust tests
+are currently implemented, and those do not cover the full usage of the DBus API
+specified for ReSet. This is due to a lack of consistency with the features that
+ReSet provides. For example, without a mock implementation of the
+NetworkManager, it would not be possible to consistently connect to an access
+point. For this reason, all DBus interfaces must offer a mock implementation in
+order for it to be tested.
+
+The second issue comes with the user interface, here regular Rust tests are
+meaningless. Here ReSet would need to use a GTK compatible UI-testing toolkit.
+Fortunately this exists for the GTK-rs crate, created by the same development
+team/* TODO(@gtk-rs-test)*/.
+
+After building this testing system, plugins can then also make use of this
+system by offering integration and unit tests for their use cases. This ensures
+that the plugin does not just work standalone, which would include specific
+functionality, but also works in the entire system, which would cover the use
+inside ReSet by DBus and user interfaces.// TODO: Integration tests
 // TODO: How to connect with the rest of the system
+In @plugin_integration_test, the architecture of the plugin system integrated
+into the testing framework is visualized.
+#align(
+  center, [#figure(
+      img("plugin_integration_test.svg", width: 100%, extension: "files"), caption: [Architecture of the ReSet testing framework],
+    )<plugin_integration_test>],
+)
 
 #subsection("Macros")
-// TODO: Why are these important? 
+// TODO: Why are these important?
 // TODO: How to they interact with plugins
 

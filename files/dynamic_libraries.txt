@@ -1,0 +1,15 @@
+@startuml
+!theme plain
+rectangle ReSetDaemon
+rectangle Plugin 
+rectangle ReSet 
+rectangle C_ABI
+rectangle DynamicLibrary
+
+ReSetDaemon <--> ReSet                     : DBus
+Plugin --> C_ABI                           : Provide functions in C
+C_ABI --> DynamicLibrary                   : Create Dynamic Library
+DynamicLibrary -> ReSetDaemon              : Provide Functions for the daemon to hook into
+DynamicLibrary --> ReSet                   : Provide Functions for the user interface to hook into
+
+@enduml

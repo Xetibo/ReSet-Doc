@@ -5,3 +5,4 @@ plantuml.jar
 function_overriding/target/*
 dylib_loading/target/*
 dylib_loading/testlib/target/*
+any_pattern/target/*

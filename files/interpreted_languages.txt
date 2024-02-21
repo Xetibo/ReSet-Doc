@@ -1,0 +1,15 @@
+@startuml
+!theme plain
+rectangle ReSetDaemon
+rectangle Plugin 
+rectangle ReSet 
+rectangle InterpreterDaemon
+rectangle InterpreterUserInterface
+
+ReSetDaemon <--> ReSet                     : DBus
+Plugin --> InterpreterDaemon               : Provide functionality and DBus interface
+Plugin --> InterpreterUserInterface        : Provide user interface widget 
+InterpreterDaemon -> ReSetDaemon           : Inject DBus interface and functionality
+InterpreterUserInterface -> ReSet          : Inject user interface widget
+
+@enduml
