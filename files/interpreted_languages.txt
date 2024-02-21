@@ -1,5 +1,5 @@
 @startuml
-!theme plain
+!theme vibrant
 rectangle ReSetDaemon
 rectangle Plugin 
 rectangle ReSet 
