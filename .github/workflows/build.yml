@@ -8,23 +8,23 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, arch]
     name: Build and Deploy
     permissions:
       contents: read
       pages: write
       id-token: write
-
     steps:
     - uses: actions/checkout@v3
-    - uses: DeterminateSystems/nix-installer-action@main
-    - uses: DeterminateSystems/magic-nix-cache-action@main
+      with:
+        path: 'resetDoc'
+    - run: rm -r output
     - run: mkdir output
-    - run: nix run nixpkgs#plantuml -- files/domain_model.txt -tsvg 
-    - run: nix run nixpkgs#plantuml -- files/architecture.txt -tsvg 
-    - run: nix run nixpkgs#plantuml -- files/wifi_architecture.txt -tsvg 
-    - run: nix run nixpkgs#plantuml -- files/dbus_sequence.txt -tsvg 
-    - run: nix run github:typst/typst -- compile ReSet.typ output/ReSet.pdf
+    - run: plantuml resetDoc/files/architecture.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg
+    - run: plantuml resetDoc/files/dynamic_libraries.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg 
+    - run: plantuml resetDoc/files/interpreted_languages.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg 
+    - run: plantuml resetDoc/files/plugin_integration_test.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg 
+    - run: typst compile ReSet.typ output/ReSet.pdf
     - uses: actions/upload-pages-artifact@v1
       with: { path: 'output' }
     - uses: actions/deploy-pages@v2

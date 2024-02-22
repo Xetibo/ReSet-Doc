@@ -1,0 +1,12 @@
+@startuml
+!theme vibrant
+rectangle ReSetDaemon
+rectangle Plugin 
+rectangle ReSet 
+
+ReSetDaemon <--> ReSet                     : DBus
+Plugin --> ReSetDaemon                     : Provide DBus Interface
+Plugin --> ReSetDaemon                     : Provide functionality thread
+Plugin --> ReSet                           : Provide user interface widget
+
+@enduml

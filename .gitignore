@@ -2,3 +2,4 @@
 files/*.svg
 clean.sh
 plantuml.jar
+**/target/**
