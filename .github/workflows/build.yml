@@ -20,7 +20,9 @@ jobs:
         path: 'doc'
     - run: rm -r output
     - run: mkdir output
+    - run: cd doc
     - run: ls
+    - run: cd ..
     - run: plantuml -Djava.awt.headless=true doc/files/domain_model.txt -tsvg 
     - run: plantuml -Djava.awt.headless=true doc/files/architecture.txt -tsvg 
     - run: plantuml -Djava.awt.headless=true doc/files/wifi_architecture.txt -tsvg 
