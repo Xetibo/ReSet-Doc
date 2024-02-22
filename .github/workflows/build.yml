@@ -16,7 +16,10 @@ jobs:
       id-token: write
     steps:
     - uses: actions/checkout@v3
+      with:
+        path: 'doc'
     - run: mkdir output
+    - run: ls
     - run: plantuml -Djava.awt.headless=true files/domain_model.txt -tsvg 
     - run: plantuml -Djava.awt.headless=true files/architecture.txt -tsvg 
     - run: plantuml -Djava.awt.headless=true files/wifi_architecture.txt -tsvg 
