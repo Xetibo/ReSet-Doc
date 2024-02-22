@@ -21,10 +21,10 @@ jobs:
     - run: rm -r output
     - run: mkdir output
     - run: ls
-    - run: plantuml -Djava.awt.headless=true files/domain_model.txt -tsvg 
-    - run: plantuml -Djava.awt.headless=true files/architecture.txt -tsvg 
-    - run: plantuml -Djava.awt.headless=true files/wifi_architecture.txt -tsvg 
-    - run: plantuml -Djava.awt.headless=true files/dbus_sequence.txt -tsvg 
+    - run: plantuml -Djava.awt.headless=true doc/files/domain_model.txt -tsvg 
+    - run: plantuml -Djava.awt.headless=true doc/files/architecture.txt -tsvg 
+    - run: plantuml -Djava.awt.headless=true doc/files/wifi_architecture.txt -tsvg 
+    - run: plantuml -Djava.awt.headless=true doc/files/dbus_sequence.txt -tsvg 
     - run: typst compile ReSet.typ output/ReSet.pdf
     - uses: actions/upload-pages-artifact@v1
       with: { path: 'output' }
