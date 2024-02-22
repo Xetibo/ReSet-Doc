@@ -21,7 +21,7 @@ jobs:
     - run: plantuml -- files/architecture.txt -tsvg 
     - run: plantuml -- files/wifi_architecture.txt -tsvg 
     - run: plantuml -- files/dbus_sequence.txt -tsvg 
-    - run: github:typst/typst -- compile ReSet.typ output/ReSet.pdf
+    - run: typst compile ReSet.typ output/ReSet.pdf
     - uses: actions/upload-pages-artifact@v1
       with: { path: 'output' }
     - uses: actions/deploy-pages@v2
