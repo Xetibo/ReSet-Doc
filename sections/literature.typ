@@ -109,9 +109,11 @@ framework of the developer of the application.
 #subsubsubsection("Example")
 For Rust, the crate "libloading" handles the mapping of C functions to Rust in a
 simple fashion. This allows a straight forward usage of dynamic libraries.
-Figure/* TODO */ visualizes a simple dynamic library with a single function.
+Figure @rust_dynamic_libary_loading visualizes a simple dynamic library with a
+single function.
 
-```rs
+//typstfmt::off
+#align(left, [#figure(sourcecode(```rs
 // code in the calling binary
 fn main() {
     unsafe {
@@ -129,7 +131,12 @@ fn main() {
 pub extern "C" fn test_function(data: i32) -> i32 {
     data * data
 }
-```
+```),
+kind: "code",
+supplement: "Listing",
+caption: [Dynamic library loading in Rust])<rust_dynamic_libary_loading>])
+//typstfmt::on
+
 In figure/* TODO */, the dynamic library has the annotation "no_mangle". This
 flag tells the compiler to not change the identity of the specified designator.
 Without this, functions and variables will not be found with the original names.
@@ -155,7 +162,7 @@ parameter from i64 to i32 would not require a change for the programmer using
 the API. However, for the ABI user, this change would likely result in a crash
 as the compiled ABI changed.
 
-Changes to function signatures which add or remove paramaters or change the
+Changes to function signatures which add or remove parameters or change the
 return type to a non-automatic cast would break API as well, meaning plugins
 based on an interpreted system would also need to be rewritten.
 
@@ -176,11 +183,12 @@ their own thread or process to provide independent error handling. This allows
 an application to recover even when a plugin exits abnormally while using
 resources.
 
-In/* TODO */ the use of simple Rust threads guarantees the continuation of the
-invoking thread, meaning the underlying application can still continue to run
-even though the spawned thread encountered a fatal error.
+In @rust_thread_panic the use of simple Rust threads guarantees the
+continuation of the invoking thread, meaning the underlying application can
+still continue to run even though the spawned thread encountered a fatal error.
 
-```rs
+//typstfmt::off
+#align(left, [#figure(sourcecode(```rs
 fn main() {
     thread::spawn(|| {
         library_function();
@@ -190,8 +198,12 @@ fn main() {
     let mut buffer = String::new();
     io::stdin().read_line(&mut buffer);
 }
-```
+```), 
+kind: "code",
+supplement: "Listing",
+caption: [Thread panic example])<rust_thread_panic>])
 // TODO insert screenshot of panic
+//typstfmt::on
 
 While the runtime guarantee is a benefit of this system, it also requires thread
 safe synchronization of resources. This would incur a performance penalty on the
@@ -232,9 +244,11 @@ possible to split extensions, as JavaScript is a single-threaded system. This
 means that each extension that can possibly crash, would also take down the
 Gnome-Shell as collateral.
 
-To visualize the concept, here is an example of function overriding as parameter
-in Rust:
-```rs
+To visualize the concept, @rust_function_overriding provides an example of
+function overriding as parameter in Rust:
+
+//typstfmt::off
+#align(left, [#figure(sourcecode(```rs
 use once_cell::sync::Lazy;
 static mut G_PLUGIN_SYSTEM: Lazy<PluginSystem> = Lazy::new(|| PluginSystem {
     function: Box::new(regular_function),
@@ -275,7 +289,11 @@ impl PluginSystem {
         (self.function)(data);
     }
 }
-```
+```),
+kind: "code",
+supplement: "Listing",
+caption: [Function overriding example in Rust])<rust_function_overriding>])
+
 The output of this program is the regular_function and the second_function after
 this, both functions get the dummy data 5 passed to it. In a real world example,
 this data could potentially be of the "any" type provided by the any pattern,
@@ -285,8 +303,9 @@ any pattern, Rust would still break the ABI compatibility, as memory access
 depends on the size of a type.
 
 #subsubsubsection("Example Any pattern")
-In/* TODO */ an example any pattern implementation is visualized.
-```rs
+In @rust_any_pattern an example any pattern implementation is visualized.
+
+#align(left, [#figure(sourcecode(```rs
 fn main() {
     let penguin = Example {
         name: "penguin".to_string(),
@@ -332,7 +351,11 @@ impl AnyImpl for Example {
         Self { name, age }
     }
 }
-```
+```), 
+kind: "code",
+supplement: "Listing",
+caption: [Any pattern example in Rust])<rust_any_pattern>])
+//typstfmt::on
 
 #subsection("Custom Scripting Language")
 Creating a custom language just for a plugin system serves two potential use
