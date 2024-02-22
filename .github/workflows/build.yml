@@ -17,16 +17,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        path: 'doc'
+        path: 'resetDoc'
     - run: rm -r output
     - run: mkdir output
-    - run: cd doc
-    - run: ls
-    - run: cd ..
-    - run: plantuml doc/files/architecture.txt -tsvg
-    - run: plantuml doc/files/dynamic_libraries.txt -tsvg 
-    - run: plantuml doc/files/interpreted_languages.txt -tsvg 
-    - run: plantuml doc/files/plugin_integration_test.txt -tsvg 
+    - run: plantuml resetDoc/files/architecture.txt -o resetDoc/files -tsvg
+    - run: plantuml resetDoc/files/dynamic_libraries.txt -o resetDoc/files -tsvg 
+    - run: plantuml resetDoc/files/interpreted_languages.txt -o resetDoc/files -tsvg 
+    - run: plantuml resetDoc/files/plugin_integration_test.txt -o resetDoc/files -tsvg 
     - run: typst compile ReSet.typ output/ReSet.pdf
     - uses: actions/upload-pages-artifact@v1
       with: { path: 'output' }
