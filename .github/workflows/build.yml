@@ -8,23 +8,20 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, arch]
     name: Build and Deploy
     permissions:
       contents: read
       pages: write
       id-token: write
-
     steps:
     - uses: actions/checkout@v3
-    - uses: DeterminateSystems/nix-installer-action@main
-    - uses: DeterminateSystems/magic-nix-cache-action@main
     - run: mkdir output
-    - run: nix run nixpkgs#plantuml -- files/domain_model.txt -tsvg 
-    - run: nix run nixpkgs#plantuml -- files/architecture.txt -tsvg 
-    - run: nix run nixpkgs#plantuml -- files/wifi_architecture.txt -tsvg 
-    - run: nix run nixpkgs#plantuml -- files/dbus_sequence.txt -tsvg 
-    - run: nix run github:typst/typst -- compile ReSet.typ output/ReSet.pdf
+    - run: plantuml -- files/domain_model.txt -tsvg 
+    - run: plantuml -- files/architecture.txt -tsvg 
+    - run: plantuml -- files/wifi_architecture.txt -tsvg 
+    - run: plantuml -- files/dbus_sequence.txt -tsvg 
+    - run: github:typst/typst -- compile ReSet.typ output/ReSet.pdf
     - uses: actions/upload-pages-artifact@v1
       with: { path: 'output' }
     - uses: actions/deploy-pages@v2
