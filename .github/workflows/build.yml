@@ -17,10 +17,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: mkdir output
-    - run: plantuml -- files/domain_model.txt -tsvg 
-    - run: plantuml -- files/architecture.txt -tsvg 
-    - run: plantuml -- files/wifi_architecture.txt -tsvg 
-    - run: plantuml -- files/dbus_sequence.txt -tsvg 
+    - run: plantuml -Djava.awt.headless=true files/domain_model.txt -tsvg 
+    - run: plantuml -Djava.awt.headless=true files/architecture.txt -tsvg 
+    - run: plantuml -Djava.awt.headless=true files/wifi_architecture.txt -tsvg 
+    - run: plantuml -Djava.awt.headless=true files/dbus_sequence.txt -tsvg 
     - run: typst compile ReSet.typ output/ReSet.pdf
     - uses: actions/upload-pages-artifact@v1
       with: { path: 'output' }
