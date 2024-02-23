@@ -24,6 +24,7 @@ jobs:
     - run: plantuml resetDoc/files/dynamic_libraries.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg 
     - run: plantuml resetDoc/files/interpreted_languages.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg 
     - run: plantuml resetDoc/files/plugin_integration_test.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg 
+    - run: plantuml resetDoc/files/hourglass.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg 
     - run: typst compile ReSet.typ output/ReSet.pdf
     - uses: actions/upload-pages-artifact@v1
       with: { path: 'output' }
