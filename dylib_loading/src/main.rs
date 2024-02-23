@@ -7,6 +7,7 @@ fn main() {
     // program should still get this input even if the thread crashes
     let mut buffer = String::new();
     io::stdin().read_line(&mut buffer);
+    println!("Still works?");
 }
 
 fn load_dylib() {

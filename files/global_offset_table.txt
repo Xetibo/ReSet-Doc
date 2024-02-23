@@ -1,0 +1,13 @@
+@startuml
+!theme vibrant
+rectangle Executable
+rectangle LibraryVirtualMemory 
+rectangle LibraryGOT 
+rectangle ExecutableGOT
+
+Executable --> ExecutableGOT               : Call function x
+ExecutableGOT --> LibraryVirtualMemory     : Execute function
+LibraryVirtualMemory --> LibraryGOT        : Store result in out parameter y
+LibraryGOT -> Executable                   : Redirect result to actual variable
+
+@enduml
