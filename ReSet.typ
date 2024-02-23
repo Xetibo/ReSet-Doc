@@ -29,6 +29,8 @@
   #pagebreak()
   #include "sections/appendix/risks.typ"
   #pagebreak()
+  #include "sections/appendix/hyprland_plugin.typ"
+  #pagebreak()
   #include "sections/appendix/libraries.typ"
   #pagebreak()
   #include "sections/appendix/meeting.typ"

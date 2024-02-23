@@ -179,7 +179,7 @@ based on an interpreted system would also need to be rewritten.
 Due to ABI instability and specific interpretation of memory,
 it is often difficult if not impossible to provide interaction between languages if not used on a stable ABI such as the C language.
 In this section, an example of C++ to Rust compatibility is analyzed based on the Hyprland plugin system.
-A working proof of concept plugin without functionality can be examined in TODO (appendix).
+A working proof of concept plugin without functionality can be examined in @hyprland_plugin_rust. 
 Hyprland offers plugins via the C++ ABI, meaning no compatibility with any other language is offered out of the box.
 
 Consider the C++ struct in @cpp_struct.
