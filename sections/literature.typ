@@ -394,9 +394,9 @@ point. For this reason, all DBus interfaces must offer a mock implementation in
 order for it to be tested.
 
 The second issue comes with the user interface, here regular Rust tests are
-meaningless. Here ReSet would need to use a GTK compatible UI-testing toolkit.
+meaningless. ReSet would need to use a GTK compatible UI-testing toolkit.
 Fortunately this exists for the GTK-rs crate, created by the same development
-team/* TODO(@gtk-rs-test)*/.
+team @GTKTests.
 
 After building this testing system, plugins can then also make use of this
 system by offering integration and unit tests for their use cases. This ensures
@@ -413,6 +413,9 @@ into the testing framework is visualized.
       img("plugin_integration_test.svg", width: 100%, extension: "files"), caption: [Architecture of the ReSet testing framework],
     )<plugin_integration_test>],
 )
+
+#subsubsection("GTK Tests")
+// TODO
 
 #subsection("Macros")
 // TODO: Why are these important?
