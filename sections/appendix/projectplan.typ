@@ -32,4 +32,12 @@ early. By week 12 the minimal viable product should be in production state, in
 order to leave time for reflection and documentation.
 #pagebreak()
 
-
+#page(
+  flipped: true,
+)[
+  #align(
+    center, [#figure(
+        image("../../figures/timeplanning.png", width: 115%), caption: [Time management],
+      )],
+  )
+]
