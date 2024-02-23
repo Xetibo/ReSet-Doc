@@ -78,7 +78,28 @@ an interpreter, this disallows the compilation to binary form and requires it to
 stay as code. If the source code of this application should still be hidden from
 the public, then developers will have to change the code to be intentionally as
 unreadable as possible. This obfuscation is often done with existing tools such
-as. // TODO
+as javascript-obfuscator @javascript_obfuscator.
+
+In @obfuscated_code, an example obfuscation of JavaScript code is visualized.
+
+//typstfmt::off
+#align(left, [#figure(sourcecode(```js
+// unobfuscated code
+function penguin() {
+  console.log("I like penguins.");
+}
+penguin();
+
+// obfuscated code
+(function(_0x29b584,_0x52a642){var _0x2430f6=_0x4396,_0x5aaa83=_0x29b584();
+while(!![]){try{var _0xeb9c7d=-parseInt(_0x2430f6(0x88))/0x1*(parseInt(_0x2430f6(0x8d))/0x2)
+// multiple lines of unreadable code omitted
+penguin();
+```),
+kind: "code",
+supplement: "Listing",
+caption: [Example obfuscated code])<obfuscated_code>])
+//typstfmt::on
 
 #subsection("Dynamic Libraries")
 Dynamic libraries are an interpretation of a binary which can be loaded into
@@ -137,4 +158,99 @@ program receives the necessary library.
 #subsubsection("Structure")
 
 #subsubsection("Loading and Interaction")
+
+#subsection("ABI")
+Plugin systems based on dynamic libraries require that the plugins themselves
+are built against the current system. In other words, for each specific version
+of ReSet and its respective daemon, the plugins would need to be recompiled
+again.
+
+Compared to an interpreted language, this is different to the fact that an API
+compatible change is not necessarily ABI compatible. For example, changing a
+parameter from i64 to i32 would not require a change for the programmer using
+the API. However, for the ABI user, this change would likely result in a crash
+as the compiled ABI changed.
+
+Changes to function signatures which add or remove parameters or change the
+return type to a non-automatic cast would break API as well, meaning plugins
+based on an interpreted system would also need to be rewritten.
+
+#subsubsection("Exhibit ABI compatibility")
+Due to ABI instability and specific interpretation of memory,
+it is often difficult if not impossible to provide interaction between languages if not used on a stable ABI such as the C language.
+In this section, an example of C++ to Rust compatibility is analyzed based on the Hyprland plugin system.
+A working proof of concept plugin without functionality can be examined in TODO (appendix).
+Hyprland offers plugins via the C++ ABI, meaning no compatibility with any other language is offered out of the box.
+
+Consider the C++ struct in @cpp_struct.
+#figure(sourcecode(```cpp
+typedef struct {
+    std::string name;
+    std::string description;
+    std::string author;
+    std::string version;
+} PLUGIN_DESCRIPTION_INFO;
+```),
+kind: "code",
+supplement: "Listing",
+caption: [C++ struct]
+)<cpp_struct>
+
+Despite both Rust and C++ offering the same datatype, they are not properly compatible.
+A single Rust String to C++ std::string is transferrable over a shared library,
+however a struct containing multiple strings is not converted properly and results in a double free,
+meaning memory is attempted to be freed twice by C++.
+
+In order for this struct to be consistently compatible,
+it would need to be rewritten to use the C ABI,
+which can be seen in @C_compatible_cpp.
+
+#figure(sourcecode(```cpp
+extern "C" typedef struct {
+    char* name;
+    char* description;
+    char* author;
+    char* version;
+} PLUGIN_DESCRIPTION_INFO;
+```),
+kind: "code",
+supplement: "Listing",
+caption: [C ABI compatible struct in C++]
+)<C_compatible_cpp>
+
+The same struct can then be configured in other languages as well,
+in @C_compatible_rust the Rust equivalent is visualized.
+
+#figure(sourcecode(```rs
+#[repr(C)]
+struct PLUGIN_DESCRIPTION_INFO {
+  name: *mut libc::c_char,
+  description: *mut libc::c_char,
+  author: *mut libc::c_char,
+  version: *mut libc::c_char,
+}
+```),
+kind: "code",
+supplement: "Listing",
+caption: [C ABI compatible struct in Rust]
+)<C_compatible_rust>
+
+#pagebreak()
+
+#subsubsection("Hourglass pattern")
+Using the hourglass pattern it is possible to provide a generalized ABI for which any language can be used to interact with a shared library based plugin system.
+In order to achieve this goal, the application implementing the plugin system needs to provide the entire API as a C API. This API can then be targeted by other languages without knowing the implementation details.
+For proprietary applications, this is specifically interesting, since they do not need to provide any other code apart from the C header file.
+
+In @hourglass and @hourglass_picture the architecture of the hourglass pattern is visualized.
+
+#columns(2,[
+  #figure(
+      img("hourglass.svg", width: 100%, extension: "files"), caption: [Hourglass architecture],
+    )<hourglass>
+    #colbreak()
+  #figure(
+      img("hourglass.png", width: 80%, extension: "figures"), caption: [Hourglass visualization],
+    )<hourglass_picture>
+])
 

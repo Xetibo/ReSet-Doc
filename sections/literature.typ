@@ -137,34 +137,16 @@ supplement: "Listing",
 caption: [Dynamic library loading in Rust])<rust_dynamic_libary_loading>])
 //typstfmt::on
 
-In figure/* TODO */, the dynamic library has the annotation "no_mangle". This
+In figure @rust_dynamic_libary_loading, the dynamic library has the annotation "no_mangle". This
 flag tells the compiler to not change the identity of the specified designator.
 Without this, functions and variables will not be found with the original names.
-Mangling is further explained in section/* TODO */.
-
-// TODO: Explain mangling
+Mangling is further explained in section @Mangling.
 
 Additionally, in both the dynamic library and the calling binary, the flag "extern
 C" is used. This is required as Rust does not guarantee ABI stability, meaning
 that without this flag, a dynamic library with compiler version A might not
 necessarily be compatible with the binary compiled with compiler version B.
 Hence, Rust and other languages use the C ABI to ensure ABI stability.
-
-#subsubsubsection("ABI")
-Plugin systems based on dynamic libraries require that the plugins themselves
-are built against the current system. In other words, for each specific version
-of ReSet and its respective daemon, the plugins would need to be recompiled
-again.
-
-Compared to an interpreted language, this is different to the fact that an API
-compatible change is not necessarily ABI compatible. For example, changing a
-parameter from i64 to i32 would not require a change for the programmer using
-the API. However, for the ABI user, this change would likely result in a crash
-as the compiled ABI changed.
-
-Changes to function signatures which add or remove parameters or change the
-return type to a non-automatic cast would break API as well, meaning plugins
-based on an interpreted system would also need to be rewritten.
 
 #subsubsubsection("Containerization of dynamic libraries")
 Plugin systems have a variety of points to hook a dynamic library into the
@@ -183,7 +165,7 @@ their own thread or process to provide independent error handling. This allows
 an application to recover even when a plugin exits abnormally while using
 resources.
 
-In @rust_thread_panic the use of simple Rust threads guarantees the
+In @rust_thread_panic and @thread_panic_screenshot the use of simple Rust threads guarantees the
 continuation of the invoking thread, meaning the underlying application can
 still continue to run even though the spawned thread encountered a fatal error.
 
@@ -198,12 +180,17 @@ fn main() {
     let mut buffer = String::new();
     io::stdin().read_line(&mut buffer);
 }
-```), 
+```),
 kind: "code",
 supplement: "Listing",
 caption: [Thread panic example])<rust_thread_panic>])
-// TODO insert screenshot of panic
 //typstfmt::on
+
+#align(
+  center, [#figure(
+      img("thread_panic.png", width: 100%, extension: "figures"), caption: [Thread panic result],
+    )<thread_panic_screenshot>],
+)
 
 While the runtime guarantee is a benefit of this system, it also requires thread
 safe synchronization of resources. This would incur a performance penalty on the
@@ -214,6 +201,8 @@ On top of this, when a plugin encounters a fatal error, this should not only be
 communicated to the user, but potential interactions with the now lost plugin
 need to be removed. This might happen when plugins communicate with each other,
 or when multiple plugin systems are in place.
+
+#pagebreak()
 
 #subsubsubsection("Architecture")
 In @dynamic_libraries_plugin_system, the architecture of a plugin system with
@@ -351,7 +340,7 @@ impl AnyImpl for Example {
         Self { name, age }
     }
 }
-```), 
+```),
 kind: "code",
 supplement: "Listing",
 caption: [Any pattern example in Rust])<rust_any_pattern>])
@@ -388,9 +377,9 @@ it harder for malicious code to be published as an extension.
 
 #subsection("Hooks")
 Hooks for the plugin system refer to section in the code where the plugin
-applies its functionality. When looking back at the ABI plugin example in/* TODO */,
+applies its functionality. When looking back at the ABI plugin example in @rust_dynamic_libary_loading,
 this would be the call of the function inside the plugin system struct. For the
-example in/* TODO */ it would instead be the overridden function.
+example in @rust_function_overriding it would instead be the overridden function.
 
 // TODO: why is this important?
 // TODO: Security concerns? Potential uninitialized resources etc.
@@ -414,7 +403,9 @@ system by offering integration and unit tests for their use cases. This ensures
 that the plugin does not just work standalone, which would include specific
 functionality, but also works in the entire system, which would cover the use
 inside ReSet by DBus and user interfaces.// TODO: Integration tests
+
 // TODO: How to connect with the rest of the system
+
 In @plugin_integration_test, the architecture of the plugin system integrated
 into the testing framework is visualized.
 #align(

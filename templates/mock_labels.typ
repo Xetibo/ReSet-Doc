@@ -4,17 +4,8 @@
 // this can't be automated without changes to typst itself
 #let insert_mocks(loc) = {
   let mock_labels = (
-    "Analysisofexistingapplications",
+    "Mangling",
     "Introduction",
-    "UserInterfaces",
-    "Implementation",
-    "Architecture",
-    "Conclusion",
-    "Outlook",
-    "DaemonImplementation",
-    "DBus",
-    "Testing",
-    "Datastructures",
   )
   for label_string in mock_labels {
     let elem = query(heading.where(body: [#label_string]), loc)

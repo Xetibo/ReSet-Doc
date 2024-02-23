@@ -1,0 +1,20 @@
+@startuml
+!theme vibrant
+rectangle Cpp_Application
+rectangle C_API 
+rectangle Rust_API 
+rectangle Zig_API 
+rectangle Go_API 
+rectangle Rust_Client
+rectangle Zig_Client
+rectangle Go_Client
+
+C_API --> Cpp_Application                : Hooks into
+Rust_API --> C_API                       : Mirror
+Zig_API --> C_API                        : Mirror
+Go_API --> C_API                         : Mirror
+Rust_Client --> Rust_API                 : Implements
+Zig_Client --> Zig_API                   : Implements
+Go_Client --> Go_API                     : Implements
+
+@enduml

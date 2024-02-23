@@ -8,3 +8,8 @@ establishment_image:
   title: OST.svg
   author: OST
   url: https://www.ost.ch/de/die-ost/organisation/medien
+javascript_obfuscator:
+  type: repository
+  title: javascript-obfuscator
+  author: javascript-obfuscator
+  url: https://github.com/javascript-obfuscator/javascript-obfuscator
