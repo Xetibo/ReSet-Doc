@@ -155,9 +155,39 @@ if possible, however, due to the sandboxed nature of flatpaks, it is also
 possible to install multiple versions of a specific library, ensuring that each
 program receives the necessary library.
 
-#subsubsection("Structure")
+#subsubsection("Virtual Memory and Global Offset Table")
+Operating systems do not offer processes direct access to physical memory.
+This ensures that processes do not access random memory that is used by other processes.
+Virtual memory address mapping enforces this paradigm by creating a pointer map to physical memory.
+On this map the operating can control the allowed memory space of the application with the Memory Management Unit.
+Should the process try to access physical memory which is not offered to this process,
+then the Memory Management Unit will cause an MMU fault signal.
 
-#subsubsection("Loading and Interaction")
+When loading a potential shared library plugin for ReSet,
+this would result in two virtual address mappings,
+one for the ReSet user interface and one for the daemon.
+@virtual_to_physical visualized both mappings.
+
+#figure(
+    img("virtual_memory.png", width: 80%, extension: "figures"), caption: [Virtual to physical memory mapping],
+)<virtual_to_physical>
+
+Loading a shared library can either be done immediate,
+meaning all functions of a library are loaded on startup,
+or the library functionality can be loaded lazily.
+Lazy functions will only be loaded into memory when they are called.
+This can be achieved with the global offset table.
+
+The global offset table stores pointers to loaded libraries which will redirect to the library functions.
+If the function is not yet loaded, then the global offset will load the function into memory first.
+
+In @global_offset_table an example function call with the global offset table is visualized.
+The function to be called will provide an output parameter which will be set by the library function.
+This means that the library needs a way to also access memory from the executable, which requires two-way access.
+
+#figure(
+    img("global_offset_table.svg", width: 80%, extension: "files"), caption: [Global offset table usage example],
+)<global_offset_table>
 
 #subsection("ABI")
 Plugin systems based on dynamic libraries require that the plugins themselves
@@ -178,8 +208,8 @@ based on an interpreted system would also need to be rewritten.
 #subsubsection("Exhibit ABI compatibility")
 Due to ABI instability and specific interpretation of memory,
 it is often difficult if not impossible to provide interaction between languages if not used on a stable ABI such as the C language.
-In this section, an example of C++ to Rust compatibility is analyzed based on the Hyprland plugin system.
-A working proof of concept plugin without functionality can be examined in @hyprland_plugin_rust. 
+In this section, an example of C++ to Rust compatibility is analyzed based on the Hyprland plugin system. @hyprland_plugin_system
+A working proof of concept plugin without functionality can be examined in @hyprland_plugin_rust.
 Hyprland offers plugins via the C++ ABI, meaning no compatibility with any other language is offered out of the box.
 
 Consider the C++ struct in @cpp_struct.
@@ -253,4 +283,9 @@ In @hourglass and @hourglass_picture the architecture of the hourglass pattern i
       img("hourglass.png", width: 80%, extension: "figures"), caption: [Hourglass visualization],
     )<hourglass_picture>
 ])
+
+A potential shared library plugin system for ReSet could also implement 
+this C API in order to provide users of ReSet a possibility to use languages other than Rust.
+However it is important to note that this would also mean including C bindings to DBus and GTK,
+which could increase the difficulty of this.
 
