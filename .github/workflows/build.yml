@@ -18,7 +18,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Build images
-    - run: |
+      run: |
         plantuml files/architecture.txt -tsvg
         plantuml files/dynamic_libraries.txt -tsvg 
         plantuml files/interpreted_languages.txt -tsvg 
@@ -34,4 +34,5 @@ jobs:
       with:
         name: PDF
         path: ReSet.pdf
-    - uses: actions/deploy-pages@v2
+    - name: Deploy PDF
+      uses: actions/deploy-pages@v2
