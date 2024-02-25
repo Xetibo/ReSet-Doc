@@ -25,8 +25,10 @@ jobs:
         plantuml files/plugin_integration_test.txt -tsvg 
         plantuml files/hourglass.txt -tsvg 
         plantuml files/global_offset_table.txt -tsvg
-    - name: Typst
-      run: typst compile ReSet.typ output/ReSet.pdf
+    - name: Build PDF
+      run: |
+        mkdir output
+        typst compile ReSet.typ output/ReSet.pdf
     - name: Upload PDF file
       uses: actions/upload-pages-artifact@v1
       with: { path: 'output' }
