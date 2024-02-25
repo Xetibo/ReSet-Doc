@@ -30,7 +30,7 @@ jobs:
       with:
         source_file: ReSet.typ
     - name: Upload PDF file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-pages-artifact@v1
       with:
         name: PDF
         path: ReSet.pdf
