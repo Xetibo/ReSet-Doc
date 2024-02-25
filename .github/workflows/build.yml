@@ -31,8 +31,5 @@ jobs:
         source_file: ReSet.typ
     - name: Upload PDF file
       uses: actions/upload-pages-artifact@v1
-      with:
-        name: PDF
-        path: ReSet.pdf
     - name: Deploy PDF
       uses: actions/deploy-pages@v2
