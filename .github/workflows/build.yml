@@ -26,10 +26,9 @@ jobs:
         plantuml files/hourglass.txt -tsvg 
         plantuml files/global_offset_table.txt -tsvg 
     - name: Typst
-      uses: lvignoli/typst-action@main
-      with:
-        source_file: ReSet.typ
+      run: typst compile ReSet.typ output/ReSet.pdf
     - name: Upload PDF file
       uses: actions/upload-pages-artifact@v1
+      with: { path: 'output' }
     - name: Deploy PDF
       uses: actions/deploy-pages@v2
