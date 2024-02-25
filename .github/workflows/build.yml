@@ -15,18 +15,23 @@ jobs:
       pages: write
       id-token: write
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Build images
+    - run: |
+        plantuml files/architecture.txt -tsvg
+        plantuml files/dynamic_libraries.txt -tsvg 
+        plantuml files/interpreted_languages.txt -tsvg 
+        plantuml files/plugin_integration_test.txt -tsvg 
+        plantuml files/hourglass.txt -tsvg 
+        plantuml files/global_offset_table.txt -tsvg 
+    - name: Typst
+      uses: lvignoli/typst-action@main
       with:
-        path: 'resetDoc'
-    - run: rm -r output
-    - run: mkdir output
-    - run: plantuml resetDoc/files/architecture.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg
-    - run: plantuml resetDoc/files/dynamic_libraries.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg 
-    - run: plantuml resetDoc/files/interpreted_languages.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg 
-    - run: plantuml resetDoc/files/plugin_integration_test.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg 
-    - run: plantuml resetDoc/files/hourglass.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg 
-    - run: plantuml resetDoc/files/global_offset_table.txt -o ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/files/ -tsvg 
-    - run: typst compile ~/actions-runner/_work/ReSet-Doc/ReSet-Doc/ReSet.typ output/ReSet.pdf
-    - uses: actions/upload-pages-artifact@v1
-      with: { path: 'output' }
+        source_file: ReSet.typ
+    - name: Upload PDF file
+      uses: actions/upload-artifact@v3
+      with:
+        name: PDF
+        path: ReSet.pdf
     - uses: actions/deploy-pages@v2
