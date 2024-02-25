@@ -24,7 +24,8 @@ jobs:
         plantuml files/interpreted_languages.txt -tsvg 
         plantuml files/plugin_integration_test.txt -tsvg 
         plantuml files/hourglass.txt -tsvg 
-        plantuml files/global_offset_table.txt -tsvg 
+        plantuml files/global_offset_table.txt -tsvg
+        mkdir output
     - name: Typst
       run: typst compile ReSet.typ output/ReSet.pdf
     - name: Upload PDF file
