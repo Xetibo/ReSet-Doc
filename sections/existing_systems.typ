@@ -94,14 +94,56 @@ A regular Hyprland plugin can be seen in @ExhibitABICompatibility, specifically 
 
 #subsubsection("Anyrun")
 
-#subsubsection("UE4SS")
 
 #subsection("Interpreted Language Plugin Systems")
 This section covers plugin systems utilizing an interpreted language on top of
 their system in order to provide expandability. The paradigm used for such
 systems is explained in @InterpretedLanguages.
 
+#subsubsection("UE4SS")
+
 #subsubsection("Neovim")
+Neovim is a fork of the iconic VIM editor. It offers both VIMscript and lua support, as well as an RPC API, providing users with multiple ways to expand functionality.
+VIMscript is converted to lua, meaning neovim only needs a single interpreter for lua.
+This interpreter is tightly coupled to neovim itself, providing plugin developers with an easy way to access core functionality.
+
+In @testplugin, a Neovim testplugin is visualized.
+
+#align(
+  center, [#figure(
+    sourcecode(```lua
+local opts = {
+  what = 0,
+}
+
+local test_plugin = {
+  opts = opts,
+}
+
+function test_plugin.setup(user_config)
+  test_plugin.opts = user_config
+  vim.tbl_deep_extend("force", opts, user_config)
+end
+
+function test_plugin.config(user_config)
+  test_plugin.opts = user_config
+  vim.tbl_deep_extend("force", opts, user_config)
+end
+
+function test_plugin.test()
+  if test_plugin.opts.what == 0 then
+    vim.cmd("echo 'pingpang'")
+  else
+    vim.cmd("echo 'not pingpang'")
+  end
+end
+
+return test_plugin
+```),kind: "code", supplement: "Listing", caption: [Example Neovim Plugin])<testplugin>],
+)
+
+// TODO show output
+
 
 #subsubsection("Roblox")
 
@@ -110,3 +152,4 @@ This section covers plugin systems utilizing function overriding, which is
 explained in @FunctionOverriding.
 
 #subsubsection("Gnome Shell")
+
