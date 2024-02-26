@@ -1,3 +1,4 @@
+=== "stdin" ===
 #import "../templates/utils.typ": *
 #lsp_placate()
 
@@ -104,11 +105,14 @@ systems is explained in @InterpretedLanguages.
 
 #subsubsection("Neovim")
 Neovim is a fork of the iconic VIM editor. It offers both VIMscript and lua support, as well as an RPC API, providing users with multiple ways to expand functionality.
-VIMscript is converted to lua, meaning neovim only needs a single interpreter for lua.
-This interpreter is tightly coupled to neovim itself, providing plugin developers with an easy way to access core functionality.
+VIMscript is converted to lua, meaning Neovim only needs a single interpreter for lua.
+This interpreter is tightly coupled to Neovim itself, providing plugin developers with an easy way to access core functionality.
+
+While the implementation of the interpreter itself is too large for a brief analysis, the usage of this system can be analyzed.
+Neovim provides solid documentation about their natively supported functionality wich one can use within the Neovim lua interpreter.
+Note that this means the documented functionality is only supported in Neovim and not in any other Neovim interpreter. @neovimluadocumentation
 
 In @testplugin, a Neovim testplugin is visualized.
-
 #align(
   center, [#figure(
     sourcecode(```lua
@@ -146,10 +150,13 @@ return test_plugin
 
 
 #subsubsection("Roblox")
+Roblox also offers the lua language as a scripting language, making it easy for potential game developers to create their own gamemode within roblox.
+
 
 #subsection("Function Overriding Plugin Systems")
 This section covers plugin systems utilizing function overriding, which is
 explained in @FunctionOverriding.
 
 #subsubsection("Gnome Shell")
+The Gnome shell is writtin in JavaScript, this provides the benefit of allowing developers to simply override an existing function with another without caring about memory management.
 

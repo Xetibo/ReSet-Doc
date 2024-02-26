@@ -23,3 +23,8 @@ hyprland_hook_wiki:
   title: Hyprland Wiki Hook Example
   author: HyprWM
   url: https://wiki.hyprland.org/Plugins/Development/Advanced/
+neovimluadocumentation:
+  type: web
+  title: Neovim lua documentation
+  author: Neovim
+  url: https://neovim.io/doc/user/lua.html
