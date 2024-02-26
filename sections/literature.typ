@@ -148,6 +148,11 @@ that without this flag, a dynamic library with compiler version A might not
 necessarily be compatible with the binary compiled with compiler version B.
 Hence, Rust and other languages use the C ABI to ensure ABI stability.
 
+The lack of a stable Rust ABI is also the reason as to why there are no Rust native shared libraries.
+Crates as found on crates.io are static libraries which are compiled into the binary,
+and all shared libraries are created with the C ABI using "extern C".
+Further information about ABI along with examples can be found in @ABI.
+
 #subsubsubsection("Containerization of dynamic libraries")
 Plugin systems have a variety of points to hook a dynamic library into the
 application. The easiest is to just execute plugin functions at a certain point
@@ -213,7 +218,7 @@ dynamic libraries is visualized.
     )<dynamic_libraries_plugin_system>],
 )
 
-#subsubsection("Function overriding")
+#subsubsection("Function Overriding")
 Function overriding is a variant of dynamic plugins which will override existing
 functionality instead of just expanding it. This type of functionality provides
 more control to the plugin developers, but also requires more maintenance from

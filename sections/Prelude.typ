@@ -205,10 +205,10 @@ Changes to function signatures which add or remove parameters or change the
 return type to a non-automatic cast would break API as well, meaning plugins
 based on an interpreted system would also need to be rewritten.
 
-#subsubsection("Exhibit ABI compatibility")
+#subsubsection("Exhibit ABI Compatibility")
 Due to ABI instability and specific interpretation of memory,
 it is often difficult if not impossible to provide interaction between languages if not used on a stable ABI such as the C language.
-In this section, an example of C++ to Rust compatibility is analyzed based on the Hyprland plugin system. @hyprland_plugin_system
+In this section, an example of C++ to Rust compatibility is analyzed based on the Hyprland plugin system. @hyprland
 A working proof of concept plugin without functionality can be examined in @hyprland_plugin_rust.
 Hyprland offers plugins via the C++ ABI, meaning no compatibility with any other language is offered out of the box.
 
@@ -284,8 +284,8 @@ In @hourglass and @hourglass_picture the architecture of the hourglass pattern i
     )<hourglass_picture>
 ])
 
-A potential shared library plugin system for ReSet could also implement 
+A potential shared library plugin system for ReSet could also implement
 this C API in order to provide users of ReSet a possibility to use languages other than Rust.
-However it is important to note that this would also mean including C bindings to DBus and GTK,
-which could increase the difficulty of this.
+However, it is important to note that this would also mean including C bindings to DBus and GTK,
+which could increase the difficulty.
 
