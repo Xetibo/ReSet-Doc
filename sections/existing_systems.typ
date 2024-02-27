@@ -94,6 +94,33 @@ ReSet intends to provide extendability.
 A regular Hyprland plugin can be seen in @ExhibitABICompatibility, specifically @hyprland_plugin_rust.
 
 #subsubsection("Anyrun")
+Anyrun is a Wayland application launcher similar to launchpad for Macintosh computers.
+It is written in Rust and GTK3 and offers users the ability to load plugins with shared libraries using the stable ABI crate which automatically converts Rust structs to C structs.
+
+@anyrunbase shows the regular launch mode for anyrun.
+#align(
+  center, [#figure(
+      img("anyrunbase.png", width: 100%, extension: "figures"), caption: [],
+    )<anyrunbase>],
+)
+
+
+@anyruncalculator and @anyrunwebsearch show two plugins for anyrun,
+a calculator plugin and a websearch plugin.
+
+#align(
+  center, [#figure(
+      img("anyruncalculator.png", width: 100%, extension: "figures"), caption: [],
+    )<anyruncalculator>],
+)
+#align(
+  center, [#figure(
+      img("anyrunwebsearch.png", width: 100%, extension: "figures"), caption: [],
+    )<anyrunwebsearch>],
+)
+
+
+
 
 
 #subsection("Interpreted Language Plugin Systems")
