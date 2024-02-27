@@ -28,3 +28,18 @@ neovimluadocumentation:
   title: Neovim lua documentation
   author: Neovim
   url: https://neovim.io/doc/user/lua.html
+anyrun:
+  type: repository
+  title: Anyrun
+  author: Kirottu
+  url: https://github.com/Kirottu/anyrun
+helixpr:
+  type: web
+  title: Steel plugin system for helix
+  author: mattwparas
+  url: https://github.com/helix-editor/helix/pull/8675
+steel:
+  type: repository
+  title: Steel
+  author: mattwparas
+  url: https://github.com/mattwparas/steel

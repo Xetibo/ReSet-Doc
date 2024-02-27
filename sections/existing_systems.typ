@@ -1,4 +1,3 @@
-=== "stdin" ===
 #import "../templates/utils.typ": *
 #lsp_placate()
 
@@ -110,25 +109,101 @@ a calculator plugin and a websearch plugin.
 
 #align(
   center, [#figure(
-      img("anyruncalculator.png", width: 100%, extension: "figures"), caption: [],
+      img("anyruncalculator.png", width: 100%, extension: "figures"), caption: [Anyrun Calculator Plugin],
     )<anyruncalculator>],
 )
 #align(
   center, [#figure(
-      img("anyrunwebsearch.png", width: 100%, extension: "figures"), caption: [],
+      img("anyrunwebsearch.png", width: 100%, extension: "figures"), caption: [Anyrun Websearch Plugin],
     )<anyrunwebsearch>],
 )
 
+Anyrun abstracts the plugin implementation behind several different crates.
+First is the ABI crate which handles the conversion of Rust specific types into C stable ABI compatible ones.
 
+In @anyrunplugininfo, the plugin info struct of anyrun is visualized.
 
+#align(center, [#figure(sourcecode(```rs
+#[repr(C)]
+#[derive(StableAbi, Debug)]
+pub struct PluginInfo {
+    pub name: RString,
+    pub icon: RString,
+}
+```,), kind: "code", supplement: "Listing", caption: [Anyrun PluginInfo @anyrun],
+)<anyrunplugininfo>])
 
+The next part of the Anyrun plugin structure is found within the maco crate.
+Macros allow plugin developers for Anyrun to create plugins without the need to worry about certain restrictions like special types,
+mutexes and thread synchronization, as this can be handled automatically by the macro.
+More information about Macros can be found in @Macros.
+
+In @anyruninfomacro, the simple macro that transforms the plugin provided info function into the required format is visualized.
+
+#align(center, [#figure(sourcecode(```rs
+#[proc_macro_attribute]
+pub fn info(_attr: TokenStream, item: TokenStream) -> TokenStream {
+    let function = parse_macro_input!(item as syn::ItemFn);
+    let fn_name = &function.sig.ident;
+
+    quote! {
+        #[::abi_stable::sabi_extern_fn]
+        fn anyrun_internal_info() -> ::anyrun_plugin::anyrun_interface::PluginInfo {
+            #function
+
+            #fn_name()
+        }
+    }
+    .into()
+}
+```,), kind: "code", supplement: "Listing", caption: [Anyrun Info Macro @anyrun],
+)<anyruninfomacro>])
+
+With these two crates, it is now possible to create a function within a potential plugin for Anyrun.
+The macro in @anyruninfomacro is an attribute macro, this means the info function within the plugin will need to be annotated with the \#[info] flag.
+
+In @anyruninfofunction, an example info function is visualized.
+
+#align(center, [#figure(sourcecode(```rs
+#[info]
+fn info() -> PluginInfo {
+    PluginInfo {
+        name: "YourPlugin".into(),
+        icon: "YourIcon".into(),
+    }
+}
+```,), kind: "code", supplement: "Listing", caption: [Anyrun Info Plugin Function @anyrun],
+)<anyruninfofunction>])
+
+This plugin function will now be used within Anyrun after loading the plugin.so file.
+In @anyrunpluginusage, the usage of the function is visualized.
+
+#align(center, [#figure(sourcecode(```rs
+// load plugin first
+let plugin = if plugin_path.is_absolute() {
+    abi_stable::library::lib_header_from_path(plugin_path)
+} else {
+  // omitted
+}
+.and_then(|plugin| plugin.init_root_module::<PluginRef>())
+.expect("Failed to load plugin");
+
+// omitted initialization etc
+
+if !runtime_data.borrow().config.hide_plugin_info {
+  plugin_box.add(&create_info_box(
+      &plugin.info()(),
+      runtime_data.borrow().config.hide_icons,
+  ));
+  // omitted
+}
+```,), kind: "code", supplement: "Listing", caption: [Anyrun Plugin Usage @anyrun],
+)<anyrunpluginusage>])
 
 #subsection("Interpreted Language Plugin Systems")
 This section covers plugin systems utilizing an interpreted language on top of
 their system in order to provide expandability. The paradigm used for such
 systems is explained in @InterpretedLanguages.
-
-#subsubsection("UE4SS")
 
 #subsubsection("Neovim")
 Neovim is a fork of the iconic VIM editor. It offers both VIMscript and lua support, as well as an RPC API, providing users with multiple ways to expand functionality.
@@ -175,6 +250,37 @@ return test_plugin
 
 // TODO show output
 
+#subsubsection("Helix")
+Helix is a post modern modal text editor written in Rust.
+It currently does not offer a plugin system, however, as of February 2024, there is an open pull request on the helix repository. @helixpr
+This addition would introduce the list based steel scripting language as a plugin system. @steel
+
+The difference to Neovim with steel besides the paradigm of the scripting language is the integration with the Rust programming language.
+Steel offers a first party virtual machine for its parent language.
+Creating plugins with steel would therefore require less work as a large portion would already be covered by steel.
+
+In @steelengine, a simple usage of the steel engine in Rust is visualized.
+
+
+#align(center, [#figure(sourcecode(```rs
+use steel::steel_vm::engine::Engine;
+use steel::steel_vm::register_fn::RegisterFn;
+
+fn main() {
+    let mut vm = Engine::new();
+    vm.register_fn("test-function", test_function);
+    vm.run("(test-function)").unwrap();
+}
+
+fn test_function() {
+    println!("this is a test");
+}
+// this is simple, but it is quick to implement and offers
+// powerful usage in Rust.
+```),kind: "code", supplement: "Listing", caption: [Example Usage of the Steel Engine])<steelengine>])
+
+// TODO example steel plugin
+// TODO analyze integration into helix
 
 #subsubsection("Roblox")
 Roblox also offers the lua language as a scripting language, making it easy for potential game developers to create their own gamemode within roblox.
