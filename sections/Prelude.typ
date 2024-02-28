@@ -290,5 +290,72 @@ However, it is important to note that this would also mean including C bindings 
 which could increase the difficulty.
 
 #subsection("Macros")
+Macros are a way to change the code at compile time.
+In languages like C or C++ this is often used in order to differentiate different environments,
+prohibit duplicate imports or define constants.
+Rust macros are inherently different from this.
+Rust offers a macro system where the entire language is supported at compile time.
+While this does increase the overall complexity of the system,
+it also results in a system that does not result in simple text replacement.
+In C, all that macros do is replace text, in Rust, the macros will manipulate tokens instead,
+this guarantees that invalid tokens are prohibited, and operator precedence is not invalidated.
+
+The book "The Rust Programming Language" offers a valuable example for operator precedence, and visualizes why C macros are often avoided.
+Consider the excerpt in @cmacro taken from the book.
+
+#align(left, [#figure(sourcecode(```C
+#define FIVE_TIMES(x) 5 * x
+
+int main() {
+    printf("%d\n", FIVE_TIMES(2 + 3));
+    return 0;
+}
+```),
+kind: "code",
+supplement: "Listing",
+caption: [C Macro])<cmacro>])
+
+If this was a regular function in C, then the expectation would be 25 as the result, 5 \* (2 + 3).
+However, with C macros, the token x is not used as an actual token,
+instead it is just text, so the result is: 5 \* 2 + 3.
+Without the parenthesis, the expectation of the result changes from 25 to 13.
+Bugs like these are incredibly hard to debug as it happens at compile time.
+
+For comparison, the same macro in Rust in @rustmacro results in the expected 25.
+
+#align(left, [#figure(sourcecode(```rs
+macro_rules! five_times {
+    ($x:expr) => (5 * $x);
+}
+
+fn main() {
+    assert_eq!(25, five_times!(2 + 3));
+}
+```),
+kind: "code",
+supplement: "Listing",
+caption: [Rust Macro])<rustmacro>])
+
+With the Rust version, it is clear that x is not just text, but an expression,
+which will be evaluated in full before entering it into the macro.
+In other words, the entire expression is multiplied by five, not just the first part of it.
+
+A different approach to Rust would be to offer a flag to use code at compile time.
+This approach is used within C++ by adding constexpr or consteval to code. 
+The difference between constexpr and consteval is the enforcement of compile time.
+If the code cannot be run at compile time, constexpr will not generate an error and instead run the code regularly,
+consteval would cause a compile time error in this case.
+
+In @consteval the same functionality is visualized in C++.
+
+#align(left, [#figure(sourcecode(```cpp
+auto consteval five_times(int x) -> int { return 5 * x; }
+int main() { std::cout << five_times(2 + 3) << std::endl; }
+```),
+kind: "code",
+supplement: "Listing",
+caption: [C++ Consteval])<consteval>])
+
+
 // TODO: Why are these important?
 // TODO: How to they interact with plugins
