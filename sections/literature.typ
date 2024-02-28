@@ -422,7 +422,4 @@ into the testing framework is visualized.
 #subsubsection("GTK Tests")
 // TODO
 
-#subsection("Macros")
-// TODO: Why are these important?
-// TODO: How to they interact with plugins
 

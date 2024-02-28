@@ -289,3 +289,6 @@ this C API in order to provide users of ReSet a possibility to use languages oth
 However, it is important to note that this would also mean including C bindings to DBus and GTK,
 which could increase the difficulty.
 
+#subsection("Macros")
+// TODO: Why are these important?
+// TODO: How to they interact with plugins
