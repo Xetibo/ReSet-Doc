@@ -43,3 +43,18 @@ steel:
   title: Steel
   author: mattwparas
   url: https://github.com/mattwparas/steel
+roblox_lua:
+  type: web
+  title: Introduction to Scripting
+  author: Roblox
+  url: https://create.roblox.com/docs/tutorials/scripting/basic-scripting/intro-to-scripting
+ue4ss:
+  type: web
+  title: UE4SS lua API
+  author: UE4SS
+  url: https://docs.ue4ss.com/lua-api.html
+gnome_extensions:
+  type: repository
+  title: Gnome Shell Extensions
+  author: Gnome
+  url: https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/extensions/extension.js?ref_type=heads

@@ -320,19 +320,8 @@ Hence, it requires manual synchronization and also requires special wrapping of 
 which is required in Rust for multithreading.
 
 
-#subsubsection("Usage in Games")
-Various game engines and modding frameworks also utilize lua as a scripting language in order to provide extendability.
-
-Roblox for example uses lua to provide players a way to create their own gamemodes. @roblox_lua
-
-There are also modding frameworks like UE4SS,
-which uses lua as the scripting language for modifications to Unreal Engine games. @ue4ss
-
-The difference between the Roblox system and the UE4SS system is that Roblox provides a specific binding for exposed functionality.
-This ensures that developers are unable to modify crucial systems like rendering, anti-cheat protection and more.
-The UE4SS system provides hooks, meaning it is possible to attach to existing functions and override or expand them.
-Hooking functionality is described in @Hyprland.
-
+#subsubsection("Roblox")
+Roblox also offers the lua language as a scripting language, making it easy for potential game developers to create their own gamemode within roblox. @roblox_lua
 
 
 #subsection("Function Overriding Plugin Systems")
@@ -340,45 +329,5 @@ This section covers plugin systems utilizing function overriding, which is
 explained in @FunctionOverriding.
 
 #subsubsection("Gnome Shell")
-The Gnome shell is written in C and JavaScript. Specifically the user interface part is written in JavaScript, meaning extensions can fully rely on this language.
-Usage of an interpreted language for this allows plugin developers to simply override existing functions at runtime without requiring a complicated plugin/hooking system.
+The Gnome shell is written in JavaScript, this provides the benefit of allowing developers to simply override an existing function with another without caring about memory management.
 
-In @gnomeoverride, the override function is visualized. This function allows extension developers to override existing functionality within Gnome shell similarly to using hooks.
-
-#align(center, [#figure(sourcecode(```js
-/**
- * Modify, replace or inject a method
- *
- * @param {object} prototype - the object (or prototype) that is modified
- * @param {string} methodName - the name of the overwritten method
- * @param {CreateOverrideFunc} createOverrideFunc - function to call to create the override
- */
-overrideMethod(prototype, methodName, createOverrideFunc) {
-    const originalMethod = this._saveMethod(prototype, methodName);
-    this._installMethod(prototype, methodName, createOverrideFunc(originalMethod));
-}
-```),kind: "code", supplement: "Listing", caption: [Gnome Extensions Override Function @gnome_extensions])<gnomeoverride>])
-
-
-
-#align(center, [#figure(sourcecode(```js
-// import the extension js from gnome shell -> dependency
-import {Extension} from './path/to/shell/extensions/extension.js';
-
-export default class Example extends Extension.Extension {
-    enable() {
-      // enable plugin
-      // override functions
-      // add menus
-      // etc
-    }
-
-    disable() {
-      // disable plugin
-    }
-}
-```),kind: "code", supplement: "Listing", caption: [Gnome shell example extension])<gnomeexampleextension>])
-
-Another benefit of the Gnome shell extensions is the fact that the regular Gnome shell has already created classes, functions and more within JavaScript.
-This allows plugin developers to just use said functions to create widgets and more using the exact same styling as the native Gnome implementation.
-For ReSet this could also be possible, even when using native Rust code, as ReSet specific widgets can be exported to a crate, allowing plugin developers to utilize similar functionality.

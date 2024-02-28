@@ -1,9 +1,8 @@
-use glib::clone;
-use gtk::{gio::ActionEntry, ApplicationWindow, Window};
+use gtk::{gio::ActionEntry, ApplicationWindow};
 pub use gtk::{prelude::*, Button};
-use once_cell::sync::Lazy;
 use std::{
-    cell::RefCell, rc::Rc, sync::{Arc, RwLock}
+    rc::Rc,
+    sync::{Arc, RwLock},
 };
 use steel::steel_vm::engine::Engine;
 use steel::steel_vm::register_fn::RegisterFn;
@@ -25,39 +24,41 @@ fn setup_gtk(vm: Rc<RwLock<Engine>>) {
     app.connect_activate(move |app| {
         let label = Rc::new(gtk::Label::new(Some("nothing")));
         let label_ref = label.clone();
-        let button_func = ActionEntry::builder("up")
-            .activate(move |window: &gtk::ApplicationWindow, _, _| {
+        let button_func = ActionEntry::builder("test")
+            .activate(move |_, _, _| {
                 label_ref.set_text("button clicked");
             })
             .build();
-        let mainbox = gtk::Box::new(gtk::Orientation::Horizontal, 5);
-        let button = Rc::new(gtk::Button::new());
-        let window = Arc::new(ApplicationWindow::builder()
-            .application(app)
-            .title("Monitor Portal")
-            .child(&mainbox)
-            .name("MainWindow")
-            .build());
-        let nein = NEIN {window: window.clone()};
-        let funceroni = move || {
-            let window = nein.window.clone();
-            gtk::prelude::ActionGroupExt::activate_action(&*window, "win.up", None);
+        let mainbox = gtk::Box::new(gtk::Orientation::Vertical, 20);
+        let window = Rc::new(
+            ApplicationWindow::builder()
+                .application(app)
+                .title("Monitor Portal")
+                .child(&mainbox)
+                .name("MainWindow")
+                .build(),
+        );
+        window.add_action_entries([button_func]);
+
+        // due to both the VM and GTK being limited to one thread
+        // it is necessary to provide thread synchronization
+        let nein = Arc::new(ArcWrapper {
+            window: window.clone(),
+        });
+        let gtk_action_function = move || {
+            gtk::prelude::ActionGroupExt::activate_action(&*nein.window, "test", None);
         };
         vm.write()
             .unwrap()
-            .register_fn("test-function", funceroni);
-        button.connect_activate(move |button| {
-            button.activate_action("win.up",None );
-            // (button_func)();
+            .register_fn("test-function", gtk_action_function);
+
+        let button = Button::new();
+        let newvm = vm.clone();
+        button.connect_clicked(move |_| {
+            newvm.write().unwrap().run("(test-function)").unwrap();
         });
 
-        vm.write().unwrap().run("(test-function)").unwrap();
-
-        window.add_action_entries([
-            button_func,
-            // clear_initial,
-        ]);
-        mainbox.append(&*button);
+        mainbox.append(&button);
         mainbox.append(&*label);
 
         window.present();
@@ -66,13 +67,9 @@ fn setup_gtk(vm: Rc<RwLock<Engine>>) {
     app.run_with_args(&[""]);
 }
 
-struct NEIN {
-    window: Arc<gtk::ApplicationWindow>
+struct ArcWrapper {
+    window: Rc<gtk::ApplicationWindow>,
 }
 
-unsafe impl Send for NEIN {}
-unsafe impl Sync for NEIN {}
-
-fn test_function() {
-    println!("this is a test");
-}
+unsafe impl Send for ArcWrapper {}
+unsafe impl Sync for ArcWrapper {}
