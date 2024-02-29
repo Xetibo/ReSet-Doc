@@ -420,6 +420,23 @@ into the testing framework is visualized.
 )
 
 #subsubsection("GTK Tests")
-// TODO
+There is a GTK testing framework for Rust, which is called "gtk-test". This crate 
+allowed for an easy way of creating tests for the user interface of ReSet. As an 
+example, the following code snippet is taken from the repository page and shows 
+how to test the change of a string in a label.
+#align(left, [#figure(sourcecode(```rs
+fn main() {
+    let (window, label, container) = init_ui();
 
+    assert_text!(label, "Test");
+    window.activate_focus();
+    gtk_test::click(&container);
+    gtk_test::wait(1000);
+    assert_text!(label, "Clicked");
+}
+```),
+kind: "code",
+supplement: "Listing",
+caption: [gtk-test example])])
 
+Unfortunately, that crate doesn't seem to be maintained anymore and is not compatible with GTK4. The general idea behind it was still useful and could be used to implement a new solution.
