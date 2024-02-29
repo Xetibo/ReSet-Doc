@@ -53,8 +53,8 @@ ue4ss:
   title: UE4SS lua API
   author: UE4SS
   url: https://docs.ue4ss.com/lua-api.html
-gnome_extensions:
+GNOME_extensions:
   type: repository
-  title: Gnome Shell Extensions
-  author: Gnome
-  url: https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/extensions/extension.js?ref_type=heads
+  title: GNOME Shell Extensions
+  author: GNOME
+  url: https://gitlab.GNOME.org/GNOME/GNOME-shell/-/blob/main/js/extensions/extension.js?ref_type=heads

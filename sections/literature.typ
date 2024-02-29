@@ -225,9 +225,9 @@ more control to the plugin developers, but also requires more maintenance from
 the plugin system developers and is more prone to breaking changes, as plugins
 interact more closely with the original system.
 
-An existing plugin system with this variant is the Gnome-Shell. This application
-is used on top of the Gnome Compositor to provide users with various user
-interfaces such as a status bar, notifications, and more. As Gnome-Shell is
+An existing plugin system with this variant is the GNOME-Shell. This application
+is used on top of the GNOME Compositor to provide users with various user
+interfaces such as a status bar, notifications, and more. As GNOME-Shell is
 written in JavaScript, the overriding of functions is comparatively straight
 forward, meaning there are no type issues with extensions. Compared to using the
 ABI for compiled languages, this variant also means that just changing the
@@ -236,7 +236,7 @@ integer variant does not break compatibility with existing extensions.
 Using JavaScript for this use case also creates a bind, namely, it is no longer
 possible to split extensions, as JavaScript is a single-threaded system. This
 means that each extension that can possibly crash, would also take down the
-Gnome-Shell as collateral.
+GNOME-Shell as collateral.
 
 To visualize the concept, @rust_function_overriding provides an example of
 function overriding as parameter in Rust:

@@ -12,8 +12,7 @@ between compositor and shell components. It also allows for the community to cre
 own plugin to expand the functionalities of ReSet.
 
 Furthermore, ReSet will add animations to improve its user experience which helps to better 
-understand the flow of the application, attend to accessibility concerns to make it more user 
-friendly, testing framework for DBus functionalities and a command line application to 
+understand the flow of the application, attend to accessibility concerns to make it more user-friendly, testing framework for DBus functionalities and a command line application to 
 interface with ReSet. 
 
 #subsection("Challenges")
