@@ -3,7 +3,7 @@
 
 /* page setup */
 #let conf(
-  author: "Fabio Lenherr", professor, title, title_image, title_image_size, establishment_image, establishment_image_size, department, establishment, bibfile, abstract, acknowledgements, appendix, doc,
+  author: "Fabio Lenherr", professor, title, subtitle, title_image, title_image_size, establishment_image, establishment_image_size, department, establishment, bibfile, abstract, acknowledgements, appendix, doc,
 ) = {
   set text(font: "Times New Roman")
   set document(title: title, author: author)
@@ -13,6 +13,7 @@
   align(
     center + horizon, [
       #pad(y: 5pt, text(25pt, title))
+      #pad(y: 5pt, text(18pt, subtitle))
       #align(left, line(start: (5%, 0%), end: (95%, 0%)))
       #pad(y: 5pt, text(14pt, [Authors: #author]))
       #align(left, line(start: (15%, 0%), end: (85%, 0%)))
