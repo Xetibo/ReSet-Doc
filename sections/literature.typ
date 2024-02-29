@@ -439,4 +439,101 @@ kind: "code",
 supplement: "Listing",
 caption: [gtk-test example])])
 
-Unfortunately, that crate doesn't seem to be maintained anymore and is not compatible with GTK4. The general idea behind it was still useful and could be used to implement a new solution.
+Unfortunately, that crate doesn't seem to be maintained anymore and is not 
+compatible with GTK4 anyway. The general idea behind it was still useful 
+and could be used to implement a new solution. Instead of returning each UI 
+element in a tuple, saving it into a singleton would be much easier, especially 
+when there are many UI widgets or with dynamically generated widgets. These can 
+then be easily accessed and manipulated during the tests.
+
+#align(left, [#figure(sourcecode(```rs
+struct TestSingleton {
+    window: Option<Rc<gtk::Window>>,
+    buttons: HashMap<String, Rc<gtk::Button>>,
+    labels: HashMap<String, Rc<gtk::Label>>,
+    checkbox: HashMap<String, Rc<gtk::CheckButton>>,
+    comboRow: HashMap<String, Rc<adw::ComboRow>>,
+    // ...
+}
+```),
+kind: "code",
+supplement: "Listing",
+caption: [Structure of singleton])])
+
+The idea is to save a reference to each widget that is going to be tested in a 
+hashmap of its corresponding class with a string to identify it. The special 
+case is the window, because there is only one instance of it. 
+
+#align(left, [#figure(sourcecode(```rs
+let main = gtk::Box::new(Horizontal, 5);
+let entryRow = Rc::new(EntryRow::new());
+let button2 = Rc::new(Button::new());
+let button1 = Rc::new(Button::new());
+let label = Rc::new(Label::new(Some("nothing")));
+
+entryRow.connect_changed(move |entry| {
+    match Ipv4Addr::from_str(entry.text().as_str()) {
+        Ok(_) => entry.add_css_class("success"),
+        Err(_) => entry.add_css_class("error")
+    }
+});
+
+let entryRow_ref = entryRow.clone();
+let label_ref = label.clone();
+button1.connect_activate(move |_| { entryRow_ref.set_text("192.168.1.100"); });
+button2.connect_activate(move |_| { label_ref.set_text("button clicked"); });
+
+let window = Rc::new(Window::builder().application(app).child(&main).build());
+unsafe {
+    SINGLETON.buttons.insert("button1".to_string(), button1.clone());
+    SINGLETON.buttons.insert("button2".to_string(), button2.clone());
+    SINGLETON.labels.insert("testlabel".to_string(), label.clone());
+    SINGLETON.entryRow.insert("entryrow".to_string(), entryRow.clone());
+    SINGLETON.window = Some(window.clone());
+}
+```),
+kind: "code",
+supplement: "Listing",
+caption: [Setting up a simple UI])])
+
+#align(left, [#figure(sourcecode(```rs
+#[test]
+#[gtk::test]
+    let func = || unsafe {
+        // test label text change after button click
+        let label = SINGLETON.labels.get("testlabel").unwrap();
+        assert_eq!(label.text(), "nothing");
+        let button = SINGLETON.buttons.get("button2");
+        button.unwrap().activate();
+        assert_eq!(label.text(), "button clicked");
+        
+        // test entryRow css class change after button click
+        let entryRow = SINGLETON.entryRow.get("entryrow").unwrap();
+        assert_eq!(entryRow.css_classes().len(), 2); // 2 default css classes
+        let button1 = SINGLETON.buttons.get("button1");
+        button1.unwrap().activate();
+        assert_eq!(entryRow.has_css_class("success"), true);
+        SINGLETON.window.clone().unwrap().close();
+        exit(0);
+    };
+    setup_gtk(func);
+}
+```),
+kind: "code",
+supplement: "Listing",
+caption: [UI test])])
+
+This code creates a few UI widgets with some binding to some signals. These 
+signals can be activated by calling specific functions. The tests then get 
+the references in the singleton and call functions that imitate click actions 
+on buttons. 
+
+#pagebreak()
+
+This approach unfortunately suffers from inefficiency due to the amount of 
+boilerplate code and unnecessary compilation overhead it creates. Storing 
+references to UI widgets in a singleton may simplify access for tests but 
+is not needed at all by users. 
+
+
+// todo write stuff macros
