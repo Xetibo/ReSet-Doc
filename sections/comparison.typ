@@ -8,11 +8,8 @@
   expected_workload: 2,
   compatibility: 3,
 )
-#section("Plugin System Paradigms")
 
-#subsection("Plugin System Requirements")
-
-#subsection("Plugin System Evaluation")
+#section("Plugin System Evaluation")
 This section covers the chosen plugin system paradigm for ReSet. Paradigms are
 evaluated using a value table, which defines a score between 0 and 2 for each
 category over each tool. A score of 0 indicates an infeasible requirement, 1
@@ -44,6 +41,8 @@ The following categories are evaluated for programming languages:
 
 Special Requirement: All tools used in this project *must be published under an
 open-source license*, as ReSet will be published under the GPL-3.0 license.
+
+#pagebreak()
 
 #subsection("Comparison")
 This section covers the comparison of each plugin system implementation when
@@ -110,8 +109,8 @@ For a plugin system utilizing dynamic libraries written in Rust, C or C++, this
 would not be an issue. All of these languages offer solid bindings for the
 language, or the entire library is already written with that language.
 
-However, for interpreted languages, this would make it more difficult use. ReSet
-could provide widgets for the interpreted language in order to build a UI,
+However, for interpreted languages, this would make it more difficult to use.
+ReSet could provide widgets for the interpreted language in order to build a UI,
 however this would conflict with @UseCaseOverlap, making unsuitable. The
 secondary option is to use an interpreted language that offers bindings for GTK.
 This however would limit ReSet to a small amount of languages, none of which are
@@ -122,7 +121,6 @@ For this category using dynamic libraries offers a substantial benefit.
 
 #subsection("Results")
 
-#pagebreak()
 #let dynamic_libaries = (
   testability: 1,
   language_conformity: 2,
