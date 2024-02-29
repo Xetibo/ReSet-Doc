@@ -20,11 +20,10 @@ simply give users the ability to gradually control their used plugins.
 #subsection("High Level Architecture")
 In @base_plugin_architecture the intended architecture of the plugin system is
 visualized.
-#align(
-  center, [#figure(
-      img("architecture.svg", width: 100%, extension: "files"), caption: [Architecture of ReSet],
-    )<base_plugin_architecture>],
-)
+#align(center, [#figure(
+    img("architecture.svg", width: 100%, extension: "files"),
+    caption: [Architecture of ReSet],
+  )<base_plugin_architecture>])
 
 The intention is that each plugin will offer three parts for ReSet. The first
 part is the functionality itself, as an example, a monitor configuration plugin
@@ -66,11 +65,10 @@ hence when a webpage encounters issues, the browser itself is still usable.
 #subsubsubsection("Architecture")
 in @interpreted_languages_plugin the architecture of a plugin system with
 interpreted languages is visualized.
-#align(
-  center, [#figure(
-      img("interpreted_languages.svg", width: 100%, extension: "files"), caption: [Architecture of a potential interpreted plugin system.],
-    )<interpreted_languages_plugin>],
-)
+#align(center, [#figure(
+    img("interpreted_languages.svg", width: 100%, extension: "files"),
+    caption: [Architecture of a potential interpreted plugin system.],
+  )<interpreted_languages_plugin>])
 
 #subsubsection("Code Patching")
 Code patching is technically not a plugin system. With code patching, users need
@@ -400,8 +398,6 @@ order for it to be tested.
 
 The second issue comes with the user interface, here regular Rust tests are
 meaningless. ReSet would need to use a GTK compatible UI-testing toolkit.
-Fortunately this exists for the GTK-rs crate, created by the same development
-team @GTKTests.
 
 After building this testing system, plugins can then also make use of this
 system by offering integration and unit tests for their use cases. This ensures
@@ -420,10 +416,10 @@ into the testing framework is visualized.
 )
 
 #subsubsection("GTK Tests")
-There is a GTK testing framework for Rust, which is called "gtk-test". This crate 
-allowed for an easy way of creating tests for the user interface of ReSet. As an 
-example, the following code snippet is taken from the repository page and shows 
-how to test the change of a string in a label.
+There is a GTK testing framework for Rust, which is called "gtk-test". This crate
+allowed for an easy way of creating tests for the user interface of ReSet. As an
+example, the following code snippet is taken from the repository page and shows
+how to test the change of a string in a label. @GTKTests
 #align(left, [#figure(sourcecode(```rs
 fn main() {
     let (window, label, container) = init_ui();
@@ -439,11 +435,11 @@ kind: "code",
 supplement: "Listing",
 caption: [gtk-test example])])
 
-Unfortunately, that crate doesn't seem to be maintained anymore and is not 
-compatible with GTK4 anyway. The general idea behind it was still useful 
-and could be used to implement a new solution. Instead of returning each UI 
-element in a tuple, saving it into a singleton would be much easier, especially 
-when there are many UI widgets or with dynamically generated widgets. These can 
+Unfortunately, that crate doesn't seem to be maintained anymore and is not
+compatible with GTK4 anyway. The general idea behind it was still useful
+and could be used to implement a new solution. Instead of returning each UI
+element in a tuple, saving it into a singleton would be much easier, especially
+when there are many UI widgets or with dynamically generated widgets. These can
 then be easily accessed and manipulated during the tests.
 
 #align(left, [#figure(sourcecode(```rs
@@ -460,9 +456,9 @@ kind: "code",
 supplement: "Listing",
 caption: [Structure of singleton])])
 
-The idea is to save a reference to each widget that is going to be tested in a 
-hashmap of its corresponding class with a string to identify it. The special 
-case is the window, because there is only one instance of it. 
+The idea is to save a reference to each widget that is going to be tested in a
+hashmap of its corresponding class with a string to identify it. The special
+case is the window, because there is only one instance of it.
 
 #align(left, [#figure(sourcecode(```rs
 let main = gtk::Box::new(Horizontal, 5);
@@ -506,7 +502,7 @@ caption: [Setting up a simple UI])])
         let button = SINGLETON.buttons.get("button2");
         button.unwrap().activate();
         assert_eq!(label.text(), "button clicked");
-        
+
         // test entryRow css class change after button click
         let entryRow = SINGLETON.entryRow.get("entryrow").unwrap();
         assert_eq!(entryRow.css_classes().len(), 2); // 2 default css classes
@@ -521,19 +517,74 @@ caption: [Setting up a simple UI])])
 ```),
 kind: "code",
 supplement: "Listing",
-caption: [UI test])])
+caption: [UI test])<example_ui_test>])
 
-This code creates a few UI widgets with some binding to some signals. These 
-signals can be activated by calling specific functions. The tests then get 
-the references in the singleton and call functions that imitate click actions 
-on buttons. 
+This code creates a few UI widgets with some binding to some signals. These
+signals can be activated by calling specific functions. The tests then get
+the references in the singleton and call functions that imitate click actions
+on buttons.
 
 #pagebreak()
 
-This approach unfortunately suffers from inefficiency due to the amount of 
-boilerplate code and unnecessary compilation overhead it creates. Storing 
-references to UI widgets in a singleton may simplify access for tests but 
-is not needed at all by users. 
+This approach unfortunately suffers from inefficiency due to the amount of
+boilerplate code and unnecessary compilation overhead it creates. Storing
+references to UI widgets in a singleton may simplify access for tests but
+is not needed at all by users.
 
+#subsubsection("GTK Test Macros")
+Macros as elaborated in @Macros can be used to abstract the testing framework from different compilation targets.
+This means ReSet can drop the testing apparatus for release binaries which will benefit from better
+performance without the debug version suffering from reduced testing capabilities.
+
+
+In @ui_test_macro_implementation an example macro for the test introduced in @example_ui_test is visualized.
+
+#align(left, [#figure(sourcecode(```rs
+// debug version
+#[cfg(debug_assertions)]
+macro_rules! TestButton {
+    ( $button_name:expr ) => {{
+        let button = Rc::new(gtk::Button::new());
+        unsafe {
+            SINGLETON.buttons.insert($button_name, button.clone());
+        }
+    }};
+}
+
+// release version
+#[cfg(not(debug_assertions))]
+macro_rules! TestButton {
+    ( $button_name:expr ) => {
+        // drop name -> unused
+        gtk::Button::new()
+    };
+}
+
+// usage
+let button3 = TestButton!("macro_button".to_string());
+unsafe {dbg!(SINGLETON.buttons.clone());}
+```),
+kind: "code",
+supplement: "Listing",
+caption: [Macro Implementation])<ui_test_macro_implementation>])
+
+After compiling both versions of this test, the results in @macrodebug and @macrorelease
+show that the additional button reference in the testing singleton can no longer be found within the release version.
+Similarly, it is possible to also remove the entire singleton, or at least the underlying data for the release version.
+
+#columns(2, [
+  #align(
+    center, [#figure(
+        img("test_macro_debug.png", width: 100%, extension: "figures"), caption: [Macro Debug Version],
+      )<macrodebug>],
+  )
+  #colbreak()
+  #v(35pt)
+  #align(
+    center, [#figure(
+        img("test_macro_release.png", width: 100%, extension: "figures"), caption: [Macro Release Version],
+      )<macrorelease>],
+  )
+])
 
 // todo write stuff macros
