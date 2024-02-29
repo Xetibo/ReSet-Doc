@@ -39,7 +39,7 @@
 ]
 
 #show: doc => conf(
-  author: "Fabio Lenherr / Felix Tran", "Prof. Dr. Frieder Loch", "ReSet", "/figures/ReSet1.png", 25%, "/figures/OST.svg", 40%, "School of Computer Science", "OST Eastern Switzerland University of Applied Sciences", "../files/bibliography.yml", abstract, acknowledgements, appendix, doc,
+  author: "Fabio Lenherr / Felix Tran", "Prof. Dr. Frieder Loch", "Introduction of a Plugin System" , "ReSet", "/figures/ReSet1.png", 25%, "/figures/OST.svg", 40%, "School of Computer Science", "OST Eastern Switzerland University of Applied Sciences", "../files/bibliography.yml", abstract, acknowledgements, appendix, doc,
 )
 #file.step()
 
@@ -52,7 +52,6 @@
 #include "sections/existing_systems.typ"
 #pagebreak()
 #include "sections/comparison.typ"
-#pagebreak()
 #include "sections/result.typ"
 #pagebreak()
 #include "sections/conclusion.typ"
