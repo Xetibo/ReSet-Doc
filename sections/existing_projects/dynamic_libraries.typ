@@ -52,7 +52,8 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
 
 The createFunctionHook API function takes a source and destination function. The source function is the address of the Hyprland function to be overwritten.
 Hence, a plugin developer would first need to get the address of that function. Hyprland provides a find function for this use case, making it easy to create hooks.
-The destination function is the function you would like to implement instead of the original functionality. Note that the original function can still be called before or after your new functionality.
+The destination function is the function you would like to implement instead of the original functionality.
+Note that the original function can still be called at any point within your new function.
 In @hyprland_hook_wiki, the additional functionality was added before the call to the original function.
 
 In @hyprlandmempatching, the copying of the plugin defined function is analyzed.
@@ -85,7 +86,7 @@ and all behavior of the existing application. For ReSet, this would likely not
 make much sense, as ReSet does not offer much functionality at its core, instead
 ReSet intends to provide extendability.
 
-A regular Hyprland plugin can be seen in @ExhibitABICompatibility, specifically @hyprland_plugin_rust.
+A mock example Hyprland plugin written in Rust can be seen in @ExhibitABICompatibility, specifically @hyprland_plugin_rust.
 
 #subsubsection("Anyrun")
 Anyrun is a Wayland application launcher similar to launchpad for Macintosh computers.
