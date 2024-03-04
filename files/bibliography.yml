@@ -58,3 +58,18 @@ GNOME_extensions:
   title: GNOME Shell Extensions
   author: GNOME
   url: https://gitlab.GNOME.org/GNOME/GNOME-shell/-/blob/main/js/extensions/extension.js?ref_type=heads
+suckless:
+  type: web
+  title: Suckless Philosophy
+  author: suckless
+  url: https://suckless.org/philosophy/
+unixwikipedia:
+  type: web
+  title: Unix philosophy
+  author: Wikipedia
+  url: https://en.wikipedia.org/wiki/Unix_philosophy#cite_note-volkerding-2012-10
+unixcentury:
+  type: book
+  title: A Quarter-Century of Unix
+  author: Peter H. Salus
+  ISBN: 0-201-54777-5

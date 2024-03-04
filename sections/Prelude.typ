@@ -191,9 +191,8 @@ This means that the library needs a way to also access memory from the executabl
 
 #subsection("ABI")
 Plugin systems based on dynamic libraries require that the plugins themselves
-are built against the current system. In other words, for each specific version
-of ReSet and its respective daemon, the plugins would need to be recompiled
-again.
+are built against the current version of the ABI.
+For each specific change to ReSet and its respective daemon, the ABI might be changed as well.
 
 Compared to an interpreted language, this is different to the fact that an API
 compatible change is not necessarily ABI compatible. For example, changing a
@@ -341,7 +340,7 @@ which will be evaluated in full before entering it into the macro.
 In other words, the entire expression is multiplied by five, not just the first part of it.
 
 A different approach to Rust would be to offer a flag to use code at compile time.
-This approach is used within C++ by adding constexpr or consteval to code. 
+This approach is used within C++ by adding constexpr or consteval to code.
 The difference between constexpr and consteval is the enforcement of compile time.
 If the code cannot be run at compile time, constexpr will not generate an error and instead run the code regularly,
 consteval would cause a compile time error in this case.

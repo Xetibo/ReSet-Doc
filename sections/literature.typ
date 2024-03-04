@@ -20,10 +20,11 @@ simply give users the ability to gradually control their used plugins.
 #subsection("High Level Architecture")
 In @base_plugin_architecture the intended architecture of the plugin system is
 visualized.
-#align(center, [#figure(
-    img("architecture.svg", width: 100%, extension: "files"),
-    caption: [Architecture of ReSet],
-  )<base_plugin_architecture>])
+#align(
+  center, [#figure(
+      img("architecture.svg", width: 100%, extension: "files"), caption: [Architecture of ReSet],
+    )<base_plugin_architecture>],
+)
 
 The intention is that each plugin will offer three parts for ReSet. The first
 part is the functionality itself, as an example, a monitor configuration plugin
@@ -65,21 +66,27 @@ hence when a webpage encounters issues, the browser itself is still usable.
 #subsubsubsection("Architecture")
 in @interpreted_languages_plugin the architecture of a plugin system with
 interpreted languages is visualized.
-#align(center, [#figure(
-    img("interpreted_languages.svg", width: 100%, extension: "files"),
-    caption: [Architecture of a potential interpreted plugin system.],
-  )<interpreted_languages_plugin>])
+#align(
+  center, [#figure(
+      img("interpreted_languages.svg", width: 100%, extension: "files"), caption: [Architecture of a potential interpreted plugin system.],
+    )<interpreted_languages_plugin>],
+)
 
 #subsubsection("Code Patching")
 Code patching is technically not a plugin system. With code patching, users need
 to change the code of the application themselves in order to achieve the
 expected functionality. This type of extensibility is found in a specific set of
-open-source applications called "suckless".
+open-source applications called "suckless". @suckless
 
 While not necessarily part of a plugin system, it is still important to note
 that this system requires a soft API/ABI stability. If the developers of the
 main applications often make radical changes, then these patches need to be
 rewritten for each change, which would make this system completely infeasible.
+
+Suckless specifically targets the Unix philosophy of "do one thing and do it
+well".@unixwikipedia @unixcentury While ReSet is not opposed to this philosophy,
+ReSet does intend to offer more than one functionality by utilizing a plugin
+system in the first place. ReSet will therefore not pursue this approach.
 
 #subsubsection("IPC")
 Inter Process Communication can be seen as a soft version of a plugin system.
@@ -90,12 +97,17 @@ it with new functions.
 ReSet itself is made with this idea in mind, expanding on existing functionality
 for Wi-Fi, audio and more.
 
-#subsubsubsection("Architecture")
+IPC has a major limitation, while the backend can be implemented solely with IPC
+by creating a new process that will handle the new functionality, the frontend
+cannot be expanded by just using IPC, hence this is not a system that can be
+fully applied to ReSet. On top of this, requiring a new process for each
+functionality would break the locality transparency which was defined as a
+requirement for ReSet in @Non-FunctionalRequirements.
 
 #subsubsection("Dynamic Libraries")
 Dynamic libraries can be used in order to load specific functions during
-runtime. This allows developers to load either specific files, or all files
-within a folder or similar, which will then be used to execute specified
+runtime. This allowsChallenges developers to load either specific files, or all
+files within a folder or similar, which will then be used to execute specified
 functions for the application.
 
 In order for this interaction to work, the plugin must implement all functions
