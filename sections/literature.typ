@@ -2,8 +2,8 @@
 #lsp_placate()
 
 #section("Plugin System")
-Plugin systems offers both the users and the developers of an application to
-provide specific implementations for use-cases. Notably, it does this by neither
+Plugin systems allow both the users and the developers of an application to
+provide specific implementations for use cases. Notably, it does this by neither
 putting the burden of development on the application developers, while also
 providing users with the functionality they explicitly want to use. The notable
 downside to this is the development and performance overhead the system itself
@@ -11,9 +11,9 @@ has on the application.
 
 For ReSet, the use case for a plugin system is the wide variety of features that
 either a system supports, or the user wants. As an example, it makes no sense to
-provide VR Headset configuration for a system that does not support such
+provide a VR Headset configuration for a system that does not support such
 devices. At the same, it is also counterproductive to offer settings for users
-that will never be used, for example touchpad settings on a desktop, here the
+that will never be used, for example, touchpad settings on a desktop, here the
 system could either detect available devices and load plugins respectively, or
 simply give users the ability to gradually control their used plugins.
 
@@ -43,29 +43,29 @@ can choose to not use the user interface, and instead interact with ReSet via
 DBus.
 
 #subsection("Plugin System Variants")
-In this section different variants of plugin systems are discussed and compared.
+In this section, different variants of plugin systems are discussed and compared.
 
 #subsubsection("Interpreted Languages")
 Interpreted languages can be run on top of the original application in order to
-provide on the fly-expansion of functionality. In this case the included
+provide on-the-fly expansion of functionality. In this case, the included
 interpreter uses functions within the application when certain functions are
 called by the interpreted language.
 
 #subsubsubsection("Error Handling")
-A big benefit with this system is the abstraction between the original
+A big benefit of this system is the abstraction between the original
 application and the interpreted language. It allows the two parties to exist
-relatively independent of each other. This includes errors, which ensures that
-an error on the interpreted language does not lead to a full crash of the
+relatively independently of each other. This includes errors, which ensures that
+an error in the interpreted language does not lead to a full crash of the
 application.
 
-As an example, browsers use the same independent error handling for webpages,
+As an example, browsers use the same independent error handling for web pages,
 hence when a webpage encounters issues, the browser itself is still usable.
 
 #subsubsubsection("Language Requirements")
 
 #subsubsubsection("Architecture")
 in @interpreted_languages_plugin the architecture of a plugin system with
-interpreted languages is visualized.
+interpreted languages are visualized.
 #align(
   center, [#figure(
       img("interpreted_languages.svg", width: 100%, extension: "files"), caption: [Architecture of a potential interpreted plugin system.],
@@ -89,7 +89,7 @@ ReSet does intend to offer more than one functionality by utilizing a plugin
 system in the first place. ReSet will therefore not pursue this approach.
 
 #subsubsection("IPC")
-Inter Process Communication can be seen as a soft version of a plugin system.
+Inter-Process Communication can be seen as a soft version of a plugin system.
 While it does not allow users to expand the functionality of the program itself,
 it does allow users to wrap the program by using the provided IPC and expanding
 it with new functions.
@@ -106,7 +106,7 @@ requirement for ReSet in @Non-FunctionalRequirements.
 
 #subsubsection("Dynamic Libraries")
 Dynamic libraries can be used in order to load specific functions during
-runtime. This allowsChallenges developers to load either specific files, or all
+runtime. This allows developers to load either specific files or all
 files within a folder or similar, which will then be used to execute specified
 functions for the application.
 
@@ -118,7 +118,7 @@ framework of the developer of the application.
 
 #subsubsubsection("Example")
 For Rust, the crate "libloading" handles the mapping of C functions to Rust in a
-simple fashion. This allows a straight forward usage of dynamic libraries.
+simple fashion. This allows a straightforward usage of dynamic libraries.
 Figure @rust_dynamic_libary_loading visualizes a simple dynamic library with a
 single function.
 
@@ -158,31 +158,32 @@ that without this flag, a dynamic library with compiler version A might not
 necessarily be compatible with the binary compiled with compiler version B.
 Hence, Rust and other languages use the C ABI to ensure ABI stability.
 
-The lack of a stable Rust ABI is also the reason as to why there are no Rust native shared libraries.
-Crates as found on crates.io are static libraries which are compiled into the binary,
+The lack of a stable Rust ABI is also the reason why there are no Rust native shared libraries.
+Crates, as found on crates.io, are static libraries that are compiled into the binary,
 and all shared libraries are created with the C ABI using "extern C".
 Further information about ABI along with examples can be found in @ABI.
 
 #subsubsubsection("Containerization of dynamic libraries")
 Plugin systems have a variety of points to hook a dynamic library into the
 application. The easiest is to just execute plugin functions at a certain point
-in the application. As an example, for loading various settings in ReSet, this
-would mean looping through dynamic libraries and loading their respective user
+in the application. As an example, loading various settings in ReSet would mean 
+looping through dynamic libraries and loading their respective user
 interfaces to show in ReSet. This approach is plausible and proven to work by a
-variety of existing plugin systems, however it also has a major shortcoming. The
+variety of existing plugin systems, however, it also has a major shortcoming. The
 moment the plugin crashes, the application has to either handle this unknown
-error, or worse, if the error is not recoverable, the entire application
+error or worse, if the error is not recoverable, the entire application
 crashes. This can lead to potential instability with plugins of different
 versions using different ABIs or simply due to bugs in a plugin.
 
 To handle this case, a plugin system can also containerize plugins to run in
-their own thread or process to provide independent error handling. This allows
+their thread or process to provide independent error handling. This allows
 an application to recover even when a plugin exits abnormally while using
 resources.
 
-In @rust_thread_panic and @thread_panic_screenshot the use of simple Rust threads guarantees the
-continuation of the invoking thread, meaning the underlying application can
-still continue to run even though the spawned thread encountered a fatal error.
+In @rust_thread_panic and @thread_panic_screenshot the use of simple Rust 
+threads guarantees the continuation of the invoking thread, meaning the
+underlying application can still continue to run even though the spawned 
+thread encountered a fatal error.
 
 //typstfmt::off
 #align(left, [#figure(sourcecode(```rs
@@ -207,13 +208,13 @@ caption: [Thread panic example])<rust_thread_panic>])
     )<thread_panic_screenshot>],
 )
 
-While the runtime guarantee is a benefit of this system, it also requires thread
-safe synchronization of resources. This would incur a performance penalty on the
-entire system as even the native application services would now need to use
-synchronization when accessing data.
+While the runtime guarantee is a benefit of this system, it also requires 
+thread-safe synchronization of resources. This would incur a performance 
+penalty on the entire system as even the native application services would 
+now need to use synchronization when accessing data.
 
 On top of this, when a plugin encounters a fatal error, this should not only be
-communicated to the user, but potential interactions with the now lost plugin
+communicated to the user, but potential interactions with the now-lost plugin
 need to be removed. This might happen when plugins communicate with each other,
 or when multiple plugin systems are in place.
 
@@ -221,7 +222,7 @@ or when multiple plugin systems are in place.
 
 #subsubsubsection("Architecture")
 In @dynamic_libraries_plugin_system, the architecture of a plugin system with
-dynamic libraries is visualized.
+dynamic libraries are visualized.
 #align(
   center, [#figure(
       img("dynamic_libraries.svg", width: 100%, extension: "files"), caption: [Architecture of a dynamic library plugin system.],
@@ -235,7 +236,7 @@ more control to the plugin developers, but also requires more maintenance from
 the plugin system developers and is more prone to breaking changes, as plugins
 interact more closely with the original system.
 
-An existing plugin system with this variant is the GNOME-Shell. This application
+An existing plugin system with this variant is the GNOME Shell. This application
 is used on top of the GNOME Compositor to provide users with various user
 interfaces such as a status bar, notifications, and more. As GNOME-Shell is
 written in JavaScript, the overriding of functions is comparatively straight
@@ -245,11 +246,11 @@ integer variant does not break compatibility with existing extensions.
 
 Using JavaScript for this use case also creates a bind, namely, it is no longer
 possible to split extensions, as JavaScript is a single-threaded system. This
-means that each extension that can possibly crash, would also take down the
+means that each extension that can crash, would also take down the
 GNOME-Shell as collateral.
 
 To visualize the concept, @rust_function_overriding provides an example of
-function overriding as parameter in Rust:
+function overriding as a parameter in Rust:
 
 //typstfmt::off
 #align(left, [#figure(sourcecode(```rs
@@ -299,10 +300,10 @@ supplement: "Listing",
 caption: [Function overriding example in Rust])<rust_function_overriding>])
 
 The output of this program is the regular_function and the second_function after
-this, both functions get the dummy data 5 passed to it. In a real world example,
+this, both functions get the dummy data 5 passed to it. In a real-world example,
 this data could potentially be of the "any" type provided by the any pattern,
-which would allow plugins to use custom defined types, even with a statically
-typed language such as Rust. Important to note however, is that even with the
+which would allow plugins to use custom-defined types, even with a statically
+typed language such as Rust. Important to note, however, is that even with the
 any pattern, Rust would still break the ABI compatibility, as memory access
 depends on the size of a type.
 
@@ -368,16 +369,16 @@ The idea is that with custom scripting languages, it is possible to limit the
 functionality of the language, making it infeasible or harder for malicious
 developers to abuse the plugin system. The second use case is the simplification
 of functionality for potential plugin developers. For ReSet, this could mean
-creating of ReSet specific user interface elements with a single function call.
+creating ReSet-specific user interface elements with a single function call.
 However, this could also be potentially implemented with a library for an
 existing language.
 
 #subsubsection("Turing Complete")
-The security aspect is likely the biggest factor for choosing to create a custom
+The security aspect is likely the biggest factor in choosing to create a custom
 scripting language. Here the use of non-turing complete language is the most
 effective. It enforces limited functionality, which can severely limit the
-attack vectors compared to a turing complete language. The downside of this
-approach is that only plugins with a supported use-case can be created.
+attack vectors compared to a Turing complete language. The downside of this
+approach is that only plugins with a supported use case can be created.
 
 #subsection("Security")
 Security in plugin systems is not an easy task. Developers want to rely on the
@@ -387,10 +388,11 @@ malicious intentions.
 
 Similar concerns can be seen with browser extensions which are also just
 plugins, just for the browser itself. Some organizations require reviews from
-developers before publishing an extension to a web based plugin "store", making
+developers before publishing an extension to a web-based plugin "store", making
 it harder for malicious code to be published as an extension.
 
 #subsection("Hooks")
+// todo which section is it referring to?
 Hooks for the plugin system refer to section in the code where the plugin
 applies its functionality. When looking back at the ABI plugin example in @rust_dynamic_libary_loading,
 this would be the call of the function inside the plugin system struct. For the
@@ -409,12 +411,12 @@ point. For this reason, all DBus interfaces must offer a mock implementation in
 order for it to be tested.
 
 The second issue comes with the user interface, here regular Rust tests are
-meaningless. ReSet would need to use a GTK compatible UI-testing toolkit.
+meaningless. ReSet would need to use a GTK-compatible UI-testing toolkit.
 
 After building this testing system, plugins can then also make use of this
 system by offering integration and unit tests for their use cases. This ensures
 that the plugin does not just work standalone, which would include specific
-functionality, but also works in the entire system, which would cover the use
+functionality but also works in the entire system, which would cover the use
 inside ReSet by DBus and user interfaces.// TODO: Integration tests
 
 // TODO: How to connect with the rest of the system
@@ -451,7 +453,7 @@ Unfortunately, that crate doesn't seem to be maintained anymore and is not
 compatible with GTK4 anyway. The general idea behind it was still useful
 and could be used to implement a new solution. Instead of returning each UI
 element in a tuple, saving it into a singleton would be much easier, especially
-when there are many UI widgets or with dynamically generated widgets. These can
+when there are many UI widgets or dynamically generated widgets. These can
 then be easily accessed and manipulated during the tests.
 
 #align(left, [#figure(sourcecode(```rs
@@ -470,7 +472,7 @@ caption: [Structure of singleton])])
 
 The idea is to save a reference to each widget that is going to be tested in a
 hashmap of its corresponding class with a string to identify it. The special
-case is the window, because there is only one instance of it.
+case is the window because there is only one instance of it.
 
 #align(left, [#figure(sourcecode(```rs
 let main = gtk::Box::new(Horizontal, 5);

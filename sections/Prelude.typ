@@ -2,11 +2,11 @@
 #lsp_placate()
 
 #section("Prelude")
-This section covers required concepts for a plugin system.
+This section covers the required concepts for a plugin system.
 
 #subsection("Mangling")
 Mangling is the act of renaming designators by the compiler. Mangling can have
-various different strategies and reasons. For example, a compiler for languages
+different strategies and reasons. For example, a compiler for languages
 such as C++, C and Rust use mangling in order to remove namespaces and
 conflicts. Consider the Rust code in @rust_namespaces:
 
@@ -37,8 +37,8 @@ caption: [Namespaces in Rust])<rust_namespaces>])
 //typstfmt::on
 
 This code will be reduced to one namespace during compilation, this means the
-concept of "namespace1" or "namespace2" are lost. Without mangling, this would
-not work, as both functions have the same name, however with mangling, functions
+concept of "namespace1" or "namespace2" is lost. Without mangling, this would
+not work, as both functions have the same name, however, with mangling, functions
 will have a seemingly random name and will therefore not clash with each other.
 
 In @assembly_mangling, the difference between regular compilation with mangling
@@ -70,7 +70,7 @@ same with both functions will result in the compiler error visualized in
 #subsubsection("Other Applications")
 Mangling has other applications than just avoiding compilation issues, one of
 these is code obfuscation. This is often used for languages that can't be
-reduced to binary files, with an example for this being the obfuscation of
+reduced to binary files, with an example of this being the obfuscation of
 electron JavaScript applications.
 
 JavaScript is an interpreted language, meaning that the code needs to be read by
@@ -102,9 +102,9 @@ caption: [Example obfuscated code])<obfuscated_code>])
 //typstfmt::on
 
 #subsection("Dynamic Libraries")
-Dynamic libraries are an interpretation of a binary which can be loaded into
+Dynamic libraries are an interpretation of a binary that can be loaded into
 memory and accessed at runtime by another binary. This means that developers can
-provide libraries which can be loaded into a program at runtime.
+provide libraries that can be loaded into a program at runtime.
 
 Due to the read-only nature of dynamic libraries, it is possible to use the same
 instance of a dynamic library for multiple programs. In other words, the library
@@ -122,8 +122,8 @@ re-usage of resources and keeps the footprint low. However, at the same, it
 requires that all applications installed on this system must be compatible with
 this version of the library. Simple versioning such as incrementing the version
 number for each small change would make this system infeasible. For example,
-simple bugfixes would break compatibility. In order to solve this issue,
-semantic versioning is used. This system creates a number of guarantees for a
+simple bug fixes would break compatibility. In order to solve this issue,
+semantic versioning is used. This system creates several guarantees for a
 library by using multiple different version numbers.
 
 In @semantic_versioning the semantic version of the library Glibc is visualized.
@@ -142,24 +142,24 @@ supplement: "Listing",
 caption: [Semantic versioning],)<semantic_versioning>],)
 //typstfmt::on
 
-The minor version of a shared library can have multiple numbers, usually it will
-be two, or three. For two, there is no difference between compatible feature
-enhancements and compatible bugfixes. With three numbers, the first number is a
+The minor version of a shared library can have multiple numbers, usually, it will
+be two or three. For two, there is no difference between compatible feature
+enhancements and compatible bug fixes. With three numbers, the first number is a
 compatible feature enhancement, and the last number is a compatible bugfix.
 
 For the Linux system native packages, this ensures the feasibility of a single
-shared library, even if the version might be different to the expected one.
+shared library, even if the version might be different from the expected one.
 
 For ReSet, flatpak is used as well, this system also tries to re-use libraries
 if possible, however, due to the sandboxed nature of flatpaks, it is also
-possible to install multiple versions of a specific library, ensuring that each
+possible to install multiple versions of a specific library, ensuring that each 
 program receives the necessary library.
 
 #subsubsection("Virtual Memory and Global Offset Table")
 Operating systems do not offer processes direct access to physical memory.
 This ensures that processes do not access random memory that is used by other processes.
 Virtual memory address mapping enforces this paradigm by creating a pointer map to physical memory.
-On this map the operating can control the allowed memory space of the application with the Memory Management Unit.
+On this map, the operating system can control the allowed memory space of the application with the Memory Management Unit.
 Should the process try to access physical memory which is not offered to this process,
 then the Memory Management Unit will cause an MMU fault signal.
 
@@ -172,7 +172,7 @@ one for the ReSet user interface and one for the daemon.
     img("virtual_memory.png", width: 80%, extension: "figures"), caption: [Virtual to physical memory mapping],
 )<virtual_to_physical>
 
-Loading a shared library can either be done immediate,
+Loading a shared library can either be done immediately,
 meaning all functions of a library are loaded on startup,
 or the library functionality can be loaded lazily.
 Lazy functions will only be loaded into memory when they are called.
@@ -194,8 +194,7 @@ Plugin systems based on dynamic libraries require that the plugins themselves
 are built against the current version of the ABI.
 For each specific change to ReSet and its respective daemon, the ABI might be changed as well.
 
-Compared to an interpreted language, this is different to the fact that an API
-compatible change is not necessarily ABI compatible. For example, changing a
+Compared to an interpreted language, this is different from the fact that an API-compatible change is not necessarily ABI-compatible. For example, changing a
 parameter from i64 to i32 would not require a change for the programmer using
 the API. However, for the ABI user, this change would likely result in a crash
 as the compiled ABI changed.
@@ -211,6 +210,7 @@ In this section, an example of C++ to Rust compatibility is analyzed based on th
 A working proof of concept plugin without functionality can be examined in @hyprland_plugin_rust.
 Hyprland offers plugins via the C++ ABI, meaning no compatibility with any other language is offered out of the box.
 
+#pagebreak()
 Consider the C++ struct in @cpp_struct.
 #figure(sourcecode(```cpp
 typedef struct {
@@ -227,7 +227,7 @@ caption: [C++ struct]
 
 Despite both Rust and C++ offering the same datatype, they are not properly compatible.
 A single Rust String to C++ std::string is transferrable over a shared library,
-however a struct containing multiple strings is not converted properly and results in a double free,
+however, a struct containing multiple strings is not converted properly and results in a double free,
 meaning memory is attempted to be freed twice by C++.
 
 In order for this struct to be consistently compatible,
@@ -267,7 +267,7 @@ caption: [C ABI compatible struct in Rust]
 #pagebreak()
 
 #subsubsection("Hourglass pattern")
-Using the hourglass pattern it is possible to provide a generalized ABI for which any language can be used to interact with a shared library based plugin system.
+Using the hourglass pattern it is possible to provide a generalized ABI for which any language can be used to interact with a shared library-based plugin system.
 In order to achieve this goal, the application implementing the plugin system needs to provide the entire API as a C API. This API can then be targeted by other languages without knowing the implementation details.
 For proprietary applications, this is specifically interesting, since they do not need to provide any other code apart from the C header file.
 
@@ -284,13 +284,13 @@ In @hourglass and @hourglass_picture the architecture of the hourglass pattern i
 ])
 
 A potential shared library plugin system for ReSet could also implement
-this C API in order to provide users of ReSet a possibility to use languages other than Rust.
+this C API in order to provide users of ReSet the possibility to use languages other than Rust.
 However, it is important to note that this would also mean including C bindings to DBus and GTK,
 which could increase the difficulty.
 
 #subsection("Macros")
 Macros are a way to change the code at compile time.
-In languages like C or C++ this is often used in order to differentiate different environments,
+In languages like C or C++, this is often used in order to differentiate different environments,
 prohibit duplicate imports or define constants.
 Rust macros are inherently different from this.
 Rust offers a macro system where the entire language is supported at compile time.
@@ -316,9 +316,9 @@ caption: [C Macro])<cmacro>])
 
 If this was a regular function in C, then the expectation would be 25 as the result, 5 \* (2 + 3).
 However, with C macros, the token x is not used as an actual token,
-instead it is just text, so the result is: 5 \* 2 + 3.
+instead, it is just text, so the result is: 5 \* 2 + 3.
 Without the parenthesis, the expectation of the result changes from 25 to 13.
-Bugs like these are incredibly hard to debug as it happens at compile time.
+Bugs like these are incredibly hard to debug as they happen at compile time.
 
 For comparison, the same macro in Rust in @rustmacro results in the expected 25.
 

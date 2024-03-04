@@ -3,25 +3,25 @@
 
 #subsection("Dynamic Library Plugin Systems")
 This section covers plugin systems utilizing dynamic libraries. Dynamic
-libraries are explained at detail in @DynamicLibraries.
+libraries are explained in detail in @DynamicLibraries.
 
 #subsubsection("Hyprland")
-Hyprland is a dynamic tiling compositor which can be extended via a plugin
-system. Both the plugin systems and the compositor itself is written in C++.
-Notably, the plugin systems only rarely uses the "extern C" keyword, which
-results in only C++ compatible plugins. An example for this exact system can be
+Hyprland is a dynamic tiling compositor that can be extended via a plugin
+system. Both the plugin systems and the compositor itself are written in C++.
+Notably, the plugin systems rarely use the "extern C" keyword, which
+results in only C++-compatible plugins. An example of this exact system can be
 seen in @ExhibitABICompatibility.
 
 Using C++ ABI directly does offer both the plugin developer and Hyprland itself
 a benefit, namely the C++ classes, structs and functions do not need to be
-converted to C compatible types. Depending on the complexity of the type, this
+converted to C-compatible types. Depending on the complexity of the type, this
 can lead to a sizable overhead.
 
 Hyprland also offers a hooking system besides regular additional plugins. The
 difference is that hooks allow direct modification of code execution, instead of
-execution at a specific point in code. With the hooking system, it is possible
+execution at a specific location in code. With the hooking system, it is possible
 to replace any existing function within Hyprland with your own, or append
-functionality to it. In @hyprlandhookexample, an example for the hooking system
+functionality to it. In @hyprlandhookexample, an example of the hooking system
 of Hyprland is analyzed.
 
 // typstfmt::off
@@ -56,7 +56,7 @@ The destination function is the function you would like to implement instead of 
 Note that the original function can still be called at any point within your new function.
 In @hyprland_hook_wiki, the additional functionality was added before the call to the original function.
 
-In @hyprlandmempatching, the copying of the plugin defined function is analyzed.
+In @hyprlandmempatching, the copying of the plugin-defined function is analyzed.
 
 // typstfmt::off
 #align(center, [#figure(sourcecode(```cpp
@@ -77,19 +77,19 @@ In @hyprlandmempatching, the copying of the plugin defined function is analyzed.
 )<hyprlandmempatching>])
 // typstfmt::on
 
-Hyprland simply patches the memory of itself by creating a trampoline function, which will point to the plugin function.
-This means that the instructions of the original function are turned to "No Operation(NOP)", which will be skipped by the cpu.
+Hyprland simply patches the memory itself by creating a trampoline function, which will point to the plugin function.
+This means that the instructions of the original function are turned to "No Operation(NOP)", which will be skipped by the CPU.
 Instead, the trampoline will point to the new plugin function, which will be executed.
 
-This system is extremely powerful, allowing plugin developers to override any
-and all behavior of the existing application. For ReSet, this would likely not
+This system is extremely powerful, allowing plugin developers to override any 
+behavior of the existing application. For ReSet, this would likely not
 make much sense, as ReSet does not offer much functionality at its core, instead
 ReSet intends to provide extendability.
 
 A mock example Hyprland plugin written in Rust can be seen in @ExhibitABICompatibility, specifically @hyprland_plugin_rust.
 
 #subsubsection("Anyrun")
-Anyrun is a Wayland application launcher similar to launchpad for Macintosh computers.
+Anyrun is a Wayland application launcher similar to Launchpad for Macintosh computers.
 It is written in Rust and GTK3 and offers users the ability to load plugins with shared libraries using the stable ABI crate which automatically converts Rust structs to C structs.
 
 @anyrunbase shows the regular launch mode for anyrun.
@@ -101,7 +101,7 @@ It is written in Rust and GTK3 and offers users the ability to load plugins with
 
 
 @anyruncalculator and @anyrunwebsearch show two plugins for anyrun,
-a calculator plugin and a websearch plugin.
+a calculator plugin and a web search plugin.
 
 #align(
   center, [#figure(
@@ -115,7 +115,7 @@ a calculator plugin and a websearch plugin.
 )
 
 Anyrun abstracts the plugin implementation behind several different crates.
-First is the ABI crate which handles the conversion of Rust specific types into C stable ABI compatible ones.
+First is the ABI crate which handles the conversion of Rust-specific types into C stable ABI-compatible ones.
 
 In @anyrunplugininfo, the plugin info struct of anyrun is visualized.
 
@@ -129,12 +129,12 @@ pub struct PluginInfo {
 ```,), kind: "code", supplement: "Listing", caption: [Anyrun PluginInfo @anyrun],
 )<anyrunplugininfo>])
 
-The next part of the Anyrun plugin structure is found within the maco crate.
+The next part of the Anyrun plugin structure is found within the macro crate.
 Macros allow plugin developers for Anyrun to create plugins without the need to worry about certain restrictions like special types,
 mutexes and thread synchronization, as this can be handled automatically by the macro.
 More information about Macros can be found in @Macros.
 
-In @anyruninfomacro, the simple macro that transforms the plugin provided info function into the required format is visualized.
+In @anyruninfomacro, the simple macro that transforms the plugin-provided info function into the required format is visualized.
 
 #align(center, [#figure(sourcecode(```rs
 #[proc_macro_attribute]
