@@ -31,10 +31,10 @@ The following categories are evaluated for programming languages:
   how well the paradigm would suit the need of ReSet.
 - *Expected Workload* | weight: medium\
   This is the evaluation of the authors on how much work is to be expected for a
-  specific paradigm based research of existing plugin systems.
+  specific paradigm-based research of existing plugin systems.
 - *Compatibility* | weight: high\
   Compatibility covers the need for the plugin system to interact with all
-  existing third party libraries. For ReSet, this would include the GTK user
+  existing third-party libraries. For ReSet, this would include the GTK user
   interface toolkit and the dbus-rs crate, for which the plugin must be suitable.
   This category is considered important, as rewriting ReSet with different
   libraries is not feasible for this thesis.
@@ -49,14 +49,14 @@ This section covers the comparison of each plugin system implementation when
 applied to ReSet.
 
 #subsubsection("Testability")
-ReSet targets to not only offer testability for the core functionality, but also
+ReSet targets not only to offer testability for the core functionality but also
 for the plugins themselves. Considering the architecture of ReSet, this would
 require integration into both DBus and GTK.
 
 For all plugin systems, tests would require the dynamic loading of plugins
 specified within a configuration file or similar. As Rust allows tests to
-execute any arbitrary code, loading of either dynamic libraries, or virtual
-machines is feasible. For this category there is no difference between any
+execute any arbitrary code, loading of either dynamic libraries or virtual
+machines is feasible. For this category, there is no difference between any
 specific plugin system.
 
 #subsubsection("Language Conformity")
@@ -64,37 +64,37 @@ All plugin systems use some form of abstraction compared to just using Rust.
 Meaning there is no outright winner. This is especially the case when looking at
 differing stable ABI usages and different scripting languages. Rust native
 structs, functions and more usually transfer without issue to both a stable ABI
-or to a scripting language.
+or a scripting language.
 
 For this category, the analysis has not resulted in any meaningful differences
-in the architecture. Note however, that this does not include specific usages of
+in the architecture. Note, however, that this does not include specific usages of
 an architecture. For example, the steel scripting language offers better
 language conformity than using lua as the scripting language.
 
 #subsubsection("Use Case Overlap")
 ReSet targets solely the expansion of functionality without restrictions. This
 means that ReSet neither intends to offer custom hooking functionality, as there
-is no underlying system to hook into, nor does ReSet intend to prevent plugin
+is no underlying system to hook into, nor does ReSet intend to prevent the plugin
 developers from using the full range of features of any tooling.
 
-A potential plugin system should also take the architecture of ReSet into
-consideration. For ReSet, this would include a multiprocess architecture. When
-comparing interpreted languages to dynamic libraries on this specific point,
-there is a considerable difference. As the name suggests interpreted languages
-require an interpreter, and as ReSet uses multiple processes, this would require
-two interpreters, adding an abstraction to the already distributed architecture
-of ReSet. With dynamic libraries, a library loaded into memory can be re-used,
-this means there is only one instance of a plugin within memory, which then used
-by multiple processes.
+A potential plugin system should also consider the architecture of ReSet. 
+For ReSet this includes a multiprocess architecture. When comparing interpreted 
+languages to dynamic libraries on this specific point, there is a considerable 
+difference. As the name suggests interpreted languages require an interpreter, 
+and as ReSet uses multiple processes, this would require two interpreters, 
+adding an abstraction to the already distributed architecture of ReSet. With 
+dynamic libraries, a library loaded into memory can be re-used, this means there 
+is only one instance of a plugin within memory, which is then used by multiple 
+processes.
 
-The analysis concluded a significant benefit to use dynamic libraries for this
+The analysis concluded a significant benefit to using dynamic libraries for this
 category.
 
 #subsubsection("Expected Workload")
-Dynamic libraries would require the use of macros to ensure simple creation of
+Dynamic libraries would require the use of macros to ensure the simple creation of
 plugins. Considering @Anyrun as an example, this would require significant
 overhead for the implementation. However, interpreted languages could also
-require additional overhead when considering the integration of individual part
+require additional overhead when considering the integration of individual parts
 of the system. In @Helix, an example usage of an interpreted language is shown.
 Even with this simple example without integration of either GTK or DBus, it
 already required additional thread synchronization.
@@ -111,7 +111,7 @@ language, or the entire library is already written with that language.
 
 However, for interpreted languages, this would make it more difficult to use.
 ReSet could provide widgets for the interpreted language in order to build a UI,
-however this would conflict with @UseCaseOverlap, making unsuitable. The
+however, this would conflict with @UseCaseOverlap, making it unsuitable. The
 secondary option is to use an interpreted language that offers bindings for GTK.
 This however would limit ReSet to a small amount of languages, none of which are
 written in Rust, further complicating integration as mentioned in

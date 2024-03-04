@@ -12,10 +12,10 @@ VIMscript is converted to lua, meaning Neovim only needs a single interpreter fo
 This interpreter is tightly coupled to Neovim itself, providing plugin developers with an easy way to access core functionality.
 
 While the implementation of the interpreter itself is too large for a brief analysis, the usage of this system can be analyzed.
-Neovim provides solid documentation about their natively supported functionality wich one can use within the Neovim lua interpreter.
+Neovim provides solid documentation about their natively supported functionality which one can use within the Neovim lua interpreter.
 Note that this means the documented functionality is only supported in Neovim and not in any other Neovim interpreter. @neovimluadocumentation
 
-In @testplugin, a Neovim testplugin is visualized.
+In @testplugin, a Neovim test plugin is visualized.
 #align(
   center, [#figure(
     sourcecode(```lua
@@ -52,12 +52,12 @@ return test_plugin
 // TODO show output
 
 #subsubsection("Helix")
-Helix is a post modern modal text editor written in Rust.
+Helix is a post-modern modal text editor written in Rust.
 It currently does not offer a plugin system, however, as of February 2024, there is an open pull request on the helix repository. @helixpr
-This addition would introduce the list based steel scripting language as a plugin system. @steel
+This addition would introduce the list-based steel scripting language as a plugin system. @steel
 
-The difference to Neovim with steel besides the paradigm of the scripting language is the integration with the Rust programming language.
-Steel offers a first party virtual machine for its parent language.
+The difference between Neovim with steel besides the paradigm of the scripting language is the integration with the Rust programming language.
+Steel offers a first-party virtual machine for its parent language.
 Creating plugins with steel would therefore require less work as a large portion would already be covered by steel.
 
 In @steelengine, a simple usage of the steel engine in Rust and GTK is visualized.
@@ -115,8 +115,8 @@ fn main() {
 )
 ])
 
-A challenge to utilize any scripting language with GTK is that both GTK and the scripting language have their own thread,
-and both are single threaded environments.
+A challenge to utilize any scripting language with GTK is that both GTK and the scripting language have their thread,
+and both are single-threaded environments.
 Hence, it requires manual synchronization and also requires special wrapping of GTK structs as they are not marked as Sync/Send,
 which is required in Rust for multithreading.
 
@@ -124,7 +124,7 @@ which is required in Rust for multithreading.
 #subsubsection("Usage in Games")
 Various game engines and modding frameworks also utilize lua as a scripting language in order to provide extendability.
 
-Roblox for example uses lua to provide players a way to create their own gamemodes. @roblox_lua
+Roblox for example uses lua to provide players a way to create their gamemodes. @roblox_lua
 
 There are also modding frameworks like UE4SS,
 which uses lua as the scripting language for modifications to Unreal Engine games. @ue4ss
@@ -136,7 +136,7 @@ Hooking functionality is described in @Hyprland.
 
 #subsubsection("GNOME Shell")
 The GNOME shell is written in C and JavaScript.
-Specifically the user interface part is written in JavaScript,
+Specifically, the user interface part is written in JavaScript,
 meaning extensions can fully rely on this language.
 Usage of an interpreted language for this allows plugin developers to simply
 override existing functions at runtime without requiring a complicated plugin/hooking system.
@@ -178,6 +178,9 @@ export default class Example extends Extension.Extension {
 }
 ```),kind: "code", supplement: "Listing", caption: [GNOME shell example extension])<GNOMEexampleextension>])
 
-Another benefit of the GNOME shell extensions is the fact that the regular GNOME shell has already created classes, functions and more within JavaScript.
-This allows plugin developers to just use said functions to create widgets and more using the exact same styling as the native GNOME implementation.
-For ReSet this could also be possible, even when using native Rust code, as ReSet specific widgets can be exported to a crate, allowing plugin developers to utilize similar functionality.
+Another benefit of the GNOME shell extensions is the fact that the regular GNOME 
+shell has already created classes, functions and more within JavaScript.
+This allows plugin developers to just use said functions to create widgets and
+more using the same styling as the native GNOME implementation.
+For ReSet this could also be possible, even when using native Rust code, as 
+ReSet-specific widgets can be exported to a crate, allowing plugin developers to utilize similar functionality.
