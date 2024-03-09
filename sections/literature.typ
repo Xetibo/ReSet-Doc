@@ -602,3 +602,74 @@ Similarly, it is possible to also remove the entire singleton, or at least the u
 ])
 
 // todo write stuff macros
+#pagebreak()
+
+#subsection("Plugin UI Mockups")
+In this section, two mockups of potential plugins are created. The first plugin allows the user to change 
+monitor settings and the second plugin allows keyboard settings. The mockups were created using Mockflow, 
+which is an online tool for creating mockups. The mockups are not final and are only meant to give an 
+first impression.
+
+#subsubsection("Monitor Plugin")
+While settings applications offer many different approaches and user interfaces, the monitor settings 
+look very similar across practically all applications that were referenced. There is always a drag and 
+drop area where the user can align monitors. A feature that can be implemented into that area is the 
+ability to change commonly used monitor settings inside the area like resoluation and orientation. Many 
+applications only offer these settings after scrolling a bit, which is not very user friendly. 
+#align(
+    center,
+    [#figure(
+        img("../figures/monitorMock.png", width: 75%, extension: "figures"), 
+        caption: [Mock of monitor plugin],
+    )],
+)
+
+Below this area, the user can set the main monitor and change other settings such as the brightness and 
+night mode. The order is heavily inspired from Windows 11. The further down the user scrolls the more 
+advanced the settings become. 
+
+#align(
+    center,
+    [#figure(
+        img("../figures/windowsMonitorSettings.png", width: 75%, extension: "figures"), 
+        caption: [Windows monitor settings],
+    )],
+)
+
+#subsubsection("Keyboard Plugin")
+While there are many keyboard settings that can be implemented, only the very basic ones will be in the 
+mockup. Any further settings can be implemented further down the page or a group of settings can be 
+moved into a tab to keep the main page clean and simple.
+
+#align(
+    center, 
+    [#figure(
+        img("../figures/keyboardMock.png", width: 75%, extension: "figures"), 
+        caption: [Mock of keyboard plugin],
+    )],
+)
+
+The keyboard plugin UI starts with a list of currently available keyboard layouts. This list can be 
+ordered with the burger menu on the left side. The user can also add a new layout with "Add layout" 
+button, whicih places the new layout at the bottom of the list. By clicking on the three dots on the 
+right, the user can open a context menu to remove the layout.
+
+#align(
+    center, 
+    [#figure(
+        img("../figures/gnomeKeyboardSetting.png", width: 50%, extension: "figures"), 
+        caption: [Gnome keyboard layouts],
+    )],
+)
+
+The context menu also offers the ability to show the keyboard layout visually. This is a feature 
+missing in Windows but is available in Gnome. This feature can be very useful for users who have a 
+different layout than their pyhsical keyboard.
+
+#align(
+    center, 
+    [#figure(
+        img("../figures/gnomeKeyboardVisual.png", width: 100%, extension: "figures"), 
+        caption: [Visual keyboard layout in Gnome],
+    )],
+)
