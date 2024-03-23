@@ -1,4 +1,4 @@
-#import "@preview/codelst:1.0.0": sourcecode
+#import "@preview/codelst:2.0.1": sourcecode
 #import "riskmatrix.typ": riskmatrix
 #import "glossary.typ": *
 #import "mock_labels.typ": *

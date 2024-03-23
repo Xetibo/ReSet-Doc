@@ -24,7 +24,7 @@ to replace any existing function within Hyprland with your own, or append
 functionality to it. In @hyprlandhookexample, an example of the hooking system
 of Hyprland is analyzed.
 
-// typstfmt::off
+
 #align(center, [#figure(sourcecode(```cpp
 // make a global instance of a hook class for this hook
 inline CFunctionHook* g_pMonitorFrameHook = nullptr;
@@ -48,7 +48,7 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
 }
 ```,), kind: "code", supplement: "Listing", caption: [Hyprland Hook Example @hyprland_hook_wiki],
 )<hyprlandhookexample>])
-// typstfmt::on
+
 
 The createFunctionHook API function takes a source and destination function. The source function is the address of the Hyprland function to be overwritten.
 Hence, a plugin developer would first need to get the address of that function. Hyprland provides a find function for this use case, making it easy to create hooks.
@@ -58,7 +58,7 @@ In @hyprland_hook_wiki, the additional functionality was added before the call t
 
 In @hyprlandmempatching, the copying of the plugin-defined function is analyzed.
 
-// typstfmt::off
+
 #align(center, [#figure(sourcecode(```cpp
     // alloc trampoline
     // populate trampoline
@@ -75,7 +75,7 @@ In @hyprlandmempatching, the copying of the plugin-defined function is analyzed.
     m_pOriginal = m_pTrampolineAddr;
 ```,), kind: "code", supplement: "Listing", caption: [Hyprland Hook Creation @hyprland],
 )<hyprlandmempatching>])
-// typstfmt::on
+
 
 Hyprland simply patches the memory itself by creating a trampoline function, which will point to the plugin function.
 This means that the instructions of the original function are turned to "No Operation(NOP)", which will be skipped by the CPU.

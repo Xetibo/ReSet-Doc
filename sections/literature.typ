@@ -122,7 +122,7 @@ simple fashion. This allows a straightforward usage of dynamic libraries.
 Figure @rust_dynamic_libary_loading visualizes a simple dynamic library with a
 single function.
 
-//typstfmt::off
+
 #align(left, [#figure(sourcecode(```rs
 // code in the calling binary
 fn main() {
@@ -145,7 +145,7 @@ pub extern "C" fn test_function(data: i32) -> i32 {
 kind: "code",
 supplement: "Listing",
 caption: [Dynamic library loading in Rust])<rust_dynamic_libary_loading>])
-//typstfmt::on
+
 
 In figure @rust_dynamic_libary_loading, the dynamic library has the annotation "no_mangle". This
 flag tells the compiler to not change the identity of the specified designator.
@@ -185,7 +185,7 @@ threads guarantees the continuation of the invoking thread, meaning the
 underlying application can still continue to run even though the spawned 
 thread encountered a fatal error.
 
-//typstfmt::off
+
 #align(left, [#figure(sourcecode(```rs
 fn main() {
     thread::spawn(|| {
@@ -200,7 +200,7 @@ fn main() {
 kind: "code",
 supplement: "Listing",
 caption: [Thread panic example])<rust_thread_panic>])
-//typstfmt::on
+
 
 #align(
   center, [#figure(
@@ -252,7 +252,7 @@ GNOME-Shell as collateral.
 To visualize the concept, @rust_function_overriding provides an example of
 function overriding as a parameter in Rust:
 
-//typstfmt::off
+
 #align(left, [#figure(sourcecode(```rs
 use once_cell::sync::Lazy;
 static mut G_PLUGIN_SYSTEM: Lazy<PluginSystem> = Lazy::new(|| PluginSystem {
@@ -360,7 +360,7 @@ impl AnyImpl for Example {
 kind: "code",
 supplement: "Listing",
 caption: [Any pattern example in Rust])<rust_any_pattern>])
-//typstfmt::on
+
 
 #subsection("Custom Scripting Language")
 Creating a custom language just for a plugin system serves two potential use
@@ -391,8 +391,26 @@ plugins, just for the browser itself. Some organizations require reviews from
 developers before publishing an extension to a web-based plugin "store", making
 it harder for malicious code to be published as an extension.
 
+While researching systems, two potential mitigations for security concerns could be of interest for ReSet.
+The first is simply enforcing plugins to use an open license.
+This could be done with a copy-left license which would enforce that any code utilizing code
+of ReSet would also need to provide their sourcecode with the same license.
+Currently, ReSet is already distributed under the GNU General Public License V3-or-later, which would apply the copy-left nature.
+Issues with this approach occur with legal questions, as enforcing copy-left licensing is not trivial,
+nor could code realistically be enforced to be used while utilizing shared libraries as the plugin system.
+// TODO: explain why shared libraries cannot enforce code
+
+
+The second mitigation would require the users permission in order for a plugin to be included in ReSet.
+This could be done by creating a hash of the plugin and encrypting it with a password chosen by the user.
+Should a plugin not have such a hash, the user would be prompted for permission,
+should the hash not be in the database, then the plugin will not be loaded, and the user will be informed of a potential security breach.
+The challenge with this approach is the necessary storage of both the password hash and each plugin hash,
+while also guaranteeing, that these hashes are stored and accessed securely.
+
+
 #subsection("Hooks")
-// todo which section is it referring to?
+// TODO: which section is it referring to?
 Hooks for the plugin system refer to section in the code where the plugin
 applies its functionality. When looking back at the ABI plugin example in @rust_dynamic_libary_loading,
 this would be the call of the function inside the plugin system struct. For the
