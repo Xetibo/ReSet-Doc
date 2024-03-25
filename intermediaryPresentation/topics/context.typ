@@ -69,4 +69,21 @@
   )
 ]
 
+#polylux-slide[
+  === SA shortcomings
+  \
+  - No Testing
+  - Limited feature set
+  - No configurability
+  - Questionable accessibility
+]
+
+#polylux-slide[
+  === BA goals
+  \
+  - Plugin system
+  - Testing framework 
+  - Increased stability
+  - Improved accessibility
+]
 
