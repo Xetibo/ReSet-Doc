@@ -13,25 +13,25 @@ Consider the Rust code in @rust_namespaces:
 #align(
   left, [#figure(
     sourcecode[```rs
-     pub mod namespace1;
-     pub mod namespace2;
+                                                             pub mod namespace1;
+                                                             pub mod namespace2;
 
-     fn main() {
-     let _res1 = namespace1::add(5, 2);
-     let _res2 = namespace2::add(5, 2);
-     // these get flattened to add and subtract
-     }
+                                                             fn main() {
+                                                             let _res1 = namespace1::add(5, 2);
+                                                             let _res2 = namespace2::add(5, 2);
+                                                             // these get flattened to add and subtract
+                                                             }
 
-     // in namespace1.rs
-     pub fn add(left: i32, right: i32) -> i32 {
-     left + right
-     }
+                                                             // in namespace1.rs
+                                                             pub fn add(left: i32, right: i32) -> i32 {
+                                                             left + right
+                                                             }
 
-     // in namespace2.rs
-     pub fn add(left: i32, right: i32) -> i32 {
-     left + right
-     }
-     ```], kind: "code", supplement: "Listing", caption: [Namespaces in Rust],
+                                                             // in namespace2.rs
+                                                             pub fn add(left: i32, right: i32) -> i32 {
+                                                             left + right
+                                                             }
+                                                             ```], kind: "code", supplement: "Listing", caption: [Namespaces in Rust],
   )<rust_namespaces>],
 )
 
@@ -47,12 +47,12 @@ and compilation with the annotation #[no_mangle] is visualized.
 #align(
   left, [#figure(
     sourcecode[```yasm
-     ; mangled add function
-     .section .text._ZN4main4main17h51f2041274cfd0bdE,"ax",@progbits
+                                                             ; mangled add function
+                                                             .section .text._ZN4main4main17h51f2041274cfd0bdE,"ax",@progbits
 
-     ; function without mangle
-     .section .text.add,"ax",@progbits
-     ```], kind: "code", supplement: "Listing", caption: [Mangling in assembly],
+                                                             ; function without mangle
+                                                             .section .text.add,"ax",@progbits
+                                                             ```], kind: "code", supplement: "Listing", caption: [Mangling in assembly],
   )<assembly_mangling>],
 )
 
@@ -84,18 +84,18 @@ In @obfuscated_code, an example obfuscation of JavaScript code is visualized.
 #align(
   left, [#figure(
     sourcecode[```js
-     // unobfuscated code
-     function penguin() {
-     console.log("I like penguins.");
-     }
-     penguin();
+                                                             // unobfuscated code
+                                                             function penguin() {
+                                                             console.log("I like penguins.");
+                                                             }
+                                                             penguin();
 
-     // obfuscated code
-     (function(_0x29b584,_0x52a642){var _0x2430f6=_0x4396,_0x5aaa83=_0x29b584();
-     while(!![]){try{var _0xeb9c7d=-parseInt(_0x2430f6(0x88))/0x1*(parseInt(_0x2430f6(0x8d))/0x2)
-     // multiple lines of unreadable code omitted
-     penguin();
-     ```], kind: "code", supplement: "Listing", caption: [Example obfuscated code],
+                                                             // obfuscated code
+                                                             (function(_0x29b584,_0x52a642){var _0x2430f6=_0x4396,_0x5aaa83=_0x29b584();
+                                                             while(!![]){try{var _0xeb9c7d=-parseInt(_0x2430f6(0x88))/0x1*(parseInt(_0x2430f6(0x8d))/0x2)
+                                                             // multiple lines of unreadable code omitted
+                                                             penguin();
+                                                             ```], kind: "code", supplement: "Listing", caption: [Example obfuscated code],
   )<obfuscated_code>],
 )
 
@@ -129,12 +129,13 @@ In @semantic_versioning the semantic version of the library Glibc is visualized.
 #align(
   left, [#figure(
     sourcecode[```sh
-     # name of library, change would mean different library!
-     /usr/lib/libglib-2.0.so
-     # major number, incompatible change
-     /usr/lib/libglib-2.0.so.0
-     # minor numbers, compatible change
-     /usr/lib/libglib-2.0.so.0.7800.4 ```, ], kind: "code", supplement: "Listing", caption: [Semantic versioning],
+                                                             # name of library, change would mean different library!
+                                                             /usr/lib/libglib-2.0.so
+                                                             # major number, incompatible change
+                                                             /usr/lib/libglib-2.0.so.0
+                                                             # minor numbers, compatible change
+                                                             /usr/lib/libglib-2.0.so.0.7800.4 ```,
+    ], kind: "code", supplement: "Listing", caption: [Semantic versioning],
   )<semantic_versioning>],
 )
 
@@ -230,31 +231,37 @@ twice by C++.
 In order for this struct to be consistently compatible, it would need to be
 rewritten to use the C ABI, which can be seen in @C_compatible_cpp.
 
-#figure(
-  sourcecode(```cpp
-   extern "C" typedef struct {
-   char* name;
-   char* description;
-   char* author;
-   char* version;
-   } PLUGIN_DESCRIPTION_INFO;
-   ```), kind: "code", supplement: "Listing", caption: [C ABI compatible struct in C++],
-)<C_compatible_cpp>
+#let code = "
+   extern \"C\" typedef struct {
+     char* name;
+     char* description;
+     char* author;
+     char* version;
+   } PLUGIN_DESCRIPTION_INFO;"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "cpp")), kind: "code", supplement: "Listing", caption: [C ABI compatible struct in C++],
+    )<C_compatible_cpp>],
+)
 
 The same struct can then be configured in other languages as well, in
 @C_compatible_rust the Rust equivalent is visualized.
 
-#figure(
-  sourcecode(```rs
-   #[repr(C)]
-   struct PLUGIN_DESCRIPTION_INFO {
-   name: *mut libc::c_char,
-   description: *mut libc::c_char,
-   author: *mut libc::c_char,
-   version: *mut libc::c_char,
-   }
-   ```), kind: "code", supplement: "Listing", caption: [C ABI compatible struct in Rust],
-)<C_compatible_rust>
+#let code = "
+#[repr(C)]
+struct PLUGIN_DESCRIPTION_INFO {
+  name: *mut libc::c_char,
+  description: *mut libc::c_char,
+  author: *mut libc::c_char,
+  version: *mut libc::c_char,
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [C ABI compatible struct in Rust],
+    )<C_compatible_rust>],
+)
 
 #pagebreak()
 
@@ -319,16 +326,19 @@ these are incredibly hard to debug as they happen at compile time.
 
 For comparison, the same macro in Rust in @rustmacro results in the expected 25.
 
-#align(
-  left, [#figure(sourcecode(```rs
-   macro_rules! five_times {
-   ($x:expr) => (5 * $x);
-   }
+#let code = "
+macro_rules! five_times {
+  ($x:expr) => (5 * $x);
+}
 
-   fn main() {
-   assert_eq!(25, five_times!(2 + 3));
-   }
-   ```), kind: "code", supplement: "Listing", caption: [Rust Macro])<rustmacro>],
+fn main() {
+  assert_eq!(25, five_times!(2 + 3));
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Rust Macro],
+    )<rustmacro>],
 )
 
 With the Rust version, it is clear that x is not just text, but an expression,
@@ -345,11 +355,14 @@ error in this case.
 
 In @consteval the same functionality is visualized in C++.
 
+#let code = "
+auto consteval five_times(int x) -> int { return 5 * x; }
+int main() { std::cout << five_times(2 + 3) << std::endl; }"
+
 #align(
-  left, [#figure(sourcecode(```cpp
-   auto consteval five_times(int x) -> int { return 5 * x; }
-   int main() { std::cout << five_times(2 + 3) << std::endl; }
-   ```), kind: "code", supplement: "Listing", caption: [C++ Consteval])<consteval>],
+  left, [#figure(
+      sourcecode(raw(code, lang: "cpp")), kind: "code", supplement: "Listing", caption: [C++ Consteval],
+    )<consteval>],
 )
 
 // TODO: Why are these important?
