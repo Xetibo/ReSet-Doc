@@ -6,6 +6,88 @@ This section covers the implementation of the ReSet plugin system.
 #subsubsection("General Plugin System")
 
 #subsubsection("Any-Variant")
+in @ExampleAnypattern an Any-Variant via byte vectors is covered. For ReSet, a
+different route was taken to implement the Any variant. Instead of converting
+byte vectors, ReSet utilizes polymorphism with types that implement a specific
+trait. For ReSet this would be implementing the TVariant trait visualized in
+@TVariant.
+
+#let code = "
+pub trait TVariant: Debug + Any + Send {
+    // enables the type to be converted to the Variant struct
+    fn into_variant(self) -> Variant;
+    // converts the type to a polymorphic unique pointer
+    fn value(&self) -> Box<dyn TVariant>;
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [TVariant trait],
+    )<TVariant>],
+)
+
+This Trait is combined with the struct shown in @Variant.
+
+#let code = "
+#[derive(Debug)]
+#[repr(C)]
+pub struct Variant {
+    // converted value
+    value: Box<dyn TVariant>,
+    // rusts type id used to check for valid casts
+    kind: TypeId,
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Variant struct],
+    )<Variant>],
+)
+
+Comparing this to a language like Java highlights both the complexity of Rust as
+well as the clear difference in paradigm. In Java, all reference types are
+linked to a garbage collector as well as equipped with a virtual table, which
+means that lifetimes, allocation and de-allocation, as well as casting is
+handled automatically and enforced for all safe Java code. With Rust, a garbage
+collector does not exist, and virtual tables are an opt-in feature, as using by
+default would introduce performance overhead. For the Any variant, this virtual
+table is desired, as we would like the original value back when calling the "value"
+function.
+
+#let code = "
+public interface IAny<T> {
+  // public T into_variant();
+  // This is not necessary as java doesn't support arbitrary interface
+  // implementation for existing types.
+  public T value();
+}
+
+public class IntAny implements IAny<Integer> {
+  private Integer value;
+
+  public IntAny(Integer value) {
+    this.value = value;
+  }
+
+  @Override
+  public Integer value() {
+    return this.value;
+  }
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "java")), kind: "code", supplement: "Listing", caption: [Any variant in Java],
+    )<any_java>],
+)
+
+When comparing @Variant and @any_java, there is also the use of the unique
+pointer Box<\T\> in Rust. This unique pointer is used to ensure that the Any
+variant will always have the same allocation size. Omitting this pointer would
+enforce that the values within the variant are stored inside the variant struct
+without indirection. Given different possible value types, Rust could no longer
+determine the size of a specific variant at compile time, hence a pointer is
+used to mimick the behavior of Java (enforcement of references).
 
 #subsubsection("Security")
 The initial idea of the ReSet plugin system was to reduce the attack vector by
@@ -42,7 +124,7 @@ available. The only way to solve this issue was to provide plugins with a
 reference to the crossroads DBus context, which would enable plugins to insert
 and register their own interfaces.
 
-#subsubsection("Testing")
+#subsubsection("Plugin Testing")
 Rust tests are handled by a specific test macro, this flag tells the compiler
 that this function is to be used when testing the specific project. This works
 well for a single project without dynamic loading of additional functionality,
@@ -84,3 +166,35 @@ async fn test_plugins() {
 )
 
 #subsubsection("ReSet-Daemon Plugin System")
+In this section, the specific implementation of the plugin system in the ReSet
+daemon is discussed.
+
+For the daemon, the functions defined in @daemon_plugin_functions are required.
+
+#let code = "
+extern \"C\" {
+    pub fn backend_startup();
+    pub fn backend_shutdown();
+
+    /// Reports the capabilities that your plugin will provide.
+    #[allow(improper_ctypes)]
+    pub fn capabilities() -> PluginCapabilities;
+
+    /// Reports the name of the plugin
+    #[allow(improper_ctypes)]
+    pub fn name() -> String;
+
+    /// Inserts your plugin interface into the dbus server.
+    #[allow(improper_ctypes)]
+    pub fn dbus_interface(cross: &mut Crossroads);
+
+    pub fn backend_tests();
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [ReSet Daemon plugin functions],
+    )<daemon_plugin_functions>],
+)
+
+

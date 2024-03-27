@@ -25,6 +25,7 @@ jobs:
         plantuml files/plugin_integration_test.txt -tsvg 
         plantuml files/hourglass.txt -tsvg 
         plantuml files/global_offset_table.txt -tsvg
+        plantuml files/mock_implementation.txt -tsvg
     - name: Build PDF
       run: |
         mkdir output
