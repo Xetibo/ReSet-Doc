@@ -43,7 +43,8 @@ can choose to not use the user interface, and instead interact with ReSet via
 DBus.
 
 #subsection("Plugin System Variants")
-In this section, different variants of plugin systems are discussed and compared.
+In this section, different variants of plugin systems are discussed and
+compared.
 
 #subsubsection("Interpreted Languages")
 Interpreted languages can be run on top of the original application in order to
@@ -52,11 +53,10 @@ interpreter uses functions within the application when certain functions are
 called by the interpreted language.
 
 #subsubsubsection("Error Handling")
-A big benefit of this system is the abstraction between the original
-application and the interpreted language. It allows the two parties to exist
-relatively independently of each other. This includes errors, which ensures that
-an error in the interpreted language does not lead to a full crash of the
-application.
+A big benefit of this system is the abstraction between the original application
+and the interpreted language. It allows the two parties to exist relatively
+independently of each other. This includes errors, which ensures that an error
+in the interpreted language does not lead to a full crash of the application.
 
 As an example, browsers use the same independent error handling for web pages,
 hence when a webpage encounters issues, the browser itself is still usable.
@@ -106,8 +106,8 @@ requirement for ReSet in @Non-FunctionalRequirements.
 
 #subsubsection("Dynamic Libraries")
 Dynamic libraries can be used in order to load specific functions during
-runtime. This allows developers to load either specific files or all
-files within a folder or similar, which will then be used to execute specified
+runtime. This allows developers to load either specific files or all files
+within a folder or similar, which will then be used to execute specified
 functions for the application.
 
 In order for this interaction to work, the plugin must implement all functions
@@ -118,39 +118,39 @@ framework of the developer of the application.
 
 #subsubsubsection("Example")
 For Rust, the crate "libloading" handles the mapping of C functions to Rust in a
-simple fashion. This allows a straightforward usage of dynamic libraries.
-Figure @rust_dynamic_libary_loading visualizes a simple dynamic library with a
-single function.
+simple fashion. This allows a straightforward usage of dynamic libraries. Figure
+@rust_dynamic_libary_loading visualizes a simple dynamic library with a single
+function.
 
-
-#align(left, [#figure(sourcecode(```rs
+#let code = "
 // code in the calling binary
 fn main() {
     unsafe {
-        let lib = libloading::Library::new("./testlib/target/debug/libtestlib.so")
-            .expect("Could not open library.");
-        let func: libloading::Symbol<unsafe extern "C" fn(i32) -> i32> =
-            lib.get(b"test_function").expect("Could not load function.");
+        let lib = libloading::Library::new(\"./testlib/target/debug/libtestlib.so\")
+            .expect(\"Could not open library.\");
+        let func: libloading::Symbol<unsafe extern \"C\" fn(i32) -> i32> =
+            lib.get(b\"test_function\").expect(\"Could not load function.\");
         assert_eq!(func(2), 4);
-        println!("success");
+        println!(\"success\");
     }
 }
 
 // code in the dynamic library
 #[no_mangle]
-pub extern "C" fn test_function(data: i32) -> i32 {
+pub extern \"C\" fn test_function(data: i32) -> i32 {
     data * data
-}
-```),
-kind: "code",
-supplement: "Listing",
-caption: [Dynamic library loading in Rust])<rust_dynamic_libary_loading>])
+}"
 
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Dynamic library loading in Rust],
+    )<rust_dynamic_libary_loading>],
+)
 
-In figure @rust_dynamic_libary_loading, the dynamic library has the annotation "no_mangle". This
-flag tells the compiler to not change the identity of the specified designator.
-Without this, functions and variables will not be found with the original names.
-Mangling is further explained in section @Mangling.
+In figure @rust_dynamic_libary_loading, the dynamic library has the annotation "no_mangle".
+This flag tells the compiler to not change the identity of the specified
+designator. Without this, functions and variables will not be found with the
+original names. Mangling is further explained in section @Mangling.
 
 Additionally, in both the dynamic library and the calling binary, the flag "extern
 C" is used. This is required as Rust does not guarantee ABI stability, meaning
@@ -158,35 +158,35 @@ that without this flag, a dynamic library with compiler version A might not
 necessarily be compatible with the binary compiled with compiler version B.
 Hence, Rust and other languages use the C ABI to ensure ABI stability.
 
-The lack of a stable Rust ABI is also the reason why there are no Rust native shared libraries.
-Crates, as found on crates.io, are static libraries that are compiled into the binary,
-and all shared libraries are created with the C ABI using "extern C".
-Further information about ABI along with examples can be found in @ABI.
+The lack of a stable Rust ABI is also the reason why there are no Rust native
+shared libraries. Crates, as found on crates.io, are static libraries that are
+compiled into the binary, and all shared libraries are created with the C ABI
+using "extern C". Further information about ABI along with examples can be found
+in @ABI.
 
 #subsubsubsection("Containerization of dynamic libraries")
 Plugin systems have a variety of points to hook a dynamic library into the
 application. The easiest is to just execute plugin functions at a certain point
-in the application. As an example, loading various settings in ReSet would mean 
-looping through dynamic libraries and loading their respective user
-interfaces to show in ReSet. This approach is plausible and proven to work by a
-variety of existing plugin systems, however, it also has a major shortcoming. The
-moment the plugin crashes, the application has to either handle this unknown
-error or worse, if the error is not recoverable, the entire application
-crashes. This can lead to potential instability with plugins of different
-versions using different ABIs or simply due to bugs in a plugin.
+in the application. As an example, loading various settings in ReSet would mean
+looping through dynamic libraries and loading their respective user interfaces
+to show in ReSet. This approach is plausible and proven to work by a variety of
+existing plugin systems, however, it also has a major shortcoming. The moment
+the plugin crashes, the application has to either handle this unknown error or
+worse, if the error is not recoverable, the entire application crashes. This can
+lead to potential instability with plugins of different versions using different
+ABIs or simply due to bugs in a plugin.
 
 To handle this case, a plugin system can also containerize plugins to run in
-their thread or process to provide independent error handling. This allows
-an application to recover even when a plugin exits abnormally while using
+their thread or process to provide independent error handling. This allows an
+application to recover even when a plugin exits abnormally while using
 resources.
 
-In @rust_thread_panic and @thread_panic_screenshot the use of simple Rust 
+In @rust_thread_panic and @thread_panic_screenshot the use of simple Rust
 threads guarantees the continuation of the invoking thread, meaning the
-underlying application can still continue to run even though the spawned 
-thread encountered a fatal error.
+underlying application can still continue to run even though the spawned thread
+encountered a fatal error.
 
-
-#align(left, [#figure(sourcecode(```rs
+#let code = "
 fn main() {
     thread::spawn(|| {
         library_function();
@@ -195,12 +195,13 @@ fn main() {
     // program should still get this input even if the thread crashes
     let mut buffer = String::new();
     io::stdin().read_line(&mut buffer);
-}
-```),
-kind: "code",
-supplement: "Listing",
-caption: [Thread panic example])<rust_thread_panic>])
+}"
 
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Thread panic example],
+    )<rust_thread_panic>],
+)
 
 #align(
   center, [#figure(
@@ -208,10 +209,10 @@ caption: [Thread panic example])<rust_thread_panic>])
     )<thread_panic_screenshot>],
 )
 
-While the runtime guarantee is a benefit of this system, it also requires 
-thread-safe synchronization of resources. This would incur a performance 
-penalty on the entire system as even the native application services would 
-now need to use synchronization when accessing data.
+While the runtime guarantee is a benefit of this system, it also requires
+thread-safe synchronization of resources. This would incur a performance penalty
+on the entire system as even the native application services would now need to
+use synchronization when accessing data.
 
 On top of this, when a plugin encounters a fatal error, this should not only be
 communicated to the user, but potential interactions with the now-lost plugin
@@ -246,14 +247,13 @@ integer variant does not break compatibility with existing extensions.
 
 Using JavaScript for this use case also creates a bind, namely, it is no longer
 possible to split extensions, as JavaScript is a single-threaded system. This
-means that each extension that can crash, would also take down the
-GNOME-Shell as collateral.
+means that each extension that can crash, would also take down the GNOME-Shell
+as collateral.
 
 To visualize the concept, @rust_function_overriding provides an example of
 function overriding as a parameter in Rust:
 
-
-#align(left, [#figure(sourcecode(```rs
+#let code = "
 use once_cell::sync::Lazy;
 static mut G_PLUGIN_SYSTEM: Lazy<PluginSystem> = Lazy::new(|| PluginSystem {
     function: Box::new(regular_function),
@@ -274,11 +274,11 @@ fn main() {
 }
 
 fn regular_function(data: i32) {
-    println!("This is the first function: {}", data);
+    println!(\"This is the first function: {}\", data);
 }
 
 fn second_function(data: i32) {
-    println!("This is the second function: {}", data);
+    println!(\"This is the second function: {}\", data);
 }
 
 struct PluginSystem {
@@ -294,10 +294,13 @@ impl PluginSystem {
         (self.function)(data);
     }
 }
-```),
-kind: "code",
-supplement: "Listing",
-caption: [Function overriding example in Rust])<rust_function_overriding>])
+"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Function overriding example in Rust],
+    )<rust_function_overriding>],
+)
 
 The output of this program is the regular_function and the second_function after
 this, both functions get the dummy data 5 passed to it. In a real-world example,
@@ -310,16 +313,16 @@ depends on the size of a type.
 #subsubsubsection("Example Any pattern")
 In @rust_any_pattern an example any pattern implementation is visualized.
 
-#align(left, [#figure(sourcecode(```rs
+#let code = "
 fn main() {
     let penguin = Example {
-        name: "penguin".to_string(),
+        name: \"penguin\".to_string(),
         age: 29,
     };
     let any_penguin = penguin.to_any();
     let restored_penguin = Example::from_any(any_penguin);
     assert_eq!(penguin, restored_penguin);
-    println!("Success");
+    println!(\"Success\");
 }
 
 trait AnyImpl {
@@ -355,12 +358,13 @@ impl AnyImpl for Example {
         let age = u32::from_ne_bytes(age.try_into().unwrap());
         Self { name, age }
     }
-}
-```),
-kind: "code",
-supplement: "Listing",
-caption: [Any pattern example in Rust])<rust_any_pattern>])
+}"
 
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Any pattern example in Rust],
+    )<rust_any_pattern>],
+)
 
 #subsection("Custom Scripting Language")
 Creating a custom language just for a plugin system serves two potential use
@@ -391,30 +395,32 @@ plugins, just for the browser itself. Some organizations require reviews from
 developers before publishing an extension to a web-based plugin "store", making
 it harder for malicious code to be published as an extension.
 
-While researching systems, two potential mitigations for security concerns could be of interest for ReSet.
-The first is simply enforcing plugins to use an open license.
-This could be done with a copy-left license which would enforce that any code utilizing code
-of ReSet would also need to provide their sourcecode with the same license.
-Currently, ReSet is already distributed under the GNU General Public License V3-or-later, which would apply the copy-left nature.
-Issues with this approach occur with legal questions, as enforcing copy-left licensing is not trivial,
-nor could code realistically be enforced to be used while utilizing shared libraries as the plugin system.
-// TODO: explain why shared libraries cannot enforce code
+While researching systems, two potential mitigations for security concerns could
+be of interest for ReSet. The first is simply enforcing plugins to use an open
+license. This could be done with a copy-left license which would enforce that
+any code utilizing code of ReSet would also need to provide their sourcecode
+with the same license. Currently, ReSet is already distributed under the GNU
+General Public License V3-or-later, which would apply the copy-left nature.
+Issues with this approach occur with legal questions, as enforcing copy-left
+licensing is not trivial, nor could code realistically be enforced to be used
+while utilizing shared libraries as the plugin system.// TODO: explain why shared libraries cannot enforce code
 
-
-The second mitigation would require the users permission in order for a plugin to be included in ReSet.
-This could be done by creating a hash of the plugin and encrypting it with a password chosen by the user.
-Should a plugin not have such a hash, the user would be prompted for permission,
-should the hash not be in the database, then the plugin will not be loaded, and the user will be informed of a potential security breach.
-The challenge with this approach is the necessary storage of both the password hash and each plugin hash,
-while also guaranteeing, that these hashes are stored and accessed securely.
-
+The second mitigation would require the users permission in order for a plugin
+to be included in ReSet. This could be done by creating a hash of the plugin and
+encrypting it with a password chosen by the user. Should a plugin not have such
+a hash, the user would be prompted for permission, should the hash not be in the
+database, then the plugin will not be loaded, and the user will be informed of a
+potential security breach. The challenge with this approach is the necessary
+storage of both the password hash and each plugin hash, while also guaranteeing,
+that these hashes are stored and accessed securely.
 
 #subsection("Hooks")
 // TODO: which section is it referring to?
 Hooks for the plugin system refer to section in the code where the plugin
-applies its functionality. When looking back at the ABI plugin example in @rust_dynamic_libary_loading,
-this would be the call of the function inside the plugin system struct. For the
-example in @rust_function_overriding it would instead be the overridden function.
+applies its functionality. When looking back at the ABI plugin example in
+@rust_dynamic_libary_loading, this would be the call of the function inside the
+plugin system struct. For the example in @rust_function_overriding it would
+instead be the overridden function.
 
 // TODO: why is this important?
 // TODO: Security concerns? Potential uninitialized resources etc.
@@ -448,33 +454,36 @@ into the testing framework is visualized.
 )
 
 #subsubsection("GTK Tests")
-There is a GTK testing framework for Rust, which is called "gtk-test". This crate
-allowed for an easy way of creating tests for the user interface of ReSet. As an
-example, the following code snippet is taken from the repository page and shows
-how to test the change of a string in a label. @GTKTests
-#align(left, [#figure(sourcecode(```rs
+There is a GTK testing framework for Rust, which is called "gtk-test". This
+crate allowed for an easy way of creating tests for the user interface of ReSet.
+As an example, the following code snippet is taken from the repository page and
+shows how to test the change of a string in a label. @GTKTests
+
+#let code = "
 fn main() {
     let (window, label, container) = init_ui();
 
-    assert_text!(label, "Test");
+    assert_text!(label, \"Test\");
     window.activate_focus();
     gtk_test::click(&container);
     gtk_test::wait(1000);
-    assert_text!(label, "Clicked");
-}
-```),
-kind: "code",
-supplement: "Listing",
-caption: [gtk-test example])])
+    assert_text!(label, \"Clicked\");
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [gtk-test example],
+    )<gtk_test_example>],
+)
 
 Unfortunately, that crate doesn't seem to be maintained anymore and is not
-compatible with GTK4 anyway. The general idea behind it was still useful
-and could be used to implement a new solution. Instead of returning each UI
-element in a tuple, saving it into a singleton would be much easier, especially
-when there are many UI widgets or dynamically generated widgets. These can
-then be easily accessed and manipulated during the tests.
+compatible with GTK4 anyway. The general idea behind it was still useful and
+could be used to implement a new solution. Instead of returning each UI element
+in a tuple, saving it into a singleton would be much easier, especially when
+there are many UI widgets or dynamically generated widgets. These can then be
+easily accessed and manipulated during the tests.
 
-#align(left, [#figure(sourcecode(```rs
+#let code = "
 struct TestSingleton {
     window: Option<Rc<gtk::Window>>,
     buttons: HashMap<String, Rc<gtk::Button>>,
@@ -482,96 +491,103 @@ struct TestSingleton {
     checkbox: HashMap<String, Rc<gtk::CheckButton>>,
     comboRow: HashMap<String, Rc<adw::ComboRow>>,
     // ...
-}
-```),
-kind: "code",
-supplement: "Listing",
-caption: [Structure of singleton])])
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Structure of singleton],
+    )<structure_of_singleton>],
+)
 
 The idea is to save a reference to each widget that is going to be tested in a
 hashmap of its corresponding class with a string to identify it. The special
 case is the window because there is only one instance of it.
 
-#align(left, [#figure(sourcecode(```rs
+#let code = "
 let main = gtk::Box::new(Horizontal, 5);
 let entryRow = Rc::new(EntryRow::new());
 let button2 = Rc::new(Button::new());
 let button1 = Rc::new(Button::new());
-let label = Rc::new(Label::new(Some("nothing")));
+let label = Rc::new(Label::new(Some(\"nothing\")));
 
 entryRow.connect_changed(move |entry| {
     match Ipv4Addr::from_str(entry.text().as_str()) {
-        Ok(_) => entry.add_css_class("success"),
-        Err(_) => entry.add_css_class("error")
+        Ok(_) => entry.add_css_class(\"success\"),
+        Err(_) => entry.add_css_class(\"error\")
     }
 });
 
 let entryRow_ref = entryRow.clone();
 let label_ref = label.clone();
-button1.connect_activate(move |_| { entryRow_ref.set_text("192.168.1.100"); });
-button2.connect_activate(move |_| { label_ref.set_text("button clicked"); });
+button1.connect_activate(move |_| { entryRow_ref.set_text(\"192.168.1.100\"); });
+button2.connect_activate(move |_| { label_ref.set_text(\"button clicked\"); });
 
 let window = Rc::new(Window::builder().application(app).child(&main).build());
 unsafe {
-    SINGLETON.buttons.insert("button1".to_string(), button1.clone());
-    SINGLETON.buttons.insert("button2".to_string(), button2.clone());
-    SINGLETON.labels.insert("testlabel".to_string(), label.clone());
-    SINGLETON.entryRow.insert("entryrow".to_string(), entryRow.clone());
+    SINGLETON.buttons.insert(\"button1\".to_string(), button1.clone());
+    SINGLETON.buttons.insert(\"button2\".to_string(), button2.clone());
+    SINGLETON.labels.insert(\"testlabel\".to_string(), label.clone());
+    SINGLETON.entryRow.insert(\"entryrow\".to_string(), entryRow.clone());
     SINGLETON.window = Some(window.clone());
-}
-```),
-kind: "code",
-supplement: "Listing",
-caption: [Setting up a simple UI])])
+}"
 
-#align(left, [#figure(sourcecode(```rs
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Setting up a simple UI],
+    )<setting_up_simple_ui>],
+)
+
+#let code = "
 #[test]
 #[gtk::test]
     let func = || unsafe {
         // test label text change after button click
-        let label = SINGLETON.labels.get("testlabel").unwrap();
-        assert_eq!(label.text(), "nothing");
-        let button = SINGLETON.buttons.get("button2");
+        let label = SINGLETON.labels.get(\"testlabel\").unwrap();
+        assert_eq!(label.text(), \"nothing\");
+        let button = SINGLETON.buttons.get(\"button2\");
         button.unwrap().activate();
-        assert_eq!(label.text(), "button clicked");
+        assert_eq!(label.text(), \"button clicked\");
 
         // test entryRow css class change after button click
-        let entryRow = SINGLETON.entryRow.get("entryrow").unwrap();
+        let entryRow = SINGLETON.entryRow.get(\"entryrow\").unwrap();
         assert_eq!(entryRow.css_classes().len(), 2); // 2 default css classes
-        let button1 = SINGLETON.buttons.get("button1");
+        let button1 = SINGLETON.buttons.get(\"button1\");
         button1.unwrap().activate();
-        assert_eq!(entryRow.has_css_class("success"), true);
+        assert_eq!(entryRow.has_css_class(\"success\"), true);
         SINGLETON.window.clone().unwrap().close();
         exit(0);
     };
     setup_gtk(func);
-}
-```),
-kind: "code",
-supplement: "Listing",
-caption: [UI test])<example_ui_test>])
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [UI test],
+    )<example_ui_test>],
+)
 
 This code creates a few UI widgets with some binding to some signals. These
-signals can be activated by calling specific functions. The tests then get
-the references in the singleton and call functions that imitate click actions
-on buttons.
+signals can be activated by calling specific functions. The tests then get the
+references in the singleton and call functions that imitate click actions on
+buttons.
 
 #pagebreak()
 
 This approach unfortunately suffers from inefficiency due to the amount of
 boilerplate code and unnecessary compilation overhead it creates. Storing
-references to UI widgets in a singleton may simplify access for tests but
-is not needed at all by users.
+references to UI widgets in a singleton may simplify access for tests but is not
+needed at all by users.
 
 #subsubsection("GTK Test Macros")
-Macros as elaborated in @Macros can be used to abstract the testing framework from different compilation targets.
-This means ReSet can drop the testing apparatus for release binaries which will benefit from better
-performance without the debug version suffering from reduced testing capabilities.
+Macros as elaborated in @Macros can be used to abstract the testing framework
+from different compilation targets. This means ReSet can drop the testing
+apparatus for release binaries which will benefit from better performance
+without the debug version suffering from reduced testing capabilities.
 
+In @ui_test_macro_implementation an example macro for the test introduced in
+@example_ui_test is visualized.
 
-In @ui_test_macro_implementation an example macro for the test introduced in @example_ui_test is visualized.
-
-#align(left, [#figure(sourcecode(```rs
+#let code = "
 // debug version
 #[cfg(debug_assertions)]
 macro_rules! TestButton {
@@ -593,101 +609,110 @@ macro_rules! TestButton {
 }
 
 // usage
-let button3 = TestButton!("macro_button".to_string());
-unsafe {dbg!(SINGLETON.buttons.clone());}
-```),
-kind: "code",
-supplement: "Listing",
-caption: [Macro Implementation])<ui_test_macro_implementation>])
+let button3 = TestButton!(\"macro_button\".to_string());
+unsafe {dbg!(SINGLETON.buttons.clone());}"
 
-After compiling both versions of this test, the results in @macrodebug and @macrorelease
-show that the additional button reference in the testing singleton can no longer be found within the release version.
-Similarly, it is possible to also remove the entire singleton, or at least the underlying data for the release version.
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Macro Implementation],
+    )<ui_test_macro_implementation>],
+)
 
-#columns(2, [
-  #align(
-    center, [#figure(
-        img("test_macro_debug.png", width: 100%, extension: "figures"), caption: [Macro Debug Version],
-      )<macrodebug>],
-  )
-  #colbreak()
-  #v(35pt)
-  #align(
-    center, [#figure(
-        img("test_macro_release.png", width: 100%, extension: "figures"), caption: [Macro Release Version],
-      )<macrorelease>],
-  )
-])
+After compiling both versions of this test, the results in @macrodebug and
+@macrorelease show that the additional button reference in the testing singleton
+can no longer be found within the release version. Similarly, it is possible to
+also remove the entire singleton, or at least the underlying data for the
+release version.
+
+#columns(
+  2, [
+    #align(
+      center, [#figure(
+          img("test_macro_debug.png", width: 100%, extension: "figures"), caption: [Macro Debug Version],
+        )<macrodebug>],
+    )
+    #colbreak()
+    #v(35pt)
+    #align(
+      center, [#figure(
+          img("test_macro_release.png", width: 100%, extension: "figures"), caption: [Macro Release Version],
+        )<macrorelease>],
+    )
+  ],
+)
 
 // todo write stuff macros
 #pagebreak()
 
 #subsection("Plugin UI Mockups")
-In this section, two mockups of potential plugins are created. The first plugin allows the user to change 
-monitor settings and the second plugin allows keyboard settings. The mockups were created using Mockflow, 
-which is an online tool for creating mockups. The mockups are not final and are only meant to give an 
-first impression.
+In this section, two mockups of potential plugins are created. The first plugin
+allows the user to change monitor settings and the second plugin allows keyboard
+settings. The mockups were created using Mockflow, which is an online tool for
+creating mockups. The mockups are not final and are only meant to give an first
+impression.
 
 #subsubsection("Monitor Plugin")
-While settings applications offer many different approaches and user interfaces, the monitor settings 
-look very similar across practically all applications that were referenced. There is always a drag and 
-drop area where the user can align monitors. A feature that can be implemented into that area is the 
-ability to change commonly used monitor settings inside the area like resoluation and orientation. Many 
-applications only offer these settings after scrolling a bit, which is not very user friendly. 
+While settings applications offer many different approaches and user interfaces,
+the monitor settings look very similar across practically all applications that
+were referenced. There is always a drag and drop area where the user can align
+monitors. A feature that can be implemented into that area is the ability to
+change commonly used monitor settings inside the area like resoluation and
+orientation. Many applications only offer these settings after scrolling a bit,
+which is not very user friendly.
 #align(
-    center,
-    [#figure(
-        img("../figures/monitorMock.png", width: 75%, extension: "figures"), 
-        caption: [Mock of monitor plugin],
+  center, [#figure(
+      img("../figures/monitorMock.png", width: 75%, extension: "figures"), caption: [Mock of monitor plugin],
     )],
 )
 
-Below this area, the user can set the main monitor and change other settings such as the brightness and 
-night mode. The order is heavily inspired from Windows 11. The further down the user scrolls the more 
-advanced the settings become. 
+Below this area, the user can set the main monitor and change other settings
+such as the brightness and night mode. The order is heavily inspired from
+Windows 11. The further down the user scrolls the more advanced the settings
+become.
 
 #align(
-    center,
-    [#figure(
-        img("../figures/windowsMonitorSettings.png", width: 75%, extension: "figures"), 
-        caption: [Windows monitor settings],
+  center, [#figure(
+      img(
+        "../figures/windowsMonitorSettings.png", width: 75%, extension: "figures",
+      ), caption: [Windows monitor settings],
     )],
 )
 
 #subsubsection("Keyboard Plugin")
-While there are many keyboard settings that can be implemented, only the very basic ones will be in the 
-mockup. Any further settings can be implemented further down the page or a group of settings can be 
-moved into a tab to keep the main page clean and simple.
+While there are many keyboard settings that can be implemented, only the very
+basic ones will be in the mockup. Any further settings can be implemented
+further down the page or a group of settings can be moved into a tab to keep the
+main page clean and simple.
 
 #align(
-    center, 
-    [#figure(
-        img("../figures/keyboardMock.png", width: 75%, extension: "figures"), 
-        caption: [Mock of keyboard plugin],
+  center, [#figure(
+      img("../figures/keyboardMock.png", width: 75%, extension: "figures"), caption: [Mock of keyboard plugin],
     )],
 )
 
-The keyboard plugin UI starts with a list of currently available keyboard layouts. This list can be 
-ordered with the burger menu on the left side. The user can also add a new layout with "Add layout" 
-button, whicih places the new layout at the bottom of the list. By clicking on the three dots on the 
-right, the user can open a context menu to remove the layout.
+The keyboard plugin UI starts with a list of currently available keyboard
+layouts. This list can be ordered with the burger menu on the left side. The
+user can also add a new layout with "Add layout" button, whicih places the new
+layout at the bottom of the list. By clicking on the three dots on the right,
+the user can open a context menu to remove the layout.
 
 #align(
-    center, 
-    [#figure(
-        img("../figures/gnomeKeyboardSetting.png", width: 50%, extension: "figures"), 
-        caption: [Gnome keyboard layouts],
+  center, [#figure(
+      img(
+        "../figures/gnomeKeyboardSetting.png", width: 50%, extension: "figures",
+      ), caption: [Gnome keyboard layouts],
     )],
 )
 
-The context menu also offers the ability to show the keyboard layout visually. This is a feature 
-missing in Windows but is available in Gnome. This feature can be very useful for users who have a 
-different layout than their pyhsical keyboard.
+The context menu also offers the ability to show the keyboard layout visually.
+This is a feature missing in Windows but is available in Gnome. This feature can
+be very useful for users who have a different layout than their pyhsical
+keyboard.
 
 #align(
-    center, 
-    [#figure(
-        img("../figures/gnomeKeyboardVisual.png", width: 100%, extension: "figures"), 
-        caption: [Visual keyboard layout in Gnome],
+  center, [#figure(
+      img(
+        "../figures/gnomeKeyboardVisual.png", width: 100%, extension: "figures",
+      ), caption: [Visual keyboard layout in Gnome],
     )],
 )
