@@ -4,3 +4,5 @@ clean.sh
 plantuml.jar
 **/target/**
 .idea/
+
+intermediaryPresentation/figures/

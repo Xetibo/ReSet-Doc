@@ -2,11 +2,7 @@
 #lsp_placate()
 
 #let language_weights = (
-  testability: 2,
-  language_conformity: 1,
-  use_case_overlap: 2,
-  expected_workload: 2,
-  compatibility: 3,
+  testability: 2, language_conformity: 1, use_case_overlap: 2, expected_workload: 2, compatibility: 3,
 )
 
 #section("Plugin System Evaluation")
@@ -122,29 +118,18 @@ For this category using dynamic libraries offers a substantial benefit.
 #subsection("Results")
 
 #let dynamic_libaries = (
-  testability: 1,
-  language_conformity: 2,
-  use_case_overlap: 2,
-  expected_workload: 2,
-  compatibility: 2,
+  testability: 1, language_conformity: 2, use_case_overlap: 2, expected_workload: 2, compatibility: 2,
 )
 #let interpreted_languages = (
-  testability: 1,
-  language_conformity: 2,
-  use_case_overlap: 1,
-  expected_workload: 2,
-  compatibility: 1,
+  testability: 1, language_conformity: 2, use_case_overlap: 1, expected_workload: 2, compatibility: 1,
 )
 #grid(
-  columns: (auto),
-  rows: (30pt),
-  cell(
-    [#figure([], kind: table, caption: [Plugin System paradigms])<pluginsystemparadigms>],
-    bold: true,
+  columns: (auto), rows: (30pt), cell(
+    [#figure([], kind: table, caption: [Plugin System paradigms])<pluginsystemparadigms>], bold: true,
   ),
 )
 #pad(y: -13.1pt, [])
-//typstfmt::off
+
 #grid(
   columns: ( 2fr, 3.5fr, 3.5fr, 1fr),
   rows: (45pt, 35pt, 35pt, 35pt, 35pt, 35pt),
@@ -184,4 +169,8 @@ For this category using dynamic libraries offers a substantial benefit.
   cell([#calculate_total(interpreted_languages, language_weights)], bold: true, fill: silver),
   cell(" ", bold: true, fill: silver),
 )
-//typstfmt::on
+
+
+For Reset, the usage of dynamic plugins is the most suitable option for creating a plugin system.
+Not only will this guarantee that any Rust functionality will work, it will also ensure that resources are shared between the daemon and the user interface.
+
