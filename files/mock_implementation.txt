@@ -1,0 +1,18 @@
+@startuml
+!theme vibrant
+rectangle ReSetDaemon
+rectangle NetworkManager
+rectangle bluez
+rectangle NetworkManagerMacro
+rectangle bluezMacro
+rectangle bluezMock
+rectangle NetworkManagerMock
+
+ReSetDaemon --> NetworkManagerMacro              : Uses
+ReSetDaemon --> bluezMacro                       : Uses
+NetworkManagerMacro --> NetworkManagerMock        : Calls on cfg(test)
+NetworkManagerMacro --> NetworkManager            : Calls on not(cfg(test))
+bluezMacro --> bluezMock                          : Calls on cfg(test)
+bluezMacro --> bluez                               : Calls on not(cfg(test))
+
+@enduml
