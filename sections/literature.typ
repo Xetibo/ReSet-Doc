@@ -655,20 +655,25 @@ impression.
 While settings applications offer many different approaches and user interfaces,
 the monitor settings look very similar across practically all applications that
 were referenced. There is always a drag and drop area where the user can align
-monitors. A feature that can be implemented into that area is the ability to
-change commonly used monitor settings inside the area like resoluation and
-orientation. Many applications only offer these settings after scrolling a bit,
-which is not very user friendly.
+monitors. Because there are so many options on how monitors can be ordered, it 
+makes sense to use a widget where the user can directly see the end result. This 
+makes it very intuitive compared to having users set the offset as a number. A 
+drag and drop feature is also easy to learn @draganddrop. \
+A feature that can be implemented into that area is the ability to change 
+commonly used monitor settings inside the area like resoluation and orientation. 
+Many applications only offer these settings after scrolling a bit, which is not 
+very user friendly.
 #align(
   center, [#figure(
-      img("../figures/monitorMock.png", width: 75%, extension: "figures"), caption: [Mock of monitor plugin],
+      img("../figures/monitorMock.png", width: 75%, extension: "figures"), 
+      caption: [Mock of monitor plugin],
     )],
 )
 
 Below this area, the user can set the main monitor and change other settings
 such as the brightness and night mode. The order is heavily inspired from
 Windows 11. The further down the user scrolls the more advanced the settings
-become.
+become. The specific form controls for each setting is not considered as for now.
 
 #align(
   center, [#figure(
@@ -686,15 +691,20 @@ main page clean and simple.
 
 #align(
   center, [#figure(
-      img("../figures/keyboardMock.png", width: 75%, extension: "figures"), caption: [Mock of keyboard plugin],
+      img("../figures/keyboardMock.png", width: 75%, extension: "figures"), 
+      caption: [Mock of keyboard plugin],
     )],
 )
 
 The keyboard plugin UI starts with a list of currently available keyboard
-layouts. This list can be ordered with the burger menu on the left side. The
-user can also add a new layout with "Add layout" button, whicih places the new
-layout at the bottom of the list. By clicking on the three dots on the right,
-the user can open a context menu to remove the layout.
+layouts. Because the user can have multiple keyboard layouts which have to 
+be sorted by importance, the best form control for this is a sortable list. 
+This is because at the same time the layout in first place is also the 
+default keyboard layout The usage of such form control can be seen in Windows 
+and Gnome Settings. \
+The user can also add a new layout with "Add layout" button, whicih places 
+the new layout at the bottom of the list. By clicking on the three dots on 
+the right, the user can open a context menu to remove the layout.
 
 #align(
   center, [#figure(
