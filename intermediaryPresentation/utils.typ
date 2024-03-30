@@ -7,7 +7,7 @@
       #v(10pt)
       #rotate(
         0deg, [#pad(
-            right: 10pt, image("./figures/ReSet1_blur.png", width: 75pt, height: 75pt),
+            right: 10pt, image("./figures/ReSet1_blur.png", width: 50pt, height: 50pt),
           )],
       )
     ],
@@ -23,7 +23,7 @@
   #v(15pt)
   #columns(2, [
     #align(left + bottom, [
-      #text(size: 20pt, fill: rgb("C0CAF5"), [Fabio Lenherr, Felix Tran])
+      #text(size: 15pt, fill: rgb("C0CAF5"), [Fabio Lenherr, Felix Tran])
     ])
     #colbreak()
     #align(right + bottom, [

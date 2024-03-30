@@ -1,13 +1,13 @@
 #import "./utils.typ": *
 
 #set page(paper: "presentation-16-9")
-#set text(size: 25pt)
+#set text(size: 20pt)
 
 #polylux-slide[
   #align(horizon + center)[
     = ReSet
     #image("./figures/ReSet1.png", width: 150pt)
-    Directed by: Fabio Lenherr, Felix Tran
+    Fabio Lenherr, Felix Tran
 
     04.04.2024
   ]
@@ -42,8 +42,8 @@
       - Keyboard
     - UI // Felix
       - Consistency
-      - Seamlessness
-      - Guidelines// maybe our own
+      - Plugin Consistency & Guidelines// maybe our own
+      - Accessibility
     - Showcase//
     - Questions
   ])
