@@ -73,3 +73,7 @@ unixcentury:
   title: A Quarter-Century of Unix
   author: Peter H. Salus
   ISBN: 0-201-54777-5
+draganddrop:
+  type: web
+  title: Drag and Drop
+  url: https://en.wikipedia.org/wiki/Drag_and_drop
