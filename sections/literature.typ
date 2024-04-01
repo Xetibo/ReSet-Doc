@@ -702,7 +702,7 @@ be sorted by importance, the best form control for this is a sortable list.
 This is because at the same time the layout in first place is also the 
 default keyboard layout The usage of such form control can be seen in Windows 
 and Gnome Settings. \
-The user can also add a new layout with "Add layout" button, whicih places 
+The user can also add a new layout with "Add layout" button, which places 
 the new layout at the bottom of the list. By clicking on the three dots on 
 the right, the user can open a context menu to remove the layout.
 
