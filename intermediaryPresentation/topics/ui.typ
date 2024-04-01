@@ -2,9 +2,7 @@
 
 #subtitle_slide("User Interface")
 
-
 // 2 defined challenges in docs: consistency and accessibility
-
 #polylux-slide[ // how we have done consistency till now
   === Consistency
   \
@@ -14,6 +12,7 @@
   - 2 Usability tests (SA)
     - Animations
     - Inconsistency with sizes and margins
+  - 1 Usability test (BA)
 ]
 
 #polylux-slide[ // how we do consistency with plugin system
@@ -31,4 +30,5 @@
   \
   - Mostly adopted by Gnome Settings (High Contrast, Large Text, etc.)
   - Shortcuts + Keyboard Movement
+    - Shortcut config for plugins
 ]

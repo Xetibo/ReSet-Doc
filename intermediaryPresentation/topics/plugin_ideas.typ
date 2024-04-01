@@ -5,12 +5,12 @@
 #polylux-slide[
   === Monitor Plugin
   \
-  - content
+  #align(center, img("monitorMock.png", width: 50%, fit: "contain"))
 
 ]
 
 #polylux-slide[
   === Keyboard Plugin
   \
-  - content
+  #align(center, img("keyboardMock.png", width: 50%, fit: "contain"))
 ]
