@@ -30,4 +30,5 @@
   \
   - Mostly adopted by Gnome Settings (High Contrast, Large Text, etc.)
   - Shortcuts + Keyboard Movement
+    - Shortcut config for plugins
 ]
