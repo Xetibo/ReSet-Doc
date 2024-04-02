@@ -66,3 +66,4 @@
 #include "topics/plugin_system.typ"
 #include "topics/plugin_ideas.typ"
 #include "topics/ui.typ"
+#include "topics/showcase.typ"
