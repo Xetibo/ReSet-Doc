@@ -35,7 +35,7 @@
 
 #let img(name, width: auto, height: auto, fit: "cover") = [
   //#image("./figures/" + name, width: width, height: height, fit: fit)
-  #image("\\figures\\" + name, width: width, height: height, fit: fit)
+  #image("./figures/" + name, width: width, height: height, fit: fit)
 ]
 
 #let subtitle_slide(title, level: auto) = [

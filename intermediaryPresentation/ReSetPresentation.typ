@@ -19,7 +19,9 @@
   #content
   #v(-20pt)
   #line(
-    start: (0%, 0%), end: (97%, 0%), stroke: 2pt + gradient.linear(black, white),
+    start: (0%, 0%),
+    end: (97%, 0%),
+    stroke: 2pt + gradient.linear(black, white),
   )
 ]
 
@@ -47,6 +49,17 @@
     - Showcase//
     - Questions
   ])
+  #pdfpc.speaker-note(
+    ```md
+    # Fabio
+    - context
+    - plugin system
+    # Felix
+    - plugin ideas
+    - User interface
+    - showcase
+    ```
+  )
 ]
 
 #include "topics/context.typ"
