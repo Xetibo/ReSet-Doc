@@ -18,12 +18,9 @@
 #polylux-slide[
 === Other Ideas
 #grid(
-  columns: (1fr, 2.3fr),
-  rows: (auto),
-  [
+  columns: (1fr, 2.3fr), rows: (auto), [
     #align(center, img("hourglass.svg", width: 100%, fit: "contain"))
-  ],
-  [
+  ], [
     #rotate(20deg, align(center, img("interpreted_languages.svg", width: 100%)))
   ],
 )
@@ -85,12 +82,17 @@
 #polylux-slide[
 === Security
 \
-- Issues
-  - Easy to inject malicious plugin
-  - Security requires code review
-- Mitigations
-  - Enforce OSS -> Copyleft
-  - Permission system
+#columns(2, [
+  - Issues
+    - Easy to inject malicious plugin
+    - Security requires code review
+  - Mitigations
+    - Enforce OSS -> Copyleft
+    - Permission system
+    #colbreak()
+    #v(20pt)
+    #align(center, image("../figures/security.svg", width: 40%))
+])
 #pdfpc.speaker-note(```md
 - issues
   - arbitrary code execution
@@ -108,12 +110,18 @@
 #polylux-slide[
 === Developer Experience
 \
-- Flexibility
-  - Ability to choose language
-  - Ability to choose toolkit
-- Stability
-  - Stable ABI -> not too many changes
-  - Good documentation
+#columns(2, [
+  - Flexibility
+    - Ability to choose language
+    - Ability to choose toolkit
+  - Stability
+    - Stable ABI -> not too many changes
+    - Good documentation
+    #colbreak()
+    #v(-20pt)
+    #align(center, image("../figures/documentation.svg", width: 30%))
+    #align(center, image("../figures/bugs.svg", width: 30%))
+])
 #pdfpc.speaker-note(```md
 - flexibility
   - language

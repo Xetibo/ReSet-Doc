@@ -80,15 +80,20 @@
 #polylux-slide[
   === Variable features
   \
+  #columns(2, [
+
     - Plugin System
     - User controllable features
     - Automatic detection for base features
       - No Bluetooth hardware, no Bluetooth features
       - Small amount of base features
+  #colbreak()
+  #align(center, image("../figures/shopping.svg", width: 40%))
+    ])
   #pdfpc.speaker-note(
     ```md
     - Explain why these features are chosen
-      - Everything a typical user might want to use 
+      - Everything a typical user might want to use
       - Base features include features that are independent of environments
     - Explain why the plugin system
       - wayland and x11 differences
@@ -107,7 +112,7 @@
     - All features share one user interface design
     - GTK/Rust
       - GTK used in gnome, very prevalent on linux
-    - more information later 
+    - more information later
     ```
   )
 ]
@@ -115,10 +120,15 @@
 #polylux-slide[
   === SA Limitations
   \
+  #columns(2, [
   - No testing
   - Limited feature set
   - No configurability
   - More potential for accessibility
+  #colbreak()
+  #v(-15pt)
+  #align(center, image("../figures/settings.svg", width: 40%))
+    ])
   #pdfpc.speaker-note(
     ```md
     - testing not possible because BUS connection
@@ -132,10 +142,15 @@
 #polylux-slide[
   === BA goals
   \
+  #columns(2, [
   - Plugin system
   - Testing framework
   - Increased stability
   - Improved accessibility
+  #colbreak()
+  #v(-15pt)
+  #align(center, image("../figures/flag.svg", width: 40%))
+    ])
   #pdfpc.speaker-note(
     ```md
     - plugin system for features
