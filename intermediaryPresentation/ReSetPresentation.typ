@@ -19,12 +19,15 @@
   #content
   #v(-20pt)
   #line(
-    start: (0%, 0%), end: (97%, 0%), stroke: 2pt + gradient.linear(black, white),
+    start: (0%, 0%),
+    end: (97%, 0%),
+    stroke: 2pt + gradient.linear(black, white),
   )
 ]
 
 #polylux-slide[
   == Summary
+  #v(15pt)
 
   #columns(2, [
     - Context //
@@ -47,9 +50,21 @@
     - Showcase//
     - Questions
   ])
+  #pdfpc.speaker-note(
+    ```md
+    # Fabio
+    - context
+    - plugin system
+    # Felix
+    - plugin ideas
+    - User interface
+    - showcase
+    ```
+  )
 ]
 
 #include "topics/context.typ"
 #include "topics/plugin_system.typ"
 #include "topics/plugin_ideas.typ"
 #include "topics/ui.typ"
+#include "topics/showcase.typ"
