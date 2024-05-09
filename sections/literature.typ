@@ -669,7 +669,7 @@ very user friendly.
 #align(
   center, [#figure(
       img("../figures/monitorMock.png", width: 75%, extension: "figures"), 
-      caption: [Mock of monitor plugin],
+      caption: [Monitor plugin mockup],
     )],
 )
 
@@ -698,7 +698,7 @@ main page clean and simple.
 #align(
   center, [#figure(
       img("../figures/keyboardMock.png", width: 75%, extension: "figures"), 
-      caption: [Mock of keyboard plugin],
+      caption: [Main page of keyboard plugin],
     )],
 )
 
@@ -742,7 +742,7 @@ have a similar name like. //todo add example
 #align(
   center, [#figure(
       img("../figures/keyboardAddLayoutMock.png", width: 75%, extension: "figures"), 
-      caption: [Mock of keyboard add layout plugin],
+      caption: [Add layout page],
     )],
 )
 
