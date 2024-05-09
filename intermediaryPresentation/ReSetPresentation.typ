@@ -27,6 +27,7 @@
 
 #polylux-slide[
   == Summary
+  #v(15pt)
 
   #columns(2, [
     - Context //
