@@ -253,9 +253,75 @@ either re-configure the physical cable arrangement, or preferably, just drag the
 monitor to the correct position with a user interface.
 
 GTK does not offer a direct way to draw arbitrary shapes, however it does offer
-cairo integration, which is a low level drawing framework which can be used to
-draw pixels onto a GTK drawingarea. On each of the shapes drawn with cairo, GTK
-allows the use of event handlers including drag and drop handlers.
+cairo integration, which is a low level drawing framework that can be used to
+draw pixels onto a GTK drawingarea.
+
+In order to both draw the shapes and calculate the eventual user offsets, a
+coordinate system is required. For cairo this is a topleft to bottomright
+system. This means that x increases towards the right and y increases towards
+bottom.
+
+In figure monitor-axis, the monitor axis is visualized.
+#align(
+  center, [#figure(
+      img("monitor-axis.png", width: 70%, extension: "figures"), caption: [Visualization of the monitor coordinate system],
+    )<monitor-axis>],
+)
+
+For a simple drawing of the monitor, this coordinate system would be trivial,
+however, it is important to understand it in detail when providing drag-and-drop
+operations, which have to constantly apply transforms to these shapes. At the
+same time, any potential monitor overlaps have to be handled, as well as
+providing snapping functionality in order to auto align monitors.
+
+Intersections can be seen by two conditions per axis. If both axis have at least
+one condition evaluated to false, then an overlap has occurred. In listing
+@conditions and figure @overlap the conditions and an example overlap are
+visualized.
+
+#let code = "
+pub fn intersect_horizontal(&self, offset_x: i32, width: i32) -> bool {
+    // current monitor left side is right of other right
+    let left = self.border_offset_x + self.offset.0 >= offset_x + width;
+    // current monitor right is left of other left
+    let right =
+        self.border_offset_x + self.offset.0 + self.width
+            <= offset_x;
+    !left && !right
+}
+
+pub fn intersect_vertical(&self, offset_y: i32, height: i32) -> bool {
+    // current monitor bottom is higher than other top
+    let bottom = self.border_offset_y + self.offset.1 >= offset_y + height;
+    // current monitor top is lower than other bottom
+    let top =
+        self.border_offset_y + self.offset.1 + self.height
+            <= offset_y;
+    !bottom && !top
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Simplified implemented overlap conditions],
+    )<conditions>],
+)
+
+#align(
+  center, [#figure(
+      [
+        #img("monitor-overlap.png", width: 50%, extension: "figures")
+        "Monitor 2" starts at x coordinate 50 which is before the endpoint of "Monitor
+        2", \
+        this marks the condition left of the function intersect_horizontal as false.\
+        "Monitor 2" starts at y coordinate 50 which is before the endpoint of "Monitor
+        2",\
+        this marks the condition bottom of the function intersect_horizontal as false.
+      ], caption: [Visualization of the monitor overlap],
+    )<overlap>],
+)
+
+On each of the shapes drawn with cairo, GTK allows the use of event handlers
+including drag and drop handlers.
 
 #subsubsection("Redraws")
 
