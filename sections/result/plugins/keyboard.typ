@@ -27,13 +27,13 @@ source=~/Documents/dotfiles/hypr/input.conf
       sourcecode(raw(code, lang: "markdown")), 
       kind: "code", 
       supplement: "Listing", 
-      caption: [Monitor feature flag struct],
+      caption: [Include separate config file],
     )<hyprconf-bind-config>],
 )
 
 ReSet can then easily override the whole file each time a change is made, 
-because it only has to build a string together and  doesn't require an 
-implementation of a parser.
+because it only has to build a string together and doesn't require an 
+implementation of a parser which would have been out of scope anyway.
 
 #let code = "
 let mut layout_string = String::new();
@@ -61,7 +61,7 @@ input_config.write_all(string.as_bytes()).expect(\"Failed to write to file\");
       sourcecode(raw(code, lang: "rs")), 
       kind: "code", 
       supplement: "Listing", 
-      caption: [Monitor feature flag struct],
+      caption: [Convert keyboard layouts to string],
     )<reset-keyboard-hypr>],
 )
 
@@ -77,12 +77,12 @@ input {
       sourcecode(raw(code, lang: "markdown")), 
       kind: "code", 
       supplement: "Listing", 
-      caption: [Monitor feature flag struct],
+      caption: [Input configuration],
     )<hyprconf-input-config>],
 )
 
 The user has to put the path to the input configuration file in the ReSet
-config, else ReSet wouldn't know where to write the changes to.
+config, else ReSet wouldn't know where to write the changes to. 
 
 #let code = "
 [Keyboard]
@@ -94,7 +94,7 @@ path = \"/home/felix043/Documents/dotfiles/hypr/input.conf\"
       sourcecode(raw(code, lang: "toml")), 
       kind: "code", 
       supplement: "Listing", 
-      caption: [Monitor feature flag struct],
+      caption: [Path to input configuration in ReSet configuration],
     )<reset-keyboard-config-hyprland>],
 )
 
