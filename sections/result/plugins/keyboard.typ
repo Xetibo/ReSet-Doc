@@ -2,6 +2,7 @@
 #lsp_placate()
 
 #subsection("Keyboard Plugin")
+#subsubsection("Implementations")
 In this section, the implementation of the keyboard plugin is discussed.
 
 #subsubsubsection("Hyprland Implementation")
@@ -111,16 +112,101 @@ key-based configuration details in a single compact binary format database
 
 Because gsettings is a layer for dconf, the keyboard plugin directly 
 uses dconf for setting the keyboard layouts. Combined with the dconf 
-crate, which provides Rust bindings to dconf, the plugin can easily set
-the keyboard layouts @dconf_rs.
+crate, which provides Rust bindings to dconf, the plugin can easily 
+read the keyboard layouts @dconf_rs. This returns a string that needs 
+to be parsed to get the keyboard layout and variant, which can be done 
+with a simple regex.
+
+#let code = "
+let result = dconf_rs::get_string(\"/org/gnome/desktop/input-sources/sources\");
+// has format of: [('xkb', 'ch'), ('xkb', 'us'), ('xkb', 'ara+azerty')]
+
+let pattern = Regex::new(r\"[a-zA-Z0-9_+-]+\").unwrap();
+let matches = pattern.captures_iter(layouts.as_str())
+";
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), 
+      kind: "code", 
+      supplement: "Listing", 
+      caption: [Parsing GNOME keyboard layouts],
+    )<gnome-get-input-config>],
+)
+
+Unfortunately, it is not possible to use dconf_rs to set a new keyboard config 
+because dconf_rs wraps the value to be set with an apostrophe that can't be 
+parsed by dconf. The only solution is to use a command to set the keyboard
+layouts.
+
+#let code = "
+Command::new(\"dconf\")
+  .arg(\"write\")
+  .arg(\"/org/gnome/desktop/input-sources/sources\")
+  .arg(all_layouts)
+  .status()
+  .expect(\"failed to execute command\");
+";
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), 
+      kind: "code", 
+      supplement: "Listing", 
+      caption: [Set GNOME keyboard layouts],
+    )<gnome-set-input-config>],
+)
 
 #subsubsubsection("KDE Implementation")
 KDE stores its keyboard configurations in a file called kxkbrc. This
 text file is located in the config folder of the user and can be 
-read from using kreadconfig6 and written to using kwriteconfig6. Both 
-are part of KConfig, a library provided by KDE to read and write 
-configuration files.
+read from using kreadconfig6 and written to using kwriteconfig6. 
+These are tools provided by KDE to modify settings @kdeconfig.
 
 There was also a dbus interface which could be used to fetch keyboard 
 layouts, but there was no way to set them. Therefore, the implementation
-was done using KConfig.
+was done using kreadconfig and kwriteconfig.
+
+#let code = "
+let output = Command::new(\"kreadconfig6\")
+  .arg(\"--file\")
+  .arg(\"kxkbrc\")
+  .arg(\"--group\")
+  .arg(\"Layout\")
+  .arg(\"--key\")
+  .arg(\"LayoutList\")
+  .output()
+  .expect(\"Failed to get saved layouts\");
+let kb_layout = parse_setting(output);
+
+let output = Command::new(\"kreadconfig6\")
+  .arg(\"--file\")
+  .arg(\"kxkbrc\")
+  .arg(\"--group\")
+  .arg(\"Layout\")
+  .arg(\"--key\")
+  .arg(\"VariantList\")
+  .output()
+  .expect(\"Failed to get saved layouts\");
+let kb_variant = parse_setting(output);
+";
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), 
+      kind: "code", 
+      supplement: "Listing", 
+      caption: [Read KDE keyboard layouts],
+    )<kde-get-input-config>],
+)
+
+An issue with these are that the versions are part of the command. 
+Currently, the newest version is kreadconfig6 and kwriteconfig6 
+and have deprecated version 5 for the most part. This also means 
+that if a version 7 is being released, the command needs to be 
+adjusted so that it works for both versions while version 6 is 
+not deprecated.
+
+#subsubsection("Limitations")
+#subsubsubsection("Keyboard Limit")
+#subsubsubsection("No Shortcuts")
