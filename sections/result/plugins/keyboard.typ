@@ -10,7 +10,7 @@ basically a configuration file and can be modified using multiple ways.
 
 One way is to use Hyprctl, a command-line tool that can be used to modify
 the setting. The problem with it is that the settings set by Hyprctl are
-not persistent. That means that those changes disappear after a restart.
+not persistent. That means that those changes disappear after a restart @hyprctl.
 
 The other method is to write it directly into the hypr.conf file. 
 Because the configuration file uses a custom configuration language called 
@@ -101,14 +101,18 @@ path = \"/home/felix043/Documents/dotfiles/hypr/input.conf\"
 #subsubsubsection("GNOME Implementation")
 In GNOME, it is possible to change keyboard layouts with gsettings or 
 dconf. There are other tools like gconf, but they are replaced by dconf.
-Gsettings is a high-level configuration system intended to be used in 
-the command line as front end to dconf. dconf serves as a low-level 
-configuration system for gsettings that stores key-based configuration 
-details in a single compact binary format database. 
+
+GSettings is a high-level API for application settings and serves as a 
+front end to dconf. The command line tool gsettings (not to be confused 
+with GSettings) can be used to access the GSettings API @gsettings. dconf 
+serves as a low-level configuration system for gsettings that stores 
+key-based configuration details in a single compact binary format database 
+@dconf.
 
 Because gsettings is a layer for dconf, the keyboard plugin directly 
-uses dconf for setting the keyboard layouts.
-// todo why did we use dconf
+uses dconf for setting the keyboard layouts. Combined with the dconf 
+crate, which provides Rust bindings to dconf, the plugin can easily set
+the keyboard layouts @dconf_rs.
 
 #subsubsubsection("KDE Implementation")
 KDE stores its keyboard configurations in a file called kxkbrc. This

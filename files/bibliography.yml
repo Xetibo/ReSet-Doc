@@ -77,3 +77,19 @@ draganddrop:
   type: web
   title: Drag and Drop
   url: https://en.wikipedia.org/wiki/Drag_and_drop
+hyprctl:
+  type: web
+  title: hyprctl
+  url: https://wiki.hyprland.org/Configuring/Using-hyprctl/
+dconf:
+  type: web
+  title: dconf
+  url: https://wiki.gnome.org/Projects/dconf
+dconf_rs:
+  type: web
+  title: dconf-rs
+  url: https://crates.io/crates/dconf_rs
+gsettings:
+  type: web
+  title: gsettings
+  url: https://wiki.gnome.org/Projects/dconf
