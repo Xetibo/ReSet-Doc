@@ -1,0 +1,16 @@
+@startuml
+!theme vibrant
+rectangle WaylandClient1
+rectangle WaylandClient2
+rectangle WaylandClient3
+rectangle XwaylandServer
+rectangle XClient
+rectangle WaylandServer
+
+WaylandServer --> XwaylandServer  : includes 
+WaylandServer <--> WaylandClient1 : interacts with 
+WaylandServer <--> WaylandClient2 : interacts with  
+WaylandServer <--> WaylandClient3 : interacts with 
+XwaylandServer <--> XClient                   : interacts with 
+
+@enduml

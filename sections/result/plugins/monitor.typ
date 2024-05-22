@@ -122,7 +122,58 @@ configuration.
 However, unlike the hyprland implementation it is compositor independent and
 will work as long as the zwlr_output_manager_v1 protocol is implemented.
 
-// TODO: show how protocol stuff works with smithay
+In order to connect to a compositor using wayland protocols, a wayland-client is
+used. This client would then connect to the "server" which is the compositor.
+Wayland-client implementations are provided either directly by the wayland
+project as a C library, or by third parties such as smithay which implements the
+client and server part for rust. @wayland-repo @wayland-rs
+
+In @wayland-architecture, the base wayland architecture is visualized.
+
+#figure(
+  img("wayland_architecture.svg", width: 100%, extension: "files"), caption: [Wayland architecture],
+)<wayland-architecture>
+
+As such, it is now possible to create such a client for a wayland server and
+generate requests for it. The server will then respond with events which the
+client can then
+
+#let code = "
+struct AppData(pub String);
+impl Dispatch<wl_registry::WlRegistry, ()> for AppData {
+    fn event(
+        data: &mut Self,
+        registry: &wl_registry::WlRegistry,
+        event: wl_registry::Event,
+        data: &(),
+        conn: &Connection,
+        handle: &QueueHandle<AppData>,
+    ) {
+        if let wl_registry::Event::Global { interface, .. } = event {
+          println!(\"{}\", &interface);
+        }
+    }
+}
+pub fn get_wl_backend() -> String {
+    let backend = String::from(\"None\");
+    let mut data = AppData(backend);
+    // connection to wayland server
+    let conn = Connection::connect_to_env().unwrap();
+    let display = conn.display();
+    // queue to handle events
+    let mut queue = conn.new_event_queue();
+    let handle = queue.handle();
+    // creates an event for each wayland protocol available 
+    display.get_registry(&handle, ());
+    queue.blocking_dispatch(&mut data).unwrap();
+    data.0
+}
+";
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Example wayland connection with Smithay],
+    )<Wayland-Connection>],
+)
 
 #subsubsubsection("KDE Implementation")
 Similar to Hyprland, KDE offers both a custom tool and a wayland protocol to
@@ -184,7 +235,7 @@ KDE are visualized.
 
 #align(
   center, [#figure(
-      img("kde-gaps.png", width: 70%, extension: "figures"), caption: [Screenshot of the gaps error within KDE],
+      img("kde-gaps.png", width: 90%, extension: "figures"), caption: [Screenshot of the gaps error within KDE],
     )<kde-gaps>],
 )
 #align(
@@ -303,7 +354,7 @@ is already applied.
 As ReSet offers scaling for multiple environments, the plugin should also
 support arbitrary scales depending on the environment. For ReSet, the
 implementation was handled with a libadwaita SpinRow, this widget provides both
-arbitrary user input and a increment and decrement button.@adwspinrow As ReSet
+arbitrary user input and an increment and decrement button.@adwspinrow As ReSet
 implements arbitrary scaling, it would also require a check for valid scales
 with proper user feedback. The chosen method was to simply snap to the closest
 possible valid scale and providing an error banner if no scale can be found.
