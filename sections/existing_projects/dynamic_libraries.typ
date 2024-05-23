@@ -88,7 +88,7 @@ will be executed.
 This system is extremely powerful, allowing plugin developers to override any
 behavior of the existing application. For ReSet, this would likely not make much
 sense, as ReSet does not offer much functionality at its core, instead ReSet
-intends to provide extendability.
+intends to provide extend-ability.
 
 A mock example Hyprland plugin written in Rust can be seen in
 @ExhibitABICompatibility, specifically @hyprland_plugin_rust.
@@ -104,18 +104,18 @@ converts Rust structs to C structs.
   center, [#figure(img("anyrunbase.png", width: 100%, extension: "figures"), caption: [])<anyrunbase>],
 )
 
-@anyruncalculator and @anyrunwebsearch show two plugins for anyrun, a calculator
-plugin and a web search plugin.
+@anyruncalculator and @anyruntranslate show two plugins for anyrun, a calculator
+plugin and a translate plugin.
 
 #align(
   center, [#figure(
-      img("anyruncalculator.png", width: 100%, extension: "figures"), caption: [Anyrun Calculator Plugin],
+      img("anyrun-rink.png", width: 100%, extension: "figures"), caption: [Anyrun Calculator Plugin],
     )<anyruncalculator>],
 )
 #align(
   center, [#figure(
-      img("anyrunwebsearch.png", width: 100%, extension: "figures"), caption: [Anyrun Websearch Plugin],
-    )<anyrunwebsearch>],
+      img("anyrun-translate.png", width: 100%, extension: "figures"), caption: [Anyrun Translate Plugin],
+    )<anyruntranslate>],
 )
 
 Anyrun abstracts the plugin implementation behind several different crates.

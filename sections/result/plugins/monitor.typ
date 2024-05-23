@@ -163,7 +163,7 @@ pub fn get_wl_backend() -> String {
     // queue to handle events
     let mut queue = conn.new_event_queue();
     let handle = queue.handle();
-    // creates an event for each wayland protocol available 
+    // creates an event for each wayland protocol available
     display.get_registry(&handle, ());
     queue.blocking_dispatch(&mut data).unwrap();
     data.0
@@ -486,12 +486,12 @@ visualized.
 
 #align(
   center, [#figure(
-      img("reset-monitor-dnd.png", width: 70%, extension: "figures"), caption: [Monitor dragged towards the right],
+      img("reset-monitor-dnd5.png", width: 70%, extension: "figures"), caption: [Monitor dragged towards the right],
     )<monitor-dnd>],
 )
 #align(
   center, [#figure(
-      img("reset-monitor-dnd2.png", width: 70%, extension: "figures"), caption: [Monitor snapped to other monitor],
+      img("reset-monitor-dnd6.png", width: 70%, extension: "figures"), caption: [Monitor snapped to other monitor],
     )<monitor-dnd-end>],
 )
 
@@ -638,9 +638,18 @@ rearranging the overlapped monitors was chosen. With this, users only see
 monitors moving away from their assigned spot, if their size cannot fit in the
 same spot after rearranging.
 
+This variant includes four incremental steps. The first step is calculating the
+resolution or transform difference of the changed monitor, as well as the right
+side of the rightmost monitor. Step two handles the movement of all monitors
+that exist on the right or on the bottom of the changed monitor. Step three
+handles the checking for overlaps among all monitors. This is one by looping
+over all monitors and checking each monitors against the other.
+
+In @complex-rearrangement-function, step three is visualized.
+
 #let code = "
-// original monitor to new monitor difference and furthest calculation omitted
-// rearrangement omitted -> simply move if monitor is on the right or below
+// Step 1: omitted
+// Step 2: omitted
 
 // (false, false)
 // first: already used flag -> don't check for overlaps
@@ -662,14 +671,17 @@ for (index, monitor) in monitors.iter().enumerate() {
       other_monitor.offset.1 + other_monitor.drag_information.border_offset_y,
       height,
     );
-    if intersect_horizontal && intersect_vertical {
+    // don't rearrange the rightmost monitor
+    // -> otherwhise we get a gap between monitors
+    let is_furthest = furthest == monitor.offset.0 + monitor.size.0;
+    if intersect_horizontal && intersect_vertical && !is_furthest {
       overlaps[index].1 = true;
     }
   }
   overlaps[index].0 = true;
 }
 
-// rearrangement of overlapped monitor omitted
+// Step 4: omitted
 ";
 
 #align(
@@ -678,10 +690,27 @@ for (index, monitor) in monitors.iter().enumerate() {
     )<complex-rearrangement-function>],
 )
 
-#subsubsection("Resulting Plugin")
+The last step is to remove all overlaps. This is done by moving the overlapping
+monitors to the rightmost side calculated in step one.
+
+In @monitor-rearranged, the overlap shown in @monitor-resize-2 is fixed.
+
 #align(
   center, [#figure(
-      img("reset-monitor.png", width: 70%, extension: "figures"), caption: [Screenshot of the ReSet monitor plugin on Hyprland],
+      img("monitor-rearranged.png", width: 100%, extension: "figures"), caption: [Example of a rearranged monitor configuration],
+    )<monitor-rearranged>],
+)
+
+#pagebreak()
+
+#subsubsection("Resulting User Interface")
+This section covers the resulting plugin user interface.
+
+As a baseline, the plugin is shown in @reset-monitor.
+
+#align(
+  center, [#figure(
+      img("reset-monitor-plugin.png", width: 90%, extension: "figures"), caption: [Screenshot of the ReSet monitor plugin on Hyprland],
     )<reset-monitor>],
 )
 

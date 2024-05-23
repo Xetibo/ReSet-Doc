@@ -43,9 +43,9 @@ end
 
 function test_plugin.test()
   if test_plugin.opts.what == 0 then
-    vim.cmd(\"echo 'pingpang'\")
+    vim.cmd(\"echo 'value is 0'\")
   else
-    vim.cmd(\"echo 'not pingpang'\")
+    vim.cmd(\"echo 'value is not 0'\")
   end
 end
 
@@ -122,13 +122,13 @@ fn main() {
   2, [
     #align(
       center, [#figure(
-          img("steel_gtk.png", width: 50%, extension: "figures"), caption: [Steel GTK example],
+          img("steel-base.png", width: 50%, extension: "figures"), caption: [Steel GTK example],
         )<steelgtk>],
     )
     #colbreak()
     #align(
       center, [#figure(
-          img("steel_gtk_clicked.png", width: 50%, extension: "figures"), caption: [Steel GTK example (clicked)],
+          img("steel-clicked.png", width: 50%, extension: "figures"), caption: [Steel GTK example (clicked)],
         )<steelgtkclicked>],
     )
   ],
