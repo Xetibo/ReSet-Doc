@@ -656,7 +656,7 @@ settings. The mockups were created using Mockflow, which is an online tool for
 creating mockups. The mockups are not final and are only meant to give an first
 impression.
 
-#subsubsection("Monitor Plugin")
+#subsubsection("Monitor Plugin Mockup")
 While settings applications offer many different approaches and user interfaces,
 the monitor settings look very similar across practically all applications that
 were referenced. There is always a drag and drop area where the user can align
