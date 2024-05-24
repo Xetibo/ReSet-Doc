@@ -4,8 +4,8 @@
 #pagebreak()
 #include "result/plugins.typ"
 #pagebreak()
-// #include "result/accessibility.typ"
-// #pagebreak()
+ #include "result/user_tests.typ"
+ #pagebreak()
 // #include "result/test_framework.typ"
 // #pagebreak()
 // #include "result/animations.typ"
