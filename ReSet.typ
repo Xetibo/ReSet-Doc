@@ -10,13 +10,12 @@
 
 #let acknowledgements = {
   [
-    Acknowledgements We would like to express our sincerest gratitude to Prof. Dr.
-    Frieder Loch for advising us throughout our project. His guidance and support
-    have been invaluable to us. /*We are also grateful to our testers who took the time to test
+    We would like to express our sincerest gratitude to Prof. Dr. Frieder Loch for
+    advising us throughout our project. His guidance and support have been
+    invaluable to us. We are also grateful to our testers who took the time to test
     our product and share valuable feedback. Their input has been instrumental in
-    helping us make improvements to our product.*/ We would also like to
-    acknowledge the OST for providing us with the opportunity to work on this
-    project.
+    helping us make improvements to our product. We would also like to acknowledge
+    the OST for providing us with the opportunity to work on this project.
   ]
 }
 
@@ -39,7 +38,7 @@
 ]
 
 #show: doc => conf(
-  author: "Fabio Lenherr / Felix Tran", "Prof. Dr. Frieder Loch", "Introduction of a Plugin System" , "ReSet", "/figures/ReSet1.png", 25%, "/figures/OST.svg", 40%, "School of Computer Science", "OST Eastern Switzerland University of Applied Sciences", "../files/bibliography.yml", abstract, acknowledgements, appendix, doc,
+  author: "Fabio Lenherr / Felix Tran", "Prof. Dr. Frieder Loch", "Introduction of a Plugin System", "ReSet", "/figures/ReSet1.png", 25%, "/figures/OST.svg", 40%, "School of Computer Science", "OST Eastern Switzerland University of Applied Sciences", "../files/bibliography.yml", abstract, acknowledgements, appendix, doc,
 )
 #file.step()
 
