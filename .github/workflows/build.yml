@@ -26,6 +26,7 @@ jobs:
         plantuml files/hourglass.txt -tsvg 
         plantuml files/global_offset_table.txt -tsvg
         plantuml files/mock_implementation.txt -tsvg
+        plantuml files/wayland_architecture.txt -tsvg
     - name: Build PDF
       run: |
         mkdir output
