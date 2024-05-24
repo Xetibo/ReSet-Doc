@@ -4,16 +4,21 @@
 #subsection("Monitor Plugin")
 In this section, the implementation of the monitor plugin is discussed.
 
+For this plugin, the following environments are considered: KDE, GNOME, wlroots
+based compositors and kwin based compositors. This selection covers a large
+section of the wayland compositors except the cosmic desktop, which will be
+released after this paper. @cosmic-release
+
 #subsubsection("Environment Differences")
 The introduction of Wayland complicates the fetching of the data needed for
 configuring monitors. This is due to the fact that many wayland environments
 have their own custom implementation of applying monitor configuration and will
 hence not be compatible with each other. For example, the wlroots implementation
 of applying a monitor configuration is defined by the wayland protocol extension
-zwlr_output_manager_v1. As the name suggests, this is made solely for
-environments using wlroots as their library. Similarly, KDE also offers their
-own protocol, while GNOME opted to go with the DBus route, providing a handy
-DisplayConfig endpoint.
+zwlr_output_manager_v1. @wlr-output-management As the name suggests, this is
+made solely for environments using wlroots as their library. Similarly, KDE also
+offers their own protocol, while GNOME chose the DBus route, providing a handy
+DisplayConfig endpoint. @kde-output-management @mutter-display-config
 
 For the X11 protocol, there is only one endpoint for fetching, as close to every
 environment uses the same display server (xorg) in order to implement their
@@ -27,64 +32,6 @@ offer both a DBus endpoint for functionality, and a user interface frontend for
 human interaction. Should a user not be satisfied with the provided interface,
 they can just use the endpoint to create their own.
 
-#subsubsubsection("Hyprland Implementation")
-Hyprlands monitors can be configured by three different approaches. The first
-would be to just use the inbuilt hyprctl tool, which provides a monitor command
-that can either display monitors in a human readable way, or output it directly
-to json. For this it would be necessary to spawn the tool within the plugin and
-convert the output with serde, a serializion/deserialization framework for Rust.
-
-The second approach is to directly use Hyprlands unix sockets, the first of
-which is fully replicated in hyprctl. For sockets the same conversion as with
-hyprctl would be required.
-
-The third approach is to use the zwlr_output_manager_v1 protocol in order to
-apply the configuration. Hyprland uses a fork of wlroots as a foundation
-library. A benefit with this would be the automatic support for any other
-environment that supports this protocol, the downside is that should this
-protocol might not fully replicate Hyprlands features in the future, as this
-proctol specifically targets wlroots.
-
-#subsubsubsection("KDE Implementation")
-
-#subsubsubsection("GNOME Implementation")
-GNOME separates hardware monitors from logical monitors. The logical monitors
-represent the representation of the real world monitor within GNOME with the x
-and y coordinates of the position added. These coordinates will define which
-monitor will be considered "on the left", or "on the right" within GNOME.
-
-The conversion for GNOME displays is trivial other than the challenges with
-experimental features. As of GNOME 46, features such as fractional scaling and
-variable refresh rates are still experimental features within GNOME. In order to
-still accomodate the features for GNOME users, ReSet has to check for the
-availability of these features not only within the monitor capababilities, but
-also within the GNOME configuration. GNOME stores its configuration within a
-custom binary blob file which stores key/value pairs. ReSet already uses gtk,
-which can also read dconf variables, meaning there is no additional dependency
-for ReSet.
-
-In listing @Fractional-Scale-Gnome the value for fractional scaling is read via
-dconf.
-#let code = "
-fn get_fractional_scale_support() -> bool {
-    let settings = gtk::gio::Settings::new(\"org.gnome.mutter\");
-    let features = settings.strv(\"experimental-features\");
-    for value in features {
-        if value == \"scale-monitor-framebuffer\" {
-            return true;
-        }
-    }
-    false
-}
-}"
-
-#align(
-  left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [GNOME fetching of Fractional Scale support],
-    )<Fractional-Scale-Gnome>],
-)
-
-#subsubsubsection("Display Struct")
 In listing @Display-Struct the fields of the display struct used for the DBus
 connection and the user interface is visualized.
 #let code = "
@@ -117,13 +64,134 @@ pub struct Monitor {
     )<Display-Struct>],
 )
 
+#pagebreak()
+
+#subsubsubsection("Hyprland Implementation")
+Hyprlands monitors can be configured by three different approaches. The first
+would be to just use the inbuilt hyprctl tool, which provides a monitor command
+that can either display monitors in a human-readable way, or output it directly
+to json. For this it would be necessary to spawn the tool within the plugin and
+convert the output with serde, a serializion/deserialization framework for Rust.
+In @Hyprland-Monitor-Conversion, the conversion from json to the generic monitor
+struct is visualized.
+
+#let code = "
+// Due to hyprland moving away from WLR, ReSet chose to fetch data via hyprctl instead.
+// The tool is also always installed for hyprland.
+pub fn hy_get_monitor_information() -> Vec<Monitor> {
+    let mut monitors = Vec::new();
+    let json_string = String::from_utf8(get_json());
+    if let Ok(json_string) = json_string {
+        let hypr_monitors: Result<Vec<HyprMonitor>, _> =
+          serde_json::from_str(&json_string);
+        // omitted error handling
+        for monitor in hypr_monitors.unwrap() {
+            let monitor = monitor.convert_to_regular_monitor();
+            monitors.push(monitor);
+        }
+    }
+    // omitted error handling
+
+    monitors
+}
+";
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Hyprland monitor conversion],
+    )<Hyprland-Monitor-Conversion>],
+)
+
+The second approach is to directly use Hyprlands Unix sockets, the first of
+which is fully replicated in hyprctl. For sockets the same conversion as with
+hyprctl would be required.
+
+The third approach is to use the zwlr_output_manager_v1 protocol in order to
+apply the configuration. @wlr-output-management Hyprland uses a fork of wlroots
+as a foundation library. A benefit with this would be the automatic support for
+any other environment that supports this protocol, the downside is that should
+this protocol might not fully replicate Hyprlands features in the future, as
+this protocol specifically targets wlroots.
+
+#subsubsubsection("Wlroots Implementation")
+As mentioned in @HyprlandImplementation, the wlroots implementation can only be
+implemented via wayland protocols and is as such also limited to the used
+protocol. Hence, the wlroots implementation does not offer persistent storing of
+monitor configurations, instead only offering applying of a specific
+configuration.
+
+However, unlike the hyprland implementation it is compositor independent and
+will work as long as the zwlr_output_manager_v1 protocol is implemented.
+
+// TODO: show how protocol stuff works with smithay
+
+#subsubsubsection("KDE Implementation")
+Similar to Hyprland, KDE offers both a custom tool and a wayland protocol to
+handle monitor configuration.
+
+Just like with Hyprland, both solutions were implemented, for KDE the reason is
+simply to include support for both the X11 implementation of KDE and the wayland
+version. If this plugin were to target the kwin protocol exclusively, then X11
+support would not be included and would have to be implemented separately.
+
+#subsubsubsection("GNOME Implementation")
+GNOME separates hardware monitors from logical monitors. The logical monitors
+represent the representation of the real world monitor within GNOME with the x
+and y coordinates of the position added. @mutter-display-config These
+coordinates will define which monitor will be considered "on the left", or "on
+the right" within GNOME.
+
+The conversion for GNOME displays is trivial other than the challenges with
+experimental features. As of GNOME 46, features such as fractional scaling and
+variable refresh rates are still experimental features within GNOME. In order to
+still accommodate the features for GNOME users, ReSet has to check for the
+availability of these features not only within the monitor capabilities, but
+also within the GNOME configuration. GNOME stores its configuration within a
+custom binary blob file which stores key/value pairs. ReSet already uses GTK,
+which can also read dconf variables, meaning there is no additional dependency
+for ReSet.
+
+In listing @Fractional-Scale-Gnome the value for fractional scaling is read via
+dconf.
+#let code = "
+fn get_fractional_scale_support() -> bool {
+    let settings = gtk::gio::Settings::new(\"org.gnome.mutter\");
+    let features = settings.strv(\"experimental-features\");
+    for value in features {
+        if value == \"scale-monitor-framebuffer\" {
+            return true;
+        }
+    }
+    false
+}
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [GNOME fetching of Fractional Scale support],
+    )<Fractional-Scale-Gnome>],
+)
+
 #subsubsection("Visualization")
 For the visual representation, ReSet is aligned with other configuration tools
 within the Linux ecosystem in order to provide users with a seamless transition.
 Notable for this visualization is the use of drag-and-drop for monitor
 positioning. This paradigm allows users to quickly place monitors on their
 preferred side, or even introduce gaps between monitors in order to prevent the
-mouse from automatically crossing the screen.
+mouse from automatically crossing the screen (not supported by KDE or GNOME).
+
+In figure @kde-gaps and @gnome-gaps, the error messages for gaps in GNOME and
+KDE are visualized.
+
+#align(
+  center, [#figure(
+      img("kde-gaps.png", width: 70%, extension: "figures"), caption: [Screenshot of the gaps error within KDE],
+    )<kde-gaps>],
+)
+#align(
+  center, [#figure(
+      img("gnome-gaps.png", width: 70%, extension: "figures"), caption: [Screenshot of the gaps error within GNOME],
+    )<gnome-gaps>],
+)
 
 In figure @kde-monitor, the KDE variant of the monitor configuration is shown.
 
@@ -137,10 +205,12 @@ In figure @kde-monitor, the KDE variant of the monitor configuration is shown.
 KDE opted for a per monitor paradigm, meaning settings are shown for the current
 monitor, with global settings being separated by a visual separator. Indication
 to which monitor is currently selected is shown by a blue indicator while other
-monitors are uncolored. The selected color difference is suitable for color
-blindness as blue is the least susceptible color to color blindness. People with
-monochromatic sight (full colorblindness) will still be able to tell the
-difference based on shade, making this the optimal color.
+monitors are uncolored. The selected color is suitable for color blindness as
+different shades of blue are less susceptible to color blindness. People with
+monochromatic sight (full colorblindness) will also still be able to tell the
+difference based on shade, making this an optimal color defined in figure 16
+Colorblind barrier-free color pallet by Color Universal Design(CUD)
+@color-universal-design. @color-blindness @data-visualization-with-flying-colors
 
 //https://en.wikipedia.org/wiki/Color_blindness
 
@@ -169,20 +239,23 @@ at the top.
 // TODO: windows?
 //This is also in contrast to operating systems like Microsoft Windows
 
+#pagebreak()
+
 #subsubsection("Fractional Scaling")
 Fractional scaling is implemented according to the fractional-scale-v1 wayland
-protocol. This protocol defines how scaling values will be interpreted by the
-environment. The specification defines that supported scales must be of a
-fraction with a denominator of 120. In other words, incrementing a scaling value
-would mean multiplying the base value with 120, then proceeding to increase or
-decrease this number before dividing by 120 again. The result will be a new
-scaling fraction within the constraints of the protocol.
+protocol. @fractional-scale-v1-protocol This protocol defines how scaling values
+will be interpreted by the environment. The specification defines that supported
+scales must be of a fraction with a denominator of 120. In other words,
+incrementing a scaling value would mean multiplying the base value with 120,
+then proceeding to increase or decrease this number before dividing by 120
+again. The result will be a new scaling fraction within the constraints of the
+protocol.
 
 #align(center, [In figure @fraction-example, an example is visualized.])
 
 #align(
   left, [#figure([
-      #text(fill: maroon, [
+      #text(fill: maroon, size: 16pt, [
         #v(10pt)
         $1.00 * 120 = 120$\
         $120 + 6 = 126$\
@@ -229,11 +302,11 @@ is already applied.
 
 As ReSet offers scaling for multiple environments, the plugin should also
 support arbitrary scales depending on the environment. For ReSet, the
-implementation was handled with a libadwaita spinrow, this widget provides both
-arbitrary user input and a increment and decrement button. As ReSet implements
-arbitrary scaling, it would also require a check for valid scales with proper
-user feedback. The chosen method was to simply snap to the closest possible
-valid scale and providing an error banner if no scale can be found.
+implementation was handled with a libadwaita SpinRow, this widget provides both
+arbitrary user input and a increment and decrement button.@adwspinrow As ReSet
+implements arbitrary scaling, it would also require a check for valid scales
+with proper user feedback. The chosen method was to simply snap to the closest
+possible valid scale and providing an error banner if no scale can be found.
 
 in @search-nearest-scale, the body of the search_nearest_scale function within
 the plugin is visualized.
@@ -264,7 +337,7 @@ for x in 0..amount {
 
 #align(
   left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Search nearest scale function],
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Search the nearest scale function],
     )<search-nearest-scale>],
 )
 
@@ -273,11 +346,11 @@ A common configuration is the arrangement of monitors. A user might have a
 physical setup where the leftmost monitor is actually considered the second
 monitor within the operating system/environment. This requires the user to
 either re-configure the physical cable arrangement, or preferably, just drag the
-monitor to the correct position with a user interface.
+monitor to the correct position with a user interface.@draganddrop
 
 GTK does not offer a direct way to draw arbitrary shapes, however it does offer
 cairo integration, which is a low level drawing framework that can be used to
-draw pixels onto a GTK drawingarea.
+draw pixels onto a GTK DrawingArea. @cairo
 
 In order to both draw the shapes and calculate the eventual user offsets, a
 coordinate system is required. For cairo this is a topleft to bottomright
@@ -441,7 +514,7 @@ pub fn get_monitor_settings_group(
     // add settings
     settings
 }
-// each call to this function replaces the current settings variable with a new one
+// each call to this function replaces the current group with a new one
 ";
 
 #align(
@@ -455,7 +528,104 @@ separate redraws as well. For this redraws are queued for any action taken that
 changes the appearance within the drawing area. Possible actions include,
 dragging, snapping, change of transform, change of resolution and monitor
 selection. Each of these actions will cause the drawing area to be redrawn in
-order to show the chosen action.
+order to show the result of the chosen action.
+
+The last piece of redraws is the arrangement of the monitors. Each time a user
+changes either the resolution or the transform of a monitor, this will be
+reflected on the interface. This requires the plugin to calculate a new
+arrangement for all monitors, as the constellation of monitors should not change
+simply because the user changed the resolution of a single monitor. As an
+example, consider a situation with three monitors aligned in a row. When the
+user changes the resolution or transform of either the first or the second
+monitor, the monitors to the right would need to be moved either towards or away
+from the changed monitor. In @monitor-resize the example is visualized.
+
+#align(
+  center, [#figure(
+      img("monitor-resize.png", width: 60%, extension: "figures"), caption: [Example of a monitor resize within an arrangement],
+    )<monitor-resize>],
+)
+
+Further issues arise with the inclusion of the y-axis for potential resizes. Due
+to multiple axis being possible, it is now necessary to check for overlaps that
+can be caused due to shifting of other monitors after resizing. Consider the
+second example with four monitors shown in @monitor-resize-2.
+
+#align(
+  center, [#figure(
+      img("monitor-resize-2.png", width: 100%, extension: "figures"), caption: [Example of an overlap caused by monitor resize],
+    )<monitor-resize-2>],
+)
+
+This overlap is not applicable as a configuration and needs to be resolved.
+There are multiple possible solutions to this problem. A very simple approach
+would be to just reorder the monitors as soon as the resolution or transform of
+any monitor happens. The drawback with this approach is the fact that it breaks
+the arrangement a user created. This would mean that the monitor previously
+situated in the center might now be on the left. In
+@simple-rearrangement-function the solution is visualized.
+
+#let code = "
+for monitor in monitors.iter_mut() {
+   // handles rotation in order to calculate x and y
+   let (width, _) = monitor.handle_transform();
+   monitor.offset.0 = furthest;
+   // move all monitors to one axis -> hence no overlap possible
+   monitor.offset.1 = original_monitor.offset.1;
+   furthest = monitor.offset.0 + width;
+}
+";
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Code snippet for the rearrangement-function of monitors],
+    )<simple-rearrangement-function>],
+)
+
+For this plugin, the more complicated variant of checking for overlaps and only
+rearranging the overlapped monitors was chosen. With this, users only see
+monitors moving away from their assigned spot, if their size cannot fit in the
+same spot after rearranging.
+
+#let code = "
+// original monitor to new monitor difference and furthest calculation omitted
+// rearrangement omitted -> simply move if monitor is on the right or below
+
+// (false, false)
+// first: already used flag -> don't check for overlaps
+// against the same monitors just in opposite order
+// second: bool flag to indicate overlap
+let mut overlaps = vec![(false, false); monitors.len()];
+// check for overlaps
+for (index, monitor) in monitors.iter().enumerate() {
+  for (other_index, other_monitor) in monitors.iter().enumerate() {
+    if monitor.id == other_monitor.id || overlaps[other_index].0 {
+      continue;
+    }
+    let (width, height) = other_monitor.handle_transform();
+    let intersect_horizontal = monitor.intersect_horizontal(
+      other_monitor.offset.0 + other_monitor.drag_information.border_offset_x,
+      width,
+    );
+    let intersect_vertical = monitor.intersect_vertical(
+      other_monitor.offset.1 + other_monitor.drag_information.border_offset_y,
+      height,
+    );
+    if intersect_horizontal && intersect_vertical {
+      overlaps[index].1 = true;
+    }
+  }
+  overlaps[index].0 = true;
+}
+
+// rearrangement of overlapped monitor omitted
+";
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Code snippet for the rearrangement-function of monitors],
+    )<complex-rearrangement-function>],
+)
 
 #subsubsection("Resulting Plugin")
 #align(

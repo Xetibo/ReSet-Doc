@@ -97,3 +97,74 @@ kdeconfig:
   type: web
   title: gsettings
   url: https://userbase.kde.org/KDE_System_Administration/Configuration_Files
+adwspinrow:
+  type: web
+  title: Adwaita SpinRow
+  url: https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/class.SpinRow.html
+cairo:
+  type: web
+  title: Cairo Graphics
+  url: https://www.cairographics.org/
+fractional-scale-v1-protocol:
+  type: web
+  title: Fractional Scale
+  url: https://wayland.app/protocols/fractional-scale-v1
+mutter-display-config:
+  type: repository
+  title: DisplayConfig.xml
+  author: GNOME
+  url: https://gitlab.gnome.org/GNOME/mutter/-/blob/main/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml?ref_type=heads
+wlr-output-management:
+  type: web
+  title: wlr output management
+  url: https://wayland.app/protocols/wlr-output-management-unstable-v1
+kde-output-management:
+  type: web
+  title: KDE output management v2
+  url: https://wayland.app/protocols/kde-output-management-v2
+color-blindness:
+  type: web
+  title: Color Blindness
+  url: https://en.wikipedia.org/wiki/Color_blindness
+color-check:
+  type: web
+  title: Color Blindness Simulator
+  url: https://www.color-blindness.com/coblis-color-blindness-simulator/
+contrast-ratio-score:
+  type: web
+  title: Contrast (Enhanced)
+  author: W3C
+  url: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast7.html
+color-awereness:
+  type: web
+  title: About Color Blindness
+  url: https://www.colourblindawareness.org/colour-blindness/
+color-universal-design:
+  type: web
+  title: Color Universal Design(CUD)
+  url: https://jfly.uni-koeln.de/color/
+data-visualization-with-flying-colors:
+  type: web
+  title: Data Visualization with Flying Colors
+  author: Joachim Goedhart
+  url: https://thenode.biologists.com/data-visualization-with-flying-colors/research/
+cosmic-release:
+  type: web
+  title: "COSMIC: More Alpha, More Fun!"
+  url: https://blog.system76.com/post/cosmic-more-alpha-more-fun
+chrome-policy:
+  type: web
+  title: Publish in the Chrome Web Store
+  url: https://developer.chrome.com/docs/webstore/publish#upload-your-item
+GNU_V3:
+  type: web
+  title: GNU General Public License
+  url: https://www.gnu.org/licenses/gpl-3.0.en.html
+GNOME-Keyring:
+  type: web
+  title: GNOME Keyring
+  url: https://wiki.gnome.org/Projects/GnomeKeyring
+Keyring-Rust: 
+  type: web
+  title: Keyring
+  url: https://docs.rs/keyring/latest/keyring/
