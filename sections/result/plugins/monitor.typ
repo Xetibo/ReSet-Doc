@@ -9,6 +9,10 @@ based compositors and Kwin based compositors. This selection covers a large
 section of the wayland compositors except the cosmic desktop, which will be
 released after this paper. @cosmic-release
 
+When discussing implementations from other environments, they were tested on an
+EndeavourOS virtual machine with their respective dark themes applied.
+@endeavourOS
+
 #subsubsection("Environment Differences")
 The introduction of Wayland complicates the fetching of the data needed for
 configuring monitors. This is due to the fact that many wayland environments
@@ -175,14 +179,36 @@ pub fn get_wl_backend() -> String {
     )<Wayland-Connection>],
 )
 
+#pagebreak()
+
 #subsubsubsection("KDE Implementation")
 Similar to Hyprland, KDE offers both a custom tool and a wayland protocol to
 handle monitor configuration.
 
-Just like with Hyprland, both solutions were implemented, for KDE the reason is
+Also like with Hyprland, both solutions were implemented, for KDE the reason is
 simply to include support for both the X11 implementation of KDE and the wayland
 version. If this plugin were to target the Kwin protocol exclusively, then X11
 support would not be included and would have to be implemented separately.
+
+The protocol variant requires the implementation of two protocols which will
+interact with each other. The first is the KDE output device v2 protocol, which
+defines the data structure responsible for holding the necessary data for each
+monitor. This protocol closely resembles the wayland core protocol "wl_output"
+which offers a way to fetch the currently active monitors with all their data.
+The only noticeable difference is the lack of data for potential changes a user
+can make. In other words it only offers data about what is currently active,
+including refresh rate, resolution and more, but does not provide any data about
+what other refresh rates or resolutions, etc. the monitor supports.
+@kde-output-device-v2 @wl-output
+
+The combinations of the kde output device v2 protocol and the kde output
+management v2 procotol enables the same functionality as with the implementation
+of wlroots in @WlrootsImplementation.
+
+The KDE environment also offers an optional monitor module which provides the
+Kscreen-doctor tool. This tool allows for a quick fetch of data that can be
+output via json and then deserialized into a monitor data structure.
+@kscreen-doctor
 
 #subsubsubsection("GNOME Implementation")
 GNOME separates hardware monitors from logical monitors. The logical monitors

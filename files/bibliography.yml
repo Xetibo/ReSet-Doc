@@ -126,10 +126,6 @@ wlr-output-management:
   type: web
   title: wlr output management
   url: https://wayland.app/protocols/wlr-output-management-unstable-v1
-kde-output-management:
-  type: web
-  title: KDE output management v2
-  url: https://wayland.app/protocols/kde-output-management-v2
 color-blindness:
   type: web
   title: Color Blindness
@@ -172,7 +168,7 @@ GNOME-Keyring:
   type: web
   title: GNOME Keyring
   url: https://wiki.gnome.org/Projects/GnomeKeyring
-Keyring-Rust: 
+Keyring-Rust:
   type: web
   title: Keyring
   url: https://docs.rs/keyring/latest/keyring/
@@ -184,3 +180,23 @@ wayland-rs:
   type: repository
   title: wayland-rs
   url: https://github.com/Smithay/wayland-rs
+endeavourOS:
+  type: web
+  title: EndeavourOS
+  url: https://endeavouros.com/
+kde-output-device-v2:
+  type: web
+  title: Kde Output Device V2
+  url: https://wayland.app/protocols/kde-output-device-v2
+kde-output-management:
+  type: web
+  title: KDE output management v2
+  url: https://wayland.app/protocols/kde-output-management-v2
+wl-output:
+  type: web
+  title: wl_output compositor output region
+  url: https://wayland.freedesktop.org/docs/html/apa.html#protocol-spec-wl_output
+kscreen-doctor:
+  type: repository
+  title: Kscreen doctor gitlab of KDE
+  url: https://invent.kde.org/plasma/libkscreen/-/tree/master/src/doctor?ref_type=heads
