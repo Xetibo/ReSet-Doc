@@ -207,20 +207,23 @@ that if a version 7 is being released, the command needs to be
 adjusted so that it works for both versions while version 6 is 
 not deprecated.
 
-#subsubsection("Limitations")
 #subsubsubsection("Keyboard Limit")
 XKB is a system part of the X Window System and provides an easy 
 way to configure keyboard layouts. On Wayland, XKB is the recommended
-way of handling keyboard input as well. The problem with XKB is that 
+way of handling keyboard input as well @waylandkeyboard. The problem with XKB is that 
 it doesn't support more than four keyboard groups at the same time. 
 A group in XKB consists of symbols, which are a collection of character 
 codes and a group type that defines the type of symbols, e.g Latin 
 letters, Cyrillic letters etc. and makes up a keyboard layout. It is not 
-possible to just increase that number because the the state is reported 
-in a XKBState field which is 16 bit long and use bits 13 and 14 to 
-report the keyboard group. Any attempt to increase the number of groups 
-would require a change in the representation schema.
+possible to just increase that number because the XKBState field
+is only 16 bits long and use bits 13 and 14 to report the keyboard group. 
+Any attempt to increase the number of groups would require a change 
+in the representation schema in XKB and other changes that wouldn't be 
+backwards compatible @xkblimitation. \
+
+To show users that limitation visually, the first few rows are highlighted, 
+while the rest have system colors. This number is set depending on the 
+desktop environment, because there are some that don't use XKB and therefore 
+allow more than four keyboard layouts.
 
 // todo add image of colored ui
-
-#subsubsubsection("No Shortcuts")
