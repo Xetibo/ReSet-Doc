@@ -169,25 +169,34 @@ async fn test_plugins() {
 In this section, the specific implementation of the plugin system in the ReSet
 daemon is discussed.
 
-For the daemon, the functions defined in @daemon_plugin_functions are required.
+As discussed in @PluginSystemEvaluation, the chosen paradigm is the dynamic
+library loading variant. With this paradigm, ReSet is required to provide a set
+of functions that a plugin needs to implement.
+
+For the daemon, the specific list of functions is visualized in
+@daemon_plugin_functions.
 
 #let code = "
 extern \"C\" {
+    // functions to create or clean-up data
     pub fn backend_startup();
     pub fn backend_shutdown();
 
-    /// Reports the capabilities that your plugin will provide.
+    // Reports the capabilities that your plugin will provide.
+    // These capabilities will also be reported by the daemon.
     #[allow(improper_ctypes)]
     pub fn capabilities() -> PluginCapabilities;
 
-    /// Reports the name of the plugin
+    // Reports the name of the plugin
+    // Mostly used for duplication checks
     #[allow(improper_ctypes)]
     pub fn name() -> String;
 
-    /// Inserts your plugin interface into the dbus server.
+    // Inserts your plugin interface into the dbus server.
     #[allow(improper_ctypes)]
     pub fn dbus_interface(cross: &mut Crossroads);
 
+    // import tests from plugins
     pub fn backend_tests();
 }"
 
@@ -197,4 +206,97 @@ extern \"C\" {
     )<daemon_plugin_functions>],
 )
 
+A plugin that implements these functions can now be compiled and copied into the
+plugin folder. Additionally, in order to run the plugin, the configuration of
+ReSet would need to be updated to include the name of the plugin binary. This is
+to ensure that only user defined plugins are loaded. Note that this does not
+offer proper security, it only offers protection against unintentional loading
+by the user themselves.
+
+In @plugin_loading_config, the toml configuration in order to load the plugin is
+visualized.
+
+#let code = "
+plugins = [ \"libreset_monitors.so\", \"libreset_keyboard_plugin.so\" ]
+";
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [ReSet toml configuration for loading plugins],
+    )<plugin_loading_config>],
+)
+
+The loading of the plugins themselves is handled by the ReSet library that
+offers this for both the daemon and the user interface. It also covers the
+potential duplication of memory when loading the plugin twice. In other words,
+the library will only load the plugin into memory once as defined in TODO. The
+only differing part is the fetching of functions from a plugin, which will be
+different depending on the daemon or the user interface.
+
+This loading will also be done in a lazy fashion. This means that the plugins
+files will only be loaded when either the daemon or the user interface
+explicitly call the plugin.
+
+In @plugin_lib_structures, the structures for loading plugins is visualized.
+
+#let code = "
+pub static LIBS_LOADED: AtomicBool = AtomicBool::new(false);
+pub static LIBS_LOADING: AtomicBool = AtomicBool::new(false);
+pub static mut FRONTEND_PLUGINS: Lazy<Vec<FrontendPluginFunctions>> = Lazy::new(|| {
+    SETUP_LIBS();
+    setup_frontend_plugins()
+});
+pub static mut BACKEND_PLUGINS: Lazy<Vec<BackendPluginFunctions>> = Lazy::new(|| {
+    SETUP_LIBS();
+    setup_backend_plugins()
+});
+static mut LIBS: Vec<libloading::Library> = Vec::new();
+static mut PLUGIN_DIR: Lazy<PathBuf> = Lazy::new(|| PathBuf::from(\"\"));
+";
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Plugin structures within ReSet-Lib],
+    )<plugin_lib_structures>],
+)
+
+Due to the fact that both the daemon and the user interface are started up in a
+non-deterministic fashion, the plugin library loading will also potentially be
+non-deterministic. This enforces an atomic check that both the daemon or the
+user interface can see. If the check is already either in loading or loaded, the
+other process would simply wait or immediately move on to using the plugin
+respectively.
+
+Loading of plugins themselves in both the daemon and the user interface can be
+done by iterating over the BACKEND_PLUGINS or FRONTEND_PLUGINS global
+respectively. Both of these globals are both static and constant after
+initialization, this ensures that plugins can't be changed later on, while also
+being initialized after startup.
+
+In @plugin_loading, the plugin loading within the daemon is visualized.
+
+#let code = "
+unsafe {
+    thread::scope(|scope| {
+        let wrapper = Arc::new(RwLock::new(CrossWrapper::new(&mut cross)));
+        for plugin in BACKEND_PLUGINS.iter() {
+            let wrapper_loop = wrapper.clone();
+            scope.spawn(move || {
+                // allocate plugin specific things
+                (plugin.startup)();
+                // register and insert plugin interfaces
+                (plugin.data)(wrapper_loop);
+                let name = (plugin.name)();
+                LOG!(format!(\"Loaded plugin: {}\", name));
+            });
+        }
+    });
+}
+";
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Plugin loading within the ReSet daemon],
+    )<plugin_loading>],
+)
 
