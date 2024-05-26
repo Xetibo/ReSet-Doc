@@ -191,7 +191,7 @@ version. If this plugin were to target the Kwin protocol exclusively, then X11
 support would not be included and would have to be implemented separately.
 
 The protocol variant requires the implementation of two protocols which will
-interact with each other. The first is the KDE output device v2 protocol, which
+interact with each other. The first is the kde_output_device_v2 protocol, which
 defines the data structure responsible for holding the necessary data for each
 monitor. This protocol closely resembles the wayland core protocol "wl_output"
 which offers a way to fetch the currently active monitors with all their data.
@@ -201,8 +201,8 @@ including refresh rate, resolution and more, but does not provide any data about
 what other refresh rates or resolutions, etc. the monitor supports.
 @kde-output-device-v2 @wl-output
 
-The combinations of the kde output device v2 protocol and the kde output
-management v2 procotol enables the same functionality as with the implementation
+The combinations of the kde_output_device_v2 protocol and the kde output
+management v2 protocol enables the same functionality as with the implementation
 of wlroots in @WlrootsImplementation.
 
 The KDE environment also offers an optional monitor module which provides the
