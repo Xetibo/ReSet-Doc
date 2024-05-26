@@ -210,12 +210,12 @@ not deprecated.
 #subsubsubsection("Keyboard Limit")
 XKB is a system part of the X Window System and provides an easy 
 way to configure keyboard layouts. On Wayland, XKB is the recommended
-way of handling keyboard input as well @waylandkeyboard. The problem with XKB is that 
-it doesn't support more than four keyboard groups at the same time. 
-A group in XKB consists of symbols, which are a collection of character 
-codes and a group type that defines the type of symbols, e.g Latin 
-letters, Cyrillic letters etc. and makes up a keyboard layout. It is not 
-possible to just increase that number because the XKBState field
+way of handling keyboard input as well @waylandkeyboard. The problem 
+with XKB is that it doesn't support more than four keyboard groups at 
+the same time. A group in XKB consists of symbols, which are a collection 
+of character codes and a group type that defines the type of symbols, e.g 
+Latin letters, Cyrillic letters etc. and makes up a keyboard layout. It 
+is not possible to just increase that number because the XKBState field
 is only 16 bits long and use bits 13 and 14 to report the keyboard group. 
 Any attempt to increase the number of groups would require a change 
 in the representation schema in XKB and other changes that wouldn't be 
@@ -226,4 +226,41 @@ while the rest have system colors. This number is set depending on the
 desktop environment, because there are some that don't use XKB and therefore 
 allow more than four keyboard layouts.
 
-// todo add image of colored ui
+#align(
+  center, [#figure(
+      img("highlightedKeyboardLayouts.png", 
+      width: 75%, 
+      extension: "figures"), 
+      caption: [First four keyboard layouts are colored differently],
+    )<reset-monitor>],
+)
+
+#subsubsubsection("Nested listing")
+A quality of life feature to make adding keyboard layouts easier is the 
+addition of nested listing. There are many keyboard variants for the 
+same layout, for example German (US), German (Dvorak) etc. which can 
+grouped together into single entry in the list marked with an arrow 
+symbol because not all languages have variants. 
+
+#align(
+  center, [#figure(
+      img("keyboardAddLayout.png", 
+      width: 75%, 
+      extension: "figures"), 
+      caption: [Keyboard layouts with variants],
+    )<reset-monitor>],
+)
+
+This feature reduces the list by a significant amount and helps the user 
+to narrow down the desired language first before looking more detailed 
+for the specific variant. Clicking on such an entry removes all other 
+keyboard layouts and only shows the variants for that language.
+
+#align(
+  center, [#figure(
+      img("keyboardAddLayoutVariants.png", 
+      width: 80%, 
+      extension: "figures"), 
+      caption: [Keyboard layouts with variants],
+    )<reset-monitor>],
+)
