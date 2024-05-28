@@ -1,11 +1,11 @@
 #import "../../templates/utils.typ": *
 
-#subsection("Plugin System Implementation")
+#section("Plugin System Implementation")
 This section covers the implementation of the ReSet plugin system.
 
-#subsubsection("General Plugin System")
+#subsection("General Plugin System")
 
-#subsubsection("Any-Variant")
+#subsection("Any-Variant")
 in @ExampleAnypattern an Any-Variant via byte vectors is covered. For ReSet, a
 different route was taken to implement the Any variant. Instead of converting
 byte vectors, ReSet utilizes polymorphism with types that implement a specific
@@ -89,7 +89,7 @@ without indirection. Given different possible value types, Rust could no longer
 determine the size of a specific variant at compile time, hence a pointer is
 used to mimick the behavior of Java (enforcement of references).
 
-#subsubsection("Security")
+#subsection("Security")
 The initial idea of the ReSet plugin system was to reduce the attack vector by
 enforcing a narrow definition for the plugin system. As the ReSet daemon uses
 DBus, each plugin can provide their own DBus interface. For DBus, there are
@@ -124,7 +124,7 @@ available. The only way to solve this issue was to provide plugins with a
 reference to the crossroads DBus context, which would enable plugins to insert
 and register their own interfaces.
 
-#subsubsection("Plugin Testing")
+#subsection("Plugin Testing")
 Rust tests are handled by a specific test macro, this flag tells the compiler
 that this function is to be used when testing the specific project. This works
 well for a single project without dynamic loading of additional functionality,
@@ -165,7 +165,7 @@ async fn test_plugins() {
     )<custom_plugin_tests>],
 )
 
-#subsubsection("ReSet-Daemon Plugin System")
+#subsection("ReSet-Daemon Plugin System")
 In this section, the specific implementation of the plugin system in the ReSet
 daemon is discussed.
 

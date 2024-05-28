@@ -57,6 +57,8 @@
 
 #let custom_heading(num, use_line, level, name: "", custom_tag: "") = {
   let concat_name = str(name.replace(" ", ""))
+  let concat_name = str(concat_name.replace("(", ""))
+  let concat_name = str(concat_name.replace(")", ""))
   if custom_tag != "" {
     locate(
       loc => {

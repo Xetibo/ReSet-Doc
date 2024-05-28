@@ -1,12 +1,12 @@
 #import "../../templates/utils.typ": *
 #lsp_placate()
 
-#subsection("Interpreted Language Plugin Systems")
+#subsubsection("Interpreted Language Plugin Systems")
 This section covers plugin systems utilizing an interpreted language on top of
 their system in order to provide expandability. The paradigm used for such
 systems is explained in @InterpretedLanguages.
 
-#subsubsection("Neovim")
+#subsubsubsection("Neovim")
 Neovim is a fork of the iconic VIM editor. It offers both VIMscript and lua
 support, as well as an RPC API, providing users with multiple ways to expand
 functionality. VIMscript is converted to lua, meaning Neovim only needs a single
@@ -59,7 +59,7 @@ return test_plugin"
 
 // TODO show output
 
-#subsubsection("Helix")
+#subsubsubsection("Helix")
 Helix is a post-modern modal text editor written in Rust. It currently does not
 offer a plugin system, however, as of February 2024, there is an open pull
 request on the helix repository. @helixpr This addition would introduce the
@@ -140,7 +140,7 @@ Hence, it requires manual synchronization and also requires special wrapping of
 GTK structs as they are not marked as Sync/Send, which is required in Rust for
 multithreading.
 
-#subsubsection("Usage in Games")
+#subsubsubsection("Usage in Games")
 Various game engines and modding frameworks also utilize lua as a scripting
 language in order to provide extendability.
 
@@ -157,7 +157,7 @@ protection and more. The UE4SS system provides hooks, meaning it is possible to
 attach to existing functions and override or expand them. Hooking functionality
 is described in @Hyprland.
 
-#subsubsection("GNOME Shell")
+#subsubsubsection("GNOME Shell")
 The GNOME shell is written in C and JavaScript. Specifically, the user interface
 part is written in JavaScript, meaning extensions can fully rely on this
 language. Usage of an interpreted language for this allows plugin developers to

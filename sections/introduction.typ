@@ -2,7 +2,7 @@
 #lsp_placate()
 
 #section("Introduction")
-/* This paper focuses on the improvement of the ReSet settings application. The improvements cover a large variety of topics, including a plugin system/* @plugin_system */, attending accessibility concerns in/* @accessibility */, creating a testing framework for DBus functionality in/* @test_framework */, animations for the ReSet user interface and creating a command line application to interface with ReSet. */
+/* This thesis focuses on the improvement of the ReSet settings application. The improvements cover a large variety of topics, including a plugin system/* @plugin_system */, attending accessibility concerns in/* @accessibility */, creating a testing framework for DBus functionality in/* @test_framework */, animations for the ReSet user interface and creating a command line application to interface with ReSet. */
 ReSet is a settings application for Linux made with GTK and the Rust programming
 language. The application aims to provide functionality for all user interfaces
 (Desktop Environments) on Linux, reducing the need for first party applications
@@ -10,11 +10,11 @@ by the environments themselves or the reliance on smaller single utility
 applications.
 
 ReSet was a semester project for the OST, Eastern Switzerland University of
-Applied Sciences. This paper will expand on the original work, solving existing
+Applied Sciences. This thesis will expand on the original work, solving existing
 issues and expanding its feature set.
 
 #subsection("Objectives")
-The focus of this paper is the on the introduction of a plugin system for the
+The focus of this thesis is the on the introduction of a plugin system for the
 existing ReSet application, which was omitted from the original work due time
 constraints.
 
@@ -34,10 +34,9 @@ accessibility solutions and more. User preference examples cover the reality
 that not every user requires all settings, therefore a plugin system offers the
 users the possibility to omit subjectively superfluous settings.
 
-In order to expand the original ReSet application, this paper will also include
-the introduction of several plugins. This will also ensure functionality of the
-plugin system and allows for adequate testing and potential revisions of the
-system.
+In order to expand the original ReSet application, this thesis will also develop
+exemplary plugins. This will ensure functionality of the plugin system and
+allows for testing and potential revisions of the system.
 
 // ReSet will mainly focus on the plugin system, which allows it to expand its
 // features repertoire to include keyboard, monitors, status bars and many more
@@ -48,10 +47,15 @@ system.
 
 #subsection("Challenges")
 - *Consistency* \
-  With the advent of the plugin system, the importance of a consistent experience
-  more relevant as creating an application with multiple technologies and use
-  cases is not trivial.
-- *Accessibility* \
+  With the advent of the plugin system, the importance of a consistent user
+  experience is more relevant as creating an application with multiple
+  technologies and use cases is not trivial. For this requirement, all plugins
+  need to be able to represent themselves as integrated functionality of ReSet in
+  order for the user to not notice the plugin system at all.
+
+  This ensures that users will be able to switch from one plugin to another
+  without being introduced to new design paradigms or differing concepts.
+- *Accessibility* \ // TODO: should be renamed -> this application does not cover accessibility
   Creating a good user experience and making the application accessible to all
   users requires a deep understanding of the user base which could require a lot
   of time.
@@ -87,5 +91,5 @@ discussed. Further analysis based on existing implementations is discussed in
 @PluginSystemAnalysis. With this information, the best approach will be chosen
 and explained in @PluginSystemEvaluation. Other features and improvements are
 discussed in/*@sometime*/. The implementation details can be found in/*@somewhere*/.
-The results of this paper will be discussed in/*@somehow*/
+The results of this thesis will be discussed in/*@somehow*/
 and potential future work are mentioned in/*@somewhereelse*/.

@@ -10,29 +10,31 @@ different strategies and reasons. For example, a compiler for languages such as
 C++, C and Rust use mangling in order to remove namespaces and conflicts.
 Consider the Rust code in @rust_namespaces:
 
+#let code = "
+pub mod namespace1;
+pub mod namespace2;
+
+fn main() {
+let _res1 = namespace1::add(5, 2);
+let _res2 = namespace2::add(5, 2);
+// these get flattened to add and subtract
+}
+
+// in namespace1.rs
+pub fn add(left: i32, right: i32) -> i32 {
+left + right
+}
+
+// in namespace2.rs
+pub fn add(left: i32, right: i32) -> i32 {
+left + right
+}
+"
+
 #align(
   left, [#figure(
-    sourcecode[```rs
-                                                             pub mod namespace1;
-                                                             pub mod namespace2;
-
-                                                             fn main() {
-                                                             let _res1 = namespace1::add(5, 2);
-                                                             let _res2 = namespace2::add(5, 2);
-                                                             // these get flattened to add and subtract
-                                                             }
-
-                                                             // in namespace1.rs
-                                                             pub fn add(left: i32, right: i32) -> i32 {
-                                                             left + right
-                                                             }
-
-                                                             // in namespace2.rs
-                                                             pub fn add(left: i32, right: i32) -> i32 {
-                                                             left + right
-                                                             }
-                                                             ```], kind: "code", supplement: "Listing", caption: [Namespaces in Rust],
-  )<rust_namespaces>],
+      sourcecode(raw(code, lang: "rust")), kind: "code", supplement: "Listing", caption: [Namespaces in Rust],
+    )<rust_namespaces>],
 )
 
 This code will be reduced to one namespace during compilation, this means the
@@ -44,16 +46,18 @@ each other.
 In @assembly_mangling, the difference between regular compilation with mangling
 and compilation with the annotation #[no_mangle] is visualized.
 
+#let code = "
+; mangled add function
+.section .text._ZN4main4main17h51f2041274cfd0bdE,\"ax\",@progbits
+
+; function without mangle
+.section .text.add,\"ax\",@progbits
+"
+
 #align(
   left, [#figure(
-    sourcecode[```yasm
-                                                             ; mangled add function
-                                                             .section .text._ZN4main4main17h51f2041274cfd0bdE,"ax",@progbits
-
-                                                             ; function without mangle
-                                                             .section .text.add,"ax",@progbits
-                                                             ```], kind: "code", supplement: "Listing", caption: [Mangling in assembly],
-  )<assembly_mangling>],
+      sourcecode(raw(code, lang: "yasm")), kind: "code", supplement: "Listing", caption: [Mangling in assembly],
+    )<assembly_mangling>],
 )
 
 This approach worked fine with one add function, however trying to achieve the
@@ -66,11 +70,10 @@ same with both functions will result in the compiler error visualized in
     )<mangling_error>],
 )
 
-#subsubsection("Other Applications")
 Mangling has other applications than just avoiding compilation issues, one of
 these is code obfuscation. This is often used for languages that can't be
 reduced to binary files, with an example of this being the obfuscation of
-electron JavaScript applications.
+JavaScript applications or websites.
 
 JavaScript is an interpreted language, meaning that the code needs to be read by
 an interpreter, this disallows the compilation to binary form and requires it to
@@ -81,23 +84,34 @@ as javascript-obfuscator @javascript_obfuscator.
 
 In @obfuscated_code, an example obfuscation of JavaScript code is visualized.
 
+#let code = "
+// unobfuscated code
+function penguin() {
+console.log(\"I like penguins.\");
+}
+penguin();
+
+// obfuscated code
+(function(_0x29b584,_0x52a642){var _0x2430f6=_0x4396,_0x5aaa83=_0x29b584();
+while(!![]){try{var _0xeb9c7d=-parseInt(_0x2430f6(0x88))/0x1*(parseInt(_0x2430f6(0x8d))/0x2)
+// multiple lines of unreadable code omitted
+penguin();
+"
+
 #align(
   left, [#figure(
-    sourcecode[```js
-                                                             // unobfuscated code
-                                                             function penguin() {
-                                                             console.log("I like penguins.");
-                                                             }
-                                                             penguin();
-
-                                                             // obfuscated code
-                                                             (function(_0x29b584,_0x52a642){var _0x2430f6=_0x4396,_0x5aaa83=_0x29b584();
-                                                             while(!![]){try{var _0xeb9c7d=-parseInt(_0x2430f6(0x88))/0x1*(parseInt(_0x2430f6(0x8d))/0x2)
-                                                             // multiple lines of unreadable code omitted
-                                                             penguin();
-                                                             ```], kind: "code", supplement: "Listing", caption: [Example obfuscated code],
-  )<obfuscated_code>],
+      sourcecode(raw(code, lang: "JavaScript")), kind: "code", supplement: "Listing", caption: [Example obfuscated code],
+    )<obfuscated_code>],
 )
+
+There is a second common use case for obfuscation, namely compression. A lot of
+JavaScript applications and websites have large codebases that would need to be
+shipped to the user. This size can have an impact if the user operates with a
+reduced download speed. In this case the codebase will be compressed to as few
+files and lines as possible.
+
+The resulting code will again be unreadable for developers, but unlike pure
+obfuscation, the size of the entire package has been significantly reduced.
 
 #subsection("Dynamic Libraries")
 Dynamic libraries are an interpretation of a binary that can be loaded into
@@ -112,7 +126,7 @@ also be used within ReSet with the multiprocess paradigm via DBus.
 #subsubsection("Versioning")
 In order for dynamic libraries to be sharable, they need to be compatible with
 each program using the library. Depending on the system that loads the library,
-different tactics are used in order to load dynamic libraries. Under Linux, the
+different tactics are used to load dynamic libraries. Under Linux, the
 loading behavior depends on the installation variant. System native
 installations will always share one instance of a specific library, there may
 not be any other version of this specific library. This approach ensures maximum
@@ -126,16 +140,18 @@ library by using multiple different version numbers.
 
 In @semantic_versioning the semantic version of the library Glibc is visualized.
 
+#let code = "
+# name of library, change would mean different library!
+/usr/lib/libglib-2.0.so
+# major number, incompatible change
+/usr/lib/libglib-2.0.so.0
+# minor numbers, compatible change
+/usr/lib/libglib-2.0.so.0.7800.4
+"
+
 #align(
   left, [#figure(
-    sourcecode[```sh
-                                                             # name of library, change would mean different library!
-                                                             /usr/lib/libglib-2.0.so
-                                                             # major number, incompatible change
-                                                             /usr/lib/libglib-2.0.so.0
-                                                             # minor numbers, compatible change
-                                                             /usr/lib/libglib-2.0.so.0.7800.4 ```,
-    ], kind: "code", supplement: "Listing", caption: [Semantic versioning],
+    sourcecode(raw(code, lang: "bash")), kind: "code", supplement: "Listing", caption: [Semantic versioning],
   )<semantic_versioning>],
 )
 
@@ -159,11 +175,11 @@ processes. Virtual memory address mapping enforces this paradigm by creating a
 pointer map to physical memory. On this map, the operating system can control
 the allowed memory space of the application with the Memory Management Unit.
 Should the process try to access physical memory which is not offered to this
-process, then the Memory Management Unit will cause an MMU fault signal.
+process, then the MMU will cause an MMU fault signal.
 
 When loading a potential shared library plugin for ReSet, this would result in
 two virtual address mappings, one for the ReSet user interface and one for the
-daemon. @virtual_to_physical visualized both mappings.
+daemon. @virtual_to_physical visualizes both mappings.
 
 #figure(
   img("virtual_memory.png", width: 80%, extension: "figures"), caption: [Virtual to physical memory mapping],
@@ -182,12 +198,13 @@ In @global_offset_table an example function call with the global offset table is
 visualized. The function to be called will provide an output parameter which
 will be set by the library function. This means that the library needs a way to
 also access memory from the executable, which requires two-way access.
+// TODO: explain more
 
 #figure(
   img("global_offset_table.svg", width: 80%, extension: "files"), caption: [Global offset table usage example],
 )<global_offset_table>
 
-#subsection("ABI")
+#subsection("Application Binary Interface (ABI)")
 Plugin systems based on dynamic libraries require that the plugins themselves
 are built against the current version of the ABI. For each specific change to
 ReSet and its respective daemon, the ABI might be changed as well.

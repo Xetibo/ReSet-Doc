@@ -7,7 +7,7 @@ In this section, the implementation of the monitor plugin is discussed.
 For this plugin, the following environments are considered: KDE, GNOME, wlroots
 based compositors and Kwin based compositors. This selection covers a large
 section of the wayland compositors except the cosmic desktop, which will be
-released after this paper. @cosmic-release
+released after this thesis. @cosmic-release
 
 When discussing implementations from other environments, they were tested on an
 EndeavourOS virtual machine with their respective dark themes applied.

@@ -5,7 +5,7 @@
   testability: 2, language_conformity: 1, use_case_overlap: 2, expected_workload: 2, compatibility: 3,
 )
 
-#section("Plugin System Evaluation")
+#subsection("Plugin System Evaluation")
 This section covers the chosen plugin system paradigm for ReSet. Paradigms are
 evaluated using a value table, which defines a score between 0 and 2 for each
 category over each tool. A score of 0 indicates an infeasible requirement, 1
@@ -40,11 +40,11 @@ open-source license*, as ReSet will be published under the GPL-3.0 license.
 
 #pagebreak()
 
-#subsection("Comparison")
+#subsubsection("Comparison")
 This section covers the comparison of each plugin system implementation when
 applied to ReSet.
 
-#subsubsection("Testability")
+#subsubsubsection("Testability")
 ReSet targets not only to offer testability for the core functionality but also
 for the plugins themselves. Considering the architecture of ReSet, this would
 require integration into both DBus and GTK.
@@ -55,7 +55,7 @@ execute any arbitrary code, loading of either dynamic libraries or virtual
 machines is feasible. For this category, there is no difference between any
 specific plugin system.
 
-#subsubsection("Language Conformity")
+#subsubsubsection("Language Conformity")
 All plugin systems use some form of abstraction compared to just using Rust.
 Meaning there is no outright winner. This is especially the case when looking at
 differing stable ABI usages and different scripting languages. Rust native
@@ -67,7 +67,7 @@ in the architecture. Note, however, that this does not include specific usages o
 an architecture. For example, the steel scripting language offers better
 language conformity than using lua as the scripting language.
 
-#subsubsection("Use Case Overlap")
+#subsubsubsection("Use Case Overlap")
 ReSet targets solely the expansion of functionality without restrictions. This
 means that ReSet neither intends to offer custom hooking functionality, as there
 is no underlying system to hook into, nor does ReSet intend to prevent the plugin
@@ -86,7 +86,7 @@ processes.
 The analysis concluded a significant benefit to using dynamic libraries for this
 category.
 
-#subsubsection("Expected Workload")
+#subsubsubsection("Expected Workload")
 Dynamic libraries would require the use of macros to ensure the simple creation of
 plugins. Considering @Anyrun as an example, this would require significant
 overhead for the implementation. However, interpreted languages could also
@@ -97,7 +97,7 @@ already required additional thread synchronization.
 
 For this category, no system has shown any substantial benefits.
 
-#subsubsection("Compatibility")
+#subsubsubsection("Compatibility")
 ReSet uses two libraries that a plugin system must be able to support, namely
 GTK and DBus.
 
@@ -115,7 +115,7 @@ written in Rust, further complicating integration as mentioned in
 
 For this category using dynamic libraries offers a substantial benefit.
 
-#subsection("Results")
+#subsubsection("Results")
 
 #let dynamic_libaries = (
   testability: 1, language_conformity: 2, use_case_overlap: 2, expected_workload: 2, compatibility: 2,
