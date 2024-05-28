@@ -1,11 +1,11 @@
 #import "../../templates/utils.typ": *
 #lsp_placate()
 
-#subsection("Dynamic Library Plugin Systems")
+#subsubsection("Dynamic Library Plugin Systems")
 This section covers plugin systems utilizing dynamic libraries. Dynamic
 libraries are explained in detail in @DynamicLibraries.
 
-#subsubsection("Hyprland")
+#subsubsubsection("Hyprland")
 Hyprland is a dynamic tiling compositor that can be extended via a plugin
 system. Both the plugin systems and the compositor itself are written in C++.
 Notably, the plugin systems rarely use the "extern C" keyword, which results in
@@ -93,7 +93,7 @@ intends to provide extend-ability.
 A mock example Hyprland plugin written in Rust can be seen in
 @ExhibitABICompatibility, specifically @hyprland_plugin_rust.
 
-#subsubsection("Anyrun")
+#subsubsubsection("Anyrun")
 Anyrun is a Wayland application launcher similar to Launchpad for Macintosh
 computers. It is written in Rust and GTK3 and offers users the ability to load
 plugins with shared libraries using the stable ABI crate which automatically

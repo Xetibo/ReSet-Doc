@@ -162,7 +162,7 @@ The lack of a stable Rust ABI is also the reason why there are no Rust native
 shared libraries. Crates, as found on crates.io, are static libraries that are
 compiled into the binary, and all shared libraries are created with the C ABI
 using "extern C". Further information about ABI along with examples can be found
-in @ABI.
+in @ApplicationBinaryInterfaceABI.
 
 #subsubsubsection("Containerization of dynamic libraries")
 Plugin systems have a variety of points to hook a dynamic library into the
