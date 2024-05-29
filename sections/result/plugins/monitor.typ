@@ -765,4 +765,4 @@ implementation discussed in @GNOMEImplementation as the same toolkit was used,
 while the scaling implementation differs depending on the environment. The
 scaling feature is discussed in detail in @FractionalScaling.
 
-The results of this user interface will be tested in @UserTests.
+The results of this user interface will be tested in @MonitorPluginTests.
