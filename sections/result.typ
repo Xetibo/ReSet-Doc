@@ -1,3 +1,11 @@
+#import "../templates/utils.typ": *
+#lsp_placate()
+
+#section("Results")
+This section covers the implementation of the ReSet plugin system.
+
+#include "result/mockups.typ"
+#pagebreak()
 #include "result/mock_system.typ"
 #pagebreak()
 #include "result/plugin_system.typ"

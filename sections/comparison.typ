@@ -35,8 +35,9 @@ The following categories are evaluated for programming languages:
   This category is considered important, as rewriting ReSet with different
   libraries is not feasible for this thesis.
 
-Special Requirement: All tools used in this project *must be published under an
-open-source license*, as ReSet will be published under the GPL-3.0 license.
+Special Requirement: All tools used in this project *must be published under a
+free and open-source license*, as ReSet will be published under the GPL-3.0
+license.
 
 #pagebreak()
 
@@ -55,6 +56,8 @@ execute any arbitrary code, loading of either dynamic libraries or virtual
 machines is feasible. For this category, there is no difference between any
 specific plugin system.
 
+Both systems receive the result of 1 as neither system works particularly well.
+
 #subsubsubsection("Language Conformity")
 All plugin systems use some form of abstraction compared to just using Rust.
 Meaning there is no outright winner. This is especially the case when looking at
@@ -63,39 +66,43 @@ structs, functions and more usually transfer without issue to both a stable ABI
 or a scripting language.
 
 For this category, the analysis has not resulted in any meaningful differences
-in the architecture. Note, however, that this does not include specific usages of
-an architecture. For example, the steel scripting language offers better
+in the architecture. Note, however, that this does not include specific usages
+of an architecture. For example, the steel scripting language offers better
 language conformity than using lua as the scripting language.
+
+Both systems receive the baseline result of 2.
 
 #subsubsubsection("Use Case Overlap")
 ReSet targets solely the expansion of functionality without restrictions. This
 means that ReSet neither intends to offer custom hooking functionality, as there
-is no underlying system to hook into, nor does ReSet intend to prevent the plugin
-developers from using the full range of features of any tooling.
+is no underlying system to hook into, nor does ReSet intend to prevent the
+plugin developers from using the full range of features of any tooling.
 
-A potential plugin system should also consider the architecture of ReSet. 
-For ReSet this includes a multiprocess architecture. When comparing interpreted 
-languages to dynamic libraries on this specific point, there is a considerable 
-difference. As the name suggests interpreted languages require an interpreter, 
-and as ReSet uses multiple processes, this would require two interpreters, 
-adding an abstraction to the already distributed architecture of ReSet. With 
-dynamic libraries, a library loaded into memory can be re-used, this means there 
-is only one instance of a plugin within memory, which is then used by multiple 
+A potential plugin system should also consider the architecture of ReSet. For
+ReSet this includes a multiprocess architecture. When comparing interpreted
+languages to dynamic libraries on this specific point, there is a considerable
+difference. As the name suggests interpreted languages require an interpreter,
+and as ReSet uses multiple processes, this would require two interpreters,
+adding an abstraction to the already distributed architecture of ReSet. With
+dynamic libraries, a library loaded into memory can be re-used, this means there
+is only one instance of a plugin within memory, which is then used by multiple
 processes.
 
 The analysis concluded a significant benefit to using dynamic libraries for this
-category.
+category. As such, dynamic libraries receives the result of 2 while interpreted
+languages receives the result of 1.
 
 #subsubsubsection("Expected Workload")
-Dynamic libraries would require the use of macros to ensure the simple creation of
-plugins. Considering @Anyrun as an example, this would require significant
+Dynamic libraries would require the use of macros to ensure the simple creation
+of plugins. Considering @Anyrun as an example, this would require significant
 overhead for the implementation. However, interpreted languages could also
 require additional overhead when considering the integration of individual parts
 of the system. In @Helix, an example usage of an interpreted language is shown.
 Even with this simple example without integration of either GTK or DBus, it
 already required additional thread synchronization.
 
-For this category, no system has shown any substantial benefits.
+For this category, no system has shown any substantial benefits. Both systems
+receive the baseline result of 2.
 
 #subsubsubsection("Compatibility")
 ReSet uses two libraries that a plugin system must be able to support, namely
@@ -113,7 +120,9 @@ This however would limit ReSet to a small amount of languages, none of which are
 written in Rust, further complicating integration as mentioned in
 @LanguageConformity.
 
-For this category using dynamic libraries offers a substantial benefit.
+For this category using dynamic libraries offers a substantial benefit. As such,
+dynamic libraries receives the result of 2 while interpreted languages receives
+the result of 1.
 
 #subsubsection("Results")
 
@@ -131,46 +140,27 @@ For this category using dynamic libraries offers a substantial benefit.
 #pad(y: -13.1pt, [])
 
 #grid(
-  columns: ( 2fr, 3.5fr, 3.5fr, 1fr),
-  rows: (45pt, 35pt, 35pt, 35pt, 35pt, 35pt),
-  gutter: 0pt,
-  cell("Category", bold: true, use_under: true, cell_align: left),
-  cell("Dynamic Libraries", bold: true, use_under: true),
-  cell("Interpreted Languages", bold: true, use_under: true),
+  columns: (2fr, 3.5fr, 3.5fr, 1fr), rows: (45pt, 35pt, 35pt, 35pt, 35pt, 35pt), gutter: 0pt, cell("Category", bold: true, use_under: true, cell_align: left), cell("Dynamic Libraries", bold: true, use_under: true), cell("Interpreted Languages", bold: true, use_under: true),
   // cell("Function\nOverriding", bold: true, use_under: true),
-  cell("Weight", bold: true, use_under: true),
-  cell("Testability",bold: true, cell_align: left),
-  cell([#dynamic_libaries.testability], bold: true),
-  cell([#interpreted_languages.testability], bold: true),
+  cell("Weight", bold: true, use_under: true), cell("Testability", bold: true, cell_align: left), cell([#dynamic_libaries.testability], bold: true), cell([#interpreted_languages.testability], bold: true),
   // cell([#function_overriding.testability], bold: true),
-  cell([\*#language_weights.testability],bold: true),
-  cell("Language\nConformity", bold: true, fill: silver, cell_align: left),
-  cell([#dynamic_libaries.language_conformity],bold: true,fill: silver),
-  cell([#interpreted_languages.language_conformity], bold: true, fill: silver),
+  cell([#language_weights.testability], bold: true), cell("Language\nConformity", bold: true, fill: silver, cell_align: left), cell([#dynamic_libaries.language_conformity], bold: true, fill: silver), cell([#interpreted_languages.language_conformity], bold: true, fill: silver),
   // cell([#function_overriding.language_conformity], bold: true, fill: silver),
-  cell([\*#language_weights.language_conformity], bold: true, fill: silver),
-  cell("Use Case\nOverlap", bold: true, cell_align: left),
-  cell([#dynamic_libaries.use_case_overlap], bold: true),
-  cell([#interpreted_languages.use_case_overlap], bold: true),
+  cell([#language_weights.language_conformity], bold: true, fill: silver), cell("Use Case\nOverlap", bold: true, cell_align: left), cell([#dynamic_libaries.use_case_overlap], bold: true), cell([#interpreted_languages.use_case_overlap], bold: true),
   // cell([#function_overriding.ecosystem], bold: true),
-  cell([\*#language_weights.use_case_overlap], bold: true),
-  cell("Expected\nWorkload", bold: true, fill: silver, cell_align: left),
-  cell([#dynamic_libaries.expected_workload], bold: true, fill: silver),
-  cell([#interpreted_languages.expected_workload], bold: true, fill: silver),
+  cell([#language_weights.use_case_overlap], bold: true), cell("Expected\nWorkload", bold: true, fill: silver, cell_align: left), cell([#dynamic_libaries.expected_workload], bold: true, fill: silver), cell([#interpreted_languages.expected_workload], bold: true, fill: silver),
   // cell([#function_overriding.expected_workload], bold: true, fill: silver),
-  cell([\*#language_weights.expected_workload], bold: true, fill: silver),
-  cell("Compatibility", bold: true, cell_align: left),
-  cell([#dynamic_libaries.compatibility], bold: true),
-  cell([#interpreted_languages.compatibility], bold: true),
+  cell([#language_weights.expected_workload], bold: true, fill: silver), cell("Compatibility", bold: true, cell_align: left), cell([#dynamic_libaries.compatibility], bold: true), cell([#interpreted_languages.compatibility], bold: true),
   // cell([#function_overriding.expected_workload], bold: true),
-  cell([\*#language_weights.compatibility], bold: true),
-  cell("Total", bold: true, fill: silver, cell_align: left),
-  cell([#calculate_total(dynamic_libaries, language_weights)], color: green, bold: true, fill: silver),
-  cell([#calculate_total(interpreted_languages, language_weights)], bold: true, fill: silver),
-  cell(" ", bold: true, fill: silver),
+  cell([#language_weights.compatibility], bold: true), cell("Total", bold: true, fill: silver, cell_align: left), cell(
+    [#calculate_total(dynamic_libaries, language_weights)], color: green, bold: true, fill: silver,
+  ), cell(
+    [#calculate_total(interpreted_languages, language_weights)], bold: true, fill: silver,
+  ), cell(" ", bold: true, fill: silver),
 )
 
-
-For Reset, the usage of dynamic plugins is the most suitable option for creating a plugin system.
-Not only will this guarantee that any Rust functionality will work, it will also ensure that resources are shared between the daemon and the user interface.
+For Reset, the usage of dynamic plugins is the most suitable option for creating
+a plugin system. Not only will this guarantee that any Rust functionality will
+work, it will also ensure that resources are shared between the daemon and the
+user interface.
 

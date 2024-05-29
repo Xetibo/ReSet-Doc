@@ -34,6 +34,12 @@
       PC or similar.
     ],
   )<DE>
+  #glossary_entry(
+    use_show: use_show_ref, "GTK", [A free software widget toolkit for creating graphical user interfaces. The name
+      is an acronym for "GIMP ToolKit" as a reminder of the toolkit legacy, however,
+      today GTK is trademarked and developed by the GNOME foundation and no longer
+      refers to GIMP.],
+  )<dbus_glossary>
   #glossary_entry(use_show: use_show_ref, "Gnome", [
     A Linux desktop environment.
   ])<Gnome>

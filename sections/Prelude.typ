@@ -2,7 +2,9 @@
 #lsp_placate()
 
 #section("Prelude")
-This section covers the required concepts for a plugin system.
+In order to properly analyze potential plugin system implementations, it is
+necessary to introduce required concepts for potential implementations. For this
+section, these concepts are discussed.
 
 #subsection("Mangling")
 Mangling is the act of renaming designators by the compiler. Mangling can have
@@ -126,17 +128,17 @@ also be used within ReSet with the multiprocess paradigm via DBus.
 #subsubsection("Versioning")
 In order for dynamic libraries to be sharable, they need to be compatible with
 each program using the library. Depending on the system that loads the library,
-different tactics are used to load dynamic libraries. Under Linux, the
-loading behavior depends on the installation variant. System native
-installations will always share one instance of a specific library, there may
-not be any other version of this specific library. This approach ensures maximum
-re-usage of resources and keeps the footprint low. However, at the same, it
-requires that all applications installed on this system must be compatible with
-this version of the library. Simple versioning such as incrementing the version
-number for each small change would make this system infeasible. For example,
-simple bug fixes would break compatibility. In order to solve this issue,
-semantic versioning is used. This system creates several guarantees for a
-library by using multiple different version numbers.
+different tactics are used to load dynamic libraries. Under Linux, the loading
+behavior depends on the installation variant. System native installations will
+always share one instance of a specific library, there may not be any other
+version of this specific library. This approach ensures maximum re-usage of
+resources and keeps the footprint low. However, at the same, it requires that
+all applications installed on this system must be compatible with this version
+of the library. Simple versioning such as incrementing the version number for
+each small change would make this system infeasible. For example, simple bug
+fixes would break compatibility. In order to solve this issue, semantic
+versioning is used. This system creates several guarantees for a library by
+using multiple different version numbers.
 
 In @semantic_versioning the semantic version of the library Glibc is visualized.
 
@@ -151,8 +153,8 @@ In @semantic_versioning the semantic version of the library Glibc is visualized.
 
 #align(
   left, [#figure(
-    sourcecode(raw(code, lang: "bash")), kind: "code", supplement: "Listing", caption: [Semantic versioning],
-  )<semantic_versioning>],
+      sourcecode(raw(code, lang: "bash")), kind: "code", supplement: "Listing", caption: [Semantic versioning],
+    )<semantic_versioning>],
 )
 
 The minor version of a shared library can have multiple numbers, usually, it

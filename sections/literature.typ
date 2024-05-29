@@ -17,6 +17,11 @@ that will never be used, for example, touchpad settings on a desktop, here the
 system could either detect available devices and load plugins respectively, or
 simply give users the ability to gradually control their used plugins.
 
+Specifically for hardware support, a plugin system also covers potential future
+hardware, which would require new features to be added to ReSet in order to
+support that new hardware. A plugin system can alleviate this problem, by
+offering a simpler extension mechanism.
+
 #subsection("High Level Architecture")
 In @base_plugin_architecture the intended architecture of the plugin system is
 visualized.
@@ -76,7 +81,7 @@ interpreted languages are visualized.
 Code patching is technically not a plugin system. With code patching, users need
 to change the code of the application themselves in order to achieve the
 expected functionality. This type of extensibility is found in a specific set of
-open-source applications called "suckless". @suckless
+free and open-source applications called "suckless". @suckless
 
 While not necessarily part of a plugin system, it is still important to note
 that this system requires a soft API/ABI stability. If the developers of the
@@ -384,11 +389,14 @@ effective. It enforces limited functionality, which can severely limit the
 attack vectors compared to a Turing complete language. The downside of this
 approach is that only plugins with a supported use case can be created.
 
+An example for a non-turing complete language are markdown languages like HTML.
+HTML only offers specific tags which cannot create any functionality beyond the
+documented functionality.
+
 #subsection("Security")
-Security in plugin systems is not an easy task. Developers want to rely on the
-plugin system in order to focus on their core systems, however, this puts the
-burden of development on other developers, which could potentially have
-malicious intentions.
+Developers want to rely on the plugin system in order to focus on their core
+systems, however, this puts the burden of development on other developers, which
+could potentially have malicious intentions.
 
 Similar concerns can be seen with browser extensions which are also just
 plugins, just for the browser itself. Some organizations require reviews from
@@ -398,7 +406,7 @@ it harder for malicious code to be published as an extension. @chrome-policy
 While researching systems, two potential mitigations for security concerns could
 be of interest for ReSet. The first is simply enforcing plugins to use an open
 license. This could be done with a copy-left license which would enforce that
-any code utilizing code of ReSet would also need to provide their sourcecode
+any code utilizing code of ReSet would also need to provide their source code
 with the same license. Currently, ReSet is already distributed under the GNU
 General Public License V3-or-later, which would apply the copy-left nature.
 Issues with this approach occur with legal questions, as enforcing copy-left
@@ -419,17 +427,17 @@ utilize the keyring functionality. This ensures that a user has a singular
 database which is not controlled by ReSet. The downside to this would be the
 dependency on keyrings themselves. @GNOME-Keyring @Keyring-Rust
 
-#subsection("Hooks")
-// TODO: which section is it referring to?
-Hooks for the plugin system refer to section in the code where the plugin
-applies its functionality. When looking back at the ABI plugin example in
-@rust_dynamic_libary_loading, this would be the call of the function inside the
-plugin system struct. For the example in @rust_function_overriding it would
-instead be the overridden function.
-
-// TODO: why is this important?
-// TODO: Security concerns? Potential uninitialized resources etc.
-// TODO: Providing a consistent environment for plugins in order for them to not crash
+//#subsection("Hooks")
+//// TODO: which section is it referring to?
+//Hooks for the plugin system refer to section in the code where the plugin
+//applies its functionality. When looking back at the ABI plugin example in
+//@rust_dynamic_libary_loading, this would be the call of the function inside the
+//plugin system struct. For the example in @rust_function_overriding it would
+//instead be the overridden function.
+//
+//// TODO: why is this important?
+//// TODO: Security concerns? Potential uninitialized resources etc.
+//// TODO: Providing a consistent environment for plugins in order for them to not crash
 #subsection("Testing")
 ReSet does not yet have a testing system implemented, only regular Rust tests
 are currently implemented, and those do not cover the full usage of the DBus API
@@ -649,118 +657,3 @@ release version.
 // todo write stuff macros
 #pagebreak()
 
-#subsection("Plugin UI Mockups")
-In this section, two mockups of potential plugins are created. The first plugin
-allows the user to change monitor settings and the second plugin allows keyboard
-settings. The mockups were created using Mockflow, which is an online tool for
-creating mockups. The mockups are not final and are only meant to give an first
-impression.
-
-#subsubsection("Monitor Plugin Mockup")
-While settings applications offer many different approaches and user interfaces,
-the monitor settings look very similar across practically all applications that
-were referenced. There is always a drag and drop area where the user can align
-monitors. Because there are a near infinite variations on how monitors can be
-ordered, it makes sense to use a widget where the user can visually see the end
-result. This makes it very intuitive compared to having users set the offset as
-a number. A user is most likely to be familiar with a drag and drop feature,
-which makes it easy to understand on how to use it @draganddrop.\
-The "Cancel" and "Apply" buttons are placed at the bottom of the drag and drop
-area becuase it follows the natural downward flow of the user. A feature that
-can be implemented into that area is the ability to change commonly used monitor
-settings inside the area like resoluation and orientation. Many applications
-only offer these settings after scrolling a bit, which is not very user
-friendly.
-#align(
-  center, [#figure(
-      img("../figures/monitorMock.png", width: 75%, extension: "figures"), caption: [Monitor plugin mockup],
-    )],
-)
-
-Below this area, the user can set the main monitor and change other settings
-such as the brightness and night mode. The order is heavily inspired from
-Windows 11. The further down the user scrolls the more advanced the settings
-become. The specific form controls for each setting is not considered as for
-now.\
-There are a few settings that are handled differently or are just plainly not
-available in certain desktop environments. To address these variations, the UI
-will check which desktop environment is currently running and display the
-correct widgets accordingly.
-
-#align(
-  center, [#figure(
-      img(
-        "../figures/windowsMonitorSettings.png", width: 75%, extension: "figures",
-      ), caption: [Windows monitor settings],
-    )],
-)
-
-#subsubsection("Keyboard Plugin")
-While there are many keyboard settings that can be implemented, only the very
-basic ones will be in the mockup. Any further settings can be implemented
-further down the navigation page or a group of settings can be moved into a tab
-to keep the main page clean and simple.
-
-#align(
-  center, [#figure(
-      img("../figures/keyboardMock.png", width: 75%, extension: "figures"), caption: [Mock of keyboard plugin],
-    )],
-)
-
-The keyboard plugin UI starts with a list of currently available keyboard
-layouts. Because the user can have multiple keyboard layouts which have to be
-sorted by importance, the best form control for this is a sortable list. This is
-because at the same time, the layout in first place is also the default keyboard
-layout The usage of such form control can be seen in Windows and Gnome Settings.\
-Something important to note is that there is a maximum of keyboard layouts a
-system can have configured at the same time. For example, if a user has ten
-keyboard layouts configured, only the first few can be switched to. This limit
-is dependend on the desktop environment and therefore has to be dynamically
-adjusted. The first few keyboard layouts will be colored to indicatet if they
-are active or not.
-
-#align(
-  center, [#figure(
-      img(
-        "../figures/gnomeKeyboardSetting.png", width: 50%, extension: "figures",
-      ), caption: [Gnome keyboard layouts],
-    )],
-)
-
-The user can also add a new layout with "Add layout" button, which places the
-new layout at the bottom of the list. By clicking on the three dots on the
-right, the user can open a context menu to remove the layout. The user is shown
-a list of all available keyboard layouts in the system. The arrow icon indicates
-that there are multiple variations of the same keyboard like
-"de-us", "de-dvorak", "de-mac" and many more. To reduce cluttering, only the
-main layout is shown and all other variations are hidden until the user clicks
-on the row. This immediately hides all other layouts and only shows the layout
-and its variations. A new back button will be prepended to the list to allow the
-user to go back to the main list. This feature is inspired by Gnome Settings and
-has been expanded upon. Gnome Settings only has this feature for "English (UK)"
-and "English (US)", while all other layouts are shown at the same time. This
-makes it harder for the user to find a specific layout because the filtering the
-layouts with the search bar can still show layouts of another language, which
-have a similar name like. //todo add example
-
-#align(
-  center, [#figure(
-      img(
-        "../figures/keyboardAddLayoutMock.png", width: 75%, extension: "figures",
-      ), caption: [Mock of keyboard add layout plugin],
-    )],
-)
-
-The context menu is used to view settings specific to a keyboard layout. This
-includes the removal of a layout for example, but can also used to show the
-keyboard layout visually. This is a feature missing in Windows but is available
-in Gnome. This feature can be very useful for users who have a different layout
-than their pyhsical keyboard.
-
-#align(
-  center, [#figure(
-      img(
-        "../figures/gnomeKeyboardVisual.png", width: 100%, extension: "figures",
-      ), caption: [Visual keyboard layout in Gnome],
-    )],
-)
