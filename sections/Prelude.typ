@@ -203,7 +203,7 @@ also access memory from the executable, which requires two-way access.
 // TODO: explain more
 
 #figure(
-  img("global_offset_table.svg", width: 70%, extension: "files"), caption: [Global offset table usage example],
+  img("global_offset_table.svg", width: 65%, extension: "files"), caption: [Global offset table usage example],
 )<global_offset_table>
 
 #subsection("Application Binary Interface (ABI)")
