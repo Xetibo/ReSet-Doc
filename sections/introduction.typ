@@ -55,7 +55,7 @@ allows for testing and potential revisions of the system.
 
   This ensures that users will be able to switch from one plugin to another
   without being introduced to new design paradigms or differing concepts.
-- *Accessibility* \ // TODO: should be renamed -> this application does not cover accessibility
+- *Ease of Use* \
   Creating a good user experience and making the application accessible to all
   users requires a deep understanding of the user base which could require a lot
   of time.

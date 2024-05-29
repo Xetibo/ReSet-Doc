@@ -1,8 +1,5 @@
 #import "../../templates/utils.typ": *
 
-#section("Plugin System Implementation")
-This section covers the implementation of the ReSet plugin system.
-
 #subsection("General Plugin System")
 
 #subsection("Any-Variant")
