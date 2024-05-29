@@ -19,10 +19,18 @@ simply give users the ability to gradually control their used plugins.
 
 Specifically for hardware support, a plugin system also covers potential future
 hardware, which would require new features to be added to ReSet in order to
-support that new hardware. A plugin system can alleviate this problem, by
-offering a simpler extension mechanism.
+support new hardware. A plugin system can alleviate this problem, by offering a
+simpler extension mechanism.
 
 #subsection("High Level Architecture")
+
+ReSet follows a multi-process paradigm. This ensures that users have the option
+to avoid the graphical user interface of ReSet if they wish to. The parts of
+ReSet are therefore split into the daemon, which handles the functionality as a
+constant running service, while ReSet itself refers to the graphical user
+interface which will interact with the daemon via Dbus (Inter Process
+Communication).
+
 In @base_plugin_architecture the intended architecture of the plugin system is
 visualized.
 #align(
@@ -48,14 +56,46 @@ can choose to not use the user interface, and instead interact with ReSet via
 DBus.
 
 #subsection("Plugin System Variants")
-In this section, different variants of plugin systems are discussed and
-compared.
+In this section, different variants of plugin systems are discussed.
 
 #subsubsection("Interpreted Languages")
 Interpreted languages can be run on top of the original application in order to
 provide on-the-fly expansion of functionality. In this case, the included
 interpreter uses functions within the application when certain functions are
 called by the interpreted language.
+
+#subsubsubsection("Custom Scripting Language")
+Creating a custom language just for a plugin system serves two potential use
+cases. The first would be security concerns which are explained in @Security.
+The idea is that with custom scripting languages, it is possible to limit the
+functionality of the language, making it infeasible or harder for malicious
+developers to abuse the plugin system. The second use case is the simplification
+of functionality for potential plugin developers. For ReSet, this could mean
+creating ReSet-specific user interface elements with a single function call.
+However, this could also be potentially implemented with a library for an
+existing language.
+
+#subsubsubsection("Turing Complete")
+A simplified version of the meaning of Turing completeness for a programming
+language is whether the language can simulate the Turing machine (simplest
+possible computer). If the language can simulate a Turing machine, it would
+imply that the language has access to potential infinite loops and can therefore
+not be restricted in terms of functionality. In other words, if the language is
+Turing complete, any and all functionality that any other language can create is
+possible to be implemented. Turing incomplete languages on the other
+hand only offer a specific and limited set of functionalities, which cannot
+under any circumstance be extended upon without changing the language
+specification itself. @turing
+
+The security aspect is likely the biggest factor in choosing to create a custom
+scripting language. Here the use of Turing incomplete languages is the most
+effective. It enforces limited functionality, which can severely limit the
+attack vectors compared to a Turing complete language. The downside of this
+approach is that only plugins with a supported use case can be created.
+
+An example for a Turing incomplete language is the markup language HTML. It
+only offers specific tags which cannot create any functionality beyond the
+documented functionality. @html
 
 #subsubsubsection("Error Handling")
 A big benefit of this system is the abstraction between the original application
@@ -67,6 +107,14 @@ As an example, browsers use the same independent error handling for web pages,
 hence when a webpage encounters issues, the browser itself is still usable.
 
 #subsubsubsection("Language Requirements")
+A soft requirement of an interpreted language for plugins is the simplification
+of creating a plugin for potential plugin developers. If this requirement is not
+fulfilled, then the interpreted language does not offer any benefit other than
+slight security improvements if the language is non-turing complete.
+
+The second requirement is the interoperability with both the programming
+languages of the base system, and any technology that is used within the base
+system. For ReSet, this would be Rust and GTK as the main technologies.
 
 #subsubsubsection("Architecture")
 in @interpreted_languages_plugin the architecture of a plugin system with
@@ -371,28 +419,6 @@ impl AnyImpl for Example {
     )<rust_any_pattern>],
 )
 
-#subsection("Custom Scripting Language")
-Creating a custom language just for a plugin system serves two potential use
-cases. The first would be security concerns which are explained in @Security.
-The idea is that with custom scripting languages, it is possible to limit the
-functionality of the language, making it infeasible or harder for malicious
-developers to abuse the plugin system. The second use case is the simplification
-of functionality for potential plugin developers. For ReSet, this could mean
-creating ReSet-specific user interface elements with a single function call.
-However, this could also be potentially implemented with a library for an
-existing language.
-
-#subsubsection("Turing Complete")
-The security aspect is likely the biggest factor in choosing to create a custom
-scripting language. Here the use of non-turing complete language is the most
-effective. It enforces limited functionality, which can severely limit the
-attack vectors compared to a Turing complete language. The downside of this
-approach is that only plugins with a supported use case can be created.
-
-An example for a non-turing complete language are markdown languages like HTML.
-HTML only offers specific tags which cannot create any functionality beyond the
-documented functionality.
-
 #subsection("Security")
 Developers want to rely on the plugin system in order to focus on their core
 systems, however, this puts the burden of development on other developers, which
@@ -655,5 +681,4 @@ release version.
 )
 
 // todo write stuff macros
-#pagebreak()
 
