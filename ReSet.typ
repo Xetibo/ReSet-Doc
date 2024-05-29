@@ -28,6 +28,8 @@
   #pagebreak()
   #include "sections/appendix/risks.typ"
   #pagebreak()
+  #include "sections/appendix/user_tests.typ"
+  #pagebreak()
   #include "sections/appendix/hyprland_plugin.typ"
   #pagebreak()
   #include "sections/appendix/libraries.typ"
