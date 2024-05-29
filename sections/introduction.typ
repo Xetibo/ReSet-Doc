@@ -73,6 +73,14 @@ allows for testing and potential revisions of the system.
   existing plugins on every update.
 
 #subsection("Additional Objectives")
+The original work has limitations which this thesis intends to build upon. As an
+example, in the original work, code was often suboptimal with certain parts
+being duplicated due to complexity constraints. Another critical section is the
+testability of the program, which was omitted from the original work due to time
+constraints.
+
+As such, this thesis will include work on the original implementation in order
+to facilitate the basis for a plugin system.
 // animations
 // Furthermore, ReSet will add animations to improve its user experience which
 // helps to better understand the flow of the application, attend to accessibility
@@ -93,3 +101,11 @@ and explained in @PluginSystemEvaluation. Other features and improvements are
 discussed in/*@sometime*/. The implementation details can be found in/*@somewhere*/.
 The results of this thesis will be discussed in/*@somehow*/
 and potential future work are mentioned in/*@somewhereelse*/.
+
+#subsection("Potential")
+This thesis has the potential to introduce new functionality for users of
+minimal environments who still wish to use a unified program with both a
+graphical and command line interface.
+
+With further work, more plugins can be introduced that could bridge the gap to
+full desktop environments as explain in the original ReSet paper. @reset-paper

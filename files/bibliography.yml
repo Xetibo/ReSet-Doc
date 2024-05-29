@@ -1,3 +1,8 @@
+reset-paper:
+  type: thesis
+  title: ReSet
+  author: ["Fabio Lenherr", "Felix Tran"]
+  url: https://eprints.ost.ch/id/eprint/1193/
 title_image:
   type: artwork
   title: settings.svg
@@ -200,3 +205,16 @@ kscreen-doctor:
   type: repository
   title: Kscreen doctor gitlab of KDE
   url: https://invent.kde.org/plasma/libkscreen/-/tree/master/src/doctor?ref_type=heads
+MMU:
+  type: web
+  title: Memory Management Unit
+  url: https://en.wikipedia.org/wiki/Memory_management_unit
+html:
+  type: web
+  title: "HTML: HyprText Markup Language"
+  url: https://developer.mozilla.org/en-US/docs/Web/HTML
+turing:
+  type: web
+  title: "On computable numbers, with an application to the Entscheidungsproblem"
+  authors: "Turing, Alan Mathison"
+  url: https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf

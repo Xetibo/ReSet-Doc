@@ -63,7 +63,7 @@ return test_plugin"
 Helix is a post-modern modal text editor written in Rust. It currently does not
 offer a plugin system, however, as of February 2024, there is an open pull
 request on the helix repository. @helixpr This addition would introduce the
-list-based steel scripting language as a plugin system. @steel
+lisp-based steel scripting language as a plugin system. @steel
 
 The difference between Neovim with steel besides the paradigm of the scripting
 language is the integration with the Rust programming language. Steel offers a

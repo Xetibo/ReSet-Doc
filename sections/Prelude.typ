@@ -170,14 +170,14 @@ if possible, however, due to the sandboxed nature of flatpaks, it is also
 possible to install multiple versions of a specific library, ensuring that each
 program receives the necessary library.
 
-#subsubsection("Virtual Memory and Global Offset Table")
+#subsubsection("Virtual Memory and Global Offset Table (GOT)")
 Operating systems do not offer processes direct access to physical memory. This
 ensures that processes do not access random memory that is used by other
 processes. Virtual memory address mapping enforces this paradigm by creating a
 pointer map to physical memory. On this map, the operating system can control
 the allowed memory space of the application with the Memory Management Unit.
 Should the process try to access physical memory which is not offered to this
-process, then the MMU will cause an MMU fault signal.
+process, then the MMU will cause an MMU fault signal. @MMU
 
 When loading a potential shared library plugin for ReSet, this would result in
 two virtual address mappings, one for the ReSet user interface and one for the
@@ -203,7 +203,7 @@ also access memory from the executable, which requires two-way access.
 // TODO: explain more
 
 #figure(
-  img("global_offset_table.svg", width: 80%, extension: "files"), caption: [Global offset table usage example],
+  img("global_offset_table.svg", width: 70%, extension: "files"), caption: [Global offset table usage example],
 )<global_offset_table>
 
 #subsection("Application Binary Interface (ABI)")
@@ -230,7 +230,6 @@ working proof of concept plugin without functionality can be examined in
 @hyprland_plugin_rust. Hyprland offers plugins via the C++ ABI, meaning no
 compatibility with any other language is offered out of the box.
 
-#pagebreak()
 Consider the C++ struct in @cpp_struct.
 #figure(sourcecode(```cpp
 typedef struct {
@@ -281,8 +280,6 @@ struct PLUGIN_DESCRIPTION_INFO {
       sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [C ABI compatible struct in Rust],
     )<C_compatible_rust>],
 )
-
-#pagebreak()
 
 #subsubsection("Hourglass pattern")
 Using the hourglass pattern it is possible to provide a generalized ABI for
