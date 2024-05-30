@@ -30,6 +30,9 @@ Risks are assessed according to the ISO standard with a risk matrix.
     Verify the plugin that it is compatible and add measures in case of a plugin crash.
   ],
 )
+#line(start: (0%, 0%), end: (100%, 0%), stroke: black )
+
+#pagebreak()
 
 #risk(
   "Plugin System architecture not fitting", [
@@ -46,3 +49,4 @@ Risks are assessed according to the ISO standard with a risk matrix.
     Either sacrifice other planned features or change the scope of WiFi and Bluetooth functionalities.
   ],
 )
+#line(start: (0%, 0%), end: (100%, 0%), stroke: black )
