@@ -1,3 +1,122 @@
+crossbeam:
+  type: web
+  title: crossbeam
+  author: crossbeam-rs
+  url: https://github.com/crossbeam-rs/crossbeam
+dbus_rs:
+  type: repository
+  title: dbus-rs 
+  author: diwic
+  url: https://github.com/diwic/dbus-rs
+  note: License Apache-2.0, MIT
+libadwaita:
+  type: repository
+  title: libadwaita-rs
+  author: GNOME
+  url: https://gitlab.gnome.org/World/Rust/libadwaita-rs 
+  note: License MIT
+gtk4:
+  type: repository
+  title: gtk4-rs
+  author: gtk-rs
+  url: https://github.com/gtk-rs/gtk4-rs
+  note: License MIT
+glib:
+  type: repository
+  title: gtk-rs-core
+  author: gtk-rs
+  url: https://github.com/gtk-rs/gtk-rs-core
+  note: License MIT
+tokio:
+  type: repository
+  title: tokio
+  author: tokio-rs 
+  url: https://github.com/tokio-rs/tokio
+  note: License MIT
+fork:
+  type: repository
+  title: fork
+  author: immortal 
+  url: https://github.com/immortal/fork
+  note: License BSD-3-Clause
+ipnetwork:
+  type: repository
+  title: ipnetwork
+  author: achanda 
+  url: https://github.com/achanda/ipnetwork
+  note: License Apache-2.0
+libpulse_binding:
+  type: repository
+  title: pulse-binding-Rust
+  author: jnqnfe 
+  url: https://github.com/jnqnfe/pulse-binding-rust
+  note: License Apache-2.0, MIT
+directories_next:
+  type: repository
+  title: dirs
+  author: xdg-rs 
+  url: https://github.com/xdg-rs/dirs/tree/master/directories
+  note: License Apache-2.0, MIT
+reset-lib: 
+  type: repository
+  title: ReSet-Lib
+  author: Xetibo
+  url: https://github.com/Xetibo/ReSet-Lib
+  note: License GPL-3.0-or-later
+reset-daemon: 
+  type: repository
+  title: ReSet-Daemon
+  author: Xetibo
+  url: https://github.com/Xetibo/ReSet-Daemon
+  note: License GPL-3.0-or-later
+once-cell:
+  type: repository
+  title: OnceCell
+  author: matklad
+  url: https://github.com/matklad/once_cell
+  note: License Apache-2.0, MIT
+libloading-lib: 
+  type: repository
+  title: libloading
+  author: nagisa
+  url: https://github.com/nagisa/rust_libloading/
+  note: License ISC 
+serial-test: 
+  type: repository
+  title: serial_test
+  author: palfrey
+  url: https://github.com/palfrey/serial_test/
+  note: License MIT
+toml:
+  type: repository
+  title: toml
+  author: toml-rs
+  url: https://github.com/toml-rs/toml/tree/main/crates/toml
+  note: License Apache-2.0, MIT
+serde: 
+  type: repository
+  title: serde
+  author: serde-rs
+  url: https://github.com/serde-rs/serde
+  note: License Apache-2.0, MIT
+serde-json:
+  type: repository
+  name: serde-json
+  author: serde-rs
+  url: https://github.com/serde-rs/json
+  note: License Apache-2.0, MIT
+regex-rs:
+  type: repository
+  name: regex
+  author: rust-lang
+  url: https://github.com/rust-lang/regex
+  note: License Apache-2.0, MIT
+xkbregistry: 
+  type: repository
+  name: xkbregistry
+  author: jonasc
+  url: https://github.com/jonasc/xkbregistry.rs
+  note: License WTFPL 
 reset-paper:
   type: thesis
   title: ReSet

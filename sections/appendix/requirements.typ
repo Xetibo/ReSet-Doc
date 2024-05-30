@@ -33,4 +33,4 @@ which can be found in the ReSet and ReSet-Daemon repositories respectively.
 ], [
   - Check version number before running it.
 ])
-
+#line(start: (0%, 0%), end: (100%, 0%), stroke: black )
