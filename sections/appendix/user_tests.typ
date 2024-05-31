@@ -1,10 +1,8 @@
 #import "../../templates/utils.typ": *
 #lsp_placate()
 
-#section("User Testing")
+#subsection("User Testing")
 In this section the ReSet user testing for the exemplary plugins is discussed.
-
-#subsection("Monitor Plugin Feedback")
 
 #subsubsection("Monitor Plugin Tests")
 #test(
@@ -53,8 +51,6 @@ In this section the ReSet user testing for the exemplary plugins is discussed.
   ],
 )
 
-#subsection("Keyboard Plugin Feedback")
-
 #subsubsection("Keyboard Plugin Tests")
 #test(
   "Keyboard Plugin Base", "The plugin loads alongside the basic features of ReSet.", [
@@ -82,5 +78,5 @@ In this section the ReSet user testing for the exemplary plugins is discussed.
   ],
 )
 
-#subsection("Conclusion")
+#subsubsection("Conclusion")
 

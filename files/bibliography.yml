@@ -337,3 +337,7 @@ turing:
   title: "On computable numbers, with an application to the Entscheidungsproblem"
   authors: "Turing, Alan Mathison"
   url: https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf
+nix-os-web:
+  type: web
+  title: Nix
+  url: https://nixos.org/
