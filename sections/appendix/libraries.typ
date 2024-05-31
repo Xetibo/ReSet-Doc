@@ -15,7 +15,7 @@ This section covers all direct third-party libraries used within ReSet and its r
 - serial_test @serial-test: MIT 
 - toml @toml: Apache-2.0, MIT
 
-#subsubsection("ReSet-Daemon")
+#subsubsection("ReSet")
 - ReSet-Daemon @reset-daemon: GPL-V3-or-later
 - ReSet-Lib @reset-lib: GPL-V3-or-later
 - libadwaita @libadwaita: MIT
