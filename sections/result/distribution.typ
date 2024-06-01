@@ -3,6 +3,68 @@
 #section("Usage and Distribution")
 
 #subsection("Flatpak")
+Flatpak is a generic packaging solution that solves the issue of fragmentation
+across the Linux ecosystem by creating sandboxed environments for each
+application. @flatpak-web
+
+Flatpak is a developer first approach, meaning the distribution is done directly
+via developers who can request their application to be hosted on Flathub or on
+their own server. This is in contrast to packaging solutions, which were with
+distributions in mind, in other words, while packages installed by apt and
+similar can be installed directly from the developer, it will likely cause
+dependency issues, as apt packages define a single source for shared libraries.
+Therefore, distributions host packages themselves, meaning a Debian user would
+install packages from the Debian repository and not from the developer directly.
+
+In order to create a Flatpak package, ReSet needs to provide a Flatpak manifest,
+which defines the environment for Flatpak to build ReSet with. Within this
+sandbox, ReSet will then be built and packaged with all necessary dependencies
+in one, meaning the finished solution can then be used on any Linux system with
+Flatpak installed.
+
+In @reset-flatpak-manifest the Flatpak manifest of ReSet is visualized. Note
+that several options were omitted in order to keep the listing concise.
+
+#let code = "
+{
+  \"app-id\": \"org.Xetibo.ReSet\",
+  \"runtime\": \"org.gnome.Platform\",
+  \"runtime-version\": \"45\",
+  \"sdk\": \"org.gnome.Sdk\",
+  \"sdk-extensions\": [
+    \"org.freedesktop.Sdk.Extension.rust-nightly\"
+  ],
+  \"command\": \"reset\",
+  \"build-options\": {
+    \"append-path\": \"/usr/lib/sdk/rust-nightly/bin\"
+  },
+  \"modules\": [
+    {
+      \"name\": \"reset\",
+      \"buildsystem\": \"simple\",
+      \"build-commands\": [
+        \"cargo --offline fetch --manifest-path Cargo.toml --verbose\",
+        \"cargo --offline build --verbose\",
+        \"install -Dm755 ./target/release/reset -t /app/bin/\",
+        \"install -Dm644 ./src/resources/icons/ReSet.svg /app/share/icons/hicolor/scalable/apps/org.Xetibo.ReSet.svg\",
+        \"install -Dm644 ./flatpak/org.Xetibo.ReSet.desktop /app/share/applications/org.Xetibo.ReSet.desktop\"
+      ],
+    }
+  ]
+}
+";
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "json")), kind: "code", supplement: "Listing", caption: [ReSet Flatpak manifest],
+    )<reset-flatpak-manifest>],
+)
+
+Plugins for the flatpak cannot be distributed within flatpak itself. This is a
+limitation of Flatpak, as one package cannot access another without
+consequences. Hence, plugins would need to be compiled separately and placed
+within the folder structure manually. Specific installation steps are shown in
+@Usage.
 
 #subsection("NixOS")
 NixOS is the GNU/Linux distribution of the Nix project, which promises three
@@ -13,7 +75,7 @@ define both ReSet to be installed, and define the plugins for ReSet within the
 same configuration. This means that no additional system is required in order to
 have automatic handling of plugins. This is in contrast to other packaging
 solutions, which would require custom scripts in order to install and configure
-plugins via the package manager.
+plugins via the package manager. @nix-os-web
 
 In order provide this functionality for Nix, ReSet would either need to provide
 a flake file, which can be used by Nix users to install ReSet and their
@@ -107,6 +169,9 @@ copying them into the right directory, or directly pass a different installation
 path for cargo during the plugin installation.
 
 #subsection("Usage")
+If manual installation is required, the plugins must be placed within ```sh $XDG_CONFIG_DIR/reset/plugins/``` after
+compiling them individually.
+
 After installing the plugins, users are required to confirm their plugin
 selection within the ReSet configuration file by adding the exact filename of
 the plugin. By default, the configuration file is located at ```sh $XDG_CONFIG_DIR/reset/ReSet.toml```.

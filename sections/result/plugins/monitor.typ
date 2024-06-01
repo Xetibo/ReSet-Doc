@@ -256,8 +256,8 @@ positioning. This paradigm allows users to quickly place monitors on their
 preferred side, or even introduce gaps between monitors in order to prevent the
 mouse from automatically crossing the screen (not supported by KDE or GNOME).
 
-In figure @kde-gaps and @gnome-gaps, the error messages for gaps in GNOME and
-KDE are visualized.
+In @kde-gaps and @gnome-gaps, the error messages for gaps in GNOME and KDE are
+visualized.
 
 #align(
   center, [#figure(
@@ -270,7 +270,7 @@ KDE are visualized.
     )<gnome-gaps>],
 )
 
-In figure @kde-monitor, the KDE variant of the monitor configuration is shown.
+In @kde-monitor, the KDE variant of the monitor configuration is shown.
 
 #align(
   center, [#figure(
@@ -291,8 +291,7 @@ Colorblind barrier-free color pallet by Color Universal Design(CUD)
 
 //https://en.wikipedia.org/wiki/Color_blindness
 
-In figure @gnome-monitor, the GNOME variant of the monitor configuration is
-shown.
+In @gnome-monitor, the GNOME variant of the monitor configuration is shown.
 #align(
   center, [#figure(
       img("gnome-monitor.png", width: 70%, extension: "figures"), caption: [Screenshot of the monitor configuration within GNOME],
@@ -328,7 +327,7 @@ then proceeding to increase or decrease this number before dividing by 120
 again. The result will be a new scaling fraction within the constraints of the
 protocol.
 
-#align(center, [In figure @fraction-example, an example is visualized.])
+#align(center, [In @fraction-example, an example is visualized.])
 
 #align(
   left, [#figure([
@@ -355,7 +354,7 @@ scale or provide a range of valid scales to choose from. Existing solutions such
 as GNOME and KDE resorted to using a selection of scales by dropdown and slider
 respectively.
 
-In figure @scale-adjustment-kg the options from KDE and GNOME are visualized.
+In @scale-adjustment-kg the options from KDE and GNOME are visualized.
 #align(
   center, [#figure([
       #columns(2, [
@@ -372,8 +371,8 @@ arbitrary scale. This ensures the user cannot under any circumstance enter an
 invalid scale, removing a potential error. KDE offers both a slider which snaps
 to predefined percentages, while also offering a user input for arbitrary
 percentages. Noteworthy is that the user input automatically changes to a
-supported value when applying the configuration. In figure @scale-adjustment-kg
-the scaling was adjusted to 132% up from 130%, in this case the apply button is
+supported value when applying the configuration. In @scale-adjustment-kg the
+scaling was adjusted to 132% up from 130%, in this case the apply button is
 disabled as 132% is not a possible scale and the nearest possible scale (130%)
 is already applied.
 
@@ -434,7 +433,7 @@ coordinate system is required. For cairo this is a top-left to bottom-right
 system. This means that x increases towards the right and y increases towards
 bottom.
 
-In figure monitor-axis, the monitor axis is visualized.
+In monitor-axis, the monitor axis is visualized.
 #align(
   center, [#figure(
       img("monitor-axis.png", width: 70%, extension: "figures"), caption: [Visualization of the monitor coordinate system],
@@ -507,8 +506,7 @@ be accurate, instead they can approximately drag the icon to the target endpoint
 and drop it at this position. The desktop icon system will then reposition the
 icon towards the correct place within the grid system.
 
-In figure @monitor-dnd and @monitor-dnd-end, the dragging mechanism is
-visualized.
+In @monitor-dnd and @monitor-dnd-end, the dragging mechanism is visualized.
 
 #align(
   center, [#figure(

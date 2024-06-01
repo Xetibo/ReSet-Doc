@@ -200,7 +200,7 @@ pub extern \"C\" fn test_function(data: i32) -> i32 {
     )<rust_dynamic_libary_loading>],
 )
 
-In figure @rust_dynamic_libary_loading, the dynamic library has the annotation "no_mangle".
+In @rust_dynamic_libary_loading, the dynamic library has the annotation "no_mangle".
 This flag tells the compiler to not change the identity of the specified
 designator. Without this, functions and variables will not be found with the
 original names. Mangling is further explained in section @Mangling.

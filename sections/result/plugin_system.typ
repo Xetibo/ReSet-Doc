@@ -99,7 +99,7 @@ ensures that no plugin can override an existing interface, potentially shadowing
 a common interface with a malicious one.
 
 The registration and insertion of interfaces is handled with the crossroads DBus
-context shown in figure @dbus_crossroads_register.
+context shown in @dbus_crossroads_register.
 
 #let code = "
 let interface = cross.register(interface_name, |c| {

@@ -5,7 +5,7 @@ crossbeam:
   url: https://github.com/crossbeam-rs/crossbeam
 dbus_rs:
   type: repository
-  title: dbus-rs 
+  title: dbus-rs
   author: diwic
   url: https://github.com/diwic/dbus-rs
   note: License Apache-2.0, MIT
@@ -13,7 +13,7 @@ libadwaita:
   type: repository
   title: libadwaita-rs
   author: GNOME
-  url: https://gitlab.gnome.org/World/Rust/libadwaita-rs 
+  url: https://gitlab.gnome.org/World/Rust/libadwaita-rs
   note: License MIT
 gtk4:
   type: repository
@@ -30,40 +30,40 @@ glib:
 tokio:
   type: repository
   title: tokio
-  author: tokio-rs 
+  author: tokio-rs
   url: https://github.com/tokio-rs/tokio
   note: License MIT
 fork:
   type: repository
   title: fork
-  author: immortal 
+  author: immortal
   url: https://github.com/immortal/fork
   note: License BSD-3-Clause
 ipnetwork:
   type: repository
   title: ipnetwork
-  author: achanda 
+  author: achanda
   url: https://github.com/achanda/ipnetwork
   note: License Apache-2.0
 libpulse_binding:
   type: repository
   title: pulse-binding-Rust
-  author: jnqnfe 
+  author: jnqnfe
   url: https://github.com/jnqnfe/pulse-binding-rust
   note: License Apache-2.0, MIT
 directories_next:
   type: repository
   title: dirs
-  author: xdg-rs 
+  author: xdg-rs
   url: https://github.com/xdg-rs/dirs/tree/master/directories
   note: License Apache-2.0, MIT
-reset-lib: 
+reset-lib:
   type: repository
   title: ReSet-Lib
   author: Xetibo
   url: https://github.com/Xetibo/ReSet-Lib
   note: License GPL-3.0-or-later
-reset-daemon: 
+reset-daemon:
   type: repository
   title: ReSet-Daemon
   author: Xetibo
@@ -75,13 +75,13 @@ once-cell:
   author: matklad
   url: https://github.com/matklad/once_cell
   note: License Apache-2.0, MIT
-libloading-lib: 
+libloading-lib:
   type: repository
   title: libloading
   author: nagisa
   url: https://github.com/nagisa/rust_libloading/
-  note: License ISC 
-serial-test: 
+  note: License ISC
+serial-test:
   type: repository
   title: serial_test
   author: palfrey
@@ -93,7 +93,7 @@ toml:
   author: toml-rs
   url: https://github.com/toml-rs/toml/tree/main/crates/toml
   note: License Apache-2.0, MIT
-serde: 
+serde:
   type: repository
   title: serde
   author: serde-rs
@@ -111,12 +111,12 @@ regex-rs:
   author: rust-lang
   url: https://github.com/rust-lang/regex
   note: License Apache-2.0, MIT
-xkbregistry: 
+xkbregistry:
   type: repository
   name: xkbregistry
   author: jonasc
   url: https://github.com/jonasc/xkbregistry.rs
-  note: License WTFPL 
+  note: License WTFPL
 reset-paper:
   type: thesis
   title: ReSet
@@ -341,3 +341,7 @@ nix-os-web:
   type: web
   title: Nix
   url: https://nixos.org/
+flatpak-web:
+  type: web
+  title: Flatpak
+  url: https://flatpak.org/
