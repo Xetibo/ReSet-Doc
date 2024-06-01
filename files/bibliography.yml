@@ -221,6 +221,14 @@ kdeconfig:
   type: web
   title: gsettings
   url: https://userbase.kde.org/KDE_System_Administration/Configuration_Files
+xkblimitation:
+  type: web
+  title: xkb
+  url: https://www.x.org/releases/X11R7.7/doc/kbproto/xkbproto.html
+waylandkeyboard:
+  type: web
+  title: wayland-keyboard
+  url: https://wayland-book.com/seat/xkb.html
 adwspinrow:
   type: web
   title: Adwaita SpinRow
