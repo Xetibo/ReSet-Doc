@@ -13,14 +13,16 @@ This allows for simple handling of labels and function points, which can also be
 changed later on if needed.
 
 #subsubsection("Sprint Backlog/Product Backlog")
-Both the sprint backlog and the product backlog are handled using the GitHub project board. // @github_project_board.
+Both the sprint backlog and the product backlog are handled using the GitHub project 
+board. // @github_project_board.
 This allows for a clean and automatic handling of created user stories via
 GitHub issues. //@github_issues.
 
 #subsubsection("Tools")
-Rust is an editor-agnostic language, hence both team members can use their tools without conflicts.
-For documentation typst is used, which also does not require a special editor, it just requires a compiler that works on all platforms.
-The user interface is made with Cambalache.
+Rust is an editor-agnostic language, hence both team members can use their tools 
+without conflicts. For documentation typst is used, which also does not require 
+a special editor, it just requires a compiler that works on all platforms. The user 
+interface is made with Cambalache.
 
 #subsection("Time")
 As an agile methodology is used, long-term time management is only broad

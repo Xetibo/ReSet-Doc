@@ -2,7 +2,7 @@
 #lsp_placate()
 
 #subsection("User Testing")
-In this section the ReSet user testing for the exemplary plugins is discussed.
+In this section, the ReSet user testing for the exemplary plugins is discussed.
 
 #subsubsection("Monitor Plugin Tests")
 #test(

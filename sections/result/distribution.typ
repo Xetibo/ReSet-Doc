@@ -71,17 +71,17 @@ NixOS is the GNU/Linux distribution of the Nix project, which promises three
 substantial benefits for users: Reproducibility, Declarativeness and
 Reliability. For ReSet, the interesting claim is the declarative aspect of Nix.
 With Nix, it is possible to create a system configuration, with which a user can
-define both ReSet to be installed, and define the plugins for ReSet within the
+define both ReSet to be installed and define the plugins for ReSet within the
 same configuration. This means that no additional system is required in order to
 have automatic handling of plugins. This is in contrast to other packaging
 solutions, which would require custom scripts in order to install and configure
 plugins via the package manager. @nix-os-web
 
-In order provide this functionality for Nix, ReSet would either need to provide
+In order to provide this functionality for Nix, ReSet would either need to provide
 a flake file, which can be used by Nix users to install ReSet and their
 respective plugins directly from the source, or ReSet could create a pull
 request on the official nix repositories.\
-In order to not depend on third party arbitration, this thesis will focus on
+In order to not depend on third-party arbitration, this thesis will focus on
 creating a flake, which will include the possibility of installing and
 configuring plugins automatically.
 
@@ -164,8 +164,8 @@ plugin folder.
 Cargo is the package manager for the Rust language, which allows both the
 management of libraries within a project and the installation of binaries for a
 user. Installed binaries are located within the user home directory in ```sh ~/.cargo/bin/```.
-This means that a user must then manually handle installation of plugins by
-copying them into the right directory, or directly pass a different installation
+This means that a user must then manually handle the installation of plugins by
+copying them into the right directory or directly passing a different installation
 path for cargo during the plugin installation.
 
 #subsection("Usage")

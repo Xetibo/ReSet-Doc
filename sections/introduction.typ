@@ -5,8 +5,8 @@
 /* This thesis focuses on the improvement of the ReSet settings application. The improvements cover a large variety of topics, including a plugin system/* @plugin_system */, attending accessibility concerns in/* @accessibility */, creating a testing framework for DBus functionality in/* @test_framework */, animations for the ReSet user interface and creating a command line application to interface with ReSet. */
 ReSet is a settings application for Linux made with GTK and the Rust programming
 language. The application aims to provide functionality for all user interfaces
-(Desktop Environments) on Linux, reducing the need for first party applications
-by the environments themselves or the reliance on smaller single utility
+(Desktop Environments) on Linux, reducing the need for first-party applications
+by the environments themselves or the reliance on smaller single-utility
 applications.
 
 ReSet was a semester project for the OST, Eastern Switzerland University of
@@ -14,12 +14,12 @@ Applied Sciences. This thesis will expand on the original work, solving existing
 issues and expanding its feature set.
 
 #subsection("Objectives")
-The focus of this thesis is the on the introduction of a plugin system for the
-existing ReSet application, which was omitted from the original work due time
+The focus of this thesis is on the introduction of a plugin system for the
+existing ReSet application, which was omitted from the original work due to time
 constraints.
 
-The objective of a plugin system for ReSet is providing a framework for
-developers to create their own widget for ReSet in order to provide additional
+The objective of a plugin system for ReSet is to provide a framework for
+developers to create their widgets for ReSet in order to provide additional
 setting functionality. Currently, ReSet only offers basic features such as
 Networking, Bluetooth and Audio. These features are as generic as possible and
 are expected to be usable on all Linux environments (considering the hardware
@@ -29,13 +29,13 @@ ReSet would lead to an unmaintainable and likely non-functional product.
 Therefore, the plugin system can cover both individual implementations, and
 providing dynamic settings for specific hardware or user preferences.
 
-Examples for hardware are drawing tablets, virtual reality headsets,
+Hardware examples are drawing tablets, virtual reality headsets,
 accessibility solutions and more. User preference examples cover the reality
 that not every user requires all settings, therefore a plugin system offers the
 users the possibility to omit subjectively superfluous settings.
 
 In order to expand the original ReSet application, this thesis will also develop
-exemplary plugins. This will ensure functionality of the plugin system and
+exemplary plugins. This will ensure the functionality of the plugin system and
 allows for testing and potential revisions of the system.
 
 // ReSet will mainly focus on the plugin system, which allows it to expand its
@@ -100,7 +100,7 @@ discussed. Further analysis based on existing implementations is discussed in
 and explained in @PluginSystemEvaluation. Other features and improvements are
 discussed in/*@sometime*/. The implementation details can be found in/*@somewhere*/.
 The results of this thesis will be discussed in/*@somehow*/
-and potential future work are mentioned in/*@somewhereelse*/.
+and potential future work is mentioned in/*@somewhereelse*/.
 
 #subsection("Potential")
 This thesis has the potential to introduce new functionality for users of
@@ -108,4 +108,4 @@ minimal environments who still wish to use a unified program with both a
 graphical and command line interface.
 
 With further work, more plugins can be introduced that could bridge the gap to
-full desktop environments as explain in the original ReSet paper. @reset-paper
+full desktop environments as explained in the original ReSet paper. @reset-paper

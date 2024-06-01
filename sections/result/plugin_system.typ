@@ -44,7 +44,7 @@ pub struct Variant {
 Comparing this to a language like Java highlights both the complexity of Rust as
 well as the clear difference in paradigm. In Java, all reference types are
 linked to a garbage collector as well as equipped with a virtual table, which
-means that lifetimes, allocation and de-allocation, as well as casting is
+means that lifetimes, allocation and de-allocation, as well as casting, are
 handled automatically and enforced for all safe Java code. With Rust, a garbage
 collector does not exist, and virtual tables are an opt-in feature, as using by
 default would introduce performance overhead. For the Any variant, this virtual
@@ -54,7 +54,7 @@ function.
 #let code = "
 public interface IAny<T> {
   // public T into_variant();
-  // This is not necessary as java doesn't support arbitrary interface
+  // This is not necessary as Java doesn't support arbitrary interface
   // implementation for existing types.
   public T value();
 }
@@ -84,17 +84,17 @@ variant will always have the same allocation size. Omitting this pointer would
 enforce that the values within the variant are stored inside the variant struct
 without indirection. Given different possible value types, Rust could no longer
 determine the size of a specific variant at compile time, hence a pointer is
-used to mimick the behavior of Java (enforcement of references).
+used to mimic the behavior of Java (enforcement of references).
 
 #subsection("Security")
 The initial idea of the ReSet plugin system was to reduce the attack vector by
 enforcing a narrow definition for the plugin system. As the ReSet daemon uses
-DBus, each plugin can provide their own DBus interface. For DBus, there are
-three different levels which a program can and must provide. The first is the
+DBus, each plugin can provide its own DBus interface. For DBus, there are
+three different levels that a program can and must provide. The first is the
 DBus object, these objects then implement interfaces which in return provide
 functions for calling programs. ReSet plugins should only provide a name for the
 plugin and functions that will be implemented for the interface. This ensures
-that the deamon is the sole authority for adding any interface or object, which
+that the daemon is the sole authority for adding any interface or object, which
 ensures that no plugin can override an existing interface, potentially shadowing
 a common interface with a malicious one.
 
@@ -114,12 +114,12 @@ cross.insert(dbus_path, &[interface], data);"
     )<dbus_crossroads_register>],
 )
 
-During implementation of this system, it was found that the DBus functions would
-not be able to be provided by the shared library. Attempting to call
+During the implementation of this system, it was found that the DBus functions 
+would not be able to be provided by the shared library. Attempting to call
 functionality provided by shared libraries would result in the object not being
 available. The only way to solve this issue was to provide plugins with a
 reference to the crossroads DBus context, which would enable plugins to insert
-and register their own interfaces.
+and register their interfaces.
 
 #subsection("Plugin Testing")
 Rust tests are handled by a specific test macro, this flag tells the compiler
@@ -133,10 +133,10 @@ the same thread and any error would cancel all remaining plugin tests.
 
 // TODO: code of original testing call
 
-In order to solve this issue, ReSet utilizes a different thread spawning
+In order to solve this issue, ReSet utilizes a different thread-spawning
 mechanism with a separate printing functionality in order to provide feedback
-about each individual plugin test function. This mechanism also allows plugins
-to be shown as separate entities with their own tests, ensuring that developers
+about each plugin test function. This mechanism also allows plugins to be 
+shown as separate entities with their tests, ensuring that developers
 receive appropriate feedback.
 
 #let code = "
@@ -175,7 +175,7 @@ For the daemon, the specific list of functions is visualized in
 
 #let code = "
 extern \"C\" {
-    // functions to create or clean-up data
+    // functions to create or clean up data
     pub fn backend_startup();
     pub fn backend_shutdown();
 
@@ -206,9 +206,9 @@ extern \"C\" {
 A plugin that implements these functions can now be compiled and copied into the
 plugin folder. Additionally, in order to run the plugin, the configuration of
 ReSet would need to be updated to include the name of the plugin binary. This is
-to ensure that only user defined plugins are loaded. Note that this does not
+to ensure that only user-defined plugins are loaded. Note that this does not
 offer proper security, it only offers protection against unintentional loading
-by the user themselves.
+by the user.
 
 In @plugin_loading_config, the toml configuration in order to load the plugin is
 visualized.
@@ -223,18 +223,18 @@ plugins = [ \"libreset_monitors.so\", \"libreset_keyboard_plugin.so\" ]
     )<plugin_loading_config>],
 )
 
-The loading of the plugins themselves is handled by the ReSet library that
+The loading of the plugins themselves is handled by the ReSet library which
 offers this for both the daemon and the user interface. It also covers the
 potential duplication of memory when loading the plugin twice. In other words,
 the library will only load the plugin into memory once as defined in TODO. The
-only differing part is the fetching of functions from a plugin, which will be
+only difference is the fetching of functions from a plugin, which will be
 different depending on the daemon or the user interface.
 
-This loading will also be done in a lazy fashion. This means that the plugins
-files will only be loaded when either the daemon or the user interface
-explicitly call the plugin.
+This loading will also be done lazily. This means that the plugin files will 
+only be loaded when either the daemon or the user interface explicitly call 
+the plugin.
 
-In @plugin_lib_structures, the structures for loading plugins is visualized.
+In @plugin_lib_structures, the structures for loading plugins are visualized.
 
 #let code = "
 pub static LIBS_LOADED: AtomicBool = AtomicBool::new(false);
@@ -257,12 +257,11 @@ static mut PLUGIN_DIR: Lazy<PathBuf> = Lazy::new(|| PathBuf::from(\"\"));
     )<plugin_lib_structures>],
 )
 
-Due to the fact that both the daemon and the user interface are started up in a
-non-deterministic fashion, the plugin library loading will also potentially be
-non-deterministic. This enforces an atomic check that both the daemon or the
-user interface can see. If the check is already either in loading or loaded, the
-other process would simply wait or immediately move on to using the plugin
-respectively.
+Because both the daemon and the user interface are started up in a non-deterministic 
+fashion, the plugin library loading will also potentially be non-deterministic. 
+This enforces an atomic check that both the daemon or the user interface can see. 
+If the check is already either in loading or loaded, the other process would simply 
+wait or immediately move on to using the plugin respectively.
 
 Loading of plugins themselves in both the daemon and the user interface can be
 done by iterating over the BACKEND_PLUGINS or FRONTEND_PLUGINS global

@@ -135,7 +135,7 @@ fn main() {
 )
 
 A challenge to utilize any scripting language with GTK is that both GTK and the
-scripting language have their thread, and both are single-threaded environments.
+scripting language has its thread, and both are single-threaded environments.
 Hence, it requires manual synchronization and also requires special wrapping of
 GTK structs as they are not marked as Sync/Send, which is required in Rust for
 multithreading.
@@ -144,7 +144,7 @@ multithreading.
 Various game engines and modding frameworks also utilize lua as a scripting
 language in order to provide extendability.
 
-Roblox for example uses lua to provide players a way to create their gamemodes.
+Roblox for example uses lua to provide players a way to create their game modes.
 @roblox_lua
 
 There are also modding frameworks like UE4SS, which uses lua as the scripting

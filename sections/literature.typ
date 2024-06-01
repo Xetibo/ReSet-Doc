@@ -26,7 +26,7 @@ simpler extension mechanism.
 
 ReSet follows a multi-process paradigm. This ensures that users have the option
 to avoid the graphical user interface of ReSet if they wish to. The parts of
-ReSet are therefore split into the daemon, which handles the functionality as a
+ReSet is therefore split into the daemon, which handles the functionality as a
 constant running service, while ReSet itself refers to the graphical user
 interface which will interact with the daemon via Dbus (Inter Process
 Communication).
@@ -81,9 +81,9 @@ language is whether the language can simulate the Turing machine (simplest
 possible computer). If the language can simulate a Turing machine, it would
 imply that the language has access to potential infinite loops and can therefore
 not be restricted in terms of functionality. In other words, if the language is
-Turing complete, any and all functionality that any other language can create is
+Turing complete, any functionality that any other language can create is
 possible to be implemented. Turing incomplete languages on the other
-hand only offer a specific and limited set of functionalities, which cannot
+hand only offers a specific and limited set of functionalities, which cannot
 under any circumstance be extended upon without changing the language
 specification itself. @turing
 
@@ -93,7 +93,7 @@ effective. It enforces limited functionality, which can severely limit the
 attack vectors compared to a Turing complete language. The downside of this
 approach is that only plugins with a supported use case can be created.
 
-An example for a Turing incomplete language is the markup language HTML. It
+An example of a Turing incomplete language is the markup language HTML. It
 only offers specific tags which cannot create any functionality beyond the
 documented functionality. @html
 
@@ -112,8 +112,8 @@ of creating a plugin for potential plugin developers. If this requirement is not
 fulfilled, then the interpreted language does not offer any benefit other than
 slight security improvements if the language is non-turing complete.
 
-The second requirement is the interoperability with both the programming
-languages of the base system, and any technology that is used within the base
+The second requirement is interoperability with both the programming
+languages of the base system and any technology that is used within the base
 system. For ReSet, this would be Rust and GTK as the main technologies.
 
 #subsubsubsection("Architecture")
@@ -236,7 +236,7 @@ resources.
 
 In @rust_thread_panic and @thread_panic_screenshot the use of simple Rust
 threads guarantees the continuation of the invoking thread, meaning the
-underlying application can still continue to run even though the spawned thread
+underlying application can continue to run even though the spawned thread
 encountered a fatal error.
 
 #let code = "
@@ -450,7 +450,7 @@ database upon startup, the user would be prompted for permission before loading
 the plugin. The challenge with this approach is the inclusion of an
 authentication mechanism. In order to facilitate this mechanism, ReSet could
 utilize the keyring functionality. This ensures that a user has a singular
-database which is not controlled by ReSet. The downside to this would be the
+database that is not controlled by ReSet. The downside to this would be the
 dependency on keyrings themselves. @GNOME-Keyring @Keyring-Rust
 
 //#subsection("Hooks")

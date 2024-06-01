@@ -15,13 +15,13 @@ EndeavourOS virtual machine with their respective dark themes applied.
 
 #subsubsection("Environment Differences")
 The introduction of Wayland complicates the fetching of the data needed for
-configuring monitors. This is due to the fact that many wayland environments
-have their own custom implementation of applying monitor configuration and will
-hence not be compatible with each other. For example, the wlroots implementation
+configuring monitors. This is because many wayland environments have their 
+custom implementation of applying monitor configuration and will hence not 
+be compatible with each other. For example, the wlroots implementation
 of applying a monitor configuration is defined by the wayland protocol extension
 zwlr_output_manager_v1. @wlr-output-management As the name suggests, this is
 made solely for environments using wlroots as their library. Similarly, KDE also
-offers their own protocol, while GNOME chose the DBus route, providing a handy
+offers its protocol, while GNOME chose the DBus route, providing a handy
 DisplayConfig endpoint. @kde-output-management @mutter-display-config
 
 For the X11 protocol, there is only one endpoint for fetching, as close to every
@@ -30,9 +30,9 @@ stack.
 
 In order to facilitate the usage of all the different fetching methods and
 different structures, ReSet needs a way to convert the fetched structures to
-something universal in order to provide a consistent, API compatible structure
+something universal in order to provide a consistent, API-compatible structure
 as a DBus endpoint. Just as with ReSet itself, the goal of this plugin is to
-offer both a DBus endpoint for functionality, and a user interface frontend for
+offer both a DBus endpoint for functionality and a user interface frontend for
 human interaction. Should a user not be satisfied with the provided interface,
 they can just use the endpoint to create their own.
 
@@ -73,9 +73,9 @@ pub struct Monitor {
 #subsubsubsection("Hyprland Implementation")
 Hyprlands monitors can be configured by three different approaches. The first
 would be to just use the inbuilt hyprctl tool, which provides a monitor command
-that can either display monitors in a human-readable way, or output it directly
-to json. For this it would be necessary to spawn the tool within the plugin and
-convert the output with serde, a serializion/deserialization framework for Rust.
+that can either display monitors in a human-readable way or output it directly
+to json. For this, it would be necessary to spawn the tool within the plugin and
+convert the output with serde, a serialization/deserialization framework for Rust.
 In @Hyprland-Monitor-Conversion, the conversion from json to the generic monitor
 struct is visualized.
 
@@ -106,15 +106,15 @@ pub fn hy_get_monitor_information() -> Vec<Monitor> {
 )
 
 The second approach is to directly use Hyprlands Unix sockets, the first of
-which is fully replicated in hyprctl. For sockets the same conversion as with
+which is fully replicated in hyprctl. For sockets, the same conversion as with
 hyprctl would be required.
 
 The third approach is to use the zwlr_output_manager_v1 protocol in order to
 apply the configuration. @wlr-output-management Hyprland uses a fork of wlroots
 as a foundation library. A benefit with this would be the automatic support for
-any other environment that supports this protocol, the downside is that should
-this protocol might not fully replicate Hyprlands features in the future, as
-this protocol specifically targets wlroots.
+any other environment that supports this protocol, the downside is that this 
+protocol might not fully replicate Hyprlands features in the future, as this 
+protocol specifically targets wlroots.
 
 #subsubsubsection("Wlroots Implementation")
 As mentioned in @HyprlandImplementation, the wlroots implementation can only be
@@ -123,13 +123,13 @@ protocol. Hence, the wlroots implementation does not offer persistent storing of
 monitor configurations, instead only offering applying of a specific
 configuration.
 
-However, unlike the hyprland implementation it is compositor independent and
+However, unlike the hyprland implementation, it is compositor independent and
 will work as long as the zwlr_output_manager_v1 protocol is implemented.
 
 In order to connect to a compositor using wayland protocols, a wayland-client is
 used. This client would then connect to the "server" which is the compositor.
 Wayland-client implementations are provided either directly by the wayland
-project as a C library, or by third parties such as smithay which implements the
+project as a C library or by third parties such as smithay which implements the
 client and server part for rust. @wayland-repo @wayland-rs
 
 In @wayland-architecture, the base wayland architecture is visualized.
@@ -190,18 +190,18 @@ simply to include support for both the X11 implementation of KDE and the wayland
 version. If this plugin were to target the Kwin protocol exclusively, then X11
 support would not be included and would have to be implemented separately.
 
-The protocol variant requires the implementation of two protocols which will
+The protocol variant requires the implementation of two protocols that will
 interact with each other. The first is the kde_output_device_v2 protocol, which
 defines the data structure responsible for holding the necessary data for each
 monitor. This protocol closely resembles the wayland core protocol "wl_output"
 which offers a way to fetch the currently active monitors with all their data.
 The only noticeable difference is the lack of data for potential changes a user
-can make. In other words it only offers data about what is currently active,
+can make. In other words, it only offers data about what is currently active,
 including refresh rate, resolution and more, but does not provide any data about
 what other refresh rates or resolutions, etc. the monitor supports.
 @kde-output-device-v2 @wl-output
 
-The combinations of the kde_output_device_v2 protocol and the kde output
+The combinations of the kde_output_device_v2 protocol and the KDE output
 management v2 protocol enables the same functionality as with the implementation
 of wlroots in @WlrootsImplementation.
 
@@ -212,7 +212,7 @@ output via json and then deserialized into a monitor data structure.
 
 #subsubsubsection("GNOME Implementation")
 GNOME separates hardware monitors from logical monitors. The logical monitors
-represent the representation of the real world monitor within GNOME with the x
+represent the representation of the real-world monitor within GNOME with the x
 and y coordinates of the position added. @mutter-display-config These
 coordinates will define which monitor will be considered "on the left", or "on
 the right" within GNOME.
@@ -221,7 +221,7 @@ The conversion for GNOME displays is trivial other than the challenges with
 experimental features. As of GNOME 46, features such as fractional scaling and
 variable refresh rates are still experimental features within GNOME. In order to
 still accommodate the features for GNOME users, ReSet has to check for the
-availability of these features not only within the monitor capabilities, but
+availability of these features not only within the monitor capabilities but
 also within the GNOME configuration. GNOME stores its configuration within a
 custom binary blob file which stores key/value pairs. ReSet already uses GTK,
 which can also read DConf variables, meaning there is no additional dependency
@@ -279,7 +279,7 @@ In @kde-monitor, the KDE variant of the monitor configuration is shown.
 )
 
 // TODO: Comment on KDEs implementation
-KDE opted for a per monitor paradigm, meaning settings are shown for the current
+KDE opted for a per-monitor paradigm, meaning settings are shown for the current
 monitor, with global settings being separated by a visual separator. Indication
 to which monitor is currently selected is shown by a blue indicator while other
 monitors are uncolored. The selected color is suitable for color blindness as
@@ -301,12 +301,12 @@ In @gnome-monitor, the GNOME variant of the monitor configuration is shown.
 Visible for GNOMEs implementation is the lack of direct configuration with
 multiple monitors. Instead, GNOME relies on submenus in order to change values
 such as resolution or refresh rate. At the same time, monitor independent
-settings like primary monitor or joining/mirroring displays is also shown in the
+settings like primary monitor or joining/mirroring displays are also shown in the
 overall menu. Noteworthy is also the lack of an apply- or reset button when no
 actions have been taken. This is in contrast to the KDE implementation in
 @kde-monitor, which disables the buttons instead while still showing them
 visually. Another difference is the placing of the buttons when visible, KDE
-opted to show the reset and apply button at the bottom, while GNOME shows them
+opted to show the reset and apply buttons at the bottom, while GNOME shows them
 at the top.
 
 // TODO: Comment on GNOMEs implementation
@@ -341,11 +341,11 @@ protocol.
     ], caption: [Example for a valid fractional scale])<fraction-example>],
 )
 
-For fractional scaling, there is another requirement that a user selected scale
+For fractional scaling, there is another requirement that a user-selected scale
 must adhere to. This requirement defines that a chosen scale must be a divider
 for both the width and the height of the resolution. In other words, the
 division must result in a full integer and may not leave any fractions. Using
-scaling with non integer resolutions would mean slightly different aspect ratios
+scaling with noninteger resolutions would mean slightly different aspect ratios
 for every scale, which creates an inconsistent user experience.
 
 The challenges with this approach is that a user may no longer enter any random
@@ -368,7 +368,7 @@ In @scale-adjustment-kg the options from KDE and GNOME are visualized.
 
 The GNOME variant offers a simple dropdown with a percentage value, without any
 arbitrary scale. This ensures the user cannot under any circumstance enter an
-invalid scale, removing a potential error. KDE offers both a slider which snaps
+invalid scale, removing a potential error. KDE offers both a slider that snaps
 to predefined percentages, while also offering a user input for arbitrary
 percentages. Noteworthy is that the user input automatically changes to a
 supported value when applying the configuration. In @scale-adjustment-kg the
@@ -382,7 +382,7 @@ implementation was handled with a libadwaita SpinRow, this widget provides both
 arbitrary user input and an increment and decrement button.@adwspinrow As ReSet
 implements arbitrary scaling, it would also require a check for valid scales
 with proper user feedback. The chosen method was to simply snap to the closest
-possible valid scale and providing an error banner if no scale can be found.
+possible valid scale and provide an error banner if no scale can be found.
 
 In @search-nearest-scale, the body of the search_nearest_scale function within
 the plugin is visualized.
@@ -419,13 +419,13 @@ for x in 0..amount {
 
 #subsubsection("Drag-and-Drop")
 A common configuration is the arrangement of monitors. A user might have a
-physical setup where the leftmost monitor is actually considered the second
-monitor within the operating system/environment. This requires the user to
-either re-configure the physical cable arrangement, or preferably, just drag the
+physical setup where the leftmost monitor is considered the second monitor 
+within the operating system/environment. This requires the user to either 
+re-configure the physical cable arrangement, or preferably, just drag the
 monitor to the correct position with a user interface.@draganddrop
 
-GTK does not offer a direct way to draw arbitrary shapes, however it does offer
-cairo integration, which is a low level drawing framework that can be used to
+GTK does not offer a direct way to draw arbitrary shapes, however, it does offer
+cairo integration, which is a low-level drawing framework that can be used to
 draw pixels onto a GTK DrawingArea. @cairo
 
 In order to both draw the shapes and calculate the eventual user offsets, a
@@ -433,7 +433,7 @@ coordinate system is required. For cairo this is a top-left to bottom-right
 system. This means that x increases towards the right and y increases towards
 bottom.
 
-In monitor-axis, the monitor axis is visualized.
+In @monitor-axis, the monitor axis is visualized.
 #align(
   center, [#figure(
       img("monitor-axis.png", width: 70%, extension: "figures"), caption: [Visualization of the monitor coordinate system],
@@ -444,10 +444,10 @@ For a simple drawing of the monitor, this coordinate system would be trivial,
 however, it is important to understand it in detail when providing drag-and-drop
 operations, which have to constantly apply transforms to these shapes. At the
 same time, any potential monitor overlaps have to be handled, as well as
-providing snapping functionality in order to auto align monitors.
+providing snapping functionality in order to auto-align monitors.
 
-Intersections can be seen by two conditions per axis. If both axis have at least
-one condition evaluated to false, then an overlap has occurred. In listing
+Intersections can be seen by two conditions per axis. If both axes have at least
+one condition evaluated as false, then an overlap has occurred. In listing
 @conditions and figure @overlap the conditions and an example overlap are
 visualized.
 
@@ -493,7 +493,7 @@ pub fn intersect_vertical(&self, offset_y: i32, height: i32) -> bool {
 )
 
 On each of the shapes drawn with cairo, GTK allows the use of event handlers
-including drag and drop handlers.
+including drag-and-drop handlers.
 
 #subsubsection("Snapping")
 A quality of life feature is the ability to allow users to be inaccurate with
@@ -502,7 +502,7 @@ adjacent ones.
 
 For example, the Windows desktop paradigm offers desktop icons. A user can
 rearrange them via drag and drop, and in this action, the user does not need to
-be accurate, instead they can approximately drag the icon to the target endpoint
+be accurate, instead, they can approximately drag the icon to the target endpoint
 and drop it at this position. The desktop icon system will then reposition the
 icon towards the correct place within the grid system.
 
@@ -515,7 +515,7 @@ In @monitor-dnd and @monitor-dnd-end, the dragging mechanism is visualized.
 )
 #align(
   center, [#figure(
-      img("reset-monitor-dnd6.png", width: 70%, extension: "figures"), caption: [Monitor snapped to other monitor],
+      img("reset-monitor-dnd6.png", width: 70%, extension: "figures"), caption: [Monitor snapped to another monitor],
     )<monitor-dnd-end>],
 )
 
@@ -532,8 +532,8 @@ explicitly, meaning you would need to define one or more monitors where your
 widget or panel should be.
 
 The solution for this problem is a set of feature flags that are introduced
-during the conversion from environment specific data to the DBus compatible
-generic monitor data. Within this data the struct visualized in listing
+during the conversion from environment-specific data to the DBus-compatible
+generic monitor data. Within this data, the struct visualized in listing
 @monitor-feature-flag is included.
 
 #let code = "
@@ -552,18 +552,18 @@ pub struct MonitorFeatures {
 )
 
 VRR/Variable-Refresh-Rate: This configures the monitor to automatically lower or
-increase the monitors refresh rate depending on the current performance of the
-graphics card. In games this means coupling the monitor refresh rate to the
+increase the monitor's refresh rate depending on the current performance of the
+graphics card. In games, this means coupling the monitor refresh rate to the
 frames per second generated by the graphics card/core processing unit. This
 feature is currently supported by KDE, GNOME (experimental), Xorg and all
 wlroots based compositors such as Hyprland or Sway.
 
-HDR/High Dynamic Range: Luminosity range between the brightest and darkest areas
+HDR/High Dynamic Range: Luminosity ranges between the brightest and darkest areas
 within a scene. This setting is a longstanding issue within Linux environments.
 As such this feature is currently only available as an experimental feature on
 KDE.
 
-Fractional Scaling: Scaling with a non integer number. The challenge with this
+Fractional Scaling: Scaling with a noninteger number. The challenge with this
 is that a full integer will always result in an integer resolution. However, as
 explained in @FractionalScaling, using a fractional number will result in
 fractional resolutions which is not applicable. Hence, a set of rules must be
@@ -600,18 +600,18 @@ pub fn get_monitor_settings_group(
 
 Another problematic section of the plugin is the drawing area, as this requires
 separate redraws as well. For this redraws are queued for any action taken that
-changes the appearance within the drawing area. Possible actions include,
+changes the appearance within the drawing area. Possible actions include
 dragging, snapping, change of transform, change of resolution and monitor
 selection. Each of these actions will cause the drawing area to be redrawn in
 order to show the result of the chosen action.
 
-The last piece of redraws is the arrangement of the monitors. Each time a user
+The last piece of redraw is the arrangement of the monitors. Each time a user
 changes either the resolution or the transform of a monitor, this will be
 reflected on the interface. This requires the plugin to calculate a new
 arrangement for all monitors, as the constellation of monitors should not change
 simply because the user changed the resolution of a single monitor. As an
 example, consider a situation with three monitors aligned in a row. When the
-user changes the resolution or transform of either the first or the second
+user changes the resolution or transforms either the first or the second
 monitor, the monitors to the right would need to be moved either towards or away
 from the changed monitor. In @monitor-resize the example is visualized.
 
@@ -622,7 +622,7 @@ from the changed monitor. In @monitor-resize the example is visualized.
 )
 
 Further issues arise with the inclusion of the y-axis for potential resizes. Due
-to multiple axis being possible, it is now necessary to check for overlaps that
+to multiple axes being possible, it is now necessary to check for overlaps that
 can be caused due to shifting of other monitors after resizing. Consider the
 second example with four monitors shown in @monitor-resize-2.
 
@@ -665,9 +665,9 @@ same spot after rearranging.
 This variant includes four incremental steps. The first step is calculating the
 resolution or transform difference of the changed monitor, as well as the right
 side of the rightmost monitor. Step two handles the movement of all monitors
-that exist on the right or on the bottom of the changed monitor. Step three
-handles the checking for overlaps among all monitors. This is one by looping
-over all monitors and checking each monitors against the other.
+that exist on the right or the bottom of the changed monitor. Step three
+handles the checking for overlaps among all monitors. This is done by looping
+over all monitors and checking each monitor against the other.
 
 In @complex-rearrangement-function, step three is visualized.
 
@@ -739,18 +739,18 @@ As a baseline, the plugin is shown in @reset-monitor.
 )
 
 The buttons for applying, resetting and saving were placed at the top in order
-to both provide a visually pleasing appearance while also indicating to the user
+to provide a visually pleasing appearance while also indicating to the user
 that these buttons are for the entire configuration of all monitors. Including
-to the constraints provided by the implementation, this alignment is also
-cohesive to positioning of similar buttons in the Bluetooth and Wi-Fi
+the constraints provided by the implementation, this alignment is also
+cohesive to the positioning of similar buttons in the Bluetooth and Wi-Fi
 functionality of ReSet. Compared to the mockup in @MonitorPluginMockup, this
 differs from placing the buttons within the drag-and-drop visualization.
 
 Similar to @KDEImplementation, the plugin interface will always show the current
 monitor configuration visually, with a blue indicator showing the currently
-selected monitor. This ensures that users are always immediately aware how their
-configuration will translate to the real world, including resolution changes and
-transformation changes.
+selected monitor. This ensures that users are always immediately aware of how
+their configuration will translate to the real world, including resolution changes 
+and transformation changes.
 
 Below the visual interface is a list of configurations for the currently
 selected monitor with the first bar showing the name and the make of the

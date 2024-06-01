@@ -79,7 +79,7 @@ is no underlying system to hook into, nor does ReSet intend to prevent the
 plugin developers from using the full range of features of any tooling.
 
 A potential plugin system should also consider the architecture of ReSet. For
-ReSet this includes a multiprocess architecture. When comparing interpreted
+ReSet includes a multiprocess architecture. When comparing interpreted
 languages to dynamic libraries on this specific point, there is a considerable
 difference. As the name suggests interpreted languages require an interpreter,
 and as ReSet uses multiple processes, this would require two interpreters,
@@ -89,8 +89,8 @@ is only one instance of a plugin within memory, which is then used by multiple
 processes.
 
 The analysis concluded a significant benefit to using dynamic libraries for this
-category. As such, dynamic libraries receives the result of 2 while interpreted
-languages receives the result of 1.
+category. As such, dynamic libraries receive the result of 2 while interpreted
+languages receive the result of 1.
 
 #subsubsubsection("Expected Workload")
 Dynamic libraries would require the use of macros to ensure the simple creation
@@ -121,7 +121,7 @@ written in Rust, further complicating integration as mentioned in
 @LanguageConformity.
 
 For this category using dynamic libraries offers a substantial benefit. As such,
-dynamic libraries receives the result of 2 while interpreted languages receives
+dynamic libraries receive the result of 2 while interpreted languages receive
 the result of 1.
 
 #subsubsection("Results")

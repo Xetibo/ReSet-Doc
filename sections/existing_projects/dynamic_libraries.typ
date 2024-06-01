@@ -87,7 +87,7 @@ will be executed.
 
 This system is extremely powerful, allowing plugin developers to override any
 behavior of the existing application. For ReSet, this would likely not make much
-sense, as ReSet does not offer much functionality at its core, instead ReSet
+sense, as ReSet does not offer much functionality at its core, instead, ReSet
 intends to provide extend-ability.
 
 A mock example Hyprland plugin written in Rust can be seen in

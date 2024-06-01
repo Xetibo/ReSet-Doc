@@ -2,11 +2,11 @@
 
 #subsection("Mock System Implementation")
 The original work did not offer any testing potential, this resulted in a
-requirement for manual testing. This work implements both a testing system for
+requirement for manual testing. This work implements a testing system for
 plugins covered in @PluginTesting, and the implementation of mock DBus endpoints
 for the existing features covered in this section.
 
-The implementations of Bluetooth and Network are straight forward to encapsulate
+The implementations of Bluetooth and Network are straightforward to encapsulate
 into a testing interface as the original implementation is also done with DBus.
 In contrast, Audio is not implemented with DBus, which complicates the creation
 of a mock system significantly. However, Audio is also the only server that does
@@ -25,13 +25,13 @@ covers the vast majority of use cases.
 #subsubsection("Macro Usage")
 The mock system will be used within the session(userspace) DBus, which does not
 require any special permissions. However, the actual implementation of
-NetworkManager or bluez both exist in the system wide DBus, as they require
+NetworkManager or bluez both exist in the system-wide DBus, as they require
 hardware access. This situation requires ReSet to differentiate between session
 DBus and system DBus depending on the configuration. Just like in
 @PluginTesting, Rust allows the differentiation of testing, debug or release
 configuration via compiler flags.
 
-In @dbus_method, the Rust macro for differentation between session and system
+In @dbus_method, the Rust macro for differentiation between session and system
 DBus is visualized.
 
 #let code = "

@@ -3,7 +3,7 @@
 
 #section("Prelude")
 In order to properly analyze potential plugin system implementations, it is
-necessary to introduce required concepts for potential implementations. For this
+necessary to introduce required concepts for potential implementations. In this
 section, these concepts are discussed.
 
 #subsection("Mangling")
@@ -109,10 +109,10 @@ penguin();
 There is a second common use case for obfuscation, namely compression. A lot of
 JavaScript applications and websites have large codebases that would need to be
 shipped to the user. This size can have an impact if the user operates with a
-reduced download speed. In this case the codebase will be compressed to as few
+reduced download speed. In this case, the codebase will be compressed to as few
 files and lines as possible.
 
-The resulting code will again be unreadable for developers, but unlike pure
+The resulting code will again be unreadable for developers but unlike pure
 obfuscation, the size of the entire package has been significantly reduced.
 
 #subsection("Dynamic Libraries")
@@ -321,7 +321,7 @@ all that macros do is replace text, in Rust, the macros will manipulate tokens
 instead, this guarantees that invalid tokens are prohibited, and operator
 precedence is not invalidated.
 
-The book "The Rust Programming Language" offers a valuable example for operator
+The book "The Rust Programming Language" offers a valuable example of operator
 precedence, and visualizes why C macros are often avoided. Consider the excerpt
 in @cmacro taken from the book.
 
