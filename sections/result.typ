@@ -15,7 +15,6 @@ The user tests for the results can be found in @UserTesting.
 #include "result/plugins.typ"
 #pagebreak()
 #include "result/distribution.typ"
-#pagebreak()
 // #include "result/test_framework.typ"
 // #pagebreak()
 // #include "result/animations.typ"
