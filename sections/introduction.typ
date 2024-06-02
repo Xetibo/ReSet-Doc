@@ -105,9 +105,9 @@ in @Results.
 
 As explained in @Objectives, this thesis will include exemplary plugins. For
 these plugins, existing solutions for specific environments are analyzed in
-TODO, which is used to create a mockup in TODO. This information is used to
-create the plugins in @ExemplaryPluginAnalysis, with the results being tested by users in
-@UserTesting.
+@ExemplaryPluginAnalysis, which is used to create a mockup in @PluginUIMockups.
+This information is used to create the plugins in @ExemplaryPluginAnalysis, with
+the results being tested by users in @UserTesting.
 
 At last, the conclusion of this thesis and potential future work is found in
 @Conclusion.

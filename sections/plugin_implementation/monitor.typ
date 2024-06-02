@@ -331,7 +331,7 @@ It is important to note, that the covered feature differences in
 environments. As such ReSet checks for environment differences inside this
 function via the ```$XDG_CURRENT_DESKTOP``` key.
 
-In as;ldk, an example for a dynamic feature is visualized.
+In @dynamic-feature-monitor, an example for a dynamic feature is visualized.
 #let code = "
 // inside \"get_monitor_settings_group\"
 let scaling_ref = clicked_monitor.clone();

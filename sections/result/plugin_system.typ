@@ -89,9 +89,9 @@ used to mimic the behavior of Java (enforcement of references).
 #subsection("Security")
 The initial idea of the ReSet plugin system was to reduce the attack vector by
 enforcing a narrow definition for the plugin system. As the ReSet daemon uses
-DBus, each plugin can provide its own DBus interface. For DBus, there are
-three different levels that a program can and must provide. The first is the
-DBus object, these objects then implement interfaces which in return provide
+DBus, each plugin can provide its own DBus interface. For DBus, there are three
+different levels that a program can and must provide. The first is the DBus
+object, these objects then implement interfaces which in return provide
 functions for calling programs. ReSet plugins should only provide a name for the
 plugin and functions that will be implemented for the interface. This ensures
 that the daemon is the sole authority for adding any interface or object, which
@@ -114,7 +114,7 @@ cross.insert(dbus_path, &[interface], data);"
     )<dbus_crossroads_register>],
 )
 
-During the implementation of this system, it was found that the DBus functions 
+During the implementation of this system, it was found that the DBus functions
 would not be able to be provided by the shared library. Attempting to call
 functionality provided by shared libraries would result in the object not being
 available. The only way to solve this issue was to provide plugins with a
@@ -135,9 +135,9 @@ the same thread and any error would cancel all remaining plugin tests.
 
 In order to solve this issue, ReSet utilizes a different thread-spawning
 mechanism with a separate printing functionality in order to provide feedback
-about each plugin test function. This mechanism also allows plugins to be 
-shown as separate entities with their tests, ensuring that developers
-receive appropriate feedback.
+about each plugin test function. This mechanism also allows plugins to be shown
+as separate entities with their tests, ensuring that developers receive
+appropriate feedback.
 
 #let code = "
 #[tokio::test]
@@ -226,13 +226,13 @@ plugins = [ \"libreset_monitors.so\", \"libreset_keyboard_plugin.so\" ]
 The loading of the plugins themselves is handled by the ReSet library which
 offers this for both the daemon and the user interface. It also covers the
 potential duplication of memory when loading the plugin twice. In other words,
-the library will only load the plugin into memory once as defined in TODO. The
-only difference is the fetching of functions from a plugin, which will be
-different depending on the daemon or the user interface.
+the library will only load the plugin into memory once, as defined in
+@DynamicLibraries. The only difference is the fetching of functions from a
+plugin, which will be different depending on the daemon or the user interface.
 
-This loading will also be done lazily. This means that the plugin files will 
-only be loaded when either the daemon or the user interface explicitly call 
-the plugin.
+This loading will also be done lazily. This means that the plugin files will
+only be loaded when either the daemon or the user interface explicitly call the
+plugin.
 
 In @plugin_lib_structures, the structures for loading plugins are visualized.
 
@@ -257,11 +257,12 @@ static mut PLUGIN_DIR: Lazy<PathBuf> = Lazy::new(|| PathBuf::from(\"\"));
     )<plugin_lib_structures>],
 )
 
-Because both the daemon and the user interface are started up in a non-deterministic 
-fashion, the plugin library loading will also potentially be non-deterministic. 
-This enforces an atomic check that both the daemon or the user interface can see. 
-If the check is already either in loading or loaded, the other process would simply 
-wait or immediately move on to using the plugin respectively.
+Because both the daemon and the user interface are started up in a
+non-deterministic fashion, the plugin library loading will also potentially be
+non-deterministic. This enforces an atomic check that both the daemon or the
+user interface can see. If the check is already either in loading or loaded, the
+other process would simply wait or immediately move on to using the plugin
+respectively.
 
 Loading of plugins themselves in both the daemon and the user interface can be
 done by iterating over the BACKEND_PLUGINS or FRONTEND_PLUGINS global

@@ -20,7 +20,7 @@ The exemplary plugins prove that the plugin system works as expected and is able
 to hold arbitrary extensions for differing functionality. Alongside the plugin
 itself, the plugins prove the viability of the used testing framework for
 plugins to be injected into the base application. This results in the expected
-behavior of consolidated testing mentioned in TODO.//@testingsomethingTODO.
+behavior of consolidated testing mentioned in @PluginTesting.
 
 #subsection("Limitations")
 
