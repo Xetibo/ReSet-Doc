@@ -73,7 +73,7 @@ same with both functions will result in the compiler error visualized in
 )
 
 Mangling has other applications than just avoiding compilation issues, one of
-these is code obfuscation. This is often used for languages that can't be
+these is code obfuscation. This is often used for languages that cannot be
 reduced to binary files, with an example of this being the obfuscation of
 JavaScript applications or websites.
 

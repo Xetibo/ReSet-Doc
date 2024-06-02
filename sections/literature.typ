@@ -1,7 +1,7 @@
 #import "../templates/utils.typ": *
 #lsp_placate()
 
-#section("Plugin System")
+#section("Plugin System Analysis")
 Plugin systems allow both the users and the developers of an application to
 provide specific implementations for use cases. Notably, it does this by neither
 putting the burden of development on the application developers, while also

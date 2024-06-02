@@ -266,7 +266,7 @@ wait or immediately move on to using the plugin respectively.
 Loading of plugins themselves in both the daemon and the user interface can be
 done by iterating over the BACKEND_PLUGINS or FRONTEND_PLUGINS global
 respectively. Both of these globals are both static and constant after
-initialization, this ensures that plugins can't be changed later on, while also
+initialization, this ensures that plugins cannot be changed later on, while also
 being initialized after startup.
 
 In @plugin_loading, the plugin loading within the daemon is visualized.

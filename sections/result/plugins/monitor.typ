@@ -1,7 +1,7 @@
 #import "../../../templates/utils.typ": *
 #lsp_placate()
 
-#subsection("Monitor Plugin")
+#subsubsection("Monitor Plugin")
 In this section, the implementation of the monitor plugin is discussed.
 
 For this plugin, the following environments are considered: KDE, GNOME, wlroots
@@ -13,7 +13,7 @@ When discussing implementations from other environments, they were tested on an
 EndeavourOS virtual machine with their respective dark themes applied.
 @endeavourOS
 
-#subsubsection("Environment Differences")
+#subsubsubsection("Environment Differences")
 The introduction of Wayland complicates the fetching of the data needed for
 configuring monitors. This is because many wayland environments have their 
 custom implementation of applying monitor configuration and will hence not 
@@ -70,7 +70,7 @@ pub struct Monitor {
 
 #pagebreak()
 
-#subsubsubsection("Hyprland Implementation")
+#subsubsubsubsection("Hyprland Implementation")
 Hyprlands monitors can be configured by three different approaches. The first
 would be to just use the inbuilt hyprctl tool, which provides a monitor command
 that can either display monitors in a human-readable way or output it directly
@@ -116,7 +116,7 @@ any other environment that supports this protocol, the downside is that this
 protocol might not fully replicate Hyprlands features in the future, as this 
 protocol specifically targets wlroots.
 
-#subsubsubsection("Wlroots Implementation")
+#subsubsubsubsection("Wlroots Implementation")
 As mentioned in @HyprlandImplementation, the wlroots implementation can only be
 implemented via wayland protocols and is as such also limited to the used
 protocol. Hence, the wlroots implementation does not offer persistent storing of
@@ -181,7 +181,7 @@ pub fn get_wl_backend() -> String {
 
 #pagebreak()
 
-#subsubsubsection("KDE Implementation")
+#subsubsubsubsection("KDE Implementation")
 Similar to Hyprland, KDE offers both a custom tool and a wayland protocol to
 handle monitor configuration.
 
@@ -210,7 +210,7 @@ Kscreen-doctor tool. This tool allows for a quick fetch of data that can be
 output via json and then deserialized into a monitor data structure.
 @kscreen-doctor
 
-#subsubsubsection("GNOME Implementation")
+#subsubsubsubsection("GNOME Implementation")
 GNOME separates hardware monitors from logical monitors. The logical monitors
 represent the representation of the real-world monitor within GNOME with the x
 and y coordinates of the position added. @mutter-display-config These
@@ -248,7 +248,7 @@ fn get_fractional_scale_support() -> bool {
     )<Fractional-Scale-Gnome>],
 )
 
-#subsubsection("Visualization")
+#subsubsubsection("Visualization")
 For the visual representation, ReSet is aligned with other configuration tools
 within the Linux ecosystem in order to provide users with a seamless transition.
 Notable for this visualization is the use of drag-and-drop for monitor
@@ -317,7 +317,7 @@ at the top.
 
 #pagebreak()
 
-#subsubsection("Fractional Scaling")
+#subsubsubsection("Fractional Scaling")
 Fractional scaling is implemented according to the fractional-scale-v1 wayland
 protocol. @fractional-scale-v1-protocol This protocol defines how scaling values
 will be interpreted by the environment. The specification defines that supported
@@ -417,7 +417,7 @@ for x in 0..amount {
     )<search-nearest-scale>],
 )
 
-#subsubsection("Drag-and-Drop")
+#subsubsubsection("Drag-and-Drop")
 A common configuration is the arrangement of monitors. A user might have a
 physical setup where the leftmost monitor is considered the second monitor 
 within the operating system/environment. This requires the user to either 
@@ -495,7 +495,7 @@ pub fn intersect_vertical(&self, offset_y: i32, height: i32) -> bool {
 On each of the shapes drawn with cairo, GTK allows the use of event handlers
 including drag-and-drop handlers.
 
-#subsubsection("Snapping")
+#subsubsubsection("Snapping")
 A quality of life feature is the ability to allow users to be inaccurate with
 their monitor positioning and then automatically snapping the monitor towards
 adjacent ones.
@@ -519,7 +519,7 @@ In @monitor-dnd and @monitor-dnd-end, the dragging mechanism is visualized.
     )<monitor-dnd-end>],
 )
 
-#subsubsection("Feature disparities")
+#subsubsubsection("Feature disparities")
 Differing environments offer a range of features, this forces ReSet to offer
 dynamic feature checking in order to only show compatible features with the
 current environment. As an example, both GNOME and KDE have a concept of a
@@ -570,7 +570,7 @@ fractional resolutions which is not applicable. Hence, a set of rules must be
 followed in order to avoid this issue. Currently, KDE, GNOME (experimental) and
 wlroots based environments support fractional scaling.
 
-#subsubsection("Redraws")
+#subsubsubsection("Redraws")
 In order to show changes within the plugin, GTK needs to redraw the widgets.
 Depending on the change, this could be something insignificant such as a number,
 or replacing the entire set of settings when clicking on another monitor.
@@ -727,7 +727,7 @@ In @monitor-rearranged, the overlap shown in @monitor-resize-2 is fixed.
 
 #pagebreak()
 
-#subsubsection("Resulting User Interface")
+#subsubsubsection("Resulting User Interface")
 This section covers the resulting plugin user interface.
 
 As a baseline, the plugin is shown in @reset-monitor.

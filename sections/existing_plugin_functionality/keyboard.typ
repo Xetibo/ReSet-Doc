@@ -1,11 +1,11 @@
-#import "../../../templates/utils.typ": *
+#import "../../templates/utils.typ": *
 #lsp_placate()
 
-#subsubsection("Keyboard Plugin")
-#subsubsubsection("Implementations")
+#subsection("Keyboard Plugin")
+#subsubsection("Implementations")
 In this section, the implementation of the keyboard plugin is discussed.
 
-#subsubsubsubsection("Hyprland Implementation")
+#subsubsubsection("Hyprland Implementation")
 The keyboard layouts in Hyprland are stored in a hypr.conf file, which is a
 configuration file and can be modified using multiple ways.
 
@@ -87,7 +87,7 @@ path = \"/home/felix043/Documents/dotfiles/hypr/input.conf\"
     )<reset-keyboard-config-hyprland>],
 )
 
-#subsubsubsubsection("GNOME Implementation")
+#subsubsubsection("GNOME Implementation")
 In GNOME, it is possible to change keyboard layouts with gsettings or dconf.
 There are other tools like gconf, but they are replaced by dconf.
 
@@ -137,7 +137,7 @@ Command::new(\"dconf\")
     )<gnome-set-input-config>],
 )
 
-#subsubsubsubsection("KDE Implementation")
+#subsubsubsection("KDE Implementation")
 KDE stores its keyboard configurations in a file called kxkbrc. This text file
 is located in the config folder of the user and can be read using kreadconfig6
 and written to using kwriteconfig6. These are tools provided by KDE to modify
@@ -183,7 +183,7 @@ for the most part. This also means that if version 7 is being released, the
 command needs to be adjusted so that it works for both versions while version 6
 is not deprecated.
 
-#subsubsubsubsection("Keyboard Limit")
+#subsubsubsection("Keyboard Limit")
 XKB is a system part of the X Window System and provides an easy way to
 configure keyboard layouts. On Wayland, XKB is the recommended way of handling
 keyboard input as well @waylandkeyboard. The problem with XKB is that it doesn't
@@ -207,7 +207,7 @@ keyboard layouts.
     )<highlighted-keyboard-layouts>],
 )
 
-#subsubsubsubsection("Nested listing")
+#subsubsubsection("Nested listing")
 A quality-of-life feature to makes adding keyboard layouts easier is the
 addition of nested listing. There are many keyboard variants for the same
 layout, for example, German (US), German (Dvorak) etc. which can grouped

@@ -29,10 +29,10 @@ ReSet would lead to an unmaintainable and likely non-functional product.
 Therefore, the plugin system can cover both individual implementations, and
 providing dynamic settings for specific hardware or user preferences.
 
-Hardware examples are drawing tablets, virtual reality headsets,
-accessibility solutions and more. User preference examples cover the reality
-that not every user requires all settings, therefore a plugin system offers the
-users the possibility to omit subjectively superfluous settings.
+Hardware examples are drawing tablets, virtual reality headsets, accessibility
+solutions and more. User preference examples cover the reality that not every
+user requires all settings, therefore a plugin system offers the users the
+possibility to omit subjectively superfluous settings.
 
 In order to expand the original ReSet application, this thesis will also develop
 exemplary plugins. This will ensure the functionality of the plugin system and
@@ -80,7 +80,7 @@ testability of the program, which was omitted from the original work due to time
 constraints.
 
 As such, this thesis will include work on the original implementation in order
-to facilitate the basis for a plugin system.
+to facilitate the basis for a reliable plugin system.
 // animations
 // Furthermore, ReSet will add animations to improve its user experience which
 // helps to better understand the flow of the application, attend to accessibility
@@ -94,13 +94,31 @@ to facilitate the basis for a plugin system.
 // etc
 
 #subsection("Methodology")
-In @PluginSystem, different approaches to the plugin system are listed and
-discussed. Further analysis based on existing implementations is discussed in
-@PluginSystemAnalysis. With this information, the best approach will be chosen
-and explained in @PluginSystemEvaluation. Other features and improvements are
-discussed in/*@sometime*/. The implementation details can be found in/*@somewhere*/.
-The results of this thesis will be discussed in/*@somehow*/
-and potential future work is mentioned in/*@somewhereelse*/.
+In order to provide necessary information about technologies used by plugin
+systems, various approaches and technologies are analyzed and explained in
+@Prelude. Further, differing plugin system implementations were analyzed in
+@PluginSystemAnalysis. This information is then used within
+@PluginSystemEvaluation in order to evaluate the best plugin system architecture
+for this thesis.\
+Explicit implementations details for the resulting plugin system are discussed
+in @Results.
+
+As explained in @Objectives, this thesis will include exemplary plugins. For
+these plugins, existing solutions for specific environments are analyzed in
+TODO, which is used to create a mockup in TODO. This information is used to
+create the plugins in @ExemplaryPluginAnalysis, with the results being tested by users in
+@UserTesting.
+
+At last, the conclusion of this thesis and potential future work is found in
+@Conclusion.
+
+// In @PluginSystem, different approaches to the plugin system are listed and
+// discussed. Further analysis based on existing implementations is discussed in
+// @PluginSystemAnalysis. With this information, the best approach will be chosen
+// and explained in @PluginSystemEvaluation. Other features and improvements are
+// discussed in/*@sometime*/. The implementation details can be found in/*@somewhere*/.
+// The results of this thesis will be discussed in/*@somehow*/
+// and potential future work is mentioned in/*@somewhereelse*/.
 
 #subsection("Potential")
 This thesis has the potential to introduce new functionality for users of

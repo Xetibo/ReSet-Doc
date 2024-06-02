@@ -56,5 +56,11 @@
 #pagebreak()
 #include "sections/result.typ"
 #pagebreak()
+#include "sections/existing_plugin_functionality.typ"
+#pagebreak()
+#include "sections/exemplary_plugin_results.typ"
+#pagebreak()
+#include "sections/distribution.typ"
+#pagebreak()
 #include "sections/conclusion.typ"
 #pagebreak()

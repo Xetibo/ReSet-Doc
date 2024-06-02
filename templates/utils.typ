@@ -107,6 +107,10 @@
   custom_heading(num, use_line, custom_tag: custom_tag, name: name, 4)
 }
 
+#let subsubsubsubsection(num: "1.1.1", use_line: false, custom_tag: "", name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 5)
+}
+
 #let requirement(subject, category, priority, description, measures) = {
   let cell = rect.with(inset: 8pt, width: 100%, stroke: none)
   pad(x: 0pt, y: 0pt, line(length: 100%))
