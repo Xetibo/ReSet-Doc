@@ -11,7 +11,7 @@ The first plugin is a monitor configuration plugin, which would allow users to
 create monitor arrangements, change their resolution/refresh rate and more.
 
 The second plugin is a keyboard layout plugin, which allows users to add, remove
-or rearrange layouts to their preferred order.
+and rearrange layouts to their preferred order.
 
 Both of these plugins should offer both a daemon implementation and a graphical
 user interface.

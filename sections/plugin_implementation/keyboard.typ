@@ -180,3 +180,18 @@ and only shows the variants for that language.
 
 #subsubsubsection("Testing")
 // todo
+
+// moved from existing plugin fucntionality 
+
+// todo somehow integrate this somewhere
+//To show users that limitation visually, the first few rows are highlighted,
+//while the rest have system colors. This number is set depending on the desktop
+//environment because some don't use XKB and therefore could allow more than four
+//keyboard layouts.
+
+// #align(
+//  center, [#figure(
+//      img("highlightedKeyboardLayouts.png", width: 75%, extension: "figures"), 
+//      caption: [First four keyboard layouts are colored differently],
+//    )<highlighted-keyboard-layouts>],
+//)

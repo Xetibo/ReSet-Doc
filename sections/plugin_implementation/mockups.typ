@@ -101,17 +101,3 @@ have a similar name. //todo add example
       ), caption: [Mock of keyboard add layout plugin],
     )],
 )
-
-The context menu is used to view settings specific to a keyboard layout. This
-includes the removal of a layout for example, but can also used to show the
-keyboard layout visually. This is a feature missing in Windows but is available
-in Gnome. This feature can be very useful for users who have a different layout
-than their physical keyboard.
-
-#align(
-  center, [#figure(
-      img(
-        "../figures/gnomeKeyboardVisual.png", width: 100%, extension: "figures",
-      ), caption: [Visual keyboard layout in Gnome],
-    )],
-)
