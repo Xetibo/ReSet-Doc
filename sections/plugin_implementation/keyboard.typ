@@ -130,7 +130,6 @@ Command::new(\"dconf\")
     )<gnome-set-input-config>],
 )
 
-// todo write about how gio was used
 Therefore dconf_rs was replaced by gio. The advantages have already been discussed
 in @GNOME. Gio provides very convenient bindings to the GSettings API. In 
 @gnome-gio-get-input-config the layouts are fetched and its type is checked. If the 
@@ -174,6 +173,11 @@ input_sources.set(\"sources\", variant).expect(\"failed to write layouts\");
 )
 
 #subsubsubsection("KDE Implementation")
+To read the keyboard layouts and variants in KDE, kreadconfig6 has to be used. Unfortunately 
+there is no library that provides bindings so reading and writing using rust commands was
+necessary. In @kde-get-input-config the command with all its argument can be seen. Writing
+to the kxkbrc file works exactly the same as writing with the only difference of adding 
+the new keyboard layout string as an additional argument and using kwriteconfig6.
 
 #let code = "
 let output = Command::new(\"kreadconfig6\")
