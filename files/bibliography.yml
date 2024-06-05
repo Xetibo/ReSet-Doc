@@ -345,3 +345,7 @@ flatpak-web:
   type: web
   title: Flatpak
   url: https://flatpak.org/
+gio:
+  type: web
+  title: "GIO"
+  url: https://crates.io/crates/gio

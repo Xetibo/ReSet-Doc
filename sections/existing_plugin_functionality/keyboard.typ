@@ -4,8 +4,8 @@
 #subsection("Keyboard Plugin")
 
 #subsubsection("Analysis of different environments")
-In this section, the implementation of the keyboard plugin on various 
-environments are discussed.
+In this section, the analysis of the keyboard plugin on various environments 
+are discussed.
 
 #subsubsubsection("Hyprland")
 The keyboard layouts in Hyprland are stored in a hypr.conf file, which is a
@@ -26,15 +26,23 @@ There are other tools like gconf, but they are replaced by dconf.
 
 GSettings is a high-level API for application settings and serves as a front end
 to dconf. The command line tool gsettings (not to be confused with GSettings)
-can be used to access the GSettings API @gsettings. dconf serves as a low-level
-configuration system for gsettings that stores key-based configuration details
-in a single compact binary format database @dconf.
+can be used to access the GSettings API @gsettings. Another possibility is to 
+use gio, which is a library that provides multiple general purpose functionality 
+such as bindings to the GSettings API among others @gio. Because gio is a 
+dependency of gtk4, it is can already be used from the code without any further
+setup. The advantage of using gio instead of gsettings is that it can validate
+input and log error messages if something doesn't work. Another advantage is that 
+gsettings returns a string that needs to be manually parsed with Regex or similar.
+Gio on the other hand returns a Variant object that can be casted into the desired
+type as long as it's correct.
 
-Because gsettings is a layer for dconf, the keyboard plugin directly uses dconf
-for setting the keyboard layouts. Combined with the dconf crate, which provides
-Rust bindings to dconf, the plugin can easily read the keyboard layouts
-@dconf_rs. This returns a string that needs to be parsed to get the keyboard
-layout and variant, which can be done with a simple regex.
+Dconf serves as a low-level configuration system for gsettings that stores 
+key-based configuration details in a single compact binary format database 
+@dconf. Because gsettings is a layer for dconf, the keyboard plugin directly 
+uses dconf for setting the keyboard layouts. Combined with the dconf crate, 
+which provides rust bindings to dconf, the plugin can read the keyboard 
+layouts @dconf_rs. This returns a string that needs to be parsed to get the 
+keyboard layout and variant, which can be done with a simple regex.
 
 #subsubsubsection("KDE")
 KDE stores its keyboard configurations in a file called kxkbrc. This text file
