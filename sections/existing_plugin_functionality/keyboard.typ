@@ -48,7 +48,7 @@ keyboard layout and variant, which can be done with a simple regex.
 KDE stores its keyboard configurations in a file called kxkbrc. This text file
 is located in the config folder of the user and can be read using kreadconfig6
 and written to using kwriteconfig6. These are tools provided by KDE to modify
-settings @kdeconfig. Unfortunately there is no Rust crate that provides bindings
+settings @kdeconfig. Unfortunately there is no rust crate that provides bindings
 to these tools, so the plugin would have to use the Command 
 
 There was also a dbus interface that could be used to fetch keyboard layouts,
