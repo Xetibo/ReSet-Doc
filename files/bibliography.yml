@@ -349,3 +349,7 @@ gio:
   type: web
   title: "GIO"
   url: https://crates.io/crates/gio
+gtk-css:
+  type: web
+  title: "GTK CSS properties"
+  url: https://docs.gtk.org/gtk4/css-properties.html
