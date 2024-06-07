@@ -54,7 +54,7 @@ function.
 #let code = "
 public interface IAny<T> {
   // public T into_variant();
-  // This is not necessary as Java doesn't support arbitrary interface
+  // This is not necessary as Java does not support arbitrary interface
   // implementation for existing types.
   public T value();
 }

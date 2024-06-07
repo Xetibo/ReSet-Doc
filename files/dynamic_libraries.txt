@@ -1,15 +1,33 @@
 @startuml
-!theme vibrant
-rectangle ReSetDaemon
-rectangle Plugin 
-rectangle ReSet 
-rectangle C_ABI
-rectangle DynamicLibrary
+skinparam defaultFontName DejaVu Sans
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-ReSetDaemon <--> ReSet                     : DBus
-Plugin --> C_ABI                           : Provide functions in C
-C_ABI --> DynamicLibrary                   : Create Dynamic Library
-DynamicLibrary -> ReSetDaemon              : Provide Functions for the daemon to hook into
-DynamicLibrary --> ReSet                   : Provide Functions for the user interface to hook into
+AddContainerTag("process", $legendText="process")
+AddContainerTag("ABI", $legendText="ABI")
+AddContainerTag("dynlib", $legendText="dynamic library")
 
+' LAYOUT_LANDSCAPE()
+' LAYOUT_TOP_DOWN()
+HIDE_STEREOTYPE()
+
+System_Boundary(c1, 'ReSet') {
+    System(ReSetDaemon, "ReSet Daemon", "Handles functionality for settings", $tags="process")
+    System(ReSet, "ReSet", "Graphical user interface", $tags="process")
+}
+System_Boundary(c2, 'Plugin') {
+  Container(DynamicLibrary, "Dynamic Library", $tags="dynlib")
+  Container(Plugin, "Plugin Source")
+  Container(C_ABI, "C-ABI", "C", $tags="ABI")
+}
+
+BiRel_D(ReSetDaemon, ReSet, "Interacts with", "DBus")
+Rel(Plugin, C_ABI, "Provide\nfunctions", "any")
+Rel(C_ABI, DynamicLibrary, "Creates")
+Rel_L(DynamicLibrary, ReSetDaemon, "\t\t\t\t\t\t\tProvide\ninterface", "DBus")
+Rel_L(DynamicLibrary, ReSet, "Provide UI widget", "gtk4")
+
+Lay_Distance(ReSet, ReSetDaemon, 1)
+
+'SHOW_FLOATING_LEGEND()
+'Lay_L(LEGEND(), Plugin)
 @enduml

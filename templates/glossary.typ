@@ -40,7 +40,7 @@
       today GTK is trademarked and developed by the GNOME foundation and no longer
       refers to GIMP.],
   )<dbus_glossary>
-  #glossary_entry(use_show: use_show_ref, "Gnome", [
+  #glossary_entry(use_show: use_show_ref, "GNOME", [
     A Linux desktop environment.
   ])<Gnome>
   #glossary_entry(use_show: use_show_ref, "KDesktop Environment (KDE)", [

@@ -35,7 +35,7 @@ In @base_plugin_architecture the intended architecture of the plugin system is
 visualized.
 #align(
   center, [#figure(
-      img("architecture.svg", width: 100%, extension: "files"), caption: [Architecture of ReSet],
+      img("architecture.svg", width: 80%, extension: "files"), caption: [Architecture of ReSet],
     )<base_plugin_architecture>],
 )
 
@@ -121,7 +121,7 @@ in @interpreted_languages_plugin the architecture of a plugin system with
 interpreted languages are visualized.
 #align(
   center, [#figure(
-      img("interpreted_languages.svg", width: 100%, extension: "files"), caption: [Architecture of a potential interpreted plugin system.],
+      img("interpreted_languages.svg", width: 80%, extension: "files"), caption: [Architecture of a potential interpreted plugin system.],
     )<interpreted_languages_plugin>],
 )
 
@@ -363,6 +363,8 @@ typed language such as Rust. Important to note, however, is that even with the
 any pattern, Rust would still break the ABI compatibility, as memory access
 depends on the size of a type.
 
+#pagebreak()
+
 #subsubsubsection("Example Any pattern")
 In @rust_any_pattern an example any pattern implementation is visualized.
 
@@ -419,6 +421,9 @@ impl AnyImpl for Example {
     )<rust_any_pattern>],
 )
 
+
+#pagebreak()
+
 #subsection("Security")
 Developers want to rely on the plugin system in order to focus on their core
 systems, however, this puts the burden of development on other developers, which
@@ -464,6 +469,7 @@ dependency on keyrings themselves. @GNOME-Keyring @Keyring-Rust
 //// TODO: why is this important?
 //// TODO: Security concerns? Potential uninitialized resources etc.
 //// TODO: Providing a consistent environment for plugins in order for them to not crash
+#pagebreak()
 #subsection("Testing")
 ReSet does not yet have a testing system implemented, only regular Rust tests
 are currently implemented, and those do not cover the full usage of the DBus API
@@ -488,9 +494,11 @@ In @plugin_integration_test, the architecture of the plugin system integrated
 into the testing framework is visualized.
 #align(
   center, [#figure(
-      img("plugin_integration_test.svg", width: 100%, extension: "files"), caption: [Architecture of the ReSet testing framework],
+      img("plugin_integration_test.svg", width: 80%, extension: "files"), caption: [Architecture of the ReSet testing framework],
     )<plugin_integration_test>],
 )
+
+#pagebreak()
 
 #subsubsection("GTK Tests")
 There is a GTK testing framework for Rust, which is called "gtk-test". This
@@ -515,7 +523,7 @@ fn main() {
     )<gtk_test_example>],
 )
 
-Unfortunately, that crate doesn't seem to be maintained anymore and is not
+Unfortunately, that crate does not seem to be maintained anymore and is not
 compatible with GTK4 anyway. The general idea behind it was still useful and
 could be used to implement a new solution. Instead of returning each UI element
 in a tuple, saving it into a singleton would be much easier, especially when

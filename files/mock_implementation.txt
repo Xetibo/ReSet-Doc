@@ -1,18 +1,29 @@
 @startuml
-!theme vibrant
-rectangle ReSetDaemon
-rectangle NetworkManager
-rectangle bluez
-rectangle NetworkManagerMacro
-rectangle bluezMacro
-rectangle bluezMock
-rectangle NetworkManagerMock
+skinparam defaultFontName DejaVu Sans
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-ReSetDaemon --> NetworkManagerMacro              : Uses
-ReSetDaemon --> bluezMacro                       : Uses
-NetworkManagerMacro --> NetworkManagerMock        : Calls on cfg(test)
-NetworkManagerMacro --> NetworkManager            : Calls on not(cfg(test))
-bluezMacro --> bluezMock                          : Calls on cfg(test)
-bluezMacro --> bluez                               : Calls on not(cfg(test))
+LAYOUT_TOP_DOWN()
+HIDE_STEREOTYPE()
+
+AddContainerTag("process", $legendText="process")
+
+System_Boundary(c1, 'ReSet Daemon') {
+    System(ReSetDaemon, "ReSet Daemon", "Handles functionality for settings", $tags="process")
+    Container(bluezMacro, "Bluez Macro")
+    Container(NetworkManagerMacro, "NetworkManager Macro")
+    System_Boundary(c2, 'Mock') {
+        System(NetworkManagerMock, "NetworkManager Mock")
+        System(bluezMock, "BluezMock")
+    }
+}
+System_Ext(NetworkManager, "NetworkManager")
+System_Ext(bluez, "Bluez")
+
+Rel(ReSetDaemon, NetworkManagerMacro,"Uses")
+Rel(ReSetDaemon, bluezMacro,"Uses")
+Rel(NetworkManagerMacro, NetworkManagerMock,"cfg(test)")
+Rel(NetworkManagerMacro, NetworkManager,"not(cfg(test))")
+Rel(bluezMacro, bluezMock,"cfg(test)")
+Rel(bluezMacro, bluez,"\t\t\t\tnot(cfg(test))")
 
 @enduml

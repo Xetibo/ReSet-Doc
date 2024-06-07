@@ -1,12 +1,20 @@
 @startuml
-!theme vibrant
-rectangle ReSetDaemon
-rectangle Plugin 
-rectangle ReSet 
+skinparam defaultFontName DejaVu Sans
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-ReSetDaemon <--> ReSet                     : DBus
-Plugin --> ReSetDaemon                     : Provide DBus Interface
-Plugin --> ReSetDaemon                     : Provide functionality thread
-Plugin --> ReSet                           : Provide user interface widget
+LAYOUT_TOP_DOWN()
+HIDE_STEREOTYPE()
+
+AddContainerTag("process", $legendText="process")
+
+System_Boundary(c1, 'ReSet') {
+    System(ReSetDaemon, "ReSet Daemon", "Handles functionality for settings")
+    System(ReSet, "ReSet", "Graphical user interface")
+}
+Container(Plugin, "Plugin", "rust")
+
+BiRel(ReSetDaemon, ReSet, "Interacts with", "DBus")
+Rel_L(Plugin, ReSetDaemon, "Provides interface", "DBus, rust")
+Rel_L(Plugin, ReSet, "Provides UI widget", "gtk4")
 
 @enduml

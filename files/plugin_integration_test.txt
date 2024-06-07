@@ -1,16 +1,26 @@
 @startuml
-!theme vibrant
-rectangle ReSetDaemon
-rectangle Plugin 
-rectangle ReSet 
-rectangle TestingFramework
+skinparam defaultFontName DejaVu Sans
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-ReSetDaemon <--> ReSet                     : DBus
-Plugin --> ReSetDaemon                     : Provide DBus Interface
-Plugin --> ReSetDaemon                     : Provide functionality thread
-Plugin --> ReSet                           : Provide user interface widget
-TestingFramework -> ReSetDaemon            : Provide Mock DBus endpoints
-TestingFramework -> ReSet                  : Simulate user input 
-Plugin -> TestingFramework                 : Provide tests 
+LAYOUT_TOP_DOWN()
+HIDE_STEREOTYPE()
+
+AddContainerTag("process", $legendText="process")
+
+System_Boundary(c1, 'ReSet') {
+    System(ReSetDaemon, "ReSet Daemon", "Handles functionality for settings", $tags="process")
+    System(ReSet, "ReSet", "Graphical user interface", $tags="process")
+    Container(TestingFramework, "Testing Framework")
+}
+Container(Plugin, "Plugin") 
+
+BiRel(ReSetDaemon, ReSet,"DBus")
+Rel_L(Plugin, ReSetDaemon,"\t\t\t\tProvide\ninterface", "DBus")
+Rel_L(Plugin, ReSet,"\t\t\t\tProvide\nUI widget", "gtk4")
+Rel(TestingFramework ,ReSetDaemon,"Provide Mocks", "DBus")
+Rel(TestingFramework ,ReSet,"Simulate\nuser input", "gtk4")
+Rel_L(Plugin, TestingFramework,"Provide tests")
+
+' ay_Distance(Plugin, ReSet, 2)
 
 @enduml

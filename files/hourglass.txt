@@ -1,20 +1,31 @@
 @startuml
-!theme vibrant
-rectangle Cpp_Application
-rectangle C_API 
-rectangle Rust_API 
-rectangle Zig_API 
-rectangle Go_API 
-rectangle Rust_Client
-rectangle Zig_Client
-rectangle Go_Client
+skinparam defaultFontName DejaVu Sans
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-C_API --> Cpp_Application                : Hooks into
-Rust_API --> C_API                       : Mirror
-Zig_API --> C_API                        : Mirror
-Go_API --> C_API                         : Mirror
-Rust_Client --> Rust_API                 : Implements
-Zig_Client --> Zig_API                   : Implements
-Go_Client --> Go_API                     : Implements
+AddContainerTag("process", $legendText="process")
+AddContainerTag("ABI", $legendText="ABI")
+AddContainerTag("dynlib", $legendText="dynamic library")
+
+' LAYOUT_LANDSCAPE()
+LAYOUT_TOP_DOWN()
+HIDE_STEREOTYPE()
+
+Container(Cpp_Application,"Cpp_Application" )
+Container(C_API,"C_API")
+Container(Rust_API,"Rust_API")
+Container(Zig_API,"Zig_API")
+Container(Go_API,"Go_API")
+Container(Rust_Client,"Rust_Client")
+Container(Zig_Client,"Zig_Client")
+Container(Go_Client,"Go_Client")
+
+
+Rel(C_API , Cpp_Application,"Hooks into")
+Rel(Rust_API , C_API       ,"Mirror")
+Rel(Zig_API , C_API        ,"Mirror")
+Rel(Go_API , C_API         ,"Mirror")
+Rel(Rust_Client , Rust_API ,"Implements")
+Rel(Zig_Client , Zig_API   ,"Implements")
+Rel(Go_Client , Go_API     ,"Implements")
 
 @enduml

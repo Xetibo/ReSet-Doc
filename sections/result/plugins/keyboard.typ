@@ -30,7 +30,7 @@ source=~/Documents/dotfiles/hypr/input.conf
 )
 
 ReSet can then easily override the whole file each time a change is made,
-because it only has to build a string together and doesn't require an
+because it only has to build a string together and does not require an
 implementation of a parser which would have been out of scope anyway.
 
 #let code = "
@@ -186,15 +186,15 @@ is not deprecated.
 #subsubsubsubsection("Keyboard Limit")
 XKB is a system part of the X Window System and provides an easy way to
 configure keyboard layouts. On Wayland, XKB is the recommended way of handling
-keyboard input as well @waylandkeyboard. The problem with XKB is that it doesn't
-support more than four keyboard groups at the same time. A group in XKB consists
-of symbols, which are a collection of character codes and a group type that
-defines the type of symbols, e.g Latin letters, Cyrillic letters etc. and make
-up a keyboard layout. It is not possible to just increase that number because
-the XKBState field is only 16 bits long and uses bits 13 and 14 to report the
-keyboard group. Any attempt to increase the number of groups would require a
-change in the representation schema in XKB and other changes that wouldn't be
-backwards compatible @xkblimitation.\
+keyboard input as well @waylandkeyboard. The problem with XKB is that it does
+not support more than four keyboard groups at the same time. A group in XKB
+consists of symbols, which are a collection of character codes and a group type
+that defines the type of symbols, e.g Latin letters, Cyrillic letters etc. and
+make up a keyboard layout. It is not possible to just increase that number
+because the XKBState field is only 16 bits long and uses bits 13 and 14 to
+report the keyboard group. Any attempt to increase the number of groups would
+require a change in the representation schema in XKB and other changes that
+wouldn't be backwards compatible @xkblimitation.\
 
 To show users that limitation visually, the first few rows are highlighted,
 while the rest have system colors. This number is set depending on the desktop

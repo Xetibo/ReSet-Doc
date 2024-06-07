@@ -1,16 +1,22 @@
 @startuml
-!theme vibrant
-rectangle WaylandClient1
-rectangle WaylandClient2
-rectangle WaylandClient3
-rectangle XwaylandServer
-rectangle XClient
-rectangle WaylandServer
+skinparam defaultFontName DejaVu Sans
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-WaylandServer --> XwaylandServer  : includes 
-WaylandServer <--> WaylandClient1 : interacts with 
-WaylandServer <--> WaylandClient2 : interacts with  
-WaylandServer <--> WaylandClient3 : interacts with 
-XwaylandServer <--> XClient                   : interacts with 
+' LAYOUT_LANDSCAPE()
+LAYOUT_TOP_DOWN()
+HIDE_STEREOTYPE()
+
+Container(WaylandClient1   ,"WaylandClient1")
+Container(WaylandClient2   ,"WaylandClient2")
+Container(WaylandClient3   ,"WaylandClient3")
+Container(XwaylandServer   ,"XwaylandServer")
+Container(XClient          ,"XClient")
+Container(WaylandCompositor,"WaylandCompositor")
+
+Rel(WaylandCompositor , XwaylandServer ,"optionally includes")
+BiRel(WaylandCompositor, WaylandClient1,"interacts with")
+BiRel(WaylandCompositor, WaylandClient2,"interacts with")
+BiRel(WaylandCompositor, WaylandClient3,"interacts with")
+BiRel(XwaylandServer, XClient,"interacts with")
 
 @enduml

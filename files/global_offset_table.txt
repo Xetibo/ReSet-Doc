@@ -1,13 +1,28 @@
 @startuml
-!theme vibrant
-rectangle Executable
-rectangle LibraryVirtualMemory 
-rectangle LibraryGOT 
-rectangle ExecutableGOT
+skinparam defaultFontName DejaVu Sans
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-Executable --> ExecutableGOT               : Call function x
-ExecutableGOT --> LibraryVirtualMemory     : Execute function
-LibraryVirtualMemory --> LibraryGOT        : Store result in out parameter y
-LibraryGOT -> Executable                   : Redirect result to actual variable
+AddContainerTag("process", $legendText="process")
+AddContainerTag("ABI", $legendText="ABI")
+AddContainerTag("dynlib", $legendText="dynamic library")
+
+' LAYOUT_LANDSCAPE()
+LAYOUT_TOP_DOWN()
+HIDE_STEREOTYPE()
+
+Container(Executable, "Executable")
+Container(ExecutableGOT, "Executable GOT")
+Container(LibraryGOT, "Library GOT")
+Container(LibraryVirtualMemory, "Library Virtual Memory")
+
+Rel_D(Executable, ExecutableGOT, "Call function x")
+Rel_L(ExecutableGOT, LibraryVirtualMemory, "Execute function")
+Rel_U(LibraryVirtualMemory, LibraryGOT, "Store result in out parameter y")
+Rel_R(LibraryGOT, Executable, "Redirect result to actual variable")
+
+' Lay_Distance(LibraryGOT,Executable, 1)
+' Lay_Distance(ExecutableGOT, LibraryVirtualMemory, 1)
+' Lay_Distance(Executable, ExecutableGOT, 1)
+' Lay_Distance(LibraryVirtualMemory, LibraryGOT, 1)
 
 @enduml
