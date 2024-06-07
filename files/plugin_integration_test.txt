@@ -17,7 +17,7 @@ Container(Plugin, "Plugin")
 BiRel(ReSetDaemon, ReSet,"DBus")
 Rel_L(Plugin, ReSetDaemon,"\t\t\t\tProvide\ninterface", "DBus")
 Rel_L(Plugin, ReSet,"\t\t\t\tProvide\nUI widget", "gtk4")
-Rel(TestingFramework ,ReSetDaemon,"Provide Mocks", "DBus")
+Rel(TestingFramework ,ReSetDaemon,"Run tests in separate thread", "rust")
 Rel(TestingFramework ,ReSet,"Simulate\nuser input", "gtk4")
 Rel_L(Plugin, TestingFramework,"Provide tests")
 
