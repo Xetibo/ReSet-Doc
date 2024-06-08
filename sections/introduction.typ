@@ -67,7 +67,7 @@ allows for testing and potential revisions of the system.
   should always be informed about changes without needing to frequently visit the
   codebase.
 - *Stability* \
-  Plugin systems should be stable in both the "execution" and "environment".
+  Plugin systems should be stable in both "execution" and "environment".
   Stable execution refers to the system not crashing, while the stable environment
   refers to the plugin system API, which should not break compatibility with
   existing plugins on every update.

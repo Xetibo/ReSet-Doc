@@ -4,7 +4,7 @@
 
 #let abstract = {
   [
-    Abstract
+    #include "sections/abstract.typ"
   ]
 }
 
