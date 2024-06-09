@@ -13,7 +13,8 @@ viability of each system on ReSet and its potential plugins.
 
 // Result
 The plugin system was ultimately developed with shared libraries which allows
-for resource sharing in both the daemon and the user interface of ReSet.
+for resource sharing in both the daemon and the user interface of ReSet without
+the additional overhead of an interpreter.
 
 To prove the plugin system, two exemplary plugins were developed in this thesis.
 The first is a monitor plugin, which allows users to change individual settings
@@ -23,6 +24,8 @@ the plugin system is a testing framework which also allows plugin developers to
 include their tests within ReSet in order to allow integration tests.
 
 // Conclusion
-In summary, the plugin system offers ReSet the opportunity to offer limitless
-potential in both environment and hardware support, while also giving users the
-option to choose their own options within ReSet.
+In summary, the plugin system was successfully implemented, with both plugins
+expanding the functionality as expected. Additionally, the plugin system offers
+ReSet the opportunity to offer limitless potential in both environment and
+hardware support, while also giving users the option to choose their own options
+within ReSet.
