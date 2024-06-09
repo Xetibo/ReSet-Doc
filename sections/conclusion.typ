@@ -53,8 +53,6 @@ Due to the current development status of High Dynamic Range within the Linux
 desktop sphere, the HDR option for monitors is not implemented. This option
 could be added once development of HDR on Linux stabilizes.
 
-// TODO: X11?
-
 Time constraints and further necessary research pushed color profiles into an
 optional feature for the end product, which was omitted in favor of more testing
 and further environment support. This feature is preferably implemented
@@ -68,6 +66,11 @@ wayland protocol, offering universal management of monitors, could simplify the
 implementation to a single endpoint for all wayland implementations. The
 challenges for this endeavor lie with the universal acceptance of such a
 protocol, which would be required in order to gain the universal status.
+
+Support for environments is currently limited to wayland implementations. This
+is mainly due to the fact that wayland is the current standard, with X11 being
+phased out as time passes. Due to the drastic difference in paradigm, a
+different plugin implementing the X11 solution would be optimal.
 
 #subsubsection("Keyboard")
 As mentioned in @KeyboardLimit, the current protocol used within various Linux
