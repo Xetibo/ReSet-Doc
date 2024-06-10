@@ -76,7 +76,11 @@ different plugin implementing the X11 solution would be optimal.
 As mentioned in @KeyboardLimit, the current protocol used within various Linux
 environments limit the active keyboard layouts to four. Hence, future work could
 implement a new protocol in order to increase this number and hence, improve
-functionality for users.
+functionality for users. 
+
+Even though features such as keyboard shortcuts, keyboard repeats and user-defined 
+custom layout were initially planned, they had to be removed because of time 
+constraints.
 
 #subsection("Potential")
 This thesis offers users of ReSet the ability to inject plugins into the base
