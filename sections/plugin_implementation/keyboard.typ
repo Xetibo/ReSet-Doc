@@ -302,6 +302,14 @@ layout_row.connect_activate(clone!(@strong keyboard_layouts, @weak list, @strong
     )<keyboard-show-variants>],
 )
 
+An example on how the removal works visually can be seen in @keyboard-nested-list-removal.
+
+#align(
+  center, [#figure(
+      img("keyboardNestedListRemoval.png", width: 100%, extension: "figures"), caption: [Removal of all layouts except german],
+    )<keyboard-nested-list-removal>],
+)
+
 #subsubsubsection("Highlight active layouts")
 To show users that limitation visually, the first few rows are highlighted,
 while the rest have system colors. This number is set depending on the desktop
