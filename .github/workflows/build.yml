@@ -27,6 +27,7 @@ jobs:
         plantuml files/global_offset_table.txt -tsvg
         plantuml files/mock_implementation.txt -tsvg
         plantuml files/wayland_architecture.txt -tsvg
+        plantuml files/poster.txt -tsvg
     - name: Build PDF
       run: |
         mkdir output
