@@ -132,9 +132,9 @@ In @gnome-gio-get-input-config the layouts are fetched, and its type is checked.
 If the layout_variant is not an array of two strings an empty array will be
 returned. Otherwise, a generic get function is called with type Vec\<(String,
 String)\>\> to parse it into desired structure. This solution is a lot more
-elegant than the Regex because it is more human-readable and better performant
-wise as regex processing can be slower due to its pattern matching which
-involves operations like backtracking.
+elegant than the Regex because it is more human-readable and better performant 
+as regex processing can be slower due to its pattern matching which involves 
+operations like backtracking.
 
 #let code = "
 let input_sources = gtk::gio::Settings::new(\"org.gnome.desktop.input-sources\");
@@ -170,9 +170,9 @@ input_sources.set(\"sources\", variant).expect(\"failed to write layouts\");
 
 #subsubsubsection("KDE Implementation")
 To read the keyboard layouts and variants in KDE, kreadconfig6 has to be used.
-Unfortunately there is no library that provides bindings so reading and writing
-using rust commands was necessary. In @kde-get-input-config the command with all
-its argument can be seen. Writing to the kxkbrc file works exactly the same as
+Unfortunately, no library provides bindings so reading and writing using rust 
+commands was necessary. In @kde-get-input-config the command with all its 
+arguments can be seen. Writing to the kxkbrc file works exactly the same as
 writing with the only difference of adding the new keyboard layout string as an
 additional argument and using kwriteconfig6.
 
@@ -215,9 +215,9 @@ is not deprecated.
 #subsubsection("Nested listing")
 A quality-of-life feature to makes adding keyboard layouts easier is the
 addition of nested listing. There are many keyboard variants for the same
-layout, for example, German (US), German (Dvorak) etc. which can grouped
-together into single entry in the list marked with an arrow symbol because not
-all languages have variants. An example on how this looks can be seen in
+layout, for example, German (US), German (Dvorak) etc. which can grouped 
+into a single entry in the list marked with an arrow symbol because not
+all languages have variants. An example of how this looks can be seen in
 @nested-listing.\
 
 #align(
@@ -226,7 +226,7 @@ all languages have variants. An example on how this looks can be seen in
     )<nested-listing>],
 )
 
-In GNOME control setting, every keyboard layout with its variations are shown in
+In GNOME control setting, every keyboard layout with its variations is shown in
 an alphabetically sorted list. The problem with this approach is that there are
 variants for layouts that have a very different name where it's not obvious to
 which layout it belongs to as seen in an example in
@@ -245,7 +245,7 @@ which layout it belongs to as seen in an example in
 )
 
 This feature reduces the list by a significant amount and helps the user to
-narrow down the desired language first before looking more detailed for the
+narrow down the desired language first before looking more detailed at the
 specific variant. Clicking on such an entry removes all other keyboard layouts
 and only shows the variants for that language as seen in
 @keyboard-layout-variants.
@@ -257,10 +257,10 @@ and only shows the variants for that language as seen in
 )
 
 To achieve this, a layout that has variants needs to have some code that removes
-all other layouts and only show its variants and a button to show all layouts
-again. This is shown in the on click event listener in @keyboard-show-variants.
-The back button removes every element in the list and inserts all layouts back
-to the list.
+all other layouts and only shows its variants and a button to show all layouts
+again. This is shown in the on-click event listener in @keyboard-show-variants.
+The back button removes every element in the list and inserts all layouts back 
+into the list.
 
 #let code = "
 layout_row.connect_activate(clone!(@strong keyboard_layouts, @weak list, @strong back_row => move |_| {
@@ -317,11 +317,11 @@ explains the highlight is added.\
 
 Because there are users that use many different themes, it is not possible to
 hardcode a single color because it might not fit with other themes. A GTK theme
-is defined in a css file that contains a list of key-value like pairs of name
+is defined in a CSS file that contains a list of key-value like pairs of names 
 and a color as can be seen in @gtk-theme-definition. These can be accessed from
 ReSet with an \@css-name like @keyboard-css-highlight. Because using the color
-definition as is is bound to clash with other UI elements with the same
-coloring, color expressions can be used to slightly change a color without
+definition is bound to clash with other UI elements with the same
+coloring, color expressions can be used to slightly change color without
 having to hardcode it. @gtk-css
 
 #let code = "
