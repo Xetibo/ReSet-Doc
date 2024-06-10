@@ -3,11 +3,11 @@
 
 #section("Introduction")
 /* This thesis focuses on the improvement of the ReSet settings application. The improvements cover a large variety of topics, including a plugin system/* @plugin_system */, attending accessibility concerns in/* @accessibility */, creating a testing framework for DBus functionality in/* @test_framework */, animations for the ReSet user interface and creating a command line application to interface with ReSet. */
-ReSet is a settings application for Linux made with GTK and the Rust programming
-language. The application aims to provide functionality for all user interfaces
-(Desktop Environments) on Linux, reducing the need for first-party applications
-by the environments themselves or the reliance on smaller single-utility
-applications.
+ReSet is a settings application for Linux made with GTK (formerly Gimp toolkit)
+and the Rust programming language. The application aims to provide functionality
+for all user interfaces (Desktop Environments) on Linux, reducing the need for
+first-party applications by the environments themselves or the reliance on
+smaller single-utility applications.
 
 ReSet was a semester project for the OST, Eastern Switzerland University of
 Applied Sciences. This thesis will expand on the original work, solving existing
@@ -67,10 +67,10 @@ allows for testing and potential revisions of the system.
   should always be informed about changes without needing to frequently visit the
   codebase.
 - *Stability* \
-  Plugin systems should be stable in both "execution" and "environment".
-  Stable execution refers to the system not crashing, while the stable environment
-  refers to the plugin system API, which should not break compatibility with
-  existing plugins on every update.
+  Plugin systems should be stable in both "execution" and "environment". Stable
+  execution refers to the system not crashing, while the stable environment refers
+  to the plugin system API, which should not break compatibility with existing
+  plugins on every update.
 
 #subsection("Additional Objectives")
 The original work has limitations which this thesis intends to build upon. As an

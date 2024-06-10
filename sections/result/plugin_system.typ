@@ -2,6 +2,19 @@
 
 #subsection("General Plugin System")
 
+#subsection("Resulting Architecture")
+The end resulting architecture is similar to the architecture in
+@DynamicLibraries. The only difference is the absence of the C-ABI, which was
+omitted in favor of direct usage of rust due to tedious conversion of rust to C.
+In @resulting_architecture, the architecture is visualized.
+
+#align(
+  center, [#figure(
+      img("poster.svg", width: 100%, extension: "files"), caption: [Resulting architecture of ReSet and its plugin system],
+    )<resulting_architecture>],
+)
+#pagebreak()
+
 #subsection("Any-Variant")
 in @ExampleAnypattern an Any-Variant via byte vectors is covered. For ReSet, a
 different route was taken to implement the Any variant. Instead of converting
