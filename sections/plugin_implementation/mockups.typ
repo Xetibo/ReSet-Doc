@@ -5,7 +5,7 @@ In this section, two mockups of potential plugins are created. The first plugin
 allows the user to change monitor settings and the second plugin allows keyboard
 settings. The mockups were created using Mockflow, which is an online tool for
 creating mockups. The mockups are not final and are only meant to give a first
-impression.
+impression. @mockflow
 
 #subsubsection("Monitor Plugin Mockup")
 While settings applications offer many different approaches and user interfaces,
@@ -15,7 +15,7 @@ monitors. Because there are near-infinite variations on how monitors can be
 ordered, it makes sense to use a widget where the user can visually see the
 result. This makes it very intuitive compared to having users set the offset as
 a number. A user is most likely to be familiar with a drag-and-drop feature,
-which makes it easy to understand how to use it @draganddrop.\
+which makes it easy to understand how to use it. @draganddrop \
 The "Cancel" and "Apply" buttons are placed at the bottom of the drag-and-drop
 area because it follows the natural downward flow of the user. A feature that
 can be implemented into that area is the ability to change commonly used monitor
@@ -30,7 +30,7 @@ offer these settings after scrolling a bit, which is not very user-friendly.
 Below this area, the user can set the main monitor and change other settings
 such as the brightness and night mode. The order is heavily inspired from
 Windows 11. The further down the user scrolls the more advanced the settings
-become. The specific form controls for each setting are not considered as for
+become. The specific form controls for each setting are not considered for
 now.\
 There are a few settings that are handled differently or are just plainly not
 available in certain desktop environments. To address these variations, the UI
