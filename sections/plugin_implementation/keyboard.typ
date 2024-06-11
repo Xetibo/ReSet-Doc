@@ -168,14 +168,15 @@ input_sources.set(\"sources\", variant).expect(\"failed to write layouts\");
     )<gnome-gio-set-input-config>],
 )
 
-Unfortunately, GIO does not exist within the sandboxing of flatpak, which meant that a workaround 
-was necessary. Flatpak provides a command that allows running commands outisde the sandbox called 
-flatpak-spawn. Subsequently dconf was used again to get the layouts like in the first try. If the 
-dconf command was run in flatpak, it would not return a valid value, but rather the signature of 
-the setting which can be checked on. If it returned the signature, the same command is spawned with 
-the addition of flatpak-spawn. Compared the the first try, Regex was not necessary anymore because 
-with the knowledge from the second try, using the built-in variant was a much cleaner way and less
-error prone. In @gnome-keyboard-flatpak the new code can be seen.
+Unfortunately, GIO does not exist within the sandboxing of flatpak, which meant that using it as is
+results in a crash. GIO is therefore not suitable and a workaround was necessary. Flatpak provides 
+a command that allows running commands outisde the sandbox called flatpak-spawn. Subsequently dconf 
+was used again to get the layouts like in the first try. If the dconf command was run in flatpak, 
+it would not return a valid value, but rather the signature of the setting which can be checked on.
+If it returned the signature, the same command is spawned with the addition of flatpak-spawn. Compared 
+the the first try, Regex was not necessary anymore because with the knowledge from the second try, 
+using the built-in variant was a much cleaner way and less error prone. In @gnome-keyboard-flatpak 
+the new code can be seen.
 
 #let code = "
 let mut result = Command::new(\"dconf\")
