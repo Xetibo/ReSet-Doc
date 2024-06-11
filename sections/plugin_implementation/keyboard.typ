@@ -7,7 +7,7 @@
 In this section, the implementation of the keyboard plugin is discussed.
 
 #subsubsubsection("Hyprland Implementation")
-Because there is no hyprlang parser in rust, a separate file is being created
+Because there is no hyprlang parser in Rust, a separate file is being created
 that holds the keyboard layout setting. This file has to be referenced from the
 main configuration file like in @hyprconf-bind-config.
 
@@ -75,7 +75,8 @@ the user. This path can be provided in the local config folder of a user in a
 file called Reset.toml. This file contains ReSet relevant configuration. The
 user has to provide the path to the input config there like
 @reset-keyboard-config-hyprland or else ReSet wouldn't know where to write the
-changes to. If the file does not exist, a new one will be created.
+changes to. If the file does not exist, a new one will be created. If the
+path is not provided, the keyboard plugin will use a predefined path.
 
 #let code = "
 [Keyboard]
@@ -122,7 +123,7 @@ Command::new(\"dconf\")
 
 #align(
   left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Set GNOME keyboard layouts],
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Write new layouts with dconf],
     )<gnome-set-input-config>],
 )
 
@@ -149,7 +150,7 @@ let layouts = layout_variant.get::<Vec<(String, String)>>().unwrap();
 
 #align(
   left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Set GNOME keyboard layouts],
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Get keyboard layouts with GIO],
     )<gnome-gio-get-input-config>],
 )
 
@@ -164,7 +165,7 @@ input_sources.set(\"sources\", variant).expect(\"failed to write layouts\");
 
 #align(
   left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Set GNOME keyboard layouts],
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Set GNOME keyboard layouts with GIO],
     )<gnome-gio-set-input-config>],
 )
 
@@ -212,13 +213,13 @@ let layouts = layout_variant.get::<Vec<(String, String)>>().unwrap();
 
 #align(
   left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Set GNOME keyboard layouts],
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Flatpak compatible fetching of keyboard layouts],
     )<gnome-keyboard-flatpak>],
 )
 
 #subsubsubsection("KDE Implementation")
 To read the keyboard layouts and variants in KDE, kreadconfig6 has to be used.
-Unfortunately, no library provides bindings so reading and writing using rust 
+Unfortunately, no library provides bindings so reading and writing using Rust 
 commands was necessary. In @kde-get-input-config the command with all its 
 arguments can be seen. Writing to the kxkbrc file works exactly the same as
 writing with the only difference of adding the new keyboard layout string as an
@@ -258,7 +259,8 @@ An issue with these is that the versions are part of the command. Currently, the
 newest version is kreadconfig6 and kwriteconfig6 and have deprecated version 5
 for the most part. This also means that if version 7 is being released, the
 command needs to be adjusted so that it works for both versions while version 6
-is not deprecated.
+is not deprecated. But because version 6 just released, version 7 is still in the
+far future.
 
 #subsubsection("Nested listing")
 A quality-of-life feature to makes adding keyboard layouts easier is the

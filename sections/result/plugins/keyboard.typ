@@ -143,7 +143,7 @@ is located in the config folder of the user and can be read using kreadconfig6
 and written to using kwriteconfig6. These are tools provided by KDE to modify
 settings @kdeconfig.
 
-There was also a dbus interface that could be used to fetch keyboard layouts,
+There was also a DBus interface that could be used to fetch keyboard layouts,
 but there was no way to set them. Therefore, the implementation was done using
 kreadconfig and kwriteconfig.
 

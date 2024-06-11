@@ -504,7 +504,7 @@ into the testing framework is visualized.
 There is a GTK testing framework for Rust, which is called "gtk-test". This
 crate allowed for an easy way of creating tests for the user interface of ReSet.
 As an example, the following code snippet is taken from the repository page and
-shows how to test the change of a string in a label. @GTKTests
+shows how to test the change of a string in a label. @gtk-test
 
 #let code = "
 fn main() {

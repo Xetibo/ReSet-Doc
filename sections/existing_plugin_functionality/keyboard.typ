@@ -18,7 +18,7 @@ persistent. That means that those changes disappear after a restart @hyprctl.
 The other method is to write it directly into the hypr.conf file. Because the
 configuration file uses a custom configuration language called hyprlang, it's
 very hard to make changes in a specific area there because currently no parser
-exists for it that is written in rust.
+exists for it that is written in Rust.
 
 #subsubsubsection("GNOME")
 In GNOME, it is possible to change keyboard layouts with gsettings or dconf.
@@ -40,7 +40,7 @@ Dconf serves as a low-level configuration system for gsettings that stores
 key-based configuration details in a single compact binary format database
 @dconf. Because gsettings is a layer for dconf, the keyboard plugin directly
 uses dconf for setting the keyboard layouts. Combined with the dconf crate,
-which provides rust bindings to dconf, the plugin can read the keyboard layouts
+which provides Rust bindings to dconf, the plugin can read the keyboard layouts
 @dconf_rs. This returns a string that needs to be parsed to get the keyboard
 layout and variant, which can be done with a simple regex.
 
@@ -48,10 +48,10 @@ layout and variant, which can be done with a simple regex.
 KDE stores its keyboard configurations in a file called kxkbrc. This text file
 is located in the config folder of the user and can be read using kreadconfig6
 and written to using kwriteconfig6. These are tools provided by KDE to modify
-settings @kdeconfig. Unfortunately there is no rust crate that provides bindings
+settings @kdeconfig. Unfortunately there is no Rust crate that provides bindings
 to these tools, so the plugin would have to use the Command
 
-There was also a dbus interface that could be used to fetch keyboard layouts,
+There was also a DBus interface that could be used to fetch keyboard layouts,
 but there was no way to set them.
 
 #subsubsection("Keyboard Limit")
@@ -66,7 +66,7 @@ make up a keyboard layout.\
 In @keyboard-struct-limitation the structure of the XKBState can be seen. The
 structure is 16 bits long and contain various informations about the active
 state of a keyboard (or keyboards). Because KEYMASK and BUTMASK are not
-responsible for saving keyboard layouts and are therefore not explained further.
+responsible for saving keyboard layouts, they are not explained any further.
 The important parts are bits 13 and 14 as they keyboard group. It is not
 possible to just increase that number because the XKBState field is only 16 bits
 long and there is no bits left that could be used. Any attempt to increase the

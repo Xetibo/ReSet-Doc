@@ -6,7 +6,7 @@ In this section, the implementation of the monitor plugin is discussed.
 
 For this plugin, the following environments are considered: KDE, GNOME, wlroots
 based compositors and Kwin based compositors. This selection covers a large
-section of the wayland compositors except the cosmic desktop, which will be
+section of the Wayland compositors except the cosmic desktop, which will be
 released after this thesis. @cosmic-release
 
 When discussing implementations from other environments, they were tested on an
@@ -15,10 +15,10 @@ EndeavourOS virtual machine with their respective dark themes applied.
 
 #subsubsubsection("Environment Differences")
 The introduction of Wayland complicates the fetching of the data needed for
-configuring monitors. This is because many wayland environments have their 
+configuring monitors. This is because many Wayland environments have their 
 custom implementation of applying monitor configuration and will hence not 
 be compatible with each other. For example, the wlroots implementation
-of applying a monitor configuration is defined by the wayland protocol extension
+of applying a monitor configuration is defined by the Wayland protocol extension
 zwlr_output_manager_v1. @wlr-output-management As the name suggests, this is
 made solely for environments using wlroots as their library. Similarly, KDE also
 offers its protocol, while GNOME chose the DBus route, providing a handy
@@ -118,7 +118,7 @@ protocol specifically targets wlroots.
 
 #subsubsubsubsection("Wlroots Implementation")
 As mentioned in @HyprlandImplementation, the wlroots implementation can only be
-implemented via wayland protocols and is as such also limited to the used
+implemented via Wayland protocols and is as such also limited to the used
 protocol. Hence, the wlroots implementation does not offer persistent storing of
 monitor configurations, instead only offering applying of a specific
 configuration.
@@ -126,19 +126,19 @@ configuration.
 However, unlike the hyprland implementation, it is compositor independent and
 will work as long as the zwlr_output_manager_v1 protocol is implemented.
 
-In order to connect to a compositor using wayland protocols, a wayland-client is
+In order to connect to a compositor using Wayland protocols, a wayland-client is
 used. This client would then connect to the "server" which is the compositor.
-Wayland-client implementations are provided either directly by the wayland
+Wayland-client implementations are provided either directly by the Wayland
 project as a C library or by third parties such as smithay which implements the
-client and server part for rust. @wayland-repo @wayland-rs
+client and server part for Rust. @wayland-repo @wayland-rs
 
-In @wayland-architecture, the base wayland architecture is visualized.
+In @wayland-architecture, the base Wayland architecture is visualized.
 
 #figure(
   img("wayland_architecture.svg", width: 100%, extension: "files"), caption: [Wayland architecture],
 )<wayland-architecture>
 
-As such, it is now possible to create such a client for a wayland server and
+As such, it is now possible to create such a client for a Wayland server and
 generate requests for it. The server will then respond with events which the
 client can then
 
@@ -175,25 +175,25 @@ pub fn get_wl_backend() -> String {
 ";
 #align(
   left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Example wayland connection with Smithay],
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Example Wayland connection with Smithay],
     )<Wayland-Connection>],
 )
 
 #pagebreak()
 
 #subsubsubsubsection("KDE Implementation")
-Similar to Hyprland, KDE offers both a custom tool and a wayland protocol to
+Similar to Hyprland, KDE offers both a custom tool and a Wayland protocol to
 handle monitor configuration.
 
 Also like with Hyprland, both solutions were implemented, for KDE the reason is
-simply to include support for both the X11 implementation of KDE and the wayland
+simply to include support for both the X11 implementation of KDE and the Wayland
 version. If this plugin were to target the Kwin protocol exclusively, then X11
 support would not be included and would have to be implemented separately.
 
 The protocol variant requires the implementation of two protocols that will
 interact with each other. The first is the kde_output_device_v2 protocol, which
 defines the data structure responsible for holding the necessary data for each
-monitor. This protocol closely resembles the wayland core protocol "wl_output"
+monitor. This protocol closely resembles the Wayland core protocol "wl_output"
 which offers a way to fetch the currently active monitors with all their data.
 The only noticeable difference is the lack of data for potential changes a user
 can make. In other words, it only offers data about what is currently active,
@@ -318,7 +318,7 @@ at the top.
 #pagebreak()
 
 #subsubsubsection("Fractional Scaling")
-Fractional scaling is implemented according to the fractional-scale-v1 wayland
+Fractional scaling is implemented according to the fractional-scale-v1 Wayland
 protocol. @fractional-scale-v1-protocol This protocol defines how scaling values
 will be interpreted by the environment. The specification defines that supported
 scales must be of a fraction with a denominator of 120. In other words,
@@ -526,7 +526,7 @@ current environment. As an example, both GNOME and KDE have a concept of a
 primary monitor, which should be the default monitor for starting applications,
 widgets and more. However, tiling environments like Hyprland do not offer a
 primary monitor, as these types of environments handle these use cases with
-explicit focus. If your focus is currently on "monitor 1", then the application
+explicit focus. If your focus is currently on "Monitor 1", then the application
 will also be started on this monitor. Similarly, widgets and panels are created
 explicitly, meaning you would need to define one or more monitors where your
 widget or panel should be.

@@ -7,7 +7,7 @@ libraries are explained in detail in @DynamicLibraries.
 
 #subsubsubsection("Hyprland")
 Hyprland is a dynamic tiling compositor that can be extended via a plugin
-system. Both the plugin systems and the compositor itself are written in C++.
+system. Both the plugin system and the compositor itself are written in C++.
 Notably, the plugin systems rarely use the "extern C" keyword, which results in
 only C++-compatible plugins. An example of this exact system can be seen in
 @ExhibitABICompatibility.
@@ -61,13 +61,18 @@ In @hyprlandmempatching, the copying of the plugin-defined function is analyzed.
 #let code = "
 // alloc trampoline
 // populate trampoline
-memcpy(m_pTrampolineAddr, PROBEFIXEDASM.bytes.data(), HOOKSIZE);                                                       // first, original but fixed func bytes
-memcpy((uint8_t*)m_pTrampolineAddr + HOOKSIZE, PUSH_RAX, sizeof(PUSH_RAX));                                            // then, pushq %rax
-memcpy((uint8_t*)m_pTrampolineAddr + HOOKSIZE + sizeof(PUSH_RAX), ABSOLUTE_JMP_ADDRESS, sizeof(ABSOLUTE_JMP_ADDRESS)); // then, jump to source
+// first, original but fixed func bytes
+memcpy(m_pTrampolineAddr, PROBEFIXEDASM.bytes.data(), HOOKSIZE);
+// then, pushq %rax
+memcpy((uint8_t*)m_pTrampolineAddr + HOOKSIZE, PUSH_RAX, sizeof(PUSH_RAX));                                            
+// then, jump to source
+memcpy((uint8_t*)m_pTrampolineAddr + HOOKSIZE + sizeof(PUSH_RAX), 
+  ABSOLUTE_JMP_ADDRESS, sizeof(ABSOLUTE_JMP_ADDRESS)); 
 
 // fixup trampoline addr
-*(uint64_t*)((uint8_t*)m_pTrampolineAddr + TRAMPOLINE_SIZE - sizeof(ABSOLUTE_JMP_ADDRESS) + ABSOLUTE_JMP_ADDRESS_OFFSET) =
-    (uint64_t)((uint8_t*)m_pSource + sizeof(ABSOLUTE_JMP_ADDRESS));
+*(uint64_t*)((uint8_t*)m_pTrampolineAddr + TRAMPOLINE_SIZE - 
+  sizeof(ABSOLUTE_JMP_ADDRESS) + ABSOLUTE_JMP_ADDRESS_OFFSET) =
+  (uint64_t)((uint8_t*)m_pSource + sizeof(ABSOLUTE_JMP_ADDRESS));
 
 // various code omitted: fixing pointers, NOP remaining code, etc.
 // set original addr to trampo addr

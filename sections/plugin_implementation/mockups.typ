@@ -4,8 +4,7 @@
 In this section, two mockups of potential plugins are created. The first plugin
 allows the user to change monitor settings and the second plugin allows keyboard
 settings. The mockups were created using Mockflow, which is an online tool for
-creating mockups. The mockups are not final and are only meant to give a first
-impression. @mockflow
+creating mockups. @mockflow
 
 #subsubsection("Monitor Plugin Mockup")
 While settings applications offer many different approaches and user interfaces,
@@ -24,14 +23,16 @@ offer these settings after scrolling a bit, which is not very user-friendly.
 #align(
   center, [#figure(
       img("../figures/monitorMock.png", width: 75%, extension: "figures"), caption: [Monitor plugin mockup],
-    )],
+    )<monitor-mock>],
 )
 
 Below this area, the user can set the main monitor and change other settings
-such as the brightness and night mode. The order is heavily inspired from
-Windows 11. The further down the user scrolls the more advanced the settings
-become. The specific form controls for each setting are not considered for
-now.\
+such as the brightness and night mode. The order is inspired from Windows 11. 
+The further down the user scrolls the less common and more advanced the settings 
+should become. This should allow users to easily find settings that are often 
+changed. The order seen in @monitor-mock does not hold much meaning and should be 
+taken with a grain of salt. The specific form controls for each setting are not 
+considered for now.\
 There are a few settings that are handled differently or are just plainly not
 available in certain desktop environments. To address these variations, the UI
 will check which desktop environment is currently running and display the
@@ -63,19 +64,20 @@ sorted by importance, the best form of control for this is a sortable list. This
 is because, at the same time, the layout in the first place is also the default
 keyboard layout The usage of such form control can be seen in Windows and GNOME
 Settings.\
-Something important to note is that there is a maximum of keyboard layouts a
-system can have configured at the same time. For example, if a user has ten
-keyboard layouts configured, only the first few can be switched to. This limit
-is dependent on the desktop environment and therefore has to be dynamically
-adjusted. The first few keyboard layouts will be colored to indicate if they are
-active or not.
+There is a maximum of keyboard layouts a system can have configured at the same 
+time. For example, if a user has ten keyboard layouts configured, only the first
+few can be switched to. This limit is dependent on the desktop environment and 
+therefore has to be dynamically adjusted. The first few keyboard layouts will be 
+colored to indicate if they are active or not.
+
+In @gnome-keyboard-setting-list, GNOME's keyboard list can be seen.
 
 #align(
   center, [#figure(
       img(
         "../figures/gnomeKeyboardSetting.png", width: 50%, extension: "figures",
       ), caption: [GNOME keyboard layouts],
-    )],
+    )<gnome-keyboard-setting-list>],
 )
 
 The user can also add a new layout with "Add layout" button, which places the
@@ -92,12 +94,13 @@ has been expanded upon. GNOME Settings only has this feature for "English (UK)"
 and "English (US)", while all other layouts are shown at the same time. This
 makes it harder for the user to find a specific layout because filtering the
 layouts with the search bar can still show layouts of another language, which
-have a similar name. //todo add example
+have a similar name. In @keyboard-add-layout-mock a mockup of this feature can
+be seen.
 
 #align(
   center, [#figure(
       img(
         "../figures/keyboardAddLayoutMock.png", width: 75%, extension: "figures",
       ), caption: [Mock of keyboard add layout plugin],
-    )],
+    )<keyboard-add-layout-mock>],
 )

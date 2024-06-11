@@ -62,13 +62,13 @@ The current implementation is targeted towards multiple Linux environments with
 their specific implementation. This forces the plugin to provide multiple
 endpoints to connect to the differing environments, as well as offer multiple
 conversion from the environment data types, to the plugin data types. A new
-wayland protocol, offering universal management of monitors, could simplify the
-implementation to a single endpoint for all wayland implementations. The
+Wayland protocol, offering universal management of monitors, could simplify the
+implementation to a single endpoint for all Wayland implementations. The
 challenges for this endeavor lie with the universal acceptance of such a
 protocol, which would be required in order to gain the universal status.
 
-Support for environments is currently limited to wayland implementations. This
-is mainly due to the fact that wayland is the current standard, with X11 being
+Support for environments is currently limited to Wayland implementations. This
+is mainly due to the fact that Wayland is the current standard, with X11 being
 phased out as time passes. Due to the drastic difference in paradigm, a
 different plugin implementing the X11 solution would be optimal.
 

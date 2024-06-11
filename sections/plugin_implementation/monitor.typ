@@ -46,7 +46,7 @@ pub struct Monitor {
 )
 
 #subsubsection("Fractional Scaling")
-Fractional scaling is implemented according to the fractional-scale-v1 wayland
+Fractional scaling is implemented according to the fractional-scale-v1 Wayland
 protocol. @fractional-scale-v1-protocol This protocol defines how scaling values
 will be interpreted by the environment. The specification defines that supported
 scales must be of a fraction with a denominator of 120. In other words,
@@ -175,9 +175,8 @@ same time, any potential monitor overlaps have to be handled, as well as
 providing snapping functionality in order to auto-align monitors.
 
 Intersections can be seen by two conditions per axis. If both axes have at least
-one condition evaluated as false, then an overlap has occurred. In listing
-@conditions and figure @overlap the conditions and an example overlap are
-visualized.
+one condition evaluated as false, then an overlap has occurred. In @conditions 
+and @overlap the conditions and an example overlap are visualized.
 
 #let code = "
 pub fn intersect_horizontal(&self, offset_x: i32, width: i32) -> bool {
@@ -254,7 +253,7 @@ current environment. As an example, both GNOME and KDE have a concept of a
 primary monitor, which should be the default monitor for starting applications,
 widgets and more. However, tiling environments like Hyprland do not offer a
 primary monitor, as these types of environments handle these use cases with
-explicit focus. If your focus is currently on "monitor 1", then the application
+explicit focus. If your focus is currently on "Monitor 1", then the application
 will also be started on this monitor. Similarly, widgets and panels are created
 explicitly, meaning you would need to define one or more monitors where your
 widget or panel should be.
@@ -653,7 +652,7 @@ The results of this user interface will be tested in @MonitorPluginTests.//In th
 //used. This client would then connect to the "server" which is the compositor.
 //Wayland-client implementations are provided either directly by the wayland
 //project as a C library or by third parties such as smithay which implements the
-//client and server part for rust. @wayland-repo @wayland-rs
+//client and server part for Rust. @wayland-repo @wayland-rs
 //
 //In @wayland-architecture, the base wayland architecture is visualized.
 //

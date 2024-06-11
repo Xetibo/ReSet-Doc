@@ -5,7 +5,7 @@
 #subsection("Resulting Architecture")
 The end resulting architecture is similar to the architecture in
 @DynamicLibraries. The only difference is the absence of the C-ABI, which was
-omitted in favor of direct usage of rust due to tedious conversion of rust to C.
+omitted in favor of direct usage of Rust due to tedious conversion of Rust to C.
 In @resulting_architecture, the architecture is visualized.
 
 #align(
@@ -36,7 +36,7 @@ pub trait TVariant: Debug + Any + Send {
     )<TVariant>],
 )
 
-This Trait is combined with the struct shown in @Variant.
+This trait is combined with the struct shown in @Variant.
 
 #let code = "
 #[derive(Debug)]
@@ -202,7 +202,7 @@ extern \"C\" {
     #[allow(improper_ctypes)]
     pub fn name() -> String;
 
-    // Inserts your plugin interface into the dbus server.
+    // Inserts your plugin interface into the DBus server.
     #[allow(improper_ctypes)]
     pub fn dbus_interface(cross: &mut Crossroads);
 

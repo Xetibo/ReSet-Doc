@@ -357,3 +357,7 @@ mockflow:
   type: web
   title: MockFlow
   url: https://www.mockflow.com/
+gtk-test:
+  type: web
+  title: GTK test
+  url: https://github.com/gtk-rs/gtk-test

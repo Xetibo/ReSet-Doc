@@ -12,8 +12,8 @@
   #pad(y: 10pt)[]
   #glossary_entry(
     use_show: use_show_ref, "Compositor", [
-      A combination of display server(not a true server with wayland) and window
-      composition system. Often used to describe standalone wayland environments like
+      A combination of display server(not a true server with Wayland) and window
+      composition system. Often used to describe standalone Wayland environments like
       Mutter, KWin, Hyprland, Sway and River.
     ],
   )<compositor>
