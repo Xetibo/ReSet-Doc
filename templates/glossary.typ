@@ -68,5 +68,12 @@
       usually used with the reference implementation Xorg.
     ],
   )<X11>
+  #glossary_entry(
+    use_show: use_show_ref, "IPC", [
+      IPC or Inter Process Communication is the idea of communication between
+      differing processes using a specific protocol. Examples of IPC are DBus,
+      sockets, message passing, pipes and more.
+    ],
+  )<IPC>
   #pagebreak()
 ]
