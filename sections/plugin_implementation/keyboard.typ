@@ -168,6 +168,53 @@ input_sources.set(\"sources\", variant).expect(\"failed to write layouts\");
     )<gnome-gio-set-input-config>],
 )
 
+Unfortunately, GIO does not exist within the sandboxing of flatpak, which meant that a workaround 
+was necessary. Flatpak provides a command that allows running commands outisde the sandbox called 
+flatpak-spawn. Subsequently dconf was used again to get the layouts like in the first try. If the 
+dconf command was run in flatpak, it would not return a valid value, but rather the signature of 
+the setting which can be checked on. If it returned the signature, the same command is spawned with 
+the addition of flatpak-spawn. Compared the the first try, Regex was not necessary anymore because 
+with the knowledge from the second try, using the built-in variant was a much cleaner way and less
+error prone. In @gnome-keyboard-flatpak the new code can be seen.
+
+#let code = "
+let mut result = Command::new(\"dconf\")
+    .args(&[\"read\", \"/org/gnome/desktop/input-sources/sources\"])
+    .output();
+if result.is_err() {
+    return kb;
+}
+let mut output = result.unwrap();
+let mut layout_variant = String::from_utf8(output.stdout).unwrap
+if layout_variant.contains(\"@a(ss)\") {
+    result = Command::new(\"flatpak-spawn\")
+          .arg(\"--host\")
+          .arg(\"dconf\")
+          .arg(\"read\")
+          .arg(\"/org/gnome/desktop/input-sources/sources\")
+          .output();
+    if result.is_err() {
+        return kb;
+    }
+    output = result.unwrap();
+    layout_variant = String::from_utf8(output.stdout).unwrap();
+}
+
+let layout_type = Some(VariantTy::new(\"a(ss)\").unwrap());
+let layout_variant = Variant::parse(layout_type, &layout_variant);
+if layout_variant.is_err() {
+    return kb;
+}
+let layout_variant = layout_variant.unwrap();
+let layouts = layout_variant.get::<Vec<(String, String)>>().unwrap();
+";
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Set GNOME keyboard layouts],
+    )<gnome-keyboard-flatpak>],
+)
+
 #subsubsubsection("KDE Implementation")
 To read the keyboard layouts and variants in KDE, kreadconfig6 has to be used.
 Unfortunately, no library provides bindings so reading and writing using rust 
