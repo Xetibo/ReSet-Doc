@@ -117,6 +117,12 @@ xkbregistry:
   author: jonasc
   url: https://github.com/jonasc/xkbregistry.rs
   note: License WTFPL
+xdg: 
+  type: repository
+  name: xdg
+  author: whitequark
+  url: https://github.com/whitequark/rust-xdg
+  note: License Apache-2.0, MIT
 reset-paper:
   type: thesis
   title: ReSet

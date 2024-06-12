@@ -34,6 +34,7 @@ This section covers all direct third-party libraries used within ReSet and its r
 - gtk4 @gtk4: MIT
 - serial_test @serial-test: MIT 
 - toml @toml: Apache-2.0, MIT
+- xdg @xdg: Apache-2.0, MIT
 
 #subsubsubsection("Monitor Plugin")
 - ReSet-Lib @ReSet-Lib: GPL-V3-or-later
@@ -45,6 +46,7 @@ This section covers all direct third-party libraries used within ReSet and its r
 - wayland-protocols-plasma, wayland-protocols-wlr, wayland-client @wayland-rs: MIT
 - serde @serde: Apache-2.0, MIT
 - serde-json @serde-json: Apache-2.0, MIT
+- once_cell @once-cell: Apache-2.0, MIT
 
 #pagebreak()
 #subsubsubsection("Keyboard Plugin")
@@ -56,6 +58,6 @@ This section covers all direct third-party libraries used within ReSet and its r
 - directories-next @directories_next: Apache-2.0, MIT
 - toml @toml: Apache-2.0, MIT
 - xkbregistry @xkbregistry: WTFPL 
-- regex @regex-rs: Apache-2.0, MIT
-
+- xdg @xdg: Apache-2.0, MIT
+- once_cell @once-cell: Apache-2.0, MIT
 
