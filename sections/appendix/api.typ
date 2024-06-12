@@ -4,7 +4,6 @@
 #subsection("Plugin API")
 
 #subsubsection("Plugin Backend API")
-
 #figure(
   ```rs
 // The startup function is intended to be used to allocate any required resources.
