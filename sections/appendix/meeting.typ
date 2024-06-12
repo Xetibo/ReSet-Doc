@@ -73,13 +73,12 @@ _Meeting skipped due to presentation_
 - documentation will be handed to advisor at the end of the week for a review
 
 *Meeting 15*
-- discussion of documentation
+- final discussion of documentation
   - feedback of last week implemented
+- final discussion of development
 
 *Meeting 16*
-- final discussion of documentation
-- final discussion of development
-- showcase of user testing results
+_Meeting skipped for the last week to focus on finishing the thesis_
 
 *Meeting 17*\
 _Meeting skipped for the last week to focus on finishing the thesis_
