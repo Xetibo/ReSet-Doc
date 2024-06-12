@@ -36,7 +36,7 @@ offer both a DBus endpoint for functionality and a user interface frontend for
 human interaction. Should a user not be satisfied with the provided interface,
 they can just use the endpoint to create their own.
 
-In listing @Display-Struct the fields of the display struct used for the DBus
+In @Display-Struct the fields of the display struct used for the DBus
 connection and the user interface is visualized.
 #let code = "
 #[repr(C)]
@@ -227,7 +227,7 @@ custom binary blob file which stores key/value pairs. ReSet already uses GTK,
 which can also read DConf variables, meaning there is no additional dependency
 for ReSet.
 
-In listing @Fractional-Scale-Gnome the value for fractional scaling is read via
+In @Fractional-Scale-Gnome the value for fractional scaling is read via
 DConf.
 #let code = "
 fn get_fractional_scale_support() -> bool {
@@ -448,7 +448,7 @@ providing snapping functionality in order to auto-align monitors.
 
 Intersections can be seen by two conditions per axis. If both axes have at least
 one condition evaluated as false, then an overlap has occurred. In listing
-@conditions and figure @overlap the conditions and an example overlap are
+@conditions and @overlap the conditions and an example overlap are
 visualized.
 
 #let code = "

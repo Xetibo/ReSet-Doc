@@ -13,7 +13,7 @@ both a DBus endpoint for functionality and a graphical user interface for human
 interaction. Should a user not be satisfied with the provided interface, they
 can just use the endpoint to create their own.
 
-In listing @Display-Struct the fields of the display struct used for the DBus
+In @Display-Struct the fields of the display struct used for the DBus
 connection and the user interface is visualized.
 #let code = "
 #[repr(C)]

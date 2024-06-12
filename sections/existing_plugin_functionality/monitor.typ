@@ -186,7 +186,7 @@ within the GNOME configuration. GNOME stores its configuration within a custom
 binary blob file which stores key/value pairs. ReSet already uses GTK, which can
 also read DConf variables, meaning there is no additional dependency for ReSet.
 
-In listing @Fractional-Scale-Gnome the value for fractional scaling is read via
+In @Fractional-Scale-Gnome the value for fractional scaling is read via
 DConf.
 #let code = "
 fn get_fractional_scale_support() -> bool {
