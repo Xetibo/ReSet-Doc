@@ -41,7 +41,7 @@ correct widgets accordingly.
 #align(
   center, [#figure(
       img(
-        "../figures/windowsMonitorSettings.png", width: 85%, extension: "figures",
+        "../figures/windowsMonitorSettings.png", width: 100%, extension: "figures",
       ), caption: [Windows monitor settings],
     )],
 )

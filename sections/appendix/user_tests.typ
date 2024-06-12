@@ -184,15 +184,15 @@ sample might skew the results towards more experienced users.
 
 #subsubsection("Feedback")
 In general, the feedback from the participants was predominantly positive. Most participants
-did not encounter any big issues. The suggestions for improvements were mostly cosmetic 
+did not encounter any major issues. The suggestions for improvements were mostly cosmetic 
 or small usability improvements.
 
 #subsubsubsection("Ease of use")
 The feedback regarding the ease of use was very positive. Most participants found the plugins
-to be very intuitive to use because the UX was familiar. Another point that was mentioned was
-it worked with different themes. One participant mentioned that the drag-and-drop feature
-for the keyboard plugin was not effortless. In @test-eou-experience the participant's review
-scores regarding ease of use are shown.
+to be very intuitive to use because the user experience was familiar. Another point that was 
+mentioned was it worked with different themes. One participant mentioned that the drag-and-drop 
+feature for the keyboard plugin was not effortless. In @test-eou-experience the participant's 
+review scores regarding ease of use are shown.
 
 #align(
   center, [#figure(
