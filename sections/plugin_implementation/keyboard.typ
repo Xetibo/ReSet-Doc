@@ -90,12 +90,12 @@ path = \"/home/felix043/Documents/dotfiles/hypr/input.conf\"
 )
 
 #subsubsubsection("GNOME Implementation")
-The first try was using dconf_rs because GSettings is a frontend API to dconf
+The first try was using dconf_rs because GSettings is a frontend API to DConf
 and there was no reason to go through that indirection. In
-@gnome-get-input-config the setting string was fetched using dconf which then
+@gnome-get-input-config the setting string was fetched using DConf which then
 had to be matched using a Regex pattern. Unfortunately, it is not possible to
 use it to set a new keyboard config because dconf_rs wraps the value to be set
-with an apostrophe that cannot be parsed by dconf. The only solution is to use a
+with an apostrophe that cannot be parsed by DConf. The only solution is to use a
 command to set the keyboard layouts as seen in @gnome-set-input-config.
 
 #let code = "
@@ -171,8 +171,8 @@ input_sources.set(\"sources\", variant).expect(\"failed to write layouts\");
 
 Unfortunately, GIO does not exist within the sandboxing of flatpak, which meant that using it as is
 results in a crash. GIO is therefore not suitable and a workaround was necessary. Flatpak provides 
-a command that allows running commands outisde the sandbox called flatpak-spawn. Subsequently dconf 
-was used again to get the layouts like in the first try. If the dconf command was run in flatpak, 
+a command that allows running commands outisde the sandbox called flatpak-spawn. Subsequently DConf 
+was used again to get the layouts like in the first try. If the DConf command was run in flatpak, 
 it would not return a valid value, but rather the signature of the setting which can be checked on.
 If it returned the signature, the same command is spawned with the addition of flatpak-spawn. Compared 
 the the first try, Regex was not necessary anymore because with the knowledge from the second try, 

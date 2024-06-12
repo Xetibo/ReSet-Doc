@@ -28,7 +28,7 @@ ReSet follows a multi-process paradigm. This ensures that users have the option
 to avoid the graphical user interface of ReSet if they wish to. The parts of
 ReSet is therefore split into the daemon, which handles the functionality as a
 constant running service, while ReSet itself refers to the graphical user
-interface which will interact with the daemon via Dbus (Inter Process
+interface which will interact with the daemon via DBus (Inter Process
 Communication).
 
 In @base_plugin_architecture the intended architecture of the plugin system is

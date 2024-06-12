@@ -21,26 +21,26 @@ very hard to make changes in a specific area there because currently no parser
 exists for it that is written in Rust.
 
 #subsubsubsection("GNOME")
-In GNOME, it is possible to change keyboard layouts with gsettings or dconf.
-There are other tools like gconf, but they are replaced by dconf.
+In GNOME, it is possible to change keyboard layouts with gsettings or DConf.
+There are other tools like gconf, but they are replaced by DConf.
 
 GSettings is a high-level API for application settings and serves as a front end
-to dconf. The command line tool gsettings (not to be confused with GSettings)
+to DConf. The command line tool gsettings (not to be confused with GSettings)
 can be used to access the GSettings API @gsettings. Another possibility is to
 use GIO, which is a library that provides multiple general purpose functionality
 such as bindings to the GSettings API among others @gio. Because GIO is a
-dependency of gtk4, it can already be used from the code without any further
+dependency of GTK4, it can already be used from the code without any further
 setup. The advantage of using GIO instead of gsettings is that it can validate
 input and log error messages if something does not work. Another advantage is
 that gsettings returns a string that needs to be manually parsed with Regex or
 similar. GIO on the other hand returns a Variant object that can be casted into
 the desired type as long as it's correct.
 
-Dconf serves as a low-level configuration system for gsettings that stores
+DConf serves as a low-level configuration system for gsettings that stores
 key-based configuration details in a single compact binary format database
-@dconf. Because gsettings is a layer for dconf, the keyboard plugin directly
-uses dconf for setting the keyboard layouts. Combined with the dconf crate,
-which provides Rust bindings to dconf, the plugin can read the keyboard layouts
+@dconf. Because gsettings is a layer for DConf, the keyboard plugin directly
+uses DConf for setting the keyboard layouts. Combined with the DConf crate,
+which provides Rust bindings to DConf, the plugin can read the keyboard layouts
 @dconf_rs. This returns a string that needs to be parsed to get the keyboard
 layout and variant, which can be done with a simple regex.
 

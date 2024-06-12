@@ -88,18 +88,18 @@ path = \"/home/felix043/Documents/dotfiles/hypr/input.conf\"
 )
 
 #subsubsubsubsection("GNOME Implementation")
-In GNOME, it is possible to change keyboard layouts with gsettings or dconf.
-There are other tools like gconf, but they are replaced by dconf.
+In GNOME, it is possible to change keyboard layouts with gsettings or DConf.
+There are other tools like gconf, but they are replaced by DConf.
 
 GSettings is a high-level API for application settings and serves as a front end
-to dconf. The command line tool gsettings (not to be confused with GSettings)
-can be used to access the GSettings API @gsettings. dconf serves as a low-level
+to DConf. The command line tool gsettings (not to be confused with GSettings)
+can be used to access the GSettings API @gsettings. DConf serves as a low-level
 configuration system for gsettings that stores key-based configuration details
 in a single compact binary format database @dconf.
 
-Because gsettings is a layer for dconf, the keyboard plugin directly uses dconf
-for setting the keyboard layouts. Combined with the dconf crate, which provides
-Rust bindings to dconf, the plugin can easily read the keyboard layouts
+Because gsettings is a layer for DConf, the keyboard plugin directly uses DConf
+for setting the keyboard layouts. Combined with the DConf crate, which provides
+Rust bindings to DConf, the plugin can easily read the keyboard layouts
 @dconf_rs. This returns a string that needs to be parsed to get the keyboard
 layout and variant, which can be done with a simple regex.
 
@@ -119,7 +119,7 @@ let matches = pattern.captures_iter(layouts.as_str())
 
 Unfortunately, it is not possible to use dconf_rs to set a new keyboard config
 because dconf_rs wraps the value to be set with an apostrophe that cannot be
-parsed by dconf. The only solution is to use a command to set the keyboard
+parsed by DConf. The only solution is to use a command to set the keyboard
 layouts.
 
 #let code = "
