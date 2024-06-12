@@ -21,7 +21,7 @@ compatible with each other. For example, the wlroots implementation of applying
 a monitor configuration is defined by the Wayland protocol extension
 zwlr_output_manager_v1. @wlr-output-management As the name suggests, this is
 made solely for environments using wlroots as their library. Similarly, KDE also
-offers its protocol, while GNOME chose the DBus route, providing a handy
+offers its own protocol, while GNOME chose the DBus route, providing a handy
 DisplayConfig endpoint. @kde-output-management @mutter-display-config
 
 For the X11 protocol, there is only one endpoint for fetching, as close to every
@@ -40,8 +40,7 @@ Rust. In @Hyprland-Monitor-Conversion, the conversion from json to the generic
 monitor struct is visualized.
 
 #let code = "
-// Due to hyprland moving away from WLR, ReSet chose to fetch data via hyprctl instead.
-// The tool is also always installed for hyprland.
+// The tool is always installed for hyprland.
 pub fn hy_get_monitor_information() -> Vec<Monitor> {
     let mut monitors = Vec::new();
     let json_string = String::from_utf8(get_json());
@@ -65,9 +64,9 @@ pub fn hy_get_monitor_information() -> Vec<Monitor> {
     )<Hyprland-Monitor-Conversion>],
 )
 
-The second approach is to directly use Hyprlands Unix sockets, the first of
-which is fully replicated in hyprctl. For sockets, the same conversion as with
-hyprctl would be required.
+The second approach is to directly use Hyprlands Unix sockets, which is fully
+replicated in hyprctl, meaning both solutions will lead to the same outcome. For
+sockets, the same conversion as with hyprctl would be required.
 
 The third approach is to use the zwlr_output_manager_v1 protocol in order to
 apply the configuration. @wlr-output-management Hyprland uses a fork of wlroots
@@ -83,8 +82,9 @@ protocol. Hence, the wlroots implementation does not offer persistent storing of
 monitor configurations, instead only offering applying of a specific
 configuration.
 
-However, unlike the hyprland implementation, it is compositor independent and
-will work as long as the zwlr_output_manager_v1 protocol is implemented.
+However, unlike the first and second Hyprland implementation, it is compositor
+independent and will work as long as the zwlr_output_manager_v1 protocol is
+implemented.
 
 In order to connect to a compositor using Wayland protocols, a wayland-client is
 used. This client would then connect to the "server" which is the compositor.
@@ -98,15 +98,18 @@ In @wayland-architecture, the base Wayland architecture is visualized.
   img("wayland_architecture.svg", width: 100%, extension: "files"), caption: [Wayland architecture],
 )<wayland-architecture>
 
-As such, it is now possible to create such a client for a Wayland server and
-generate requests for it. The server will then respond with events which the
-client can then
+As such, it is now possible to create a client for a Wayland server and generate
+requests for it. The server will then respond with events which the client can
+process and interact with.
+
+In @Wayland-Connection, an example client that requests all implemented
+protocols from the wayland compositor is visualized.
 
 #let code = "
 struct AppData(pub String);
 impl Dispatch<wl_registry::WlRegistry, ()> for AppData {
     fn event(
-        data: &mut Self,
+        obj: &mut Self,
         registry: &wl_registry::WlRegistry,
         event: wl_registry::Event,
         data: &(),
@@ -138,6 +141,15 @@ pub fn get_wl_backend() -> String {
       sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Example Wayland connection with Smithay],
     )<Wayland-Connection>],
 )
+
+// In @wayland_client_protocols a section of the output of @Wayland-Connection on
+// Hyprland is shown.
+//
+// #align(
+//   center, [#figure(
+//       img("wayland-protocols.png", width: 40%, extension: "figures"), caption: [Screenshot of a portion of available wayland protocols on Hyprland],
+//     )<wayland_client_protocols>],
+// )
 
 #pagebreak()
 
@@ -198,7 +210,6 @@ fn get_fractional_scale_support() -> bool {
         }
     }
     false
-}
 }"
 
 #align(
@@ -212,23 +223,7 @@ For the visual representation, ReSet aims to be aligned with other configuration
 tools within the Linux ecosystem in order to provide users with a seamless
 transition. Notable for this visualization is the use of drag-and-drop for
 monitor positioning. This paradigm allows users to quickly place monitors on
-their preferred side, or even introduce gaps between monitors in order to
-prevent the mouse from automatically crossing the screen (not supported by KDE
-or GNOME).
-
-In @kde-gaps and @gnome-gaps, the error messages for gaps in GNOME and KDE are
-visualized.
-
-#align(
-  center, [#figure(
-      img("kde-gaps.png", width: 90%, extension: "figures"), caption: [Screenshot of the gaps error within KDE],
-    )<kde-gaps>],
-)
-#align(
-  center, [#figure(
-      img("gnome-gaps.png", width: 70%, extension: "figures"), caption: [Screenshot of the gaps error within GNOME],
-    )<gnome-gaps>],
-)
+their preferred side or height.
 
 In @kde-monitor, the KDE variant of the monitor configuration is shown.
 
@@ -276,4 +271,26 @@ at the top.
 //This is also in contrast to operating systems like Microsoft Windows
 
 #pagebreak()
+#subsubsubsection("Gaps in Configuration")
+While testing for environment differences, a significant difference from wlroots
+based compositors to both KDE and GNOME was detected. Using a compositor like
+Hyprland, it is possible to create gaps between monitors to disallow direct
+mouse movement from one monitor to another. However, in both KDE and GNOME, a
+configuration with gaps results in an error which makes the configuration not
+applicable.
 
+In @kde-gaps and @gnome-gaps, the error messages for gaps in GNOME and KDE are
+visualized.
+
+#align(
+  center, [#figure(
+      img("kde-gaps.png", width: 90%, extension: "figures"), caption: [Screenshot of the gaps error within KDE],
+    )<kde-gaps>],
+)
+#align(
+  center, [#figure(
+      img("gnome-gaps.png", width: 70%, extension: "figures"), caption: [Screenshot of the gaps error within GNOME],
+    )<gnome-gaps>],
+)
+
+#pagebreak()

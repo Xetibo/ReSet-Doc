@@ -18,9 +18,11 @@ System_Boundary(c1, 'ReSet Daemon') {
 }
 System_Ext(NetworkManager, "NetworkManager")
 System_Ext(bluez, "Bluez")
+System_Ext(PulseAudio, "PulseAudio")
 
 Rel(ReSetDaemon, NetworkManagerMacro,"Uses")
 Rel(ReSetDaemon, bluezMacro,"Uses")
+Rel(ReSetDaemon, PulseAudio,"Uses")
 Rel(NetworkManagerMacro, NetworkManagerMock,"cfg(test)")
 Rel(NetworkManagerMacro, NetworkManager,"not(cfg(test))")
 Rel(bluezMacro, bluezMock,"cfg(test)")

@@ -280,7 +280,7 @@ or when multiple plugin systems are in place.
 
 #pagebreak()
 
-#subsubsubsection("Architecture")
+#subsubsubsection(custom_tag: "DynArchitecture" ,"Architecture")
 In @dynamic_libraries_plugin_system, the architecture of a plugin system with
 dynamic libraries is visualized.
 #align(

@@ -22,6 +22,77 @@ covers the vast majority of use cases.
     )<mock_architecture>],
 )
 
+#subsubsection("Testing the Mock System")
+In order to provide tests for the mock system, both the daemon and the mock
+implementations need to be available during the testing phase. However, Rust
+does not provide an easy way to ensure systems are available on test start,
+especially with the fact that tests are by default multithreaded and therefore
+run in non-deterministic fashion. This forces developers to create their own
+synchronization chain in order to create a proper setup for each test. For
+ReSet, this was handled by calling the same setup function with all threads and
+waiting for both the mock and the daemon with atomic booleans.
+
+In @mock_setup, the setup function for the mock tests is visualized.
+
+#let code = "
+#[cfg(test)]
+fn setup() {
+    // only the first test is starting the endpoint and the server
+    if COUNTER.fetch_add(1, Ordering::SeqCst) < 1 {
+        thread::spawn(|| {
+            // create a thread and spawn the mock endpoint
+            let rt2 = runtime::Runtime::new().expect(\"Failed to create runtime\");
+            rt2.spawn(start_mock_implementation_server(&READY));
+            while !READY.load(Ordering::SeqCst) {
+                hint::spin_loop();
+            }
+            // create a thread and spawn the daemon
+            let rt = runtime::Runtime::new().expect(\"Failed to create runtime\");
+            rt.spawn(run_daemon(DAEMON_READY.clone()));
+            while COUNTER.load(Ordering::SeqCst) != 0 {
+                hint::spin_loop();
+            }
+            rt.shutdown_background();
+        });
+    };
+    // wait until the mock endpoint is ready
+    while !READY.load(Ordering::SeqCst) {
+        hint::spin_loop();
+    }
+    // wait until the daemon is ready
+    while !DAEMON_READY.clone().unwrap().load(Ordering::SeqCst) {
+        hint::spin_loop();
+    }
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Mock testing system setup function],
+    )<mock_setup>],
+)
+
+An example test can now use the provided setup function as shown in @mock_test_example.
+
+#let code = "
+#[tokio::test]
+// tests the existance of the mock implementation
+async fn test_mock_connection() {
+    setup();
+    let conn = Connection::new_session().unwrap();
+    // connect to mock
+    let proxy = conn.with_proxy(INTERFACE, DBUS_PATH, DURATION);
+    let res: Result<(), Error> = proxy.method_call(INTERFACE, \"Test\", ());
+    assert!(res.is_ok());
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Mock test example],
+    )<mock_test_example>],
+)
+
+#pagebreak()
+
 #subsubsection("Macro Usage")
 The mock system will be used within the session(userspace) DBus, which does not
 require any special permissions. However, the actual implementation of

@@ -2,7 +2,7 @@
 
 #subsection("Resulting Architecture")
 The end resulting architecture is similar to the architecture in
-@DynamicLibraries. The only difference is the absence of the C-ABI, which was
+@DynArchitecture. The only difference is the absence of the C-ABI, which was
 omitted in favor of direct usage of Rust due to tedious conversion of Rust to C.
 In @resulting_architecture, the architecture is visualized.
 
@@ -12,90 +12,6 @@ In @resulting_architecture, the architecture is visualized.
     )<resulting_architecture>],
 )
 #pagebreak()
-
-#subsection("Any-Variant")
-in @ExampleAnypattern an Any-Variant via byte vectors is covered. For ReSet, a
-different route was taken to implement the Any variant. Instead of converting
-byte vectors, ReSet utilizes polymorphism with types that implement a specific
-trait. For ReSet this would be implementing the TVariant trait visualized in
-@TVariant.
-
-#let code = "
-pub trait TVariant: Debug + Any + Send {
-    // enables the type to be converted to the Variant struct
-    fn into_variant(self) -> Variant;
-    // converts the type to a polymorphic unique pointer
-    fn value(&self) -> Box<dyn TVariant>;
-}"
-
-#align(
-  left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [TVariant trait],
-    )<TVariant>],
-)
-
-This trait is combined with the struct shown in @Variant.
-
-#let code = "
-#[derive(Debug)]
-#[repr(C)]
-pub struct Variant {
-    // converted value
-    value: Box<dyn TVariant>,
-    // rusts type id used to check for valid casts
-    kind: TypeId,
-}"
-
-#align(
-  left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Variant struct],
-    )<Variant>],
-)
-
-Comparing this to a language like Java highlights both the complexity of Rust as
-well as the clear difference in paradigm. In Java, all reference types are
-linked to a garbage collector as well as equipped with a virtual table, which
-means that lifetimes, allocation and de-allocation, as well as casting, are
-handled automatically and enforced for all safe Java code. With Rust, a garbage
-collector does not exist, and virtual tables are an opt-in feature, as using by
-default would introduce performance overhead. For the Any variant, this virtual
-table is desired, as we would like the original value back when calling the "value"
-function.
-
-#let code = "
-public interface IAny<T> {
-  // public T into_variant();
-  // This is not necessary as Java does not support arbitrary interface
-  // implementation for existing types.
-  public T value();
-}
-
-public class IntAny implements IAny<Integer> {
-  private Integer value;
-
-  public IntAny(Integer value) {
-    this.value = value;
-  }
-
-  @Override
-  public Integer value() {
-    return this.value;
-  }
-}"
-
-#align(
-  left, [#figure(
-      sourcecode(raw(code, lang: "java")), kind: "code", supplement: "Listing", caption: [Any variant in Java],
-    )<any_java>],
-)
-
-When comparing @Variant and @any_java, there is also the use of the unique
-pointer Box<\T\> in Rust. This unique pointer is used to ensure that the Any
-variant will always have the same allocation size. Omitting this pointer would
-enforce that the values within the variant are stored inside the variant struct
-without indirection. Given different possible value types, Rust could no longer
-determine the size of a specific variant at compile time, hence a pointer is
-used to mimic the behavior of Java (enforcement of references).
 
 #subsection("Security")
 The initial idea of the ReSet plugin system was to reduce the attack vector by
@@ -128,9 +44,42 @@ cross.insert(dbus_path, &[interface], data);"
 During the implementation of this system, it was found that the DBus functions
 would not be able to be provided by the shared library. Attempting to call
 functionality provided by shared libraries would result in the object not being
-available. The only way to solve this issue was to provide plugins with a
+available. The only way to solve this issue would be to provide plugins with a
 reference to the crossroads DBus context, which would enable plugins to insert
 and register their interfaces.
+
+However, it was possible to wrap the reference in a new type, meaning the
+overall goal of separating plugins from both existing functionality and other
+plugins is still guaranteed. The DBus object is created with the plugin name
+which must be defined as a separate plugin function.
+
+in @dbus_crossroads_register_new, the injection of the interface is visualized.
+
+#let code = "
+pub fn setup_dbus_interface(
+  cross: &mut RwLockWriteGuard<CrossWrapper>,
+) -> dbus_crossroads::IfaceToken<SomePluginData> {
+  cross.register::<SomePluginData>(
+    \"org.Xetibo.ReSet.SomePlugin\",
+    |c: &mut IfaceBuilder<SomePluginData>| {
+      // define methods
+    },
+  )
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Refined interface registration for DBus],
+    )<dbus_crossroads_register_new>],
+)
+
+While the cross variable in @dbus_crossroads_register_new has the same name as
+the variable in @dbus_crossroads_register, the types are different. The original
+implementation used the Crossroads type which allows for both register and
+insert functionality, the latter of which allows creating new objects and also
+overwriting existing objects. The new CrossWrapper only allows plugins to
+register interfaces for their assigned object, meaning overriding is not
+possible.
 
 #subsection("Plugin Testing")
 Rust tests are handled by a specific test macro, this flag tells the compiler
@@ -307,4 +256,134 @@ unsafe {
       sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Plugin loading within the ReSet daemon],
     )<plugin_loading>],
 )
+
+#subsection("Any-Variant")
+The Any-Variant was originally intended to be used for uniform plugin data which
+can then be sent across DBus interfaces. However, this complexity turned out to
+not be necessary for plugin data and is hence not used for this use case.
+Instead, the Any-Variant is now used to handle command line flags for the
+ReSet-Daemon as it allows arbitrary expansion and processing of flags as whole
+tokens by utilizing the Any-Variant as tokens.
+
+In @ExampleAnypattern an Any-Variant via byte vectors is covered. For ReSet, a
+different route was taken to implement the Any variant. Instead of converting
+byte vectors, ReSet utilizes polymorphism with types that implement a specific
+trait. For ReSet this would be implementing the TVariant trait visualized in
+@TVariant.
+
+#let code = "
+pub trait TVariant: Debug + Any + Send {
+    // enables the type to be converted to the Variant struct
+    fn into_variant(self) -> Variant;
+    // converts the type to a polymorphic unique pointer
+    fn value(&self) -> Box<dyn TVariant>;
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [TVariant trait],
+    )<TVariant>],
+)
+
+This trait is combined with the struct shown in @Variant.
+
+#let code = "
+#[derive(Debug)]
+#[repr(C)]
+pub struct Variant {
+    // converted value
+    value: Box<dyn TVariant>,
+    // rusts type id used to check for valid casts
+    kind: TypeId,
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Variant struct],
+    )<Variant>],
+)
+
+Comparing this to a language like Java highlights both the complexity of Rust as
+well as the clear difference in paradigm. In Java, all reference types are
+linked to a garbage collector as well as equipped with a virtual table, which
+means that lifetimes, allocation and de-allocation, as well as casting, are
+handled automatically and enforced for all safe Java code. With Rust, a garbage
+collector does not exist, and virtual tables are an opt-in feature, as using it
+by default would introduce a performance overhead. For the Any variant, this
+virtual table is desired, as we would like the original value back when calling
+the "value" function.
+
+#let code = "
+public interface IAny<T> {
+  // public T into_variant();
+  // This is not necessary as Java does not support arbitrary interface
+  // implementation for existing types.
+  public T value();
+}
+
+public class IntAny implements IAny<Integer> {
+  private Integer value;
+
+  public IntAny(Integer value) {
+    this.value = value;
+  }
+
+  @Override
+  public Integer value() {
+    return this.value;
+  }
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "java")), kind: "code", supplement: "Listing", caption: [Any variant in Java],
+    )<any_java>],
+)
+
+When comparing @Variant and @any_java, there is also the use of the unique
+pointer Box<\T\> in Rust. This unique pointer is used to ensure that the Any
+variant will always have the same allocation size. Omitting this pointer would
+enforce that the values within the variant are stored inside the variant struct
+without indirection. Given different possible value types, Rust could no longer
+determine the size of a specific variant at compile time, hence a pointer is
+used to mimic the behavior of Java (enforcement of references).
+
+As mentioned in the start of this section, the Any-Variant is used to tokenize
+command line flags. This is stored into a lazily evaluated global accessible
+constant which stores the values in key-value pairs.
+
+In @custom_flag and @custom_flag_result, an example custom flag is visualized.
+
+#let code = "
+for flag in FLAGS.0.iter() {
+  match flag {
+    Flag::Other(flag) => {
+      LOG!(format!(
+        \"Custom flag {}
+         with value {:?}\",
+        &flag.0,
+        flag.1.clone()
+      ));
+    }
+  }
+}"
+#columns(
+  2, [
+    #align(
+      left, [#figure(
+          sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Custom flag in ReSet-Daemon],
+        )<custom_flag>],
+    )
+    #colbreak()
+    #align(
+      center, [#figure(
+          img("../figures/custom_flag_output.png", width: 100%, extension: "figures"), caption: [Output of the Custom Flag in @custom_flag],
+        )<custom_flag_result>],
+    )
+  ],
+)
+
+This flag can now be converted into a proper Rust type with the to_variant
+function on the Any-Variant. With this, it is extremely easy to create
+constraints for command line flags which ensure stability on use.
 
