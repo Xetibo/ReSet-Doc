@@ -5,20 +5,14 @@
 In this section, the ReSet usability tests for the exemplary plugins are discussed.
 
 #subsubsection("Participants")
-In our usability test, a total of 11 participants were involved. In @test-partcipant-experience
+In our usability test, a total of 12 participants were involved. In @test-partcipant-experience
 the participant's experience with PC and Linux is shown. Most participants are very experienced 
 using a PC and have a good understanding of Linux as most are studying computer science. This 
 sample might skew the results towards more experienced users.
 
 #align(
   center, [#figure(
-      [
-        #columns(2, [
-          #img("testPCExperience.png", width: 82.5%, extension: "figures")
-          #colbreak()
-          #img("testLinuxExperience.png", width: 100%, extension: "figures")
-        ])
-      ], caption: [Participant's PC and Linux Experience],
+      img("testExperience.png", width: 100%, extension: "figures"), caption: [Participant's PC and Linux Experience],
     )<test-partcipant-experience>],
 )
 
@@ -44,6 +38,7 @@ sample might skew the results towards more experienced users.
   [
     - Name and resolution inside monitor clips through the border
     - The Apply button is not directly visible
+    - Show countdown how many seconds before revert
   ],
 )
 #test(
@@ -97,7 +92,7 @@ sample might skew the results towards more experienced users.
     without any issues. One user didn't find the option to enable/disable a monitor.
   ], 
   [
-    No improvements were suggested.
+    - Revert window time too short as some monitors take seconds to enable
   ],
 )
 #test(
@@ -105,7 +100,8 @@ sample might skew the results towards more experienced users.
   "Rearranging the monitors with the mouse and applying the configuration results in the chosen arrangement being applied to the monitors.", 
   [
     The participants that had a multi-monitor setup were mostly able to rearrange their 
-    monitors. One participant didn't notice that the monitors could be dragged.
+    monitors. One participant didn't notice that the monitors could be dragged. Another 
+    mentioned that dragging and dropping needs to be too precise.
   ], 
   [
     - Snapping of monitors could be more lenient
@@ -196,13 +192,7 @@ review scores regarding ease of use are shown.
 
 #align(
   center, [#figure(
-      [
-        #columns(2, [
-          #img("testEoUMonitor.png", width: 98%, extension: "figures")
-          #colbreak()
-          #img("testEoUKeyboard.png", width: 100%, extension: "figures")
-        ])
-      ], caption: [Participant's Ease of Use Score],
+      img("testEaseOfUse.png", width: 100%, extension: "figures"), caption: [Participant's Ease of Use Score],
     )<test-eou-experience>],
 )
 
@@ -214,13 +204,7 @@ the participant's review scores regarding the design are shown.
 
 #align(
   center, [#figure(
-      [
-        #columns(2, [
-          #img("testDesignMonitor.png", width: 86%, extension: "figures")
-          #colbreak()
-          #img("testDesignKeyboard.png", width: 100%, extension: "figures")
-        ])
-      ], caption: [Participant's Design Score],
+      img("testDesign.png", width: 100%, extension: "figures"), caption: [Participant's Design Score],
     )<test-design-experience>],
 )
 
