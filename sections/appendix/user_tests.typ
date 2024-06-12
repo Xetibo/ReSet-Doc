@@ -202,7 +202,7 @@ scores regarding ease of use are shown.
           #colbreak()
           #img("testEoUKeyboard.png", width: 100%, extension: "figures")
         ])
-      ], caption: [Participants' Ease of Use Feedback],
+      ], caption: [Participant's Ease of Use Score],
     )<test-eou-experience>],
 )
 
@@ -220,7 +220,7 @@ the participant's review scores regarding the design are shown.
           #colbreak()
           #img("testDesignKeyboard.png", width: 100%, extension: "figures")
         ])
-      ], caption: [Participants' Design Feedback],
+      ], caption: [Participants' Design Score],
     )<test-design-experience>],
 )
 

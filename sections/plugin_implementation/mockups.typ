@@ -22,12 +22,12 @@ settings inside the area like resolution and orientation. Many applications only
 offer these settings after scrolling a bit, which is not very user-friendly.
 #align(
   center, [#figure(
-      img("../figures/monitorMock.png", width: 75%, extension: "figures"), caption: [Monitor plugin mockup],
+      img("../figures/monitorMock.png", width: 85%, extension: "figures"), caption: [Monitor plugin mockup],
     )<monitor-mock>],
 )
 
 Below this area, the user can set the main monitor and change other settings
-such as the brightness and night mode. The order is inspired from Windows 11. 
+such as the brightness and night mode. The order is inspired by Windows 11. 
 The further down the user scrolls the less common and more advanced the settings 
 should become. This should allow users to easily find settings that are often 
 changed. The order seen in @monitor-mock does not hold much meaning and should be 
@@ -41,7 +41,7 @@ correct widgets accordingly.
 #align(
   center, [#figure(
       img(
-        "../figures/windowsMonitorSettings.png", width: 75%, extension: "figures",
+        "../figures/windowsMonitorSettings.png", width: 85%, extension: "figures",
       ), caption: [Windows monitor settings],
     )],
 )
@@ -54,7 +54,7 @@ page clean and simple.
 
 #align(
   center, [#figure(
-      img("../figures/keyboardMock.png", width: 75%, extension: "figures"), caption: [Mock of keyboard plugin],
+      img("../figures/keyboardMock.png", width: 85%, extension: "figures"), caption: [Mock of keyboard plugin],
     )],
 )
 
@@ -75,7 +75,7 @@ In @gnome-keyboard-setting-list, GNOME's keyboard list can be seen.
 #align(
   center, [#figure(
       img(
-        "../figures/gnomeKeyboardSetting.png", width: 50%, extension: "figures",
+        "../figures/gnomeKeyboardSetting.png", width: 65%, extension: "figures",
       ), caption: [GNOME keyboard layouts],
     )<gnome-keyboard-setting-list>],
 )

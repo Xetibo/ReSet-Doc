@@ -369,7 +369,7 @@ explains the highlight is added.\
 
 #align(
   center, [#figure(
-      img("highlightedKeyboardLayouts.png", width: 75%, extension: "figures"), caption: [First few keyboard layouts are colored differently],
+      img("highlightedKeyboardLayouts.png", width: 85%, extension: "figures"), caption: [First few keyboard layouts are colored differently],
     )<highlighted-keyboard-layouts>],
 )
 
