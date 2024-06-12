@@ -415,7 +415,7 @@ for monitor in monitors.iter_mut() {
 
 #align(
   left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Code snippet for the rearrangement-function of monitors],
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Code snippet for the furthest calculation of monitors],
     )<simple-rearrangement-function>],
 )
 
@@ -429,7 +429,7 @@ resolution or transform difference of the changed monitor, as well as the right
 side of the rightmost monitor. Step two handles the movement of all monitors
 that exist on the right or the bottom of the changed monitor. Step three handles
 the checking for overlaps among all monitors. This is done by looping over all
-monitors and checking each monitor against the other.
+monitors and checking each monitor against the other.  
 
 In @complex-rearrangement-function, step three is visualized.
 
@@ -471,7 +471,7 @@ for (index, monitor) in monitors.iter().enumerate() {
 
 #align(
   left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Code snippet for the rearrangement-function of monitors],
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Overlap detection for the rearrangement-function of monitors],
     )<complex-rearrangement-function>],
 )
 

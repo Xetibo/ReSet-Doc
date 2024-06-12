@@ -250,12 +250,13 @@ In order for this struct to be consistently compatible, it would need to be
 rewritten to use the C ABI, which can be seen in @C_compatible_cpp.
 
 #let code = "
-   extern \"C\" typedef struct {
-     char* name;
-     char* description;
-     char* author;
-     char* version;
-   } PLUGIN_DESCRIPTION_INFO;"
+extern \"C\" typedef struct {
+  char* name;
+  char* description;
+  char* author;
+  char* version;
+} PLUGIN_DESCRIPTION_INFO;
+"
 
 #align(
   left, [#figure(

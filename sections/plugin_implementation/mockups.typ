@@ -100,7 +100,7 @@ be seen.
 #align(
   center, [#figure(
       img(
-        "../figures/keyboardAddLayoutMock.png", width: 75%, extension: "figures",
+        "../figures/keyboardAddLayoutMock.png", width: 85%, extension: "figures",
       ), caption: [Mock of keyboard add layout plugin],
     )<keyboard-add-layout-mock>],
 )

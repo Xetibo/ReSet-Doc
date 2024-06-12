@@ -14,11 +14,11 @@ sample might skew the results towards more experienced users.
   center, [#figure(
       [
         #columns(2, [
-          #img("testPCExperience.png", width: 100%, extension: "figures")
+          #img("testPCExperience.png", width: 82.5%, extension: "figures")
           #colbreak()
           #img("testLinuxExperience.png", width: 100%, extension: "figures")
         ])
-      ], caption: [Participants' PC and Linux Experience],
+      ], caption: [Participant's PC and Linux Experience],
     )<test-partcipant-experience>],
 )
 
@@ -198,7 +198,7 @@ review scores regarding ease of use are shown.
   center, [#figure(
       [
         #columns(2, [
-          #img("testEoUMonitor.png", width: 100%, extension: "figures")
+          #img("testEoUMonitor.png", width: 98%, extension: "figures")
           #colbreak()
           #img("testEoUKeyboard.png", width: 100%, extension: "figures")
         ])
@@ -216,11 +216,11 @@ the participant's review scores regarding the design are shown.
   center, [#figure(
       [
         #columns(2, [
-          #img("testDesignMonitor.png", width: 100%, extension: "figures")
+          #img("testDesignMonitor.png", width: 86%, extension: "figures")
           #colbreak()
           #img("testDesignKeyboard.png", width: 100%, extension: "figures")
         ])
-      ], caption: [Participants' Design Score],
+      ], caption: [Participant's Design Score],
     )<test-design-experience>],
 )
 

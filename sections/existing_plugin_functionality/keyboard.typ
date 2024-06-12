@@ -106,7 +106,7 @@ and form a scrollable area.
     )<gnome-keyboard-setting>],
 )
 
-New keyboard layouts can be added added with the button at the very bottom of
+New keyboard layouts can be added with the button at the very bottom of
 the list. It opens a dialog menu as seen in @gnome-add-keyboard-setting that
 contains a list of every keyboard layout available in the system. After
 selecting a keyboard layout, it can be added with the Add button on the top
@@ -116,7 +116,7 @@ right.
   center, [#figure(
       img(
         "../figures/gnomeAddKeyboardSetting.png", width: 55%, extension: "figures",
-      ), caption: [Gnome keyboard settings],
+      ), caption: [Gnome add keyboard layout settings],
     )<gnome-add-keyboard-setting>],
 )
 
@@ -142,6 +142,6 @@ preview functionality that allows users to see each key mapping visually.
   center, [#figure(
       img(
         "../figures/kdeAddKeyboardSetting.png", width: 65%, extension: "figures",
-      ), caption: [Gnome keyboard settings],
+      ), caption: [KDE add keyboard layout settings],
     )<kde-add-keyboard-setting>],
 )
