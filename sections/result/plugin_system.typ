@@ -1,7 +1,5 @@
 #import "../../templates/utils.typ": *
 
-#subsection("General Plugin System")
-
 #subsection("Resulting Architecture")
 The end resulting architecture is similar to the architecture in
 @DynamicLibraries. The only difference is the absence of the C-ABI, which was
@@ -175,9 +173,9 @@ async fn test_plugins() {
     )<custom_plugin_tests>],
 )
 
-#subsection("ReSet-Daemon Plugin System")
-In this section, the specific implementation of the plugin system in the ReSet
-daemon is discussed.
+#subsection("Plugin System Implementation")
+In this section, the specific implementation of the plugin system in ReSet is
+discussed.
 
 As discussed in @PluginSystemEvaluation, the chosen paradigm is the dynamic
 library loading variant. With this paradigm, ReSet is required to provide a set

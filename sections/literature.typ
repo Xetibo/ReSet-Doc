@@ -3,17 +3,17 @@
 
 #section("Plugin System Analysis")
 Plugin systems allow both the users and the developers of an application to
-provide specific implementations for use cases. Notably, it does this by neither
-putting the burden of development on the application developers, while also
-providing users with the functionality they explicitly want to use. The notable
-downside to this is the development and performance overhead the system itself
-has on the application.
+provide specific implementations for use cases. Notably, it lessens the burden
+of development on the application developers, while also providing users with
+the functionality they explicitly want to use. The notable downside to this is
+the development and performance overhead the system itself has on the
+application, and the newly created burden on the plugin developers.
 
 For ReSet, the use case for a plugin system is the wide variety of features that
 either a system supports, or the user wants. As an example, it makes no sense to
 provide a VR Headset configuration for a system that does not support such
 devices. At the same, it is also counterproductive to offer settings for users
-that will never be used, for example, touchpad settings on a desktop, here the
+that will never be used, for example, touchpad settings on a desktop. Here the
 system could either detect available devices and load plugins respectively, or
 simply give users the ability to gradually control their used plugins.
 
@@ -46,7 +46,7 @@ functionality would then be offered by the plugin via a function or similar.
 
 The next part of the plugin is the DBus interface, this interface can be
 directly injected into the existing DBus server provided by the ReSet daemon,
-providing users with locality transparency, meaning users will not see the
+providing users with a seamless user interface, meaning users will not see the
 difference between a plugin interface, and the core interfaces provided by ReSet
 out of the box.
 
@@ -82,10 +82,10 @@ possible computer). If the language can simulate a Turing machine, it would
 imply that the language has access to potential infinite loops and can therefore
 not be restricted in terms of functionality. In other words, if the language is
 Turing complete, any functionality that any other language can create is
-possible to be implemented. Turing incomplete languages on the other
-hand only offers a specific and limited set of functionalities, which cannot
-under any circumstance be extended upon without changing the language
-specification itself. @turing
+possible to be implemented. Turing incomplete languages on the other hand only
+offer a specific and limited set of functionalities, which cannot under any
+circumstance be extended upon without changing the language specification
+itself. @turing
 
 The security aspect is likely the biggest factor in choosing to create a custom
 scripting language. Here the use of Turing incomplete languages is the most
@@ -93,9 +93,9 @@ effective. It enforces limited functionality, which can severely limit the
 attack vectors compared to a Turing complete language. The downside of this
 approach is that only plugins with a supported use case can be created.
 
-An example of a Turing incomplete language is the markup language HTML. It
-only offers specific tags which cannot create any functionality beyond the
-documented functionality. @html
+An example of a Turing incomplete language is the markup language HTML. It only
+offers specific tags which cannot create any functionality beyond the documented
+functionality. @html
 
 #subsubsubsection("Error Handling")
 A big benefit of this system is the abstraction between the original application
@@ -112,9 +112,9 @@ of creating a plugin for potential plugin developers. If this requirement is not
 fulfilled, then the interpreted language does not offer any benefit other than
 slight security improvements if the language is non-turing complete.
 
-The second requirement is interoperability with both the programming
-languages of the base system and any technology that is used within the base
-system. For ReSet, this would be Rust and GTK as the main technologies.
+The second requirement is interoperability with both the programming languages
+of the base system and any technology that is used within the base system. For
+ReSet, this would be Rust and GTK as the main technologies.
 
 #subsubsubsection("Architecture")
 in @interpreted_languages_plugin the architecture of a plugin system with
@@ -126,22 +126,24 @@ interpreted languages are visualized.
 )
 
 #subsubsection("Code Patching")
-Code patching is technically not a plugin system. With code patching, users need
-to change the code of the application themselves in order to achieve the
-expected functionality. This type of extensibility is found in a specific set of
-free and open-source applications called "suckless". @suckless
+Code patching can be considered the simplest, although uncommon form of plugins.
+With code patching, users need to change the code of the application themselves
+in order to achieve the expected functionality. This type of extensibility is
+found in a specific set of free and open-source applications called "suckless".
+@suckless
 
-While not necessarily part of a plugin system, it is still important to note
-that this system requires a soft API/ABI stability. If the developers of the
-main applications often make radical changes, then these patches need to be
-rewritten for each change, which would make this system completely infeasible.
+Code patching technically means explicitly not implementing a plugin system and
+relying on pure code instead, however, it is still important to note that this
+approach requires a soft API/ABI stability. If the developers of the main
+applications often make radical changes, then these patches need to be rewritten
+for each change, which would make this approach completely infeasible.
 
 Suckless specifically targets the Unix philosophy of "do one thing and do it
 well".@unixwikipedia @unixcentury While ReSet is not opposed to this philosophy,
 ReSet does intend to offer more than one functionality by utilizing a plugin
 system in the first place. ReSet will therefore not pursue this approach.
 
-#subsubsection("IPC")
+#subsubsection("Inter-Process Communication (IPC)")
 Inter-Process Communication can be seen as a soft version of a plugin system.
 While it does not allow users to expand the functionality of the program itself,
 it does allow users to wrap the program by using the provided IPC and expanding
@@ -154,14 +156,14 @@ IPC has a major limitation, while the backend can be implemented solely with IPC
 by creating a new process that will handle the new functionality, the frontend
 cannot be expanded by just using IPC, hence this is not a system that can be
 fully applied to ReSet. On top of this, requiring a new process for each
-functionality would break the locality transparency which was defined as a
+functionality would break the seamless user interface which was defined as a
 requirement for ReSet in @Non-FunctionalRequirements.
 
-#subsubsection("Dynamic Libraries")
-Dynamic libraries can be used in order to load specific functions during
-runtime. This allows developers to load either specific files or all files
-within a folder or similar, which will then be used to execute specified
-functions for the application.
+#subsubsection(custom_tag: "DynamicLibrariesVariant", "Dynamic Libraries")
+As explained in @DynamicLibraries, dynamic libraries can be used in order to
+load specific functions during runtime. This allows developers to load either
+specific files, all files within a folder or similar, which will then be used to
+execute specified functions for the application.
 
 In order for this interaction to work, the plugin must implement all functions
 that the application requires, meaning the code has to be contained within the
@@ -169,20 +171,23 @@ framework of the developer of the application.
 
 // TODO: Explain loader -> ELF loader
 
-#subsubsubsection("Example")
-For Rust, the crate "libloading" handles the mapping of C functions to Rust in a
-simple fashion. This allows a straightforward usage of dynamic libraries. Figure
-@rust_dynamic_libary_loading visualizes a simple dynamic library with a single
-function.
+As an example for Rust, consider the crate "libloading" which handles the
+mapping of C functions to Rust in a simple fashion. This allows a
+straightforward usage of dynamic libraries. Figure @rust_dynamic_libary_loading
+visualizes a simple dynamic library with a single function.
 
 #let code = "
 // code in the calling binary
 fn main() {
+    // interactions with C are always unsafe
     unsafe {
-        let lib = libloading::Library::new(\"./testlib/target/debug/libtestlib.so\")
+        // open library file
+        let lib = libloading::Library::new(\"./target/debug/libtestlib.so\")
             .expect(\"Could not open library.\");
+        // fetch function from library
         let func: libloading::Symbol<unsafe extern \"C\" fn(i32) -> i32> =
             lib.get(b\"test_function\").expect(\"Could not load function.\");
+        // use the function
         assert_eq!(func(2), 4);
         println!(\"success\");
     }
@@ -215,7 +220,7 @@ The lack of a stable Rust ABI is also the reason why there are no Rust native
 shared libraries. Crates, as found on crates.io, are static libraries that are
 compiled into the binary, and all shared libraries are created with the C ABI
 using "extern C". Further information about ABI along with examples can be found
-in @ApplicationBinaryInterfaceABI.
+in @ApplicationBinaryInterfaceABI. @crates @rust_abi_stability
 
 #subsubsubsection("Containerization of dynamic libraries")
 Plugin systems have a variety of points to hook a dynamic library into the
@@ -247,6 +252,7 @@ fn main() {
     });
     // program should still get this input even if the thread crashes
     let mut buffer = String::new();
+    println!(\"Still works?\");
     io::stdin().read_line(&mut buffer);
 }"
 
@@ -268,7 +274,7 @@ on the entire system as even the native application services would now need to
 use synchronization when accessing data.
 
 On top of this, when a plugin encounters a fatal error, this should not only be
-communicated to the user, but potential interactions with the now-lost plugin
+communicated to the user, but potential interactions with the now crashed plugin
 need to be removed. This might happen when plugins communicate with each other,
 or when multiple plugin systems are in place.
 
@@ -276,7 +282,7 @@ or when multiple plugin systems are in place.
 
 #subsubsubsection("Architecture")
 In @dynamic_libraries_plugin_system, the architecture of a plugin system with
-dynamic libraries are visualized.
+dynamic libraries is visualized.
 #align(
   center, [#figure(
       img("dynamic_libraries.svg", width: 100%, extension: "files"), caption: [Architecture of a dynamic library plugin system.],
@@ -421,7 +427,6 @@ impl AnyImpl for Example {
     )<rust_any_pattern>],
 )
 
-
 #pagebreak()
 
 #subsection("Security")
@@ -503,8 +508,9 @@ into the testing framework is visualized.
 #subsubsection("GTK Tests")
 There is a GTK testing framework for Rust, which is called "gtk-test". This
 crate allowed for an easy way of creating tests for the user interface of ReSet.
-As an example, the following code snippet is taken from the repository page and
-shows how to test the change of a string in a label. @gtk-test
+As an example, the code snipped in @gtk_test_example is taken from the
+repository page and shows how to test the change of a string in a label.
+@gtk-test
 
 #let code = "
 fn main() {
@@ -531,14 +537,13 @@ there are many UI widgets or dynamically generated widgets. These can then be
 easily accessed and manipulated during the tests.
 
 #let code = "
-struct TestSingleton {
-    window: Option<Rc<gtk::Window>>,
-    buttons: HashMap<String, Rc<gtk::Button>>,
-    labels: HashMap<String, Rc<gtk::Label>>,
-    checkbox: HashMap<String, Rc<gtk::CheckButton>>,
-    comboRow: HashMap<String, Rc<adw::ComboRow>>,
-    // ...
-}"
+static mut SINGLETON: Lazy<TestSingleton> = Lazy::new(|| TestSingleton {
+    window: None,
+    buttons: HashMap::new(),
+    labels: HashMap::new(),
+    checkbox: HashMap::new(),
+    entryRow: HashMap::new(),
+});"
 
 #align(
   left, [#figure(
@@ -550,12 +555,15 @@ The idea is to save a reference to each widget that is going to be tested in a
 hashmap of its corresponding class with a string to identify it. The special
 case is the window because there is only one instance of it.
 
+In @setting_up_simple_ui and @example_ui_test, an example implementation of the
+singleton with GTK widgets alongside an example test is visualized.
+
 #let code = "
 let main = gtk::Box::new(Horizontal, 5);
-let entryRow = Rc::new(EntryRow::new());
-let button2 = Rc::new(Button::new());
-let button1 = Rc::new(Button::new());
-let label = Rc::new(Label::new(Some(\"nothing\")));
+let entryRow = EntryRow::new();
+let button2 = Button::new();
+let button1 = Button::new();
+let label = Label::new(Some(\"nothing\"));
 
 entryRow.connect_changed(move |entry| {
     match Ipv4Addr::from_str(entry.text().as_str()) {
@@ -569,7 +577,7 @@ let label_ref = label.clone();
 button1.connect_activate(move |_| { entryRow_ref.set_text(\"192.168.1.100\"); });
 button2.connect_activate(move |_| { label_ref.set_text(\"button clicked\"); });
 
-let window = Rc::new(Window::builder().application(app).child(&main).build());
+let window = Window::builder().application(app).child(&main).build();
 unsafe {
     SINGLETON.buttons.insert(\"button1\".to_string(), button1.clone());
     SINGLETON.buttons.insert(\"button2\".to_string(), button2.clone());
@@ -639,7 +647,7 @@ In @ui_test_macro_implementation an example macro for the test introduced in
 #[cfg(debug_assertions)]
 macro_rules! TestButton {
     ( $button_name:expr ) => {{
-        let button = Rc::new(gtk::Button::new());
+        let button = gtk::Button::new();
         unsafe {
             SINGLETON.buttons.insert($button_name, button.clone());
         }

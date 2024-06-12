@@ -7,11 +7,12 @@ their system in order to provide expandability. The paradigm used for such
 systems is explained in @InterpretedLanguages.
 
 #subsubsubsection("Neovim")
-Neovim is a fork of the iconic VIM editor. It offers both VIMscript and lua
-support, as well as an RPC API, providing users with multiple ways to expand
-functionality. VIMscript is converted to lua, meaning Neovim only needs a single
-interpreter for lua. This interpreter is tightly coupled to Neovim itself,
-providing plugin developers with an easy way to access core functionality.
+Neovim is a fork of the iconic VIM editor. @vim @neovim It offers both VIMscript
+and lua support, as well as a Remote Procedure Call API, providing users with
+multiple ways to expand functionality. VIMscript is converted to lua, meaning
+Neovim only needs a single interpreter for lua. This interpreter is tightly
+coupled to Neovim itself, providing plugin developers with an easy way to access
+core functionality.
 
 While the implementation of the interpreter itself is too large for a brief
 analysis, the usage of this system can be analyzed. Neovim provides solid
@@ -20,17 +21,23 @@ within the Neovim lua interpreter. Note that this means the documented
 functionality is only supported in Neovim and not in any other Neovim
 interpreter. @neovimluadocumentation
 
-In @testplugin, a Neovim test plugin is visualized.
+#pagebreak()
+
+For the example plugin, the Neovim plugin package manager "lazy" is used.
+@lazy_neovim\
+In @testplugin, a Neovim test plugin is visualized. @testplugin_neovim
 
 #let code = "
+-- define local variables
 local opts = {
-  what = 0,
+  val = 0,
 }
 
 local test_plugin = {
   opts = opts,
 }
 
+-- include variables in user configuration
 function test_plugin.setup(user_config)
   test_plugin.opts = user_config
   vim.tbl_deep_extend(\"force\", opts, user_config)
@@ -41,11 +48,12 @@ function test_plugin.config(user_config)
   vim.tbl_deep_extend(\"force\", opts, user_config)
 end
 
+-- define function which the user can use
 function test_plugin.test()
-  if test_plugin.opts.what == 0 then
-    vim.cmd(\"echo 'value is 0'\")
+  if test_plugin.opts.val == 0 then
+    vim.cmd(\"echo 'val is 0'\")
   else
-    vim.cmd(\"echo 'value is not 0'\")
+    vim.cmd(\"echo 'val is not 0'\")
   end
 end
 
@@ -60,9 +68,9 @@ return test_plugin"
 // TODO show output
 
 #subsubsubsection("Helix")
-Helix is a post-modern modal text editor written in Rust. It currently does not
-offer a plugin system, however, as of February 2024, there is an open pull
-request on the helix repository. @helixpr This addition would introduce the
+Helix is a post-modern modal text editor written in Rust. @helix It currently
+does not offer a plugin system, however, as of February 2024, there is an open
+pull request on the helix repository. @helixpr This addition would introduce the
 lisp-based steel scripting language as a plugin system. @steel
 
 The difference between Neovim with steel besides the paradigm of the scripting
@@ -70,6 +78,8 @@ language is the integration with the Rust programming language. Steel offers a
 first-party virtual machine for its parent language. Creating plugins with steel
 would therefore require less work as a large portion would already be covered by
 steel.
+
+#pagebreak()
 
 In @steelengine, a simple usage of the steel engine in Rust and GTK is
 visualized.
@@ -140,6 +150,8 @@ Hence, it requires manual synchronization and also requires special wrapping of
 GTK structs as they are not marked as Sync/Send, which is required in Rust for
 multithreading.
 
+#pagebreak()
+
 #subsubsubsection("Usage in Games")
 Various game engines and modding frameworks also utilize lua as a scripting
 language in order to provide extendability.
@@ -171,14 +183,14 @@ similarly to using hooks.
 #let code = "
 /**
  * Modify, replace or inject a method
- *
  * @param {object} prototype - the object (or prototype) that is modified
  * @param {string} methodName - the name of the overwritten method
- * @param {CreateOverrideFunc} createOverrideFunc - function to call to create the override
+ * @param {CreateOverrideFunc} createOverrideFunc
+ *        - function to call to create the override
  */
 overrideMethod(prototype, methodName, createOverrideFunc) {
-    const originalMethod = this._saveMethod(prototype, methodName);
-    this._installMethod(prototype, methodName, createOverrideFunc(originalMethod));
+  const originalMethod = this._saveMethod(prototype, methodName);
+  this._installMethod(prototype, methodName, createOverrideFunc(originalMethod));
 }"
 
 #align(
@@ -192,16 +204,13 @@ overrideMethod(prototype, methodName, createOverrideFunc) {
 import {Extension} from './path/to/shell/extensions/extension.js';
 
 export default class Example extends Extension.Extension {
-    enable() {
-      // enable plugin
-      // override functions
-      // add menus
-      // etc
-    }
-
-    disable() {
-      // disable plugin
-    }
+  enable() {
+    // override functions, add widgets, etc
+  }
+  
+  disable() {
+    // disable plugin
+  }
 }"
 
 #align(

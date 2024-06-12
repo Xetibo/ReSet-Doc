@@ -22,7 +22,7 @@ which can be found in the ReSet and ReSet-Daemon repositories respectively.
   "Seemless UI", "Usability", "Medium", [
     Users should not easily differentiate between Plugin and Core functionality.
   ], [
-    - Provide a seemless user experience for the user by integrating plugin settings
+    - Provide a seamless user experience for the user by integrating plugin settings
       within core settings (e.g add plugin into sidebar)
   ],
 )

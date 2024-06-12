@@ -361,3 +361,63 @@ gtk-test:
   type: web
   title: GTK test
   url: https://github.com/gtk-rs/gtk-test
+semver:
+  type: web
+  title: Semantic Versioning 2.0
+  url: https://semver.org/
+flatpak_libraries:
+  type: web
+  title: Basic Concepts
+  url: https://docs.flatpak.org/en/latest/basic-concepts.html
+the_rust_programming_language:
+  type: book
+  title: The Rust Programming Language
+  author: ["Steve Klabnik", "Carol Nichols"]
+  url: https://doc.rust-lang.org/stable/book/
+consteval_reference:
+  type: web
+  title: consteval specifier
+  url: https://en.cppreference.com/w/cpp/language/consteval
+constexpr_reference:
+  type: web
+  title: constexpr specifier
+  url: https://en.cppreference.com/w/cpp/language/constexpr
+crates:
+  type: web
+  title: crates.io
+  url: https://crates.io/
+rust_abi_stability:
+  type: web
+  title: Define a Rust ABI
+  author: steveklabnik
+  url: https://github.com/rust-lang/rfcs/issues/600
+stable_abi_crate: 
+  type: repository
+  title: abi_stable_crates
+  author: rodrimati1992
+  url: https://github.com/rodrimati1992/abi_stable_crates/
+vim: 
+  type: web
+  title: Vim - the ubiquitous text editor
+  # may you find peace after all the good work you have done 
+  author: Bram Moolenaar
+  url: https://www.vim.org/
+neovim: 
+  type: web
+  title: Neovim
+  url: https://neovim.io/
+testplugin_neovim:
+  type: repository
+  title: testplugin neovim
+  author: DashieTM
+  url: https://github.com/DashieTM/test_plugin
+lazy_neovim:
+  type: repository
+  title: lazy package manager
+  author: folke
+  url: https://github.com/folke/lazy.nvim
+helix: 
+  type: web
+  title: Helix
+  url: https://helix-editor.com/
+

@@ -6,9 +6,9 @@ This section covers the implementation of the ReSet plugin system.
 
 The user tests for the results can be found in @UserTesting.
 
-#include "result/mock_system.typ"
-#pagebreak()
 #include "result/plugin_system.typ"
+#pagebreak()
+#include "result/mock_system.typ"
 // #pagebreak()
 // #include "result/plugins.typ"
 // #include "result/test_framework.typ"

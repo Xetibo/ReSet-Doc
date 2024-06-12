@@ -3,7 +3,7 @@
 
 #subsubsection("Dynamic Library Plugin Systems")
 This section covers plugin systems utilizing dynamic libraries. Dynamic
-libraries are explained in detail in @DynamicLibraries.
+libraries are explained in detail in @DynamicLibraries. @vim
 
 #subsubsubsection("Hyprland")
 Hyprland is a dynamic tiling compositor that can be extended via a plugin
@@ -32,14 +32,21 @@ typedef void (*origMonitorFrame)(void*, void*);
 
 // define new/additional functionality
 void hkMonitorFrame(void* owner, void* data) {
-    std::cout << \"I bring additional functionality\n\";// call the original function
-(*(origMonitorFrame)g_pMonitorFrameHook->m_pOriginal)(owner, data); }
+  // call the original function
+  std::cout << \"I bring additional functionality\";
+  (*(origMonitorFrame)g_pMonitorFrameHook->m_pOriginal)(owner, data);
+}
 
-APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {// Find function listener_monitorFrame and return address of it
-static const auto METHODS = HyprlandAPI::findFunctionsByName(PHANDLE, \"listener_monitorFrame\");// Bind our hkMonitorFrame function to listener_monitorFrame
-g_pMonitorFrameHook = HyprlandAPI::createFunctionHook(handle,
-METHODS[0].address, (void*)&hkMonitorFrame);// init the hook
-g_pMonitorFrameHook->hook(); }"
+// Find function listener_monitorFrame and return address of it
+APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
+  // Bind our hkMonitorFrame function to listener_monitorFrame
+  static const auto METHODS =
+    HyprlandAPI::findFunctionsByName(PHANDLE, \"listener_monitorFrame\");
+  g_pMonitorFrameHook = HyprlandAPI::createFunctionHook(handle,
+    METHODS[0].address, (void*)&hkMonitorFrame);
+  // init the hook
+  g_pMonitorFrameHook->hook();
+}"
 
 #align(
   left, [#figure(
@@ -53,8 +60,11 @@ Hence, a plugin developer would first need to get the address of that function.
 Hyprland provides a find function for this use case, making it easy to create
 hooks. The destination function is the function you would like to implement
 instead of the original functionality. Note that the original function can still
-be called at any point within your new function. In @hyprland_hook_wiki, the
-additional functionality was added before the call to the original function.
+be called at any point within your new function. In the official example from
+Hyprland, the additional functionality was added before the call to the original
+function. @hyprland_hook_wiki
+
+#pagebreak()
 
 In @hyprlandmempatching, the copying of the plugin-defined function is analyzed.
 
@@ -64,13 +74,13 @@ In @hyprlandmempatching, the copying of the plugin-defined function is analyzed.
 // first, original but fixed func bytes
 memcpy(m_pTrampolineAddr, PROBEFIXEDASM.bytes.data(), HOOKSIZE);
 // then, pushq %rax
-memcpy((uint8_t*)m_pTrampolineAddr + HOOKSIZE, PUSH_RAX, sizeof(PUSH_RAX));                                            
+memcpy((uint8_t*)m_pTrampolineAddr + HOOKSIZE, PUSH_RAX, sizeof(PUSH_RAX));
 // then, jump to source
-memcpy((uint8_t*)m_pTrampolineAddr + HOOKSIZE + sizeof(PUSH_RAX), 
-  ABSOLUTE_JMP_ADDRESS, sizeof(ABSOLUTE_JMP_ADDRESS)); 
+memcpy((uint8_t*)m_pTrampolineAddr + HOOKSIZE + sizeof(PUSH_RAX),
+  ABSOLUTE_JMP_ADDRESS, sizeof(ABSOLUTE_JMP_ADDRESS));
 
 // fixup trampoline addr
-*(uint64_t*)((uint8_t*)m_pTrampolineAddr + TRAMPOLINE_SIZE - 
+*(uint64_t*)((uint8_t*)m_pTrampolineAddr + TRAMPOLINE_SIZE -
   sizeof(ABSOLUTE_JMP_ADDRESS) + ABSOLUTE_JMP_ADDRESS_OFFSET) =
   (uint64_t)((uint8_t*)m_pSource + sizeof(ABSOLUTE_JMP_ADDRESS));
 
@@ -90,10 +100,12 @@ original function are turned to "No Operation(NOP)", which will be skipped by
 the CPU. Instead, the trampoline will point to the new plugin function, which
 will be executed.
 
-This system is extremely powerful, allowing plugin developers to override any
-behavior of the existing application. For ReSet, this would likely not make much
-sense, as ReSet does not offer much functionality at its core, instead, ReSet
-intends to provide extend-ability.
+This system is both extremely powerful and potentially dangerous. It allows
+plugin developers to override any behavior of the existing application,
+providing potentially new and expected functionality, but also allows overriding
+any security implementations the program might have. For ReSet, this would
+likely not make much sense, as ReSet does not offer much functionality at its
+core, instead, ReSet intends to provide extend-ability.
 
 A mock example Hyprland plugin written in Rust can be seen in
 @ExhibitABICompatibility, specifically @hyprland_plugin_rust.
@@ -104,11 +116,15 @@ computers. It is written in Rust and GTK3 and offers users the ability to load
 plugins with shared libraries using the stable ABI crate which automatically
 converts Rust structs to C structs.
 
-@anyrunbase shows the regular launch mode for anyrun.
+@anyrunbase shows the regular launch mode for anyrun which allows users to find
+and launch desktop applications.
 #align(
-  center, [#figure(img("anyrunbase.png", width: 100%, extension: "figures"), caption: [])<anyrunbase>],
+  center, [#figure(
+      img("anyrunbase.png", width: 100%, extension: "figures"), caption: [Anyrun Program search/launch],
+    )<anyrunbase>],
 )
 
+#pagebreak()
 @anyruncalculator and @anyruntranslate show two plugins for anyrun, a calculator
 plugin and a translate plugin.
 
@@ -125,7 +141,7 @@ plugin and a translate plugin.
 
 Anyrun abstracts the plugin implementation behind several different crates.
 First is the ABI crate which handles the conversion of Rust-specific types into
-C stable ABI-compatible ones.
+C stable ABI-compatible ones. @stable_abi_crate
 
 In @anyrunplugininfo, the plugin info struct of anyrun is visualized.
 
@@ -133,6 +149,7 @@ In @anyrunplugininfo, the plugin info struct of anyrun is visualized.
 #[repr(C)]
 #[derive(StableAbi, Debug)]
 pub struct PluginInfo {
+    // RString is the stable ABI compatible string
     pub name: RString,
     pub icon: RString,
 }"
@@ -160,9 +177,9 @@ pub fn info(_attr: TokenStream, item: TokenStream) -> TokenStream {
 
     quote! {
         #[::abi_stable::sabi_extern_fn]
-        fn anyrun_internal_info() -> ::anyrun_plugin::anyrun_interface::PluginInfo {
+        fn anyrun_internal_info() 
+          -> ::anyrun_plugin::anyrun_interface::PluginInfo {
             #function
-
             #fn_name()
         }
     }
@@ -203,6 +220,7 @@ file. In @anyrunpluginusage, the usage of the function is visualized.
 #let code = "
 // load plugin first
 let plugin = if plugin_path.is_absolute() {
+    // load file
     abi_stable::library::lib_header_from_path(plugin_path)
 } else {
   // omitted
@@ -212,6 +230,7 @@ let plugin = if plugin_path.is_absolute() {
 
 // omitted initialization etc
 
+// handle file and run functions within the dynamic library
 if !runtime_data.borrow().config.hide_plugin_info {
   plugin_box.add(&create_info_box(
       &plugin.info()(),

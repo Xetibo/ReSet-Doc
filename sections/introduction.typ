@@ -101,13 +101,14 @@ systems, various approaches and technologies are analyzed and explained in
 @PluginSystemEvaluation in order to evaluate the best plugin system architecture
 for this thesis.\
 Explicit implementations details for the resulting plugin system are discussed
-in @Results.
+in @PluginSystemResults.
 
 As explained in @Objectives, this thesis will include exemplary plugins. For
 these plugins, existing solutions for specific environments are analyzed in
 @ExemplaryPluginAnalysis, which is used to create a mockup in @PluginUIMockups.
-This information is used to create the plugins in @ExemplaryPluginAnalysis, with
-the results being tested by users in @UserTesting.
+This information is used to create the plugins in @MonitorPluginImplementation
+and @KeyboardPluginImplementation, with the results being tested by users in
+@UserTesting.
 
 At last, the conclusion of this thesis and potential future work is found in
 @Conclusion.

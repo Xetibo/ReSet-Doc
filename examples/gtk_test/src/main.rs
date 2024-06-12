@@ -14,7 +14,7 @@ use once_cell::{self, sync::Lazy};
 #[cfg(debug_assertions)]
 macro_rules! TestButton {
     ( $button_name:expr ) => {{
-        let button = Rc::new(gtk::Button::new());
+        let button = gtk::Button::new();
         unsafe {
             SINGLETON.buttons.insert($button_name, button.clone());
         }
@@ -52,10 +52,10 @@ fn setup_gtk(func: fn()) {
 
     app.connect_activate(move |app| {
         let main = gtk::Box::new(Horizontal, 5);
-        let entryRow = Rc::new(EntryRow::new());
-        let button2 = Rc::new(Button::new());
-        let button1 = Rc::new(Button::new());
-        let label = Rc::new(Label::new(Some("nothing")));
+        let entryRow = EntryRow::new();
+        let button2 = Button::new();
+        let button1 = Button::new();
+        let label = Label::new(Some("nothing"));
 
         entryRow.connect_changed(
             move |entry| match Ipv4Addr::from_str(entry.text().as_str()) {
@@ -73,27 +73,29 @@ fn setup_gtk(func: fn()) {
             label_ref.set_text("button clicked");
         });
 
-        let window = Rc::new(Window::builder().application(app).child(&main).build());
+        let window = Window::builder().application(app).child(&main).build();
         let button3 = TestButton!("macro_button".to_string());
-        unsafe {dbg!(SINGLETON.buttons.clone());}
-        // unsafe {
-        //     SINGLETON
-        //         .buttons
-        //         .insert("button1".to_string(), button1.clone());
-        //     SINGLETON
-        //         .buttons
-        //         .insert("button2".to_string(), button2.clone());
-        //     SINGLETON
-        //         .labels
-        //         .insert("testlabel".to_string(), label.clone());
-        //     SINGLETON
-        //         .entryRow
-        //         .insert("entryrow".to_string(), entryRow.clone());
-        //     SINGLETON.window = Some(window.clone());
-        // }
-        main.append(&*button2);
-        main.append(&*label);
-        main.append(&*entryRow);
+        unsafe {
+            dbg!(SINGLETON.buttons.clone());
+        }
+        unsafe {
+            SINGLETON
+                .buttons
+                .insert("button1".to_string(), button1.clone());
+            SINGLETON
+                .buttons
+                .insert("button2".to_string(), button2.clone());
+            SINGLETON
+                .labels
+                .insert("testlabel".to_string(), label.clone());
+            SINGLETON
+                .entryRow
+                .insert("entryrow".to_string(), entryRow.clone());
+            SINGLETON.window = Some(window.clone());
+        }
+        main.append(&button2);
+        main.append(&label);
+        main.append(&entryRow);
 
         func();
         window.present();
@@ -126,11 +128,11 @@ fn test() {
 }
 
 struct TestSingleton {
-    window: Option<Rc<gtk::Window>>,
-    buttons: HashMap<String, Rc<gtk::Button>>,
-    labels: HashMap<String, Rc<Label>>,
-    checkbox: HashMap<String, Rc<gtk::CheckButton>>,
-    entryRow: HashMap<String, Rc<EntryRow>>,
+    window: Option<gtk::Window>,
+    buttons: HashMap<String, gtk::Button>,
+    labels: HashMap<String, Label>,
+    checkbox: HashMap<String, gtk::CheckButton>,
+    entryRow: HashMap<String, EntryRow>,
     // ...
 }
 

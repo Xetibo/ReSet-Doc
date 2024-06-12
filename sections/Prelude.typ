@@ -17,19 +17,19 @@ pub mod namespace1;
 pub mod namespace2;
 
 fn main() {
-let _res1 = namespace1::add(5, 2);
-let _res2 = namespace2::add(5, 2);
-// these get flattened to add and subtract
+  let _ = namespace1::add(5, 2);
+  let _ = namespace2::add(5, 2);
+  // both of these get renamed
 }
 
 // in namespace1.rs
 pub fn add(left: i32, right: i32) -> i32 {
-left + right
+  left + right
 }
 
 // in namespace2.rs
 pub fn add(left: i32, right: i32) -> i32 {
-left + right
+  left + right
 }
 "
 
@@ -140,7 +140,7 @@ fixes would break compatibility. In order to solve this issue, semantic
 versioning is used. This system creates several guarantees for a library by
 using multiple different version numbers.
 
-In @semantic_versioning the semantic version of the library Glibc is visualized.
+In @semantic_versioning the semantic version of the library Glib is visualized.
 
 #let code = "
 # name of library, change would mean different library!
@@ -161,6 +161,7 @@ The minor version of a shared library can have multiple numbers, usually, it
 will be two or three. For two, there is no difference between compatible feature
 enhancements and compatible bug fixes. With three numbers, the first number is a
 compatible feature enhancement, and the last number is a compatible bugfix.
+@semver
 
 For the Linux system native packages, this ensures the feasibility of a single
 shared library, even if the version might be different from the expected one.
@@ -168,7 +169,7 @@ shared library, even if the version might be different from the expected one.
 For ReSet, flatpak is used as well, this system also tries to re-use libraries
 if possible, however, due to the sandboxed nature of flatpaks, it is also
 possible to install multiple versions of a specific library, ensuring that each
-program receives the necessary library.
+program receives the necessary library. @flatpak_libraries
 
 #subsubsection("Virtual Memory and Global Offset Table (GOT)")
 Operating systems do not offer processes direct access to physical memory. This
@@ -317,14 +318,14 @@ this is often used in order to differentiate different environments, prohibit
 duplicate imports or define constants. Rust macros are inherently different from
 this. Rust offers a macro system where the entire language is supported at
 compile time. While this does increase the overall complexity of the system, it
-also results in a system that does not result in simple text replacement. In C,
+also results in a system that does not end in simple text replacement. In C,
 all that macros do is replace text, in Rust, the macros will manipulate tokens
 instead, this guarantees that invalid tokens are prohibited, and operator
 precedence is not invalidated.
 
 The book "The Rust Programming Language" offers a valuable example of operator
 precedence, and visualizes why C macros are often avoided. Consider the excerpt
-in @cmacro taken from the book.
+in @cmacro taken from the book. @the_rust_programming_language
 
 #align(left, [#figure(sourcecode(```C
 #define FIVE_TIMES(x) 5 * x
@@ -336,7 +337,7 @@ int main() {
 ```), kind: "code", supplement: "Listing", caption: [C Macro])<cmacro>])
 
 If this was a regular function in C, then the expectation would be 25 as the
-result, 5 \* (2 + 3). However, with C macros, the token x is not used as an
+result: 5 \* (2 + 3). However, with C macros, the token x is not used as an
 actual token, instead, it is just text, so the result is: 5 \* 2 + 3. Without
 the parenthesis, the expectation of the result changes from 25 to 13. Bugs like
 these are incredibly hard to debug as they happen at compile time.
@@ -368,7 +369,7 @@ time. This approach is used within C++ by adding constexpr or consteval to code.
 The difference between constexpr and consteval is the enforcement of compile
 time. If the code cannot be run at compile time, constexpr will not generate an
 error and instead run the code regularly, consteval would cause a compile time
-error in this case.
+error in this case. @consteval_reference @constexpr_reference
 
 In @consteval the same functionality is visualized in C++.
 
