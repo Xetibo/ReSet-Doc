@@ -58,6 +58,8 @@ _Meeting skipped due to presentation_
 *Meeting 10*
 - presentation of current development status
 
+#pagebreak()
+
 *Meeting 11*
 - presentation of current development status
 
@@ -78,7 +80,7 @@ _Meeting skipped due to presentation_
   - feedback of last week implemented
 - final discussion of development
 
-*Meeting 16*
+*Meeting 16*\
 _Meeting skipped for the last week to focus on finishing the thesis_
 
 *Meeting 17*\
