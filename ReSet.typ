@@ -22,6 +22,8 @@
 #let appendix = [
   #pagebreak()
   #section("Appendix")
+  #include "sections/appendix/management_summary.typ"
+  #pagebreak()
   #include "sections/appendix/projectplan.typ"
   #pagebreak()
   #include "sections/appendix/requirements.typ"

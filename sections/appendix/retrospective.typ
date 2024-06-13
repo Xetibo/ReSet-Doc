@@ -13,7 +13,7 @@ API cannot be used by developers if it does not tell you _how_ to use it. And it
 goes even further than just using the API, if developers have to first
 experiment with the API in order to understand it, it is essentially impossible
 to create tests for the API before you already implemented what you needed.
-Especially with an API the test driven development could make sense, but it is
+Especially with an API, the test driven development could make sense, but it is
 only possible with the previously mentioned requirement.
 
 Further, as the agile methodology states, users should test the application
@@ -24,7 +24,7 @@ not rely on this, it did make it clear, that users need to be at the forefront
 of testing for a great result.
 
 In the end, I am satisfied with the result of this project, and I am looking
-forward to maintaining the project after the thesis. It will be the ultimate
+forward to maintaining the project after this thesis. It will be the ultimate
 test for the viability of both the plugin system and the original ReSet
 application.
 
