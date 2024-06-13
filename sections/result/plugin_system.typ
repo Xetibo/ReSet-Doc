@@ -123,13 +123,21 @@ async fn test_plugins() {
 )
 
 The plugin tests can be run with "cargo test -- --nocapture". Normally, Rust
-does not print logs, but with nocapture, they will be printed to the console.
-In @plugin-test-output an output of the plugin test can be seen.
+does not print logs when running tests, but with the nocapture flag, this 
+behavior can be disabled. In @plugin-test-output-success an output of the 
+plugin test can be seen. @plugin-test-output-fail shows how the output looks 
+like if a test has failed.
 
-#align(
-  center, [#figure(
-      img("pluginTestOutput.png", width: 60%, extension: "figures"), caption: [Plugin test output],
-    )<plugin-test-output>],
+#columns(
+  2, [
+    #figure(
+      img("pluginTestOutputSuccess.png", width: 100%, extension: "figures"), caption: [Plugin test output success],
+    )<plugin-test-output-success>
+    #colbreak()
+    #figure(
+      img("pluginTestOutputFail.png", width: 100%, extension: "figures"), caption: [Plugin test output fail],
+    )<plugin-test-output-fail>
+  ],
 )
 
 #subsection("Plugin System Implementation")
