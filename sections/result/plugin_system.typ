@@ -122,6 +122,16 @@ async fn test_plugins() {
     )<custom_plugin_tests>],
 )
 
+The plugin tests can be run with "cargo test -- --nocapture". Normally, Rust
+does not print logs, but with nocapture, they will be printed to the console.
+In @plugin-test-output an output of the plugin test can be seen.
+
+#align(
+  center, [#figure(
+      img("pluginTestOutput.png", width: 60%, extension: "figures"), caption: [Plugin test output],
+    )<plugin-test-output>],
+)
+
 #subsection("Plugin System Implementation")
 In this section, the specific implementation of the plugin system in ReSet is
 discussed.
