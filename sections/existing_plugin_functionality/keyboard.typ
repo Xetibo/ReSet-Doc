@@ -91,11 +91,10 @@ In @gnome-keyboard-setting the UI for the keyboard settings from GNOME control
 center is shown. They use a drag-and-drop list to order the keyboard layouts
 around and mark it with the six dots on the left. These grip indicators are
 commonly used in software as well as in physical products to indicate that
-something is draggable. The listed is then grouped with a title and subtitle
-that explains what it is doing.\
-The keyboard layout list is grouped with a title and subtitle that briefly
-explains what its purpose is. Multiple of these groups are stacked vertically
-and form a scrollable area.
+something is draggable. The list is then grouped in a PreferenceGroup that 
+provides a title and subtitle that explains what it is doing. Multiple of 
+these PreferenceGroups groups are stacked vertically in a ScrollWindow
+that allow vertical scrolling.
 
 #align(
   center, [#figure(
