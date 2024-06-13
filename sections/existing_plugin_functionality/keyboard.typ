@@ -38,8 +38,8 @@ the desired type as long as it's correct.
 
 DConf serves as a low-level configuration system for gsettings that stores
 key-based configuration details in a single compact binary format database
-@dconf. Because gsettings is a layer for DConf, the keyboard plugin directly
-uses DConf for setting the keyboard layouts. Combined with the DConf crate,
+@dconf. Because gsettings is a layer for DConf, the keyboard plugin should 
+uses DConf directly for setting the keyboard layouts. Combined with the DConf crate,
 which provides Rust bindings to DConf, the plugin can read the keyboard layouts
 @dconf_rs. This returns a string that needs to be parsed to get the keyboard
 layout and variant, which can be done with a simple Regex.

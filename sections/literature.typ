@@ -39,21 +39,21 @@ visualized.
     )<base_plugin_architecture>],
 )
 
-The intention is that each plugin will offer three parts for ReSet. The first
+The intention is that each plugin can offer three parts for ReSet. The first
 part is the functionality itself, as an example, a monitor configuration plugin
 would need the ability to apply various resolutions to monitors. This
 functionality would then be offered by the plugin via a function or similar.
 
-The next part of the plugin is the DBus interface, this interface can be
+The next part of the plugin is the DBus interface, this interface could be
 directly injected into the existing DBus server provided by the ReSet daemon,
-providing users with a seamless user interface, meaning users will not see the
+providing users with a seamless user interface, meaning users would not see the
 difference between a plugin interface, and the core interfaces provided by ReSet
 out of the box.
 
-The third part of a plugin is a user interface widget, which can be integrated
-into the ReSet user interface application. Notably, this is optional, as users
-can choose to not use the user interface, and instead interact with ReSet via
-DBus.
+The third part of a plugin is a user interface widget, which could be integrated
+into the ReSet user interface application. Notably, this is most likely optional, 
+as users can choose to not use the user interface, and instead interact with ReSet 
+via DBus.
 
 #subsection("Plugin System Variants")
 In this section, different variants of plugin systems are discussed.
