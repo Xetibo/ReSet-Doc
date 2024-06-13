@@ -33,7 +33,7 @@ attended the meetings.
 - presentation of current development status
 
 *Meeting 5*
-- presentation of current development status
+- _meeting was skipped this week_ 
 
 *Meeting 6*
 - discussion about the intermediary presentation
@@ -53,6 +53,7 @@ _Meeting skipped due to presentation_
 
 *Meeting 9*
 - presentation of current development status
+- Fabio was absent for this meeting
 
 *Meeting 10*
 - presentation of current development status
@@ -64,11 +65,11 @@ _Meeting skipped due to presentation_
 - presentation of current development status
 
 *Meeting 13*
-- Felix was absent due to a job interview
+- Felix was absent for this meeting
 - presentation of current development status
 
 *Meeting 14*
-- Felix was absent due to a doctor's appointment
+- Felix was absent for this meeting
 - presentation of current development status
 - documentation will be handed to advisor at the end of the week for a review
 
