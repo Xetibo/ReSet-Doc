@@ -96,7 +96,7 @@ m_pOriginal = m_pTrampolineAddr;"
 
 Hyprland simply patches the memory itself by creating a trampoline function,
 which will point to the plugin function. This means that the instructions of the
-original function are turned to "No Operation(NOP)", which will be skipped by
+original function are turned to "No Operation (NOP)", which will be skipped by
 the CPU. Instead, the trampoline will point to the new plugin function, which
 will be executed.
 
@@ -116,7 +116,7 @@ computers. It is written in Rust and GTK3 and offers users the ability to load
 plugins with shared libraries using the stable ABI crate which automatically
 converts Rust structs to C structs.
 
-@anyrunbase shows the regular launch mode for anyrun which allows users to find
+@anyrunbase shows the regular launch mode for Anyrun which allows users to find
 and launch desktop applications.
 #align(
   center, [#figure(
@@ -125,7 +125,7 @@ and launch desktop applications.
 )
 
 #pagebreak()
-@anyruncalculator and @anyruntranslate show two plugins for anyrun, a calculator
+@anyruncalculator and @anyruntranslate show two plugins for Anyrun, a calculator
 plugin and a translate plugin.
 
 #align(
@@ -143,7 +143,7 @@ Anyrun abstracts the plugin implementation behind several different crates.
 First is the ABI crate which handles the conversion of Rust-specific types into
 C stable ABI-compatible ones. @stable_abi_crate
 
-In @anyrunplugininfo, the plugin info struct of anyrun is visualized.
+In @anyrunplugininfo, the plugin info struct of Anyrun is visualized.
 
 #let code = "
 #[repr(C)]

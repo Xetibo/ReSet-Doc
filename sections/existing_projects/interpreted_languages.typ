@@ -124,7 +124,7 @@ fn main() {
 
 #align(
   left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Example Usage of the Steel Engine],
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Example usage of the Steel Engine],
     )<steelengine>],
 )
 

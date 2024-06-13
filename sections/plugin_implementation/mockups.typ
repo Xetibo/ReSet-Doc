@@ -84,18 +84,17 @@ The user can also add a new layout with "Add layout" button, which places the
 new layout at the bottom of the list. By clicking on the three dots on the
 right, the user can open a context menu to remove the layout. The user is shown
 a list of all available keyboard layouts in the system. The arrow icon indicates
-that there are multiple variations of the same keyboard such as
-"de-us", "de-dvorak", "de-mac" and many more. To reduce cluttering, only the
-main layout is shown, and all other variations are hidden until the user clicks
-on the row. This immediately hides all other layouts and only shows the layout
-and its variations. A new back button will be prepended to the list to allow the
-user to go back to the main list. This feature is inspired by GNOME Settings and
-has been expanded upon. GNOME Settings only has this feature for "English (UK)"
-and "English (US)", while all other layouts are shown at the same time. This
-makes it harder for the user to find a specific layout because filtering the
-layouts with the search bar can still show layouts of another language, which
-have a similar name. In @keyboard-add-layout-mock a mockup of this feature can
-be seen.
+that there are multiple variations of the same keyboard such as "de-us", 
+"de-dvorak", "de-mac" and many more. To reduce cluttering, only the main layout 
+is shown, and all other variations are hidden until the user clicks on the row. 
+This immediately hides all other layouts and only shows the layout and its 
+variations. A new back button will be prepended to the list to allow the user to 
+go back to the main list. This feature is inspired by GNOME Settings and has been
+expanded upon. GNOME Settings only has this feature for "English (UK)" and 
+"English (US)", while all other layouts are shown at the same time. This makes it
+harder for the user to find a specific layout because filtering the layouts with
+the search bar can still show layouts of another language, which have a similar
+name. In @keyboard-add-layout-mock a mockup of this feature can be seen.
 
 #align(
   center, [#figure(

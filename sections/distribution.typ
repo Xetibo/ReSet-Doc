@@ -179,7 +179,7 @@ compiling them individually.
 After installing the plugins, users are required to confirm their plugin
 selection within the ReSet configuration file by adding the exact filename of
 the plugin. By default, the configuration file is located at ```sh $XDG_CONFIG_DIR/reset/ReSet.toml```.
-Confirmation of plugins is handled by the "plugins" key within the toml file. In
+Confirmation of plugins is handled by the "plugins" key within the TOML file. In
 @reset-toml, an example ReSet.toml file is visualized.
 
 #let code = "

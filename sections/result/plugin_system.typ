@@ -53,7 +53,7 @@ overall goal of separating plugins from both existing functionality and other
 plugins is still guaranteed. The DBus object is created with the plugin name
 which must be defined as a separate plugin function.
 
-in @dbus_crossroads_register_new, the injection of the interface is visualized.
+In @dbus_crossroads_register_new, the injection of the interface is visualized.
 
 #let code = "
 pub fn setup_dbus_interface(
@@ -143,7 +143,7 @@ pub extern \"C\" fn backend_tests() -> Vec<PluginTestFunc> {
 )
 
 In @monitor-dbus-test, the dbus_end_point() function tests the SetMonitors and 
-GetMonitors end points of the monitor plugin. If the DBUS calls fails, a 
+GetMonitors end points of the monitor plugin. If the DBus call fails, a 
 PluginTestError will be returned that will be printed to the console.
 
 #let code = "
@@ -255,7 +255,7 @@ to ensure that only user-defined plugins are loaded. Note that this does not
 offer proper security, it only offers protection against unintentional loading
 by the user.
 
-In @plugin_loading_config, the toml configuration in order to load the plugin is
+In @plugin_loading_config, the TOML configuration in order to load the plugin is
 visualized.
 
 #let code = "
@@ -264,7 +264,7 @@ plugins = [ \"libreset_monitors.so\", \"libreset_keyboard_plugin.so\" ]
 
 #align(
   left, [#figure(
-      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [ReSet toml configuration for loading plugins],
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [ReSet TOML configuration for loading plugins],
     )<plugin_loading_config>],
 )
 

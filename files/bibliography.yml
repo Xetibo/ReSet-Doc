@@ -430,3 +430,7 @@ apk_signing:
   type: web
   title: Application Signing
   url: https://source.android.com/docs/security/features/apksigning
+gtk-glib:
+  type: web
+  title: GLib
+  url: https://docs.gtk.org/glib/

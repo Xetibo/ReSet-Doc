@@ -138,9 +138,9 @@ of the library. Simple versioning such as incrementing the version number for
 each small change would make this system infeasible. For example, simple bug
 fixes would break compatibility. In order to solve this issue, semantic
 versioning is used. This system creates several guarantees for a library by
-using multiple different version numbers.
+using multiple different version numbers. @semver
 
-In @semantic_versioning the semantic version of the library Glib is visualized.
+In @semantic_versioning the semantic version of the library Glib is visualized. @gtk-glib
 
 #let code = "
 # name of library, change would mean different library!
@@ -161,7 +161,6 @@ The minor version of a shared library can have multiple numbers, usually, it
 will be two or three. For two, there is no difference between compatible feature
 enhancements and compatible bug fixes. With three numbers, the first number is a
 compatible feature enhancement, and the last number is a compatible bugfix.
-@semver
 
 For the Linux system native packages, this ensures the feasibility of a single
 shared library, even if the version might be different from the expected one.

@@ -29,7 +29,7 @@ The following categories are evaluated for programming languages:
   beneficial for the system to be easily integrated, it is not a crucial
   requirement.
 - *Use Case Overlap* | weight: medium\
-  Specific Paradigms will favor specific use cases, this point will solely cover
+  Specific paradigms will favor specific use cases, this point will solely cover
   how well the paradigm would suit the need of ReSet.\
   The weight medium is used as the applicability of the system to the use case
   should overall fit the requirements. More so than integration with Rust, if the
@@ -45,9 +45,9 @@ The following categories are evaluated for programming languages:
   existing third-party libraries. For ReSet, this would include the GTK user
   interface toolkit and the dbus-rs crate, for which the plugin must be suitable.
   This category is considered important, as rewriting ReSet with different
-  libraries is not feasible for this thesis.
+  libraries is not feasible for this thesis. @dbus_rs
 
-Special Requirement: All tools used in this project *must be published under a
+Special requirement: All tools used in this project *must be published under a
 free and open-source license*, as ReSet will be published under the GPL-3.0
 license.
 

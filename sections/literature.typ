@@ -150,7 +150,7 @@ it does allow users to wrap the program by using the provided IPC and expanding
 it with new functions.
 
 ReSet itself is made with this idea in mind, expanding on existing functionality
-for Wi-Fi, audio and more.
+for Wi-Fi, Audio and more.
 
 IPC has a major limitation, while the backend can be implemented solely with IPC
 by creating a new process that will handle the new functionality, the frontend
@@ -173,7 +173,7 @@ framework of the developer of the application.
 
 As an example for Rust, consider the crate "libloading" which handles the
 mapping of C functions to Rust in a simple fashion. This allows a
-straightforward usage of dynamic libraries. Figure @rust_dynamic_libary_loading
+straightforward usage of dynamic libraries. @rust_dynamic_libary_loading
 visualizes a simple dynamic library with a single function.
 
 #let code = "
@@ -310,7 +310,7 @@ means that each extension that can crash, would also take down the GNOME-Shell
 as collateral.
 
 To visualize the concept, @rust_function_overriding provides an example of
-function overriding as a parameter in Rust:
+function overriding as a parameter in Rust.
 
 #let code = "
 use once_cell::sync::Lazy;
@@ -363,16 +363,16 @@ impl PluginSystem {
 
 The output of this program is the regular_function and the second_function after
 this, both functions get the dummy data 5 passed to it. In a real-world example,
-this data could potentially be of the "any" type provided by the any pattern,
+this data could potentially be of the "any" type provided by the Any pattern,
 which would allow plugins to use custom-defined types, even with a statically
 typed language such as Rust. Important to note, however, is that even with the
-any pattern, Rust would still break the ABI compatibility, as memory access
+Any pattern, Rust would still break the ABI compatibility, as memory access
 depends on the size of a type.
 
 #pagebreak()
 
 #subsubsubsection("Example Any pattern")
-In @rust_any_pattern an example any pattern implementation is visualized.
+In @rust_any_pattern an example Any pattern implementation is visualized.
 
 #let code = "
 fn main() {
