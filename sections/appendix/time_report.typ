@@ -11,7 +11,7 @@ in ReSet.
   center, [#figure(
       img("timeReport/week1.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 1],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 2 (26.02 - 03.03)")
@@ -21,7 +21,7 @@ regards to how a testing framework could be implemented with plugin system integ
   center, [#figure(
       img("timeReport/week2.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 2],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 3 (04.03 - 10.03)")
@@ -31,7 +31,7 @@ mockup for the monitor and keyboard plugin as well as starting creating a testin
   center, [#figure(
       img("timeReport/week3.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 3],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 4 (11.03 - 17.03)")
@@ -41,7 +41,7 @@ system as well as fixing some bugs that remained from the SA.
   center, [#figure(
       img("timeReport/week4.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 4],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 5 (18.03 - 24.03)")
@@ -51,7 +51,7 @@ for the plugin system.
   center, [#figure(
       img("timeReport/week5.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 5],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 6 (25.03 - 31.03)")
@@ -61,7 +61,7 @@ same time, we also finished the plugin system.
   center, [#figure(
       img("timeReport/week6.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 6],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 7 (01.04 - 07.04)")
@@ -71,7 +71,7 @@ that, we started working on two exemplary plugins, the monitor and keyboard plug
   center, [#figure(
       img("timeReport/week7.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 7],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 8 (08.04 - 14.04)")
@@ -81,7 +81,7 @@ the documentation for the plugins.
   center, [#figure(
       img("timeReport/week8.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 8],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 9 (15.04 - 21.04)")
@@ -90,7 +90,7 @@ Not much changed as we continued working where we left off last week.
   center, [#figure(
       img("timeReport/week9.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 9],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 10 (22.04 - 28.04)")
@@ -99,7 +99,7 @@ Same as last week, we worked on the monitor and keyboard plugin.
   center, [#figure(
       img("timeReport/week10.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 10],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 11 (29.04 - 05.05)")
@@ -108,7 +108,7 @@ We're still working on the plugins like last week.
   center, [#figure(
       img("timeReport/week11.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 11],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 12 (06.05 - 12.05)")
@@ -118,7 +118,7 @@ that we also started to fix.
   center, [#figure(
       img("timeReport/week12.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 12],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 13 (13.05 - 19.05)")
@@ -127,7 +127,7 @@ We fixed some more bugs in the plugins and also started to focus more on the doc
   center, [#figure(
       img("timeReport/week13.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 13],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 14 (20.05 - 26.05)")
@@ -138,7 +138,7 @@ this week.
   center, [#figure(
       img("timeReport/week14.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 14],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 15 (27.05 - 02.06)")
@@ -148,7 +148,7 @@ participants were started as well this week.
   center, [#figure(
       img("timeReport/week15.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 15],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 16 (03.06 - 09.06)")
@@ -157,7 +157,7 @@ This week we focused heavily on the documentation and created the releases for t
   center, [#figure(
       img("timeReport/week16.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 16],
-    )<test-partcipant-exper23ience>],
+    )],
 )
 
 #subsubsection("Week 17 (10.06 - 16.06)")
@@ -166,5 +166,5 @@ This week we finished the usability tests and are closing up the documentation.
   center, [#figure(
       img("timeReport/week17.png", width: 100%, extension: "figures"), 
       caption: [Time distribution of week 17],
-    )<test-partcipant-exper23ience>],
+    )],
 )
