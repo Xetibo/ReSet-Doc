@@ -13,7 +13,7 @@
   align(
     center + horizon, [
       #pad(y: 5pt, text(25pt, title))
-      #pad(y: 5pt, text(18pt, subtitle))
+      #pad(y: -5pt, text(18pt, subtitle))
       #align(left, line(start: (5%, 0%), end: (95%, 0%)))
       #pad(y: 5pt, text(14pt, [Authors: #author]))
       #align(left, line(start: (15%, 0%), end: (85%, 0%)))

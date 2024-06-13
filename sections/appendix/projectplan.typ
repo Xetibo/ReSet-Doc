@@ -1,11 +1,13 @@
 #import "../../templates/utils.typ": *
 #lsp_placate()
 
-#subsection("Planning")
-#subsection("Methods")
+#subsection("Planning methods")
 *Project Management* | ReSet is managed using Scrum.\
 _Due to the small team size, no scrum master or product owner is chosen, the work
 of these positions is done in collaboration._\
+
+#subsubsection("Project Plan")
+The broad project plan is created with a GANTT diagram which is visualized in @gantt-diagram.
 
 #subsubsection("User Stories")
 User stories are handled via GitHub issues. // @github_issues.
@@ -24,7 +26,7 @@ without conflicts. For documentation typst is used, which also does not require
 a special editor, it just requires a compiler that works on all platforms. The user 
 interface is made with Cambalache.
 
-#subsection("Time")
+#subsubsection("Time")
 As an agile methodology is used, long-term time management is only broad
 guidance and does not necessarily overlap with reality. In other words, with a 2
 week sprint, only 2 weeks are considered well planned out. By week 4, work on
@@ -40,6 +42,6 @@ order to leave time for reflection and documentation.
   #align(
     center, [#figure(
         image("../../figures/timeplanning.png", width: 115%), caption: [Time management],
-      )],
+      )<gantt-diagram>],
   )
 ]

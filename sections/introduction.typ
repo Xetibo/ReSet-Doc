@@ -44,6 +44,15 @@ allows for testing and potential revisions of the system.
 // instead allows it to be a middleman between compositor and shell components. It
 // also allows for the community to create their own plugin to expand the
 // functionalities of ReSet.
+#subsection("Optional Objectives")
+The original work has limitations which this thesis intends to build upon. As an
+example, in the original work, code was often suboptimal with certain parts
+being duplicated due to complexity constraints. Another critical section is the
+testability of the program, which was omitted from the original work due to time
+constraints.
+
+As such, this thesis will include work on the original implementation in order
+to facilitate the basis for a reliable plugin system.
 
 #subsection("Challenges")
 - *Consistency* \
@@ -71,27 +80,6 @@ allows for testing and potential revisions of the system.
   execution refers to the system not crashing, while the stable environment refers
   to the plugin system API, which should not break compatibility with existing
   plugins on every update.
-
-#subsection("Additional Objectives")
-The original work has limitations which this thesis intends to build upon. As an
-example, in the original work, code was often suboptimal with certain parts
-being duplicated due to complexity constraints. Another critical section is the
-testability of the program, which was omitted from the original work due to time
-constraints.
-
-As such, this thesis will include work on the original implementation in order
-to facilitate the basis for a reliable plugin system.
-// animations
-// Furthermore, ReSet will add animations to improve its user experience which
-// helps to better understand the flow of the application, attend to accessibility
-// concerns to make it more user-friendly, testing framework for DBus
-// functionalities and a command line application to interface with ReSet.
-//
-// bug fixes
-// core features?
-// accessibility
-// testing framework
-// etc
 
 #subsection("Methodology")
 In order to provide necessary information about technologies used by plugin
