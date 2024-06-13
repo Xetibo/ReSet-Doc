@@ -174,7 +174,7 @@ results in a crash. GIO is therefore not suitable and a workaround was necessary
 a command that allows running commands outside the sandbox called Flatpak-spawn. Subsequently, DConf 
 was used again to get the layouts like on the first try. To find out if ReSet is running inside Flatpak's 
 sandboxing, the environment variable "container" can be checked. If it exists, then ReSet is running 
-inside the sandbox and the command can be spawned with flatpak-spawn. Of course there is the possibility 
+inside the sandbox and the command can be spawned using flatpak-spawn. There is the possibility 
 that a user can have the environment variable "container" defined, but this is currently the best way
 to check. If an alternative is found, then this will be replaced. Compared the the first try, Regex was
 not necessary anymore because with the knowledge from the second try, using the built-in variant was 
