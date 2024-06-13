@@ -34,6 +34,7 @@ mockup for the monitor and keyboard plugin as well as starting creating a testin
     )],
 )
 
+#pagebreak()
 #subsubsection("Week 4 (11.03 - 17.03)")
 We finished the documentation for now and are moving to the implementation of the plugin 
 system as well as fixing some bugs that remained from the SA.
@@ -64,6 +65,7 @@ same time, we also finished the plugin system.
     )],
 )
 
+#pagebreak()
 #subsubsection("Week 7 (01.04 - 07.04)")
 We finished preparing for the intermediary presentation and also presented it this week. After
 that, we started working on two exemplary plugins, the monitor and keyboard plugin.
@@ -93,6 +95,7 @@ Not much changed as we continued working where we left off last week.
     )],
 )
 
+#pagebreak()
 #subsubsection("Week 10 (22.04 - 28.04)")
 Same as last week, we worked on the monitor and keyboard plugin.
 #align(
@@ -121,6 +124,7 @@ that we also started to fix.
     )],
 )
 
+#pagebreak()
 #subsubsection("Week 13 (13.05 - 19.05)")
 We fixed some more bugs in the plugins and also started to focus more on the documentation again. 
 #align(
@@ -151,6 +155,7 @@ participants were started as well this week.
     )],
 )
 
+#pagebreak()
 #subsubsection("Week 16 (03.06 - 09.06)")
 This week we focused heavily on the documentation and created the releases for the plugins.
 #align(
