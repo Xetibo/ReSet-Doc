@@ -337,8 +337,8 @@ int main() {
 ```), kind: "code", supplement: "Listing", caption: [C Macro])<cmacro>])
 
 If this was a regular function in C, then the expectation would be 25 as the
-result: 5 \* (2 + 3). However, with C macros, the token x is not used as an
-actual token, instead, it is just text, so the result is: 5 \* 2 + 3. Without
+result: $5 \* (2 + 3)$. However, with C macros, the token x is not used as an
+actual token, instead, it is just text, so the result is: $5 \* 2 + 3$. Without
 the parenthesis, the expectation of the result changes from 25 to 13. Bugs like
 these are incredibly hard to debug as they happen at compile time.
 

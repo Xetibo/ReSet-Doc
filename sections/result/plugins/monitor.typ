@@ -74,9 +74,9 @@ pub struct Monitor {
 Hyprlands monitors can be configured by three different approaches. The first
 would be to just use the inbuilt hyprctl tool, which provides a monitor command
 that can either display monitors in a human-readable way or output it directly
-to json. For this, it would be necessary to spawn the tool within the plugin and
+to JSON. For this, it would be necessary to spawn the tool within the plugin and
 convert the output with serde, a serialization/deserialization framework for Rust.
-In @Hyprland-Monitor-Conversion, the conversion from json to the generic monitor
+In @Hyprland-Monitor-Conversion, the conversion from JSON to the generic monitor
 struct is visualized.
 
 #let code = "
@@ -207,7 +207,7 @@ of wlroots in @WlrootsImplementation.
 
 The KDE environment also offers an optional monitor module which provides the
 Kscreen-doctor tool. This tool allows for a quick fetch of data that can be
-output via json and then deserialized into a monitor data structure.
+output via JSON and then deserialized into a monitor data structure.
 @kscreen-doctor
 
 #subsubsubsubsection("GNOME Implementation")

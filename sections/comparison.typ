@@ -181,7 +181,6 @@ the result of 1.
 )
 
 For Reset, the usage of dynamic plugins is the most suitable option for creating
-a plugin system. Not only will this guarantee that any Rust functionality will
-work, it will also ensure that resources are shared between the daemon and the
+a plugin system. Not only will this guarantee that any Rust functionality will work, 
+but it will also ensure that resources are shared between the daemon and the
 user interface.
-

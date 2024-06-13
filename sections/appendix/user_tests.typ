@@ -7,7 +7,7 @@ In this section, the ReSet usability tests for the exemplary plugins are discuss
 #subsubsection("Participants")
 In our usability test, a total of 12 participants were involved. In @test-partcipant-experience
 the participant's experience with PC and Linux is shown. Most participants are very experienced 
-using a PC and have a good understanding of Linux as most are studying computer science. This 
+in using a PC and have a good understanding of Linux as most are studying computer science. This 
 sample might skew the results towards more experienced users.
 
 #align(
@@ -58,7 +58,7 @@ sample might skew the results towards more experienced users.
   "Changing the rotation (transform) rate within the user interface and applying the configuration results in the chosen rotation (transform) being applied to the monitor.", 
   [
     All participants were able to change their monitor rotation. The only changes
-    proposed were of cosmetic nature. 
+    proposed were cosmetic. 
   ],
   [
     - Add ° to numbers (90 -> 90°) or use words instead of degrees
@@ -69,7 +69,7 @@ sample might skew the results towards more experienced users.
   "Changing the scale rate within the user interface and applying the configuration results in the chosen scale being applied to the monitor.", 
   [
     All participants were able to change their monitor scale. A few found the shown 
-    scale values and its steps a bit confusing. 
+    scale values and their steps a bit confusing. 
   ], 
   [
     - Show percentage values instead of numbers

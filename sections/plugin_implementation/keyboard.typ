@@ -53,7 +53,7 @@ input_config.write_all(string.as_bytes()).expect(\"Failed to write to file\");
     )<reset-keyboard-hypr>],
 )
 
-In @hyprconf-input-config the contents of the input config is shown. Each
+In @hyprconf-input-config the contents of the input config are shown. Each
 combination of same index from kb_layout and kb_variant represents a keyboard
 layout.
 
@@ -169,14 +169,14 @@ input_sources.set(\"sources\", variant).expect(\"failed to write layouts\");
     )<gnome-gio-set-input-config>],
 )
 
-Unfortunately, GIO does not exist within the sandboxing of flatpak, which meant that using it as is
+Unfortunately, GIO does not exist within the sandboxing of flatpak, which means that using it as is
 results in a crash. GIO is therefore not suitable and a workaround was necessary. Flatpak provides 
-a command that allows running commands outisde the sandbox called flatpak-spawn. Subsequently DConf 
-was used again to get the layouts like in the first try. If the DConf command was run in flatpak, 
-it would not return a valid value, but rather the signature of the setting which can be checked on.
-If it returned the signature, the same command is spawned with the addition of flatpak-spawn. Compared 
+a command that allows running commands outside the sandbox called flatpak-spawn. Subsequently, DConf 
+was used again to get the layouts like on the first try. If the DConf command was run in flatpak, 
+it would not return a valid value, but rather the signature of the setting which can be checked.
+If it returns the signature, the same command is spawned with the addition of flatpak-spawn. Compared 
 the the first try, Regex was not necessary anymore because with the knowledge from the second try, 
-using the built-in variant was a much cleaner way and less error prone. In @gnome-keyboard-flatpak 
+using the built-in variant was a much cleaner way and less error-prone. In @gnome-keyboard-flatpak 
 the new code can be seen.
 
 #let code = "
@@ -221,8 +221,8 @@ let layouts = layout_variant.get::<Vec<(String, String)>>().unwrap();
 To read the keyboard layouts and variants in KDE, kreadconfig6 has to be used.
 Unfortunately, no library provides bindings so reading and writing using Rust 
 commands was necessary. In @kde-get-input-config the command with all its 
-arguments can be seen. Writing to the kxkbrc file works exactly the same as
-writing with the only difference of adding the new keyboard layout string as an
+arguments can be seen. Writing to the kxkbrc file works the same as writing 
+with the only difference of adding the new keyboard layout string as an
 additional argument and using kwriteconfig6.
 
 #let code = "

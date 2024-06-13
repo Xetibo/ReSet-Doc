@@ -156,7 +156,7 @@ multithreading.
 Various game engines and modding frameworks also utilize lua as a scripting
 language in order to provide extendability.
 
-Roblox for example uses lua to provide players a way to create their game modes.
+Roblox for example uses lua to provide players with a way to create their game modes.
 @roblox_lua
 
 There are also modding frameworks like UE4SS, which uses lua as the scripting

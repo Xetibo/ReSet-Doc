@@ -11,9 +11,9 @@ Flatpak is a generic packaging solution that solves the issue of fragmentation
 across the Linux ecosystem by creating sandboxed environments for each
 application. @flatpak-web
 
-Flatpak is a developer first approach, meaning the distribution is done directly
+Flatpak is a developer-first approach, meaning the distribution is done directly
 via developers who can request their application to be hosted on Flathub or on
-their own server. This is in contrast to packaging solutions, which were with
+their server. This is in contrast to packaging solutions, which were with
 distributions in mind, in other words, while packages installed by apt and
 similar can be installed directly from the developer, it will likely cause
 dependency issues, as apt packages define a single source for shared libraries.

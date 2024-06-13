@@ -18,8 +18,8 @@ original application.
 - *Monitor plugin*:\
   A monitor plugin that allows users to change the properties of their current
   monitor or rearrange their monitors.\
-  This plugin supports: KDE, GNOME, Hyprland, wlroots based compositors and kwin
-  based compositors
+  This plugin supports: KDE, GNOME, Hyprland, wlroots-based compositors and 
+  Kwin-based compositors
 - *Keyboard plugin*:\
   A keyboard plugin that allows users to change their keyboard layout, and add or
   remove layouts.\
@@ -34,12 +34,11 @@ original application.
 
 *Distribution*:\
 Just like the original ReSet application, the plugins should be available on as
-many distributions as possible. For this reason at least four different packages
+many distributions as possible. For this reason, at least four different packages
 have been created: Arch package, Debian package (Ubuntu 24.04), NixOS module and
 the binaries themselves which were proven to work with flatpak.
 
 *Extensibility*:\
 Further work can be done to create further plugins to increase the functionality
-of ReSet for specific use-cases. Direct recommendations include, theming for
+of ReSet for specific use cases. Direct recommendations include theming for
 various toolkits, mouse configuration, controller configuration and more.
-

@@ -3,8 +3,8 @@
 #subsection("Resulting Architecture")
 The end resulting architecture is similar to the architecture in
 @DynArchitecture. The only difference is the absence of the C-ABI, which was
-omitted in favor of direct usage of Rust due to tedious conversion of Rust to C.
-In @resulting_architecture, the architecture is visualized.
+omitted in favor of direct usage of Rust due to the tedious conversion of Rust 
+to C. In @resulting_architecture, the architecture is visualized.
 
 #align(
   center, [#figure(
@@ -25,7 +25,7 @@ that the daemon is the sole authority for adding any interface or object, which
 ensures that no plugin can override an existing interface, potentially shadowing
 a common interface with a malicious one.
 
-The registration and insertion of interfaces is handled with the crossroads DBus
+The registration and insertion of interfaces are handled with the crossroads DBus
 context shown in @dbus_crossroads_register.
 
 #let code = "
@@ -194,7 +194,7 @@ pub fn dbus_end_point() -> Result<(), PluginTestError> {
 The plugin tests can be run with "cargo test -- --nocapture". Normally, Rust
 does not print logs when running tests, but with the nocapture flag, this 
 behavior can be disabled. In @plugin-test-output-success an output of the 
-plugin test can be seen. @plugin-test-output-fail shows how the output looks 
+plugin test can be seen. @plugin-test-output-fail shows what the output looks 
 like if a test has failed.
 
 #columns(
@@ -304,7 +304,7 @@ static mut PLUGIN_DIR: Lazy<PathBuf> = Lazy::new(|| PathBuf::from(\"\"));
 
 Because both the daemon and the user interface are started up in a
 non-deterministic fashion, the plugin library loading will also potentially be
-non-deterministic. This enforces an atomic check that both the daemon or the
+non-deterministic. This enforces an atomic check that both the daemon and the
 user interface can see. If the check is already either in loading or loaded, the
 other process would simply wait or immediately move on to using the plugin
 respectively.
@@ -348,7 +348,7 @@ unsafe {
 The Any-Variant was originally intended to be used for uniform plugin data which
 can then be sent across DBus interfaces. However, this complexity turned out to
 not be necessary for plugin data and is hence not used for this use case.
-Instead, the Any-Variant is now used to handle command line flags for the
+Instead, the Any-Variant is now used to handle command line flags for the 
 ReSet-Daemon as it allows arbitrary expansion and processing of flags as whole
 tokens by utilizing the Any-Variant as tokens.
 
@@ -390,7 +390,8 @@ pub struct Variant {
     )<Variant>],
 )
 
-Comparing this to a language like Java highlights both the complexity of Rust and the clear difference in paradigm. In Java, all reference types are
+Comparing this to a language like Java highlights both the complexity of Rust 
+and the clear difference in paradigm. In Java, all reference types are
 linked to a garbage collector as well as equipped with a virtual table, which
 means that lifetimes, allocation and de-allocation, as well as casting, are
 handled automatically and enforced for all safe Java code. With Rust, a garbage
@@ -434,7 +435,7 @@ without indirection. Given different possible value types, Rust could no longer
 determine the size of a specific variant at compile time, hence a pointer is
 used to mimic the behavior of Java (enforcement of references).
 
-As mentioned in the start of this section, the Any-Variant is used to tokenize
+As mentioned at the start of this section, the Any-Variant is used to tokenize
 command line flags. This is stored into a lazily evaluated global accessible
 constant which stores the values in key-value pairs.
 
@@ -472,4 +473,3 @@ for flag in FLAGS.0.iter() {
 This flag can now be converted into a proper Rust type with the to_variant
 function on the Any-Variant. With this, it is extremely easy to create
 constraints for command line flags which ensure stability on use.
-

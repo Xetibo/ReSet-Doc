@@ -5,7 +5,7 @@
 In this section, the implementations of monitor configurations are discussed.
 
 For the monitor plugin, the following environments are considered: KDE, GNOME,
-wlroots based compositors and Kwin based compositors. This selection covers a
+wlroots-based compositors and Kwin-based compositors. This selection covers a
 large section of the Wayland compositors except the cosmic desktop, which will
 be released after this thesis. @cosmic-release
 
@@ -21,7 +21,7 @@ compatible with each other. For example, the wlroots implementation of applying
 a monitor configuration is defined by the Wayland protocol extension
 zwlr_output_manager_v1. @wlr-output-management As the name suggests, this is
 made solely for environments using wlroots as their library. Similarly, KDE also
-offers its own protocol, while GNOME chose the DBus route, providing a handy
+offers its protocol, while GNOME chose the DBus route, providing a handy
 DisplayConfig endpoint. @kde-output-management @mutter-display-config
 
 For the X11 protocol, there is only one endpoint for fetching, as close to every
@@ -34,9 +34,9 @@ stack.
 Hyprlands monitors can be configured by three different approaches. The first
 would be to just use the inbuilt hyprctl tool, which provides a monitor command
 that can either display monitors in a human-readable way or output it directly
-to json. For this, it would be necessary to spawn the tool within the plugin and
+to JSON. For this, it would be necessary to spawn the tool within the plugin and
 convert the output with serde, a serialization/deserialization framework for
-Rust. In @Hyprland-Monitor-Conversion, the conversion from json to the generic
+Rust. In @Hyprland-Monitor-Conversion, the conversion from JSON to the generic
 monitor struct is visualized.
 
 #let code = "
@@ -64,7 +64,7 @@ pub fn hy_get_monitor_information() -> Vec<Monitor> {
     )<Hyprland-Monitor-Conversion>],
 )
 
-The second approach is to directly use Hyprlands Unix sockets, which is fully
+The second approach is to directly use Hyprlands Unix sockets, which are fully
 replicated in hyprctl, meaning both solutions will lead to the same outcome. For
 sockets, the same conversion as with hyprctl would be required.
 
@@ -79,10 +79,10 @@ protocol specifically targets wlroots.
 As mentioned in @HyprlandImplementation, the wlroots implementation can only be
 implemented via Wayland protocols and is as such also limited to the used
 protocol. Hence, the wlroots implementation does not offer persistent storing of
-monitor configurations, instead only offering applying of a specific
+monitor configurations, instead only offering the application of a specific 
 configuration.
 
-However, unlike the first and second Hyprland implementation, it is compositor
+However, unlike the first and second Hyprland implementations, it is compositor 
 independent and will work as long as the zwlr_output_manager_v1 protocol is
 implemented.
 
@@ -99,11 +99,11 @@ In @wayland-architecture, the base Wayland architecture is visualized.
 )<wayland-architecture>
 
 As such, it is now possible to create a client for a Wayland server and generate
-requests for it. The server will then respond with events which the client can
+requests for it. The server will then respond with events that the client can
 process and interact with.
 
-In @Wayland-Connection, an example client that requests all implemented
-protocols from the wayland compositor is visualized.
+In @Wayland-Connection, an example client that requests all implemented protocols 
+from the Wayland compositor is visualized.
 
 #let code = "
 struct AppData(pub String);
@@ -179,7 +179,7 @@ of wlroots in @WlrootsImplementation.
 
 The KDE environment also offers an optional monitor module which provides the
 Kscreen-doctor tool. This tool allows for a quick fetch of data that can be
-output via json and then deserialized into a monitor data structure.
+output via JSON and then deserialized into a monitor data structure.
 @kscreen-doctor
 
 #subsubsubsection("GNOME Implementation")
@@ -235,8 +235,8 @@ In @kde-monitor, the KDE variant of the monitor configuration is shown.
 
 // TODO: Comment on KDEs implementation
 KDE opted for a per-monitor paradigm, meaning settings are shown for the current
-monitor, with global settings being separated by a visual separator. Indication
-to which monitor is currently selected is shown by a blue indicator while other
+monitor, with global settings being separated by a visual separator. The indication 
+of which monitor is currently selected is shown by a blue indicator while other
 monitors are uncolored. The selected color is suitable for color blindness as
 different shades of blue are less susceptible to color blindness. People with
 monochromatic sight (full colorblindness) will also still be able to tell the
@@ -272,9 +272,9 @@ at the top.
 
 #pagebreak()
 #subsubsubsection("Gaps in Configuration")
-While testing for environment differences, a significant difference from wlroots
-based compositors to both KDE and GNOME was detected. Using a compositor like
-Hyprland, it is possible to create gaps between monitors to disallow direct
+While testing for environment differences, a significant difference between 
+wlroots-based compositors to both KDE and GNOME was detected. Using a compositor
+like Hyprland, it is possible to create gaps between monitors to disallow direct
 mouse movement from one monitor to another. However, in both KDE and GNOME, a
 configuration with gaps results in an error which makes the configuration not
 applicable.

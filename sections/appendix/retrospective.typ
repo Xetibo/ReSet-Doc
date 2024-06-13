@@ -8,12 +8,12 @@ project and elaborate on their takeaways.
 #subsubsection("Fabio Lenherr")
 This project reinforced the importance of documentation for me. We were stuck
 multiple times in this project, solely due to ambiguous documentation of an
-endpoint for our two plugins. It made it very clear that even the best looking
+endpoint for our two plugins. It made it very clear that even the best-looking
 API cannot be used by developers if it does not tell you _how_ to use it. And it
 goes even further than just using the API, if developers have to first
 experiment with the API in order to understand it, it is essentially impossible
 to create tests for the API before you already implemented what you needed.
-Especially with an API, the test driven development could make sense, but it is
+Especially with an API, the test-driven development could make sense, but it is
 only possible with the previously mentioned requirement.
 
 Further, as the agile methodology states, users should test the application

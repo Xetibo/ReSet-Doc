@@ -57,17 +57,16 @@ to facilitate the basis for a reliable plugin system.
 #subsection("Challenges")
 - *Consistency* \
   With the advent of the plugin system, the importance of a consistent user
-  experience is more relevant as creating an application with multiple
-  technologies and use cases is not trivial. For this requirement, all plugins
+  experience is more relevant than creating an application with multiple
+  technologies and use cases are not trivial. For this requirement, all plugins
   need to be able to represent themselves as integrated functionality of ReSet in
   order for the user to not notice the plugin system at all.
 
   This ensures that users will be able to switch from one plugin to another
   without being introduced to new design paradigms or differing concepts.
 - *Ease of Use* \
-  Creating a good user experience and making the application accessible to all
-  users requires a deep understanding of the user base which could require a lot
-  of time.
+  Creating a good user experience and making the application accessible to all users 
+  requires a deep understanding of the user base which could require a lot of time.
 - *Maintainability* \
   With increasing features, the technical debt might increase and become a
   potential slowdown in development or release cycles.
@@ -88,7 +87,7 @@ systems, various approaches and technologies are analyzed and explained in
 @PluginSystemAnalysis. This information is then used within
 @PluginSystemEvaluation in order to evaluate the best plugin system architecture
 for this thesis.\
-Explicit implementations details for the resulting plugin system are discussed
+Explicit implementation details for the resulting plugin system are discussed
 in @PluginSystemResults.
 
 As explained in @Objectives, this thesis will include exemplary plugins. For

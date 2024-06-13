@@ -112,7 +112,6 @@ pub fn frontend_tests();
 )
 
 #subsubsection("Monitor Plugin DBus API")
-The exaxt types can be seen at @Display-Struct.
 #grid(
   columns: (1fr, 2fr), rows: (20pt, 65pt, 65pt, 65pt), gutter: 0pt,
   cell("Type", bold: true, cell_align: left, use_under: true),

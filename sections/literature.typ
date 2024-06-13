@@ -6,15 +6,15 @@ Plugin systems allow both the users and the developers of an application to
 provide specific implementations for use cases. Notably, it lessens the burden
 of development on the application developers, while also providing users with
 the functionality they explicitly want to use. The notable downside to this is
-the development and performance overhead the system itself has on the
-application, and the newly created burden on the plugin developers.
+the development and performance overhead the system itself has on the application 
+and the newly created burden on the plugin developers.
 
 For ReSet, the use case for a plugin system is the wide variety of features that
 either a system supports, or the user wants. As an example, it makes no sense to
 provide a VR Headset configuration for a system that does not support such
 devices. At the same, it is also counterproductive to offer settings for users
 that will never be used, for example, touchpad settings on a desktop. Here the
-system could either detect available devices and load plugins respectively, or
+system could either detect available devices and load plugins respectively or
 simply give users the ability to gradually control their used plugins.
 
 Specifically for hardware support, a plugin system also covers potential future
@@ -28,7 +28,7 @@ ReSet follows a multi-process paradigm. This ensures that users have the option
 to avoid the graphical user interface of ReSet if they wish to. The parts of
 ReSet is therefore split into the daemon, which handles the functionality as a
 constant running service, while ReSet itself refers to the graphical user
-interface which will interact with the daemon via DBus (Inter Process
+interface which will interact with the daemon via DBus (Inter-process
 Communication).
 
 In @base_plugin_architecture the intended architecture of the plugin system is
@@ -82,9 +82,9 @@ possible computer). If the language can simulate a Turing machine, it would
 imply that the language has access to potential infinite loops and can therefore
 not be restricted in terms of functionality. In other words, if the language is
 Turing complete, any functionality that any other language can create is
-possible to be implemented. Turing incomplete languages on the other hand only
-offer a specific and limited set of functionalities, which cannot under any
-circumstance be extended upon without changing the language specification
+possible to be implemented. Turing incomplete languages on the other hand only 
+offers a specific and limited set of functionalities, which cannot under any
+circumstance be extended without changing the language specification
 itself. @turing
 
 The security aspect is likely the biggest factor in choosing to create a custom
@@ -110,10 +110,10 @@ hence when a webpage encounters issues, the browser itself is still usable.
 A soft requirement of an interpreted language for plugins is the simplification
 of creating a plugin for potential plugin developers. If this requirement is not
 fulfilled, then the interpreted language does not offer any benefit other than
-slight security improvements if the language is non-turing complete.
+slight security improvements if the language is non-Turing complete.
 
 The second requirement is interoperability with both the programming languages
-of the base system and any technology that is used within the base system. For
+of the base system and any technology that is used within the base system. For 
 ReSet, this would be Rust and GTK as the main technologies.
 
 #subsubsubsection("Architecture")
@@ -133,7 +133,7 @@ found in a specific set of free and open-source applications called "suckless".
 @suckless
 
 Code patching technically means explicitly not implementing a plugin system and
-relying on pure code instead, however, it is still important to note that this
+relying on pure code instead, however, it is still important to note that this 
 approach requires a soft API/ABI stability. If the developers of the main
 applications often make radical changes, then these patches need to be rewritten
 for each change, which would make this approach completely infeasible.
@@ -441,10 +441,10 @@ it harder for malicious code to be published as an extension. @chrome-policy
 
 #subsubsection("Licensing")
 One way to approach this topic is to simply enforce plugins to use an open
-license. This could be done with a copy-left license which would enforce that
-any code utilizing code of ReSet would also need to provide their source code
-with the same license. Currently, ReSet is already distributed under the GNU
-General Public License V3-or-later, which would apply the copy-left nature.
+license. This could be done with a copy-left license which would enforce that 
+any code utilizing the code of ReSet would also need to provide their source 
+code with the same license. Currently, ReSet is already distributed under the 
+GNU General Public License V3-or-later, which would apply the copy-left nature.
 Issues with this approach occur with legal questions, as enforcing copy-left
 licensing is not trivial, nor could code realistically be enforced to be used
 while utilizing shared libraries as the plugin system. It is also important to
@@ -465,16 +465,16 @@ database that is not controlled by ReSet. The downside to this would be the
 dependency on keyrings themselves. @GNOME-Keyring @Keyring-Rust
 
 #subsubsection("Signing")
-The android ecosystem allows developers of apps to sign their application
+The Android ecosystem allows developers of apps to sign their application
 bundles with a cryptographic key. This allows users to be reasonably certain,
 that the package originates from the actual developer and not from a potentially
 malicious actor. It is however important to note, that signing plugins does not
 inherently mark plugins as safe, the only guarantee is that the key is from the
-developer. In other words, it does not protect against stolen keys which might
-be used by someone else, nor does it protect against malicious actors publishing
-their own application with their own key. Similar to the Licensing approach,
-users of ReSet would have to decide for themselves whether the developer of the
-application can be trusted in the first place. @apk_signing
+developer. In other words, it does not protect against stolen keys that might
+be used by someone else, nor does it protect against malicious actors publishing 
+their applications with their keys. Similar to the Licensing approach, users of 
+ReSet would have to decide for themselves whether the developer of the application 
+can be trusted in the first place. @apk_signing
 
 //#subsection("Hooks")
 //// TODO: which section is it referring to?
@@ -688,7 +688,7 @@ unsafe {dbg!(SINGLETON.buttons.clone());}"
 
 After compiling both versions of this test, the results in @macrodebug and
 @macrorelease show that the additional button reference in the testing singleton
-can no longer be found within the release version. Similarly, it is possible to
+can no longer be found within the release version. Similarly, it is possible to 
 also remove the entire singleton, or at least the underlying data for the
 release version.
 

@@ -37,8 +37,8 @@ Further usage of macros with the mock system is covered in @MacroUsage.
 In order to provide tests for the mock system, both the daemon and the mock
 implementations need to be available during the testing phase. However, Rust
 does not provide an easy way to ensure systems are available on test start,
-especially with the fact that tests are by default multithreaded and therefore
-run in non-deterministic fashion. This forces developers to create their own
+especially with the fact that tests are by default multithreaded and therefore 
+run in a non-deterministic fashion. This forces developers to create their 
 synchronization chain in order to create a proper setup for each test. For
 ReSet, this was handled by calling the same setup function with all threads and
 waiting for both the mock and the daemon with atomic booleans.
@@ -134,7 +134,7 @@ macro_rules! set_dbus_property {
 )
 
 This macro alone would not work if used in regular code, Rust requires a
-duplicate macro with the same name without the test configuration. In that macro
+duplicate macro with the same name without the test configuration. In that macro,
 the new_session call would be changed to new_system.
 
 The same configuration can be used to target different endpoints of DBus. This

@@ -27,7 +27,7 @@ There are other tools like gconf, but they are replaced by DConf.
 GSettings is a high-level API for application settings and serves as a front end
 to DConf. The command line tool gsettings (not to be confused with GSettings)
 can be used to access the GSettings API @gsettings. Another possibility is to
-use GIO, which is a library that provides multiple general purpose functionality
+use GIO, which is a library that provides multiple general-purpose functionality
 such as bindings to the GSettings API among others @gio. Because GIO is a
 dependency of GTK4, it can already be used from the code without any further
 setup. The advantage of using GIO instead of gsettings is that it can validate
@@ -48,8 +48,8 @@ layout and variant, which can be done with a simple regex.
 KDE stores its keyboard configurations in a file called kxkbrc. This text file
 is located in the config folder of the user and can be read using kreadconfig6
 and written to using kwriteconfig6. These are tools provided by KDE to modify
-settings @kdeconfig. Unfortunately there is no Rust crate that provides bindings
-to these tools, so the plugin would have to use the Command
+settings @kdeconfig. Unfortunately, no Rust crate provides bindings to these 
+tools, so the plugin would have to use the Command.
 
 There was also a DBus interface that could be used to fetch keyboard layouts,
 but there was no way to set them.
@@ -60,18 +60,18 @@ configure keyboard layouts. On Wayland, XKB is the recommended way of handling
 keyboard input as well @waylandkeyboard. The problem with XKB is that it does
 not support more than four keyboard groups at the same time. A group in XKB
 consists of symbols, which are a collection of character codes and a group type
-that defines the type of symbols, e.g Latin letters, Cyrillic letters etc. and
+that defines the type of symbols, e.g. Latin letters, Cyrillic letters etc. and
 make up a keyboard layout.\
 
 In @keyboard-struct-limitation the structure of the XKBState can be seen. The
-structure is 16 bits long and contain various informations about the active
+structure is 16 bits long and contains various information about the active
 state of a keyboard (or keyboards). Because KEYMASK and BUTMASK are not
 responsible for saving keyboard layouts, they are not explained any further.
-The important parts are bits 13 and 14 as they keyboard group. It is not
-possible to just increase that number because the XKBState field is only 16 bits
-long and there is no bits left that could be used. Any attempt to increase the
-number of groups would require a change in the representation schema in XKB and
-other changes that wouldn't be backwards compatible @xkblimitation.\
+The important parts are bits 13 and 14 as they represent the keyboard group. 
+It is not possible to just increase that number because the XKBState field is 
+only 16 bits long and there are no bits left that could be used. Any attempt to
+increase the number of groups would require a change in the representation 
+schema in XKB and other changes that wouldn't be backwards compatible @xkblimitation.\
 
 #align(
   center, [#figure(
@@ -82,14 +82,13 @@ other changes that wouldn't be backwards compatible @xkblimitation.\
 )
 
 #subsubsection("Visualization")
-In this section, the different applications are analysed. The main goal is to
+In this section, the different applications are analyzed. The main goal is to
 keep ReSet aligned with other settings in ReSet as well as other applications
 that use the GTK4 library.
 
 #subsubsubsection("GNOME")
-
-In @gnome-keyboard-setting the UI for the keyboard settings from GNOME control
-center are shown. They use a drag-and-drop list to order the keyboard layouts
+In @gnome-keyboard-setting the UI for the keyboard settings from GNOME control 
+center is shown. They use a drag-and-drop list to order the keyboard layouts
 around and mark it with the six dots on the left. These grip indicators are
 commonly used in software as well as in physical products to indicate that
 something is draggable. The listed is then grouped with a title and subtitle
