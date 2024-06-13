@@ -81,6 +81,8 @@ overwriting existing objects. The new CrossWrapper only allows plugins to
 register interfaces for their assigned object, meaning overriding is not
 possible.
 
+#pagebreak()
+
 #subsection("Plugin Testing")
 Rust tests are handled by a specific test macro, this flag tells the compiler
 that this function is to be used when testing the specific project. This works
@@ -207,6 +209,7 @@ like if a test has failed.
   ],
 )
 
+#pagebreak()
 #subsection("Plugin System Implementation")
 In this section, the specific implementation of the plugin system in ReSet is
 discussed.
@@ -339,6 +342,8 @@ unsafe {
     )<plugin_loading>],
 )
 
+#pagebreak()
+
 #subsection("Any-Variant")
 The Any-Variant was originally intended to be used for uniform plugin data which
 can then be sent across DBus interfaces. However, this complexity turned out to
@@ -385,8 +390,7 @@ pub struct Variant {
     )<Variant>],
 )
 
-Comparing this to a language like Java highlights both the complexity of Rust as
-well as the clear difference in paradigm. In Java, all reference types are
+Comparing this to a language like Java highlights both the complexity of Rust and the clear difference in paradigm. In Java, all reference types are
 linked to a garbage collector as well as equipped with a virtual table, which
 means that lifetimes, allocation and de-allocation, as well as casting, are
 handled automatically and enforced for all safe Java code. With Rust, a garbage

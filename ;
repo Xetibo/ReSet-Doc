@@ -51,9 +51,7 @@ improvements.
 #subsubsection("Testing")
 Similar to the original work, the inclusion of DBus endpoints and GTK
 complicated testing heavily. Several special approaches had to be taken in order
-to allow testing at all. Overall with more time, a proper GTK testing framework
-and mock endpoints for environments such as wayland protocols and more could be
-implemented after careful consideration of the cost to gain ratio.
+to allow testing at all.
 
 #subsubsection("Monitors")
 Due to the current development status of High Dynamic Range within the Linux

@@ -1,5 +1,6 @@
 #import "../../templates/utils.typ": *
 
+#pagebreak()
 #subsection("Mock System Implementation")
 The original work did not offer any testing potential, this resulted in a
 requirement for manual testing. This work implements a testing system for

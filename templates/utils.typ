@@ -139,5 +139,4 @@
       columns: (2fr, 10fr), rows: (auto, auto, auto), gutter: 0pt, cell(height: auto)[*Subject*], cell(height: auto)[#subject], cell(height: auto)[*Description*], cell(height: auto)[#description], cell(height: auto)[*Feedback*], cell(height: auto)[#feedback], cell(height: auto)[*Suggestions*], cell(height: auto)[#suggestions],
     ),
   )
-  pad(x: 0pt, y: 0pt, line(length: 100%))
 }

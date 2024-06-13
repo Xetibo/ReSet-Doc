@@ -41,6 +41,8 @@ sample might skew the results towards more experienced users.
     - Show countdown how many seconds before revert
   ],
 )
+#pad(x: 0pt, y: 0pt, line(length: 100%))
+#pagebreak()
 #test(
   "Monitor Plugin Single Settings", 
   "Changing the refresh rate within the user interface and applying the configuration results in the chosen refresh rate being applied to the monitor.", 
@@ -95,6 +97,8 @@ sample might skew the results towards more experienced users.
     - Revert window time too short as some monitors take seconds to enable
   ],
 )
+#pad(x: 0pt, y: 0pt, line(length: 100%))
+#pagebreak()
 #test(
   "Monitor Plugin Multi-Monitor Settings", 
   "Rearranging the monitors with the mouse and applying the configuration results in the chosen arrangement being applied to the monitors.", 
@@ -120,7 +124,7 @@ sample might skew the results towards more experienced users.
     No improvements were suggested.
   ],
 )
-
+#pad(x: 0pt, y: 0pt, line(length: 100%))
 #subsubsection("Keyboard Plugin Tests")
 #test(
   "Keyboard Plugin Base", "Did you find the keyboard page? Did you encounter any issues on opening the page?", 
@@ -154,6 +158,8 @@ sample might skew the results towards more experienced users.
     - Add multiple layouts at once
   ],
 )
+#pad(x: 0pt, y: 0pt, line(length: 100%))
+#pagebreak()
 #test(
   "Keyboard Plugin Settings", 
   "Rearranging the order of layouts will be saved to the environment. (A different layout will be active if the first layout is changed)", 
@@ -177,6 +183,7 @@ sample might skew the results towards more experienced users.
     - Context menu pointless with only one option
   ],
 )
+#pad(x: 0pt, y: 0pt, line(length: 100%))
 
 #subsubsection("Feedback")
 In general, the feedback from the participants was predominantly positive. Most participants
