@@ -35,6 +35,7 @@ pub struct Monitor {
     pub drag_information: DragInformation,
     pub mode: String,
     pub available_modes: Vec<AvailableMode>,
+    pub uses_mode_id: bool,
     pub features: MonitorFeatures,
 }
 "
