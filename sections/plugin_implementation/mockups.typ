@@ -31,7 +31,7 @@ such as the brightness and night mode. The order is inspired by Windows 11.
 The further down the user scrolls the less common and more advanced the settings 
 should become. This should allow users to easily find settings that are often 
 changed. The order seen in @monitor-mock does not hold much meaning and should be 
-taken with a grain of salt. The specific form controls for each setting are not 
+taken only as a filler. The specific form controls for each setting are not 
 considered for now.\
 There are a few settings that are handled differently or are just plainly not
 available in certain desktop environments. To address these variations, the UI

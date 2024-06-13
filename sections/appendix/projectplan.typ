@@ -28,10 +28,10 @@ interface is made with Cambalache.
 
 #subsubsection("Time")
 As an agile methodology is used, long-term time management is only broad
-guidance and does not necessarily overlap with reality. In other words, with a 2
-week sprint, only 2 weeks are considered well planned out. By week 4, work on
+guidance and does not necessarily overlap with reality. In other words, with a two
+week sprint, only two weeks are considered well planned out. By week four, work on
 the backend implementation should be started. The minimal working UI milestone
-is in week 7, so UI Reviews can be assessed and corrections can be applied
+is in week seven, so UI Reviews can be assessed and corrections can be applied
 early. By week 12 the minimal viable product should be in production state, in
 order to leave time for reflection and documentation.
 #pagebreak()

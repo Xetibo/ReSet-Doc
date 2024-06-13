@@ -101,7 +101,7 @@ Because gsettings is a layer for DConf, the keyboard plugin directly uses DConf
 for setting the keyboard layouts. Combined with the DConf crate, which provides
 Rust bindings to DConf, the plugin can easily read the keyboard layouts
 @dconf_rs. This returns a string that needs to be parsed to get the keyboard
-layout and variant, which can be done with a simple regex.
+layout and variant, which can be done with a simple Regex.
 
 #let code = "
 let result = dconf_rs::get_string(\"/org/gnome/desktop/input-sources/sources\");
@@ -186,7 +186,7 @@ is not deprecated.
 #subsubsubsubsection("Keyboard Limit")
 XKB is a system part of the X Window System and provides an easy way to
 configure keyboard layouts. On Wayland, XKB is the recommended way of handling
-keyboard input as well @waylandkeyboard. The problem with XKB is that it does
+keyboard input as well. @waylandkeyboard The problem with XKB is that it does
 not support more than four keyboard groups at the same time. A group in XKB
 consists of symbols, which are a collection of character codes and a group type
 that defines the type of symbols, e.g Latin letters, Cyrillic letters etc. and

@@ -23,7 +23,7 @@ source=~/Documents/dotfiles/hypr/input.conf
 
 This is because with this solution, ReSet does not need to parse its content,
 but can just override the whole file each time a change is made. A string that
-follows the hyprland syntax is built from the keyboard layouts in
+follows the Hyprland syntax is built from the keyboard layouts in
 @reset-keyboard-hypr and is written to the file.
 
 #let code = "
@@ -131,11 +131,11 @@ Therefore dconf_rs was replaced by GIO. The advantages have already been
 discussed in @GNOME. GIO provides very convenient bindings to the GSettings API.
 In @gnome-gio-get-input-config the layouts are fetched, and its type is checked.
 If the layout_variant is not an array of two strings an empty array will be
-returned. Otherwise, a generic get function is called with type Vec\<(String,
-String)\>\> to parse it into desired structure. This solution is a lot more
-elegant than the Regex because it is more human-readable and better performant 
-as regex processing can be slower due to its pattern matching which involves 
-operations like backtracking.
+returned. Otherwise, a generic get function is called with type 
+``` Vec<(String,String)>>``` to parse it into desired structure. This solution 
+is a lot more elegant than the Regex because it is more human-readable and better
+performant  as Regex processing can be slower due to its pattern matching which 
+involves operations like backtracking.
 
 #let code = "
 let input_sources = gtk::gio::Settings::new(\"org.gnome.desktop.input-sources\");
@@ -169,15 +169,15 @@ input_sources.set(\"sources\", variant).expect(\"failed to write layouts\");
     )<gnome-gio-set-input-config>],
 )
 
-Unfortunately, GIO does not exist within the sandboxing of flatpak, which means that using it as is
+Unfortunately, GIO does not exist within the sandboxing of Flatpak, which means that using it as is
 results in a crash. GIO is therefore not suitable and a workaround was necessary. Flatpak provides 
-a command that allows running commands outside the sandbox called flatpak-spawn. Subsequently, DConf 
-was used again to get the layouts like on the first try. If the DConf command was run in flatpak, 
+a command that allows running commands outside the sandbox called Flatpak-spawn. Subsequently, DConf 
+was used again to get the layouts like on the first try. If the DConf command was run in Flatpak, 
 it would not return a valid value, but rather the signature of the setting which can be checked.
 If it returns the signature, the same command is spawned with the addition of flatpak-spawn. Compared 
 the the first try, Regex was not necessary anymore because with the knowledge from the second try, 
 using the built-in variant was a much cleaner way and less error-prone. In @gnome-keyboard-flatpak 
-the new code can be seen.
+the updated version be seen.
 
 #let code = "
 let mut result = Command::new(\"dconf\")

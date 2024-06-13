@@ -165,8 +165,8 @@ compatible feature enhancement, and the last number is a compatible bugfix.
 For the Linux system native packages, this ensures the feasibility of a single
 shared library, even if the version might be different from the expected one.
 
-For ReSet, flatpak is used as well, this system also tries to re-use libraries
-if possible, however, due to the sandboxed nature of flatpaks, it is also
+For ReSet, Flatpak is used as well, this system also tries to re-use libraries
+if possible, however, due to the sandboxed nature of Flatpaks, it is also
 possible to install multiple versions of a specific library, ensuring that each
 program receives the necessary library. @flatpak_libraries
 

@@ -71,7 +71,7 @@ pub struct Monitor {
 #pagebreak()
 
 #subsubsubsubsection("Hyprland Implementation")
-Hyprlands monitors can be configured by three different approaches. The first
+Hyprland's monitors can be configured by three different approaches. The first
 would be to just use the inbuilt hyprctl tool, which provides a monitor command
 that can either display monitors in a human-readable way or output it directly
 to JSON. For this, it would be necessary to spawn the tool within the plugin and
@@ -105,7 +105,7 @@ pub fn hy_get_monitor_information() -> Vec<Monitor> {
     )<Hyprland-Monitor-Conversion>],
 )
 
-The second approach is to directly use Hyprlands Unix sockets, the first of
+The second approach is to directly use Hyprland's Unix sockets, the first of
 which is fully replicated in hyprctl. For sockets, the same conversion as with
 hyprctl would be required.
 
@@ -113,7 +113,7 @@ The third approach is to use the zwlr_output_manager_v1 protocol in order to
 apply the configuration. @wlr-output-management Hyprland uses a fork of wlroots
 as a foundation library. A benefit with this would be the automatic support for
 any other environment that supports this protocol, the downside is that this 
-protocol might not fully replicate Hyprlands features in the future, as this 
+protocol might not fully replicate Hyprland's features in the future, as this 
 protocol specifically targets wlroots.
 
 #subsubsubsubsection("Wlroots Implementation")
@@ -123,7 +123,7 @@ protocol. Hence, the wlroots implementation does not offer persistent storing of
 monitor configurations, instead only offering applying of a specific
 configuration.
 
-However, unlike the hyprland implementation, it is compositor independent and
+However, unlike the Hyprland implementation, it is compositor independent and
 will work as long as the zwlr_output_manager_v1 protocol is implemented.
 
 In order to connect to a compositor using Wayland protocols, a wayland-client is
@@ -286,8 +286,8 @@ monitors are uncolored. The selected color is suitable for color blindness as
 different shades of blue are less susceptible to color blindness. People with
 monochromatic sight (full colorblindness) will also still be able to tell the
 difference based on shade, making this an optimal color defined in figure 16
-Colorblind barrier-free color pallet by Color Universal Design(CUD)
-@color-universal-design. @color-blindness @data-visualization-with-flying-colors
+Colorblind barrier-free color pallet by Color Universal Design (CUD).
+@color-universal-design @color-blindness @data-visualization-with-flying-colors
 
 //https://en.wikipedia.org/wiki/Color_blindness
 
@@ -302,7 +302,7 @@ Visible for GNOMEs implementation is the lack of direct configuration with
 multiple monitors. Instead, GNOME relies on submenus in order to change values
 such as resolution or refresh rate. At the same time, monitor independent
 settings like primary monitor or joining/mirroring displays are also shown in the
-overall menu. Noteworthy is also the lack of an apply- or reset button when no
+overall menu. Noteworthy is also the lack of an apply or reset button when no
 actions have been taken. This is in contrast to the KDE implementation in
 @kde-monitor, which disables the buttons instead while still showing them
 visually. Another difference is the placing of the buttons when visible, KDE
@@ -433,7 +433,7 @@ coordinate system is required. For cairo this is a top-left to bottom-right
 system. This means that x increases towards the right and y increases towards
 bottom.
 
-In @monitor-axis, the monitor axis is visualized.
+In @monitor-axis, the monitor axes is visualized.
 #align(
   center, [#figure(
       img("monitor-axis.png", width: 70%, extension: "figures"), caption: [Visualization of the monitor coordinate system],
@@ -533,7 +533,7 @@ widget or panel should be.
 
 The solution for this problem is a set of feature flags that are introduced
 during the conversion from environment-specific data to the DBus-compatible
-generic monitor data. Within this data, the struct visualized in listing
+generic monitor data. Within this data, the struct visualized in
 @monitor-feature-flag is included.
 
 #let code = "

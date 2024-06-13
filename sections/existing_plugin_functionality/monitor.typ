@@ -31,7 +31,7 @@ stack.
 #pagebreak()
 
 #subsubsubsection("Hyprland Implementation")
-Hyprlands monitors can be configured by three different approaches. The first
+Hyprland's monitors can be configured by three different approaches. The first
 would be to just use the inbuilt hyprctl tool, which provides a monitor command
 that can either display monitors in a human-readable way or output it directly
 to JSON. For this, it would be necessary to spawn the tool within the plugin and
@@ -64,7 +64,7 @@ pub fn hy_get_monitor_information() -> Vec<Monitor> {
     )<Hyprland-Monitor-Conversion>],
 )
 
-The second approach is to directly use Hyprlands Unix sockets, which are fully
+The second approach is to directly use Hyprland's Unix sockets, which are fully
 replicated in hyprctl, meaning both solutions will lead to the same outcome. For
 sockets, the same conversion as with hyprctl would be required.
 
@@ -72,7 +72,7 @@ The third approach is to use the zwlr_output_manager_v1 protocol in order to
 apply the configuration. @wlr-output-management Hyprland uses a fork of wlroots
 as a foundation library. A benefit with this would be the automatic support for
 any other environment that supports this protocol, the downside is that this
-protocol might not fully replicate Hyprlands features in the future, as this
+protocol might not fully replicate Hyprland's features in the future, as this
 protocol specifically targets wlroots.
 
 #subsubsubsection("Wlroots Implementation")
@@ -242,8 +242,8 @@ monitors are uncolored. The selected color is suitable for color blindness as
 different shades of blue are less susceptible to color blindness. People with
 monochromatic sight (full colorblindness) will also still be able to tell the
 difference based on shade, making this an optimal color defined in figure 16
-Colorblind barrier-free color pallet by Color Universal Design(CUD)
-@color-universal-design. @color-blindness @data-visualization-with-flying-colors
+Colorblind barrier-free color pallet by Color Universal Design (CUD).
+@color-universal-design @color-blindness @data-visualization-with-flying-colors
 
 //https://en.wikipedia.org/wiki/Color_blindness
 
@@ -258,7 +258,7 @@ Visible for GNOMEs implementation is the lack of direct configuration with
 multiple monitors. Instead, GNOME relies on submenus in order to change values
 such as resolution or refresh rate. At the same time, monitor independent
 settings like primary monitor or joining/mirroring displays are also shown in
-the overall menu. Noteworthy is also the lack of an apply- or reset button when
+the overall menu. Noteworthy is also the lack of an apply or reset button when
 no actions have been taken. This is in contrast to the KDE implementation in
 @kde-monitor, which disables the buttons instead while still showing them
 visually. Another difference is the placing of the buttons when visible, KDE

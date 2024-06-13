@@ -36,7 +36,7 @@ original application.
 Just like the original ReSet application, the plugins should be available on as
 many distributions as possible. For this reason, at least four different packages
 have been created: Arch package, Debian package (Ubuntu 24.04), NixOS module and
-the binaries themselves which were proven to work with flatpak.
+the binaries themselves which were proven to work with Flatpak.
 
 *Extensibility*:\
 Further work can be done to create further plugins to increase the functionality

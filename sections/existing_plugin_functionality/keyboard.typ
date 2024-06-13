@@ -42,14 +42,14 @@ key-based configuration details in a single compact binary format database
 uses DConf for setting the keyboard layouts. Combined with the DConf crate,
 which provides Rust bindings to DConf, the plugin can read the keyboard layouts
 @dconf_rs. This returns a string that needs to be parsed to get the keyboard
-layout and variant, which can be done with a simple regex.
+layout and variant, which can be done with a simple Regex.
 
 #subsubsubsection("KDE")
 KDE stores its keyboard configurations in a file called kxkbrc. This text file
 is located in the config folder of the user and can be read using kreadconfig6
 and written to using kwriteconfig6. These are tools provided by KDE to modify
-settings @kdeconfig. Unfortunately, no Rust crate provides bindings to these 
-tools, so the plugin would have to use the Command.
+settings. @kdeconfig Unfortunately, no Rust crate provides bindings to these 
+tools, so the plugin would have to use the command.
 
 There was also a DBus interface that could be used to fetch keyboard layouts,
 but there was no way to set them.
@@ -57,7 +57,7 @@ but there was no way to set them.
 #subsubsection("Keyboard Limit")
 XKB is a system part of the X Window System and provides an easy way to
 configure keyboard layouts. On Wayland, XKB is the recommended way of handling
-keyboard input as well @waylandkeyboard. The problem with XKB is that it does
+keyboard input as well. @waylandkeyboard The problem with XKB is that it does
 not support more than four keyboard groups at the same time. A group in XKB
 consists of symbols, which are a collection of character codes and a group type
 that defines the type of symbols, e.g. Latin letters, Cyrillic letters etc. and
@@ -71,7 +71,7 @@ The important parts are bits 13 and 14 as they represent the keyboard group.
 It is not possible to just increase that number because the XKBState field is 
 only 16 bits long and there are no bits left that could be used. Any attempt to
 increase the number of groups would require a change in the representation 
-schema in XKB and other changes that wouldn't be backwards compatible @xkblimitation.\
+schema in XKB and other changes that wouldn't be backwards compatible. @xkblimitation 
 
 #align(
   center, [#figure(

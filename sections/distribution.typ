@@ -64,7 +64,7 @@ that several options were omitted in order to keep the listing concise.
     )<reset-flatpak-manifest>],
 )
 
-Plugins for the flatpak cannot be distributed within flatpak itself. This is a
+Plugins for the Flatpak cannot be distributed within Flatpak itself. This is a
 limitation of Flatpak, as one package cannot access another without
 consequences. Hence, plugins would need to be compiled separately and placed
 within the folder structure manually. Specific installation steps are shown in
@@ -94,7 +94,7 @@ language. This language is Turing-complete and therefore offers an infinite
 amount of options for developers. ReSet uses this to create modules for users to
 configure ReSet directly via Nix instead of changing configuration files.
 
-In @reset-nix-module the nix options for the ReSet module are visualized.
+In @reset-nix-module the Nix options for the ReSet module are visualized.
 
 #let code = "
 # omitted setup
@@ -188,6 +188,6 @@ plugins = [\"libreset_monitors.so\", \"libyour_other_plugin.so\"]
 
 #align(
   left, [#figure(
-      sourcecode(raw(code, lang: "nix")), kind: "code", supplement: "Listing", caption: [ReSet toml],
+      sourcecode(raw(code, lang: "nix")), kind: "code", supplement: "Listing", caption: [ReSet TOML],
     )<reset-toml>],
 )

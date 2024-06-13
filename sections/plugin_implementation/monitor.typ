@@ -162,7 +162,7 @@ coordinate system is required. For cairo this is a top-left to bottom-right
 system. This means that x increases towards the right and y increases towards
 the bottom.
 
-In @monitor-axis, the monitor axis is visualized.
+In @monitor-axis, the monitor axes is visualized.
 #align(
   center, [#figure(
       img("monitor-axis.png", width: 70%, extension: "figures"), caption: [Visualization of the monitor coordinate system],
@@ -261,7 +261,7 @@ widget or panel should be.
 
 The solution for this problem is a set of feature flags that are introduced
 during the conversion from environment-specific data to DBus-compatible
-generic monitor data. Within this data, the struct visualized in listing
+generic monitor data. Within this data, the struct visualized in
 @monitor-feature-flag is included.
 
 #let code = "

@@ -19,13 +19,13 @@ covers the vast majority of use cases.
 
 #align(
   center, [#figure(
-      img("mock_implementation.svg", width: 100%, extension: "files"), caption: [Architecture of the Mock implementation],
+      img("mock_implementation.svg", width: 100%, extension: "files"), caption: [Architecture of the mock implementation],
     )<mock_architecture>],
 )
 
 The cfg(test) annotation can be used to tell the compiler to include differing
 code in test environments. For ReSet, this is used to inject different interface
-names for DBus which will be handled at compile time. This means there is zero
+names for DBus which will be handled at compile time. This means there is no
 performance cost to this system as everything is handled before running the
 binary. A user with the release version of ReSet would not even be able to see
 this system by decompiling it, as it does not exist within this version.
