@@ -198,7 +198,7 @@ would not be backwards compatible @xkblimitation.\
 
 To show users that limitation visually, the first few rows are highlighted,
 while the rest have system colors. This number is set depending on the desktop
-environment because some don't use XKB and therefore could allow more than four
+environment because some do not use XKB and therefore could allow more than four
 keyboard layouts.
 
 #align(

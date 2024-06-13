@@ -26,7 +26,7 @@ Risks are assessed according to the ISO standard with a risk matrix.
 #risk(
   "Plugin System stability issues", [
     Because plugins can be written by third parties, they might not be as stable and cause problems like crashes.
-  ], "High", "Possible", "High", [
+  ], "High", "Possible", "Critical", [
     Verify the plugin that it is compatible and add measures in case of a plugin crash.
   ],
 )
@@ -37,16 +37,18 @@ Risks are assessed according to the ISO standard with a risk matrix.
 #risk(
   "Plugin System architecture not fitting", [
     There might be some breaking problems that go unnoticed until development has already startet on the plugin system.
-  ], "High", "Rare", "Medium", [
+  ], "Medium", "Rare", "Catastrophic", [
     Keep a second architecture in mind that could replace the first if it does not work out.
   ],
 )
 
 #risk(
-  "WiFi & Bluetooth", [
-    WiFi and Bluetooth are currently not feature complete and might take longer than expected
-  ], "High", "Likely", "Marginal", [
-    Either sacrifice other planned features or change the scope of WiFi and Bluetooth functionalities.
+  "Exemplary Plugins", [
+    Planned plugins might be to ambitious and could take longer than expected.
+  ], "Medium", "Possible", "Marginal", [
+    - Reduce the scope of individual plugins
+    - Reduce the amount of plugins
+    - Reduce the amount of supported environments
   ],
 )
 #line(start: (0%, 0%), end: (100%, 0%), stroke: black )

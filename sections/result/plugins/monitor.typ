@@ -261,12 +261,12 @@ visualized.
 
 #align(
   center, [#figure(
-      img("kde-gaps.png", width: 90%, extension: "figures"), caption: [Screenshot of the gaps error within KDE],
+      img("kde-gaps.png", width: 90%, extension: "figures"), caption: [Monitor gaps error within KDE systemsettings],
     )<kde-gaps>],
 )
 #align(
   center, [#figure(
-      img("gnome-gaps.png", width: 70%, extension: "figures"), caption: [Screenshot of the gaps error within GNOME],
+      img("gnome-gaps.png", width: 70%, extension: "figures"), caption: [Monitor gaps error within GNOME systemsettings],
     )<gnome-gaps>],
 )
 
@@ -274,7 +274,7 @@ In @kde-monitor, the KDE variant of the monitor configuration is shown.
 
 #align(
   center, [#figure(
-      img("kde-monitor.png", width: 70%, extension: "figures"), caption: [Screenshot of the monitor configuration within KDE],
+      img("kde-monitor.png", width: 70%, extension: "figures"), caption: [Monitor configuration within KDE systemsettings],
     )<kde-monitor>],
 )
 
@@ -294,7 +294,7 @@ Colorblind barrier-free color pallet by Color Universal Design (CUD).
 In @gnome-monitor, the GNOME variant of the monitor configuration is shown.
 #align(
   center, [#figure(
-      img("gnome-monitor.png", width: 70%, extension: "figures"), caption: [Screenshot of the monitor configuration within GNOME],
+      img("gnome-monitor.png", width: 70%, extension: "figures"), caption: [Monitor configuration within GNOME settings],
     )<gnome-monitor>],
 )
 
@@ -363,7 +363,7 @@ In @scale-adjustment-kg the options from KDE and GNOME are visualized.
         #v(40pt)
         #img("kde-scaling.png", width: 80%, extension: "figures")
       ])
-    ], caption: [Screenshot of GNOME and KDE scaling])<scale-adjustment-kg>],
+    ], caption: [GNOME and KDE scaling])<scale-adjustment-kg>],
 )
 
 The GNOME variant offers a simple dropdown with a percentage value, without any
@@ -734,7 +734,7 @@ As a baseline, the plugin is shown in @reset-monitor.
 
 #align(
   center, [#figure(
-      img("reset-monitor-plugin.png", width: 90%, extension: "figures"), caption: [Screenshot of the ReSet monitor plugin on Hyprland],
+      img("reset-monitor-plugin.png", width: 90%, extension: "figures"), caption: [ReSet monitor plugin on Hyprland],
     )<reset-monitor>],
 )
 

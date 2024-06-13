@@ -10,7 +10,7 @@ this thesis implemented both the plugin itself and two exemplary plugins in orde
 to prove and test the implementation.
 
 The thesis mentioned goal of a plugin system for the ReSet application has been
-achieved with this thesis. Alongside this were two exemplary plugins, as well as
+achieved. Alongside this were two exemplary plugins, as well as
 underlying work for the base ReSet application such as refactoring and testing
 systems. The underlying work proved to be necessary for the extension of the
 plugin system as well as the continuing maintainability of the ReSet
@@ -28,11 +28,11 @@ The implementation of the plugin system lacks ABI stability, as explained in
 @ApplicationBinaryInterfaceABI, this means that plugin developers are limited to
 the Rust programming language. On top of this, any change in the compiler version
 might break the compatibility of a plugin. While this can also occur with major
-changes to the ABI conversion, it is at least decoupled from the compiler
+changes to the API conversion, it is at least decoupled from the compiler
 itself.\
 For this limitation, further work could implement ABI stability with the ABI
 stable crate in order to provide a C-compatible layer, which can then be used by
-any programming language.
+any programming language. @stable_abi_crate
 // TODO: reference abi stable
 
 #subsubsection("ReSet Leftovers")
@@ -94,5 +94,5 @@ This thesis offers users of ReSet the ability to inject plugins into the base
 application, which offers them theoretically unlimited extensibility. Hence, the
 biggest potential is likely to be seen in potential plugins for various use
 cases. Examples include online account management, device configuration
-(controllers, VR-Headsets, etc.), MIME type configuration, and more.
+(controllers, VR-Headsets, etc.), MIME-type configuration, and more.
 

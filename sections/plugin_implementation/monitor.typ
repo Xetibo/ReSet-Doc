@@ -99,7 +99,7 @@ In @scale-adjustment-kg the options from KDE and GNOME are visualized.
         #v(40pt)
         #img("kde-scaling.png", width: 80%, extension: "figures")
       ])
-    ], caption: [Screenshot of GNOME and KDE scaling])<scale-adjustment-kg>],
+    ], caption: [GNOME and KDE scaling])<scale-adjustment-kg>],
 )
 
 The GNOME variant offers a simple dropdown with a percentage value, without any
@@ -566,7 +566,7 @@ As a baseline, the plugin is shown in @reset-monitor.
 
 #align(
   center, [#figure(
-      img("reset-monitor-plugin.png", width: 90%, extension: "figures"), caption: [Screenshot of the ReSet monitor plugin on Hyprland],
+      img("reset-monitor-plugin.png", width: 90%, extension: "figures"), caption: [ReSet monitor plugin on Hyprland],
     )<reset-monitor>],
 )
 
@@ -594,5 +594,19 @@ more were implemented with either a dropdown menu comparable to the GNOME
 implementation discussed in @GNOMEImplementation as the same toolkit was used,
 while the scaling implementation differs depending on the environment. The
 scaling feature is discussed in detail in @FractionalScaling.
+
+In @gnome_reset_scaling and @hyprkde_reset_scaling, the GNOME and other environment specific scaling widgets are visualized.
+
+
+#align(
+  center, [#figure(
+      img("gnome-reset-scaling.png", width: 80%, extension: "figures"), caption: [ReSet monitor scaling on GNOME],
+    )<gnome_reset_scaling>],
+)
+#align(
+  center, [#figure(
+      img("hyprland-kde-reset-scaling.png", width: 80%, extension: "figures"), caption: [ReSet monitor scaling on Hyprland],
+    )<hyprkde_reset_scaling>],
+)
 
 The results of this user interface will be tested in @MonitorPluginTests.

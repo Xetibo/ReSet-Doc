@@ -27,6 +27,10 @@
       systems. ],
   )<dbus_glossary>
   #glossary_entry(
+    use_show: use_show_ref, "MIME", [Multi-purpose Internet Mail Extensions, a description of a file that is used
+      within Linux in order to specify a target program to open the file with. Example: text/html],
+  )<MIME>
+  #glossary_entry(
     use_show: use_show_ref, "Desktop Environment", [
       A collection of software, enabling a graphical user interface experience to do
       general computing tasks.\

@@ -75,8 +75,8 @@ the user. This path can be provided in the local config folder of a user in a
 file called Reset.toml. This file contains ReSet relevant configuration. The
 user has to provide the path to the input config there like
 @reset-keyboard-config-hyprland or else ReSet would not know where to write the
-changes to. If the file does not exist, a new one will be created. If the
-path is not provided, the keyboard plugin will use a predefined path.
+changes to. If the file does not exist, a new one will be created. If the path
+is not provided, the keyboard plugin will use a predefined path.
 
 #let code = "
 [Keyboard]
@@ -131,11 +131,11 @@ Therefore dconf_rs was replaced by GIO. The advantages have already been
 discussed in @GNOME. GIO provides very convenient bindings to the GSettings API.
 In @gnome-gio-get-input-config the layouts are fetched, and its type is checked.
 If the layout_variant is not an array of two strings an empty array will be
-returned. Otherwise, a generic get function is called with type 
-``` Vec<(String,String)>>``` to parse it into desired structure. This solution 
-is a lot more elegant than the Regex because it is more human-readable and better
-performant  as Regex processing can be slower due to its pattern matching which 
-involves operations like backtracking.
+returned. Otherwise, a generic get function is called with type
+``` Vec<(String,String)>>``` to parse it into desired structure. This solution
+is a lot more elegant than the Regex because it is more human-readable and
+better performant as Regex processing can be slower due to its pattern matching
+which involves operations like backtracking.
 
 #let code = "
 let input_sources = gtk::gio::Settings::new(\"org.gnome.desktop.input-sources\");
@@ -169,16 +169,19 @@ input_sources.set(\"sources\", variant).expect(\"failed to write layouts\");
     )<gnome-gio-set-input-config>],
 )
 
-Unfortunately, GIO does not exist within the sandboxing of Flatpak, which means that using it as is
-results in a crash. GIO is therefore not suitable and a workaround was necessary. Flatpak provides 
-a command that allows running commands outside the sandbox called Flatpak-spawn. Subsequently, DConf 
-was used again to get the layouts like on the first try. To find out if ReSet is running inside Flatpak's 
-sandboxing, the environment variable "container" can be checked. If it exists, then ReSet is running 
-inside the sandbox and the command can be spawned using flatpak-spawn. There is the possibility 
-that a user can have the environment variable "container" defined, but this is currently the best way
-to check. If an alternative is found, then this will be replaced. Compared the the first try, Regex was
-not necessary anymore because with the knowledge from the second try, using the built-in variant was 
-a much cleaner way and less error-prone. In @gnome-keyboard-flatpak the updated version be seen.
+Unfortunately, GIO cannot access the system schemas within the sandboxing of
+Flatpak, which means that using it results in a crash. GIO is therefore not
+suitable and a workaround was necessary. Flatpak provides a command that allows
+running commands outside the sandbox called Flatpak-spawn. Subsequently, DConf
+was used again to get the layouts like on the first try. To find out if ReSet is
+running inside Flatpak's sandboxing, the environment variable "container" can be
+checked. If it exists, then ReSet is running inside the sandbox and the command
+can be spawned using flatpak-spawn. There is the possibility that a user can
+have the environment variable "container" defined, but this is currently the
+best way to check. If an alternative is found, then this will be replaced.
+Compared to the first try, Regex was not necessary anymore because with the
+knowledge from the second try, using the built-in variant was a much cleaner way
+and less error-prone. In @gnome-keyboard-flatpak the updated version be seen.
 
 #let code = "
 let result = if getenv(\"container\").is_none() {
@@ -217,11 +220,11 @@ let layouts = layout_variant.get::<Vec<(String, String)>>().unwrap();
 
 #subsubsubsection("KDE Implementation")
 To read the keyboard layouts and variants in KDE, kreadconfig6 has to be used.
-Unfortunately, no library provides bindings so reading and writing using Rust 
-commands was necessary. In @kde-get-input-config the command with all its 
-arguments can be seen. Writing to the kxkbrc file works the same as writing 
-with the only difference of adding the new keyboard layout string as an
-additional argument and using kwriteconfig6.
+Unfortunately, no library provides bindings so reading and writing using Rust
+commands was necessary. In @kde-get-input-config the command with all its
+arguments can be seen. Writing to the kxkbrc file works the same as writing with
+the only difference of adding the new keyboard layout string as an additional
+argument and using kwriteconfig6.
 
 #let code = "
 let output = Command::new(\"kreadconfig6\")
@@ -257,16 +260,15 @@ An issue with these is that the versions are part of the command. Currently, the
 newest version is kreadconfig6 and kwriteconfig6 and have deprecated version 5
 for the most part. This also means that if version 7 is being released, the
 command needs to be adjusted so that it works for both versions while version 6
-is not deprecated. But because version 6 just released, version 7 is still in the
-far future.
+is not deprecated. But because version 6 just released, version 7 is still in
+the far future.
 
 #subsubsection("Nested listing")
 A quality-of-life feature to makes adding keyboard layouts easier is the
 addition of nested listing. There are many keyboard variants for the same
-layout, for example, German (US), German (Dvorak) etc. which can grouped 
-into a single entry in the list marked with an arrow symbol because not
-all languages have variants. An example of how this looks can be seen in
-@nested-listing.\
+layout, for example, German (US), German (Dvorak) etc. which can grouped into a
+single entry in the list marked with an arrow symbol because not all languages
+have variants. An example of how this looks can be seen in @nested-listing.\
 
 #align(
   center, [#figure(
@@ -307,7 +309,7 @@ and only shows the variants for that language as seen in
 To achieve this, a layout that has variants needs to have some code that removes
 all other layouts and only shows its variants and a button to show all layouts
 again. This is shown in the on-click event listener in @keyboard-show-variants.
-The back button removes every element in the list and inserts all layouts back 
+The back button removes every element in the list and inserts all layouts back
 into the list.
 
 #let code = "
@@ -350,7 +352,8 @@ layout_row.connect_activate(clone!(@strong keyboard_layouts, @weak list, @strong
     )<keyboard-show-variants>],
 )
 
-An example on how the removal works visually can be seen in @keyboard-nested-list-removal.
+An example on how the removal works visually can be seen in
+@keyboard-nested-list-removal.
 
 #align(
   center, [#figure(
@@ -358,12 +361,14 @@ An example on how the removal works visually can be seen in @keyboard-nested-lis
     )<keyboard-nested-list-removal>],
 )
 
+#pagebreak()
+
 #subsubsubsection("Highlight active layouts")
-To show users that limitation visually, the first few rows are highlighted,
-while the rest have system colors. This number is set depending on the desktop
-environment because some don't use XKB and therefore could allow more than four
-keyboard layouts. To further clarify it a subtitle for this setting group that
-explains the highlight is added.\
+To show users the limitation of @KeyboardLimit visually, the first few rows are
+highlighted, while the rest have system colors. This number is set depending on
+the desktop environment because some do not use XKB and therefore could allow
+more than four keyboard layouts. To further clarify it a subtitle for this
+setting group that explains the highlight is added.\
 
 #align(
   center, [#figure(
@@ -373,12 +378,12 @@ explains the highlight is added.\
 
 Because there are users that use many different themes, it is not possible to
 hardcode a single color because it might not fit with other themes. A GTK theme
-is defined in a CSS file that contains a list of key-value like pairs of names 
+is defined in a CSS file that contains a list of key-value like pairs of names
 and a color as can be seen in @gtk-theme-definition. These can be accessed from
 ReSet with an \@css-name like @keyboard-css-highlight. Because using the color
-definition is bound to clash with other UI elements with the same
-coloring, color expressions can be used to slightly change color without
-having to hardcode it. @gtk-css
+definition is bound to clash with other UI elements with the same coloring,
+color expressions can be used to slightly change color without having to
+hardcode it. @gtk-css
 
 #let code = "
 @define-color accent_color #a9b1d6;

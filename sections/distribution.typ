@@ -13,8 +13,8 @@ application. @flatpak-web
 
 Flatpak is a developer-first approach, meaning the distribution is done directly
 via developers who can request their application to be hosted on Flathub or on
-their server. This is in contrast to packaging solutions, which were with
-distributions in mind, in other words, while packages installed by apt and
+their own server. This is in contrast to system packaging solutions, which were
+created with Linux distributions in mind, in other words, while packages installed by apt and
 similar can be installed directly from the developer, it will likely cause
 dependency issues, as apt packages define a single source for shared libraries.
 Therefore, distributions host packages themselves, meaning a Debian user would
@@ -64,14 +64,14 @@ that several options were omitted in order to keep the listing concise.
     )<reset-flatpak-manifest>],
 )
 
-Plugins for the Flatpak cannot be distributed within Flatpak itself. This is a
+Plugins for the Flatpak package cannot be distributed within Flatpak itself. This is a
 limitation of Flatpak, as one package cannot access another without
 consequences. Hence, plugins would need to be compiled separately and placed
 within the folder structure manually. Specific installation steps are shown in
 @Usage.
 
 #subsubsection("NixOS")
-NixOS is the GNU/Linux distribution of the Nix project, which promises three
+NixOS is the Linux distribution of the Nix project, which promises three
 substantial benefits for users: Reproducibility, Declarativeness and
 Reliability. For ReSet, the interesting claim is the declarative aspect of Nix.
 With Nix, it is possible to create a system configuration, with which a user can
@@ -84,7 +84,7 @@ plugins via the package manager. @nix-os-web
 In order to provide this functionality for Nix, ReSet would either need to
 provide a flake file, which can be used by Nix users to install ReSet and their
 respective plugins directly from the source, or ReSet could create a pull
-request on the official nix repositories.\
+request on the official Nix repositories.\
 In order to not depend on third-party arbitration, this thesis will focus on
 creating a flake, which will include the possibility of installing and
 configuring plugins automatically.
@@ -98,7 +98,7 @@ In @reset-nix-module the Nix options for the ReSet module are visualized.
 
 #let code = "
 # omitted setup
-options.programs.reset = with lib; {
+options.programs.ReSet = with lib; {
   # define if ReSet is installed
   enable = mkEnableOption \"reset\";
 
@@ -145,8 +145,8 @@ reset-plugins.url = \"github:Xetibo/ReSet-Plugins?ref=dashie\";
 
 # In nix/home-manager module
 # enables ReSet and allows for plugins to be specified
-programs.reset.enable = true;
-programs.reset.config.plugins = [
+programs.ReSet.enable = true;
+programs.ReSet.config.plugins = [
   inputs.reset-plugins.packages.\"x86_64-linux\".monitor
 ];
 ";
@@ -159,13 +159,13 @@ programs.reset.config.plugins = [
 
 #subsubsection("Arch and Ubuntu")
 For Arch Linux and Ubuntu, native packages are provided within the repository of
-the exemplary plugins. Users can download the plugins and install them via their system
-package manager which places them in ```sh /usr/lib/reset/pluginname.so```. This
-means users of Arch Linux or Ubuntu would only be required to confirm their
+the exemplary plugins. Users can download the plugins and install them via their
+system package manager which places them in ```sh /usr/lib/reset/pluginname.so```.
+This means users of Arch Linux or Ubuntu would only be required to confirm their
 plugin selection as defined in @Usage.
 
 #subsubsection("Other Distributions")
-For regular GNU/Linux distributions, ReSet would need to provide a generic
+For other Linux distributions, ReSet would need to provide a generic
 plugin manager in order to achieve a consistent and cross-distribution
 installation experience. A plugin manager is not within the scope of this
 thesis, which requires users of ReSet to instead copy binaries manually into the

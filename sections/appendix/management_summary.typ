@@ -5,9 +5,9 @@
 *Introduction*:\
 ReSet is a settings application developed with Rust for Linux-based systems to
 be compatible with different graphical desktop interfaces. Its core
-functionalities of Wi-Fi, Bluetooth and Audio were completed successfully, but
+functionalities of Wi-Fi, Bluetooth and Audio are already implemented, but
 additional functionalities require desktop-specific implementation with their
-own set of rules that need to be adhered to. Hence, a plugin system is created
+own set of rules that need to be adhered to. Hence, a plugin system was created
 for the ReSet application, alongside a testing framework and improvements to the
 original application.
 
@@ -18,7 +18,7 @@ original application.
 - *Monitor plugin*:\
   A monitor plugin that allows users to change the properties of their current
   monitor or rearrange their monitors.\
-  This plugin supports: KDE, GNOME, Hyprland, wlroots-based compositors and 
+  This plugin supports: KDE, GNOME, Hyprland, wlroots-based compositors and
   KWin-based compositors
 - *Keyboard plugin*:\
   A keyboard plugin that allows users to change their keyboard layout, and add or
@@ -34,9 +34,9 @@ original application.
 
 *Distribution*:\
 Just like the original ReSet application, the plugins should be available on as
-many distributions as possible. For this reason, at least four different packages
-have been created: Arch package, Debian package (Ubuntu 24.04), NixOS module and
-the binaries themselves which were proven to work with Flatpak.
+many distributions as possible. For this reason, at least four different
+packages have been created: Arch package, Debian package (Ubuntu 24.04), NixOS
+module and the binaries themselves which were proven to work with Flatpak.
 
 *Extensibility*:\
 Further work can be done to create further plugins to increase the functionality
