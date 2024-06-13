@@ -9,12 +9,12 @@ In this section, the implementation of the keyboard plugin is discussed.
 The keyboard layouts in Hyprland are stored in a hypr.conf file, which is a
 configuration file and can be modified using multiple ways.
 
-One way is to use Hyprctl, a command-line tool that can be used to modify the
-setting. The problem with it is that the settings set by Hyprctl are not
+One way is to use hyprctl, a command-line tool that can be used to modify the
+setting. The problem with it is that the settings set by hyprctl are not
 persistent. That means that those changes disappear after a restart @hyprctl.
 
 The other method is to write it directly into the hypr.conf file. Because the
-configuration file uses a custom configuration language called hyprlang, it's
+configuration file uses a custom configuration language called hyprlang, it is
 very hard to make changes in a specific area there because currently no parser
 exists for it. The solution to this is that the user is required to create a new
 configuration file and link it from the hypr.conf.
@@ -74,7 +74,7 @@ input {
 )
 
 The user has to put the path to the input configuration file in the ReSet
-config, else ReSet wouldn't know where to write the changes to.
+config, else ReSet would not know where to write the changes to.
 
 #let code = "
 [Keyboard]
@@ -194,7 +194,7 @@ make up a keyboard layout. It is not possible to just increase that number
 because the XKBState field is only 16 bits long and uses bits 13 and 14 to
 report the keyboard group. Any attempt to increase the number of groups would
 require a change in the representation schema in XKB and other changes that
-wouldn't be backwards compatible @xkblimitation.\
+would not be backwards compatible @xkblimitation.\
 
 To show users that limitation visually, the first few rows are highlighted,
 while the rest have system colors. This number is set depending on the desktop

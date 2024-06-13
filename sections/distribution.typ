@@ -157,6 +157,13 @@ programs.reset.config.plugins = [
     )<reset-nix-usage>],
 )
 
+#subsubsection("Arch and Ubuntu")
+For Arch Linux and Ubuntu, native packages are provided within the repository of
+the exemplary plugins. Users can download the plugins and install them via their system
+package manager which places them in ```sh /usr/lib/reset/pluginname.so```. This
+means users of Arch Linux or Ubuntu would only be required to confirm their
+plugin selection as defined in @Usage.
+
 #subsubsection("Other Distributions")
 For regular GNU/Linux distributions, ReSet would need to provide a generic
 plugin manager in order to achieve a consistent and cross-distribution
@@ -173,12 +180,12 @@ copying them into the right directory or directly passing a different
 installation path for cargo during the plugin installation.
 
 #subsection("Usage")
-If manual installation is required, the plugins must be placed within ```sh $XDG_CONFIG_DIR/reset/plugins/``` after
+If manual installation is required, the plugins must be placed within ```sh ~/.config/reset/plugins/``` after
 compiling them individually.
 
 After installing the plugins, users are required to confirm their plugin
 selection within the ReSet configuration file by adding the exact filename of
-the plugin. By default, the configuration file is located at ```sh $XDG_CONFIG_DIR/reset/ReSet.toml```.
+the plugin. By default, the configuration file is located at ```sh ~/.config/reset/ReSet.toml```.
 Confirmation of plugins is handled by the "plugins" key within the TOML file. In
 @reset-toml, an example ReSet.toml file is visualized.
 

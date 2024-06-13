@@ -79,10 +79,10 @@ protocol specifically targets wlroots.
 As mentioned in @HyprlandImplementation, the wlroots implementation can only be
 implemented via Wayland protocols and is as such also limited to the used
 protocol. Hence, the wlroots implementation does not offer persistent storing of
-monitor configurations, instead only offering the application of a specific 
+monitor configurations, instead only offering the application of a specific
 configuration.
 
-However, unlike the first and second Hyprland implementations, it is compositor 
+However, unlike the first and second Hyprland implementations, it is compositor
 independent and will work as long as the zwlr_output_manager_v1 protocol is
 implemented.
 
@@ -102,8 +102,8 @@ As such, it is now possible to create a client for a Wayland server and generate
 requests for it. The server will then respond with events that the client can
 process and interact with.
 
-In @Wayland-Connection, an example client that requests all implemented protocols 
-from the Wayland compositor is visualized.
+In @Wayland-Connection, an example client that requests all implemented
+protocols from the Wayland compositor is visualized.
 
 #let code = "
 struct AppData(pub String);
@@ -199,8 +199,9 @@ within the GNOME configuration. GNOME stores its configuration within a custom
 binary blob file which stores key/value pairs. ReSet already uses GTK, which can
 also read DConf variables, meaning there is no additional dependency for ReSet.
 
-In @Fractional-Scale-Gnome the value for fractional scaling is read via
-DConf.
+DConf is further explained in @GNOME.
+
+In @Fractional-Scale-Gnome the value for fractional scaling is read via DConf.
 #let code = "
 fn get_fractional_scale_support() -> bool {
     let settings = gtk::gio::Settings::new(\"org.gnome.mutter\");
@@ -219,12 +220,16 @@ fn get_fractional_scale_support() -> bool {
     )<Fractional-Scale-Gnome>],
 )
 
+
 #subsubsection("Visualization")
 For the visual representation, ReSet aims to be aligned with other configuration
 tools within the Linux ecosystem in order to provide users with a seamless
 transition. Notable for this visualization is the use of drag-and-drop for
 monitor positioning. This paradigm allows users to quickly place monitors on
 their preferred side or height.
+
+To accommodate users of other applications, the environments GNOME and KDE are
+discussed.
 
 In @kde-monitor, the KDE variant of the monitor configuration is shown.
 
@@ -236,16 +241,18 @@ In @kde-monitor, the KDE variant of the monitor configuration is shown.
 
 // TODO: Comment on KDEs implementation
 KDE opted for a per-monitor paradigm, meaning settings are shown for the current
-monitor, with global settings being separated by a visual separator. The indication 
-of which monitor is currently selected is shown by a blue indicator while other
-monitors are uncolored. The selected color is suitable for color blindness as
-different shades of blue are less susceptible to color blindness. People with
-monochromatic sight (full colorblindness) will also still be able to tell the
-difference based on shade, making this an optimal color defined in figure 16
-Colorblind barrier-free color pallet by Color Universal Design (CUD).
+monitor, with global settings being separated by a visual separator. The
+indication of which monitor is currently selected is shown by a blue indicator
+while other monitors are uncolored. The selected color is suitable for color
+blindness as different shades of blue are less susceptible to color blindness.
+People with monochromatic sight (full colorblindness) will also still be able to
+tell the difference based on shade, making this an optimal color defined in
+figure 16 Colorblind barrier-free color pallet by Color Universal Design (CUD).
 @color-universal-design @color-blindness @data-visualization-with-flying-colors
 
 //https://en.wikipedia.org/wiki/Color_blindness
+
+#pagebreak()
 
 In @gnome-monitor, the GNOME variant of the monitor configuration is shown.
 #align(
@@ -265,6 +272,15 @@ visually. Another difference is the placing of the buttons when visible, KDE
 opted to show the reset and apply buttons at the bottom, while GNOME shows them
 at the top.
 
+@single_gnome_monitor displays the configuration of per monitor specific
+settings.
+
+#align(
+  center, [#figure(
+      img("single_gnome_monitor.png", width: 70%, extension: "figures"), caption: [Screenshot of configuring a specific monitor within GNOME],
+    )<single_gnome_monitor>],
+)
+
 // TODO: Comment on GNOMEs implementation
 // TODO: show GNOMES apply and reset buttons
 //
@@ -273,12 +289,16 @@ at the top.
 
 #pagebreak()
 #subsubsubsection("Gaps in Configuration")
-While testing for environment differences, a significant difference between 
+While testing for environment differences, a significant difference between
 wlroots-based compositors to both KDE and GNOME was detected. Using a compositor
 like Hyprland, it is possible to create gaps between monitors to disallow direct
 mouse movement from one monitor to another. However, in both KDE and GNOME, a
 configuration with gaps results in an error which makes the configuration not
 applicable.
+
+For ReSet, this would mean offering the same feature with restrictions to GNOME
+and KDE users, while still allowing other users to take advantage of their
+features set.
 
 In @kde-gaps and @gnome-gaps, the error messages for gaps in GNOME and KDE are
 visualized.
@@ -293,5 +313,6 @@ visualized.
       img("gnome-gaps.png", width: 70%, extension: "figures"), caption: [Screenshot of the gaps error within GNOME],
     )<gnome-gaps>],
 )
+
 
 #pagebreak()

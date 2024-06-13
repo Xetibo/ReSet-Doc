@@ -55,7 +55,7 @@ for the plugin system.
 )
 
 #subsubsection("Week 6 (25.03 - 31.03)")
-We started preparing for the intermediary presentation, because it's due next week. At the 
+We started preparing for the intermediary presentation, because it is due next week. At the 
 same time, we also finished the plugin system.
 #align(
   center, [#figure(

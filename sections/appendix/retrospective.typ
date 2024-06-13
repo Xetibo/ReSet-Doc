@@ -29,15 +29,15 @@ test for the viability of both the plugin system and the original ReSet
 application.
 
 #subsubsection("Felix Tran")
-Overall, I am satisfied with the plugin system and the plugins we created over 
+Overall, I am satisfied with the plugin system and the plugins we created over
 the last few months. This project has been a significant learning experience for
-me that will be useful even years down the line. While we did plan too much and 
-had to cut some optional features, all the main features have been implemented 
-successfully. This is again a reminder, that project planning can be easily 
-overestimated like in the SA and we're in a lucky position where we can just 
+me that will be useful even years down the line. While we did plan too much and
+had to cut some optional features, all the main features have been implemented
+successfully. This is again a reminder, that project planning can be easily
+overestimated like in the SA, and we're in a lucky position where we can just
 remove features at a whim.
 
-I learned a lot in this project because it was the first time I had to work 
-with a low-level language. Though I wouldn't do it again willingly, it was 
+I learned a lot in this project because it was the first time I had to work with
+a low-level language. Though I would not do it again willingly, it was
 nevertheless a good experience to have as the knowledge gained working on this
 project can also be applied to other languages.

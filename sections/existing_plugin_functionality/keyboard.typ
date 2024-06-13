@@ -4,19 +4,19 @@
 #subsection("Keyboard Plugin")
 
 #subsubsection("Analysis of different environments")
-In this section, the analysis of the keyboard plugin on various environments are
+In this section, the analysis of the keyboard plugin on various environments is
 discussed.
 
 #subsubsubsection("Hyprland")
 The keyboard layouts in Hyprland are stored in a hypr.conf file, which is a
 configuration file and can be modified using multiple ways.
 
-One way is to use Hyprctl, a command-line tool that can be used to modify the
-setting. The problem with it is that the settings set by Hyprctl are not
+One way to use this is hyprctl, a command-line tool that can be used to modify
+the setting. The problem with it is that the settings set by hyprctl are not
 persistent. That means that those changes disappear after a restart @hyprctl.
 
 The other method is to write it directly into the hypr.conf file. Because the
-configuration file uses a custom configuration language called hyprlang, it's
+configuration file uses a custom configuration language called hyprlang, it is
 very hard to make changes in a specific area there because currently no parser
 exists for it that is written in Rust.
 
@@ -34,12 +34,12 @@ setup. The advantage of using GIO instead of gsettings is that it can validate
 input and log error messages if something does not work. Another advantage is
 that gsettings returns a string that needs to be manually parsed with Regex or
 similar. GIO on the other hand returns a Variant object that can be casted into
-the desired type as long as it's correct.
+the desired type as long as it is correct.
 
 DConf serves as a low-level configuration system for gsettings that stores
 key-based configuration details in a single compact binary format database
-@dconf. Because gsettings is a layer for DConf, the keyboard plugin should 
-uses DConf directly for setting the keyboard layouts. Combined with the DConf crate,
+@dconf. Because gsettings is a layer for DConf, the keyboard plugin should uses
+DConf directly for setting the keyboard layouts. Combined with the DConf crate,
 which provides Rust bindings to DConf, the plugin can read the keyboard layouts
 @dconf_rs. This returns a string that needs to be parsed to get the keyboard
 layout and variant, which can be done with a simple Regex.
@@ -48,11 +48,13 @@ layout and variant, which can be done with a simple Regex.
 KDE stores its keyboard configurations in a file called kxkbrc. This text file
 is located in the config folder of the user and can be read using kreadconfig6
 and written to using kwriteconfig6. These are tools provided by KDE to modify
-settings. @kdeconfig Unfortunately, no Rust crate provides bindings to these 
+settings. @kdeconfig Unfortunately, no Rust crate provides bindings to these
 tools, so the plugin would have to use the command.
 
 There was also a DBus interface that could be used to fetch keyboard layouts,
 but there was no way to set them.
+
+#pagebreak()
 
 #subsubsection("Keyboard Limit")
 XKB is a system part of the X Window System and provides an easy way to
@@ -66,12 +68,12 @@ make up a keyboard layout.\
 In @keyboard-struct-limitation the structure of the XKBState can be seen. The
 structure is 16 bits long and contains various information about the active
 state of a keyboard (or keyboards). Because KEYMASK and BUTMASK are not
-responsible for saving keyboard layouts, they are not explained any further.
-The important parts are bits 13 and 14 as they represent the keyboard group. 
-It is not possible to just increase that number because the XKBState field is 
-only 16 bits long and there are no bits left that could be used. Any attempt to
-increase the number of groups would require a change in the representation 
-schema in XKB and other changes that wouldn't be backwards compatible. @xkblimitation 
+responsible for saving keyboard layouts, they are not explained any further. The
+important parts are bits 13 and 14 as they represent the keyboard group. It is
+not possible to just increase that number because the XKBState field is only 16
+bits long and there are no bits left that could be used. Any attempt to increase
+the number of groups would require a change in the representation schema in XKB
+and other changes that would not be backwards compatible. @xkblimitation
 
 #align(
   center, [#figure(
@@ -87,14 +89,14 @@ keep ReSet aligned with other settings in ReSet as well as other applications
 that use the GTK4 library.
 
 #subsubsubsection("GNOME")
-In @gnome-keyboard-setting the UI for the keyboard settings from GNOME control 
+In @gnome-keyboard-setting the UI for the keyboard settings from GNOME control
 center is shown. They use a drag-and-drop list to order the keyboard layouts
 around and mark it with the six dots on the left. These grip indicators are
-commonly used in software as well as in physical products to indicate that
-something is draggable. The list is then grouped in a PreferenceGroup that 
-provides a title and subtitle that explains what it is doing. Multiple of 
-these PreferenceGroups groups are stacked vertically in a ScrollWindow
-that allow vertical scrolling.
+commonly used in software as well as in physical products (ex. battery
+compartments) to indicate that something is draggable. The list is then grouped
+in a PreferenceGroup that provides a title and subtitle that explains what it is
+doing. Multiple of these PreferenceGroups groups are stacked vertically in a
+ScrollWindow that allow vertical scrolling.
 
 #align(
   center, [#figure(
@@ -104,8 +106,8 @@ that allow vertical scrolling.
     )<gnome-keyboard-setting>],
 )
 
-New keyboard layouts can be added with the button at the very bottom of
-the list. It opens a dialog menu as seen in @gnome-add-keyboard-setting that
+New keyboard layouts can be added with the button at the very bottom of the
+list. It opens a dialog menu as seen in @gnome-add-keyboard-setting that
 contains a list of every keyboard layout available in the system. After
 selecting a keyboard layout, it can be added with the Add button on the top
 right.
@@ -117,6 +119,8 @@ right.
       ), caption: [Gnome add keyboard layout settings],
     )<gnome-add-keyboard-setting>],
 )
+
+#pagebreak()
 
 #subsubsubsection("KDE")
 In @kde-keyboard-setting the UI for KDE system settings can be seen. The

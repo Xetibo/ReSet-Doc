@@ -74,7 +74,7 @@ ReSet has to know where the input config is located which has to be provided by
 the user. This path can be provided in the local config folder of a user in a
 file called Reset.toml. This file contains ReSet relevant configuration. The
 user has to provide the path to the input config there like
-@reset-keyboard-config-hyprland or else ReSet wouldn't know where to write the
+@reset-keyboard-config-hyprland or else ReSet would not know where to write the
 changes to. If the file does not exist, a new one will be created. If the
 path is not provided, the keyboard plugin will use a predefined path.
 
@@ -278,7 +278,7 @@ all languages have variants. An example of how this looks can be seen in
 
 In GNOME control setting, every keyboard layout with its variations is shown in
 an alphabetically sorted list. The problem with this approach is that there are
-variants for layouts that have a very different name where it's not obvious to
+variants for layouts that have a very different name where it is not obvious to
 which layout it belongs to as seen in an example in
 @comparison-reset-gnome-irish.
 

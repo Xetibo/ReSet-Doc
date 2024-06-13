@@ -13,8 +13,8 @@ both a DBus endpoint for functionality and a graphical user interface for human
 interaction. Should a user not be satisfied with the provided interface, they
 can just use the endpoint to create their own.
 
-In @Display-Struct the fields of the display struct used for the DBus
-connection and the user interface is visualized.
+In @Display-Struct the fields of the display struct used for the DBus connection
+and the user interface is visualized.
 #let code = "
 #[repr(C)]
 #[derive(Debug, Clone, Default)]
@@ -37,14 +37,21 @@ pub struct Monitor {
     pub available_modes: Vec<AvailableMode>,
     pub uses_mode_id: bool,
     pub features: MonitorFeatures,
-}
-"
+}"
 
 #align(
   left, [#figure(
       sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Display struct],
     )<Display-Struct>],
 )
+
+The monitor struct holds all important information within a single indirection,
+while user interface information (DragInformation), environment feature flags
+and monitor modes are combined into separate data structures. This allows every
+environment to be converted, while they still share differing approaches to
+monitors.
+
+#pagebreak()
 
 #subsubsection("Fractional Scaling")
 Fractional scaling is implemented according to the fractional-scale-v1 Wayland
@@ -113,6 +120,10 @@ implements arbitrary scaling, it would also require a check for valid scales
 with proper user feedback. The chosen method was to simply snap to the closest
 possible valid scale and provide an error banner if no scale can be found.
 
+The implementation itself is a loop that increments the by 120 divided scale
+until either a valid scale is found, or the maximum iterations (0..amount) have
+been reached.
+
 In @search-nearest-scale, the body of the search_nearest_scale function within
 the plugin is visualized.
 
@@ -162,10 +173,11 @@ coordinate system is required. For cairo this is a top-left to bottom-right
 system. This means that x increases towards the right and y increases towards
 the bottom.
 
-In @monitor-axis, the monitor axes is visualized.
+#pagebreak()
+In @monitor-axis, the monitor cairo coordinate system is visualized.
 #align(
   center, [#figure(
-      img("monitor-axis.png", width: 70%, extension: "figures"), caption: [Visualization of the monitor coordinate system],
+      img("monitor-axis.png", width: 70%, extension: "figures"), caption: [Visualization of the monitor cairo coordinate system],
     )<monitor-axis>],
 )
 
@@ -175,8 +187,11 @@ operations, which have to constantly apply transforms to these shapes. At the
 same time, any potential monitor overlaps have to be handled, as well as
 providing snapping functionality in order to auto-align monitors.
 
+On top of this, the coordinate system of the monitor itself has the y-axis
+inverted, as all environments expect positive y to be "upwards".
+
 Intersections can be seen by two conditions per axis. If both axes have at least
-one condition evaluated as false, then an overlap has occurred. In @conditions 
+one condition evaluated as false, then an overlap has occurred. In @conditions
 and @overlap the conditions and an example overlap are visualized.
 
 #let code = "
@@ -220,8 +235,9 @@ pub fn intersect_vertical(&self, offset_y: i32, height: i32) -> bool {
     )<overlap>],
 )
 
-On each of the shapes drawn with cairo, GTK allows the use of event handlers
-including drag-and-drop handlers.
+The dragging itself without calculations is trivial, as GTK allows the use of
+event handlers including drag-and-drop handlers on each cairo shape which
+represent the monitors.
 
 #subsubsection("Snapping")
 A quality of life feature is the ability to allow users to be inaccurate with
@@ -229,7 +245,7 @@ their monitor positioning and then automatically snapping the monitor towards
 adjacent ones.
 
 For example, the Windows desktop paradigm offers desktop icons. A user can
-rearrange them via drag and drop, and in this action, the user does not need to
+rearrange them via drag-and-drop, and in this action, the user does not need to
 be accurate, instead, they can approximately drag the icon to the target
 endpoint and drop it at this position. The desktop icon system will then
 reposition the icon towards the correct place within the grid system.
@@ -247,6 +263,64 @@ In @monitor-dnd and @monitor-dnd-end, the dragging mechanism is visualized.
     )<monitor-dnd-end>],
 )
 
+To ensure this functionality works as expected, the potential snapping
+functionality checks for overlaps, as well as the no-gaps requirement in the KDE
+and GNOME environments. Specifically, the dragged monitor is checked against all
+other monitors, with the smallest gap in both vertical and horizontal being
+considered. In other words, a monitor can snap once in horizontal direction and
+once in vertical at the same time.
+
+In @snap_check, the code to check for the smallest distance in for vertical
+snaps is visualized.
+
+#let code = "
+// find smallest difference
+let top_to_bottom = endpoint_top.abs_diff(endpoint_other_bottom);
+let bottom_to_top = endpoint_bottom.abs_diff(endpoint_other_top);
+let top_to_top = endpoint_top.abs_diff(endpoint_other_top);
+let bottom_to_bottom = endpoint_bottom.abs_diff(endpoint_other_bottom);
+let min = cmp::min(
+  cmp::min(top_to_bottom, bottom_to_top),
+  cmp::min(top_to_top, bottom_to_bottom),
+);
+// snap to the smallest distance if smaller than SNAP_DISTANCE
+if min < SNAP_DISTANCE {
+  match min {
+    x if x == top_to_bottom => {
+      snap_vertical = SnapDirectionVertical::TopBottom(
+        endpoint_other_bottom,
+        endpoint_other_left,
+        other_width,
+      );
+    }
+    x if x == bottom_to_top => {
+      snap_vertical = SnapDirectionVertical::BottomTop(
+        endpoint_other_top,
+        endpoint_other_left,
+        other_width,
+      );
+    }
+    x if x == top_to_top => {
+      snap_vertical = SnapDirectionVertical::TopTop(endpoint_other_top);
+    }
+    x if x == bottom_to_bottom => {
+      snap_vertical = SnapDirectionVertical::BottomBottom(endpoint_other_bottom);
+    }
+    _ => unreachable!(),
+  }
+}"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", caption: [Vertical snapping check within the monitor_drag_end function],
+    )<snap_check>],
+)
+
+The endpoints represent the edges of both monitors, with the "other" monitor
+being the monitor that is currently checked against.
+
+#pagebreak()
+
 #subsubsection("Feature Disparities")
 Differing environments offer a range of features, this forces ReSet to offer
 dynamic feature checking in order to only show compatible features with the
@@ -260,9 +334,9 @@ explicitly, meaning you would need to define one or more monitors where your
 widget or panel should be.
 
 The solution for this problem is a set of feature flags that are introduced
-during the conversion from environment-specific data to DBus-compatible
-generic monitor data. Within this data, the struct visualized in
-@monitor-feature-flag is included.
+during the conversion from environment-specific data to DBus-compatible generic
+monitor data. Within this data, the struct visualized in @monitor-feature-flag
+is included.
 
 #let code = "
 pub struct MonitorFeatures {
@@ -305,7 +379,7 @@ or replacing the entire set of settings when clicking on another monitor.
 Redrawing a singular number within a widget is covered by GTK, while the
 selection of the monitor must be handled by the plugin. For this problem, a
 singular function was chosen that repopulates the settings per monitor on
-selection.
+selection. The function is visualized in @monitor-settings-function.
 
 #let code = "
 pub fn get_monitor_settings_group(
@@ -329,7 +403,7 @@ pub fn get_monitor_settings_group(
 It is important to note, that the covered feature differences in
 @FeatureDisparities, lead to differing functions being used for different
 environments. As such ReSet checks for environment differences inside this
-function via the ```$XDG_CURRENT_DESKTOP``` key.
+function via the ```sh$XDG_CURRENT_DESKTOP``` environment variable.
 
 In @dynamic-feature-monitor, an example for a dynamic feature is visualized.
 #let code = "
@@ -345,7 +419,7 @@ pub fn add_scale_adjustment(
     settings: &PreferencesGroup,
 ) {
     // Different environments allow differing values
-    // Hyprland allows arbitrary scales, Gnome offers a set of supported scales per monitor mode
+    // Hyprland allows arbitrary scales, Gnome offers a set of supported scales
     match get_environment().as_str() {
         \"Hyprland\" => {}, // hyprland implementation
         \"GNOME\" => {}, // GNOME implementation
@@ -362,14 +436,14 @@ pub fn add_scale_adjustment(
 )
 
 Another problematic section of the plugin is the drawing area, as this requires
-separate redraws as well. For this redraws are queued for any action taken that
+separate redraws as well. For this, redraws are queued for any action taken that
 changes the appearance within the drawing area. Possible actions include
-dragging, snapping, change of transform, change of resolution and monitor
+dragging, snapping, change of transform, change of scaling, change of resolution and monitor
 selection. Each of these actions will cause the drawing area to be redrawn in
 order to show the result of the chosen action.
 
 The last piece of redraw is the arrangement of the monitors. Each time a user
-changes either the resolution or the transform of a monitor, this will be
+changes the resolution,  the transform of a monitor or the scaling, this will be
 reflected on the interface. This requires the plugin to calculate a new
 arrangement for all monitors, as the constellation of monitors should not change
 simply because the user changed the resolution of a single monitor. As an
@@ -385,7 +459,7 @@ from the changed monitor. In @monitor-resize the example is visualized.
 )
 
 Further issues arise with the inclusion of the y-axis for potential resizes. Due
-to multiple axes being possible, it is now necessary to check for overlaps that 
+to multiple axes being possible, it is now necessary to check for overlaps that
 can be caused by to shifting of other monitors after resizing. Consider the
 second example with four monitors shown in @monitor-resize-2.
 
@@ -397,8 +471,8 @@ second example with four monitors shown in @monitor-resize-2.
 
 This overlap is not applicable as a configuration and needs to be resolved.
 There are multiple possible solutions to this problem. A very simple approach
-would be to just reorder the monitors as soon as the resolution or transform 
-of any monitor happens. The drawback with this approach is the fact that it breaks
+would be to just reorder the monitors as soon as the resolution or transform of
+any monitor happens. The drawback with this approach is the fact that it breaks
 the arrangement a user created. This would mean that the monitor previously
 situated in the center might now be on the left. In
 @simple-rearrangement-function the solution is visualized.
@@ -430,16 +504,14 @@ resolution or transform difference of the changed monitor, as well as the right
 side of the rightmost monitor. Step two handles the movement of all monitors
 that exist on the right or the bottom of the changed monitor. Step three handles
 the checking for overlaps among all monitors. This is done by looping over all
-monitors and checking each monitor against the other.  
+monitors and checking each monitor against the other.
 
 In @complex-rearrangement-function, step three is visualized.
 
 #let code = "
 // Step 1 and 2: omitted
-
 // (false, false)
 // first: already used flag -> don't check for overlaps
-// against the same monitors just in opposite order
 // second: bool flag to indicate overlap
 let mut overlaps = vec![(false, false); monitors.len()];
 // check for overlaps
@@ -457,8 +529,7 @@ for (index, monitor) in monitors.iter().enumerate() {
       other_monitor.offset.1 + other_monitor.drag_information.border_offset_y,
       height,
     );
-    // don't rearrange the rightmost monitor
-    // -> otherwise we get a gap between monitors
+    // don't rearrange the rightmost monitor -> otherwise gap between monitors
     let is_furthest = furthest == monitor.offset.0 + monitor.size.0;
     if intersect_horizontal && intersect_vertical && !is_furthest {
       overlaps[index].1 = true;
@@ -466,7 +537,6 @@ for (index, monitor) in monitors.iter().enumerate() {
   }
   overlaps[index].0 = true;
 }
-
 // Step 4: omitted
 ";
 
