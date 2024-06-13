@@ -122,6 +122,76 @@ async fn test_plugins() {
     )<custom_plugin_tests>],
 )
 
+To write tests for a plugin, the functions backend_tests() and frontend_tests() 
+can be implemented as seen in @backend-test. In there, a vector of PluginTestFunc 
+must be returned, which contains a list of function references, which contain the 
+test logic and a string, which acts as a test name. This works in the same way 
+for the frontend tests.
+
+#let code = "
+#[no_mangle]
+#[allow(improper_ctypes_definitions)]
+pub extern \"C\" fn backend_tests() -> Vec<PluginTestFunc> {
+    vec![PluginTestFunc::new(dbus_end_point, \"Test DBus endpoint\")]
+}
+"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", 
+      caption: [Example backend test],
+    )<backend-test>],
+)
+
+In @monitor-dbus-test, the dbus_end_point() function tests the SetMonitors and 
+GetMonitors end points of the monitor plugin. If the DBUS calls fails, a 
+PluginTestError will be returned that will be printed to the console.
+
+#let code = "
+pub fn dbus_end_point() -> Result<(), PluginTestError> {
+    let conn = Connection::new_session().unwrap();
+    let proxy = conn.with_proxy(
+        \"org.Xetibo.ReSet.Daemon\", \"/org/Xetibo/ReSet/Plugins/Monitors\",
+    );
+    let monitors = vec![
+        Monitor { id: 1, ..Default::default() },
+        Monitor { id: 2, ..Default::default() },
+    ];
+
+    // Call set monitors
+    let res: Result<(), Error> =
+        proxy.method_call(MONITOR_PATH, \"SetMonitors\", (monitors, ));
+    if let Err(error) = res {
+        return Err(PluginTestError::new(format!(
+            \"DBus call returned error: {}\", error
+        )));
+    }
+
+    // Call get monitors
+    let res: Result<(Vec<Monitor>, ), Error> =
+        proxy.method_call(MONITOR_PATH, \"GetMonitors\", ());
+    if let Err(error) = res {
+        return Err(PluginTestError::new(format!(
+            \"DBus call returned error: {}\", error
+        )));
+    }
+    let len = res.unwrap().0.len();
+    if len != 2 {
+        return Err(PluginTestError::new(format!(
+            \"Result was not filled with 2 mock monitors instead got: {}\", len
+        )));
+    }
+    Ok(())
+}
+"
+
+#align(
+  left, [#figure(
+      sourcecode(raw(code, lang: "rs")), kind: "code", supplement: "Listing", 
+      caption: [DBus Monitor Endpoint test],
+    )<monitor-dbus-test>],
+)
+
 The plugin tests can be run with "cargo test -- --nocapture". Normally, Rust
 does not print logs when running tests, but with the nocapture flag, this 
 behavior can be disabled. In @plugin-test-output-success an output of the 
