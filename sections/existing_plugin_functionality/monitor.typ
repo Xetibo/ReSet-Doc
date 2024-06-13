@@ -5,7 +5,7 @@
 In this section, the implementations of monitor configurations are discussed.
 
 For the monitor plugin, the following environments are considered: KDE, GNOME,
-wlroots-based compositors and Kwin-based compositors. This selection covers a
+wlroots-based compositors and KWin-based compositors. This selection covers a
 large section of the Wayland compositors except the cosmic desktop, which will
 be released after this thesis. @cosmic-release
 
@@ -117,6 +117,7 @@ impl Dispatch<wl_registry::WlRegistry, ()> for AppData {
         handle: &QueueHandle<AppData>,
     ) {
         if let wl_registry::Event::Global { interface, .. } = event {
+          // print the protocol name
           println!(\"{}\", &interface);
         }
     }
@@ -159,7 +160,7 @@ handle monitor configuration.
 
 Also like with Hyprland, both solutions were implemented, for KDE the reason is
 simply to include support for both the X11 implementation of KDE and the Wayland
-version. If this plugin were to target the Kwin protocol exclusively, then X11
+version. If this plugin were to target the KWin protocol exclusively, then X11
 support would not be included and would have to be implemented separately.
 
 The protocol variant requires the implementation of two protocols that will

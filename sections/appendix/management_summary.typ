@@ -19,7 +19,7 @@ original application.
   A monitor plugin that allows users to change the properties of their current
   monitor or rearrange their monitors.\
   This plugin supports: KDE, GNOME, Hyprland, wlroots-based compositors and 
-  Kwin-based compositors
+  KWin-based compositors
 - *Keyboard plugin*:\
   A keyboard plugin that allows users to change their keyboard layout, and add or
   remove layouts.\
