@@ -99,7 +99,7 @@ doing. Multiple of these PreferenceGroups groups are stacked vertically in a
 ScrollWindow that allow vertical scrolling.
 
 #align(
-  center, [#figure(
+  center, [#figure( 
       img(
         "../figures/gnomeKeyboardSetting.png", width: 55%, extension: "figures",
       ), caption: [Gnome keyboard settings],

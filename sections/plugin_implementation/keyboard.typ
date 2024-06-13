@@ -172,38 +172,36 @@ input_sources.set(\"sources\", variant).expect(\"failed to write layouts\");
 Unfortunately, GIO does not exist within the sandboxing of Flatpak, which means that using it as is
 results in a crash. GIO is therefore not suitable and a workaround was necessary. Flatpak provides 
 a command that allows running commands outside the sandbox called Flatpak-spawn. Subsequently, DConf 
-was used again to get the layouts like on the first try. If the DConf command was run in Flatpak, 
-it would not return a valid value, but rather the signature of the setting which can be checked.
-If it returns the signature, the same command is spawned with the addition of flatpak-spawn. Compared 
-the the first try, Regex was not necessary anymore because with the knowledge from the second try, 
-using the built-in variant was a much cleaner way and less error-prone. In @gnome-keyboard-flatpak 
-the updated version be seen.
+was used again to get the layouts like on the first try. To find out if ReSet is running inside Flatpak's 
+sandboxing, the environment variable "container" can be checked. If it exists, then ReSet is running 
+inside the sandbox and the command can be spawned with flatpak-spawn. Of course there is the possibility 
+that a user can have the environment variable "container" defined, but this is currently the best way
+to check. If an alternative is found, then this will be replaced. Compared the the first try, Regex was
+not necessary anymore because with the knowledge from the second try, using the built-in variant was 
+a much cleaner way and less error-prone. In @gnome-keyboard-flatpak the updated version be seen.
 
 #let code = "
-let mut result = Command::new(\"dconf\")
-    .args(&[\"read\", \"/org/gnome/desktop/input-sources/sources\"])
-    .output();
+let result = if getenv(\"container\").is_none() {
+    Command::new(\"dconf\")
+        .args([\"read\", \"/org/gnome/desktop/input-sources/sources\"])
+        .output()
+} else {
+    Command::new(\"flatpak-spawn\")
+        .args([
+            \"--host\",
+            \"dconf\",
+            \"read\",
+            \"/org/gnome/desktop/input-sources/sources\",
+        ])
+        .output()
+};
 if result.is_err() {
     return kb;
 }
-let mut output = result.unwrap();
-let mut layout_variant = String::from_utf8(output.stdout).unwrap
-if layout_variant.contains(\"@a(ss)\") {
-    result = Command::new(\"flatpak-spawn\")
-          .arg(\"--host\")
-          .arg(\"dconf\")
-          .arg(\"read\")
-          .arg(\"/org/gnome/desktop/input-sources/sources\")
-          .output();
-    if result.is_err() {
-        return kb;
-    }
-    output = result.unwrap();
-    layout_variant = String::from_utf8(output.stdout).unwrap();
-}
+let output = result.unwrap();
+let layout_variant = String::from_utf8(output.stdout).unwrap();
 
-let layout_type = Some(VariantTy::new(\"a(ss)\").unwrap());
-let layout_variant = Variant::parse(layout_type, &layout_variant);
+let layout_variant = Variant::parse(Some(VariantTy::new(\"a(ss)\").unwrap()), &layout_variant);
 if layout_variant.is_err() {
     return kb;
 }
