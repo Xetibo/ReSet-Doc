@@ -12,23 +12,23 @@ for the ReSet application, alongside a testing framework and improvements to the
 original application.
 
 *Features*:\
-- Plugin system:\
+- *Plugin system*:\
   A plugin system for both processes of ReSet, which can be loaded dynamically at
   runtime and configured by the user.
-- _Monitor plugin_:\
+- *Monitor plugin*:\
   A monitor plugin that allows users to change the properties of their current
   monitor or rearrange their monitors.\
   This plugin supports: KDE, GNOME, Hyprland, wlroots based compositors and kwin
   based compositors
-- _Keyboard plugin_:\
+- *Keyboard plugin*:\
   A keyboard plugin that allows users to change their keyboard layout, and add or
   remove layouts.\
   This plugin supports: KDE, GNOME, Hyprland
-- Plugin testing framework:\
+- *Plugin testing framework*:\
   Plugins can provide tests to both the daemon and the graphical user interface,
   in order to test the entire system instead of just the plugin. (Integration
   tests)
-- Mock System:\
+- *Mock System*:\
   The original ReSet application can be tested without hardware or software
   support enabled on the system. (excluding Audio)
 
