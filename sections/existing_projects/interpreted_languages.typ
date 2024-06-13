@@ -7,7 +7,7 @@ their system in order to provide expandability. The paradigm used for such
 systems is explained in @InterpretedLanguages.
 
 #subsubsubsection("Neovim")
-Neovim is a fork of the iconic VIM editor. @vim @neovim It offers both VIMscript
+Neovim is a fork of the ubiquitous VIM editor. @vim @neovim It offers both VIMscript
 and lua support, as well as a Remote Procedure Call API, providing users with
 multiple ways to expand functionality. VIMscript is converted to lua, meaning
 Neovim only needs a single interpreter for lua. This interpreter is tightly

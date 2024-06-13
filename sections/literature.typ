@@ -280,7 +280,7 @@ or when multiple plugin systems are in place.
 
 #pagebreak()
 
-#subsubsubsection(custom_tag: "DynArchitecture" ,"Architecture")
+#subsubsubsection(custom_tag: "DynArchitecture", "Architecture")
 In @dynamic_libraries_plugin_system, the architecture of a plugin system with
 dynamic libraries is visualized.
 #align(
@@ -439,8 +439,8 @@ plugins, just for the browser itself. Some organizations require reviews from
 developers before publishing an extension to a web-based plugin "store", making
 it harder for malicious code to be published as an extension. @chrome-policy
 
-While researching systems, two potential mitigations for security concerns could
-be of interest for ReSet. The first is simply enforcing plugins to use an open
+#subsubsection("Licensing")
+One way to approach this topic is to simply enforce plugins to use an open
 license. This could be done with a copy-left license which would enforce that
 any code utilizing code of ReSet would also need to provide their source code
 with the same license. Currently, ReSet is already distributed under the GNU
@@ -452,8 +452,9 @@ note that this would not make malicious plugins impossible, but it would signal
 to users that any proprietary plugin is by default against the terms of the
 license and therefore not to be trusted. @GNU_V3
 
-The second mitigation would require the users' permission in order for a plugin
-to be included in ReSet. This could be done by creating a hash of the plugin,
+#subsubsection("Permission System")
+This approach would require the users' permission in order for a plugin to be
+included in ReSet. This could be done by creating a hash of the plugin,
 encrypting it with a password chosen by the user and storing this hash within a
 database (usually a secrets wallet). Should the plugin hash not be within the
 database upon startup, the user would be prompted for permission before loading
@@ -462,6 +463,18 @@ authentication mechanism. In order to facilitate this mechanism, ReSet could
 utilize the keyring functionality. This ensures that a user has a singular
 database that is not controlled by ReSet. The downside to this would be the
 dependency on keyrings themselves. @GNOME-Keyring @Keyring-Rust
+
+#subsubsection("Signing")
+The android ecosystem allows developers of apps to sign their application
+bundles with a cryptographic key. This allows users to be reasonably certain,
+that the package originates from the actual developer and not from a potentially
+malicious actor. It is however important to note, that signing plugins does not
+inherently mark plugins as safe, the only guarantee is that the key is from the
+developer. In other words, it does not protect against stolen keys which might
+be used by someone else, nor does it protect against malicious actors publishing
+their own application with their own key. Similar to the Licensing approach,
+users of ReSet would have to decide for themselves whether the developer of the
+application can be trusted in the first place. @apk_signing
 
 //#subsection("Hooks")
 //// TODO: which section is it referring to?

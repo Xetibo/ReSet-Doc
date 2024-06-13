@@ -22,6 +22,16 @@ covers the vast majority of use cases.
     )<mock_architecture>],
 )
 
+The cfg(test) annotation can be used to tell the compiler to include differing
+code in test environments. For ReSet, this is used to inject different interface
+names for DBus which will be handled at compile time. This means there is zero
+performance cost to this system as everything is handled before running the
+binary. A user with the release version of ReSet would not even be able to see
+this system by decompiling it, as it does not exist within this version.
+
+Further usage of macros with the mock system is covered in @MacroUsage. 
+
+#pagebreak()
 #subsubsection("Testing the Mock System")
 In order to provide tests for the mock system, both the daemon and the mock
 implementations need to be available during the testing phase. However, Rust
@@ -71,7 +81,8 @@ fn setup() {
     )<mock_setup>],
 )
 
-An example test can now use the provided setup function as shown in @mock_test_example.
+An example test can now use the provided setup function as shown in
+@mock_test_example.
 
 #let code = "
 #[tokio::test]

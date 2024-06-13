@@ -101,11 +101,9 @@ appropriate feedback.
 
 #let code = "
 #[tokio::test]
-#[cfg(test)]
 async fn test_plugins() {
     use re_set_lib::utils::plugin::plugin_tests;
     setup();
-    thread::sleep(Duration::from_millis(2000));
     unsafe {
         for plugin in BACKEND_PLUGINS.iter() {
             let name = (plugin.name)();
@@ -113,7 +111,6 @@ async fn test_plugins() {
             plugin_tests(name, tests);
         }
     }
-    COUNTER.fetch_sub(1, Ordering::SeqCst);
 }"
 // TODO: code of new testing call and system
 #align(
@@ -229,16 +226,13 @@ extern \"C\" {
 
     // Reports the capabilities that your plugin will provide.
     // These capabilities will also be reported by the daemon.
-    #[allow(improper_ctypes)]
     pub fn capabilities() -> PluginCapabilities;
 
     // Reports the name of the plugin
     // Mostly used for duplication checks
-    #[allow(improper_ctypes)]
     pub fn name() -> String;
 
     // Inserts your plugin interface into the DBus server.
-    #[allow(improper_ctypes)]
     pub fn dbus_interface(cross: &mut Crossroads);
 
     // import tests from plugins

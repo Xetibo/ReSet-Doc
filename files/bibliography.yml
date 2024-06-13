@@ -426,4 +426,7 @@ helix:
   type: web
   title: Helix
   url: https://helix-editor.com/
-
+apk_signing: 
+  type: web
+  title: Application Signing
+  url: https://source.android.com/docs/security/features/apksigning
