@@ -311,6 +311,8 @@ API in order to provide users of ReSet the possibility to use languages other
 than Rust. However, it is important to note that this would also mean including
 C bindings to DBus and GTK, which could increase the difficulty.
 
+#pagebreak()
+
 #subsection("Macros")
 Macros are a way to change the code at compile time. In languages like C or C++,
 this is often used in order to differentiate different environments, prohibit

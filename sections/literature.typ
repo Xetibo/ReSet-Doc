@@ -222,6 +222,8 @@ compiled into the binary, and all shared libraries are created with the C ABI
 using "extern C". Further information about ABI along with examples can be found
 in @ApplicationBinaryInterfaceABI. @crates @rust_abi_stability
 
+#pagebreak()
+
 #subsubsubsection("Containerization of dynamic libraries")
 Plugin systems have a variety of points to hook a dynamic library into the
 application. The easiest is to just execute plugin functions at a certain point

@@ -2,7 +2,6 @@
 #lsp_placate()
 
 #subsection("Management Summary")
-*Introduction*:\
 ReSet is a settings application developed with Rust for Linux-based systems to
 be compatible with different graphical desktop interfaces. Its core
 functionalities of Wi-Fi, Bluetooth and Audio are already implemented, but
@@ -38,14 +37,21 @@ many distributions as possible. For this reason, at least four different
 packages have been created: Arch package, Debian package (Ubuntu 24.04), NixOS
 module and the binaries themselves which were proven to work with Flatpak.
 
-*Risks*:
-During the initial stages, risks and its countermeasures were defined to 
-respond fast to possible obstacles. The plugin system was completed in 
-time and was not too ambitious. ReSet does not have any noticable lag 
-that would hinder the user experience. The plugin system was tested 
-extensively with testers and by the developers and should be relatively
-stable, but there is no way to guarantee that there are no issues. The 
-chosen architecture fits very nicely into ReSet. 
+*Risks*:\
+During the initial stages, risks and its countermeasures were defined to respond
+fast to possible obstacles. The plugin system was completed in time and was not
+too ambitious. ReSet does not have any noticeable lag that would hinder the user
+experience. The plugin system was tested extensively with testers and developers
+and should be relatively stable. The chosen architecture fits very nicely into
+ReSet.
+
+*Non-Functional Requirements*:\
+The project completed all but one required non-functional requirements. The user
+interface is responsive and fast, plugins feel like they are core features of
+the application and the plugins do not get loaded in case of a mismatch in API.
+The only problematic non-functional requirement is the handling of crashes in
+plugins. This was not achieved as plugins are not sandboxed, hence if a plugin
+calls unwrap on a None value, the application will crash.
 
 *Extensibility*:\
 Further work can be done to create further plugins to increase the functionality

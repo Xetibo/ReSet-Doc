@@ -54,6 +54,8 @@ constraints.
 As such, this thesis will include work on the original implementation in order
 to facilitate the basis for a reliable plugin system.
 
+#pagebreak()
+
 #subsection("Challenges")
 - *Consistency* \
   With the advent of the plugin system, the importance of a consistent user
