@@ -3,8 +3,22 @@
 #subtitle_slide("Plugin System")
 
 #polylux-slide[
-=== Architecture
-#align(center, img("dynamic_libraries.svg", width: 59%))
+=== Analyzed Paragidms
+#columns(
+  2, gutter: 40pt, [
+    #set text(size: 15pt)
+    #subsubsubsubsection(num: none, "Dynamic Libraries")
+    #align(center, img("dynamic_libraries.svg", width: 100%, fit: "contain"))
+    #colbreak()
+    #box(
+      fill: none, stroke: none, [
+        #subsubsubsubsection(num: none, "Interpreted Languages")
+        #align(center, img("interpreted_languages.svg", height: 90%, fit: "contain"))
+      ],
+    )
+    #set text(size: 20pt)
+  ],
+)
 #pdfpc.speaker-note(```md
     - shared libraries
       - only in memory once!
@@ -16,37 +30,64 @@
 ]
 
 #polylux-slide[
-=== Other Ideas
-#grid(
-  columns: (1fr, 2.3fr), rows: (auto), [
-    #align(center, img("hourglass.svg", width: 100%, fit: "contain"))
-  ], [
-    #rotate(20deg, align(center, img("interpreted_languages.svg", width: 100%)))
-  ],
-)
+  === Comparison
+  \
+  #columns(
+    2, gutter: 40pt, [
+      #box(
+        fill: none, stroke: none, [
+          #subsubsubsubsection(num: none, "Dynamic Libraries")
+          #v(15pt)
+          #benefits(
+            ("Less memory usage", "Better performance", "Guaranteed compatibility"),
+          )
+          #negatives(("Language interoperability", "User experience"))
+        ],
+      )
+      #colbreak()
+      #box(
+        fill: none, stroke: none, [
+          #subsubsubsubsection(num: none, "Interpreted languages")
+          #v(15pt)
+          #benefits(
+            ("User experience", "Simple extendability", "ABI stability guaranteed"),
+          )
+          #negatives(
+            (
+              "Interpreter per process", "Performance overhead", "Implementation overhead", "Limited compatibility",
+            ),
+          )
+        ],
+      )
+      #set text(size: 20pt)
+    ],
+  )
+
+]
+
+#polylux-slide[
+=== Resulting Architecture
+#align(center, img("poster.svg", width: 100%, fit: "contain"))
 #pdfpc.speaker-note(```md
-    - hourglass
-      - extension of previous architecture
-      - potential for other languages
-      - common for proprietary libraries
-      - works for all programming languages
-    - interpreted languages
-      - 2 interpreters
-      - runtime overhead
-      - easier plugin definiton for plugin developers
-      - need to create UI snippets for plugin developers
-        - or integrate luaGTK
+    - shared libraries
+      - only in memory once!
+      - common for all operating systems
+    - communication over DBus
+      - unix compatible
+      - common -> used for networking and bluetooth
     ```)
 ]
 
 #polylux-slide[
 === Testing
+\
 #grid(columns: (1.5fr, 2fr), rows: (auto), [
   - Plugin Developer defines:
     - Unit tests
     - Integrations tests
   - Issues:
-    - Integrate tests from plugin into daemon
+    - Integrate tests from\
+      plugin into daemon
 ], [
 #set text(13pt)
 #sourcecode(```rs

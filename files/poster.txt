@@ -14,7 +14,7 @@ AddContainerTag("process", $legendText="process")
 AddContainerTag("ABI", $legendText="ABI")
 AddContainerTag("dynlib", $legendText="dynamic library")
 
-' LAYOUT_LANDSCAPE()
+LAYOUT_LANDSCAPE()
 ' LAYOUT_TOP_DOWN()
 HIDE_STEREOTYPE()
 

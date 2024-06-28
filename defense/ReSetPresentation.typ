@@ -1,7 +1,8 @@
 #import "./utils.typ": *
 
 #set page(paper: "presentation-16-9")
-#set text(size: 20pt)
+#set text(size: 20pt, font: "DejaVu Sans")
+// #set text(size: 20pt,
 
 #polylux-slide[
   #align(horizon + center)[
@@ -9,7 +10,7 @@
     #image("./figures/ReSet1.png", width: 150pt)
     Fabio Lenherr, Felix Tran
 
-    04.04.2024
+    02.07.2024
   ]
 ]
 
@@ -31,23 +32,19 @@
 
   #columns(2, [
     - Context //
+      - BA topic
       - What is ReSet?// talk about reset and its idea
-      - SA shortcoming
-      - BA goals
     - Plugin system // Fabio
       - Architecture
       - Testing
-      - Security
-      - Developer experience
+      - Implementation
+      - Obstacles
     #colbreak()
     - Plugin ideas //
       - Monitor
       - Keyboard
-    - UI // Felix
-      - Consistency
-      - Plugin Consistency & Guidelines// maybe our own
-      - Accessibility
-    - Showcase//
+    - Showcase
+    - Retrospective and Future
     - Questions
   ])
   #pdfpc.speaker-note(
@@ -63,8 +60,10 @@
   )
 ]
 
+#include "topics/topic.typ"
 #include "topics/context.typ"
 #include "topics/plugin_system.typ"
-#include "topics/plugin_ideas.typ"
-#include "topics/ui.typ"
+#include "topics/keyboard.typ"
+#include "topics/monitor.typ"
+#include "topics/distribution.typ"
 #include "topics/showcase.typ"
