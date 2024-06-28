@@ -70,7 +70,7 @@
   - Terminal client
   #colbreak()
   #v(40pt)
-  #align(center, image("../figures/check.svg", width: 40%))
+  #align(center, image("../figures/checkWrong.svg", width: 40%))
 ])
 #pdfpc.speaker-note(```md
     - no difference between reset ui and plugin ui is the goal
