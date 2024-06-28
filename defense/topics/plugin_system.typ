@@ -1,5 +1,13 @@
 #import "../utils.typ": *
 
+// TODO:
+// change summary []
+// methodology notes []
+// plugin system notes []
+// monitor notes []
+// distribution notes []
+// technologies notes []
+
 #subtitle_slide("Plugin System")
 
 #polylux-slide[
