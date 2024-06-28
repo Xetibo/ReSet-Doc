@@ -14,18 +14,18 @@
     ```)
 ]
 
-#polylux-slide[
-#align(center, img("hyprland_desktop.png", width: 100%, fit: "contain"))
-#pdfpc.speaker-note(```md
-    # hyprland
-    - modular
-      - specific and small environment
-      - doesn't ship configuaration features
-    ```)
-]
+// #polylux-slide[
+// #align(center, img("hyprland_desktop.png", width: 100%, fit: "contain"))
+// #pdfpc.speaker-note(```md
+//     # hyprland
+//     - modular
+//       - specific and small environment
+//       - doesn't ship configuaration features
+//     ```)
+// ]
 
 #polylux-slide[
-=== working features across environments
+== Environments
 #v(35pt)
 //typstfmt::off
   #grid(
@@ -78,11 +78,9 @@
 ]
 
 #polylux-slide[
-  === Variable features
+  === Idea
   \
   #columns(2, [
-
-    - Plugin System
     - User controllable features
     - Automatic detection for base features
       - No Bluetooth hardware, no Bluetooth features
@@ -105,6 +103,31 @@
 ]
 
 #polylux-slide[
+  == Technologies
+  #align(
+    center + horizon, [
+      #v(-20pt)
+      #columns(3, [
+        #box(stroke: none, fill: none, [
+          #text(size: 25pt, weight: "bold", "Rust")
+          #align(center, img("rust.png", width: 80%, fit: "contain"))
+        ])
+        #colbreak()
+        #box(stroke: none, fill: none, [
+          #text(size: 25pt, weight: "bold", "GTK")
+          #align(center, img("gtk.png", width: 80%, fit: "contain"))
+        ])
+        #colbreak()
+        #box(stroke: none, fill: none, [
+          #text(size: 25pt, weight: "bold", "Libadwaita")
+          #align(center, img("libadwaita.jpg", width: 80%, fit: "contain"))
+        ])
+      ])
+    ],
+  )
+]
+
+#polylux-slide[
   === One User Interface design
   #align(center, image("../figures/reset_audio.png", width: 70%))
   #pdfpc.speaker-note(
@@ -116,6 +139,8 @@
     ```
   )
 ]
+
+
 
 #polylux-slide[
   === SA Limitations
@@ -135,27 +160,6 @@
       - reliance on real world hardware
     - features set intentionally limited due to plugin system
     - accessibility limited to default gnome
-    ```
-  )
-]
-
-#polylux-slide[
-  === BA goals
-  \
-  #columns(2, [
-  - Plugin system
-  - Testing framework
-  - Increased stability
-  - Improved accessibility
-  #colbreak()
-  #v(-15pt)
-  #align(center, image("../figures/flag.svg", width: 40%))
-    ])
-  #pdfpc.speaker-note(
-    ```md
-    - plugin system for features
-    - testing framework with mocks
-    - stability by bug squashing
     ```
   )
 ]

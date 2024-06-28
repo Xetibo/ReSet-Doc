@@ -1,6 +1,7 @@
 #import "@preview/polylux:0.3.1": *
 #import "@preview/codelst:2.0.1": sourcecode
 
+
 #let regular_page_design() = [
   #align(
     right + top, [
@@ -46,3 +47,75 @@
     ]))
   ]
 ]
+
+#let custom_heading(num, use_line, level, name: "", custom_tag: "") = {
+  let concat_name = str(name.replace(" ", ""))
+  let concat_name = str(concat_name.replace("(", ""))
+  let concat_name = str(concat_name.replace(")", ""))
+  if custom_tag != "" {
+    locate(
+      loc => {
+        let elem = query(heading.where(body: [#custom_tag]), loc)
+        if elem == () {
+          align(left, [#heading(numbering: num, level: level, name)#label(custom_tag)])
+        } else {
+          align(left, [#heading(numbering: num, level: level, name)])
+        }
+      },
+    )
+  } else if num != "" and type(name) == type("string") {
+    locate(
+      loc => {
+        let elem = query(heading.where(body: [#name]).before(loc), loc)
+        if elem == () {
+          align(
+            left, [#heading(numbering: num, level: level, name)#label(concat_name)],
+          )
+        } else {
+          align(left, [#heading(numbering: num, level: level, name)])
+        }
+      },
+    )
+  } else {
+    align(left, [#heading(numbering: num, level: level, name)])
+  }
+  if use_line {
+    line(length: 100%)
+  }
+}
+
+#let section(num: "1.1.1", use_line: false, custom_tag: "", name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 1)
+}
+
+#let subsection(num: "1.1.1", use_line: false, custom_tag: "", name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 2)
+}
+
+#let subsubsection(num: "1.1.1", use_line: false, custom_tag: "", name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 3)
+}
+
+#let subsubsubsection(num: "1.1.1", use_line: false, custom_tag: "", name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 4)
+}
+
+#let subsubsubsubsection(num: "1.1.1", use_line: false, custom_tag: "", name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 5)
+}
+
+#let benefits(items) = {
+  set list(marker: [+])
+  set text(fill: green)
+  for item in items {
+    list.item(item)
+  }
+}
+
+#let negatives(items) = {
+  set list(marker: [-])
+  set text(fill: red)
+  for item in items {
+    list.item(item)
+  }
+}
