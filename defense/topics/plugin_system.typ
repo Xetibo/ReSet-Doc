@@ -79,6 +79,51 @@
 ]
 
 #polylux-slide[
+=== Plugin API
+#sourcecode(```rs
+  pub fn backend_startup();
+
+  pub fn backend_shutdown();
+
+  pub fn capabilities() -> PluginCapabilities;
+
+  pub fn name() -> String;
+
+  pub fn dbus_interface(cross: &mut Crossroads);
+
+  pub fn backend_tests();
+  ```)
+#pdfpc.speaker-note(```md
+- explain each function
+- explain why crossroads was an issue
+    ```)
+]
+
+#polylux-slide[
+=== Macros
+#grid(columns: (1.2fr, 1.5fr), rows: auto, [
+*Release*
+#sourcecode(```rs
+#[macro_export]
+#[cfg(not(debug_assertions))]
+macro_rules! LOG {
+  ($message:expr) => {{}};
+}```)
+], [
+*Debug*
+#sourcecode(```rs
+#[macro_export]
+#[cfg(any(debug_assertions, test))]
+macro_rules! LOG {
+  ($message:expr) => {{
+    write_log_to_file!($message);
+    println!("LOG: {}", $message);
+  }};
+}```)
+])
+]
+
+#polylux-slide[
 === Testing
 \
 #grid(columns: (1.5fr, 2fr), rows: (auto), [
@@ -118,6 +163,26 @@
   - custom result prints
   - all tests independent -> different thread
     ```)
+]
+
+#polylux-slide[
+=== Threading\
+#sourcecode(```rs
+thread::scope(|scope| {
+  let wrapper = Arc::new(RwLock::new(CrossWrapper::new(&mut cross)));
+  for plugin in BACKEND_PLUGINS.iter() {
+    let wrapper_loop = wrapper.clone();
+    scope.spawn(move || {
+      // allocate plugin specific things
+      (plugin.startup)();
+      // register and insert plugin interfaces
+      (plugin.data)(wrapper_loop);
+      let _name = (plugin.name)();
+      LOG!(format!("Loaded plugin: {}", _name));
+    });
+  }
+});
+```)
 ]
 
 #polylux-slide[
@@ -175,3 +240,4 @@
     - rust provides good documentation with documentation tests
     ```)
 ]
+
