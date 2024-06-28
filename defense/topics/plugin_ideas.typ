@@ -51,4 +51,3 @@
       - Very static
   ```)
 ]
-//  - warum schwierig, wie gelöst, sandboxing
