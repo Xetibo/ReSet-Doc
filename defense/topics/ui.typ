@@ -60,6 +60,24 @@
 ])
 #align(center, img("resetHighContrast.png", width: 70%))
 
+#polylux-slide[
+=== Shortcoming
+\
+#columns(2, [
+  - Provide CSS classes (spacing, alignment, sizing, etc.)
+  - No custom widgets
+  - No custom animations
+  - Terminal client
+  #colbreak()
+  #v(40pt)
+  #align(center, image("../figures/check.svg", width: 40%))
+])
+#pdfpc.speaker-note(```md
+    - no difference between reset ui and plugin ui is the goal
+    - css classes exposed with documentation
+    - custom widgets with predefined css classes for unified ui
+  ```) ]
+
 #pdfpc.speaker-note(```md
     - not much active work bc already integrated
     - shortcuts a work in progress in BA
