@@ -41,7 +41,6 @@
       - Testing
       - Threading
       - Security
-      - Developer Experience
     #colbreak()
     - Plugins
       - Keyboard

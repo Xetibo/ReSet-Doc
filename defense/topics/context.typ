@@ -92,7 +92,7 @@
     - User controllable features
     - Automatic detection for base features
       - No Bluetooth hardware\
-        -> no Bluetooth features
+        -> No Bluetooth features
       - Small amount of base features
     ], [
   #align(left, image("../figures/shopping.svg", width: 60%))
