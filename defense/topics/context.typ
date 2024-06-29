@@ -120,17 +120,17 @@
       #columns(3, [
         #box(stroke: none, fill: none, [
           #text(size: 25pt, weight: "bold", "Rust")
-          #align(center, img("rust.png", width: 80%, fit: "contain"))
+          #align(center, img("rust.png", width: 70%, fit: "contain"))
         ])
         #colbreak()
         #box(stroke: none, fill: none, [
           #text(size: 25pt, weight: "bold", "GTK")
-          #align(center, img("gtk.png", width: 80%, fit: "contain"))
+          #align(center, img("gtk.png", width: 70%, fit: "contain"))
         ])
         #colbreak()
         #box(stroke: none, fill: none, [
           #text(size: 25pt, weight: "bold", "Libadwaita")
-          #align(center, img("libadwaita.jpg", width: 80%, fit: "contain"))
+          #align(center, img("libadwaita.jpg", width: 70%, fit: "contain"))
         ])
       ])
     ],
