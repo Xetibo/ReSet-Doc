@@ -55,7 +55,7 @@
       #colbreak()
       #box(
         fill: none, stroke: none, [
-          #subsubsubsubsection(num: none, "Interpreted languages")
+          #subsubsubsubsection(num: none, "Interpreted Languages")
           #v(15pt)
           #benefits(
             ("User experience", "Simple extendability", "ABI stability guaranteed"),

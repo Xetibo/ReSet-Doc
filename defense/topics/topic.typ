@@ -2,7 +2,7 @@
 
 
 #polylux-slide[
-== Goals
+== BA Goals
 \
 #columns(2, [
   - Plugin System for ReSet

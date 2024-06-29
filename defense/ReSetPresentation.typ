@@ -27,24 +27,28 @@
 ]
 
 #polylux-slide[
-  == Summary
+  == Table of Contents
   #v(15pt)
 
   #columns(2, [
-    - Context //
-      - BA topic
-      - What is ReSet?// talk about reset and its idea
+    - Context
+      - What is ReSet? // talk about reset and its idea
+      - BA goals
     - Plugin system // Fabio
       - Architecture
+      - Plugin API
+      - Macros
       - Testing
-      - Implementation
-      - Obstacles
+      - Threading
+      - Security
+      - Developer Experience
     #colbreak()
-    - Plugin ideas //
-      - Monitor
+    - Plugins
       - Keyboard
+      - Monitor
+    - Distributions
+    - Usability Test Results
     - Showcase
-    - Retrospective and Future
     - Questions
   ])
   #pdfpc.speaker-note(
@@ -60,8 +64,8 @@
   )
 ]
 
-#include "topics/topic.typ"
 #include "topics/context.typ"
+#include "topics/topic.typ"
 #include "topics/plugin_system.typ"
 #include "topics/keyboard.typ"
 #include "topics/monitor.typ"

@@ -29,11 +29,10 @@
       - drag and drop not effortless
       - translations
   ```)
-
 ]
 
 #polylux-slide[
-  === Ease of Use
+  === Design
   \
    #align(center, img("testDesign.png", width: 100%, height: 75%, fit: "contain"))
   #pdfpc.speaker-note(```md

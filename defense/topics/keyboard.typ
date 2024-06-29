@@ -80,7 +80,7 @@
   === Nested groups
   \
   - ListBox always selecting a row
-    - selecting back row, which triggers an action to go back
+    - Selecting back row, which triggers an action to go back
   - Some rows have different logic depending on if variant exists
   #pdfpc.speaker-note(```md
     - Solution: Grab focus of another widget so no selection is triggered
