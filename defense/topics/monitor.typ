@@ -9,7 +9,7 @@
   #align(center, img("kde-monitor.png", width: 100%, fit: "contain"))
 ])
 #pdfpc.speaker-note(```md
-  # gnome
+  ### gnome
   - per monitor display in separate popup
   - dragging possible -> no gaps
   - numbered monitors
@@ -18,7 +18,7 @@
     - join/mirror
   - fixed scaling
 
-  # kde
+  ### kde
   - per monitor settings on top page
   - shows currently selected monitor by highlighting
   - dragging possible -> no gaps
@@ -63,7 +63,7 @@
 ==== Overlaps
 #align(center, img("overlap.png", width: 100%, fit: "contain"))
 #pdfpc.speaker-note(```md
-  # overlaps
+  ### overlaps
   - resizing (resolution) might cause overlaps
     - bigger issue with more monitors
     - complex detection and solution

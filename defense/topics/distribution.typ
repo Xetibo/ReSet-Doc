@@ -29,19 +29,19 @@
   ],
 )
 #pdfpc.speaker-note(```md
-# ubuntu 24.04 package
+### ubuntu 24.04 package
   - reset
   - both plugins
   - auto installed -> configuration required
-  # Nix
+  ### Nix
   - homemanager module
   - ReSet and plugins
   - auto installation and configuration
-  # Arch
+  ### Arch
   - reset
   - both plugins
   - auto installed -> configuration required
-# Flatpak
+### Flatpak
   - ReSet
   - plugins must be installed manually -> binary
   - manual configuration

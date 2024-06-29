@@ -4,6 +4,18 @@
 #set text(size: 20pt, font: "DejaVu Sans")
 // #set text(size: 20pt,
 
+#pdfpc.config(
+  default-transition: (type: "push", duration-seconds: 0.2, angle: rtl, alignment: "vertical", direction: "outward")
+)
+// pdfpc ReSetPresentation.pdf --duration=35 --last-minutes=25
+//
+// in /home/dashie/.config/pdfpc/pdfpcrc
+//
+// option current-size 50
+// option current-height 50
+// option next-height 40
+// option transition-fps 90
+
 #polylux-slide[
   #align(horizon + center)[
     = ReSet
