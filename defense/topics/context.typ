@@ -7,22 +7,12 @@
 #pdfpc.speaker-note(```md
     # default gnome look
     - modular
-      - can be replaced
+      - can be replaced unlike in windows
       - different environments kde, budgie, hyprland, sway
     - not all apps cross compatible
       - especially with wayland
     ```)
 ]
-
-// #polylux-slide[
-// #align(center, img("hyprland_desktop.png", width: 100%, fit: "contain"))
-// #pdfpc.speaker-note(```md
-//     # hyprland
-//     - modular
-//       - specific and small environment
-//       - doesn't ship configuaration features
-//     ```)
-// ]
 
 #polylux-slide[
 == Environments
@@ -75,18 +65,37 @@
       )
     ),
   )
+#pdfpc.speaker-note(```md
+  - specific implementation needed
+  - not all environments support everything
+  - differing paradigms
+  - not all environments offer settings at all
+    ```)
 ]
 
 #polylux-slide[
   === Idea
+  #align(center, image("../figures/reset_audio.png", width: 70%))
+  #pdfpc.speaker-note(
+    ```md
+    - show picture of ReSet -> explain functionality
+    - works on as many environments as possible
+    - All features share one user interface design
+    ```
+  )
+]
+
+#polylux-slide[
+  === Features
   \
-  #columns(2, [
+  #grid(columns: (2fr, 1fr), rows: auto, [
     - User controllable features
     - Automatic detection for base features
-      - No Bluetooth hardware, no Bluetooth features
+      - No Bluetooth hardware\
+        -> no Bluetooth features
       - Small amount of base features
-  #colbreak()
-  #align(center, image("../figures/shopping.svg", width: 40%))
+    ], [
+  #align(left, image("../figures/shopping.svg", width: 60%))
     ])
   #pdfpc.speaker-note(
     ```md
@@ -125,22 +134,17 @@
       ])
     ],
   )
-]
-
-#polylux-slide[
-  === One User Interface design
-  #align(center, image("../figures/reset_audio.png", width: 70%))
   #pdfpc.speaker-note(
     ```md
-    - All features share one user interface design
-    - GTK/Rust
-      - GTK used in gnome, very prevalent on linux
-    - more information later
+    - gtk -> reliable, established -> 20 years
+      - iced possible alternative -> not ready when SA started
+      - no change for BA due to time constraints
+    - libadwaita -> extension of gtk -> subjective choice
+    - rust -> fast, memory efficient, good developer experience, still safe
+      -> optimal to speed up with dbus -> aka mask dbus overhead
     ```
   )
 ]
-
-
 
 #polylux-slide[
   === SA Limitations
@@ -159,7 +163,8 @@
     - testing not possible because BUS connection
       - reliance on real world hardware
     - features set intentionally limited due to plugin system
-    - accessibility limited to default gnome
+    - accessibility limited to default gtk
+      - work in progress
     ```
   )
 ]

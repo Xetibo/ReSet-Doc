@@ -6,7 +6,11 @@
       - show audio
     - add plugin
     - show with plugin
-    - show deamon without interface (dspy)
+    - show daemon without interface (dspy)
+    - show monitor plugin
+      - show various configurations
+    - show keyboard plugin
+      - show new input language
   ```)
 
 #subtitle_slide("Questions")

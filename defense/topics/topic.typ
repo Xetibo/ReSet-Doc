@@ -1,10 +1,9 @@
 #import "../utils.typ": *
 
-
 #polylux-slide[
 == BA Goals
 \
-#columns(2, [
+#grid(columns: (2fr, 1fr), rows: auto, [
   - Plugin System for ReSet
     - Analysis of system paradigms
     - Analysis of existing systems
@@ -13,8 +12,8 @@
     - Validation for the plugin system
     - Analysis of existing solutions
     - Two implementations
-  #colbreak()
-  #align(center, img("flag.svg", width: 50%))
+], [
+  #align(left, img("flag.svg", width: 80%))
 ])
 #pdfpc.speaker-note(```md
     # topic
@@ -22,7 +21,7 @@
       - plugin system for reset
     - methods:
       - analysis of existing solutions
-      - Implemnentation
+      - Implementation
       - exemplary plugins to validate system
       - user tests to validate experience
       - testing framework across both to prove validity and viability

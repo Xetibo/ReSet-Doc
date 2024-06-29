@@ -1,7 +1,6 @@
 #import "@preview/polylux:0.3.1": *
 #import "@preview/codelst:2.0.1": sourcecode
 
-
 #let regular_page_design() = [
   #align(
     right + top, [
@@ -48,7 +47,7 @@
   ]
 ]
 
-#let custom_heading(num, use_line, level, name: "", custom_tag: "") = {
+#let custom_heading(num, use_line, level, name: "", custom_tag: "", al: left) = {
   let concat_name = str(name.replace(" ", ""))
   let concat_name = str(concat_name.replace("(", ""))
   let concat_name = str(concat_name.replace(")", ""))
@@ -68,40 +67,38 @@
       loc => {
         let elem = query(heading.where(body: [#name]).before(loc), loc)
         if elem == () {
-          align(
-            left, [#heading(numbering: num, level: level, name)#label(concat_name)],
-          )
+          align(al, [#heading(numbering: num, level: level, name)#label(concat_name)])
         } else {
-          align(left, [#heading(numbering: num, level: level, name)])
+          align(al, [#heading(numbering: num, level: level, name)])
         }
       },
     )
   } else {
-    align(left, [#heading(numbering: num, level: level, name)])
+    align(al, [#heading(numbering: num, level: level, name)])
   }
   if use_line {
     line(length: 100%)
   }
 }
 
-#let section(num: "1.1.1", use_line: false, custom_tag: "", name) = {
-  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 1)
+#let section(num: "1.1.1", use_line: false, custom_tag: "", align: left, name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, al, 1)
 }
 
-#let subsection(num: "1.1.1", use_line: false, custom_tag: "", name) = {
-  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 2)
+#let subsection(num: "1.1.1", use_line: false, custom_tag: "", align: left, name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, al: align, 2)
 }
 
-#let subsubsection(num: "1.1.1", use_line: false, custom_tag: "", name) = {
-  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 3)
+#let subsubsection(num: "1.1.1", use_line: false, custom_tag: "", align: left, name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, al: align, 3)
 }
 
-#let subsubsubsection(num: "1.1.1", use_line: false, custom_tag: "", name) = {
-  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 4)
+#let subsubsubsection(num: "1.1.1", use_line: false, custom_tag: "", align: left, name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, al: align, 4)
 }
 
-#let subsubsubsubsection(num: "1.1.1", use_line: false, custom_tag: "", name) = {
-  custom_heading(num, use_line, custom_tag: custom_tag, name: name, 5)
+#let subsubsubsubsection(num: "1.1.1", use_line: false, custom_tag: "", align: left, name) = {
+  custom_heading(num, use_line, custom_tag: custom_tag, name: name, al: align, 5)
 }
 
 #let benefits(items) = {
