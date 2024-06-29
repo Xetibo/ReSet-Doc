@@ -261,32 +261,3 @@ thread::scope(|scope| {
     ```)
 ]
 
-#polylux-slide[
-=== Developer Experience
-\
-#columns(2, [
-  - Flexibility
-    - Ability to choose language
-    - Ability to choose toolkit
-  - Stability
-    - Stable ABI
-    - Good documentation
-    #colbreak()
-    #v(-20pt)
-    #align(center, image("../figures/documentation.svg", width: 30%))
-    #align(center, image("../figures/bugs.svg", width: 30%))
-])
-#pdfpc.speaker-note(```md
-- flexibility
-  - language
-    - hard to achieve with DBus and gtk wrappers
-      - requires modifications to both
-  - toolkit
-    - not possible with ReSets own user interface
-    - but reset can be used without it, hence you can create your own
-  - stability
-    - rust provides good documentation with documentation tests
-    - memory safety -> all crashes were due to logic errors or gtk issues
-    ```)
-]
-

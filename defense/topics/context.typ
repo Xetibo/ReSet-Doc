@@ -99,6 +99,7 @@
     ])
   #pdfpc.speaker-note(
     ```md
+    # features
     - Explain why these features are chosen
       - Everything a typical user might want to use
       - Base features include features that are independent of environments
