@@ -66,4 +66,5 @@
 #include "topics/keyboard.typ"
 #include "topics/monitor.typ"
 #include "topics/distribution.typ"
+#include "topics/usabilitytest.typ"
 #include "topics/showcase.typ"
