@@ -27,6 +27,7 @@
     - works well with different themes
     - improvements:
       - drag and drop not effortless
+      - translations
   ```)
 
 ]
