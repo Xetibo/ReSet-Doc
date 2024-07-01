@@ -78,7 +78,7 @@
   - GIO cannot access the system schemas
     - GSettings subsequently not working as well
     // flatpak -> gio with x
-  #align(center, img("flatpakSandbox.png", width: 65%, fit: "contain"))
+  #align(center, img("flatpak-issue.png", width: 65%, fit: "contain"))
   #pdfpc.speaker-note(```md
     - this problem is will happen to all plugins that need to access system schemas
     - schema is a db file that contains the settings of the system
