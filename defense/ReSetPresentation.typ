@@ -43,7 +43,7 @@
   #v(15pt)
 
   #columns(2, [
-    - Context
+    - Context // Felix
       - What is ReSet? // talk about reset and its idea
       - BA goals
     - Plugin system // Fabio
@@ -55,11 +55,11 @@
       - Security
     #colbreak()
     - Plugins
-      - Keyboard
+      - Keyboard // Felix
       - Monitor
     - Distributions
-    - Usability Test Results
-    - Showcase
+    - Usability Test Results // Felix
+    - Showcase // Felix
     - Questions
   ])
   #pdfpc.speaker-note(

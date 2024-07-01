@@ -20,6 +20,7 @@
     - 2 buttons to change order
     - Add button above list
     - Other functions next to add button
+    - Too cluttered (personal preference)
   ```)
 ]
 
@@ -29,7 +30,6 @@
   - Sortable by drag and drop
     - Top element is active layout
     - Reason: Much easier to drag compared to spam button
-
   - Features:
     - Add layouts
     - Easy to find a layout
@@ -42,36 +42,17 @@
 ]
 
 #polylux-slide[
-  #align(center, img("reset-add-keyboard.png", width: 100%, fit: "contain"))
-  #pdfpc.speaker-note(```md
-  - How to use:
-    - Use the add layout button the go to another screen
-    - (Optional) Use the search bar to filter layouts
-    - Select the language and press the add button
-    - (Optional) Use the delete button to remove a layout with the 3 dots icon
-      - Currently not useful as the only feature in there
-  ```)
-]
-
-#polylux-slide[
   === Change CSS dynamically
   \
   - Highlight of top 4 layouts
     - XKB limitation
-  - Custom signals not working
-    - Required information not available
   #pdfpc.speaker-note(```md
     - limitation of xkb (not enough space for more in xkbstate struct)
-    - custom signals it would need access to the implementation of the widget
-      - else you would send a signal in reponse to a signal
-      - not possible because it would require changes in the gtk library
+      - more possible in theory just only top 4 saved
     - actions are function because that can be assigned to widgets
       - can be called from anywhere of the widget or children via string
       - with information not available from where it is called
       - advantages: reusable code, can be called from anywhere where widget is available
-    - if i have to bind to an existing signal and call an action, why not inline?
-      - certain information not available in the signal
-        - e.g in add keyboard layout no access to user keyboard layout list
     - Solution: Using custom actions to change CSS
     ```)
 ]
@@ -94,10 +75,10 @@
   \
   - GIO cannot access the system schemas
     - GSettings subsequently not working as well
-  - Solution: Use flatpak-spawn to spawn commands outside of sandbox
   #pdfpc.speaker-note(```md
     - this problem is will happen to all plugins that need to access system schemas
     - schema is a db file that contains the settings of the system
+    - Solution: Use flatpak-spawn to spawn commands outside of sandbox
     ```)
 ]
 
