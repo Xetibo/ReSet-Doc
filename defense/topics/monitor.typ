@@ -27,6 +27,17 @@
 ]
 
 #polylux-slide[
+#align(center, img("reset-monitor.png", width: 100%, fit: "contain"))
+#pdfpc.speaker-note(```md
+  - selected monitor highlighted
+    - blue -> color blindness
+  - per monitor settings below
+  - libadwaita rows
+  - dynamic entries for scaling, primary monitor, vrr
+      ```)
+]
+
+#polylux-slide[
 === Issues
 \
 #grid(columns: (2fr, 1fr), rows: auto, [
@@ -128,17 +139,6 @@
   - loops over modes
   - independent refreshrate/scaling from resolution
   - no duplicate entries
-      ```)
-]
-
-#polylux-slide[
-#align(center, img("reset-monitor.png", width: 100%, fit: "contain"))
-#pdfpc.speaker-note(```md
-  - selected monitor highlighted
-    - blue -> color blindness
-  - per monitor settings below
-  - libadwaita rows
-  - dynamic entries for scaling, primary monitor, vrr
       ```)
 ]
 
