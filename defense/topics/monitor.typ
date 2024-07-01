@@ -45,10 +45,10 @@
     #v(10pt)
   ]))
 ])
-#align(center, text(fill: maroon, size: 25pt, [
+#align(center, text(fill: maroon, size: 30pt, [
   #v(10pt)
-  $ 3440 / 1.066666... = 3225$\
-  $ 1080 / 1.066666... = 1350$\
+  $ 3440 / (1.066666...) = 3225$
+  $ 1440 / (1.066666...) = 1350$\
   #v(10pt)
 ]))
 #pdfpc.speaker-note(
