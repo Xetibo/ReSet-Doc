@@ -13,8 +13,11 @@
     - might skew data a bit
     - advantage
       - people who know what they talk about
+      - comparison
     - disadvantage
       - might not be representative
+      - average user
+    - grain of salt
   ```)
 ]
 
@@ -23,6 +26,7 @@
   \
    #align(center, img("testEaseOfUse.png", width: 100%, height: 75%, fit: "contain"))
     #pdfpc.speaker-note(```md
+    - not realized that its a plugin
     - Very intuitive (similar to gnome settings)
     - works well with different themes
     - improvements:
@@ -41,6 +45,5 @@
     - easy to navigate
     - improvements:
       - add more spacing between widgets (cramped)
-      - more customization options
   ```)
 ]
