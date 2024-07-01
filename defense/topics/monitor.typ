@@ -45,17 +45,23 @@
     #v(10pt)
   ]))
 ])
+#align(center, text(fill: maroon, size: 25pt, [
+  #v(10pt)
+  $ 3440 / 1.066666... = 3225$\
+  $ 1080 / 1.066666... = 1350$\
+  #v(10pt)
+]))
 #pdfpc.speaker-note(
   ```md
-          - gnome -> fixed scaling
-          - all others -> arbitrary scaling
-          - x11 to wayland differences ? -> therefore no x11!
-          - dynamic hiding and showing of interface parts -> hyprland no primary monitor
-          - convert information to be user friendly
-            - user doesn't understand what a monitor MODE is
-            - user wants to choose refreshrate not a resolution,refreshrate,scaling combo
-              - abstract these into singular items which can be chosen independently
-            ```,
+  - gnome -> fixed scaling
+  - all others -> arbitrary scaling
+  - x11 to wayland differences ? -> therefore no x11!
+  - dynamic hiding and showing of interface parts -> hyprland no primary monitor
+  - convert information to be user friendly
+    - user doesn't understand what a monitor MODE is
+    - user wants to choose refreshrate not a resolution,refreshrate,scaling combo
+      - abstract these into singular items which can be chosen independently
+    ```,
 )
 ]
 
